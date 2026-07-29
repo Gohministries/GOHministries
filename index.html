@@ -1,28 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Gate of Heaven Ministries | GOH Ministries</title>
 
-<meta name="description" content="Gate of Heaven Ministries - Sharing the Gospel of Jesus Christ through worship, prayer, evangelism, Bible teaching, outreach and Christian media.">
+<meta name="description"
+content="Gate of Heaven Ministries - Sharing the Gospel of Jesus Christ through prayer, worship, evangelism, Bible teaching, outreach and Christian media.">
 
 <style>
-:root{
-    --navy:#071b3a;
-    --blue:#123f78;
-    --blue2:#1d5da8;
-    --gold:#e3b63f;
-    --gold2:#f5d77a;
-    --white:#ffffff;
-    --light:#f5f8fc;
-    --text:#172033;
-    --muted:#667085;
-    --border:#e3e8ef;
-    --green:#20b15a;
-    --red:#e62117;
-}
+
+/* =========================
+   BASIC SETTINGS
+========================= */
 
 *{
     margin:0;
@@ -33,8 +27,8 @@
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    color:var(--text);
-    background:var(--light);
+    color:#172033;
+    background:#f5f8fc;
     line-height:1.6;
 }
 
@@ -47,7 +41,29 @@ a{
     margin:auto;
 }
 
-/* NAVIGATION */
+
+/* =========================
+   COLORS
+========================= */
+
+:root{
+    --navy:#071b3a;
+    --blue:#123f78;
+    --blue2:#1d5da8;
+    --gold:#e3b63f;
+    --gold2:#f5d77a;
+    --white:#ffffff;
+    --light:#f5f8fc;
+    --text:#172033;
+    --muted:#667085;
+    --border:#e3e8ef;
+    --green:#25d366;
+}
+
+
+/* =========================
+   HEADER
+========================= */
 
 header{
     position:sticky;
@@ -60,8 +76,8 @@ header{
 .nav{
     min-height:72px;
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
 }
 
 .brand{
@@ -69,21 +85,24 @@ header{
     align-items:center;
     gap:12px;
     color:white;
-    font-weight:bold;
     font-size:18px;
+    font-weight:bold;
 }
 
 .logo{
-    width:45px;
-    height:45px;
+    width:46px;
+    height:46px;
     border-radius:50%;
-    background:linear-gradient(135deg,var(--gold),var(--gold2));
+    background:linear-gradient(135deg,
+    var(--gold),
+    var(--gold2));
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     color:var(--navy);
     font-weight:900;
-    font-size:15px;
 }
 
 .nav-links{
@@ -111,18 +130,46 @@ header{
     font-size:20px;
 }
 
-/* HERO */
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
-    min-height:650px;
+
+    min-height:680px;
+
     display:flex;
     align-items:center;
+
     color:white;
+
+    /*
+       YOUR OWN PHOTO
+
+       Upload your photo to GitHub
+       with the filename:
+
+       cross.jpg
+
+       Keep it in the same folder
+       as index.html.
+    */
+
     background:
-    linear-gradient(rgba(5,22,52,.78),rgba(5,22,52,.82)),
-    url("https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=1800&q=85");
+
+    linear-gradient(
+        rgba(5,22,52,.55),
+        rgba(5,22,52,.78)
+    ),
+
+    url("cross.jpg");
+
     background-size:cover;
+
     background-position:center;
+
+    background-repeat:no-repeat;
 }
 
 .hero-content{
@@ -133,8 +180,8 @@ header{
     color:var(--gold2);
     text-transform:uppercase;
     letter-spacing:2px;
-    font-weight:bold;
     font-size:13px;
+    font-weight:bold;
 }
 
 .hero h1{
@@ -164,9 +211,13 @@ header{
     display:inline-flex;
     align-items:center;
     justify-content:center;
+
     padding:13px 23px;
+
     border-radius:30px;
+
     font-weight:bold;
+
     transition:.2s;
 }
 
@@ -194,6 +245,11 @@ header{
     color:white;
 }
 
+
+/* =========================
+   SECTIONS
+========================= */
+
 section{
     padding:80px 0;
 }
@@ -215,7 +271,10 @@ section{
     margin:auto;
 }
 
-/* ABOUT */
+
+/* =========================
+   ABOUT
+========================= */
 
 .about{
     background:white;
@@ -228,10 +287,22 @@ section{
     align-items:center;
 }
 
+.about-content p{
+    margin-bottom:18px;
+}
+
 .about-box{
-    background:linear-gradient(135deg,var(--navy),var(--blue));
+    background:
+    linear-gradient(
+        135deg,
+        var(--navy),
+        var(--blue)
+    );
+
     color:white;
+
     padding:38px;
+
     border-radius:22px;
 }
 
@@ -241,13 +312,9 @@ section{
     margin-bottom:15px;
 }
 
-.about-text p{
-    margin-bottom:15px;
+.about-box p{
     color:#e5edf8;
-}
-
-.about-content p{
-    margin-bottom:18px;
+    margin-bottom:15px;
 }
 
 .check-list{
@@ -265,21 +332,34 @@ section{
     margin-right:10px;
 }
 
-/* MINISTRIES */
+
+/* =========================
+   MINISTRIES
+========================= */
 
 .cards{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:
+    repeat(3,1fr);
+
     gap:22px;
 }
 
 .card{
     background:white;
+
     padding:30px 24px;
+
     border-radius:17px;
+
     border:1px solid var(--border);
-    box-shadow:0 8px 28px rgba(7,27,58,.07);
+
+    box-shadow:
+    0 8px 28px
+    rgba(7,27,58,.07);
+
     text-align:center;
+
     transition:.25s;
 }
 
@@ -301,21 +381,31 @@ section{
     color:var(--muted);
 }
 
-/* VISION */
+
+/* =========================
+   VISION
+========================= */
 
 .vision{
-    background:linear-gradient(135deg,var(--navy),var(--blue));
+    background:
+    linear-gradient(
+        135deg,
+        var(--navy),
+        var(--blue)
+    );
+
     color:white;
     text-align:center;
 }
 
-.vision h2{
+.vision .section-title h2{
     color:white;
 }
 
 .vision blockquote{
     max-width:850px;
     margin:auto;
+
     font-size:28px;
     font-style:italic;
 }
@@ -323,24 +413,41 @@ section{
 .vision cite{
     display:block;
     color:var(--gold2);
+
     margin-top:15px;
+
     font-style:normal;
     font-weight:bold;
 }
 
-/* PROJECT */
+
+/* =========================
+   CHURCH PROJECT
+========================= */
 
 .project{
     background:white;
 }
 
 .project-box{
-    background:linear-gradient(135deg,#fff8df,#ffffff);
+
+    background:
+    linear-gradient(
+        135deg,
+        #fff8df,
+        #ffffff
+    );
+
     border:1px solid #f0dfaa;
+
     padding:40px;
+
     border-radius:20px;
+
     text-align:center;
+
     max-width:900px;
+
     margin:auto;
 }
 
@@ -354,36 +461,54 @@ section{
     color:var(--muted);
 }
 
-/* DONATION */
+
+/* =========================
+   DONATION
+========================= */
 
 .donation{
     background:#fff8df;
 }
 
 .donation-grid{
+
     display:grid;
-    grid-template-columns:.8fr 1.2fr;
+
+    grid-template-columns:
+    .8fr 1.2fr;
+
     gap:30px;
+
     align-items:start;
 }
 
 .donation-intro h2{
     color:var(--navy);
+
     font-size:42px;
+
     line-height:1.15;
+
     margin-bottom:18px;
 }
 
 .donation-intro p{
     color:var(--muted);
+
     margin-bottom:15px;
 }
 
 .donation-card{
+
     background:white;
+
     padding:30px;
+
     border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    box-shadow:
+    0 10px 30px
+    rgba(0,0,0,.08);
 }
 
 .donation-card h3{
@@ -392,8 +517,11 @@ section{
 }
 
 .bank-row{
+
     padding:13px 0;
-    border-bottom:1px solid var(--border);
+
+    border-bottom:
+    1px solid var(--border);
 }
 
 .bank-row:last-child{
@@ -401,10 +529,15 @@ section{
 }
 
 .bank-label{
+
     display:block;
+
     color:var(--muted);
+
     font-size:12px;
+
     text-transform:uppercase;
+
     font-weight:bold;
 }
 
@@ -414,49 +547,80 @@ section{
 }
 
 .account-number{
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
     gap:10px;
 }
 
 .copy-btn{
+
     border:0;
+
     background:#edf3f9;
+
     color:var(--navy);
+
     padding:7px 12px;
+
     border-radius:7px;
+
     cursor:pointer;
+
     font-weight:bold;
 }
 
 .notice{
+
     background:#fff7d7;
-    border-left:4px solid var(--gold);
+
+    border-left:
+    4px solid var(--gold);
+
     padding:15px;
+
     border-radius:8px;
+
     margin-top:20px;
+
     color:#5f4b08;
 }
 
-/* SOCIAL */
+
+/* =========================
+   SOCIAL MEDIA
+========================= */
 
 .social{
     background:white;
 }
 
 .social-buttons{
+
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+    repeat(4,1fr);
+
     gap:15px;
 }
 
 .social-btn{
+
     padding:18px;
+
     border-radius:14px;
+
     text-align:center;
+
     color:white;
+
     font-weight:bold;
+
     transition:.2s;
 }
 
@@ -473,34 +637,55 @@ section{
 }
 
 .instagram{
-    background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);
+
+    background:
+    linear-gradient(
+        135deg,
+        #833ab4,
+        #fd1d1d,
+        #fcb045
+    );
 }
 
 .whatsapp{
     background:#25d366;
 }
 
-/* CONTACT */
+
+/* =========================
+   CONTACT
+========================= */
 
 .contact{
     background:#eef4fb;
 }
 
 .contact-grid{
+
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+    1fr 1fr;
+
     gap:25px;
 }
 
 .contact-card{
+
     background:white;
+
     padding:30px;
+
     border-radius:17px;
-    border:1px solid var(--border);
+
+    border:
+    1px solid var(--border);
 }
 
 .contact-card h3{
+
     color:var(--navy);
+
     margin-bottom:15px;
 }
 
@@ -509,7 +694,9 @@ section{
 }
 
 .contact-item strong{
+
     display:block;
+
     color:var(--navy);
 }
 
@@ -517,17 +704,27 @@ section{
     color:var(--blue2);
 }
 
-/* FOOTER */
+
+/* =========================
+   FOOTER
+========================= */
 
 footer{
+
     background:#041226;
+
     color:#b9c5d5;
+
     padding:50px 0 20px;
 }
 
 .footer-grid{
+
     display:grid;
-    grid-template-columns:1.5fr 1fr 1fr;
+
+    grid-template-columns:
+    1.5fr 1fr 1fr;
+
     gap:35px;
 }
 
@@ -537,50 +734,85 @@ footer h3{
 }
 
 footer a{
+
     color:#c8d4e3;
+
     display:block;
+
     margin:7px 0;
 }
 
 .footer-bottom{
-    border-top:1px solid rgba(255,255,255,.1);
+
+    border-top:
+    1px solid rgba(255,255,255,.1);
+
     margin-top:35px;
+
     padding-top:20px;
+
     text-align:center;
+
     font-size:13px;
 }
 
-/* FLOATING WHATSAPP */
+
+/* =========================
+   FLOATING WHATSAPP
+========================= */
 
 .floating-whatsapp{
+
     position:fixed;
+
     right:20px;
     bottom:20px;
+
     width:58px;
     height:58px;
+
     border-radius:50%;
+
     background:#25d366;
+
     color:white;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     font-size:28px;
-    box-shadow:0 7px 25px rgba(0,0,0,.25);
+
+    box-shadow:
+    0 7px 25px
+    rgba(0,0,0,.25);
+
     z-index:999;
 }
 
-/* MOBILE */
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:850px){
 
     .nav-links{
+
         display:none;
+
         position:absolute;
+
         left:0;
         right:0;
+
         top:72px;
+
         background:var(--navy);
+
         flex-direction:column;
+
         padding:20px;
     }
 
@@ -596,6 +828,7 @@ footer a{
     .donation-grid,
     .contact-grid,
     .footer-grid{
+
         grid-template-columns:1fr;
     }
 
@@ -607,6 +840,7 @@ footer a{
         grid-template-columns:1fr 1fr;
     }
 }
+
 
 @media(max-width:550px){
 
@@ -640,73 +874,159 @@ footer a{
         padding:25px;
     }
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- NAVIGATION -->
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
+
 <div class="container nav">
 
 <a href="#home" class="brand">
-    <div class="logo">GOH</div>
-    <span>Gate of Heaven Ministries</span>
+
+<div class="logo">
+GOH
+</div>
+
+<span>
+Gate of Heaven Ministries
+</span>
+
 </a>
 
-<button class="menu" onclick="toggleMenu()">☰</button>
 
-<nav class="nav-links" id="navLinks">
-    <a href="#about" onclick="closeMenu()">About</a>
-    <a href="#ministries" onclick="closeMenu()">Ministries</a>
-    <a href="#vision" onclick="closeMenu()">Vision</a>
-    <a href="#project" onclick="closeMenu()">Project</a>
-    <a href="#donate" onclick="closeMenu()">Donate</a>
-    <a href="#social" onclick="closeMenu()">Social</a>
-    <a href="#contact" onclick="closeMenu()">Contact</a>
+<button
+class="menu"
+onclick="toggleMenu()">
+
+☰
+
+</button>
+
+
+<nav
+class="nav-links"
+id="navLinks">
+
+<a href="#about"
+onclick="closeMenu()">
+About
+</a>
+
+<a href="#ministries"
+onclick="closeMenu()">
+Ministries
+</a>
+
+<a href="#vision"
+onclick="closeMenu()">
+Vision
+</a>
+
+<a href="#project"
+onclick="closeMenu()">
+Project
+</a>
+
+<a href="#donate"
+onclick="closeMenu()">
+Donate
+</a>
+
+<a href="#social"
+onclick="closeMenu()">
+Social
+</a>
+
+<a href="#contact"
+onclick="closeMenu()">
+Contact
+</a>
+
 </nav>
 
 </div>
+
 </header>
 
 
-<!-- HERO -->
 
-<section class="hero" id="home">
+<!-- =========================
+     HOME
+========================= -->
+
+<section
+class="hero"
+id="home">
 
 <div class="container">
 
 <div class="hero-content">
 
 <div class="eyebrow">
+
 Gate of Heaven Ministries • GOH Media
+
 </div>
 
+
 <h1>
-Jesus Christ<br>
-<span>Our Hope</span>
+
+Jesus Christ
+
+<br>
+
+<span>
+Our Hope
+</span>
+
 </h1>
 
+
 <p>
-Sharing the Gospel of Jesus Christ, strengthening believers,
-reaching communities and preparing souls for the coming of Jesus Christ.
+
+Sharing the Gospel of Jesus Christ,
+strengthening believers, reaching communities
+and preparing souls for the coming of Jesus Christ.
+
 </p>
+
 
 <div class="buttons">
 
-<a href="#donate" class="btn btn-gold">
+<a
+href="#donate"
+class="btn btn-gold">
+
 ❤️ Support the Ministry
+
 </a>
 
-<a href="https://wa.me/94771190395"
+
+<a
+href="https://wa.me/94771190395"
 target="_blank"
 class="btn btn-green">
+
 💬 WhatsApp Us
+
 </a>
 
-<a href="#ministries" class="btn btn-white">
+
+<a
+href="#ministries"
+class="btn btn-white">
+
 Explore Our Ministry
+
 </a>
 
 </div>
@@ -718,72 +1038,128 @@ Explore Our Ministry
 </section>
 
 
-<!-- ABOUT -->
 
-<section class="about" id="about">
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section
+class="about"
+id="about">
 
 <div class="container">
 
 <div class="section-title">
-<h2>About GOH Ministries</h2>
-<p>Serving God and sharing the Gospel of Jesus Christ.</p>
+
+<h2>
+About GOH Ministries
+</h2>
+
+<p>
+Serving God and sharing the Gospel of Jesus Christ.
+</p>
+
 </div>
 
+
 <div class="about-grid">
+
 
 <div class="about-content">
 
 <p>
-<strong>Gate of Heaven Ministries (GOH Ministries)</strong>
-is a Christian ministry dedicated to prayer, worship,
-Bible teaching, evangelism, spiritual growth and community outreach.
+
+<strong>
+Gate of Heaven Ministries
+(GOH Ministries)
+</strong>
+
+is a Christian ministry dedicated
+to prayer, worship, Bible teaching,
+evangelism, spiritual growth and
+community outreach.
+
 </p>
 
-<p>
-Our desire is to see people experience the love of God,
-receive salvation through Jesus Christ and grow as faithful
-followers of Christ.
-</p>
 
 <p>
-Through church services, prayer meetings, evangelism,
-Christian media and community ministry, we seek to share
-the Gospel and bring hope to people.
+
+Our desire is to see people experience
+the love of God, receive salvation through
+Jesus Christ and grow as faithful followers
+of Christ.
+
 </p>
+
+
+<p>
+
+Through church services, prayer meetings,
+evangelism, Christian media and community
+ministry, we seek to share the Gospel
+and bring hope to people.
+
+</p>
+
 
 <ul class="check-list">
-<li>Prayer and Intercession</li>
-<li>Bible Teaching</li>
-<li>Evangelism</li>
-<li>Worship and Spiritual Growth</li>
-<li>Community Outreach</li>
-<li>Christian Media</li>
+
+<li>
+Prayer and Intercession
+</li>
+
+<li>
+Bible Teaching
+</li>
+
+<li>
+Evangelism
+</li>
+
+<li>
+Worship and Spiritual Growth
+</li>
+
+<li>
+Community Outreach
+</li>
+
+<li>
+Christian Media
+</li>
+
 </ul>
 
 </div>
 
+
 <div class="about-box">
 
-<h3>Our Heart</h3>
+<h3>
+Our Heart
+</h3>
 
-<div class="about-text">
 
 <p>
-We believe that Jesus Christ is the way, the truth and the life.
+We believe that Jesus Christ is
+the way, the truth and the life.
 </p>
 
-<p>
-Our mission is to proclaim the Gospel and encourage people
-to live according to God's Word.
-</p>
 
 <p>
-We desire to see lives transformed by the power and love of God.
+Our mission is to proclaim the Gospel
+and encourage people to live according
+to God's Word.
+</p>
+
+
+<p>
+We desire to see lives transformed
+by the power and love of God.
 </p>
 
 </div>
 
-</div>
 
 </div>
 
@@ -792,72 +1168,147 @@ We desire to see lives transformed by the power and love of God.
 </section>
 
 
-<!-- MINISTRIES -->
 
-<section id="ministries">
+<!-- =========================
+     MINISTRIES
+========================= -->
+
+<section
+id="ministries">
 
 <div class="container">
 
 <div class="section-title">
-<h2>Our Ministries</h2>
-<p>Serving God through different areas of ministry.</p>
+
+<h2>
+Our Ministries
+</h2>
+
+<p>
+Serving God through different areas of ministry.
+</p>
+
 </div>
+
 
 <div class="cards">
 
-<div class="card">
-<div class="icon">🙏</div>
-<h3>Prayer Ministry</h3>
-<p>
-Prayer and intercession for individuals, families,
-churches and communities.
-</p>
-</div>
 
 <div class="card">
-<div class="icon">📖</div>
-<h3>Bible Teaching</h3>
-<p>
-Teaching God's Word and helping believers grow in faith,
-knowledge and obedience.
-</p>
+
+<div class="icon">
+🙏
 </div>
 
-<div class="card">
-<div class="icon">✝️</div>
-<h3>Evangelism</h3>
+<h3>
+Prayer Ministry
+</h3>
+
 <p>
-Sharing the Gospel of Jesus Christ and reaching people
-with the message of salvation.
+Prayer and intercession for individuals,
+families, churches and communities.
 </p>
+
 </div>
 
-<div class="card">
-<div class="icon">❤️</div>
-<h3>Community Outreach</h3>
-<p>
-Showing the love of Christ through practical service
-and community outreach.
-</p>
-</div>
+
 
 <div class="card">
-<div class="icon">🎥</div>
-<h3>GOH Media</h3>
-<p>
-Using digital media and social platforms to spread
-Christian messages and the Gospel.
-</p>
+
+<div class="icon">
+📖
 </div>
 
-<div class="card">
-<div class="icon">🔥</div>
-<h3>Revival</h3>
+<h3>
+Bible Teaching
+</h3>
+
 <p>
-Praying for spiritual awakening, revival and a deeper
-work of the Holy Spirit.
+Teaching God's Word and helping believers
+grow in faith, knowledge and obedience.
 </p>
+
 </div>
+
+
+
+<div class="card">
+
+<div class="icon">
+✝️
+</div>
+
+<h3>
+Evangelism
+</h3>
+
+<p>
+Sharing the Gospel of Jesus Christ
+and reaching people with the message
+of salvation.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="icon">
+❤️
+</div>
+
+<h3>
+Community Outreach
+</h3>
+
+<p>
+Showing the love of Christ through
+practical service and community outreach.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="icon">
+🎥
+</div>
+
+<h3>
+GOH Media
+</h3>
+
+<p>
+Using digital media and social platforms
+to spread Christian messages and
+the Gospel.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="icon">
+🔥
+</div>
+
+<h3>
+Revival
+</h3>
+
+<p>
+Praying for spiritual awakening,
+revival and a deeper work of
+the Holy Spirit.
+</p>
+
+</div>
+
 
 </div>
 
@@ -866,28 +1317,50 @@ work of the Holy Spirit.
 </section>
 
 
-<!-- VISION -->
 
-<section class="vision" id="vision">
+<!-- =========================
+     VISION
+========================= -->
+
+<section
+class="vision"
+id="vision">
 
 <div class="container">
 
 <div class="section-title">
-<h2>Our Vision</h2>
+
+<h2>
+Our Vision
+</h2>
+
 </div>
 
+
 <blockquote>
-"Go ye into all the world, and preach the gospel to every creature."
+
+"Go ye into all the world,
+and preach the gospel to every creature."
+
 </blockquote>
 
-<cite>Mark 16:15 — KJV</cite>
+
+<cite>
+Mark 16:15 — KJV
+</cite>
+
 
 <br><br>
 
+
 <p>
-Our vision is to proclaim the Gospel, strengthen the Church,
-reach people with the message of salvation and prepare souls
-for the return of Jesus Christ.
+
+Our vision is to proclaim the Gospel,
+strengthen the Church, reach people
+with the message of salvation and
+prepare souls for the return of
+Jesus Christ.
+
 </p>
 
 </div>
@@ -895,39 +1368,71 @@ for the return of Jesus Christ.
 </section>
 
 
-<!-- CHURCH PROJECT -->
 
-<section class="project" id="project">
+<!-- =========================
+     CHURCH PROJECT
+========================= -->
+
+<section
+class="project"
+id="project">
 
 <div class="container">
 
 <div class="section-title">
-<h2>Church Building Project</h2>
-<p>Building a place for worship, prayer and ministry.</p>
+
+<h2>
+Church Building Project
+</h2>
+
+<p>
+Building a place for worship,
+prayer and ministry.
+</p>
+
 </div>
+
 
 <div class="project-box">
 
-<h3>Support the GOH Church Building</h3>
+<h3>
+Support the GOH Church Building
+</h3>
+
 
 <p>
-GOH Ministries is developing a church facility to serve the
-congregation and provide a dedicated place for worship,
-prayer, Bible teaching, evangelism and ministry activities.
+
+GOH Ministries is developing a church
+facility to serve the congregation
+and provide a dedicated place for
+worship, prayer, Bible teaching,
+evangelism and ministry activities.
+
 </p>
+
 
 <br>
 
+
 <p>
-The project is being carried forward through prayer, faith
-and the generous support of people who believe in the work
-of the Gospel.
+
+The project is being carried forward
+through prayer, faith and the generous
+support of people who believe in the
+work of the Gospel.
+
 </p>
+
 
 <br>
 
-<a href="#donate" class="btn btn-gold">
+
+<a
+href="#donate"
+class="btn btn-gold">
+
 🏗️ Support Church Construction
+
 </a>
 
 </div>
@@ -937,47 +1442,76 @@ of the Gospel.
 </section>
 
 
-<!-- DONATION -->
 
-<section class="donation" id="donate">
+<!-- =========================
+     DONATION
+========================= -->
+
+<section
+class="donation"
+id="donate">
 
 <div class="container">
 
 <div class="donation-grid">
 
+
 <div class="donation-intro">
 
-<div class="eyebrow" style="color:#a17b14;">
+<div
+class="eyebrow"
+style="color:#a17b14;">
+
 Partner With Us
+
 </div>
 
+
 <h2>
-Support the Work of the Gospel
+
+Support the Work
+of the Gospel
+
 </h2>
 
+
 <p>
-Your support helps GOH Ministries continue worship,
-prayer, evangelism, community outreach, Christian media
+
+Your support helps GOH Ministries
+continue worship, prayer, evangelism,
+community outreach, Christian media
 and the church building project.
+
 </p>
+
 
 <p>
-Every contribution, large or small, is received with
-thanksgiving and used to support the ministry work.
+
+Every contribution, large or small,
+is received with thanksgiving.
+
 </p>
 
-<a href="https://wa.me/94771190395"
+
+<a
+href="https://wa.me/94771190395"
 target="_blank"
 class="btn btn-green">
+
 💬 Contact for Donation
+
 </a>
 
 </div>
 
 
+
 <div class="donation-card">
 
-<h3>🏦 Bank Transfer Details</h3>
+<h3>
+🏦 Bank Transfer Details
+</h3>
+
 
 <div class="bank-row">
 
@@ -1024,15 +1558,24 @@ Thinarathnam Saththiyanadan
 Account Number
 </span>
 
+
 <div class="account-number">
 
-<span class="bank-value" id="accountNumber">
+<span
+class="bank-value"
+id="accountNumber">
+
 292200280023178
+
 </span>
 
-<button class="copy-btn"
+
+<button
+class="copy-btn"
 onclick="copyAccount()">
+
 Copy
+
 </button>
 
 </div>
@@ -1042,27 +1585,41 @@ Copy
 
 <div class="notice">
 
-<strong>Donation confirmation</strong><br>
+<strong>
+Donation confirmation
+</strong>
 
-After making a bank transfer, please contact
-GOH Ministries through WhatsApp or email so that
+<br>
+
+After making a bank transfer,
+please contact GOH Ministries
+through WhatsApp or email so that
 your contribution can be confirmed.
 
 </div>
 
+
 <br>
+
 
 <div style="text-align:center;">
 
-<a href="https://wa.me/94771190395"
+<a
+href="https://wa.me/94771190395"
 target="_blank"
 class="btn btn-green">
+
 💬 WhatsApp
+
 </a>
 
-<a href="mailto:gohsupport@gmail.com"
+
+<a
+href="mailto:gohsupport@gmail.com"
 class="btn btn-blue">
+
 ✉️ Email
+
 </a>
 
 </div>
@@ -1076,19 +1633,30 @@ class="btn btn-blue">
 </section>
 
 
-<!-- SOCIAL MEDIA -->
 
-<section class="social" id="social">
+<!-- =========================
+     SOCIAL MEDIA
+========================= -->
+
+<section
+class="social"
+id="social">
 
 <div class="container">
 
+
 <div class="section-title">
 
-<h2>Connect With GOH Ministries</h2>
+<h2>
+Connect With GOH Ministries
+</h2>
 
 <p>
-Follow us for sermons, prayers, worship, ministry updates,
+
+Follow us for sermons, prayers,
+worship, ministry updates,
 Christian messages and Gospel content.
+
 </p>
 
 </div>
@@ -1096,41 +1664,59 @@ Christian messages and Gospel content.
 
 <div class="social-buttons">
 
-<!-- Replace these links with your exact page/channel URLs if different -->
 
-<a href="https://www.facebook.com/gohmofficial"
+<a
+href="https://www.facebook.com/gohmofficial"
 target="_blank"
 class="social-btn facebook">
+
 📘 Facebook
+
 </a>
 
 
-<a href="https://www.youtube.com/@gohmofficial"
+<a
+href="https://www.youtube.com/@gohmofficial"
 target="_blank"
 class="social-btn youtube">
+
 ▶️ YouTube
+
 </a>
 
 
-<a href="https://www.instagram.com/gohmofficial"
+<a
+href="https://www.instagram.com/gohmofficial"
 target="_blank"
 class="social-btn instagram">
+
 📷 Instagram
+
 </a>
 
 
-<a href="https://wa.me/94771190395"
+<a
+href="https://wa.me/94771190395"
 target="_blank"
 class="social-btn whatsapp">
+
 💬 WhatsApp
+
 </a>
 
 </div>
 
+
 <br>
 
+
 <p style="text-align:center;color:#667085;">
-Social Media: <strong>@gohmofficial</strong>
+
+Social Media:
+<strong>
+@gohmofficial
+</strong>
+
 </p>
 
 </div>
@@ -1138,15 +1724,23 @@ Social Media: <strong>@gohmofficial</strong>
 </section>
 
 
-<!-- CONTACT -->
 
-<section class="contact" id="contact">
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section
+class="contact"
+id="contact">
 
 <div class="container">
 
+
 <div class="section-title">
 
-<h2>Contact GOH Ministries</h2>
+<h2>
+Contact GOH Ministries
+</h2>
 
 <p>
 We would be happy to hear from you.
@@ -1157,16 +1751,25 @@ We would be happy to hear from you.
 
 <div class="contact-grid">
 
+
 <div class="contact-card">
 
-<h3>📞 Contact Information</h3>
+<h3>
+📞 Contact Information
+</h3>
+
 
 <div class="contact-item">
 
-<strong>WhatsApp / Phone</strong>
+<strong>
+WhatsApp / Phone
+</strong>
 
-<a href="tel:+94771190395">
+<a
+href="tel:+94771190395">
+
 +94 77 119 0395
+
 </a>
 
 </div>
@@ -1174,10 +1777,15 @@ We would be happy to hear from you.
 
 <div class="contact-item">
 
-<strong>Email</strong>
+<strong>
+Email
+</strong>
 
-<a href="mailto:gohsupport@gmail.com">
+<a
+href="mailto:gohsupport@gmail.com">
+
 gohsupport@gmail.com
+
 </a>
 
 </div>
@@ -1185,34 +1793,51 @@ gohsupport@gmail.com
 
 <div class="contact-item">
 
-<strong>Social Media</strong>
+<strong>
+Social Media
+</strong>
 
-<span>@gohmofficial</span>
+<span>
+@gohmofficial
+</span>
 
 </div>
 
 </div>
+
 
 
 <div class="contact-card">
 
-<h3>🙏 Prayer & Ministry Requests</h3>
+<h3>
+🙏 Prayer & Ministry Requests
+</h3>
+
 
 <p>
-If you need prayer, would like to know more about
-GOH Ministries, or would like to partner with the ministry,
-please contact us.
+
+If you need prayer, would like to
+know more about GOH Ministries,
+or would like to partner with
+the ministry, please contact us.
+
 </p>
+
 
 <br>
 
-<a href="https://wa.me/94771190395"
+
+<a
+href="https://wa.me/94771190395"
 target="_blank"
 class="btn btn-green">
+
 💬 Message Us on WhatsApp
+
 </a>
 
 </div>
+
 
 </div>
 
@@ -1221,26 +1846,39 @@ class="btn btn-green">
 </section>
 
 
-<!-- BIBLE VERSE -->
+
+<!-- =========================
+     BIBLE VERSE
+========================= -->
 
 <section class="vision">
 
 <div class="container">
 
 <blockquote>
-"For God so loved the world, that he gave his only begotten Son,
-that whosoever believeth in him should not perish, but have
+
+"For God so loved the world,
+that he gave his only begotten Son,
+that whosoever believeth in him
+should not perish, but have
 everlasting life."
+
 </blockquote>
 
-<cite>John 3:16 — KJV</cite>
+
+<cite>
+John 3:16 — KJV
+</cite>
 
 </div>
 
 </section>
 
 
-<!-- FOOTER -->
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -1248,38 +1886,66 @@ everlasting life."
 
 <div class="footer-grid">
 
+
 <div>
 
-<h3>Gate of Heaven Ministries</h3>
+<h3>
+Gate of Heaven Ministries
+</h3>
 
 <p>
 GOH Ministries • GOH Media
 </p>
 
+<br>
+
 <p>
-Sharing the Gospel of Jesus Christ and serving
-people through prayer, worship, evangelism and outreach.
+
+Sharing the Gospel of Jesus Christ
+and serving people through prayer,
+worship, evangelism and outreach.
+
 </p>
 
 </div>
 
 
+
 <div>
 
-<h3>Quick Links</h3>
+<h3>
+Quick Links
+</h3>
 
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#ministries">Ministries</a>
-<a href="#project">Church Project</a>
-<a href="#donate">Donate</a>
+<a href="#home">
+Home
+</a>
+
+<a href="#about">
+About
+</a>
+
+<a href="#ministries">
+Ministries
+</a>
+
+<a href="#project">
+Church Project
+</a>
+
+<a href="#donate">
+Donate
+</a>
 
 </div>
 
 
+
 <div>
 
-<h3>Connect</h3>
+<h3>
+Connect
+</h3>
 
 <a href="https://wa.me/94771190395">
 WhatsApp
@@ -1303,12 +1969,14 @@ Instagram
 
 </div>
 
+
 </div>
 
 
 <div class="footer-bottom">
 
-© 2026 Gate of Heaven Ministries. All Rights Reserved.
+© 2026 Gate of Heaven Ministries.
+All Rights Reserved.
 
 <br>
 
@@ -1321,15 +1989,26 @@ GOH Ministries • @gohmofficial
 </footer>
 
 
-<!-- FLOATING WHATSAPP -->
 
-<a href="https://wa.me/94771190395"
+<!-- =========================
+     FLOATING WHATSAPP
+========================= -->
+
+<a
+href="https://wa.me/94771190395"
 target="_blank"
 class="floating-whatsapp"
-title="Contact GOH Ministries on WhatsApp">
+title="Contact GOH Ministries">
+
 💬
+
 </a>
 
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
 <script>
 
@@ -1341,6 +2020,7 @@ function toggleMenu(){
 
 }
 
+
 function closeMenu(){
 
     document
@@ -1349,20 +2029,43 @@ function closeMenu(){
 
 }
 
+
 function copyAccount(){
 
     const account =
-    document.getElementById("accountNumber").innerText;
+    document
+    .getElementById("accountNumber")
+    .innerText
+    .trim();
 
-    navigator.clipboard.writeText(account).then(function(){
 
-        alert("Account number copied: " + account);
+    if(
+        navigator.clipboard &&
+        window.isSecureContext
+    ){
 
-    });
+        navigator.clipboard
+        .writeText(account)
+        .then(function(){
+
+            alert(
+                "Account number copied!"
+            );
+
+        });
+
+    }else{
+
+        alert(
+            "Account Number: " + account
+        );
+
+    }
 
 }
 
 </script>
+
 
 </body>
 </html>
