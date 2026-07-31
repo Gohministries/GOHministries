@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bible Quiz | Gate of Heaven Ministries</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #250006, #600014, #180000);
+    color: white;
+    min-height: 100vh;
+}
+
+.header {
+    background: #260006;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid #b88a20;
+}
+
+.logo {
+    width: 52px;
+    height: 52px;
+    background: #f5c542;
+    color: #250006;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.header h1 {
+    font-size: 21px;
+}
+
+.container {
+    max-width: 650px;
+    margin: 35px auto;
+    padding: 20px;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.title h2 {
+    color: #ffd75a;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.title p {
+    color: #eee;
+}
+
+.quiz-box {
+    background: rgba(0,0,0,0.35);
+    border: 1px solid #9f7418;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.top-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: #ffd75a;
+    font-weight: bold;
+}
+
+.progress {
+    width: 100%;
+    height: 8px;
+    background: #4b2025;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #f5c542;
+    transition: width 0.3s;
+}
+
+.timer {
+    text-align: center;
+    font-size: 22px;
+    color: #ffd75a;
+    margin-bottom: 20px;
+}
+
+.question {
+    font-size: 23px;
+    line-height: 1.4;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.answers {
+    display: grid;
+    gap: 12px;
+}
+
+.answer {
+    width: 100%;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #8d681d;
+    background: #3a1016;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.answer:hover {
+    background: #5c1a22;
+    transform: translateY(-2px);
+}
+
+.answer.correct {
+    background: #16833d;
+    border-color: #4cff8a;
+}
+
+.answer.wrong {
+    background: #9b1724;
+    border-color: #ff6875;
+}
+
+.answer:disabled {
+    cursor: not-allowed;
+}
+
+.next-btn,
+.start-btn,
+.restart-btn {
+    width: 100%;
+    margin-top: 22px;
+    padding: 15px;
+    border: none;
+    border-radius: 30px;
+    background: #f5c542;
+    color: #250006;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.next-btn:hover,
+.start-btn:hover,
+.restart-btn:hover {
+    background: #ffd75a;
+}
+
+.result {
+    display: none;
+    text-align: center;
+}
+
+.result h2 {
+    color: #ffd75a;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.score {
+    font-size: 55px;
+    font-weight: bold;
+    color: #f5c542;
+    margin: 15px 0;
+}
+
+.message {
+    font-size: 19px;
+    margin-bottom: 20px;
+}
+
+.start-screen {
+    text-align: center;
+}
+
+.start-screen h2 {
+    color: #ffd75a;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.start-screen p {
+    line-height: 1.7;
+    color: #eee;
+}
+
+.hidden {
+    display: none;
+}
+
+.footer {
+    text-align: center;
+    padding: 30px 15px;
+    color: #ccc;
+    font-size: 14px;
+}
+
+@media(max-width:500px) {
+
+    .container {
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .title h2 {
+        font-size: 27px;
+    }
+
+    .question {
+        font-size: 20px;
+    }
+
+    .quiz-box {
+        padding: 20px;
+    }
+
+    .header h1 {
+        font-size: 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">GOH</div>
+
+    <h1>Gate of Heaven Ministries</h1>
+
+</header>
+
+
+<main class="container">
+
+    <div class="title">
+
+        <h2>📖 Bible Quiz</h2>
+
+        <p>Test your knowledge of the Word of God</p>
+
+    </div>
+
+
+    <div class="quiz-box">
+
+        <!-- START SCREEN -->
+
+        <div id="startScreen" class="start-screen">
+
+            <h2>🙏 Welcome to the Bible Quiz</h2>
+
+            <p>
+                Challenge yourself with Bible questions
+                and grow in your knowledge of God's Word.
+            </p>
+
+            <p style="margin-top:15px;">
+                📖 10 Questions<br>
+                ⏱️ 15 Seconds Each<br>
+                🏆 Earn Points
+            </p>
+
+            <button class="start-btn" onclick="startQuiz()">
+                ▶ Start Quiz
+            </button>
+
+        </div>
+
+
+        <!-- QUIZ -->
+
+        <div id="quizScreen" class="hidden">
+
+            <div class="top-info">
+
+                <span id="questionNumber">
+                    Question 1/10
+                </span>
+
+                <span id="scoreText">
+                    Score: 0
+                </span>
+
+            </div>
+
+
+            <div class="progress">
+
+                <div
+                    id="progressBar"
+                    class="progress-bar">
+                </div>
+
+            </div>
+
+
+            <div class="timer">
+
+                ⏱️ <span id="timer">15</span>
+
+            </div>
+
+
+            <div
+                id="question"
+                class="question">
+            </div>
+
+
+            <div
+                id="answers"
+                class="answers">
+            </div>
+
+
+            <button
+                id="nextBtn"
+                class="next-btn hidden"
+                onclick="nextQuestion()">
+
+                Next Question →
+
+            </button>
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div id="resultScreen" class="result">
+
+            <h2>🎉 Quiz Completed!</h2>
+
+            <p>Your Score</p>
+
+            <div
+                id="finalScore"
+                class="score">
+                0
+            </div>
+
+            <div
+                id="resultMessage"
+                class="message">
+            </div>
+
+            <button
+                class="restart-btn"
+                onclick="restartQuiz()">
+
+                🔄 Play Again
+
+            </button>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer class="footer">
+
+    © 2026 Gate of Heaven Ministries<br>
+    <span>Jesus Christ • Faith • Hope • Love</span>
+
+</footer>
+
+
+<script>
+
+const questions = [
+
+{
+    question: "Who built the ark?",
+    answers: [
+        "Abraham",
+        "Noah",
+        "Moses",
+        "David"
+    ],
+    correct: 1
+},
+
+{
+    question: "Who was the first man created by God?",
+    answers: [
+        "Adam",
+        "Noah",
+        "Abraham",
+        "Isaac"
+    ],
+    correct: 0
+},
+
+{
+    question: "Who led the Israelites out of Egypt?",
+    answers: [
+        "Joshua",
+        "David",
+        "Moses",
+        "Aaron"
+    ],
+    correct: 2
+},
+
+{
+    question: "How many disciples did Jesus have?",
+    answers: [
+        "7",
+        "10",
+        "12",
+        "14"
+    ],
+    correct: 2
+},
+
+{
+    question: "Who betrayed Jesus?",
+    answers: [
+        "Peter",
+        "Judas Iscariot",
+        "Thomas",
+        "John"
+    ],
+    correct: 1
+},
+
+{
+    question: "Where was Jesus born?",
+    answers: [
+        "Jerusalem",
+        "Nazareth",
+        "Bethlehem",
+        "Capernaum"
+    ],
+    correct: 2
+},
+
+{
+    question: "Who defeated Goliath?",
+    answers: [
+        "Saul",
+        "David",
+        "Jonathan",
+        "Samson"
+    ],
+    correct: 1
+},
+
+{
+    question: "What is the first book of the Bible?",
+    answers: [
+        "Exodus",
+        "Matthew",
+        "Genesis",
+        "Psalms"
+    ],
+    correct: 2
+},
+
+{
+    question: "Who was swallowed by a great fish?",
+    answers: [
+        "Jonah",
+        "Elijah",
+        "Jeremiah",
+        "Daniel"
+    ],
+    correct: 0
+},
+
+{
+    question: "What is the last book of the Bible?",
+    answers: [
+        "Jude",
+        "Revelation",
+        "Malachi",
+        "Acts"
+    ],
+    correct: 1
+},
+
+{
+    question: "Who received the Ten Commandments?",
+    answers: [
+        "Moses",
+        "Joshua",
+        "Aaron",
+        "Samuel"
+    ],
+    correct: 0
+},
+
+{
+    question: "Who was known as the strongest man in the Bible?",
+    answers: [
+        "David",
+        "Samson",
+        "Goliath",
+        "Saul"
+    ],
+    correct: 1
+},
+
+{
+    question: "Who was thrown into the lions' den?",
+    answers: [
+        "Daniel",
+        "Joseph",
+        "Elijah",
+        "Paul"
+    ],
+    correct: 0
+},
+
+{
+    question: "Who baptized Jesus?",
+    answers: [
+        "Peter",
+        "John the Baptist",
+        "James",
+        "Paul"
+    ],
+    correct: 1
+},
+
+{
+    question: "What did Jesus turn water into?",
+    answers: [
+        "Oil",
+        "Wine",
+        "Milk",
+        "Honey"
+    ],
+    correct: 1
+},
+
+{
+    question: "Who was the father of Isaac?",
+    answers: [
+        "Jacob",
+        "Abraham",
+        "Moses",
+        "Joseph"
+    ],
+    correct: 1
+},
+
+{
+    question: "Who interpreted Pharaoh's dreams?",
+    answers: [
+        "Joseph",
+        "Daniel",
+        "Moses",
+        "Aaron"
+    ],
+    correct: 0
+},
+
+{
+    question: "How many days and nights did Jesus fast in the wilderness?",
+    answers: [
+        "7",
+        "21",
+        "30",
+        "40"
+    ],
+    correct: 3
+},
+
+{
+    question: "Which apostle denied Jesus three times?",
+    answers: [
+        "John",
+        "Peter",
+        "James",
+        "Andrew"
+    ],
+    correct: 1
+},
+
+{
+    question: "According to Genesis 1:1, what did God create in the beginning?",
+    answers: [
+        "Man and animals",
+        "Heaven and earth",
+        "The sea",
+        "The stars"
+    ],
+    correct: 1
+}
+
+];
+
+
+let quizQuestions = [];
+let currentQuestion = 0;
+let score = 0;
+let timer;
+let timeLeft = 15;
+
+
+/* START QUIZ */
+
+function startQuiz() {
+
+    quizQuestions = [...questions]
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 10);
+
+    currentQuestion = 0;
+    score = 0;
+
+    document
+        .getElementById("startScreen")
+        .classList.add("hidden");
+
+    document
+        .getElementById("resultScreen")
+        .style.display = "none";
+
+    document
+        .getElementById("quizScreen")
+        .classList.remove("hidden");
+
+    showQuestion();
+}
+
+
+/* SHOW QUESTION */
+
+function showQuestion() {
+
+    clearInterval(timer);
+
+    timeLeft = 15;
+
+    document.getElementById("timer")
+        .textContent = timeLeft;
+
+    const q = quizQuestions[currentQuestion];
+
+    document.getElementById("questionNumber")
+        .textContent =
+        "Question " +
+        (currentQuestion + 1) +
+        "/" +
+        quizQuestions.length;
+
+    document.getElementById("scoreText")
+        .textContent =
+        "Score: " + score;
+
+    document.getElementById("progressBar")
+        .style.width =
+        ((currentQuestion) /
+        quizQuestions.length * 100) + "%";
+
+    document.getElementById("question")
+        .textContent = q.question;
+
+    const answersDiv =
+        document.getElementById("answers");
+
+    answersDiv.innerHTML = "";
+
+    q.answers.forEach((answer, index) => {
+
+        const button =
+            document.createElement("button");
+
+        button.className = "answer";
+
+        button.textContent =
+            String.fromCharCode(65 + index)
+            + ". " + answer;
+
+        button.onclick = () =>
+            checkAnswer(index, button);
+
+        answersDiv.appendChild(button);
+
+    });
+
+    document
+        .getElementById("nextBtn")
+        .classList.add("hidden");
+
+    startTimer();
+}
+
+
+/* TIMER */
+
+function startTimer() {
+
+    timer = setInterval(() => {
+
+        timeLeft--;
+
+        document.getElementById("timer")
+            .textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+
+            clearInterval(timer);
+
+            disableAnswers();
+
+            document
+                .getElementById("nextBtn")
+                .classList.remove("hidden");
+
+        }
+
+    }, 1000);
+}
+
+
+/* CHECK ANSWER */
+
+function checkAnswer(index, button) {
+
+    clearInterval(timer);
+
+    const q = quizQuestions[currentQuestion];
+
+    const buttons =
+        document.querySelectorAll(".answer");
+
+    buttons.forEach(btn =>
+        btn.disabled = true
+    );
+
+    if (index === q.correct) {
+
+        button.classList.add("correct");
+
+        score += 10;
+
+        document.getElementById("scoreText")
+            .textContent =
+            "Score: " + score;
+
+    } else {
+
+        button.classList.add("wrong");
+
+        buttons[q.correct]
+            .classList.add("correct");
+
+    }
+
+    document
+        .getElementById("nextBtn")
+        .classList.remove("hidden");
+}
+
+
+/* DISABLE ANSWERS */
+
+function disableAnswers() {
+
+    const buttons =
+        document.querySelectorAll(".answer");
+
+    buttons.forEach(btn =>
+        btn.disabled = true
+    );
+}
+
+
+/* NEXT QUESTION */
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+    if (currentQuestion >= quizQuestions.length) {
+
+        showResult();
+
+    } else {
+
+        showQuestion();
+
+    }
+}
+
+
+/* RESULT */
+
+function showResult() {
+
+    clearInterval(timer);
+
+    document
+        .getElementById("quizScreen")
+        .classList.add("hidden");
+
+    const result =
+        document.getElementById("resultScreen");
+
+    result.style.display = "block";
+
+    document
+        .getElementById("finalScore")
+        .textContent =
+        score + " / 100";
+
+    let message = "";
+
+    if (score === 100) {
+
+        message =
+        "🏆 Excellent! You know the Bible very well!";
+
+    } else if (score >= 80) {
+
+        message =
+        "👏 Great job! Keep growing in God's Word.";
+
+    } else if (score >= 60) {
+
+        message =
+        "👍 Good work! Keep studying the Bible.";
+
+    } else {
+
+        message =
+        "📖 Keep reading God's Word and try again!";
+
+    }
+
+    document
+        .getElementById("resultMessage")
+        .textContent = message;
+}
+
+
+/* RESTART */
+
+function restartQuiz() {
+
+    document
+        .getElementById("resultScreen")
+        .style.display = "none";
+
+    startQuiz();
+}
+
+</script>
+
+</body>
+</html>
