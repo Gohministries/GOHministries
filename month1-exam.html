@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+<title>GOH Bible Academy | Month 1 Exam</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#f3f6fb;
+  color:#172033;
+  min-height:100vh;
+}
+
+.header{
+  background:#0b376d;
+  color:white;
+  padding:14px;
+  text-align:center;
+}
+
+.header h1{
+  font-size:20px;
+}
+
+.header p{
+  font-size:13px;
+  opacity:.9;
+  margin-top:4px;
+}
+
+.container{
+  width:min(680px,100%);
+  margin:auto;
+  padding:14px;
+}
+
+.top{
+  background:white;
+  border-radius:14px;
+  padding:12px;
+  margin-bottom:12px;
+  box-shadow:0 3px 12px #0001;
+}
+
+.row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+}
+
+.progress{
+  font-weight:bold;
+  color:#0b376d;
+}
+
+.timer{
+  font-weight:bold;
+  color:#c62828;
+}
+
+.langs{
+  display:flex;
+  gap:6px;
+  margin-top:10px;
+}
+
+.langs button{
+  flex:1;
+  border:1px solid #ccd5e3;
+  background:white;
+  border-radius:8px;
+  padding:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.langs button.active{
+  background:#0b376d;
+  color:white;
+}
+
+.card{
+  background:white;
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 3px 15px #0001;
+}
+
+.lesson{
+  font-size:12px;
+  color:#64748b;
+  margin-bottom:10px;
+}
+
+.question{
+  font-size:19px;
+  line-height:1.45;
+  font-weight:bold;
+  margin-bottom:18px;
+}
+
+.option{
+  display:block;
+  width:100%;
+  text-align:left;
+  padding:14px;
+  margin:9px 0;
+  border:2px solid #dbe2ec;
+  border-radius:12px;
+  background:#fff;
+  font-size:15px;
+  cursor:pointer;
+}
+
+.option:hover{
+  border-color:#0b376d;
+}
+
+.option.selected{
+  border-color:#0b376d;
+  background:#eaf2ff;
+}
+
+.navigation{
+  display:flex;
+  gap:10px;
+  margin-top:18px;
+}
+
+.navigation button{
+  flex:1;
+  border:0;
+  border-radius:10px;
+  padding:13px;
+  font-weight:bold;
+  font-size:15px;
+  cursor:pointer;
+}
+
+.prev{
+  background:#e2e8f0;
+  color:#172033;
+}
+
+.next{
+  background:#0b376d;
+  color:white;
+}
+
+.submit{
+  background:#198754;
+  color:white;
+}
+
+button:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.loading{
+  text-align:center;
+  padding:40px 10px;
+}
+
+.error{
+  background:#fff0f0;
+  color:#b42318;
+  padding:14px;
+  border-radius:10px;
+  line-height:1.5;
+}
+
+.result{
+  text-align:center;
+}
+
+.result h2{
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+.score{
+  font-size:42px;
+  font-weight:bold;
+  color:#0b376d;
+  margin:12px 0;
+}
+
+.pass{
+  color:#198754;
+}
+
+.fail{
+  color:#c62828;
+}
+
+.result p{
+  margin:8px 0;
+}
+
+.result button{
+  margin-top:18px;
+  width:100%;
+  padding:13px;
+  border:0;
+  border-radius:10px;
+  background:#0b376d;
+  color:white;
+  font-weight:bold;
+  font-size:15px;
+}
+
+.hidden{
+  display:none;
+}
+
+@media(max-width:480px){
+  .container{
+    padding:10px;
+  }
+
+  .card{
+    padding:14px;
+  }
+
+  .question{
+    font-size:17px;
+  }
+
+  .option{
+    font-size:14px;
+    padding:12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>GOH Bible Academy</h1>
+  <p>Month 1 Final Exam</p>
+</div>
+
+<div class="container">
+
+  <div id="loading" class="card loading">
+    Loading exam...
+  </div>
+
+  <div id="exam" class="hidden">
+
+    <div class="top">
+
+      <div class="row">
+        <div id="progress" class="progress">
+          1 / 50
+        </div>
+
+        <div id="timer" class="timer">
+          30:00
+        </div>
+      </div>
+
+      <div class="langs">
+        <button id="enBtn" onclick="setLanguage('en')">
+          English
+        </button>
+
+        <button id="taBtn" onclick="setLanguage('tamil')">
+          தமிழ்
+        </button>
+
+        <button id="siBtn" onclick="setLanguage('sinhala')">
+          සිංහල
+        </button>
+      </div>
+
+    </div>
+
+    <div class="card">
+
+      <div id="lesson" class="lesson"></div>
+
+      <div id="question" class="question"></div>
+
+      <div id="options"></div>
+
+      <div class="navigation">
+
+        <button
+          id="prevBtn"
+          class="prev"
+          onclick="previousQuestion()">
+          Previous
+        </button>
+
+        <button
+          id="nextBtn"
+          class="next"
+          onclick="nextQuestion()">
+          Next
+        </button>
+
+        <button
+          id="submitBtn"
+          class="submit hidden"
+          onclick="submitExam()">
+          Submit Exam
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div id="result" class="hidden card result"></div>
+
+</div>
+
+<script>
+
+const API =
+"https://goh-bible-exam-api.createlk.workers.dev";
+
+const MONTH = 1;
+const TOTAL_TIME = 30 * 60;
+const PASS_MARK = 70;
+
+let questions = [];
+let answers = [];
+let current = 0;
+let language = "en";
+let timeLeft = TOTAL_TIME;
+let timer = null;
+let submitted = false;
+
+
+/* =========================
+   STUDENT ID
+========================= */
+
+function getStudentId(){
+
+  const keys = [
+    "student_id",
+    "studentId",
+    "createlk_student",
+    "goh_student_id"
+  ];
+
+  for(const key of keys){
+
+    const value =
+      localStorage.getItem(key) ||
+      sessionStorage.getItem(key);
+
+    if(value){
+
+      try{
+
+        const obj = JSON.parse(value);
+
+        if(obj && obj.id)
+          return Number(obj.id);
+
+        if(obj && obj.student_id)
+          return Number(obj.student_id);
+
+      }catch(e){}
+
+      const number = Number(value);
+
+      if(Number.isInteger(number))
+        return number;
+    }
+  }
+
+  return null;
+}
+
+
+/* =========================
+   LOAD QUESTIONS
+========================= */
+
+async function loadExam(){
+
+  try{
+
+    const response =
+      await fetch(
+        API + "/api/exam?month=" + MONTH
+      );
+
+    if(!response.ok)
+      throw new Error("API error");
+
+    const data = await response.json();
+
+    if(!data.success)
+      throw new Error(data.error || "Unable to load exam");
+
+    if(!Array.isArray(data.questions))
+      throw new Error("Questions not found");
+
+    if(data.questions.length !== 50)
+      throw new Error(
+        "Expected 50 questions, found " +
+        data.questions.length
+      );
+
+    questions = data.questions;
+
+    answers =
+      new Array(questions.length).fill(null);
+
+    document.getElementById("loading")
+      .classList.add("hidden");
+
+    document.getElementById("exam")
+      .classList.remove("hidden");
+
+    setLanguage("en");
+
+    renderQuestion();
+
+    startTimer();
+
+  }catch(error){
+
+    document.getElementById("loading")
+      .innerHTML =
+      '<div class="error">' +
+      '<b>Unable to load exam.</b><br><br>' +
+      error.message +
+      '</div>';
+  }
+}
+
+
+/* =========================
+   LANGUAGE
+========================= */
+
+function setLanguage(lang){
+
+  language = lang;
+
+  document
+    .getElementById("enBtn")
+    .classList.toggle("active",lang === "en");
+
+  document
+    .getElementById("taBtn")
+    .classList.toggle("active",lang === "tamil");
+
+  document
+    .getElementById("siBtn")
+    .classList.toggle("active",lang === "sinhala");
+
+  renderQuestion();
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+function getQuestionText(q){
+
+  if(language === "tamil")
+    return q.question_tamil;
+
+  if(language === "sinhala")
+    return q.question_sinhala;
+
+  return q.question_en;
+}
+
+
+function getOptions(q){
+
+  if(language === "tamil"){
+
+    return [
+      q.option_a_tamil,
+      q.option_b_tamil,
+      q.option_c_tamil,
+      q.option_d_tamil
+    ];
+
+  }
+
+  if(language === "sinhala"){
+
+    return [
+      q.option_a_sinhala,
+      q.option_b_sinhala,
+      q.option_c_sinhala,
+      q.option_d_sinhala
+    ];
+
+  }
+
+  return [
+    q.option_a_en,
+    q.option_b_en,
+    q.option_c_en,
+    q.option_d_en
+  ];
+}
+
+
+/* =========================
+   RENDER QUESTION
+========================= */
+
+function renderQuestion(){
+
+  if(!questions.length)
+    return;
+
+  const q = questions[current];
+
+  document.getElementById("progress")
+    .textContent =
+    (current + 1) +
+    " / " +
+    questions.length;
+
+  document.getElementById("lesson")
+    .textContent =
+    "Lesson " + q.lesson;
+
+  document.getElementById("question")
+    .textContent =
+    getQuestionText(q);
+
+  const options =
+    getOptions(q);
+
+  const box =
+    document.getElementById("options");
+
+  box.innerHTML = "";
+
+  const letters = ["A","B","C","D"];
+
+  options.forEach((text,index)=>{
+
+    const button =
+      document.createElement("button");
+
+    button.className = "option";
+
+    button.textContent =
+      letters[index] + ". " + text;
+
+    if(answers[current] === letters[index])
+      button.classList.add("selected");
+
+    button.onclick = function(){
+
+      answers[current] =
+        letters[index];
+
+      renderQuestion();
+    };
+
+    box.appendChild(button);
+  });
+
+
+  document.getElementById("prevBtn")
+    .disabled =
+    current === 0;
+
+  const last =
+    current === questions.length - 1;
+
+  document.getElementById("nextBtn")
+    .classList.toggle("hidden",last);
+
+  document.getElementById("submitBtn")
+    .classList.toggle("hidden",!last);
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function nextQuestion(){
+
+  if(current < questions.length - 1){
+
+    current++;
+
+    renderQuestion();
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+  }
+}
+
+
+function previousQuestion(){
+
+  if(current > 0){
+
+    current--;
+
+    renderQuestion();
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+  }
+}
+
+
+/* =========================
+   TIMER
+========================= */
+
+function startTimer(){
+
+  updateTimer();
+
+  timer =
+    setInterval(()=>{
+
+      timeLeft--;
+
+      updateTimer();
+
+      if(timeLeft <= 0){
+
+        clearInterval(timer);
+
+        submitExam(true);
+      }
+
+    },1000);
+}
+
+
+function updateTimer(){
+
+  const minutes =
+    Math.floor(timeLeft / 60);
+
+  const seconds =
+    timeLeft % 60;
+
+  document.getElementById("timer")
+    .textContent =
+    String(minutes).padStart(2,"0") +
+    ":" +
+    String(seconds).padStart(2,"0");
+}
+
+
+/* =========================
+   SCORE
+========================= */
+
+function calculateScore(){
+
+  let score = 0;
+
+  questions.forEach((q,index)=>{
+
+    if(
+      answers[index] &&
+      answers[index].toUpperCase() ===
+      "A"
+    ){
+      score++;
+    }
+
+  });
+
+  return score;
+}
+
+
+/* =========================
+   SUBMIT
+========================= */
+
+async function submitExam(autoSubmit=false){
+
+  if(submitted)
+    return;
+
+  submitted = true;
+
+  if(timer)
+    clearInterval(timer);
+
+  const score =
+    calculateScore();
+
+  const total =
+    questions.length;
+
+  const percentage =
+    Math.round((score / total) * 100);
+
+  const passed =
+    percentage >= PASS_MARK;
+
+  const studentId =
+    getStudentId();
+
+
+  /*
+    Save result only when a valid
+    student ID is available.
+  */
+
+  let saved = false;
+
+  if(studentId){
+
+    try{
+
+      const response =
+        await fetch(
+          API + "/api/exam/result",
+          {
+            method:"POST",
+            headers:{
+              "Content-Type":
+                "application/json"
+            },
+            body:JSON.stringify({
+              student_id:studentId,
+              month:MONTH,
+              score:score,
+              total:total
+            })
+          }
+        );
+
+      const data =
+        await response.json();
+
+      saved =
+        data.success === true;
+
+    }catch(error){
+
+      console.log(
+        "Result save error:",
+        error
+      );
+    }
+  }
+
+  showResult(
+    score,
+    total,
+    percentage,
+    passed,
+    saved,
+    autoSubmit
+  );
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+function showResult(
+  score,
+  total,
+  percentage,
+  passed,
+  saved,
+  autoSubmit
+){
+
+  document.getElementById("exam")
+    .classList.add("hidden");
+
+  const result =
+    document.getElementById("result");
+
+  result.classList.remove("hidden");
+
+  result.innerHTML = `
+
+    <h2 class="${passed ? "pass" : "fail"}">
+      ${passed ? "Exam Passed" : "Exam Not Passed"}
+    </h2>
+
+    <div class="score">
+      ${score}/${total}
+    </div>
+
+    <p>
+      <strong>Score:</strong>
+      ${percentage}%
+    </p>
+
+    <p>
+      Pass mark: ${PASS_MARK}%
+    </p>
+
+    ${
+      autoSubmit
+      ? "<p>Time expired. Your exam was submitted automatically.</p>"
+      : ""
+    }
+
+    ${
+      saved
+      ? "<p>✓ Your result has been saved.</p>"
+      : "<p>Your result could not be saved. Please make sure you are logged in.</p>"
+    }
+
+    ${
+      passed
+      ? "<p>Congratulations! You have passed Month 1.</p>"
+      : "<p>You need at least 35 correct answers to pass.</p>"
+    }
+
+    <button onclick="location.reload()">
+      Take Exam Again
+    </button>
+
+  `;
+}
+
+
+/* =========================
+   START
+========================= */
+
+loadExam();
+
+</script>
+
+</body>
+</html>
