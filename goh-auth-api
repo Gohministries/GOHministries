@@ -1,43 +1,66 @@
-const CORS = {
-  "Access-Control-Allow-Origin": "https://gohministries.org",
-  "Access-Control-Allow-Headers": "Content-Type, Authorization",
-  "Access-Control-Allow-Methods": "GET, POST, OPTIONS"
-};
+const ALLOWED_ORIGINS = [
+  "https://gohministries.github.io",
+  "https://gohministries.org",
+  "https://www.gohministries.org"
+];
 
-function json(data, status = 200) {
+function cors(request) {
+  const origin = request.headers.get("Origin");
+
+  return {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin":
+      ALLOWED_ORIGINS.includes(origin)
+        ? origin
+        : "https://gohministries.github.io",
+    "Access-Control-Allow-Headers":
+      "Content-Type, Authorization",
+    "Access-Control-Allow-Methods":
+      "GET, POST, OPTIONS",
+    "Vary": "Origin"
+  };
+}
+
+function json(request, data, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
-    headers: {
-      "Content-Type": "application/json",
-      ...CORS
-    }
+    headers: cors(request)
   });
 }
 
-function error(message, status = 400) {
-  return json({ success: false, error: message }, status);
+function error(request, message, status = 400) {
+  return json(request, {
+    success: false,
+    error: message
+  }, status);
 }
 
 function randomHex(bytes = 32) {
-  const a = crypto.getRandomValues(new Uint8Array(bytes));
-  return [...a].map(x => x.toString(16).padStart(2, "0")).join("");
+  const data = crypto.getRandomValues(
+    new Uint8Array(bytes)
+  );
+
+  return Array.from(data)
+    .map(x => x.toString(16).padStart(2, "0"))
+    .join("");
 }
 
 async function sha256(text) {
   const data = new TextEncoder().encode(text);
-  const hash = await crypto.subtle.digest("SHA-256", data);
-  return randomHexFromBytes(new Uint8Array(hash));
-}
 
-function randomHexFromBytes(bytes) {
-  return [...bytes]
+  const hash = await crypto.subtle.digest(
+    "SHA-256",
+    data
+  );
+
+  return Array.from(new Uint8Array(hash))
     .map(x => x.toString(16).padStart(2, "0"))
     .join("");
 }
 
 async function hashPassword(password) {
   const salt = randomHex(16);
-  const iterations = 120000;
+  const iterations = 100000;
 
   const key = await crypto.subtle.importKey(
     "raw",
@@ -58,7 +81,11 @@ async function hashPassword(password) {
     256
   );
 
-  return `pbkdf2$${iterations}$${salt}$${randomHexFromBytes(new Uint8Array(bits))}`;
+  const hash = Array.from(new Uint8Array(bits))
+    .map(x => x.toString(16).padStart(2, "0"))
+    .join("");
+
+  return `pbkdf2$${iterations}$${salt}$${hash}`;
 }
 
 async function verifyPassword(password, stored) {
@@ -72,6 +99,10 @@ async function verifyPassword(password, stored) {
   const salt = parts[2];
   const expected = parts[3];
 
+  if (!iterations || iterations > 100000) {
+    return false;
+  }
+
   const key = await crypto.subtle.importKey(
     "raw",
     new TextEncoder().encode(password),
@@ -91,19 +122,18 @@ async function verifyPassword(password, stored) {
     256
   );
 
-  const actual = randomHexFromBytes(
-    new Uint8Array(bits)
-  );
+  const actual = Array.from(new Uint8Array(bits))
+    .map(x => x.toString(16).padStart(2, "0"))
+    .join("");
 
   return actual === expected;
 }
 
 async function createSession(studentId, env) {
-
   const token = randomHex(32);
   const tokenHash = await sha256(token);
 
-  const expires = new Date(
+  const expiresAt = new Date(
     Date.now() + 7 * 24 * 60 * 60 * 1000
   ).toISOString();
 
@@ -112,14 +142,13 @@ async function createSession(studentId, env) {
     (student_id, token_hash, expires_at)
     VALUES (?, ?, ?)
   `)
-    .bind(studentId, tokenHash, expires)
+    .bind(studentId, tokenHash, expiresAt)
     .run();
 
   return token;
 }
 
 async function getStudent(request, env) {
-
   const auth = request.headers.get("Authorization");
 
   if (!auth || !auth.startsWith("Bearer ")) {
@@ -148,13 +177,12 @@ async function getStudent(request, env) {
 }
 
 export default {
-
   async fetch(request, env) {
 
     if (request.method === "OPTIONS") {
       return new Response(null, {
         status: 204,
-        headers: CORS
+        headers: cors(request)
       });
     }
 
@@ -162,8 +190,6 @@ export default {
     const path = url.pathname;
 
     try {
-
-      /* REGISTER */
 
       if (
         path === "/register" &&
@@ -176,23 +202,25 @@ export default {
         const email = String(body.email || "")
           .trim()
           .toLowerCase();
-
         const password = String(body.password || "");
 
         if (!name || !email || !password) {
           return error(
+            request,
             "Name, email and password are required."
           );
         }
 
         if (!email.includes("@")) {
           return error(
+            request,
             "Enter a valid email address."
           );
         }
 
         if (password.length < 8) {
           return error(
+            request,
             "Password must be at least 8 characters."
           );
         }
@@ -208,6 +236,7 @@ export default {
 
         if (existing) {
           return error(
+            request,
             "An account with this email already exists.",
             409
           );
@@ -221,22 +250,15 @@ export default {
           (name, email, password_hash)
           VALUES (?, ?, ?)
         `)
-          .bind(
-            name,
-            email,
-            passwordHash
-          )
+          .bind(name, email, passwordHash)
           .run();
 
-        return json({
+        return json(request, {
           success: true,
           message: "Registration successful.",
           student_id: result.meta.last_row_id
         }, 201);
       }
-
-
-      /* LOGIN */
 
       if (
         path === "/login" &&
@@ -253,6 +275,7 @@ export default {
 
         if (!email || !password) {
           return error(
+            request,
             "Email and password are required."
           );
         }
@@ -268,6 +291,7 @@ export default {
 
         if (!student) {
           return error(
+            request,
             "Invalid email or password.",
             401
           );
@@ -275,6 +299,7 @@ export default {
 
         if (student.status !== "ACTIVE") {
           return error(
+            request,
             "Your account is not active.",
             403
           );
@@ -287,15 +312,18 @@ export default {
 
         if (!valid) {
           return error(
+            request,
             "Invalid email or password.",
             401
           );
         }
 
-        const token =
-          await createSession(student.id, env);
+        const token = await createSession(
+          student.id,
+          env
+        );
 
-        return json({
+        return json(request, {
           success: true,
           message: "Login successful.",
           token,
@@ -307,9 +335,6 @@ export default {
         });
       }
 
-
-      /* CURRENT STUDENT */
-
       if (
         path === "/me" &&
         request.method === "GET"
@@ -320,19 +345,17 @@ export default {
 
         if (!student) {
           return error(
+            request,
             "Not authenticated.",
             401
           );
         }
 
-        return json({
+        return json(request, {
           success: true,
           student
         });
       }
-
-
-      /* LOGOUT */
 
       if (
         path === "/logout" &&
@@ -355,14 +378,11 @@ export default {
             .run();
         }
 
-        return json({
+        return json(request, {
           success: true,
           message: "Logged out."
         });
       }
-
-
-      /* FORGOT PASSWORD */
 
       if (
         path === "/forgot-password" &&
@@ -377,6 +397,7 @@ export default {
 
         if (!email) {
           return error(
+            request,
             "Email address is required."
           );
         }
@@ -390,61 +411,43 @@ export default {
           .bind(email)
           .first();
 
-        /*
-        Do not reveal whether an account exists.
-        */
+        if (student) {
 
-        if (!student) {
-          return json({
-            success: true,
-            message:
-              "If the account exists, reset instructions will be sent."
-          });
+          const token = randomHex(32);
+          const tokenHash = await sha256(token);
+
+          const expiresAt = new Date(
+            Date.now() + 30 * 60 * 1000
+          ).toISOString();
+
+          await env.DB.prepare(`
+            UPDATE password_resets
+            SET used = 1
+            WHERE student_id = ?
+            AND used = 0
+          `)
+            .bind(student.id)
+            .run();
+
+          await env.DB.prepare(`
+            INSERT INTO password_resets
+            (student_id, token_hash, expires_at)
+            VALUES (?, ?, ?)
+          `)
+            .bind(
+              student.id,
+              tokenHash,
+              expiresAt
+            )
+            .run();
         }
 
-        const token = randomHex(32);
-        const tokenHash = await sha256(token);
-
-        const expires = new Date(
-          Date.now() + 30 * 60 * 1000
-        ).toISOString();
-
-        await env.DB.prepare(`
-          UPDATE password_resets
-          SET used = 1
-          WHERE student_id = ?
-          AND used = 0
-        `)
-          .bind(student.id)
-          .run();
-
-        await env.DB.prepare(`
-          INSERT INTO password_resets
-          (student_id, token_hash, expires_at)
-          VALUES (?, ?, ?)
-        `)
-          .bind(
-            student.id,
-            tokenHash,
-            expires
-          )
-          .run();
-
-        /*
-        Email sending will be connected later.
-        Never return the reset token to users
-        in the production version.
-        */
-
-        return json({
+        return json(request, {
           success: true,
           message:
             "If the account exists, reset instructions will be sent."
         });
       }
-
-
-      /* RESET PASSWORD */
 
       if (
         path === "/reset-password" &&
@@ -458,25 +461,26 @@ export default {
 
         if (!token || !password) {
           return error(
+            request,
             "Reset token and new password are required."
           );
         }
 
         if (password.length < 8) {
           return error(
+            request,
             "Password must be at least 8 characters."
           );
         }
 
-        const tokenHash =
-          await sha256(token);
+        const tokenHash = await sha256(token);
 
         const reset = await env.DB.prepare(`
           SELECT *
           FROM password_resets
           WHERE token_hash = ?
-            AND used = 0
-            AND expires_at > CURRENT_TIMESTAMP
+          AND used = 0
+          AND expires_at > CURRENT_TIMESTAMP
           LIMIT 1
         `)
           .bind(tokenHash)
@@ -484,6 +488,7 @@ export default {
 
         if (!reset) {
           return error(
+            request,
             "Invalid or expired reset link."
           );
         }
@@ -497,10 +502,7 @@ export default {
               updated_at = CURRENT_TIMESTAMP
           WHERE id = ?
         `)
-          .bind(
-            passwordHash,
-            reset.student_id
-          )
+          .bind(passwordHash, reset.student_id)
           .run();
 
         await env.DB.prepare(`
@@ -518,27 +520,30 @@ export default {
           .bind(reset.student_id)
           .run();
 
-        return json({
+        return json(request, {
           success: true,
-          message:
-            "Password changed successfully."
+          message: "Password changed successfully."
         });
       }
 
-
       return error(
+        request,
         "Endpoint not found.",
         404
       );
 
     } catch (e) {
 
-      console.error(e);
+      console.error("AUTH API ERROR:", e);
 
-      return json({
-        success: false,
-        error: "Server error."
-      }, 500);
+      return json(
+        request,
+        {
+          success: false,
+          error: e?.message || String(e)
+        },
+        500
+      );
     }
   }
 };
