@@ -7,7 +7,7 @@
 <title>Student Dashboard | GOH Bible Academy</title>
 
 <meta name="description"
-content="GOH Bible Academy student dashboard for courses, learning progress, assessments and certificates.">
+content="GOH Bible Academy student dashboard with sequential Biblical Studies from Certificate to PhD.">
 
 <meta name="theme-color" content="#0b376d">
 
@@ -17,8 +17,6 @@ content="GOH Bible Academy student dashboard for courses, learning progress, ass
   margin:0;
   padding:0;
 }
-
-html{scroll-behavior:smooth}
 
 body{
   font-family:Arial,Helvetica,sans-serif;
@@ -37,7 +35,7 @@ button{
 }
 
 .container{
-  width:min(1100px,92%);
+  width:min(1120px,92%);
   margin:auto;
 }
 
@@ -106,14 +104,10 @@ header{
   cursor:pointer;
 }
 
-.logout:hover{
-  background:#e2eaf3;
-}
-
 /* MAIN */
 
 main{
-  padding:35px 0 60px;
+  padding:35px 0 65px;
 }
 
 /* HERO */
@@ -123,22 +117,22 @@ main{
   color:#fff;
   border-radius:20px;
   padding:30px;
-  margin-bottom:25px;
+  margin-bottom:22px;
   box-shadow:0 12px 30px rgba(11,55,109,.15);
 }
 
 .hero-label{
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:1.2px;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1.4px;
   text-transform:uppercase;
-  opacity:.75;
-  margin-bottom:6px;
+  opacity:.72;
+  margin-bottom:7px;
 }
 
 .hero h1{
   font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(27px,5vw,38px);
+  font-size:clamp(28px,5vw,40px);
   line-height:1.15;
   margin-bottom:8px;
 }
@@ -153,22 +147,22 @@ main{
 .stats{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:15px;
-  margin-bottom:25px;
+  gap:14px;
+  margin-bottom:24px;
 }
 
 .stat{
   background:#fff;
   border:1px solid #e2e7ee;
   border-radius:15px;
-  padding:20px;
+  padding:19px;
 }
 
 .stat-label{
   color:#667085;
   font-size:11px;
   font-weight:700;
-  margin-bottom:7px;
+  margin-bottom:6px;
 }
 
 .stat-value{
@@ -183,13 +177,7 @@ main{
   margin-top:3px;
 }
 
-/* GRID */
-
-.grid{
-  display:grid;
-  grid-template-columns:1.5fr 1fr;
-  gap:20px;
-}
+/* CARD */
 
 .card{
   background:#fff;
@@ -199,15 +187,11 @@ main{
   margin-bottom:20px;
 }
 
-.card:last-child{
-  margin-bottom:0;
-}
-
 .card-head{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:10px;
+  gap:12px;
   margin-bottom:18px;
 }
 
@@ -216,19 +200,189 @@ main{
   font-size:18px;
 }
 
-.card-link{
-  color:#0b376d;
+.card-head p{
+  color:#667085;
   font-size:11px;
+}
+
+/* ACADEMIC PATH */
+
+.path{
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+
+.level-wrap{
+  position:relative;
+}
+
+.level-wrap:not(:last-child)::after{
+  content:"";
+  position:absolute;
+  left:24px;
+  top:57px;
+  bottom:-1px;
+  width:2px;
+  background:#e4e9ef;
+}
+
+.level{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:50px 1fr auto;
+  gap:15px;
+  align-items:center;
+  padding:15px 0;
+}
+
+.level-number{
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#eaf1f8;
+  color:#0b376d;
+  font-size:12px;
+  font-weight:900;
+  border:3px solid #fff;
+  box-shadow:0 0 0 1px #dce4ec;
+}
+
+.level.unlocked .level-number{
+  background:#0b376d;
+  color:#fff;
+}
+
+.level.locked .level-number{
+  background:#eef1f4;
+  color:#98a2b3;
+}
+
+.level-info h3{
+  color:#172033;
+  font-size:15px;
+  margin-bottom:3px;
+}
+
+.level-info p{
+  color:#667085;
+  font-size:11px;
+}
+
+.level-status{
+  padding:6px 10px;
+  border-radius:20px;
+  font-size:9px;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.level-status.open{
+  background:#eaf7ef;
+  color:#177245;
+}
+
+.level-status.lock{
+  background:#f1f3f5;
+  color:#667085;
+}
+
+.level-progress{
+  height:6px;
+  margin-top:8px;
+  background:#edf1f5;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.level-progress span{
+  display:block;
+  height:100%;
+  background:#0b376d;
+  width:0;
+}
+
+/* SUB COURSES */
+
+.subcourses{
+  margin:0 0 14px 65px;
+  border-left:1px solid #e2e7ee;
+  padding-left:17px;
+}
+
+.subcourse{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:12px;
+  align-items:center;
+  padding:13px;
+  margin-bottom:8px;
+  border:1px solid #e7ebf0;
+  border-radius:12px;
+  background:#fff;
+}
+
+.subcourse:last-child{
+  margin-bottom:0;
+}
+
+.subcourse.locked{
+  background:#fafbfc;
+}
+
+.subcourse-title{
+  font-size:12px;
   font-weight:800;
+  color:#172033;
+}
+
+.subcourse-meta{
+  color:#667085;
+  font-size:10px;
+  margin-top:2px;
+}
+
+.subcourse-status{
+  font-size:9px;
+  font-weight:900;
+  padding:5px 8px;
+  border-radius:15px;
+  white-space:nowrap;
+}
+
+.subcourse-status.start{
+  background:#edf5fc;
+  color:#0b376d;
+}
+
+.subcourse-status.done{
+  background:#eaf7ef;
+  color:#177245;
+}
+
+.subcourse-status.lock{
+  background:#f1f3f5;
+  color:#98a2b3;
+}
+
+/* GRID */
+
+.grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  gap:20px;
 }
 
 /* COURSE */
 
 .course{
-  padding:17px;
-  border:1px solid #e8edf3;
+  padding:16px;
+  border:1px solid #e7ebf0;
   border-radius:13px;
-  margin-bottom:12px;
+  margin-bottom:11px;
 }
 
 .course:last-child{
@@ -238,19 +392,19 @@ main{
 .course-top{
   display:flex;
   justify-content:space-between;
-  gap:12px;
+  gap:10px;
   margin-bottom:9px;
 }
 
 .course-name{
-  font-size:14px;
+  font-size:13px;
   font-weight:800;
 }
 
-.course-status{
+.course-level{
   color:#0b376d;
-  font-size:10px;
-  font-weight:800;
+  font-size:9px;
+  font-weight:900;
 }
 
 .progress{
@@ -263,15 +417,13 @@ main{
 .progress span{
   display:block;
   height:100%;
-  width:0;
   background:#0b376d;
-  border-radius:10px;
 }
 
 .course-bottom{
   display:flex;
   justify-content:space-between;
-  margin-top:8px;
+  margin-top:7px;
   color:#667085;
   font-size:10px;
 }
@@ -281,12 +433,12 @@ main{
 .actions{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:11px;
+  gap:10px;
 }
 
 .action{
   display:block;
-  padding:17px;
+  padding:16px;
   border:1px solid #e5eaf0;
   border-radius:12px;
   transition:.2s;
@@ -300,7 +452,7 @@ main{
 .action strong{
   display:block;
   color:#172033;
-  font-size:13px;
+  font-size:12px;
   margin-bottom:3px;
 }
 
@@ -338,16 +490,26 @@ main{
   text-align:right;
 }
 
-/* STATUS */
-
 .status{
   display:inline-block;
   padding:5px 9px;
   border-radius:20px;
   background:#eaf7ef;
   color:#177245;
-  font-size:10px;
+  font-size:9px;
   font-weight:900;
+}
+
+/* NOTICE */
+
+.notice{
+  padding:14px 16px;
+  border-left:4px solid #0b376d;
+  background:#f3f7fc;
+  border-radius:8px;
+  color:#475467;
+  font-size:11px;
+  margin-bottom:20px;
 }
 
 /* FOOTER */
@@ -395,7 +557,8 @@ footer{
 
 /* MOBILE */
 
-@media(max-width:800px){
+@media(max-width:850px){
+
   .stats{
     grid-template-columns:1fr 1fr;
   }
@@ -406,6 +569,7 @@ footer{
 }
 
 @media(max-width:600px){
+
   main{
     padding:25px 0 45px;
   }
@@ -433,6 +597,29 @@ footer{
 
   .card{
     padding:18px;
+  }
+
+  .level{
+    grid-template-columns:44px 1fr;
+  }
+
+  .level-number{
+    width:43px;
+    height:43px;
+  }
+
+  .level-status{
+    grid-column:2;
+    justify-self:start;
+    margin-top:-7px;
+  }
+
+  .level-wrap:not(:last-child)::after{
+    left:21px;
+  }
+
+  .subcourses{
+    margin-left:48px;
   }
 
   .actions{
@@ -463,218 +650,567 @@ footer{
 <body>
 
 <header>
-  <div class="container nav">
+<div class="container nav">
 
-    <a href="dashboard.html" class="brand">
-      <div class="logo">GOH</div>
+<a href="dashboard.html" class="brand">
 
-      <div>
-        <strong>GOH Bible Academy</strong>
-        <small>GATE OF HEAVEN MINISTRIES</small>
-      </div>
-    </a>
+<div class="logo">GOH</div>
 
-    <button class="logout" onclick="logout()">
-      Logout
-    </button>
+<div>
+<strong>GOH Bible Academy</strong>
+<small>GATE OF HEAVEN MINISTRIES</small>
+</div>
 
-  </div>
+</a>
+
+<button class="logout" onclick="logout()">
+Logout
+</button>
+
+</div>
 </header>
+
 
 <main>
 <div class="container">
 
-  <section class="hero">
-    <div class="hero-label">Student Dashboard</div>
-    <h1>Welcome, <span id="studentName">Student</span></h1>
-    <p>Continue your Biblical studies and track your learning progress.</p>
-  </section>
 
-  <section class="stats">
+<section class="hero">
 
-    <div class="stat">
-      <div class="stat-label">Courses</div>
-      <div class="stat-value" id="courseCount">0</div>
-      <div class="stat-sub">Enrolled courses</div>
-    </div>
+<div class="hero-label">
+Student Dashboard
+</div>
 
-    <div class="stat">
-      <div class="stat-label">Progress</div>
-      <div class="stat-value" id="progressValue">0%</div>
-      <div class="stat-sub">Overall completion</div>
-    </div>
+<h1>
+Welcome, <span id="studentName">Student</span>
+</h1>
 
-    <div class="stat">
-      <div class="stat-label">Assessments</div>
-      <div class="stat-value" id="assessmentCount">0</div>
-      <div class="stat-sub">Completed</div>
-    </div>
+<p>
+Follow your academic journey from Certificate to PhD.
+Complete each level and its required courses before advancing.
+</p>
 
-    <div class="stat">
-      <div class="stat-label">Certificates</div>
-      <div class="stat-value" id="certificateCount">0</div>
-      <div class="stat-sub">Earned</div>
-    </div>
-
-  </section>
-
-  <div class="grid">
-
-    <div>
-
-      <section class="card">
-
-        <div class="card-head">
-          <h2>My Courses</h2>
-          <a href="bible-courses.html" class="card-link">
-            View All
-          </a>
-        </div>
-
-        <div class="course">
-
-          <div class="course-top">
-            <div class="course-name">
-              Biblical Studies
-            </div>
-
-            <div class="course-status">
-              0%
-            </div>
-          </div>
-
-          <div class="progress">
-            <span style="width:0%"></span>
-          </div>
-
-          <div class="course-bottom">
-            <span>Not started</span>
-            <span>0 lessons</span>
-          </div>
-
-        </div>
-
-        <div class="course">
-
-          <div class="course-top">
-            <div class="course-name">
-              Bible Foundations
-            </div>
-
-            <div class="course-status">
-              0%
-            </div>
-          </div>
-
-          <div class="progress">
-            <span style="width:0%"></span>
-          </div>
-
-          <div class="course-bottom">
-            <span>Not started</span>
-            <span>0 lessons</span>
-          </div>
-
-        </div>
-
-      </section>
+</section>
 
 
-      <section class="card">
+<section class="stats">
 
-        <div class="card-head">
-          <h2>Learning Center</h2>
-        </div>
+<div class="stat">
+<div class="stat-label">Courses</div>
+<div class="stat-value" id="courseCount">0</div>
+<div class="stat-sub">Completed / enrolled</div>
+</div>
 
-        <div class="actions">
+<div class="stat">
+<div class="stat-label">Progress</div>
+<div class="stat-value" id="progressValue">0%</div>
+<div class="stat-sub">Overall progress</div>
+</div>
 
-          <a href="bible-courses.html" class="action primary">
-            <strong>Continue Learning</strong>
-            <span>Access your Bible courses</span>
-          </a>
+<div class="stat">
+<div class="stat-label">Assessments</div>
+<div class="stat-value" id="assessmentCount">0</div>
+<div class="stat-sub">Completed</div>
+</div>
 
-          <a href="assessment.html" class="action">
-            <strong>Assessments</strong>
-            <span>Take your course assessments</span>
-          </a>
+<div class="stat">
+<div class="stat-label">Certificates</div>
+<div class="stat-value" id="certificateCount">0</div>
+<div class="stat-sub">Earned</div>
+</div>
 
-          <a href="exam.html" class="action">
-            <strong>Final Examination</strong>
-            <span>Complete your final exam</span>
-          </a>
-
-          <a href="certificates.html" class="action">
-            <strong>Certificates</strong>
-            <span>View your certificates</span>
-          </a>
-
-        </div>
-
-      </section>
-
-    </div>
+</section>
 
 
-    <div>
+<section class="card">
 
-      <section class="card">
+<div class="card-head">
 
-        <div class="card-head">
-          <h2>Account</h2>
-        </div>
+<div>
+<h2>Academic Pathway</h2>
+<p>Each level must be completed before the next level opens.</p>
+</div>
 
-        <div class="profile-row">
-          <span>Name</span>
-          <strong id="profileName">Student</strong>
-        </div>
-
-        <div class="profile-row">
-          <span>Email</span>
-          <strong id="profileEmail">—</strong>
-        </div>
-
-        <div class="profile-row">
-          <span>Student ID</span>
-          <strong id="studentId">—</strong>
-        </div>
-
-        <div class="profile-row">
-          <span>Status</span>
-          <strong>
-            <span class="status" id="membershipStatus">
-              Active
-            </span>
-          </strong>
-        </div>
-
-      </section>
+</div>
 
 
-      <section class="card">
+<div class="notice">
+Students cannot skip an academic level. All required courses,
+lessons, assessments and examinations must be completed before
+the next level becomes available.
+</div>
 
-        <div class="card-head">
-          <h2>Quick Links</h2>
-        </div>
 
-        <div class="actions">
+<div class="path">
 
-          <a href="profile.html" class="action">
-            <strong>My Profile</strong>
-            <span>Manage account information</span>
-          </a>
 
-          <a href="contact.html" class="action">
-            <strong>Support</strong>
-            <span>Contact GOH Bible Academy</span>
-          </a>
+<!-- CERTIFICATE -->
 
-        </div>
+<div class="level-wrap">
 
-      </section>
+<div class="level unlocked">
 
-    </div>
+<div class="level-number">01</div>
 
-  </div>
+<div class="level-info">
+
+<h3>Certificate Level</h3>
+
+<p>Foundation in Biblical Studies</p>
+
+<div class="level-progress">
+<span style="width:0%"></span>
+</div>
+
+</div>
+
+<div class="level-status open">
+UNLOCKED
+</div>
+
+</div>
+
+
+<div class="subcourses">
+
+<a href="course.html?level=certificate&course=1"
+class="subcourse">
+
+<div>
+<div class="subcourse-title">
+Introduction to the Bible
+</div>
+
+<div class="subcourse-meta">
+Required course · 0% complete
+</div>
+</div>
+
+<span class="subcourse-status start">
+START
+</span>
+
+</a>
+
+
+<a href="course.html?level=certificate&course=2"
+class="subcourse locked">
+
+<div>
+<div class="subcourse-title">
+Old Testament Foundations
+</div>
+
+<div class="subcourse-meta">
+Complete previous course first
+</div>
+</div>
+
+<span class="subcourse-status lock">
+LOCKED
+</span>
+
+</a>
+
+
+<a href="course.html?level=certificate&course=3"
+class="subcourse locked">
+
+<div>
+<div class="subcourse-title">
+New Testament Foundations
+</div>
+
+<div class="subcourse-meta">
+Complete previous course first
+</div>
+</div>
+
+<span class="subcourse-status lock">
+LOCKED
+</span>
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- DIPLOMA -->
+
+<div class="level-wrap">
+
+<div class="level locked">
+
+<div class="level-number">02</div>
+
+<div class="level-info">
+
+<h3>Diploma Level</h3>
+
+<p>Diploma in Biblical and Christian Studies</p>
+
+<div class="level-progress">
+<span style="width:0%"></span>
+</div>
+
+</div>
+
+<div class="level-status lock">
+LOCKED
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ADVANCED DIPLOMA -->
+
+<div class="level-wrap">
+
+<div class="level locked">
+
+<div class="level-number">03</div>
+
+<div class="level-info">
+
+<h3>Advanced Diploma</h3>
+
+<p>Advanced Biblical and Christian Studies</p>
+
+<div class="level-progress">
+<span style="width:0%"></span>
+</div>
+
+</div>
+
+<div class="level-status lock">
+LOCKED
+</div>
+
+</div>
+
+</div>
+
+
+<!-- BACHELOR -->
+
+<div class="level-wrap">
+
+<div class="level locked">
+
+<div class="level-number">04</div>
+
+<div class="level-info">
+
+<h3>Bachelor's Level</h3>
+
+<p>Bachelor of Biblical Studies</p>
+
+<div class="level-progress">
+<span style="width:0%"></span>
+</div>
+
+</div>
+
+<div class="level-status lock">
+LOCKED
+</div>
+
+</div>
+
+</div>
+
+
+<!-- MASTER -->
+
+<div class="level-wrap">
+
+<div class="level locked">
+
+<div class="level-number">05</div>
+
+<div class="level-info">
+
+<h3>Master's Level</h3>
+
+<p>Master of Biblical Studies</p>
+
+<div class="level-progress">
+<span style="width:0%"></span>
+</div>
+
+</div>
+
+<div class="level-status lock">
+LOCKED
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PHD -->
+
+<div class="level-wrap">
+
+<div class="level locked">
+
+<div class="level-number">06</div>
+
+<div class="level-info">
+
+<h3>PhD Level</h3>
+
+<p>Doctoral Biblical Research</p>
+
+<div class="level-progress">
+<span style="width:0%"></span>
+</div>
+
+</div>
+
+<div class="level-status lock">
+LOCKED
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<div class="grid">
+
+
+<div>
+
+
+<section class="card">
+
+<div class="card-head">
+
+<h2>Continue Learning</h2>
+
+<a href="bible-courses.html"
+class="card-link">
+All Courses
+</a>
+
+</div>
+
+
+<div class="course">
+
+<div class="course-top">
+
+<div class="course-name">
+Introduction to the Bible
+</div>
+
+<div class="course-level">
+CERTIFICATE
+</div>
+
+</div>
+
+<div class="progress">
+<span style="width:0%"></span>
+</div>
+
+<div class="course-bottom">
+
+<span>Not started</span>
+
+<span>0%</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="card">
+
+<div class="card-head">
+<h2>Learning Center</h2>
+</div>
+
+
+<div class="actions">
+
+<a href="bible-courses.html"
+class="action primary">
+
+<strong>My Courses</strong>
+
+<span>
+Access your unlocked courses
+</span>
+
+</a>
+
+
+<a href="assessment.html"
+class="action">
+
+<strong>Assessments</strong>
+
+<span>
+Complete required assessments
+</span>
+
+</a>
+
+
+<a href="exam.html"
+class="action">
+
+<strong>Final Examination</strong>
+
+<span>
+Complete your required examination
+</span>
+
+</a>
+
+
+<a href="certificates.html"
+class="action">
+
+<strong>Certificates</strong>
+
+<span>
+View your earned certificates
+</span>
+
+</a>
+
+</div>
+
+</section>
+
+</div>
+
+
+<div>
+
+
+<section class="card">
+
+<div class="card-head">
+<h2>Student Account</h2>
+</div>
+
+
+<div class="profile-row">
+
+<span>Name</span>
+
+<strong id="profileName">
+Student
+</strong>
+
+</div>
+
+
+<div class="profile-row">
+
+<span>Email</span>
+
+<strong id="profileEmail">
+—
+</strong>
+
+</div>
+
+
+<div class="profile-row">
+
+<span>Student ID</span>
+
+<strong id="studentId">
+—
+</strong>
+
+</div>
+
+
+<div class="profile-row">
+
+<span>Current Level</span>
+
+<strong id="currentLevel">
+Certificate
+</strong>
+
+</div>
+
+
+<div class="profile-row">
+
+<span>Status</span>
+
+<strong>
+<span class="status"
+id="membershipStatus">
+Active
+</span>
+</strong>
+
+</div>
+
+</section>
+
+
+<section class="card">
+
+<div class="card-head">
+<h2>Quick Links</h2>
+</div>
+
+
+<div class="actions">
+
+<a href="profile.html"
+class="action">
+
+<strong>My Profile</strong>
+
+<span>
+Manage account information
+</span>
+
+</a>
+
+
+<a href="contact.html"
+class="action">
+
+<strong>Support</strong>
+
+<span>
+Contact the academy
+</span>
+
+</a>
+
+</div>
+
+</section>
+
+</div>
+
+
+</div>
 
 </div>
 </main>
@@ -684,40 +1220,59 @@ footer{
 
 <div class="container">
 
-  <div class="footer-grid">
+<div class="footer-grid">
 
-    <div>
-      <h3>GOH Bible Academy</h3>
 
-      <p>
-        Structured Christian Biblical Studies through
-        online learning, assessment and examination.
-      </p>
-    </div>
+<div>
 
-    <div>
-      <h3>Academy</h3>
+<h3>GOH Bible Academy</h3>
 
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="bible-courses.html">Courses</a>
-      <a href="enroll.html">Enroll</a>
-    </div>
+<p>
+Structured Christian Biblical Studies through
+online learning, assessment and examination.
+</p>
 
-    <div>
-      <h3>Student</h3>
+</div>
 
-      <a href="dashboard.html">Dashboard</a>
-      <a href="assessment.html">Assessments</a>
-      <a href="certificates.html">Certificates</a>
-      <a href="contact.html">Support</a>
-    </div>
 
-  </div>
+<div>
 
-  <div class="bottom">
-    © 2026 GOH Bible Academy · Gate of Heaven Ministries
-  </div>
+<h3>Academy</h3>
+
+<a href="index.html">Home</a>
+
+<a href="about.html">About</a>
+
+<a href="bible-courses.html">Courses</a>
+
+<a href="enroll.html">Enroll</a>
+
+</div>
+
+
+<div>
+
+<h3>Student</h3>
+
+<a href="dashboard.html">Dashboard</a>
+
+<a href="assessment.html">Assessments</a>
+
+<a href="certificates.html">Certificates</a>
+
+<a href="contact.html">Support</a>
+
+</div>
+
+
+</div>
+
+
+<div class="bottom">
+
+© 2026 GOH Bible Academy · Gate of Heaven Ministries
+
+</div>
 
 </div>
 
@@ -727,65 +1282,111 @@ footer{
 <script>
 
 /*
-  Demo student data.
+==================================================
+GOH BIBLE ACADEMY
+STUDENT DASHBOARD
+==================================================
 
-  Replace this section with your real
-  login/session/API data when connecting
-  the dashboard to your backend.
+FRONTEND DISPLAY ONLY
+
+Actual access control must be performed
+by the Cloudflare Workers.
+
+Recommended Workers:
+
+goh-auth
+goh-student
+goh-courses
+goh-progress
+goh-assessment
+goh-certificate
+goh-admin
+
+The browser must NEVER be trusted to decide
+whether a student can access a higher level.
+
+==================================================
+*/
+
+
+/*
+TEMPORARY STUDENT DATA
+
+Later this will come from:
+
+goh-student
+
+using the authenticated student session.
 */
 
 const student = {
-  id: "",
-  name: "Student",
-  email: "",
-  status: "Active",
-  courses: 0,
-  progress: 0,
-  assessments: 0,
-  certificates: 0
+
+  id:"",
+  name:"Student",
+  email:"",
+
+  status:"Active",
+
+  currentLevel:"Certificate",
+
+  courses:0,
+
+  progress:0,
+
+  assessments:0,
+
+  certificates:0
+
 };
 
 
-/* DISPLAY STUDENT DATA */
+/* DISPLAY */
 
 document.getElementById("studentName").textContent =
-  student.name;
+student.name;
 
 document.getElementById("profileName").textContent =
-  student.name;
+student.name;
 
 document.getElementById("profileEmail").textContent =
-  student.email || "—";
+student.email || "—";
 
 document.getElementById("studentId").textContent =
-  student.id || "—";
+student.id || "—";
+
+document.getElementById("currentLevel").textContent =
+student.currentLevel;
 
 document.getElementById("membershipStatus").textContent =
-  student.status;
+student.status;
 
 document.getElementById("courseCount").textContent =
-  student.courses;
+student.courses;
 
 document.getElementById("progressValue").textContent =
-  student.progress + "%";
+student.progress + "%";
 
 document.getElementById("assessmentCount").textContent =
-  student.assessments;
+student.assessments;
 
 document.getElementById("certificateCount").textContent =
-  student.certificates;
+student.certificates;
 
 
-/* LOGOUT */
+/*
+LOGOUT
+*/
 
 function logout(){
 
-  sessionStorage.removeItem("student");
-  sessionStorage.removeItem("token");
-  sessionStorage.removeItem("createlk_student");
-  sessionStorage.removeItem("createlk_token");
+sessionStorage.removeItem("student");
+sessionStorage.removeItem("token");
 
-  window.location.href="login.html";
+sessionStorage.removeItem("goh_student");
+sessionStorage.removeItem("goh_token");
+
+window.location.href="login.html";
+
 }
 
 </script>
