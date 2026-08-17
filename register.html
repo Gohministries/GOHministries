@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Register | GOH Bible Academy</title>
+
+<meta name="description"
+content="Create your student account at GOH Bible Academy and begin your Christian Biblical Studies journey.">
+
+<meta name="theme-color" content="#0b376d">
+
+<style>
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f7fa;
+  color:#172033;
+  min-height:100vh;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.container{
+  width:min(440px,92%);
+  margin:auto;
+}
+
+
+/* HEADER */
+
+header{
+  height:70px;
+  background:#fff;
+  border-bottom:1px solid #e7ebf0;
+}
+
+.nav{
+  height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:11px;
+  background:#0b376d;
+  color:#fff;
+  font-size:12px;
+  font-weight:900;
+}
+
+.brand strong{
+  display:block;
+  color:#0b376d;
+  font-size:15px;
+}
+
+.brand small{
+  display:block;
+  color:#667085;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+.home{
+  color:#0b376d;
+  font-size:13px;
+  font-weight:700;
+}
+
+
+/* REGISTER */
+
+main{
+  padding:45px 0;
+}
+
+.card{
+  background:#fff;
+  border:1px solid #e2e7ee;
+  border-radius:18px;
+  padding:30px;
+  box-shadow:0 12px 35px rgba(16,24,40,.06);
+}
+
+.heading{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.heading .icon{
+  width:52px;
+  height:52px;
+  margin:0 auto 13px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  background:#edf4ff;
+  font-size:23px;
+}
+
+.heading h1{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:30px;
+  color:#172033;
+  margin-bottom:6px;
+}
+
+.heading p{
+  color:#667085;
+  font-size:13px;
+}
+
+
+/* FORM */
+
+.form-group{
+  margin-bottom:16px;
+}
+
+label{
+  display:block;
+  margin-bottom:6px;
+  color:#344054;
+  font-size:13px;
+  font-weight:700;
+}
+
+input{
+  width:100%;
+  height:47px;
+  padding:0 13px;
+  border:1px solid #d7dee8;
+  border-radius:8px;
+  background:#fff;
+  color:#172033;
+  font-size:14px;
+  outline:none;
+}
+
+input:focus{
+  border-color:#0b376d;
+  box-shadow:0 0 0 3px rgba(11,55,109,.08);
+}
+
+.password-note{
+  margin-top:5px;
+  color:#98a2b3;
+  font-size:11px;
+}
+
+
+/* TERMS */
+
+.terms{
+  display:flex;
+  align-items:flex-start;
+  gap:9px;
+  margin:18px 0;
+  color:#667085;
+  font-size:12px;
+  line-height:1.5;
+}
+
+.terms input{
+  width:16px;
+  height:16px;
+  flex:none;
+  margin-top:2px;
+}
+
+.terms a{
+  color:#0b376d;
+  font-weight:700;
+}
+
+
+/* BUTTON */
+
+button{
+  width:100%;
+  height:48px;
+  border:0;
+  border-radius:8px;
+  background:#0b376d;
+  color:#fff;
+  font-size:14px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#092e5b;
+}
+
+button:disabled{
+  opacity:.65;
+  cursor:not-allowed;
+}
+
+
+/* MESSAGE */
+
+.message{
+  display:none;
+  margin-top:15px;
+  padding:11px 13px;
+  border-radius:8px;
+  font-size:13px;
+  text-align:center;
+}
+
+.message.error{
+  display:block;
+  background:#fff1f0;
+  color:#b42318;
+  border:1px solid #fecdca;
+}
+
+.message.success{
+  display:block;
+  background:#ecfdf3;
+  color:#067647;
+  border:1px solid #abefc6;
+}
+
+
+/* LOGIN */
+
+.login{
+  margin-top:22px;
+  padding-top:20px;
+  border-top:1px solid #edf0f4;
+  text-align:center;
+  color:#667085;
+  font-size:13px;
+}
+
+.login a{
+  color:#0b376d;
+  font-weight:800;
+}
+
+
+/* FOOTER */
+
+footer{
+  padding:25px 20px;
+  text-align:center;
+  color:#98a2b3;
+  font-size:11px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:480px){
+
+  main{
+    padding:30px 0;
+  }
+
+  .card{
+    padding:23px 19px;
+  }
+
+  .heading h1{
+    font-size:27px;
+  }
+
+  .brand strong{
+    font-size:14px;
+  }
+
+  .brand small{
+    font-size:7px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<header>
+
+<div class="container nav">
+
+<a href="index.html" class="brand">
+
+<div class="logo">
+GOH
+</div>
+
+<div>
+<strong>GOH Bible Academy</strong>
+<small>GATE OF HEAVEN MINISTRIES</small>
+</div>
+
+</a>
+
+<a href="index.html" class="home">
+Home
+</a>
+
+</div>
+
+</header>
+
+
+<main>
+
+<div class="container">
+
+<div class="card">
+
+<div class="heading">
+
+<div class="icon">
+🎓
+</div>
+
+<h1>Create Your Account</h1>
+
+<p>
+Register as a student at GOH Bible Academy.
+</p>
+
+</div>
+
+
+<form id="registerForm">
+
+
+<div class="form-group">
+
+<label for="name">
+Full Name
+</label>
+
+<input
+id="name"
+name="name"
+type="text"
+placeholder="Enter your full name"
+autocomplete="name"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="phone">
+Phone Number
+</label>
+
+<input
+id="phone"
+name="phone"
+type="tel"
+placeholder="Enter your phone number"
+autocomplete="tel"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="email">
+Email Address
+</label>
+
+<input
+id="email"
+name="email"
+type="email"
+placeholder="Enter your email address"
+autocomplete="email"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="password">
+Password
+</label>
+
+<input
+id="password"
+name="password"
+type="password"
+placeholder="Create a password"
+autocomplete="new-password"
+minlength="6"
+required>
+
+<div class="password-note">
+Use at least 6 characters.
+</div>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="confirmPassword">
+Confirm Password
+</label>
+
+<input
+id="confirmPassword"
+name="confirmPassword"
+type="password"
+placeholder="Enter your password again"
+autocomplete="new-password"
+minlength="6"
+required>
+
+</div>
+
+
+<label class="terms">
+
+<input
+type="checkbox"
+id="terms"
+required>
+
+<span>
+I agree to the
+<a href="terms.html">Terms & Conditions</a>
+and
+<a href="privacy.html">Privacy Policy</a>.
+</span>
+
+</label>
+
+
+<button
+type="submit"
+id="registerBtn">
+
+Create Student Account
+
+</button>
+
+
+<div
+id="message"
+class="message">
+</div>
+
+
+</form>
+
+
+<div class="login">
+
+Already have an account?
+
+<a href="login.html">
+Login
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+
+<footer>
+
+© 2026 GOH Bible Academy · Gate of Heaven Ministries
+
+</footer>
+
+
+<script>
+
+const form = document.getElementById("registerForm");
+const message = document.getElementById("message");
+const button = document.getElementById("registerBtn");
+
+form.addEventListener("submit", async function(e){
+
+  e.preventDefault();
+
+  message.className = "message";
+  message.textContent = "";
+
+  const name =
+    document.getElementById("name").value.trim();
+
+  const phone =
+    document.getElementById("phone").value.trim();
+
+  const email =
+    document.getElementById("email").value.trim();
+
+  const password =
+    document.getElementById("password").value;
+
+  const confirmPassword =
+    document.getElementById("confirmPassword").value;
+
+  if(password !== confirmPassword){
+
+    message.className = "message error";
+    message.textContent =
+      "Passwords do not match.";
+
+    return;
+  }
+
+  if(password.length < 6){
+
+    message.className = "message error";
+    message.textContent =
+      "Password must contain at least 6 characters.";
+
+    return;
+  }
+
+  button.disabled = true;
+  button.textContent = "Creating Account...";
+
+  /*
+    Replace this section with your
+    Cloudflare Worker registration API.
+
+    Example:
+
+    const response = await fetch(
+      "YOUR_WORKER_URL/register",
+      {
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          name,
+          phone,
+          email,
+          password
+        })
+      }
+    );
+
+    const data = await response.json();
+  */
+
+  message.className = "message success";
+  message.textContent =
+    "Registration form is ready. Connect your registration API to create the student account.";
+
+  button.disabled = false;
+  button.textContent = "Create Student Account";
+
+});
+
+</script>
+
+</body>
+</html>
