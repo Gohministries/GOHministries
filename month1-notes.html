@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>New Life in Christ | GOH Bible Academy</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#f4f7fb;
+  color:#172033;
+}
+
+header{
+  background:#0b376d;
+  color:#fff;
+  padding:15px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.header{
+  max-width:900px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.logo{
+  font-weight:800;
+  font-size:18px;
+}
+
+.back{
+  color:#fff;
+  text-decoration:none;
+  background:rgba(255,255,255,.15);
+  padding:8px 12px;
+  border-radius:8px;
+  font-size:13px;
+}
+
+main{
+  max-width:900px;
+  margin:auto;
+  padding:25px 15px 50px;
+}
+
+.hero{
+  background:#fff;
+  border:1px solid #e4e7ec;
+  border-radius:16px;
+  padding:24px;
+  margin-bottom:18px;
+}
+
+.hero h1{
+  font-size:27px;
+  color:#0b376d;
+  margin-bottom:8px;
+}
+
+.hero p{
+  color:#667085;
+  line-height:1.6;
+}
+
+.lesson-list{
+  display:grid;
+  gap:12px;
+}
+
+.lesson{
+  background:#fff;
+  border:1px solid #e4e7ec;
+  border-radius:13px;
+  overflow:hidden;
+}
+
+.lesson-head{
+  padding:17px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  cursor:pointer;
+}
+
+.lesson-title{
+  font-weight:700;
+  font-size:16px;
+}
+
+.lesson-number{
+  color:#155eef;
+  font-size:12px;
+  font-weight:800;
+  margin-bottom:5px;
+}
+
+.arrow{
+  font-size:18px;
+  color:#667085;
+}
+
+.note{
+  display:none;
+  border-top:1px solid #e4e7ec;
+  padding:20px;
+  line-height:1.7;
+  color:#344054;
+}
+
+.note.open{
+  display:block;
+}
+
+.note h2,
+.note h3{
+  color:#0b376d;
+  margin:15px 0 8px;
+}
+
+.note p{
+  margin-bottom:12px;
+}
+
+.note ul,
+.note ol{
+  margin:10px 0 15px 22px;
+}
+
+.note li{
+  margin-bottom:7px;
+}
+
+.loading,
+.error{
+  background:#fff;
+  border:1px solid #e4e7ec;
+  border-radius:14px;
+  padding:25px;
+  text-align:center;
+  color:#667085;
+}
+
+.error{
+  color:#b42318;
+}
+
+.exam{
+  display:block;
+  margin-top:20px;
+  text-align:center;
+  text-decoration:none;
+  background:#0b376d;
+  color:#fff;
+  padding:13px;
+  border-radius:9px;
+  font-weight:700;
+}
+
+@media(max-width:600px){
+  main{padding:18px 12px 40px}
+  .hero{padding:19px}
+  .hero h1{font-size:23px}
+  .lesson-head{padding:15px}
+  .note{padding:16px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header">
+    <div class="logo">GOH Bible Academy</div>
+    <a class="back" href="course.html">← Course</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <h1>New Life in Christ</h1>
+    <p>
+      Understanding salvation, repentance, faith and your
+      new identity in Christ.
+    </p>
+  </section>
+
+  <div id="content" class="loading">
+    Loading lessons...
+  </div>
+
+</main>
+
+<script>
+
+const API =
+"https://goh-bible-exam-api.createlk.workers.dev";
+
+const MONTH = 1;
+
+async function loadLessons(){
+
+  try{
+
+    const response =
+      await fetch(
+        API + "/lessons?month=" + MONTH
+      );
+
+    const data =
+      await response.json();
+
+    if(!data.success){
+      throw new Error(
+        data.error || "Unable to load lessons"
+      );
+    }
+
+    if(!data.lessons.length){
+
+      document.getElementById("content")
+        .innerHTML =
+        '<div class="error">No lessons found.</div>';
+
+      return;
+    }
+
+    const notesResponse =
+      await fetch(
+        API + "/notes?month=" + MONTH
+      );
+
+    const notesData =
+      await notesResponse.json();
+
+    const notes =
+      notesData.success
+      ? notesData.notes
+      : [];
+
+    renderLessons(data.lessons,notes);
+
+  }catch(error){
+
+    console.error(error);
+
+    document.getElementById("content")
+      .innerHTML = `
+        <div class="error">
+          Unable to load the lesson notes.<br><br>
+          Please try again.
+        </div>
+      `;
+  }
+}
+
+
+function renderLessons(lessons,notes){
+
+  const html =
+    lessons.map((lesson,index)=>{
+
+      const lessonNotes =
+        notes.filter(n =>
+          Number(n.lesson) === Number(lesson.lesson)
+        );
+
+      return `
+
+        <article class="lesson">
+
+          <div
+            class="lesson-head"
+            onclick="toggleLesson(${index})"
+          >
+
+            <div>
+
+              <div class="lesson-number">
+                LESSON ${lesson.lesson}
+              </div>
+
+              <div class="lesson-title">
+                ${escapeHTML(lesson.title_en)}
+              </div>
+
+            </div>
+
+            <div
+              class="arrow"
+              id="arrow-${index}"
+            >
+              +
+            </div>
+
+          </div>
+
+          <div
+            class="note"
+            id="note-${index}"
+          >
+
+            ${
+              lessonNotes.length
+              ? lessonNotes.map(n =>
+                  formatNote(n)
+                ).join("")
+              : "<p>Lesson notes are not available yet.</p>"
+            }
+
+          </div>
+
+        </article>
+
+      `;
+
+    }).join("");
+
+  document.getElementById("content")
+    .innerHTML = `
+
+      <div class="lesson-list">
+        ${html}
+      </div>
+
+      <a
+        class="exam"
+        href="month1-exam.html"
+      >
+        📝 MCQ Practice — Month 1
+      </a>
+
+    `;
+}
+
+
+function toggleLesson(index){
+
+  const note =
+    document.getElementById(
+      "note-" + index
+    );
+
+  const arrow =
+    document.getElementById(
+      "arrow-" + index
+    );
+
+  const isOpen =
+    note.classList.contains("open");
+
+  document.querySelectorAll(".note")
+    .forEach(n => n.classList.remove("open"));
+
+  document.querySelectorAll(".arrow")
+    .forEach(a => a.textContent = "+");
+
+  if(!isOpen){
+
+    note.classList.add("open");
+    arrow.textContent = "−";
+
+  }
+}
+
+
+function formatNote(note){
+
+  const ignored = [
+    "id",
+    "month",
+    "lesson"
+  ];
+
+  let html = "";
+
+  Object.keys(note).forEach(key=>{
+
+    if(ignored.includes(key)) return;
+
+    const value = note[key];
+
+    if(value === null ||
+       value === undefined ||
+       String(value).trim() === "") return;
+
+    const label =
+      key
+        .replace(/_/g," ")
+        .replace(/\b\w/g,c=>c.toUpperCase());
+
+    html += `
+      <h3>${escapeHTML(label)}</h3>
+      <div>${formatText(value)}</div>
+    `;
+
+  });
+
+  return html;
+}
+
+
+function formatText(value){
+
+  return escapeHTML(String(value))
+    .replace(/\n\n+/g,"</p><p>")
+    .replace(/\n/g,"<br>");
+}
+
+
+function escapeHTML(value){
+
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+loadLessons();
+
+</script>
+
+</body>
+</html>
