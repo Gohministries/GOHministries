@@ -3,28 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
 <title>My Course | GOH Bible Academy</title>
-
-<meta name="description"
-content="GOH Bible Academy 12-month Christian Discipleship and Ministry Preparation Program.">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 
 :root{
---navy:#0b376d;
---blue:#155eef;
---purple:#6941c6;
---green:#079455;
---orange:#f79009;
---pink:#db2777;
---cyan:#0891b2;
---text:#172033;
---muted:#667085;
---bg:#f4f7fb;
---border:#e4e7ec;
---white:#fff;
+--navy:#0b376d;--blue:#155eef;--purple:#6941c6;
+--green:#079455;--orange:#f79009;--pink:#db2777;
+--cyan:#0891b2;--text:#172033;--muted:#667085;
+--bg:#f4f7fb;--border:#e4e7ec
 }
 
 body{
@@ -39,7 +27,7 @@ a{text-decoration:none}
 header{
 background:linear-gradient(135deg,#0b376d,#155eef);
 color:#fff;
-padding:12px 18px;
+padding:11px 16px;
 position:sticky;
 top:0;
 z-index:1000;
@@ -52,18 +40,18 @@ margin:auto;
 display:flex;
 align-items:center;
 justify-content:space-between;
-gap:15px
+gap:12px
 }
 
 .brand{
 display:flex;
 align-items:center;
-gap:11px
+gap:10px
 }
 
 .logo{
-width:43px;
-height:43px;
+width:42px;
+height:42px;
 border-radius:11px;
 background:#fff;
 color:var(--navy);
@@ -72,12 +60,13 @@ place-items:center;
 font-weight:900
 }
 
-.brand-title{font-size:17px;font-weight:800}
+.brand-title{font-size:16px;font-weight:800}
+
 .brand-sub{
 font-size:9px;
 opacity:.78;
 margin-top:3px;
-letter-spacing:.5px
+letter-spacing:.4px
 }
 
 .nav{
@@ -88,7 +77,7 @@ gap:3px
 
 .nav a{
 color:#fff;
-padding:9px 10px;
+padding:8px 9px;
 border-radius:8px;
 font-size:12px;
 font-weight:700
@@ -103,7 +92,7 @@ background:#ffffff22
 border:1px solid #ffffff55;
 background:transparent;
 color:#fff;
-padding:9px 12px;
+padding:8px 11px;
 border-radius:8px;
 cursor:pointer;
 font-weight:700;
@@ -124,7 +113,7 @@ cursor:pointer
 main{
 max-width:1150px;
 margin:auto;
-padding:25px 18px 50px
+padding:22px 16px 45px
 }
 
 /* HERO */
@@ -132,54 +121,45 @@ padding:25px 18px 50px
 .hero{
 background:linear-gradient(135deg,#0b376d,#155eef 55%,#6941c6);
 color:#fff;
-border-radius:20px;
-padding:27px;
-margin-bottom:20px;
+border-radius:18px;
+padding:24px;
+margin-bottom:17px;
 position:relative;
 overflow:hidden;
-box-shadow:0 12px 30px #155eef25
+box-shadow:0 10px 25px #155eef25
 }
 
-.hero:before,
 .hero:after{
 content:"";
 position:absolute;
+width:180px;
+height:180px;
 border-radius:50%;
+right:-65px;
+top:-80px;
 background:#ffffff18
 }
 
-.hero:before{
-width:190px;
-height:190px;
-right:-65px;
-top:-80px
+.hero-content{
+position:relative;
+z-index:1
 }
-
-.hero:after{
-width:110px;
-height:110px;
-right:110px;
-bottom:-60px
-}
-
-.hero-content{position:relative;z-index:1}
 
 .hero-label{
-font-size:11px;
+font-size:10px;
 font-weight:800;
-letter-spacing:1.2px;
+letter-spacing:1px;
 opacity:.8
 }
 
 .hero h1{
-font-size:28px;
+font-size:27px;
 margin:6px 0
 }
 
 .hero p{
 font-size:13px;
-color:#e4edff;
-line-height:1.5
+color:#e4edff
 }
 
 /* OVERVIEW */
@@ -187,86 +167,75 @@ line-height:1.5
 .overview{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:13px;
-margin-bottom:25px
+gap:12px;
+margin-bottom:23px
 }
 
 .card{
 background:#fff;
 border:1px solid var(--border);
-border-radius:15px;
-padding:19px;
+border-radius:14px;
+padding:17px;
 box-shadow:0 4px 15px #10182808
 }
 
-.overview .card:nth-child(1){
-border-top:4px solid var(--blue)
-}
-
-.overview .card:nth-child(2){
-border-top:4px solid var(--green)
-}
-
-.overview .card:nth-child(3){
-border-top:4px solid var(--purple)
-}
+.overview .card:nth-child(1){border-top:4px solid var(--blue)}
+.overview .card:nth-child(2){border-top:4px solid var(--green)}
+.overview .card:nth-child(3){border-top:4px solid var(--purple)}
 
 .card-title{
 color:var(--muted);
-font-size:11px;
-font-weight:700;
-margin-bottom:7px;
-text-transform:uppercase;
-letter-spacing:.4px
+font-size:10px;
+font-weight:800;
+margin-bottom:6px;
+text-transform:uppercase
 }
 
 .big{
-font-size:24px;
+font-size:23px;
 font-weight:900
 }
 
 .progress{
-height:9px;
+height:8px;
 background:#eaecf0;
 border-radius:20px;
 overflow:hidden;
-margin-top:11px
+margin-top:10px
 }
 
 .progress-fill{
 height:100%;
 width:0;
-background:linear-gradient(90deg,var(--green),#12b76a);
+background:linear-gradient(90deg,#079455,#12b76a);
 border-radius:20px
 }
 
 /* CURRICULUM */
 
 .section-title{
-font-size:21px;
-margin-bottom:14px
+font-size:20px;
+margin-bottom:13px
 }
 
 .months{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:14px
+gap:13px
 }
 
 .month{
 background:#fff;
 border:1px solid var(--border);
-border-radius:16px;
-padding:18px;
-position:relative;
-overflow:hidden;
+border-radius:15px;
+padding:17px;
 box-shadow:0 4px 15px #10182808;
 transition:.2s
 }
 
 .month:hover{
-transform:translateY(-3px);
-box-shadow:0 10px 25px #10182812
+transform:translateY(-2px);
+box-shadow:0 8px 22px #10182812
 }
 
 .month:nth-child(6n+1){border-top:4px solid var(--blue)}
@@ -277,32 +246,31 @@ box-shadow:0 10px 25px #10182812
 .month:nth-child(6n){border-top:4px solid var(--cyan)}
 
 .month-number{
-font-size:11px;
+font-size:10px;
 font-weight:900;
-color:var(--blue);
 letter-spacing:.7px;
-margin-bottom:8px
+margin-bottom:7px
 }
 
 .month h2{
-font-size:17px;
-margin-bottom:8px
+font-size:16px;
+margin-bottom:7px
 }
 
 .month p{
 color:var(--muted);
 font-size:12px;
 line-height:1.5;
-min-height:55px
+min-height:54px
 }
 
 .status{
 display:inline-block;
-padding:6px 10px;
+padding:5px 9px;
 border-radius:20px;
-font-size:11px;
+font-size:10px;
 font-weight:800;
-margin-top:12px
+margin-top:10px
 }
 
 .status.active{
@@ -318,23 +286,21 @@ color:#c2410c
 .actions{
 display:flex;
 gap:7px;
-flex-wrap:wrap;
-margin-top:14px
+margin-top:12px
 }
 
 .btn{
 display:inline-flex;
 align-items:center;
 justify-content:center;
-padding:9px 12px;
+padding:9px 11px;
 border-radius:8px;
 background:var(--navy);
 color:#fff;
-font-size:11px;
-font-weight:800
+font-size:10px;
+font-weight:800;
+flex:1
 }
-
-.btn:hover{opacity:.9}
 
 .btn.secondary{
 background:#eef4ff;
@@ -350,47 +316,45 @@ pointer-events:none
 /* REQUIREMENT */
 
 .requirement{
-margin-top:20px;
+margin-top:18px;
 background:linear-gradient(135deg,#fff,#f8faff);
 border:1px solid #cfdcff;
-border-radius:16px;
-padding:20px;
-box-shadow:0 4px 15px #10182808
+border-radius:15px;
+padding:18px
 }
 
 .requirement-head{
 display:flex;
 align-items:center;
-gap:10px
+gap:9px
 }
 
 .requirement-icon{
-width:40px;
-height:40px;
+width:38px;
+height:38px;
 border-radius:10px;
 background:#eef4ff;
-color:var(--blue);
 display:grid;
 place-items:center;
-font-size:20px
+font-size:19px
 }
 
 .requirement strong{
-font-size:16px
+font-size:15px
 }
 
 .requirement p{
 color:var(--muted);
 font-size:12px;
 line-height:1.6;
-margin-top:9px
+margin-top:8px
 }
 
 footer{
 text-align:center;
 color:var(--muted);
 font-size:11px;
-padding:25px 15px
+padding:22px 15px
 }
 
 /* MOBILE */
@@ -400,7 +364,7 @@ padding:25px 15px
 .nav{
 display:none;
 position:absolute;
-top:68px;
+top:66px;
 left:12px;
 right:12px;
 background:var(--navy);
@@ -411,7 +375,9 @@ align-items:stretch;
 box-shadow:0 10px 30px #0003
 }
 
-.nav.open{display:flex}
+.nav.open{
+display:flex
+}
 
 .nav a,
 .nav .logout{
@@ -420,8 +386,13 @@ text-align:left;
 padding:12px
 }
 
-.menu-btn{display:block}
-.desktop-logout{display:none}
+.menu-btn{
+display:block
+}
+
+.desktop-logout{
+display:none
+}
 
 .months{
 grid-template-columns:repeat(2,1fr)
@@ -430,59 +401,65 @@ grid-template-columns:repeat(2,1fr)
 
 @media(max-width:600px){
 
-header{padding:10px 13px}
+header{
+padding:9px 12px
+}
 
 .logo{
-width:38px;
-height:38px;
+width:37px;
+height:37px;
+font-size:13px
+}
+
+.brand-title{
 font-size:14px
 }
 
-.brand-title{font-size:14px}
-.brand-sub{font-size:8px}
+.brand-sub{
+font-size:8px
+}
 
 main{
-padding:20px 13px 40px
+padding:19px 12px 40px
 }
 
 .hero{
-padding:22px;
-border-radius:17px
+padding:21px;
+border-radius:16px
 }
 
-.hero h1{font-size:24px}
+.hero h1{
+font-size:23px
+}
 
 .overview{
 grid-template-columns:1fr 1fr;
-gap:9px
+gap:8px
 }
 
 .overview .card{
-padding:15px
+padding:14px
 }
 
 .overview .card:first-child{
 grid-column:1/-1
 }
 
-.big{font-size:21px}
+.big{
+font-size:20px
+}
 
 .months{
 grid-template-columns:1fr;
-gap:11px
+gap:10px
 }
 
 .month p{
 min-height:auto
 }
 
-.actions .btn{
-flex:1
-text-align:center
-}
-
 .requirement{
-padding:17px
+padding:16px
 }
 }
 </style>
@@ -507,25 +484,48 @@ padding:17px
 
 <nav class="nav" id="nav">
 
-<a href="dashboard.html">Dashboard</a>
-<a class="active" href="course.html">My Course</a>
-<a href="exams.html">Exams</a>
-<a href="progress.html">Progress</a>
-<a href="certificate.html">Certificate</a>
-<a href="profile.html">Profile</a>
-<a href="support.html">Support</a>
+<a href="dashboard.html">
+Dashboard
+</a>
 
-<button class="logout" onclick="logout()">Logout</button>
+<a class="active" href="course.html">
+My Course
+</a>
+
+<a href="exams.html">
+Exams
+</a>
+
+<a href="progress.html">
+Progress
+</a>
+
+<a href="certificate.html">
+Certificate
+</a>
+
+<a href="profile.html">
+Profile & Settings
+</a>
+
+<a href="support.html">
+Support
+</a>
+
+<button class="logout" onclick="logout()">
+Logout
+</button>
 
 </nav>
 
-<button class="menu-btn"
-onclick="toggleMenu()"
-aria-label="Open navigation">
+<button
+class="menu-btn"
+onclick="toggleMenu()">
 ☰
 </button>
 
-<button class="logout desktop-logout"
+<button
+class="logout desktop-logout"
 onclick="logout()">
 Logout
 </button>
@@ -554,52 +554,81 @@ Christian Discipleship & Ministry Preparation Program
 
 </section>
 
+
 <div class="overview">
 
 <div class="card">
 
-<div class="card-title">Program</div>
+<div class="card-title">
+Program
+</div>
 
-<div class="big">12 Months</div>
+<div class="big">
+12 Months
+</div>
 
 </div>
 
+
 <div class="card">
 
-<div class="card-title">Course Progress</div>
+<div class="card-title">
+Course Progress
+</div>
 
-<div class="big" id="coursePercent">0%</div>
+<div class="big" id="coursePercent">
+0%
+</div>
 
 <div class="progress">
-<div class="progress-fill"
-id="courseBar"></div>
+
+<div
+class="progress-fill"
+id="courseBar">
 </div>
 
 </div>
+
+</div>
+
 
 <div class="card">
 
-<div class="card-title">Monthly Exams</div>
+<div class="card-title">
+Monthly Exams
+</div>
 
-<div class="big" id="examCount">0 / 12</div>
-
+<div class="big" id="examCount">
+0 / 12
 </div>
 
 </div>
+
+</div>
+
 
 <h2 class="section-title">
 12-Month Curriculum
 </h2>
 
-<div class="months" id="months"></div>
+
+<div
+class="months"
+id="months">
+</div>
+
 
 <div class="requirement">
 
 <div class="requirement-head">
 
-<div class="requirement-icon">🎓</div>
+<div class="requirement-icon">
+🎓
+</div>
 
-<strong>Certificate Requirement</strong>
+<strong>
+Certificate Requirement
+</strong>
 
 </div>
 
@@ -613,11 +642,15 @@ required ministry and discipleship activities.
 
 <div class="actions">
 
-<a class="btn" href="progress.html">
+<a
+class="btn"
+href="progress.html">
 📊 View Progress
 </a>
 
-<a class="btn secondary" href="certificate.html">
+<a
+class="btn secondary"
+href="certificate.html">
 🎓 Certificate
 </a>
 
@@ -627,78 +660,119 @@ required ministry and discipleship activities.
 
 </main>
 
+
 <footer>
 © 2026 GOH Bible Academy. All rights reserved.
 </footer>
 
+
 <script>
 
-const API="https://goh-auth-api.createlk.workers.dev";
-const token=localStorage.getItem("goh_token");
+const token=
+localStorage.getItem("goh_token");
 
 if(!token){
 location.href="login.html";
 }
 
+
+/* 12 MONTHS */
+
 const months=[
 
-["New Life in Christ",
-"Understanding salvation, repentance, faith and your new identity in Christ."],
+[
+"New Life in Christ",
+"Understanding salvation, repentance, faith and your new identity in Christ."
+],
 
-["The Word of God",
-"Learning the importance of Scripture, Bible study and applying God's Word."],
+[
+"The Word of God",
+"Learning the importance of Scripture, Bible study and applying God's Word."
+],
 
-["Prayer & Worship",
-"Developing a consistent prayer life and understanding biblical worship."],
+[
+"Prayer & Worship",
+"Developing a consistent prayer life and understanding biblical worship."
+],
 
-["Life & Teachings of Jesus",
-"Studying the life, ministry, teachings, death and resurrection of Jesus Christ."],
+[
+"Life & Teachings of Jesus",
+"Studying the life, ministry, teachings, death and resurrection of Jesus Christ."
+],
 
-["Christian Character",
-"Growing in holiness, love, obedience, humility and spiritual maturity."],
+[
+"Christian Character",
+"Growing in holiness, love, obedience, humility and spiritual maturity."
+],
 
-["The Holy Spirit",
-"Understanding the person and work of the Holy Spirit in the believer's life."],
+[
+"The Holy Spirit",
+"Understanding the person and work of the Holy Spirit in the believer's life."
+],
 
-["Bible Foundations",
-"Exploring major biblical themes, books, covenants and foundations of faith."],
+[
+"Bible Foundations",
+"Exploring major biblical themes, books, covenants and foundations of faith."
+],
 
-["Christian Doctrine",
-"Building a strong foundation in essential Christian doctrines and beliefs."],
+[
+"Christian Doctrine",
+"Building a strong foundation in essential Christian doctrines and beliefs."
+],
 
-["Discipleship",
-"Learning how to follow Christ faithfully and help others become disciples."],
+[
+"Discipleship",
+"Learning how to follow Christ faithfully and help others become disciples."
+],
 
-["Evangelism & Missions",
-"Preparing to share the Gospel and participate in Christian mission."],
+[
+"Evangelism & Missions",
+"Preparing to share the Gospel and participate in Christian mission."
+],
 
-["Ministry & Leadership",
-"Developing biblical leadership, service, responsibility and ministry skills."],
+[
+"Ministry & Leadership",
+"Developing biblical leadership, service, responsibility and ministry skills."
+],
 
-["Ministry Preparation",
-"Bringing together biblical knowledge, discipleship and practical ministry preparation."]
+[
+"Ministry Preparation",
+"Bringing together biblical knowledge, discipleship and practical ministry preparation."
+]
 
 ];
+
 
 const colors=[
-"#155eef","#6941c6","#079455",
-"#f79009","#db2777","#0891b2"
+"#155eef",
+"#6941c6",
+"#079455",
+"#f79009",
+"#db2777",
+"#0891b2"
 ];
+
+
+/* RENDER */
 
 function renderMonths(){
 
-const box=document.getElementById("months");
+const box=
+document.getElementById("months");
 
-box.innerHTML=months.map((m,i)=>{
+box.innerHTML=
+months.map((m,i)=>{
 
-const active=i===0;
 const month=i+1;
-const color=colors[i%colors.length];
+const active=i===0;
+const color=colors[i%6];
 
 return `
+
 <article class="month">
 
-<div class="month-number"
+<div
+class="month-number"
 style="color:${color}">
 MONTH ${String(month).padStart(2,"0")}
 </div>
@@ -708,44 +782,65 @@ MONTH ${String(month).padStart(2,"0")}
 <p>${m[1]}</p>
 
 <span class="status ${active?"active":"locked"}">
+
 ${active?"✓ Available":"🔒 Locked"}
+
 </span>
 
 <div class="actions">
 
 ${
 active
+
 ?
+
 `
-<a class="btn"
-href="month${month}-notes.html"
+<a
+class="btn"
+href="month1-notes.html"
 style="background:${color}">
 📖 Study Notes
 </a>
 
-<a class="btn secondary"
-href="month${month}-exam.html">
+<a
+class="btn secondary"
+href="month1-exam.html">
 📝 MCQ Practice
 </a>
 `
+
 :
+
 `
-<a class="btn disabled">🔒 Locked</a>
+<a class="btn disabled">
+🔒 Locked
+</a>
 `
 }
 
 </div>
 
 </article>
+
 `;
 
 }).join("");
 
 }
 
+
+/* MENU */
+
 function toggleMenu(){
-document.getElementById("nav").classList.toggle("open");
+
+document
+.getElementById("nav")
+.classList.toggle("open");
+
 }
+
+
+/* LOGOUT */
 
 function logout(){
 
@@ -753,9 +848,37 @@ localStorage.removeItem("goh_token");
 localStorage.removeItem("goh_student");
 
 location.href="login.html";
+
 }
 
+
+/* PROGRESS */
+
+function loadProgress(){
+
+const course=
+Number(localStorage.getItem("goh_course_progress"))||0;
+
+const exams=
+Number(localStorage.getItem("goh_exams_completed"))||0;
+
+document.getElementById("coursePercent")
+.textContent=Math.min(100,course)+"%";
+
+document.getElementById("courseBar")
+.style.width=Math.min(100,course)+"%";
+
+document.getElementById("examCount")
+.textContent=
+Math.min(12,exams)+" / 12";
+
+}
+
+
+/* START */
+
 renderMonths();
+loadProgress();
 
 </script>
 
