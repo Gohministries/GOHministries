@@ -6,7 +6,7 @@
 
 <title>GOH Bible Academy | Christian Biblical Studies</title>
 
-<meta name="description" content="GOH Bible Academy by Gate of Heaven Ministries provides structured Christian Biblical Studies, online lessons, assessments, examinations and ministry-issued certificates.">
+<meta name="description" content="GOH Bible Academy provides structured online Christian Biblical Studies, assessments, examinations and certificates through Gate of Heaven Ministries.">
 
 <meta name="theme-color" content="#0b376d">
 
@@ -23,9 +23,10 @@ line-height:1.6
 }
 
 a{text-decoration:none;color:inherit}
+button{font:inherit}
 
 .container{
-width:min(1100px,92%);
+width:min(1080px,92%);
 margin:auto
 }
 
@@ -36,12 +37,12 @@ position:sticky;
 top:0;
 z-index:1000;
 background:rgba(255,255,255,.97);
-border-bottom:1px solid #e7ebf0;
-backdrop-filter:blur(10px)
+border-bottom:1px solid #e6eaf0;
+backdrop-filter:blur(12px)
 }
 
 .nav{
-min-height:70px;
+min-height:68px;
 display:flex;
 align-items:center;
 justify-content:space-between;
@@ -55,21 +56,22 @@ gap:10px
 }
 
 .logo{
-width:42px;
-height:42px;
+width:41px;
+height:41px;
 display:grid;
 place-items:center;
 border-radius:10px;
 background:#0b376d;
 color:#fff;
-font-size:13px;
+font-size:12px;
 font-weight:900
 }
 
 .brand strong{
 display:block;
 color:#0b376d;
-font-size:15px
+font-size:15px;
+line-height:1.2
 }
 
 .brand small{
@@ -77,13 +79,13 @@ display:block;
 color:#667085;
 font-size:8px;
 font-weight:700;
-letter-spacing:1px
+letter-spacing:.8px
 }
 
 .nav-links{
 display:flex;
 align-items:center;
-gap:19px
+gap:18px
 }
 
 .nav-links a{
@@ -105,8 +107,8 @@ color:#fff!important
 display:none;
 border:0;
 background:none;
-font-size:27px;
 color:#0b376d;
+font-size:26px;
 cursor:pointer
 }
 
@@ -114,13 +116,13 @@ cursor:pointer
 
 .hero{
 background:
-radial-gradient(circle at 90% 10%,rgba(243,201,92,.18),transparent 30%),
+radial-gradient(circle at 90% 10%,rgba(243,201,92,.16),transparent 28%),
 linear-gradient(135deg,#061d39,#0b376d);
 color:#fff
 }
 
 .hero-inner{
-min-height:570px;
+min-height:590px;
 display:flex;
 align-items:center
 }
@@ -144,18 +146,19 @@ letter-spacing:1px
 
 .hero h1{
 font-family:Georgia,"Times New Roman",serif;
-font-size:clamp(40px,7vw,65px);
-line-height:1.06;
-letter-spacing:-1px;
+font-size:clamp(42px,7vw,67px);
+line-height:1.05;
+letter-spacing:-1.5px;
 margin-bottom:18px
 }
 
 .hero h1 span{color:#f3c95c}
 
 .hero p{
-max-width:650px;
+max-width:660px;
 color:#dce7f3;
 font-size:17px;
+line-height:1.7;
 margin-bottom:25px
 }
 
@@ -170,22 +173,26 @@ min-height:46px;
 display:inline-flex;
 align-items:center;
 justify-content:center;
-padding:10px 18px;
+padding:11px 18px;
 border-radius:8px;
 font-size:13px;
-font-weight:800
+font-weight:800;
+transition:.2s
 }
 
-.btn-gold{background:#f3c95c;color:#172033}
-.btn-white{background:#fff;color:#0b376d}
-.btn-green{background:#18a957;color:#fff}
+.btn:hover{transform:translateY(-2px)}
+
+.gold{background:#f3c95c;color:#172033}
+.white{background:#fff;color:#0b376d}
+.green{background:#18a957;color:#fff}
+.outline{border:1px solid #d5dce6;background:#fff;color:#0b376d}
 
 .stats{
-max-width:650px;
+max-width:700px;
 display:grid;
 grid-template-columns:repeat(4,1fr);
-margin-top:35px;
-padding-top:18px;
+margin-top:38px;
+padding-top:19px;
 border-top:1px solid rgba(255,255,255,.15)
 }
 
@@ -206,9 +213,9 @@ color:#b9c9dc;
 font-size:11px
 }
 
-/* GENERAL */
+/* COMMON */
 
-section{padding:65px 0}
+section{padding:68px 0}
 
 .section-head{
 max-width:680px;
@@ -217,17 +224,17 @@ text-align:center
 }
 
 .label{
+margin-bottom:6px;
 color:#0b376d;
 font-size:11px;
 font-weight:900;
-letter-spacing:1.3px;
 text-transform:uppercase;
-margin-bottom:7px
+letter-spacing:1.3px
 }
 
 .section-head h2{
 font-family:Georgia,"Times New Roman",serif;
-font-size:clamp(29px,5vw,42px);
+font-size:clamp(30px,5vw,43px);
 line-height:1.15;
 margin-bottom:9px
 }
@@ -237,20 +244,21 @@ color:#667085;
 font-size:14px
 }
 
-/* FEATURES */
+/* ABOUT */
 
-.features{background:#fff}
+.about{background:#fff}
 
-.feature-grid{
+.about-grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:18px
+gap:17px
 }
 
 .card{
 padding:24px;
 border:1px solid #e5eaf1;
-border-radius:15px
+border-radius:15px;
+background:#fff
 }
 
 .icon{
@@ -261,7 +269,7 @@ place-items:center;
 margin-bottom:13px;
 border-radius:11px;
 background:#edf4ff;
-font-size:21px
+font-size:20px
 }
 
 .card h3{
@@ -281,13 +289,13 @@ font-size:13px
 .course-grid{
 display:grid;
 grid-template-columns:1fr 350px;
-gap:40px;
+gap:42px;
 align-items:center
 }
 
-.course-content h2{
+.course h2{
 font-family:Georgia,"Times New Roman",serif;
-font-size:clamp(30px,5vw,43px);
+font-size:clamp(31px,5vw,44px);
 line-height:1.15;
 margin-bottom:14px
 }
@@ -295,14 +303,14 @@ margin-bottom:14px
 .course-content p{
 color:#667085;
 font-size:14px;
-margin-bottom:12px
+margin-bottom:13px
 }
 
 .checks{
 display:grid;
 gap:8px;
 margin-top:18px;
-font-size:14px
+font-size:13px
 }
 
 .check{
@@ -312,30 +320,31 @@ font-weight:900
 
 .price-box{
 padding:28px;
-border-radius:17px;
+border-radius:18px;
 background:#0b376d;
-color:#fff
+color:#fff;
+box-shadow:0 15px 35px rgba(11,55,109,.16)
 }
 
 .price-label{
 color:#f3c95c;
-font-size:11px;
+font-size:10px;
 font-weight:900;
-letter-spacing:1px;
-text-transform:uppercase
+text-transform:uppercase;
+letter-spacing:1px
 }
 
 .price-box h3{
 font-family:Georgia,"Times New Roman",serif;
-font-size:26px;
+font-size:25px;
 margin:7px 0 16px
 }
 
 .price{
 padding:14px 0;
-margin-bottom:16px;
-border-top:1px solid rgba(255,255,255,.15);
-border-bottom:1px solid rgba(255,255,255,.15)
+margin-bottom:15px;
+border-top:1px solid rgba(255,255,255,.14);
+border-bottom:1px solid rgba(255,255,255,.14)
 }
 
 .price strong{font-size:28px}
@@ -350,10 +359,12 @@ list-style:none;
 display:grid;
 gap:7px;
 color:#e2eaf3;
-font-size:13px
+font-size:12px
 }
 
 /* CURRICULUM */
+
+.curriculum{background:#fff}
 
 .modules{
 max-width:850px;
@@ -380,7 +391,7 @@ place-items:center;
 border-radius:9px;
 background:#0b376d;
 color:#fff;
-font-size:12px;
+font-size:11px;
 font-weight:900
 }
 
@@ -401,11 +412,11 @@ font-size:12px
 .process-grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:18px
+gap:17px
 }
 
 .process-card{
-padding:23px;
+padding:24px;
 border:1px solid #e5eaf1;
 border-radius:15px;
 background:#fff
@@ -413,9 +424,10 @@ background:#fff
 
 .process-card strong{
 display:block;
+margin-bottom:7px;
 color:#0b376d;
-font-size:11px;
-margin-bottom:7px
+font-size:10px;
+letter-spacing:1px
 }
 
 .process-card h3{
@@ -428,65 +440,32 @@ color:#667085;
 font-size:13px
 }
 
-/* FOUNDER */
-
-.founder{background:#fff}
-
-.founder-box{
-max-width:850px;
-margin:auto;
-padding:30px;
-border:1px solid #e5eaf1;
-border-radius:17px;
-background:#fff
-}
-
-.founder-content h3{
-font-family:Georgia,"Times New Roman",serif;
-font-size:27px;
-margin-bottom:5px
-}
-
-.founder-role{
-color:#0b376d;
-font-size:13px;
-font-weight:800;
-margin-bottom:12px
-}
-
-.founder-content p{
-color:#667085;
-font-size:14px;
-margin-bottom:9px
-}
-
 /* ASSESSMENT */
 
-.assessment{background:#f7f9fc}
+.assessment{background:#fff}
 
 .assessment-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:18px
+gap:17px
 }
 
 .assessment-card{
-padding:25px;
+padding:26px;
 border:1px solid #e5eaf1;
-border-radius:15px;
-background:#fff
+border-radius:15px
 }
 
 .assessment-card h3{
 font-family:Georgia,"Times New Roman",serif;
-font-size:24px;
+font-size:25px;
 margin-bottom:8px
 }
 
 .assessment-card p{
 color:#667085;
-font-size:14px;
-margin-bottom:12px
+font-size:13px;
+margin-bottom:13px
 }
 
 .assessment-card ul{
@@ -494,33 +473,41 @@ list-style:none;
 display:grid;
 gap:6px;
 color:#475467;
-font-size:13px
+font-size:12px
 }
 
-/* SCRIPTURE */
+/* FOUNDER */
 
-.scripture{
-padding:70px 20px;
-text-align:center;
+.founder{
 background:#faf8f1
 }
 
-.scripture blockquote{
-max-width:780px;
+.founder-box{
+max-width:820px;
 margin:auto;
-font-family:Georgia,"Times New Roman",serif;
-font-size:clamp(23px,4vw,33px);
-line-height:1.4;
-color:#26364e
+padding:32px;
+border-radius:18px;
+background:#fff;
+border:1px solid #e8e2d3
 }
 
-.scripture cite{
-display:block;
-margin-top:13px;
+.founder-box h3{
+font-family:Georgia,"Times New Roman",serif;
+font-size:28px;
+margin-bottom:4px
+}
+
+.founder-role{
 color:#0b376d;
-font-size:13px;
+font-size:12px;
 font-weight:800;
-font-style:normal
+margin-bottom:13px
+}
+
+.founder-box p{
+color:#667085;
+font-size:14px;
+margin-bottom:10px
 }
 
 /* CTA */
@@ -528,7 +515,7 @@ font-style:normal
 .cta{background:#fff}
 
 .cta-box{
-padding:48px 25px;
+padding:48px 24px;
 text-align:center;
 border-radius:20px;
 background:#0b376d;
@@ -537,7 +524,7 @@ color:#fff
 
 .cta-box h2{
 font-family:Georgia,"Times New Roman",serif;
-font-size:clamp(29px,5vw,41px);
+font-size:clamp(30px,5vw,41px);
 margin-bottom:9px
 }
 
@@ -578,25 +565,27 @@ margin-bottom:10px
 .footer-grid p,
 .footer-grid a{
 color:#aebdd0;
-font-size:13px
+font-size:12px
 }
 
-.footer-grid p{max-width:400px}
+.footer-grid p{
+max-width:420px
+}
 
 .footer-grid a{
 display:block;
-margin:5px 0
+margin:6px 0
 }
 
 .footer-grid a:hover{color:#fff}
 
 .footer-bottom{
-margin-top:30px;
+margin-top:32px;
 padding-top:17px;
 border-top:1px solid rgba(255,255,255,.1);
 text-align:center;
 color:#8192a8;
-font-size:11px
+font-size:10px
 }
 
 /* WHATSAPP */
@@ -626,7 +615,7 @@ z-index:900
 .nav-links{
 display:none;
 position:absolute;
-top:70px;
+top:68px;
 left:0;
 right:0;
 padding:12px 5%;
@@ -634,7 +623,7 @@ flex-direction:column;
 align-items:stretch;
 gap:0;
 background:#fff;
-border-bottom:1px solid #e7ebf0;
+border-bottom:1px solid #e6eaf0;
 box-shadow:0 10px 25px rgba(0,0,0,.08)
 }
 
@@ -644,7 +633,7 @@ box-shadow:0 10px 25px rgba(0,0,0,.08)
 
 .nav-enroll{text-align:center}
 
-.hero-inner{min-height:570px}
+.hero-inner{min-height:590px}
 
 .hero h1{font-size:46px}
 
@@ -655,19 +644,19 @@ gap:14px
 
 .stat{border:0}
 
-.feature-grid,
-.process-grid,
-.assessment-grid{
+.about-grid,
+.process-grid{
 grid-template-columns:1fr
 }
 
-.course-grid{
+.course-grid,
+.assessment-grid{
 grid-template-columns:1fr
 }
 
 .footer-grid{
 grid-template-columns:1fr;
-gap:25px
+gap:27px
 }
 
 }
@@ -679,7 +668,7 @@ gap:25px
 
 .hero h1{font-size:39px}
 
-.hero p{font-size:16px}
+.hero p{font-size:15px}
 
 .buttons,
 .cta-buttons{
@@ -691,7 +680,11 @@ flex-direction:column
 width:100%
 }
 
-section{padding:55px 0}
+section{padding:56px 0}
+
+.module{
+align-items:flex-start
+}
 
 }
 </style>
@@ -699,19 +692,26 @@ section{padding:55px 0}
 
 <body>
 
+<!-- HEADER -->
+
 <header>
 <div class="container nav">
 
 <a href="index.html" class="brand">
+
 <div class="logo">GOH</div>
 
 <div>
 <strong>GOH Bible Academy</strong>
 <small>GATE OF HEAVEN MINISTRIES</small>
 </div>
+
 </a>
 
-<button class="menu" onclick="toggleMenu()" aria-label="Open menu">
+<button
+class="menu"
+onclick="toggleMenu()"
+aria-label="Open menu">
 ☰
 </button>
 
@@ -723,9 +723,13 @@ section{padding:55px 0}
 <a href="ai-bible-teacher.html">Bible Teacher</a>
 <a href="media.html">Media</a>
 <a href="contact.html">Contact</a>
-<a href="enroll.html" class="nav-enroll">Enroll Now</a>
+
+<a href="enroll.html" class="nav-enroll">
+Register
+</a>
 
 </nav>
+
 </div>
 </header>
 
@@ -748,26 +752,28 @@ Study the Bible.<br>
 </h1>
 
 <p>
-Structured Christian Biblical Studies designed to help
-students understand Scripture, develop biblical knowledge
-and prepare for Christian service.
+A structured online Christian Biblical Studies
+program designed to help students understand
+Scripture, strengthen their faith and prepare
+for Christian service.
 </p>
 
 <div class="buttons">
 
-<a href="enroll.html" class="btn btn-gold">
-🎓 Enroll Now
+<a href="enroll.html" class="btn gold">
+🎓 Register Now
 </a>
 
-<a href="bible-courses.html" class="btn btn-white">
+<a href="bible-courses.html" class="btn white">
 📖 View Courses
 </a>
 
-<a href="https://wa.me/94771190395"
+<a
+href="https://wa.me/94771190395"
 target="_blank"
-rel="noopener noreferrer"
-class="btn btn-green">
-💬 Ask Us
+rel="noopener"
+class="btn green">
+💬 WhatsApp
 </a>
 
 </div>
@@ -801,53 +807,67 @@ class="btn btn-green">
 </section>
 
 
-<!-- FEATURES -->
+<!-- ABOUT -->
 
-<section class="features">
+<section class="about">
 
 <div class="container">
 
 <div class="section-head">
 
-<div class="label">Our Approach</div>
+<div class="label">About The Academy</div>
 
 <h2>
 Learn Scripture With Purpose
 </h2>
 
 <p>
-A clear learning pathway from lessons to final assessment.
+A simple and structured approach to Christian
+Biblical Studies for students who want to grow
+in biblical knowledge and faith.
 </p>
 
 </div>
 
-<div class="feature-grid">
+<div class="about-grid">
 
 <div class="card">
+
 <div class="icon">📖</div>
+
 <h3>Biblical Studies</h3>
+
 <p>
-Study Scripture, biblical themes, Christian doctrine
-and the teachings of Jesus Christ.
+Study Scripture, biblical themes, Christian
+doctrine and the life and teachings of Jesus.
 </p>
+
 </div>
 
 <div class="card">
+
 <div class="icon">💻</div>
+
 <h3>Online Learning</h3>
+
 <p>
-Access lessons and study resources through
-an online learning environment.
+Access lessons and learning resources online
+from wherever you are.
 </p>
+
 </div>
 
 <div class="card">
+
 <div class="icon">📝</div>
+
 <h3>Assessment</h3>
+
 <p>
-Complete learning activities, assessments
-and the final examination.
+Complete learning activities and a final
+examination as part of the program.
 </p>
+
 </div>
 
 </div>
@@ -872,18 +892,41 @@ Diploma in Christian Biblical Studies
 </h2>
 
 <p>
-A structured six-month program covering essential
-areas of biblical and Christian studies.
+A six-month structured program covering
+essential biblical and Christian studies.
 </p>
 
 <div class="checks">
 
-<div><span class="check">✓</span> Six-month study program</div>
-<div><span class="check">✓</span> Six core modules</div>
-<div><span class="check">✓</span> Online lessons</div>
-<div><span class="check">✓</span> Assessments</div>
-<div><span class="check">✓</span> Final examination</div>
-<div><span class="check">✓</span> Certificate upon completion</div>
+<div>
+<span class="check">✓</span>
+Six-month study program
+</div>
+
+<div>
+<span class="check">✓</span>
+Six core modules
+</div>
+
+<div>
+<span class="check">✓</span>
+Online lessons
+</div>
+
+<div>
+<span class="check">✓</span>
+Assignments and assessments
+</div>
+
+<div>
+<span class="check">✓</span>
+Final examination
+</div>
+
+<div>
+<span class="check">✓</span>
+Certificate upon meeting requirements
+</div>
 
 </div>
 
@@ -893,27 +936,26 @@ areas of biblical and Christian studies.
 
 <div class="price-label">Enrollment</div>
 
-<h3>
-Christian Biblical Studies
-</h3>
+<h3>Christian Biblical Studies</h3>
 
 <div class="price">
 <strong>LKR 1,500</strong>
-<span>/ month</span>
+<span> / month</span>
 </div>
 
 <ul>
-<li>✓ Course access</li>
+<li>✓ Online course access</li>
 <li>✓ Bible lessons</li>
 <li>✓ Assessments</li>
 <li>✓ Final examination</li>
 <li>✓ Certificate upon completion</li>
 </ul>
 
-<a href="enroll.html"
-class="btn btn-gold"
+<a
+href="enroll.html"
+class="btn gold"
 style="width:100%;margin-top:20px">
-🎓 Enroll Now
+🎓 Register Now
 </a>
 
 </div>
@@ -925,7 +967,7 @@ style="width:100%;margin-top:20px">
 
 <!-- CURRICULUM -->
 
-<section>
+<section class="curriculum">
 
 <div class="container">
 
@@ -933,7 +975,9 @@ style="width:100%;margin-top:20px">
 
 <div class="label">Curriculum</div>
 
-<h2>Six Core Areas</h2>
+<h2>
+Six Core Areas of Study
+</h2>
 
 <p>
 Progress through the program step by step.
@@ -963,7 +1007,7 @@ Progress through the program step by step.
 <div class="number">03</div>
 <div>
 <h3>New Testament Studies</h3>
-<p>Gospels, Acts, Epistles and the New Testament message.</p>
+<p>The Gospels, Acts, Epistles and New Testament message.</p>
 </div>
 </div>
 
@@ -979,7 +1023,7 @@ Progress through the program step by step.
 <div class="number">05</div>
 <div>
 <h3>Christian Doctrine</h3>
-<p>Core Christian beliefs and Christian living.</p>
+<p>Core Christian beliefs and practical Christian living.</p>
 </div>
 </div>
 
@@ -1006,77 +1050,43 @@ Progress through the program step by step.
 
 <div class="label">How It Works</div>
 
-<h2>From Study to Completion</h2>
+<h2>
+From Registration to Completion
+</h2>
+
+<p>
+Follow a simple learning process.
+</p>
 
 </div>
 
 <div class="process-grid">
 
 <div class="process-card">
-<strong>01 — STUDY</strong>
-<h3>Learn</h3>
-<p>Complete the lessons and assigned Bible studies.</p>
+<strong>01 — REGISTER</strong>
+<h3>Join the Academy</h3>
+<p>
+Create your student account and complete
+the enrollment process.
+</p>
 </div>
 
 <div class="process-card">
-<strong>02 — ASSESS</strong>
-<h3>Practise</h3>
-<p>Complete activities and assessments throughout the program.</p>
+<strong>02 — LEARN</strong>
+<h3>Study & Practise</h3>
+<p>
+Complete lessons, activities and required
+course assessments.
+</p>
 </div>
 
 <div class="process-card">
 <strong>03 — COMPLETE</strong>
-<h3>Examination</h3>
-<p>Complete the final examination after meeting the requirements.</p>
-</div>
-
-</div>
-</div>
-</section>
-
-
-<!-- FOUNDER -->
-
-<section class="founder">
-
-<div class="container">
-
-<div class="section-head">
-
-<div class="label">About The Academy</div>
-
-<h2>Our Founder</h2>
-
-</div>
-
-<div class="founder-box">
-
-<div class="founder-content">
-
-<h3>Pastor Saththiyanadan</h3>
-
-<div class="founder-role">
-Founder & Ministry Leader
-</div>
-
+<h3>Final Examination</h3>
 <p>
-Gate of Heaven Ministries was established to proclaim
-the Gospel of Jesus Christ, teach the Word of God and
-serve communities through Christian ministry.
+Complete the final examination after
+meeting the required course progress.
 </p>
-
-<p>
-GOH Bible Academy provides structured biblical education
-as part of the ministry's Christian teaching and discipleship
-work.
-</p>
-
-<a href="about.html"
-class="btn btn-outline"
-style="margin-top:10px">
-Learn About Our Ministry
-</a>
-
 </div>
 
 </div>
@@ -1094,10 +1104,13 @@ Learn About Our Ministry
 
 <div class="label">Completion</div>
 
-<h2>Assessment & Certificate</h2>
+<h2>
+Assessment & Certificate
+</h2>
 
 <p>
-Students must complete the required learning stages.
+Students must meet the required academic
+and course completion requirements.
 </p>
 
 </div>
@@ -1109,8 +1122,8 @@ Students must complete the required learning stages.
 <h3>📝 Final Examination</h3>
 
 <p>
-The final examination evaluates understanding of
-the subjects covered during the program.
+The final examination evaluates understanding
+of the subjects studied during the program.
 </p>
 
 <ul>
@@ -1126,8 +1139,9 @@ the subjects covered during the program.
 <h3>🎓 Certificate</h3>
 
 <p>
-Students who successfully meet the published
-requirements may receive a ministry-issued certificate.
+Eligible students who successfully complete
+the required program requirements may receive
+a ministry-issued certificate.
 </p>
 
 <ul>
@@ -1143,20 +1157,47 @@ requirements may receive a ministry-issued certificate.
 </section>
 
 
-<!-- SCRIPTURE -->
+<!-- FOUNDER -->
 
-<section class="scripture">
+<section class="founder">
 
-<blockquote>
-“Study to shew thyself approved unto God,
-a workman that needeth not to be ashamed,
-rightly dividing the word of truth.”
-</blockquote>
+<div class="container">
 
-<cite>
-2 Timothy 2:15 — KJV
-</cite>
+<div class="section-head">
 
+<div class="label">Leadership</div>
+
+<h2>
+About the Founder
+</h2>
+
+</div>
+
+<div class="founder-box">
+
+<h3>
+Pastor Saththiyanadan
+</h3>
+
+<div class="founder-role">
+Founder & Pastor — Gate of Heaven Ministries
+</div>
+
+<p>
+GOH Bible Academy was established as an educational
+initiative of Gate of Heaven Ministries to provide
+structured Christian Biblical Studies and encourage
+students to grow in the knowledge of God's Word.
+</p>
+
+<p>
+The academy focuses on accessible Bible education,
+Christian learning and preparation for faithful
+service and ministry.
+</p>
+
+</div>
+</div>
 </section>
 
 
@@ -1168,21 +1209,27 @@ rightly dividing the word of truth.”
 
 <div class="cta-box">
 
-<h2>Begin Your Bible Study Journey</h2>
+<h2>
+Begin Your Bible Study Journey
+</h2>
 
 <p>
-Explore the program, review the course information
-and enroll when you are ready to begin.
+Register with GOH Bible Academy and begin your
+structured Christian Biblical Studies program.
 </p>
 
 <div class="cta-buttons">
 
-<a href="enroll.html" class="btn btn-gold">
-🎓 Enroll Now
+<a href="enroll.html" class="btn gold">
+🎓 Register Now
 </a>
 
-<a href="contact.html" class="btn btn-white">
-Contact Us
+<a
+href="https://wa.me/94771190395"
+target="_blank"
+rel="noopener"
+class="btn green">
+💬 0771190395
 </a>
 
 </div>
@@ -1202,71 +1249,94 @@ Contact Us
 
 <div>
 
-<h3>GOH Bible Academy</h3>
+<h3>
+GOH Bible Academy
+</h3>
 
 <p>
-A Christian educational ministry of Gate of Heaven
-Ministries, providing structured biblical studies,
-assessment and ministry-based learning.
+An educational initiative of Gate of Heaven
+Ministries providing structured Christian
+Biblical Studies through online learning.
 </p>
 
 </div>
 
 <div>
 
-<h3>Academy</h3>
+<h3>
+Academy
+</h3>
 
-<a href="index.html">Home</a>
 <a href="about.html">About</a>
 <a href="bible-courses.html">Courses</a>
-<a href="ai-bible-teacher.html">Bible Teacher</a>
-<a href="enroll.html">Enroll</a>
+<a href="enroll.html">Register</a>
+<a href="contact.html">Contact</a>
 
 </div>
 
 <div>
 
-<h3>Information</h3>
+<h3>
+Information
+</h3>
 
-<a href="contact.html">Contact</a>
+<a href="payment.html">Payment</a>
+<a href="refund-policy.html">Refund Policy</a>
 <a href="privacy.html">Privacy Policy</a>
 <a href="terms.html">Terms & Conditions</a>
-<a href="refund.html">Refund Policy</a>
 
 </div>
 
 </div>
 
 <div class="footer-bottom">
-© 2026 Gate of Heaven Ministries. All Rights Reserved.
+
+© 2026 GOH Bible Academy.
+All rights reserved.
+
 </div>
 
 </div>
+
 </footer>
 
 
 <!-- WHATSAPP -->
 
-<a href="https://wa.me/94771190395"
-target="_blank"
-rel="noopener noreferrer"
+<a
 class="whatsapp"
-aria-label="Contact us on WhatsApp">
+href="https://wa.me/94771190395"
+target="_blank"
+rel="noopener"
+aria-label="WhatsApp GOH Bible Academy">
+
 💬
+
 </a>
 
 
 <script>
+
 function toggleMenu(){
-const menu=document.getElementById("navLinks");
-menu.classList.toggle("show");
+
+const nav=document.getElementById("navLinks");
+
+nav.classList.toggle("show");
+
 }
 
 document.querySelectorAll(".nav-links a").forEach(link=>{
+
 link.addEventListener("click",()=>{
-document.getElementById("navLinks").classList.remove("show");
+
+document
+.getElementById("navLinks")
+.classList.remove("show");
+
 });
+
 });
+
 </script>
 
 </body>
