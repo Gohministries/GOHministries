@@ -14,32 +14,39 @@ body{font-family:Arial,sans-serif;color:#172033;line-height:1.6}
 a{text-decoration:none;color:inherit}
 .container{width:min(1080px,92%);margin:auto}
 
-header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #e5eaf1}
-.nav{min-height:68px;display:flex;align-items:center;justify-content:space-between}
+header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid #e5eaf1}
+header.scrolled{box-shadow:0 5px 20px #10182812}
+.nav{height:68px;display:flex;align-items:center;justify-content:space-between}
 .brand{display:flex;align-items:center;gap:10px}
-.logo{width:41px;height:41px;display:grid;place-items:center;border-radius:10px;background:#0b376d;color:#fff;font-weight:900}
-.brand strong{display:block;color:#0b376d;font-size:15px}
+.logo{width:41px;height:41px;display:grid;place-items:center;border-radius:10px;background:#0b376d;color:#fff;font-size:11px;font-weight:900}
+.brand strong{display:block;color:#0b376d;font-size:15px;line-height:1.1}
 .brand small{display:block;color:#667085;font-size:8px;font-weight:bold}
-.nav-links{display:flex;gap:18px;align-items:center}
-.nav-links a{font-size:13px;font-weight:bold;color:#344054}
-.login{color:#0b376d!important}
-.register{padding:9px 16px;background:#0b376d;color:#fff!important;border-radius:8px}
-.menu{display:none;border:0;background:none;font-size:25px;color:#0b376d}
+
+.nav-links{display:flex;align-items:center;gap:3px}
+.nav-links a{padding:9px 10px;border-radius:7px;font-size:12px;font-weight:bold;color:#344054}
+.nav-links a:hover{background:#f2f5f9;color:#0b376d}
+.nav-links .login{color:#0b376d}
+.nav-links .register{background:#0b376d;color:#fff;padding:10px 16px}
+.nav-links .register:hover{background:#082b55;color:#fff}
+
+.menu{display:none;width:42px;height:42px;border:1px solid #e1e7ef;border-radius:10px;background:#fff;color:#0b376d;font-size:21px}
 
 .hero{background:linear-gradient(135deg,#061d39,#0b376d);color:#fff}
 .hero-inner{min-height:550px;display:flex;align-items:center}
 .hero-content{max-width:760px}
-.tag,.label{font-size:10px;font-weight:900;letter-spacing:1.2px;color:#f3c95c}
-.tag{display:inline-block;padding:6px 12px;margin-bottom:16px;border:1px solid #ffffff30;border-radius:30px}
+.tag,.label{font-size:10px;font-weight:900;letter-spacing:1.2px}
+.tag{display:inline-block;padding:6px 12px;margin-bottom:16px;border:1px solid #ffffff30;border-radius:30px;color:#f3c95c}
 h1,h2{font-family:Georgia,serif}
 h1{font-size:clamp(40px,7vw,64px);line-height:1.05;margin-bottom:17px}
 h1 span{color:#f3c95c}
 .hero p{max-width:650px;color:#dce7f3;font-size:16px;margin-bottom:24px}
+
 .buttons{display:flex;flex-wrap:wrap;gap:10px}
 .btn{min-height:45px;padding:10px 18px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;font-size:13px;font-weight:bold}
 .gold{background:#f3c95c;color:#172033}
 .white{background:#fff;color:#0b376d}
 .outline{border:1px solid #ffffff55;color:#fff}
+
 .stats{display:grid;grid-template-columns:repeat(4,1fr);max-width:700px;margin-top:35px;padding-top:18px;border-top:1px solid #ffffff25}
 .stat{border-right:1px solid #ffffff20;padding-right:10px}
 .stat:last-child{border:0}
@@ -56,6 +63,7 @@ section{padding:60px 0}
 .grid,.months,.steps{display:grid;gap:14px}
 .three,.months{grid-template-columns:repeat(3,1fr)}
 .card,.month,.step{padding:20px;border:1px solid #e5eaf1;border-radius:14px;background:#fff}
+.card:hover,.month:hover,.step:hover{box-shadow:0 7px 22px #1018280b}
 .icon{width:42px;height:42px;display:grid;place-items:center;margin-bottom:10px;border-radius:10px;background:#edf4ff}
 .card h3,.month h3,.step h3{font-size:17px;margin-bottom:5px}
 
@@ -63,6 +71,7 @@ section{padding:60px 0}
 .program h2,.ministry h2{font-size:clamp(30px,5vw,43px);line-height:1.15;margin:6px 0 12px}
 .checks{display:grid;gap:8px;margin-top:18px;font-size:13px}
 .check{color:#0b376d;font-weight:bold}
+
 .price{padding:25px;border-radius:16px;background:#0b376d;color:#fff}
 .price h3{font-family:Georgia,serif;font-size:23px;margin:7px 0 15px}
 .amount{padding:12px 0;margin-bottom:14px;border-block:1px solid #ffffff20}
@@ -80,7 +89,7 @@ section{padding:60px 0}
 .ministry p{color:#cbd8e7;font-size:13px}
 .ministry-list{display:grid;gap:8px}
 .ministry-item{padding:12px;border:1px solid #ffffff18;border-radius:9px;color:#dce7f3;font-size:12px}
-.ministry-item strong{color:#f3c95c}
+.ministry-item strong{color:#f3c95c;margin-right:5px}
 
 .steps{grid-template-columns:repeat(3,1fr)}
 .step strong{color:#0b376d;font-size:10px}
@@ -100,14 +109,19 @@ footer{padding:35px 0 18px;background:#081d38;color:#fff}
 .footer p,.footer a{display:block;color:#aebdd0;font-size:11px;margin:5px 0}
 .bottom{text-align:center;margin-top:22px;padding-top:13px;border-top:1px solid #ffffff15;color:#8192a8;font-size:9px}
 
-.whatsapp{position:fixed;right:17px;bottom:17px;width:50px;height:50px;display:grid;place-items:center;border-radius:50%;background:#18a957;color:#fff;font-size:21px;z-index:20}
+.whatsapp{position:fixed;right:17px;bottom:17px;width:50px;height:50px;display:grid;place-items:center;border-radius:50%;background:#18a957;color:#fff;font-size:21px;z-index:30}
 
 @media(max-width:850px){
-.menu{display:block}
-.nav-links{display:none;position:absolute;top:68px;left:0;right:0;padding:10px 5%;background:#fff;flex-direction:column;align-items:stretch;gap:0;box-shadow:0 8px 20px #0001}
+.menu{display:grid;place-items:center;cursor:pointer}
+.nav-links{
+display:none;position:absolute;top:73px;left:4%;right:4%;
+padding:9px;background:#fff;border:1px solid #e5eaf1;border-radius:14px;
+box-shadow:0 15px 35px #10182818;flex-direction:column;align-items:stretch
+}
 .nav-links.show{display:flex}
-.nav-links a{padding:9px 0}
-.register{text-align:center}
+.nav-links a{padding:12px 13px}
+.nav-links .login{margin-top:4px;border-top:1px solid #edf0f4;padding-top:14px}
+.nav-links .register{text-align:center;margin:4px 0 2px}
 .three,.months,.program-grid,.ministry-grid,.assessment,.steps,.footer{grid-template-columns:1fr}
 .stats{grid-template-columns:repeat(2,1fr);gap:12px}
 .stat{border:0}
@@ -115,6 +129,8 @@ footer{padding:35px 0 18px;background:#081d38;color:#fff}
 }
 
 @media(max-width:480px){
+.container{width:90%}
+.brand strong{font-size:14px}
 .hero h1{font-size:39px}
 .hero p{font-size:14px}
 .buttons{flex-direction:column}
@@ -126,7 +142,7 @@ section{padding:50px 0}
 
 <body>
 
-<header>
+<header id="header">
 <div class="container nav">
 
 <a href="index.html" class="brand">
@@ -137,7 +153,7 @@ section{padding:50px 0}
 </div>
 </a>
 
-<button class="menu" onclick="toggleMenu()" type="button">☰</button>
+<button class="menu" id="menuBtn" type="button" aria-label="Open menu">☰</button>
 
 <nav class="nav-links" id="navLinks">
 <a href="index.html">Home</a>
@@ -153,17 +169,13 @@ section{padding:50px 0}
 </div>
 </header>
 
-
 <section class="hero">
 <div class="container hero-inner">
 <div class="hero-content">
 
 <div class="tag">✝ GOH BIBLE ACADEMY</div>
 
-<h1>
-Grow in Christ.<br>
-<span>Prepare for Ministry.</span>
-</h1>
+<h1>Grow in Christ.<br><span>Prepare for Ministry.</span></h1>
 
 <p>
 A complete one-year Christian discipleship course designed to help believers grow in God's Word, develop Christian character and prepare for faithful service and ministry.
@@ -186,10 +198,8 @@ A complete one-year Christian discipleship course designed to help believers gro
 </div>
 </section>
 
-
 <section>
 <div class="container">
-
 <div class="head">
 <div class="label">THE PURPOSE</div>
 <h2>More Than a Bible Course</h2>
@@ -197,29 +207,12 @@ A complete one-year Christian discipleship course designed to help believers gro
 </div>
 
 <div class="grid three">
-
-<div class="card">
-<div class="icon">📖</div>
-<h3>Know God's Word</h3>
-<p>Build a strong foundation in Scripture and learn to understand and apply God's Word.</p>
-</div>
-
-<div class="card">
-<div class="icon">❤️</div>
-<h3>Grow in Christ</h3>
-<p>Develop prayer, faith, obedience and Christian character through discipleship.</p>
-</div>
-
-<div class="card">
-<div class="icon">⛪</div>
-<h3>Serve in Ministry</h3>
-<p>Prepare for evangelism, discipleship, leadership and practical Christian service.</p>
-</div>
-
+<div class="card"><div class="icon">📖</div><h3>Know God's Word</h3><p>Build a strong foundation in Scripture and learn to understand and apply God's Word.</p></div>
+<div class="card"><div class="icon">❤️</div><h3>Grow in Christ</h3><p>Develop prayer, faith, obedience and Christian character through discipleship.</p></div>
+<div class="card"><div class="icon">⛪</div><h3>Serve in Ministry</h3><p>Prepare for evangelism, discipleship, leadership and practical Christian service.</p></div>
 </div>
 </div>
 </section>
-
 
 <section class="light">
 <div class="container program-grid">
@@ -242,12 +235,7 @@ A complete one-year Christian discipleship course designed to help believers gro
 <div class="price">
 <div class="label">ENROLLMENT</div>
 <h3>One-Year Discipleship Course</h3>
-
-<div class="amount">
-<strong>LKR 1,500</strong>
-<span>/ month</span>
-</div>
-
+<div class="amount"><strong>LKR 1,500</strong> <span>/ month</span></div>
 <ul>
 <li>✓ Online lessons</li>
 <li>✓ Monthly MCQ exam</li>
@@ -256,13 +244,11 @@ A complete one-year Christian discipleship course designed to help believers gro
 <li>✓ Progress tracking</li>
 <li>✓ Certificate requirements</li>
 </ul>
-
 <a href="enroll.html" class="btn gold" style="width:100%;margin-top:18px">Register Now</a>
 </div>
 
 </div>
 </section>
-
 
 <section>
 <div class="container">
@@ -274,7 +260,6 @@ A complete one-year Christian discipleship course designed to help believers gro
 </div>
 
 <div class="months">
-
 <div class="month"><div class="month-number">MONTH 01</div><h3>New Life in Christ</h3><p>Salvation, repentance, faith and assurance.</p><span class="exam">50 MCQs</span></div>
 <div class="month"><div class="month-number">MONTH 02</div><h3>The Word of God</h3><p>Scripture, Bible study and obedience.</p><span class="exam">50 MCQs</span></div>
 <div class="month"><div class="month-number">MONTH 03</div><h3>Prayer & Worship</h3><p>Developing a consistent spiritual life.</p><span class="exam">50 MCQs</span></div>
@@ -287,15 +272,13 @@ A complete one-year Christian discipleship course designed to help believers gro
 <div class="month"><div class="month-number">MONTH 10</div><h3>Evangelism & Missions</h3><p>Sharing the Gospel and reaching others.</p><span class="exam">50 MCQs</span></div>
 <div class="month"><div class="month-number">MONTH 11</div><h3>Ministry & Leadership</h3><p>Serving, leading and caring for people.</p><span class="exam">50 MCQs</span></div>
 <div class="month"><div class="month-number">MONTH 12</div><h3>Ministry Preparation</h3><p>Practical service, review and preparation.</p><span class="exam">50 MCQs</span></div>
-
 </div>
+
 </div>
 </section>
 
-
 <section class="light">
 <div class="container">
-
 <div class="head">
 <div class="label">ASSESSMENT</div>
 <h2>12 Monthly MCQ Examinations</h2>
@@ -303,27 +286,14 @@ A complete one-year Christian discipleship course designed to help believers gro
 </div>
 
 <div class="assessment">
-
-<div class="card">
-<h3>📝 50 Questions</h3>
-<p>Each monthly examination contains 50 multiple-choice questions.</p>
-<p><strong>600 MCQs across the full year.</strong></p>
-</div>
-
-<div class="card">
-<h3>🎓 70% Pass Mark</h3>
-<p>Students should achieve at least 70% to successfully complete each examination.</p>
-<p><strong>Retake available if required.</strong></p>
-</div>
-
+<div class="card"><h3>📝 50 Questions</h3><p>Each monthly examination contains 50 multiple-choice questions.</p><p><strong>600 MCQs across the full year.</strong></p></div>
+<div class="card"><h3>🎓 70% Pass Mark</h3><p>Students should achieve at least 70% to successfully complete each examination.</p><p><strong>Retake available if required.</strong></p></div>
 </div>
 </div>
 </section>
 
-
 <section class="ministry">
 <div class="container ministry-grid">
-
 <div>
 <div class="label">PRACTICAL DISCIPLESHIP</div>
 <h2>Learn. Live. Serve.</h2>
@@ -338,14 +308,11 @@ A complete one-year Christian discipleship course designed to help believers gro
 <div class="ministry-item"><strong>05</strong> Practical Ministry Service</div>
 <div class="ministry-item"><strong>06</strong> Bible Teaching Practice</div>
 </div>
-
 </div>
 </section>
 
-
 <section>
 <div class="container">
-
 <div class="head">
 <div class="label">COMPLETION</div>
 <h2>Path to Completion</h2>
@@ -353,70 +320,41 @@ A complete one-year Christian discipleship course designed to help believers gro
 </div>
 
 <div class="steps">
-
-<div class="step">
-<strong>01 — LEARN</strong>
-<h3>Study Each Month</h3>
-<p>Complete the monthly lessons and required activities.</p>
-</div>
-
-<div class="step">
-<strong>02 — EXAM</strong>
-<h3>Pass Monthly MCQ</h3>
-<p>Complete the 50-question examination for each month.</p>
-</div>
-
-<div class="step">
-<strong>03 — SERVE</strong>
-<h3>Prepare for Ministry</h3>
-<p>Complete practical ministry requirements and finish the program.</p>
-</div>
-
+<div class="step"><strong>01 — LEARN</strong><h3>Study Each Month</h3><p>Complete the monthly lessons and required activities.</p></div>
+<div class="step"><strong>02 — EXAM</strong><h3>Pass Monthly MCQ</h3><p>Complete the 50-question examination for each month.</p></div>
+<div class="step"><strong>03 — SERVE</strong><h3>Prepare for Ministry</h3><p>Complete practical ministry requirements and finish the program.</p></div>
 </div>
 </div>
 </section>
 
-
 <section class="light">
 <div class="container">
-
-<div class="head">
-<div class="label">LEADERSHIP</div>
-<h2>About the Founder</h2>
-</div>
-
+<div class="head"><div class="label">LEADERSHIP</div><h2>About the Founder</h2></div>
 <div class="founder">
 <h3>Pastor Saththiyanadan</h3>
 <div class="role">Founder & Pastor — Gate of Heaven Ministries</div>
 <p>GOH Bible Academy was established as an educational initiative of Gate of Heaven Ministries to encourage believers to grow in God's Word and prepare for faithful Christian service.</p>
 <p>The academy focuses on biblical learning, discipleship, Christian character and practical ministry preparation.</p>
 </div>
-
 </div>
 </section>
 
-
 <section>
 <div class="container">
-
 <div class="cta">
 <h2>Begin Your One-Year Journey</h2>
 <p>Grow in God's Word, develop Christian maturity and prepare yourself for faithful service and ministry.</p>
-
 <div class="buttons" style="justify-content:center">
 <a href="login.html" class="btn white">Student Login</a>
 <a href="enroll.html" class="btn gold">Register Now</a>
 <a href="bible-courses.html" class="btn outline">View Course</a>
 </div>
 </div>
-
 </div>
 </section>
 
-
 <footer>
 <div class="container">
-
 <div class="footer">
 
 <div>
@@ -443,28 +381,38 @@ A complete one-year Christian discipleship course designed to help believers gro
 
 </div>
 
-<div class="bottom">
-© 2026 GOH Bible Academy. All rights reserved.
-</div>
-
+<div class="bottom">© 2026 GOH Bible Academy. All rights reserved.</div>
 </div>
 </footer>
 
-
-<a class="whatsapp"
-href="https://wa.me/94771190395"
-target="_blank"
-rel="noopener"
-aria-label="WhatsApp GOH Bible Academy">💬</a>
-
+<a class="whatsapp" href="https://wa.me/94771190395" target="_blank" rel="noopener">💬</a>
 
 <script>
-function toggleMenu(){
-document.getElementById("navLinks").classList.toggle("show");
-}
+const menu=document.getElementById("menuBtn");
+const nav=document.getElementById("navLinks");
+const header=document.getElementById("header");
+
+menu.onclick=()=>{
+nav.classList.toggle("show");
+menu.textContent=nav.classList.contains("show")?"✕":"☰";
+};
 
 document.querySelectorAll(".nav-links a").forEach(a=>{
-a.onclick=()=>document.getElementById("navLinks").classList.remove("show");
+a.onclick=()=>{
+nav.classList.remove("show");
+menu.textContent="☰";
+};
+});
+
+document.addEventListener("click",e=>{
+if(window.innerWidth<=850&&!nav.contains(e.target)&&!menu.contains(e.target)){
+nav.classList.remove("show");
+menu.textContent="☰";
+}
+});
+
+window.addEventListener("scroll",()=>{
+header.classList.toggle("scrolled",scrollY>8);
 });
 </script>
 
