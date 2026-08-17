@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>My Progress | GOH Bible Academy</title>
+
+<meta name="description"
+content="GOH Bible Academy student academic progress and certificate progress.">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --primary:#0b376d;
+  --primary2:#155eef;
+  --text:#172033;
+  --muted:#667085;
+  --bg:#f4f7fb;
+  --card:#fff;
+  --border:#e4e7ec;
+  --green:#027a48;
+  --greenbg:#ecfdf3;
+  --orange:#b54708;
+  --orangebg:#fffaeb;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+}
+
+header{
+  background:var(--primary);
+  color:#fff;
+  padding:13px 20px;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.header-inner{
+  max-width:1150px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo{
+  width:44px;
+  height:44px;
+  border-radius:10px;
+  background:#fff;
+  color:var(--primary);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  font-size:17px;
+}
+
+.brand-title{
+  font-size:18px;
+  font-weight:800;
+}
+
+.brand-sub{
+  font-size:11px;
+  opacity:.8;
+  margin-top:3px;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+.nav a{
+  color:#fff;
+  text-decoration:none;
+  padding:9px 10px;
+  border-radius:8px;
+  font-size:13px;
+  font-weight:600;
+}
+
+.nav a:hover,
+.nav a.active{
+  background:rgba(255,255,255,.15);
+}
+
+.logout{
+  border:1px solid rgba(255,255,255,.35);
+  background:transparent;
+  color:#fff;
+  padding:9px 13px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+  font-size:13px;
+}
+
+.menu-btn{
+  display:none;
+  border:1px solid rgba(255,255,255,.35);
+  background:transparent;
+  color:#fff;
+  padding:8px 11px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:18px;
+}
+
+main{
+  max-width:1150px;
+  margin:auto;
+  padding:28px 18px 50px;
+}
+
+.page-title{
+  margin-bottom:22px;
+}
+
+.page-title h1{
+  font-size:28px;
+  margin-bottom:7px;
+}
+
+.page-title p{
+  color:var(--muted);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+}
+
+.card-title{
+  color:var(--muted);
+  font-size:14px;
+  margin-bottom:9px;
+}
+
+.big{
+  font-size:26px;
+  font-weight:800;
+}
+
+.small{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:5px;
+}
+
+.section{
+  margin-top:20px;
+}
+
+.section h2{
+  font-size:21px;
+  margin-bottom:14px;
+}
+
+.progress-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:22px;
+}
+
+.progress-row{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:8px;
+  font-weight:700;
+}
+
+.progress-bar{
+  height:12px;
+  background:#eaecf0;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress-fill{
+  height:100%;
+  background:var(--primary2);
+  border-radius:20px;
+  transition:width .5s ease;
+}
+
+.requirements{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:18px;
+}
+
+.requirement{
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:16px;
+}
+
+.requirement strong{
+  display:block;
+  font-size:20px;
+  margin-bottom:6px;
+}
+
+.requirement span{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.months{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:13px;
+}
+
+.month{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:17px;
+}
+
+.month-number{
+  color:var(--primary2);
+  font-size:12px;
+  font-weight:800;
+  margin-bottom:7px;
+}
+
+.month h3{
+  font-size:16px;
+  margin-bottom:12px;
+}
+
+.status{
+  display:inline-block;
+  padding:6px 9px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:700;
+  background:#f2f4f7;
+  color:var(--muted);
+}
+
+.status.complete{
+  background:var(--greenbg);
+  color:var(--green);
+}
+
+.status.progress{
+  background:#eef4ff;
+  color:var(--primary2);
+}
+
+.status.locked{
+  background:var(--orangebg);
+  color:var(--orange);
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+
+.btn{
+  display:inline-block;
+  text-decoration:none;
+  padding:11px 16px;
+  border-radius:9px;
+  background:var(--primary);
+  color:#fff;
+  font-weight:700;
+  font-size:13px;
+}
+
+.btn.secondary{
+  background:#eef4ff;
+  color:var(--primary);
+}
+
+footer{
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+  padding:25px 15px;
+}
+
+@media(max-width:1000px){
+
+  .nav{
+    display:none;
+    position:absolute;
+    top:70px;
+    left:14px;
+    right:14px;
+    background:var(--primary);
+    border-radius:12px;
+    padding:8px;
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .nav.open{
+    display:flex;
+  }
+
+  .nav a,
+  .nav .logout{
+    width:100%;
+    text-align:left;
+    padding:12px;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .desktop-logout{
+    display:none;
+  }
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .requirements{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .months{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+
+  header{
+    padding:11px 14px;
+  }
+
+  .logo{
+    width:38px;
+    height:38px;
+    font-size:15px;
+  }
+
+  .brand-title{
+    font-size:15px;
+  }
+
+  .brand-sub{
+    font-size:9px;
+  }
+
+  main{
+    padding:22px 14px 40px;
+  }
+
+  .page-title h1{
+    font-size:24px;
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .card{
+    padding:16px;
+  }
+
+  .big{
+    font-size:22px;
+  }
+
+  .requirements{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .months{
+    grid-template-columns:1fr;
+  }
+
+  .btn{
+    width:100%;
+    text-align:center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="header-inner">
+
+  <div class="brand">
+
+    <div class="logo">
+      GOH
+    </div>
+
+    <div>
+
+      <div class="brand-title">
+        GOH Bible Academy
+      </div>
+
+      <div class="brand-sub">
+        GATE OF HEAVEN MINISTRIES
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <nav class="nav" id="nav">
+
+    <a href="dashboard.html">
+      Dashboard
+    </a>
+
+    <a href="course.html">
+      My Course
+    </a>
+
+    <a href="exams.html">
+      Exams
+    </a>
+
+    <a class="active" href="progress.html">
+      Progress
+    </a>
+
+    <a href="certificate.html">
+      Certificate
+    </a>
+
+    <a href="profile.html">
+      Profile
+    </a>
+
+    <a href="support.html">
+      Support
+    </a>
+
+    <button class="logout" onclick="logout()">
+      Logout
+    </button>
+
+  </nav>
+
+
+  <button
+    class="menu-btn"
+    onclick="toggleMenu()"
+  >
+    ☰
+  </button>
+
+
+  <button
+    class="logout desktop-logout"
+    onclick="logout()"
+  >
+    Logout
+  </button>
+
+</div>
+
+</header>
+
+
+<main>
+
+<div class="page-title">
+
+  <h1>
+    My Progress
+  </h1>
+
+  <p>
+    Track your Bible Academy studies, examinations and certificate requirements.
+  </p>
+
+</div>
+
+
+<div class="stats">
+
+  <div class="card">
+
+    <div class="card-title">
+      Correct MCQs
+    </div>
+
+    <div class="big">
+      0 / 600
+    </div>
+
+    <div class="small">
+      480 required
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-title">
+      Exams
+    </div>
+
+    <div class="big">
+      0 / 12
+    </div>
+
+    <div class="small">
+      All exams required
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-title">
+      Course
+    </div>
+
+    <div class="big">
+      0%
+    </div>
+
+    <div class="small">
+      12-month program
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-title">
+      Certificate
+    </div>
+
+    <div class="big">
+      Locked
+    </div>
+
+    <div class="small">
+      Requirements pending
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="section">
+
+<h2>
+  Overall Course Progress
+</h2>
+
+<div class="progress-card">
+
+  <div class="progress-row">
+
+    <span>
+      12-Month Program
+    </span>
+
+    <span>
+      0%
+    </span>
+
+  </div>
+
+  <div class="progress-bar">
+
+    <div
+      class="progress-fill"
+      style="width:0%"
+    ></div>
+
+  </div>
+
+
+  <div style="height:22px"></div>
+
+
+  <div class="progress-row">
+
+    <span>
+      MCQ Progress
+    </span>
+
+    <span>
+      0 / 600
+    </span>
+
+  </div>
+
+  <div class="progress-bar">
+
+    <div
+      class="progress-fill"
+      style="width:0%"
+    ></div>
+
+  </div>
+
+
+  <div style="height:22px"></div>
+
+
+  <div class="progress-row">
+
+    <span>
+      Examination Progress
+    </span>
+
+    <span>
+      0 / 12
+    </span>
+
+  </div>
+
+  <div class="progress-bar">
+
+    <div
+      class="progress-fill"
+      style="width:0%"
+    ></div>
+
+  </div>
+
+</div>
+
+</div>
+
+
+<div class="section">
+
+<h2>
+  🎓 Certificate Requirements
+</h2>
+
+<div class="progress-card">
+
+  <div class="requirements">
+
+    <div class="requirement">
+
+      <strong>
+        0 / 480
+      </strong>
+
+      <span>
+        Required Correct MCQs
+      </span>
+
+    </div>
+
+
+    <div class="requirement">
+
+      <strong>
+        0 / 12
+      </strong>
+
+      <span>
+        Examinations
+      </span>
+
+    </div>
+
+
+    <div class="requirement">
+
+      <strong>
+        0%
+      </strong>
+
+      <span>
+        Program Completion
+      </span>
+
+    </div>
+
+
+    <div class="requirement">
+
+      <strong>
+        Pending
+      </strong>
+
+      <span>
+        Ministry / Discipleship
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <div
+    style="
+      margin-top:18px;
+      padding:13px;
+      border-radius:10px;
+      background:#fffaeb;
+      color:#b54708;
+      font-weight:600;
+    "
+  >
+    🔒 Your certificate is currently locked.
+    Continue your studies to complete all requirements.
+
+  </div>
+
+
+  <div class="actions">
+
+    <a
+      class="btn"
+      href="course.html"
+    >
+      Continue Learning
+    </a>
+
+    <a
+      class="btn secondary"
+      href="certificate.html"
+    >
+      Certificate
+    </a>
+
+  </div>
+
+</div>
+
+</div>
+
+
+<div class="section">
+
+<h2>
+  Monthly Progress
+</h2>
+
+<p style="color:#667085;margin-bottom:14px">
+  Complete the lessons and examination for each month.
+</p>
+
+
+<div class="months" id="months"></div>
+
+</div>
+
+
+<div class="section">
+
+<div class="card">
+
+  <strong>
+    Important:
+  </strong>
+
+  <span style="color:#667085;line-height:1.6">
+
+    Certificate eligibility requires at least
+    <strong>480 correct answers out of 600</strong>,
+    completion of all 12 examinations,
+    completion of the 12-month program and
+    the required ministry/discipleship activities.
+
+  </span>
+
+</div>
+
+</div>
+
+</main>
+
+
+<footer>
+© 2026 GOH Bible Academy. All rights reserved.
+</footer>
+
+
+<script>
+
+const API =
+"https://goh-auth-api.createlk.workers.dev";
+
+const token =
+localStorage.getItem("goh_token");
+
+if(!token){
+
+  window.location.href =
+    "login.html";
+
+}
+
+
+const months = [
+
+  "New Life in Christ",
+  "The Word of God",
+  "Prayer & Worship",
+  "Life & Teachings of Jesus",
+  "Christian Character",
+  "The Holy Spirit",
+  "Bible Foundations",
+  "Christian Doctrine",
+  "Discipleship",
+  "Evangelism & Missions",
+  "Ministry & Leadership",
+  "Ministry Preparation"
+
+];
+
+
+function renderMonths(){
+
+  const container =
+    document.getElementById("months");
+
+  container.innerHTML =
+    months.map((month,index)=>{
+
+      const active =
+        index === 0;
+
+      return `
+
+        <div class="month">
+
+          <div class="month-number">
+            MONTH ${String(index+1).padStart(2,"0")}
+          </div>
+
+          <h3>
+            ${month}
+          </h3>
+
+          <span class="status ${
+            active
+            ? "progress"
+            : "locked"
+          }">
+
+            ${
+              active
+              ? "In Progress"
+              : "Pending"
+            }
+
+          </span>
+
+        </div>
+
+      `;
+
+    }).join("");
+
+}
+
+
+function toggleMenu(){
+
+  document
+    .getElementById("nav")
+    .classList.toggle("open");
+
+}
+
+
+function logout(){
+
+  fetch(
+    API + "/logout",
+    {
+      method:"POST",
+      headers:{
+        "Authorization":
+          "Bearer " + token
+      }
+    }
+  ).catch(()=>{});
+
+  localStorage.removeItem(
+    "goh_token"
+  );
+
+  localStorage.removeItem(
+    "goh_student"
+  );
+
+  window.location.href =
+    "login.html";
+
+}
+
+
+renderMonths();
+
+</script>
+
+</body>
+</html>
