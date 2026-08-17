@@ -1,142 +1,245 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Student Dashboard | GOH Bible Academy</title>
-<meta name="description" content="GOH Bible Academy student dashboard for Christian discipleship and ministry preparation.">
-<meta name="theme-color" content="#0b376d">
+<title>Study Notes | GOH Bible Academy</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+
 :root{
-  --primary:#0b376d;--blue:#155eef;--purple:#6941c6;
-  --green:#079455;--orange:#f79009;--text:#172033;
-  --muted:#667085;--bg:#f4f7fb;--border:#e4e7ec
+  --primary:#0b376d;
+  --blue:#155eef;
+  --purple:#6941c6;
+  --green:#079455;
+  --bg:#f4f7fb;
+  --text:#172033;
+  --muted:#667085;
+  --border:#e4e7ec;
 }
-body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
-a{text-decoration:none}
-header{background:var(--primary);color:#fff;padding:12px 18px;position:sticky;top:0;z-index:1000}
-.header-inner{max-width:1150px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:15px}
-.brand{display:flex;align-items:center;gap:11px}
-.logo{width:43px;height:43px;border-radius:10px;background:#fff;color:var(--primary);display:grid;place-items:center;font-weight:900}
-.brand-title{font-size:17px;font-weight:800}
-.brand-sub{font-size:9px;opacity:.75;margin-top:3px;letter-spacing:.5px}
-.nav{display:flex;align-items:center;gap:3px}
-.nav a{color:#fff;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:700}
-.nav a:hover,.nav a.active{background:#ffffff29}
-.logout{border:1px solid #ffffff59;background:transparent;color:#fff;padding:9px 12px;border-radius:8px;cursor:pointer;font-weight:700;font-size:12px}
-.menu-btn{display:none;border:1px solid #ffffff59;background:transparent;color:#fff;padding:8px 11px;border-radius:8px;font-size:18px;cursor:pointer}
 
-main{max-width:1150px;margin:auto;padding:25px 18px 50px}
-.welcome{background:linear-gradient(135deg,#0b376d,#155eef);color:#fff;border-radius:18px;padding:25px;margin-bottom:18px;position:relative;overflow:hidden}
-.welcome:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-60px;top:-70px;background:#ffffff15}
-.welcome-label{font-size:11px;font-weight:800;letter-spacing:1px;opacity:.8}
-.welcome h1{font-size:28px;margin:6px 0}
-.welcome p{font-size:13px;color:#dce7f3}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+}
 
-.student-card{background:#fff;border:1px solid var(--border);border-radius:15px;padding:20px;margin-bottom:18px}
-.student-head{display:flex;align-items:center;gap:14px;margin-bottom:17px}
-.avatar{width:54px;height:54px;border-radius:50%;background:#eef4ff;color:var(--blue);display:grid;place-items:center;font-size:21px;font-weight:900}
-.student-name{font-size:18px;font-weight:800}
-.student-email{color:var(--muted);font-size:12px;margin-top:3px}
-.details{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.detail{background:#f8fafc;border-radius:10px;padding:12px}
-.detail-label{color:var(--muted);font-size:10px;margin-bottom:4px}
-.detail-value{font-size:13px;font-weight:800}
+header{
+  background:var(--primary);
+  color:#fff;
+  padding:12px 18px;
+}
 
-.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
-.stat{padding:18px;border-radius:14px;color:#fff;min-height:120px}
-.stat.blue{background:linear-gradient(135deg,#155eef,#004eeb)}
-.stat.green{background:linear-gradient(135deg,#079455,#027a48)}
-.stat.purple{background:linear-gradient(135deg,#6941c6,#53389e)}
-.stat.orange{background:linear-gradient(135deg,#f79009,#dc6803)}
-.stat-icon{font-size:20px;margin-bottom:10px}
-.stat-label{font-size:11px;opacity:.85}
-.stat-value{font-size:24px;font-weight:900;margin-top:3px}
+.header{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
 
-.section{margin-top:22px}
-.section-title{font-size:20px;margin-bottom:12px}
-.progress-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
-.progress-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px}
-.progress-top{display:flex;justify-content:space-between;gap:10px;font-size:13px;font-weight:800;margin-bottom:10px}
-.progress-percent{color:var(--blue)}
-.progress-bar{height:9px;background:#eaecf0;border-radius:20px;overflow:hidden}
-.progress-fill{height:100%;width:0;border-radius:20px;background:var(--blue);transition:width .4s}
-.progress-info{color:var(--muted);font-size:11px;margin-top:8px}
+.logo{
+  width:42px;
+  height:42px;
+  border-radius:10px;
+  background:#fff;
+  color:var(--primary);
+  display:grid;
+  place-items:center;
+  font-weight:900;
+}
 
-.course-card{background:#fff;border:1px solid var(--border);border-radius:15px;padding:22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.course-card h2{font-size:21px;margin-bottom:6px}
-.course-card p{color:var(--muted);font-size:13px;line-height:1.5}
-.course-meta{display:flex;align-items:center;gap:7px;flex-wrap:nowrap;margin-top:12px;overflow:hidden}
-.pill{padding:6px 9px;border-radius:20px;background:#eef4ff;color:var(--primary);font-size:10px;font-weight:800;white-space:nowrap}
+.brand-title{
+  font-size:17px;
+  font-weight:800;
+}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 17px;border-radius:8px;background:var(--primary);color:#fff;font-size:13px;font-weight:800;white-space:nowrap;border:0;cursor:pointer}
-.btn:hover{opacity:.92}
-.btn.ai{background:var(--purple)}
-.btn.locked{background:#eaecf0;color:#98a2b3;cursor:not-allowed}
+.brand-sub{
+  font-size:9px;
+  opacity:.75;
+  margin-top:3px;
+}
 
-.ai-card{background:linear-gradient(135deg,#f5f3ff,#fff);border:1px solid #ddd6fe;border-radius:15px;padding:22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.ai-left{display:flex;gap:14px;align-items:flex-start}
-.ai-icon{width:48px;height:48px;flex-shrink:0;border-radius:12px;background:var(--purple);color:#fff;display:grid;place-items:center;font-size:22px}
-.ai-card h2{font-size:19px;margin-bottom:5px}
-.ai-card p{color:var(--muted);font-size:12px;line-height:1.5}
-.ai-limit{margin-top:9px;color:var(--purple);font-size:11px;font-weight:800}
+main{
+  max-width:900px;
+  margin:auto;
+  padding:22px 15px 45px;
+}
 
-.certificate{background:#fff;border:1px solid var(--border);border-radius:15px;padding:21px}
-.cert-head{display:flex;justify-content:space-between;gap:15px;margin-bottom:16px}
-.cert-title{font-size:20px;font-weight:800}
-.cert-text{color:var(--muted);font-size:12px;margin-top:4px}
-.badge{padding:6px 10px;height:max-content;border-radius:20px;background:#fffaeb;color:#b54708;font-size:11px;font-weight:800}
-.badge.unlocked{background:#ecfdf3;color:#027a48}
-.cert-box{background:#f8fafc;border-radius:12px;padding:18px}
-.cert-progress-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:9px;font-size:14px;font-weight:800}
-.cert-progress-top span:last-child{color:var(--blue)}
-.cert-progress-bar{height:11px;background:#eaecf0;border-radius:20px;overflow:hidden}
-.cert-progress-fill{height:100%;width:0;background:var(--blue);border-radius:20px;transition:width .4s}
-.cert-message{color:var(--muted);font-size:12px;line-height:1.5;margin-top:9px}
-.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
+.back{
+  display:inline-block;
+  color:var(--primary);
+  font-size:13px;
+  font-weight:800;
+  text-decoration:none;
+  margin-bottom:18px;
+}
 
-.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
-.quick a{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--text);min-height:105px;transition:.2s}
-.quick a:hover{border-color:#b7c7df;transform:translateY(-2px)}
-.quick-icon{font-size:20px;margin-bottom:8px}
-.quick strong{display:block;font-size:13px}
-.quick span{color:var(--muted);font-size:10px;display:block;margin-top:3px}
+.hero{
+  background:linear-gradient(135deg,#0b376d,#155eef);
+  color:#fff;
+  border-radius:18px;
+  padding:24px;
+  margin-bottom:15px;
+}
 
-footer{text-align:center;color:var(--muted);font-size:11px;padding:25px 15px}
+.month{
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.8px;
+  opacity:.8;
+}
 
-@media(max-width:1000px){
-  .nav{display:none;position:absolute;top:68px;left:12px;right:12px;background:var(--primary);border-radius:12px;padding:8px;flex-direction:column;align-items:stretch;box-shadow:0 10px 30px #0003}
-  .nav.open{display:flex}
-  .nav a,.nav .logout{width:100%;text-align:left;padding:12px}
-  .menu-btn{display:block}
-  .desktop-logout{display:none}
-  .summary{grid-template-columns:repeat(2,1fr)}
-  .details{grid-template-columns:repeat(2,1fr)}
-  .progress-grid{grid-template-columns:1fr}
+h1{
+  font-size:27px;
+  margin:7px 0;
+}
+
+.subtitle{
+  color:#dce7f3;
+  font-size:13px;
+  line-height:1.5;
+}
+
+.languages{
+  display:flex;
+  gap:7px;
+  margin-top:18px;
+}
+
+.lang{
+  border:0;
+  background:#fff;
+  color:var(--primary);
+  padding:9px 14px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.lang.active{
+  background:#dbeafe;
+  color:#155eef;
+}
+
+.notes{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:24px;
+  line-height:1.75;
+  font-size:14px;
+  white-space:pre-wrap;
+  min-height:250px;
+}
+
+.notes-title{
+  font-size:22px;
+  font-weight:800;
+  margin-bottom:15px;
+  color:var(--primary);
+}
+
+.loading{
+  text-align:center;
+  color:var(--muted);
+  padding:35px 10px;
+}
+
+.error{
+  text-align:center;
+  background:#fff;
+  border:1px solid #fecdca;
+  color:#b42318;
+  border-radius:14px;
+  padding:22px;
+  line-height:1.6;
+}
+
+.retry{
+  margin-top:12px;
+  border:0;
+  background:var(--primary);
+  color:#fff;
+  padding:10px 16px;
+  border-radius:8px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.navigation{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:18px;
+}
+
+.nav-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:120px;
+  padding:11px 16px;
+  border-radius:9px;
+  background:var(--primary);
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:800;
+}
+
+.nav-btn.disabled{
+  background:#eaecf0;
+  color:#98a2b3;
+  pointer-events:none;
+}
+
+footer{
+  text-align:center;
+  color:var(--muted);
+  font-size:11px;
+  padding:25px 15px;
 }
 
 @media(max-width:600px){
-  header{padding:10px 13px}
-  .logo{width:38px;height:38px;font-size:14px}
-  .brand-title{font-size:14px}
-  .brand-sub{font-size:8px}
-  main{padding:20px 13px 40px}
-  .welcome{padding:21px}
-  .welcome h1{font-size:24px}
-  .summary{gap:9px}
-  .stat{min-height:105px;padding:15px}
-  .stat-value{font-size:20px}
-  .student-card{padding:16px}
-  .course-card,.ai-card{flex-direction:column;align-items:stretch}
-  .btn{width:100%}
-  .cert-head{flex-direction:column}
-  .quick{grid-template-columns:repeat(2,1fr);gap:9px}
-  .quick a{min-height:100px;padding:14px}
-  .course-meta{gap:5px}
-  .pill{font-size:9px;padding:5px 7px}
+
+  main{
+    padding:18px 12px 35px;
+  }
+
+  .hero{
+    padding:20px;
+  }
+
+  h1{
+    font-size:23px;
+  }
+
+  .languages{
+    width:100%;
+  }
+
+  .lang{
+    flex:1;
+    padding:9px 5px;
+  }
+
+  .notes{
+    padding:18px;
+    font-size:13px;
+  }
+
+  .navigation{
+    gap:8px;
+  }
+
+  .nav-btn{
+    flex:1;
+    min-width:0;
+  }
 }
 </style>
 </head>
@@ -144,286 +247,75 @@ footer{text-align:center;color:var(--muted);font-size:11px;padding:25px 15px}
 <body>
 
 <header>
-<div class="header-inner">
+  <div class="header">
 
-<div class="brand">
-<div class="logo">GOH</div>
-<div>
-<div class="brand-title">GOH Bible Academy</div>
-<div class="brand-sub">GATE OF HEAVEN MINISTRIES</div>
-</div>
-</div>
+    <div class="logo">GOH</div>
 
-<div style="display:flex;align-items:center;gap:7px">
+    <div>
+      <div class="brand-title">GOH Bible Academy</div>
+      <div class="brand-sub">GATE OF HEAVEN MINISTRIES</div>
+    </div>
 
-<nav class="nav" id="nav">
-<a class="active" href="dashboard.html">Dashboard</a>
-<a href="course.html">My Course</a>
-<a href="exams.html">Exams</a>
-<a href="progress.html">Progress</a>
-<a href="certificate.html">Certificate</a>
-<a href="profile.html">Profile & Settings</a>
-<a href="support.html">Support</a>
-<button class="logout" onclick="logout()">Logout</button>
-</nav>
-
-<button class="menu-btn" onclick="toggleMenu()">☰</button>
-<button class="logout desktop-logout" onclick="logout()">Logout</button>
-
-</div>
-</div>
+  </div>
 </header>
 
 <main>
 
-<section class="welcome">
-<div class="welcome-label">STUDENT DASHBOARD</div>
-<h1>Welcome, <span id="studentName">Student</span> 👋</h1>
-<p>Continue growing in God's Word and preparing for faithful Christian service.</p>
-</section>
-
-<section class="student-card">
-
-<div class="student-head">
-<div class="avatar" id="avatar">S</div>
-<div>
-<div class="student-name" id="fullName">Student</div>
-<div class="student-email" id="studentEmail">Student account</div>
-</div>
-</div>
-
-<div class="details">
-<div class="detail">
-<div class="detail-label">Student ID</div>
-<div class="detail-value" id="studentId">—</div>
-</div>
-
-<div class="detail">
-<div class="detail-label">Membership</div>
-<div class="detail-value" id="membership">Active</div>
-</div>
-
-<div class="detail">
-<div class="detail-label">Course</div>
-<div class="detail-value">12 Months</div>
-</div>
-
-<div class="detail">
-<div class="detail-label">Learning Status</div>
-<div class="detail-value">Learning</div>
-</div>
-</div>
-
-</section>
-
-<section class="summary">
-
-<div class="stat blue">
-<div class="stat-icon">📚</div>
-<div class="stat-label">COURSE PROGRESS</div>
-<div class="stat-value" id="coursePercent">0%</div>
-</div>
-
-<div class="stat green">
-<div class="stat-icon">✓</div>
-<div class="stat-label">CORRECT ANSWERS</div>
-<div class="stat-value" id="correctAnswers">0 / 600</div>
-</div>
-
-<div class="stat purple">
-<div class="stat-icon">📝</div>
-<div class="stat-label">EXAMS COMPLETED</div>
-<div class="stat-value" id="examsCompleted">0 / 12</div>
-</div>
-
-<div class="stat orange">
-<div class="stat-icon">🎓</div>
-<div class="stat-label">CERTIFICATE</div>
-<div class="stat-value" id="certificateStatus">Pending</div>
-</div>
-
-</section>
-
-<section class="section">
-<h2 class="section-title">My Progress</h2>
-
-<div class="progress-grid">
-
-<div class="progress-card">
-<div class="progress-top">
-<span>Course Completion</span>
-<span class="progress-percent" id="courseProgressText">0%</span>
-</div>
-<div class="progress-bar">
-<div class="progress-fill" id="courseProgressBar"></div>
-</div>
-<div class="progress-info">12-month discipleship program</div>
-</div>
-
-<div class="progress-card">
-<div class="progress-top">
-<span>MCQ Progress</span>
-<span class="progress-percent" id="mcqProgressText">0%</span>
-</div>
-<div class="progress-bar">
-<div class="progress-fill" id="mcqProgressBar"></div>
-</div>
-<div class="progress-info" id="mcqInfo">0 of 600 correct answers</div>
-</div>
-
-<div class="progress-card">
-<div class="progress-top">
-<span>Exam Progress</span>
-<span class="progress-percent" id="examProgressText">0%</span>
-</div>
-<div class="progress-bar">
-<div class="progress-fill" id="examProgressBar"></div>
-</div>
-<div class="progress-info" id="examInfo">0 of 12 examinations completed</div>
-</div>
-
-</div>
-</section>
-
-<section class="section">
-<h2 class="section-title">My Course</h2>
-
-<div class="course-card">
-
-<div>
-<h2>Christian Discipleship & Ministry Preparation</h2>
-
-<p>
-Follow the complete 12-month structured course,
-study each month's lessons and complete the required examinations.
-</p>
-
-<div class="course-meta">
-<span class="pill">12 Months</span>
-<span class="pill">12 Subjects</span>
-<span class="pill">12 Exams</span>
-<span class="pill">600 MCQs</span>
-</div>
-</div>
-
-<a class="btn" href="course.html">View My Course →</a>
-
-</div>
-</section>
-
-<section class="section">
-<h2 class="section-title">Free AI Bible Teacher</h2>
-
-<div class="ai-card">
-
-<div class="ai-left">
-<div class="ai-icon">✨</div>
-
-<div>
-<h2>Learn with AI</h2>
-<p>
-Ask Bible-related questions, understand difficult passages
-and receive simple explanations while studying your course.
-</p>
-<div class="ai-limit">🎁 Free daily AI access — limited questions per day</div>
-</div>
-</div>
-
-<a class="btn ai" href="ai-bible-teacher.html">Open AI Bible Teacher</a>
-
-</div>
-</section>
-
-<section class="section">
-<h2 class="section-title">Certificate Progress</h2>
-
-<div class="certificate">
-
-<div class="cert-head">
-<div>
-<div class="cert-title">Certificate Requirements</div>
-<div class="cert-text">
-Reach 450 correct answers out of 600 to unlock your certificate.
-</div>
-</div>
-
-<div class="badge" id="certificateBadge">🔒 Pending</div>
-</div>
-
-<div class="cert-box">
-
-<div class="cert-progress-top">
-<span>Correct Answers</span>
-<span id="certCorrect">0 / 450</span>
-</div>
-
-<div class="cert-progress-bar">
-<div class="cert-progress-fill" id="certProgressBar"></div>
-</div>
-
-<div class="cert-message" id="certMessage">
-You need 450 correct answers to unlock the certificate.
-</div>
-
-</div>
-
-<div class="actions">
-
-<a class="btn locked" id="certificateButton"
-href="#" onclick="return openCertificate(event)">
-🔒 Certificate Locked
+<a class="back" href="course.html">
+  ← Course
 </a>
 
-<a class="btn" href="progress.html">Full Progress</a>
+<section class="hero">
 
-</div>
+  <div class="month" id="monthLabel">
+    MONTH 01 • STUDY NOTES
+  </div>
 
-</div>
+  <h1 id="pageTitle">
+    Study Notes
+  </h1>
+
+  <div class="subtitle">
+    Biblical study notes for your course.
+  </div>
+
+  <div class="languages">
+
+    <button class="lang active" onclick="changeLanguage('en')">
+      English
+    </button>
+
+    <button class="lang" onclick="changeLanguage('ta')">
+      தமிழ்
+    </button>
+
+    <button class="lang" onclick="changeLanguage('si')">
+      සිංහල
+    </button>
+
+  </div>
+
 </section>
 
-<section class="section">
-<h2 class="section-title">Quick Access</h2>
+<section id="content">
 
-<div class="quick">
+  <div class="loading">
+    Loading lesson notes...
+  </div>
 
-<a href="course.html">
-<div class="quick-icon">📚</div>
-<strong>My Course</strong>
-<span>View the complete course</span>
-</a>
+</section>
 
-<a href="exams.html">
-<div class="quick-icon">📝</div>
-<strong>Exams</strong>
-<span>View your examinations</span>
-</a>
+<div class="navigation">
 
-<a href="progress.html">
-<div class="quick-icon">📊</div>
-<strong>Progress</strong>
-<span>View detailed progress</span>
-</a>
+  <a id="previous" class="nav-btn" href="#">
+    ← Previous
+  </a>
 
-<a href="certificate.html">
-<div class="quick-icon">🎓</div>
-<strong>Certificate</strong>
-<span>Check certificate</span>
-</a>
-
-<a href="profile.html">
-<div class="quick-icon">👤</div>
-<strong>Profile & Settings</strong>
-<span>Manage your account</span>
-</a>
-
-<a href="ai-bible-teacher.html">
-<div class="quick-icon">✨</div>
-<strong>AI Bible Teacher</strong>
-<span>Free daily AI learning</span>
-</a>
+  <a id="next" class="nav-btn" href="#">
+    Next →
+  </a>
 
 </div>
-</section>
 
 </main>
 
@@ -432,174 +324,257 @@ href="#" onclick="return openCertificate(event)">
 </footer>
 
 <script>
-const API="https://goh-auth-api.createlk.workers.dev";
-const token=localStorage.getItem("goh_token");
 
-if(!token)window.location.href="login.html";
+const API =
+"https://goh-bible-exam-api.createlk.workers.dev";
 
-function toggleMenu(){
-  document.getElementById("nav").classList.toggle("open");
-}
+const params =
+new URLSearchParams(window.location.search);
 
-document.querySelectorAll(".nav a").forEach(link=>{
-  link.addEventListener("click",()=>{
-    document.getElementById("nav").classList.remove("open");
-  });
-});
+let month =
+Number(params.get("month") || 1);
 
-function setProgress(bar,text,value){
-  value=Math.max(0,Math.min(100,Number(value)||0));
-  document.getElementById(bar).style.width=value+"%";
-  document.getElementById(text).textContent=value+"%";
-}
+if(month < 1) month = 1;
+if(month > 12) month = 12;
 
-async function loadStudent(){
+let currentLanguage = "en";
+
+let noteData = null;
+
+
+/* LOAD NOTES */
+
+async function loadNotes(){
+
+  const content =
+    document.getElementById("content");
+
+  content.innerHTML = `
+    <div class="loading">
+      Loading lesson notes...
+    </div>
+  `;
+
   try{
-    const r=await fetch(API+"/me",{
-      headers:{Authorization:"Bearer "+token}
-    });
 
-    if(!r.ok)return;
+    const response =
+      await fetch(
+        API + "/notes?month=" + month
+      );
 
-    const data=await r.json();
-    const s=data?.student;
+    const data =
+      await response.json();
 
-    if(!s)return;
+    if(!response.ok || !data.success){
+      throw new Error(
+        data.error || "Unable to load notes"
+      );
+    }
 
-    const first=s.first_name||s.name||"Student";
-    const full=s.first_name&&s.last_name
-      ?s.first_name+" "+s.last_name
-      :(s.name||first);
+    if(!data.notes || !data.notes.length){
+      throw new Error(
+        "No notes found for this month."
+      );
+    }
 
-    document.getElementById("studentName").textContent=first;
-    document.getElementById("fullName").textContent=full;
-    document.getElementById("studentEmail").textContent=s.email||s.phone||"Student account";
-    document.getElementById("studentId").textContent=s.id||s.student_id||"—";
-    document.getElementById("avatar").textContent=first.charAt(0).toUpperCase();
+    noteData = data.notes[0];
 
-    if(s.membership_status)
-      document.getElementById("membership").textContent=s.membership_status;
+    renderNotes();
 
-  }catch(e){
-    console.log("Student information unavailable");
+    updateNavigation();
+
+  }catch(error){
+
+    console.error(error);
+
+    content.innerHTML = `
+      <div class="error">
+
+        <strong>
+          Unable to load the lesson notes.
+        </strong>
+
+        <div style="margin-top:6px">
+          ${escapeHtml(error.message)}
+        </div>
+
+        <button
+          class="retry"
+          onclick="loadNotes()">
+          Try Again
+        </button>
+
+      </div>
+    `;
+
   }
+
 }
 
-function loadLocalProgress(){
 
-  const course=Number(localStorage.getItem("goh_course_progress"))||0;
-  const correct=Number(localStorage.getItem("goh_correct_answers"))||0;
-  const exams=Number(localStorage.getItem("goh_exams_completed"))||0;
+/* DISPLAY NOTES */
 
-  const required=450;
+function renderNotes(){
 
-  document.getElementById("coursePercent").textContent=course+"%";
+  if(!noteData) return;
 
-  setProgress(
-    "courseProgressBar",
-    "courseProgressText",
-    course
-  );
+  let title =
+    noteData.title || "Study Notes";
 
-  const mcqPercent=Math.min(100,(correct/600)*100);
+  let text = "";
 
-  document.getElementById("correctAnswers").textContent=
-    correct+" / 600";
+  if(currentLanguage === "ta"){
 
-  setProgress(
-    "mcqProgressBar",
-    "mcqProgressText",
-    mcqPercent
-  );
+    text =
+      noteData.content_tamil ||
+      noteData.content ||
+      "தமிழ் குறிப்புகள் கிடைக்கவில்லை.";
 
-  document.getElementById("mcqInfo").textContent=
-    correct+" of 600 correct answers";
+  }else if(currentLanguage === "si"){
 
-  const examPercent=Math.min(100,(exams/12)*100);
-
-  document.getElementById("examsCompleted").textContent=
-    exams+" / 12";
-
-  setProgress(
-    "examProgressBar",
-    "examProgressText",
-    examPercent
-  );
-
-  document.getElementById("examInfo").textContent=
-    exams+" of 12 examinations completed";
-
-  const certPercent=Math.min(100,(correct/required)*100);
-
-  document.getElementById("certCorrect").textContent=
-    correct+" / "+required;
-
-  document.getElementById("certProgressBar").style.width=
-    certPercent+"%";
-
-  const badge=document.getElementById("certificateBadge");
-  const button=document.getElementById("certificateButton");
-  const status=document.getElementById("certificateStatus");
-  const message=document.getElementById("certMessage");
-
-  if(correct>=required){
-
-    badge.textContent="✓ Unlocked";
-    badge.classList.add("unlocked");
-
-    status.textContent="Unlocked";
-
-    message.textContent=
-      "Congratulations! You have completed the required 450 correct answers.";
-
-    button.classList.remove("locked");
-    button.textContent="🎓 View Certificate";
-    button.href="certificate.html";
+    text =
+      noteData.content_sinhala ||
+      noteData.content ||
+      "සිංහල සටහන් ලබාගත නොහැක.";
 
   }else{
 
-    const remaining=required-correct;
+    text =
+      noteData.content ||
+      "Lesson notes are not available.";
 
-    badge.textContent="🔒 Pending";
-    badge.classList.remove("unlocked");
-
-    status.textContent="Pending";
-
-    message.textContent=
-      "You need "+remaining+
-      " more correct answers to unlock the certificate.";
-
-    button.classList.add("locked");
-    button.textContent="🔒 Certificate Locked";
-    button.href="#";
-  }
-}
-
-function openCertificate(e){
-
-  const correct=
-    Number(localStorage.getItem("goh_correct_answers"))||0;
-
-  if(correct<450){
-    e.preventDefault();
-    alert(
-      "Certificate locked. You need "+
-      (450-correct)+
-      " more correct answers."
-    );
-    return false;
   }
 
-  return true;
+  document.getElementById("pageTitle")
+    .textContent = title;
+
+  document.getElementById("content").innerHTML = `
+
+    <article class="notes">
+
+      <div class="notes-title">
+        ${escapeHtml(title)}
+      </div>
+
+      <div>
+        ${formatText(text)}
+      </div>
+
+    </article>
+
+  `;
+
 }
 
-function logout(){
-  localStorage.removeItem("goh_token");
-  window.location.href="login.html";
+
+/* LANGUAGE */
+
+function changeLanguage(language){
+
+  currentLanguage = language;
+
+  document.querySelectorAll(".lang")
+    .forEach(button=>{
+      button.classList.remove("active");
+    });
+
+  if(language === "en")
+    document.querySelectorAll(".lang")[0]
+      .classList.add("active");
+
+  if(language === "ta")
+    document.querySelectorAll(".lang")[1]
+      .classList.add("active");
+
+  if(language === "si")
+    document.querySelectorAll(".lang")[2]
+      .classList.add("active");
+
+  renderNotes();
 }
 
-loadStudent();
-loadLocalProgress();
+
+/* PREVIOUS / NEXT */
+
+function updateNavigation(){
+
+  const previous =
+    document.getElementById("previous");
+
+  const next =
+    document.getElementById("next");
+
+  document.getElementById("monthLabel")
+    .textContent =
+    "MONTH " +
+    String(month).padStart(2,"0") +
+    " • STUDY NOTES";
+
+
+  if(month <= 1){
+
+    previous.classList.add("disabled");
+    previous.removeAttribute("href");
+
+  }else{
+
+    previous.classList.remove("disabled");
+
+    previous.href =
+      "month" +
+      (month - 1) +
+      "-notes.html";
+
+  }
+
+
+  if(month >= 12){
+
+    next.classList.add("disabled");
+    next.removeAttribute("href");
+
+  }else{
+
+    next.classList.remove("disabled");
+
+    next.href =
+      "month" +
+      (month + 1) +
+      "-notes.html";
+
+  }
+
+}
+
+
+/* FORMAT TEXT */
+
+function formatText(text){
+
+  return escapeHtml(text)
+    .replace(/\n\n/g,"</p><p>")
+    .replace(/\n/g,"<br>");
+}
+
+
+/* SECURITY */
+
+function escapeHtml(value){
+
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* START */
+
+loadNotes();
+
 </script>
 
 </body>
