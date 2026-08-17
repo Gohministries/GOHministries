@@ -4,12 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Month 01 Notes | New Life in Christ | GOH Bible Academy</title>
+<title>Month 01 Study Notes | GOH Bible Academy</title>
 
 <meta name="description"
-content="Month 01 Bible study notes: New Life in Christ.">
-
-<meta name="theme-color" content="#0b376d">
+content="GOH Bible Academy Month 01 study notes - New Life in Christ.">
 
 <style>
 *{
@@ -27,13 +25,15 @@ content="Month 01 Bible study notes: New Life in Christ.">
   --card:#fff;
   --border:#e4e7ec;
   --gold:#f3c95c;
+  --green:#027a48;
+  --greenbg:#ecfdf3;
 }
 
 body{
   font-family:Arial,Helvetica,sans-serif;
   background:var(--bg);
   color:var(--text);
-  line-height:1.7;
+  line-height:1.65;
 }
 
 header{
@@ -42,21 +42,46 @@ header{
   position:sticky;
   top:0;
   z-index:100;
+  box-shadow:0 2px 10px #0002;
 }
 
 .header-inner{
   max-width:1000px;
   margin:auto;
-  padding:13px 18px;
+  padding:12px 16px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:15px;
+  gap:12px;
 }
 
 .brand{
-  font-weight:800;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo{
+  width:40px;
+  height:40px;
+  border-radius:9px;
+  background:#fff;
+  color:var(--primary);
+  display:grid;
+  place-items:center;
+  font-size:12px;
+  font-weight:900;
+}
+
+.brand-title{
   font-size:16px;
+  font-weight:800;
+}
+
+.brand-sub{
+  font-size:9px;
+  opacity:.8;
+  margin-top:2px;
 }
 
 .back{
@@ -65,75 +90,128 @@ header{
   font-size:13px;
   font-weight:700;
   padding:8px 11px;
-  border:1px solid #ffffff40;
+  border:1px solid #ffffff35;
   border-radius:8px;
 }
 
 main{
   max-width:900px;
   margin:auto;
-  padding:30px 16px 50px;
+  padding:25px 15px 50px;
 }
 
 .hero{
-  background:linear-gradient(135deg,#061d39,#0b376d);
-  color:#fff;
-  border-radius:17px;
-  padding:30px 25px;
-  margin-bottom:22px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:24px;
+  margin-bottom:18px;
 }
 
 .label{
-  color:var(--gold);
+  color:var(--primary2);
   font-size:11px;
-  font-weight:800;
-  letter-spacing:1px;
+  font-weight:900;
+  letter-spacing:.8px;
+  margin-bottom:5px;
 }
 
-.hero h1{
+h1{
   font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(30px,7vw,45px);
-  line-height:1.15;
-  margin:7px 0 10px;
+  font-size:32px;
+  line-height:1.2;
+  margin-bottom:7px;
 }
 
-.hero p{
-  color:#dce7f3;
+.subtitle{
+  color:var(--muted);
   font-size:14px;
+}
+
+.languages{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+
+.lang{
+  border:1px solid var(--border);
+  background:#fff;
+  color:var(--primary);
+  padding:9px 15px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:800;
+  font-size:13px;
+}
+
+.lang.active{
+  background:var(--primary);
+  color:#fff;
+  border-color:var(--primary);
+}
+
+.loading{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:35px 20px;
+  text-align:center;
+  color:var(--muted);
+}
+
+.error{
+  background:#fff;
+  border:1px solid #f0d5d5;
+  border-radius:14px;
+  padding:25px;
+  text-align:center;
+  color:#b42318;
 }
 
 .lesson{
   background:#fff;
   border:1px solid var(--border);
-  border-radius:15px;
-  padding:24px;
-  margin-bottom:15px;
+  border-radius:14px;
+  padding:22px;
+  margin-bottom:14px;
 }
 
 .lesson-number{
   color:var(--primary2);
   font-size:11px;
-  font-weight:800;
-  letter-spacing:.8px;
+  font-weight:900;
+  letter-spacing:.7px;
   margin-bottom:5px;
 }
 
 .lesson h2{
   font-family:Georgia,"Times New Roman",serif;
   font-size:24px;
-  line-height:1.3;
-  margin-bottom:10px;
+  line-height:1.25;
+  margin-bottom:12px;
 }
 
 .lesson p{
-  color:#475467;
+  color:#344054;
   font-size:14px;
   margin-bottom:11px;
 }
 
+.lesson blockquote{
+  margin:15px 0;
+  padding:13px 15px;
+  border-left:4px solid var(--gold);
+  background:#fffaf0;
+  color:#344054;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:14px;
+}
+
 .lesson ul{
-  padding-left:20px;
-  color:#475467;
+  margin:10px 0 12px 20px;
+  color:#344054;
   font-size:14px;
 }
 
@@ -141,44 +219,51 @@ main{
   margin:5px 0;
 }
 
-.verse{
-  margin:15px 0;
-  padding:14px 16px;
-  border-left:4px solid var(--gold);
-  background:#fffbeb;
-  color:#475467;
-  font-size:13px;
-  font-style:italic;
-}
-
 .key{
-  margin-top:14px;
-  padding:14px;
-  background:#eef4ff;
-  border-radius:10px;
-  color:var(--primary);
+  margin-top:15px;
+  padding:12px 14px;
+  border-radius:9px;
+  background:var(--greenbg);
+  color:var(--green);
+  font-weight:700;
   font-size:13px;
-  font-weight:600;
 }
 
-.navigation{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
+.review{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:23px;
   margin-top:20px;
 }
 
+.review h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:24px;
+  margin-bottom:10px;
+}
+
+.review p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
 .btn{
-  display:inline-flex;
-  justify-content:center;
-  align-items:center;
+  display:inline-block;
+  text-decoration:none;
   padding:11px 16px;
   border-radius:8px;
   background:var(--primary);
   color:#fff;
-  text-decoration:none;
   font-size:13px;
-  font-weight:700;
+  font-weight:800;
 }
 
 .btn.secondary{
@@ -195,29 +280,31 @@ footer{
 
 @media(max-width:600px){
 
-  .header-inner{
-    padding:11px 14px;
+  main{
+    padding:18px 12px 40px;
   }
 
-  main{
-    padding:20px 12px 40px;
+  h1{
+    font-size:27px;
   }
 
   .hero{
-    padding:25px 19px;
+    padding:20px;
   }
 
   .lesson{
-    padding:19px;
+    padding:18px;
   }
 
-  .navigation{
-    flex-direction:column;
+  .lesson h2{
+    font-size:21px;
   }
 
-  .btn{
+  .actions .btn{
     width:100%;
+    text-align:center;
   }
+
 }
 </style>
 </head>
@@ -229,12 +316,22 @@ footer{
   <div class="header-inner">
 
     <div class="brand">
-      GOH Bible Academy
+
+      <div class="logo">GOH</div>
+
+      <div>
+        <div class="brand-title">
+          GOH Bible Academy
+        </div>
+
+        <div class="brand-sub">
+          GATE OF HEAVEN MINISTRIES
+        </div>
+      </div>
+
     </div>
 
-    <a
-      href="course.html"
-      class="back">
+    <a class="back" href="course.html">
       ← Course
     </a>
 
@@ -251,462 +348,76 @@ footer{
       MONTH 01 • STUDY NOTES
     </div>
 
-    <h1>
+    <h1 id="title">
       New Life in Christ
     </h1>
 
-    <p>
-      Understanding salvation, repentance, faith
-      and your new identity in Christ.
+    <p class="subtitle" id="subtitle">
+      Understanding salvation, repentance, faith and your new identity in Christ.
     </p>
+
+    <div class="languages">
+
+      <button
+        class="lang active"
+        data-lang="en"
+        onclick="changeLanguage('en')">
+        English
+      </button>
+
+      <button
+        class="lang"
+        data-lang="ta"
+        onclick="changeLanguage('ta')">
+        தமிழ்
+      </button>
+
+      <button
+        class="lang"
+        data-lang="si"
+        onclick="changeLanguage('si')">
+        සිංහල
+      </button>
+
+    </div>
 
   </section>
 
 
-  <!-- LESSON 01 -->
+  <div id="content">
 
-  <article class="lesson">
-
-    <div class="lesson-number">
-      LESSON 01
+    <div class="loading">
+      Loading study notes...
     </div>
 
-    <h2>
-      Understanding Salvation
-    </h2>
+  </div>
 
-    <p>
-      Salvation is God's gracious work of rescuing
-      sinners from sin and bringing them into a
-      restored relationship with Him through Jesus Christ.
-    </p>
 
-    <div class="verse">
-      “For by grace are ye saved through faith;
-      and that not of yourselves: it is the gift of God.”
-      — Ephesians 2:8
-    </div>
+  <div class="review" id="review" style="display:none">
 
-    <p>
-      Salvation is not something we earn through
-      good works. It is God's grace received through
-      faith in Jesus Christ.
-    </p>
-
-    <ul>
-      <li>We are saved by God's grace.</li>
-      <li>Jesus Christ is the way of salvation.</li>
-      <li>Salvation includes forgiveness of sins.</li>
-      <li>The believer begins a new relationship with God.</li>
-    </ul>
-
-    <div class="key">
-      Key truth: Salvation is God's gift through Jesus
-      Christ, received by faith.
-    </div>
-
-  </article>
-
-
-  <!-- LESSON 02 -->
-
-  <article class="lesson">
-
-    <div class="lesson-number">
-      LESSON 02
-    </div>
-
-    <h2>
-      Repentance
-    </h2>
-
-    <p>
-      Repentance means turning away from sin and
-      turning toward God. Genuine repentance involves
-      a changed heart and a changed direction of life.
-    </p>
-
-    <div class="verse">
-      “Repent ye therefore, and be converted,
-      that your sins may be blotted out.”
-      — Acts 3:19
-    </div>
-
-    <ul>
-      <li>Recognize sin.</li>
-      <li>Confess sin before God.</li>
-      <li>Turn away from sinful ways.</li>
-      <li>Turn toward God and His Word.</li>
-      <li>Continue walking in obedience.</li>
-    </ul>
-
-    <div class="key">
-      Key truth: Repentance is a genuine turning
-      of the heart toward God.
-    </div>
-
-  </article>
-
-
-  <!-- LESSON 03 -->
-
-  <article class="lesson">
-
-    <div class="lesson-number">
-      LESSON 03
-    </div>
-
-    <h2>
-      Faith in Jesus Christ
-    </h2>
-
-    <p>
-      Biblical faith means trusting Jesus Christ,
-      believing His Word and depending upon Him.
-      Faith is more than simply knowing facts about Jesus.
-    </p>
-
-    <div class="verse">
-      “For we walk by faith, not by sight.”
-      — 2 Corinthians 5:7
-    </div>
-
-    <ul>
-      <li>Believe in Jesus Christ.</li>
-      <li>Trust His finished work.</li>
-      <li>Depend on God's promises.</li>
-      <li>Live according to God's Word.</li>
-    </ul>
-
-    <div class="key">
-      Key truth: Faith trusts God even when we
-      cannot see the complete picture.
-    </div>
-
-  </article>
-
-
-  <!-- LESSON 04 -->
-
-  <article class="lesson">
-
-    <div class="lesson-number">
-      LESSON 04
-    </div>
-
-    <h2>
-      A New Creation
-    </h2>
-
-    <p>
-      When a person comes to Christ, God begins
-      a new work in that person's life. The believer
-      receives a new identity in Christ.
-    </p>
-
-    <div class="verse">
-      “Therefore if any man be in Christ, he is
-      a new creature: old things are passed away;
-      behold, all things are become new.”
-      — 2 Corinthians 5:17
-    </div>
-
-    <p>
-      The Christian is no longer defined by the old
-      life. Christ gives a new purpose, new hope
-      and a new direction.
-    </p>
-
-    <div class="key">
-      Key truth: In Christ, the believer has a new
-      identity and a new direction.
-    </div>
-
-  </article>
-
-
-  <!-- LESSON 05 -->
-
-  <article class="lesson">
-
-    <div class="lesson-number">
-      LESSON 05
-    </div>
-
-    <h2>
-      Forgiveness and Assurance
-    </h2>
-
-    <p>
-      God forgives those who come to Him through
-      Jesus Christ. Christians can trust God's promises
-      instead of living continually under condemnation.
-    </p>
-
-    <div class="verse">
-      “There is therefore now no condemnation to
-      them which are in Christ Jesus.”
-      — Romans 8:1
-    </div>
-
-    <ul>
-      <li>Confess your sins to God.</li>
-      <li>Trust God's forgiveness.</li>
-      <li>Do not return deliberately to your old life.</li>
-      <li>Walk daily in God's grace.</li>
-    </ul>
-
-    <div class="key">
-      Key truth: The believer can trust God's
-      forgiveness and promises.
-    </div>
-
-  </article>
-
-
-  <!-- LESSON 06 -->
-
-  <article class="lesson">
-
-    <div class="lesson-number">
-      LESSON 06
-    </div>
-
-    <h2>
-      Walking with Christ
-    </h2>
-
-    <p>
-      The Christian life is a daily walk with Jesus.
-      Spiritual growth requires prayer, Bible study,
-      obedience and fellowship with other believers.
-    </p>
-
-    <ul>
-      <li>Spend time with God in prayer.</li>
-      <li>Read and study the Bible.</li>
-      <li>Obey God's Word.</li>
-      <li>Participate in Christian fellowship.</li>
-      <li>Serve others.</li>
-    </ul>
-
-    <div class="verse">
-      “As ye have therefore received Christ Jesus
-      the Lord, so walk ye in him.”
-      — Colossians 2:6
-    </div>
-
-    <div class="key">
-      Key truth: Following Christ is a daily journey
-      of faith and obedience.
-    </div>
-
-  </article>
-
-
-  <!-- LESSON 07 -->
-
-  <article class="lesson">
-
-    <div class="lesson-number">
-      LESSON 07
-    </div>
-
-    <h2>
-      Freedom from the Old Life
-    </h2>
-
-    <p>
-      In Christ, believers are called to leave behind
-      sinful patterns and pursue a life that honors God.
-      This involves continual spiritual growth.
-    </p>
-
-    <ul>
-      <li>Put away sinful habits.</li>
-      <li>Guard your thoughts.</li>
-      <li>Choose godly relationships.</li>
-      <li>Practice self-control.</li>
-      <li>Seek God's strength when tempted.</li>
-    </ul>
-
-    <div class="key">
-      Key truth: New life in Christ should produce
-      a transformed way of living.
-    </div>
-
-  </article>
-
-
-  <!-- LESSON 08 -->
-
-  <article class="lesson">
-
-    <div class="lesson-number">
-      LESSON 08
-    </div>
-
-    <h2>
-      Identity in Christ
-    </h2>
-
-    <p>
-      A Christian's identity is rooted in Christ rather
-      than in past failures, achievements or the opinions
-      of other people.
-    </p>
-
-    <ul>
-      <li>You belong to Christ.</li>
-      <li>You are called to live for God.</li>
-      <li>You have a new purpose.</li>
-      <li>You are called to reflect Christ's character.</li>
-    </ul>
-
-    <div class="verse">
-      “But ye are a chosen generation, a royal
-      priesthood, an holy nation, a peculiar people.”
-      — 1 Peter 2:9
-    </div>
-
-    <div class="key">
-      Key truth: Our identity and purpose are found
-      in Christ.
-    </div>
-
-  </article>
-
-
-  <!-- LESSON 09 -->
-
-  <article class="lesson">
-
-    <div class="lesson-number">
-      LESSON 09
-    </div>
-
-    <h2>
-      Living for Christ
-    </h2>
-
-    <p>
-      The new believer is called to live a life that
-      represents Jesus Christ. Our words, actions,
-      relationships and decisions should honor God.
-    </p>
-
-    <div class="verse">
-      “And whatsoever ye do, do it heartily,
-      as to the Lord.”
-      — Colossians 3:23
-    </div>
-
-    <ul>
-      <li>Honor God in daily decisions.</li>
-      <li>Love other people.</li>
-      <li>Forgive others.</li>
-      <li>Serve faithfully.</li>
-      <li>Be a witness for Christ.</li>
-    </ul>
-
-    <div class="key">
-      Key truth: The Christian life should demonstrate
-      the character of Christ.
-    </div>
-
-  </article>
-
-
-  <!-- LESSON 10 -->
-
-  <article class="lesson">
-
-    <div class="lesson-number">
-      LESSON 10
-    </div>
-
-    <h2>
-      Growing as a Disciple
-    </h2>
-
-    <p>
-      Every believer is called to continue growing in
-      Christ and helping others know Him. Discipleship
-      is a lifelong journey.
-    </p>
-
-    <div class="verse">
-      “Go ye therefore, and teach all nations,
-      baptizing them in the name of the Father,
-      and of the Son, and of the Holy Ghost.”
-      — Matthew 28:19
-    </div>
-
-    <ul>
-      <li>Continue learning God's Word.</li>
-      <li>Grow in prayer.</li>
-      <li>Serve the church.</li>
-      <li>Share the Gospel.</li>
-      <li>Help others follow Christ.</li>
-    </ul>
-
-    <div class="key">
-      Key truth: A disciple follows Jesus and helps
-      others become disciples.
-    </div>
-
-  </article>
-
-
-  <!-- FINAL REVIEW -->
-
-  <article class="lesson">
-
-    <div class="lesson-number">
+    <h2 id="reviewTitle">
       MONTH 01 REVIEW
-    </div>
-
-    <h2>
-      Before Taking the Examination
     </h2>
 
-    <p>
-      Review all ten lessons carefully before taking
-      the Month 01 examination.
+    <p id="reviewText">
+      Review all ten lessons carefully before taking the Month 01 examination.
     </p>
 
-    <ul>
-      <li>Understand salvation by grace through faith.</li>
-      <li>Understand biblical repentance.</li>
-      <li>Understand faith in Jesus Christ.</li>
-      <li>Know what it means to be a new creation.</li>
-      <li>Understand forgiveness and assurance.</li>
-      <li>Know the importance of prayer and Bible study.</li>
-      <li>Understand your new identity in Christ.</li>
-      <li>Learn how to live as a disciple of Jesus.</li>
-    </ul>
+    <div class="actions">
 
-    <div class="key">
-      📖 Study all ten lessons before attempting
-      the 50-question Month 01 examination.
+      <a
+        class="btn secondary"
+        href="course.html">
+        ← Back to Course
+      </a>
+
+      <a
+        class="btn"
+        href="month1-exam.html">
+        📝 Take Month 01 Exam
+      </a>
+
     </div>
-
-  </article>
-
-
-  <div class="navigation">
-
-    <a
-      class="btn secondary"
-      href="course.html">
-      ← Back to Course
-    </a>
-
-    <a
-      class="btn exam"
-      href="month1-exam.html">
-      📝 Take Month 01 Exam
-    </a>
 
   </div>
 
@@ -716,6 +427,351 @@ footer{
 <footer>
 © 2026 GOH Bible Academy. All rights reserved.
 </footer>
+
+
+<script>
+
+/*
+  IMPORTANT:
+  Replace this URL ONLY if your existing
+  Cloudflare notes API uses another URL.
+*/
+const NOTES_API =
+"https://goh-bible-exam-api.createlk.workers.dev";
+
+
+let currentLanguage = "en";
+
+
+async function loadNotes(language){
+
+  currentLanguage = language;
+
+  setActiveLanguage(language);
+
+  const content =
+    document.getElementById("content");
+
+  content.innerHTML = `
+    <div class="loading">
+      Loading ${languageName(language)} notes...
+    </div>
+  `;
+
+  try{
+
+    /*
+      Expected API:
+
+      GET /notes?month=1&lang=en
+      GET /notes?month=1&lang=ta
+      GET /notes?month=1&lang=si
+
+      The Worker should return either:
+
+      {
+        "success":true,
+        "notes":[...]
+      }
+
+      or
+
+      {
+        "success":true,
+        "data":[...]
+      }
+    */
+
+    const response =
+      await fetch(
+        NOTES_API +
+        "/notes?month=1&lang=" +
+        encodeURIComponent(language),
+        {
+          method:"GET",
+          cache:"no-store"
+        }
+      );
+
+    if(!response.ok){
+      throw new Error(
+        "HTTP " + response.status
+      );
+    }
+
+    const data =
+      await response.json();
+
+    const notes =
+      data.notes ||
+      data.data ||
+      [];
+
+    if(!Array.isArray(notes) || !notes.length){
+
+      throw new Error(
+        "No notes returned"
+      );
+
+    }
+
+    renderNotes(notes,language);
+
+  }catch(error){
+
+    console.error(
+      "Notes error:",
+      error
+    );
+
+    content.innerHTML = `
+
+      <div class="error">
+
+        <h2>
+          Unable to load the lesson notes.
+        </h2>
+
+        <p style="margin-top:8px">
+          Please try again.
+        </p>
+
+        <button
+          class="lang"
+          style="margin-top:15px"
+          onclick="loadNotes(currentLanguage)">
+          Try Again
+        </button>
+
+      </div>
+
+    `;
+
+    document
+      .getElementById("review")
+      .style.display="none";
+
+  }
+
+}
+
+
+function renderNotes(notes,language){
+
+  const content =
+    document.getElementById("content");
+
+  content.innerHTML =
+    notes.map((note,index)=>{
+
+      return `
+
+        <article class="lesson">
+
+          <div class="lesson-number">
+            LESSON ${String(index+1).padStart(2,"0")}
+          </div>
+
+          <h2>
+            ${safe(
+              note.title ||
+              note.name ||
+              ""
+            )}
+          </h2>
+
+          ${
+            note.content
+            ? formatContent(note.content)
+            : ""
+          }
+
+          ${
+            note.description
+            ? `<p>${safe(note.description)}</p>`
+            : ""
+          }
+
+          ${
+            note.verse
+            ? `
+              <blockquote>
+                ${safe(note.verse)}
+              </blockquote>
+            `
+            : ""
+          }
+
+          ${
+            Array.isArray(note.points)
+            ? `
+              <ul>
+                ${
+                  note.points.map(point=>
+                    `<li>${safe(point)}</li>`
+                  ).join("")
+                }
+              </ul>
+            `
+            : ""
+          }
+
+          ${
+            note.key_truth
+            ? `
+              <div class="key">
+                ${safe(note.key_truth)}
+              </div>
+            `
+            : ""
+          }
+
+        </article>
+
+      `;
+
+    }).join("");
+
+  updateLanguageText(language);
+
+  document
+    .getElementById("review")
+    .style.display="block";
+
+}
+
+
+function formatContent(value){
+
+  if(!value) return "";
+
+  /*
+    Allows the API to return simple paragraphs
+    separated by blank lines.
+  */
+
+  return String(value)
+    .split(/\n\s*\n/)
+    .map(paragraph =>
+      `<p>${safe(paragraph).replace(/\n/g,"<br>")}</p>`
+    )
+    .join("");
+
+}
+
+
+function updateLanguageText(language){
+
+  const title =
+    document.getElementById("title");
+
+  const subtitle =
+    document.getElementById("subtitle");
+
+  const reviewTitle =
+    document.getElementById("reviewTitle");
+
+  const reviewText =
+    document.getElementById("reviewText");
+
+  if(language==="ta"){
+
+    title.textContent =
+      "கிறிஸ்துவில் புதிய வாழ்க்கை";
+
+    subtitle.textContent =
+      "இரட்சிப்பு, மனந்திரும்புதல், விசுவாசம் மற்றும் கிறிஸ்துவில் உங்கள் புதிய அடையாளத்தைப் புரிந்துகொள்வோம்.";
+
+    reviewTitle.textContent =
+      "மாதம் 01 மீளாய்வு";
+
+    reviewText.textContent =
+      "மாதம் 01 பரீட்சையை எழுதுவதற்கு முன் அனைத்து பத்து பாடங்களையும் கவனமாகப் படியுங்கள்.";
+
+  }else if(language==="si"){
+
+    title.textContent =
+      "ක්‍රිස්තුස් තුළ නව ජීවිතය";
+
+    subtitle.textContent =
+      "ගැළවීම, පසුතැවීම, ඇදහිල්ල සහ ක්‍රිස්තුස් තුළ ඔබගේ නව අනන්‍යතාවය අවබෝධ කරගැනීම.";
+
+    reviewTitle.textContent =
+      "මාසය 01 නැවත සමාලෝචනය";
+
+    reviewText.textContent =
+      "මාසය 01 විභාගයට පෙර පාඩම් දහයම හොඳින් නැවත අධ්‍යයනය කරන්න.";
+
+  }else{
+
+    title.textContent =
+      "New Life in Christ";
+
+    subtitle.textContent =
+      "Understanding salvation, repentance, faith and your new identity in Christ.";
+
+    reviewTitle.textContent =
+      "MONTH 01 REVIEW";
+
+    reviewText.textContent =
+      "Review all ten lessons carefully before taking the Month 01 examination.";
+
+  }
+
+}
+
+
+function changeLanguage(language){
+
+  loadNotes(language);
+
+}
+
+
+function setActiveLanguage(language){
+
+  document
+    .querySelectorAll(".lang")
+    .forEach(button=>{
+
+      button.classList.toggle(
+        "active",
+        button.dataset.lang === language
+      );
+
+    });
+
+}
+
+
+function languageName(language){
+
+  if(language==="ta") return "Tamil";
+  if(language==="si") return "Sinhala";
+
+  return "English";
+
+}
+
+
+function safe(value){
+
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/*
+  Load English by default.
+*/
+loadNotes("en");
+
+</script>
 
 </body>
 </html>
