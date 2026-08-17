@@ -37,8 +37,6 @@ body{
   min-height:100vh;
 }
 
-/* HEADER */
-
 header{
   background:var(--primary);
   color:#fff;
@@ -88,8 +86,6 @@ header{
   margin-top:3px;
 }
 
-/* NAVIGATION */
-
 .nav{
   display:flex;
   align-items:center;
@@ -134,8 +130,6 @@ header{
   font-size:18px;
 }
 
-/* MAIN */
-
 main{
   max-width:1150px;
   margin:auto;
@@ -154,8 +148,6 @@ main{
 .welcome p{
   color:var(--muted);
 }
-
-/* CARDS */
 
 .grid{
   display:grid;
@@ -188,8 +180,6 @@ main{
   margin-top:5px;
 }
 
-/* SECTION */
-
 .section{
   margin-top:20px;
 }
@@ -198,8 +188,6 @@ main{
   font-size:21px;
   margin-bottom:14px;
 }
-
-/* PROGRESS */
 
 .progress-card{
   background:#fff;
@@ -230,8 +218,6 @@ main{
   border-radius:20px;
   transition:width .5s ease;
 }
-
-/* CERTIFICATE */
 
 .certificate{
   background:#fff;
@@ -303,8 +289,6 @@ main{
   color:var(--green);
 }
 
-/* BUTTONS */
-
 .actions{
   display:flex;
   gap:10px;
@@ -319,6 +303,7 @@ main{
   font-weight:700;
   background:var(--primary);
   color:#fff;
+  display:inline-block;
 }
 
 .action.secondary{
@@ -326,7 +311,12 @@ main{
   color:var(--primary);
 }
 
-/* MONTHS */
+.action.exam{
+  background:var(--primary2);
+  padding:9px 12px;
+  font-size:12px;
+  margin-top:12px;
+}
 
 .months{
   display:grid;
@@ -353,6 +343,12 @@ main{
   margin-bottom:12px;
 }
 
+.month-info{
+  color:var(--muted);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
 .status{
   display:inline-block;
   padding:6px 9px;
@@ -373,8 +369,6 @@ main{
   color:var(--primary2);
 }
 
-/* FOOTER */
-
 footer{
   text-align:center;
   color:var(--muted);
@@ -382,15 +376,18 @@ footer{
   padding:25px 15px;
 }
 
-/* LOADING */
-
 .loading{
   text-align:center;
   padding:50px 20px;
   color:var(--muted);
 }
 
-/* MOBILE */
+.error-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:25px;
+}
 
 @media(max-width:1000px){
 
@@ -514,6 +511,10 @@ footer{
     width:100%;
     text-align:center;
   }
+
+  .action.exam{
+    width:100%;
+  }
 }
 </style>
 </head>
@@ -581,15 +582,13 @@ footer{
       <button
         class="menu-btn"
         onclick="toggleMenu()"
-        aria-label="Open navigation"
-      >
+        aria-label="Open navigation">
         ☰
       </button>
 
       <button
         class="logout desktop-logout"
-        onclick="logout()"
-      >
+        onclick="logout()">
         Logout
       </button>
 
@@ -599,7 +598,6 @@ footer{
 
 </header>
 
-
 <main id="app">
 
   <div class="loading">
@@ -608,20 +606,22 @@ footer{
 
 </main>
 
-
 <footer>
   © 2026 GOH Bible Academy. All rights reserved.
 </footer>
-
 
 <script>
 
 const API =
 "https://goh-auth-api.createlk.workers.dev";
 
+const EXAM_API =
+"https://goh-bible-exam-api.createlk.workers.dev";
+
 const TOTAL_MCQ = 600;
 const REQUIRED_CORRECT = 480;
 const TOTAL_EXAMS = 12;
+const QUESTIONS_PER_EXAM = 50;
 
 const months = [
 
@@ -643,18 +643,12 @@ const months = [
 const token =
 localStorage.getItem("goh_token");
 
-
-/* LOGIN CHECK */
-
 if(!token){
 
   window.location.href =
     "login.html";
 
 }
-
-
-/* MOBILE MENU */
 
 function toggleMenu(){
 
@@ -663,9 +657,6 @@ function toggleMenu(){
     .classList.toggle("open");
 
 }
-
-
-/* CLOSE MENU AFTER LINK */
 
 document.addEventListener("click",function(e){
 
@@ -678,9 +669,6 @@ document.addEventListener("click",function(e){
   }
 
 });
-
-
-/* LOAD STUDENT */
 
 async function loadDashboard(){
 
@@ -721,7 +709,7 @@ async function loadDashboard(){
     document.getElementById("app")
       .innerHTML = `
 
-        <div class="card">
+        <div class="error-card">
 
           <h2>
             Unable to load dashboard
@@ -736,8 +724,7 @@ async function loadDashboard(){
 
             <a
               class="action"
-              href="dashboard.html"
-            >
+              href="dashboard.html">
               Try Again
             </a>
 
@@ -751,15 +738,14 @@ async function loadDashboard(){
 
 }
 
-
-/* RENDER */
-
 function renderDashboard(student){
 
   /*
-    Connect your academic progress API here
-    when the course/exam/progress system is ready.
-  */
+   * Current dashboard values.
+   *
+   * These are kept at zero until the exam/progress
+   * result endpoint is connected.
+   */
 
   const correctMCQ = 0;
   const completedExams = 0;
@@ -803,7 +789,6 @@ function renderDashboard(student){
     completedExams >= TOTAL_EXAMS &&
     programCompletion >= 100 &&
     ministryRequirement;
-
 
   document.getElementById("app")
     .innerHTML = `
@@ -871,7 +856,7 @@ function renderDashboard(student){
           </div>
 
           <div class="small">
-            Monthly exams completed
+            50 questions per monthly exam
           </div>
 
         </div>
@@ -920,8 +905,8 @@ function renderDashboard(student){
 
             <div
               class="progress-fill"
-              style="width:${programCompletion}%"
-            ></div>
+              style="width:${programCompletion}%">
+            </div>
 
           </div>
 
@@ -945,8 +930,10 @@ function renderDashboard(student){
 
             <div
               class="progress-fill"
-              style="width:${Math.round(correctMCQ/TOTAL_MCQ*100)}%"
-            ></div>
+              style="width:${Math.round(
+                correctMCQ/TOTAL_MCQ*100
+              )}%">
+            </div>
 
           </div>
 
@@ -1070,8 +1057,8 @@ function renderDashboard(student){
 
               <div
                 class="progress-fill"
-                style="width:${certificateAcademic}%"
-              ></div>
+                style="width:${certificateAcademic}%">
+              </div>
 
             </div>
 
@@ -1098,15 +1085,13 @@ function renderDashboard(student){
 
             <a
               class="action"
-              href="course.html"
-            >
+              href="course.html">
               Continue Learning
             </a>
 
             <a
               class="action secondary"
-              href="certificate.html"
-            >
+              href="certificate.html">
               View Certificate
             </a>
 
@@ -1124,31 +1109,69 @@ function renderDashboard(student){
         </h2>
 
         <p style="color:#667085;margin-bottom:14px">
-          Complete each month's lessons and examination.
+          Complete each month's lessons and
+          50-question examination.
         </p>
 
 
         <div class="months">
 
-          ${months.map((month,index)=>`
+          ${months.map((month,index)=>{
 
-            <div class="month">
+            const monthNo = index + 1;
 
-              <div class="month-number">
-                MONTH ${String(index+1).padStart(2,"0")}
+            const isFirst =
+              monthNo === 1;
+
+            return `
+
+              <div class="month">
+
+                <div class="month-number">
+                  MONTH ${String(monthNo).padStart(2,"0")}
+                </div>
+
+                <h3>
+                  ${month}
+                </h3>
+
+                <div class="month-info">
+                  10 lessons • 50-question exam
+                </div>
+
+                <span class="status ${
+                  isFirst
+                  ? "progress"
+                  : ""
+                }">
+                  ${
+                    isFirst
+                    ? "Ready"
+                    : "Pending"
+                  }
+                </span>
+
+                ${
+                  isFirst
+                  ?
+                  `
+                  <br>
+
+                  <a
+                    class="action exam"
+                    href="month1-exam.html">
+                    Take Month 1 Exam
+                  </a>
+                  `
+                  :
+                  ""
+                }
+
               </div>
 
-              <h3>
-                ${month}
-              </h3>
+            `;
 
-              <span class="status">
-                Pending
-              </span>
-
-            </div>
-
-          `).join("")}
+          }).join("")}
 
         </div>
 
@@ -1181,9 +1204,6 @@ function renderDashboard(student){
 
 }
 
-
-/* LOGOUT */
-
 async function logout(){
 
   try{
@@ -1213,9 +1233,6 @@ async function logout(){
 
 }
 
-
-/* SECURITY */
-
 function escapeHTML(value){
 
   return String(value)
@@ -1226,9 +1243,6 @@ function escapeHTML(value){
     .replace(/'/g,"&#039;");
 
 }
-
-
-/* START */
 
 loadDashboard();
 
