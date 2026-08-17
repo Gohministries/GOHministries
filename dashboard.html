@@ -7,642 +7,369 @@
 <title>Student Dashboard | GOH Bible Academy</title>
 
 <meta name="description"
-content="GOH Bible Academy student dashboard with sequential Biblical Studies from Certificate to PhD.">
+content="GOH Bible Academy student dashboard with discipleship progress, examinations and certificate progress.">
 
 <meta name="theme-color" content="#0b376d">
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f5f7fa;
-  color:#172033;
-  line-height:1.5;
+font-family:Arial,Helvetica,sans-serif;
+background:#f6f8fb;
+color:#172033;
+line-height:1.5
 }
 
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-button{
-  font:inherit;
-}
+a{text-decoration:none;color:inherit}
 
 .container{
-  width:min(1120px,92%);
-  margin:auto;
+width:min(1050px,92%);
+margin:auto
 }
 
 /* HEADER */
 
 header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  height:70px;
-  background:rgba(255,255,255,.97);
-  border-bottom:1px solid #e7ebf0;
-  backdrop-filter:blur(12px);
+background:#fff;
+border-bottom:1px solid #e5eaf1
 }
 
 .nav{
-  height:70px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
+height:68px;
+display:flex;
+align-items:center;
+justify-content:space-between
 }
 
 .brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
+display:flex;
+align-items:center;
+gap:10px
 }
 
 .logo{
-  width:42px;
-  height:42px;
-  display:grid;
-  place-items:center;
-  border-radius:11px;
-  background:#0b376d;
-  color:#fff;
-  font-size:12px;
-  font-weight:900;
+width:41px;
+height:41px;
+display:grid;
+place-items:center;
+border-radius:10px;
+background:#0b376d;
+color:#fff;
+font-size:12px;
+font-weight:900
 }
 
 .brand strong{
-  display:block;
-  color:#0b376d;
-  font-size:15px;
-  line-height:1.2;
+display:block;
+color:#0b376d;
+font-size:15px
 }
 
 .brand small{
-  display:block;
-  margin-top:2px;
-  color:#667085;
-  font-size:8px;
-  font-weight:700;
-  letter-spacing:1px;
+display:block;
+color:#667085;
+font-size:8px;
+font-weight:700;
+letter-spacing:.7px
 }
 
 .logout{
-  border:0;
-  background:#eef3f8;
-  color:#0b376d;
-  padding:9px 14px;
-  border-radius:9px;
-  font-size:12px;
-  font-weight:800;
-  cursor:pointer;
-}
-
-/* MAIN */
-
-main{
-  padding:35px 0 65px;
+border:1px solid #d9e0e9;
+background:#fff;
+color:#344054;
+padding:8px 13px;
+border-radius:7px;
+font-size:11px;
+font-weight:700
 }
 
 /* HERO */
 
 .hero{
-  background:linear-gradient(135deg,#0b376d,#15589b);
-  color:#fff;
-  border-radius:20px;
-  padding:30px;
-  margin-bottom:22px;
-  box-shadow:0 12px 30px rgba(11,55,109,.15);
-}
-
-.hero-label{
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:1.4px;
-  text-transform:uppercase;
-  opacity:.72;
-  margin-bottom:7px;
+background:linear-gradient(135deg,#061d39,#0b376d);
+color:#fff;
+padding:38px 0
 }
 
 .hero h1{
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(28px,5vw,40px);
-  line-height:1.15;
-  margin-bottom:8px;
+font-family:Georgia,"Times New Roman",serif;
+font-size:34px;
+margin-bottom:5px
 }
 
 .hero p{
-  font-size:14px;
-  opacity:.9;
+color:#cbd8e7;
+font-size:13px
 }
 
-/* STATS */
+/* MAIN */
 
-.stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-  margin-bottom:24px;
+main{
+padding:30px 0 60px
 }
 
-.stat{
-  background:#fff;
-  border:1px solid #e2e7ee;
-  border-radius:15px;
-  padding:19px;
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px
 }
-
-.stat-label{
-  color:#667085;
-  font-size:11px;
-  font-weight:700;
-  margin-bottom:6px;
-}
-
-.stat-value{
-  color:#0b376d;
-  font-size:25px;
-  font-weight:900;
-}
-
-.stat-sub{
-  color:#98a2b3;
-  font-size:10px;
-  margin-top:3px;
-}
-
-/* CARD */
 
 .card{
-  background:#fff;
-  border:1px solid #e2e7ee;
-  border-radius:17px;
-  padding:23px;
-  margin-bottom:20px;
-}
-
-.card-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:18px;
+background:#fff;
+border:1px solid #e5eaf1;
+border-radius:14px;
+padding:21px
 }
 
 .card h2{
-  color:#0b376d;
-  font-size:18px;
+font-size:17px;
+margin-bottom:5px
 }
 
-.card-head p{
-  color:#667085;
-  font-size:11px;
+.card p{
+font-size:12px;
+color:#667085
 }
 
-/* ACADEMIC PATH */
-
-.path{
-  display:flex;
-  flex-direction:column;
-  gap:0;
+.stat{
+font-size:27px;
+font-weight:900;
+color:#0b376d;
+margin:5px 0
 }
 
-.level-wrap{
-  position:relative;
+/* PROGRESS */
+
+.progress-card{
+grid-column:1/-1
 }
 
-.level-wrap:not(:last-child)::after{
-  content:"";
-  position:absolute;
-  left:24px;
-  top:57px;
-  bottom:-1px;
-  width:2px;
-  background:#e4e9ef;
+.progress-row{
+margin-top:17px
 }
 
-.level{
-  position:relative;
-  z-index:1;
-  display:grid;
-  grid-template-columns:50px 1fr auto;
-  gap:15px;
-  align-items:center;
-  padding:15px 0;
+.progress-head{
+display:flex;
+justify-content:space-between;
+font-size:12px;
+font-weight:700;
+margin-bottom:7px
 }
 
-.level-number{
-  width:48px;
-  height:48px;
-  display:grid;
-  place-items:center;
-  border-radius:50%;
-  background:#eaf1f8;
-  color:#0b376d;
-  font-size:12px;
-  font-weight:900;
-  border:3px solid #fff;
-  box-shadow:0 0 0 1px #dce4ec;
+.bar{
+height:10px;
+background:#e8edf3;
+border-radius:20px;
+overflow:hidden
 }
 
-.level.unlocked .level-number{
-  background:#0b376d;
-  color:#fff;
+.fill{
+height:100%;
+width:0;
+background:#0b376d;
+border-radius:20px;
+transition:.4s
 }
 
-.level.locked .level-number{
-  background:#eef1f4;
-  color:#98a2b3;
+.gold-fill{
+background:#f3c95c
 }
 
-.level-info h3{
-  color:#172033;
-  font-size:15px;
-  margin-bottom:3px;
+.green-fill{
+background:#18a957
 }
 
-.level-info p{
-  color:#667085;
-  font-size:11px;
+/* CERTIFICATE */
+
+.certificate{
+grid-column:1/-1;
+background:#0b376d;
+color:#fff;
+border:0
 }
 
-.level-status{
-  padding:6px 10px;
-  border-radius:20px;
-  font-size:9px;
-  font-weight:900;
-  white-space:nowrap;
+.certificate h2{
+font-family:Georgia,"Times New Roman",serif;
+font-size:27px
 }
 
-.level-status.open{
-  background:#eaf7ef;
-  color:#177245;
+.certificate p{
+color:#dce7f3
 }
 
-.level-status.lock{
-  background:#f1f3f5;
-  color:#667085;
+.requirements{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+margin:20px 0
 }
 
-.level-progress{
-  height:6px;
-  margin-top:8px;
-  background:#edf1f5;
-  border-radius:10px;
-  overflow:hidden;
+.requirement{
+padding:14px;
+border:1px solid #ffffff20;
+border-radius:9px
 }
 
-.level-progress span{
-  display:block;
-  height:100%;
-  background:#0b376d;
-  width:0;
+.requirement strong{
+display:block;
+font-size:20px;
+color:#f3c95c
 }
 
-/* SUB COURSES */
-
-.subcourses{
-  margin:0 0 14px 65px;
-  border-left:1px solid #e2e7ee;
-  padding-left:17px;
-}
-
-.subcourse{
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:12px;
-  align-items:center;
-  padding:13px;
-  margin-bottom:8px;
-  border:1px solid #e7ebf0;
-  border-radius:12px;
-  background:#fff;
-}
-
-.subcourse:last-child{
-  margin-bottom:0;
-}
-
-.subcourse.locked{
-  background:#fafbfc;
-}
-
-.subcourse-title{
-  font-size:12px;
-  font-weight:800;
-  color:#172033;
-}
-
-.subcourse-meta{
-  color:#667085;
-  font-size:10px;
-  margin-top:2px;
-}
-
-.subcourse-status{
-  font-size:9px;
-  font-weight:900;
-  padding:5px 8px;
-  border-radius:15px;
-  white-space:nowrap;
-}
-
-.subcourse-status.start{
-  background:#edf5fc;
-  color:#0b376d;
-}
-
-.subcourse-status.done{
-  background:#eaf7ef;
-  color:#177245;
-}
-
-.subcourse-status.lock{
-  background:#f1f3f5;
-  color:#98a2b3;
-}
-
-/* GRID */
-
-.grid{
-  display:grid;
-  grid-template-columns:1.4fr 1fr;
-  gap:20px;
-}
-
-/* COURSE */
-
-.course{
-  padding:16px;
-  border:1px solid #e7ebf0;
-  border-radius:13px;
-  margin-bottom:11px;
-}
-
-.course:last-child{
-  margin-bottom:0;
-}
-
-.course-top{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  margin-bottom:9px;
-}
-
-.course-name{
-  font-size:13px;
-  font-weight:800;
-}
-
-.course-level{
-  color:#0b376d;
-  font-size:9px;
-  font-weight:900;
-}
-
-.progress{
-  height:7px;
-  background:#edf1f5;
-  border-radius:10px;
-  overflow:hidden;
-}
-
-.progress span{
-  display:block;
-  height:100%;
-  background:#0b376d;
-}
-
-.course-bottom{
-  display:flex;
-  justify-content:space-between;
-  margin-top:7px;
-  color:#667085;
-  font-size:10px;
-}
-
-/* ACTIONS */
-
-.actions{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-
-.action{
-  display:block;
-  padding:16px;
-  border:1px solid #e5eaf0;
-  border-radius:12px;
-  transition:.2s;
-}
-
-.action:hover{
-  border-color:#0b376d;
-  transform:translateY(-1px);
-}
-
-.action strong{
-  display:block;
-  color:#172033;
-  font-size:12px;
-  margin-bottom:3px;
-}
-
-.action span{
-  color:#667085;
-  font-size:10px;
-}
-
-.action.primary{
-  background:#f1f6fb;
-  border-color:#d9e5f1;
-}
-
-/* PROFILE */
-
-.profile-row{
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  padding:11px 0;
-  border-bottom:1px solid #edf0f4;
-  font-size:12px;
-}
-
-.profile-row:last-child{
-  border-bottom:0;
-}
-
-.profile-row span:first-child{
-  color:#667085;
-}
-
-.profile-row strong{
-  color:#172033;
-  text-align:right;
+.requirement span{
+font-size:10px;
+color:#cbd8e7
 }
 
 .status{
-  display:inline-block;
-  padding:5px 9px;
-  border-radius:20px;
-  background:#eaf7ef;
-  color:#177245;
-  font-size:9px;
-  font-weight:900;
+padding:12px;
+border-radius:8px;
+background:#ffffff12;
+font-size:12px;
+margin-top:12px
+}
+
+.status.ready{
+background:#18a957;
+color:#fff
+}
+
+/* BUTTONS */
+
+.actions{
+display:flex;
+flex-wrap:wrap;
+gap:9px;
+margin-top:20px
+}
+
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:10px 16px;
+border-radius:8px;
+font-size:12px;
+font-weight:800
+}
+
+.primary{
+background:#f3c95c;
+color:#172033
+}
+
+.secondary{
+background:#fff;
+color:#0b376d
+}
+
+.dark{
+background:#0b376d;
+color:#fff
+}
+
+/* MONTHS */
+
+.months{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:15px
+}
+
+.month{
+padding:15px;
+border:1px solid #e5eaf1;
+border-radius:11px;
+background:#fff
+}
+
+.month strong{
+display:block;
+color:#0b376d;
+font-size:11px
+}
+
+.month h3{
+font-size:14px;
+margin:3px 0
+}
+
+.month span{
+font-size:10px;
+color:#667085
+}
+
+.done{
+color:#18a957!important;
+font-weight:800
+}
+
+.pending{
+color:#d97706!important
 }
 
 /* NOTICE */
 
 .notice{
-  padding:14px 16px;
-  border-left:4px solid #0b376d;
-  background:#f3f7fc;
-  border-radius:8px;
-  color:#475467;
-  font-size:11px;
-  margin-bottom:20px;
+margin-top:15px;
+padding:14px;
+border-radius:10px;
+background:#fff8e5;
+border:1px solid #f3df9b;
+font-size:11px;
+color:#705b18
 }
 
 /* FOOTER */
 
 footer{
-  padding:40px 0 20px;
-  background:#081d38;
-  color:#fff;
+padding:25px 0;
+text-align:center;
+background:#081d38;
+color:#8192a8;
+font-size:10px
 }
 
-.footer-grid{
-  display:grid;
-  grid-template-columns:1.5fr 1fr 1fr;
-  gap:30px;
+@media(max-width:800px){
+
+.grid{
+grid-template-columns:1fr
 }
 
-.footer-grid h3{
-  font-size:15px;
-  margin-bottom:10px;
+.progress-card,
+.certificate{
+grid-column:auto
 }
 
-.footer-grid p,
-.footer-grid a{
-  color:#aebdd0;
-  font-size:12px;
+.requirements{
+grid-template-columns:repeat(2,1fr)
 }
 
-.footer-grid a{
-  display:block;
-  margin:6px 0;
+.months{
+grid-template-columns:1fr 1fr
+}
 }
 
-.footer-grid a:hover{
-  color:#fff;
+@media(max-width:480px){
+
+.hero h1{
+font-size:29px
 }
 
-.bottom{
-  margin-top:28px;
-  padding-top:16px;
-  border-top:1px solid rgba(255,255,255,.1);
-  text-align:center;
-  color:#8192a8;
-  font-size:10px;
+.requirements,
+.months{
+grid-template-columns:1fr
 }
 
-/* MOBILE */
-
-@media(max-width:850px){
-
-  .stats{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .grid{
-    grid-template-columns:1fr;
-  }
+.actions{
+flex-direction:column
 }
 
-@media(max-width:600px){
-
-  main{
-    padding:25px 0 45px;
-  }
-
-  .hero{
-    padding:24px 20px;
-    border-radius:17px;
-  }
-
-  .hero h1{
-    font-size:28px;
-  }
-
-  .stats{
-    gap:10px;
-  }
-
-  .stat{
-    padding:15px;
-  }
-
-  .stat-value{
-    font-size:21px;
-  }
-
-  .card{
-    padding:18px;
-  }
-
-  .level{
-    grid-template-columns:44px 1fr;
-  }
-
-  .level-number{
-    width:43px;
-    height:43px;
-  }
-
-  .level-status{
-    grid-column:2;
-    justify-self:start;
-    margin-top:-7px;
-  }
-
-  .level-wrap:not(:last-child)::after{
-    left:21px;
-  }
-
-  .subcourses{
-    margin-left:48px;
-  }
-
-  .actions{
-    grid-template-columns:1fr;
-  }
-
-  .footer-grid{
-    grid-template-columns:1fr;
-    gap:22px;
-  }
-
-  .brand strong{
-    font-size:14px;
-  }
-
-  .brand small{
-    font-size:7px;
-  }
-
-  .logo{
-    width:40px;
-    height:40px;
-  }
+.actions .btn{
+width:100%
+}
 }
 </style>
 </head>
@@ -650,9 +377,10 @@ footer{
 <body>
 
 <header>
+
 <div class="container nav">
 
-<a href="dashboard.html" class="brand">
+<a href="index.html" class="brand">
 
 <div class="logo">GOH</div>
 
@@ -668,724 +396,420 @@ Logout
 </button>
 
 </div>
+
 </header>
-
-
-<main>
-<div class="container">
 
 
 <section class="hero">
 
-<div class="hero-label">
-Student Dashboard
-</div>
+<div class="container">
 
-<h1>
-Welcome, <span id="studentName">Student</span>
-</h1>
+<h1>Student Dashboard</h1>
 
-<p>
-Follow your academic journey from Certificate to PhD.
-Complete each level and its required courses before advancing.
+<p id="welcome">
+Welcome to your discipleship journey.
 </p>
 
-</section>
-
-
-<section class="stats">
-
-<div class="stat">
-<div class="stat-label">Courses</div>
-<div class="stat-value" id="courseCount">0</div>
-<div class="stat-sub">Completed / enrolled</div>
-</div>
-
-<div class="stat">
-<div class="stat-label">Progress</div>
-<div class="stat-value" id="progressValue">0%</div>
-<div class="stat-sub">Overall progress</div>
-</div>
-
-<div class="stat">
-<div class="stat-label">Assessments</div>
-<div class="stat-value" id="assessmentCount">0</div>
-<div class="stat-sub">Completed</div>
-</div>
-
-<div class="stat">
-<div class="stat-label">Certificates</div>
-<div class="stat-value" id="certificateCount">0</div>
-<div class="stat-sub">Earned</div>
 </div>
 
 </section>
 
 
-<section class="card">
+<main>
 
-<div class="card-head">
+<div class="container">
 
-<div>
-<h2>Academic Pathway</h2>
-<p>Each level must be completed before the next level opens.</p>
+<div class="grid">
+
+<!-- STUDENT -->
+
+<div class="card">
+
+<h2>My Program</h2>
+
+<div class="stat">12 Months</div>
+
+<p>Christian Discipleship & Ministry Preparation</p>
+
+</div>
+
+
+<!-- QUESTIONS -->
+
+<div class="card">
+
+<h2>MCQ Progress</h2>
+
+<div class="stat">
+<span id="correct">0</span>/600
+</div>
+
+<p>Correct answers</p>
+
+</div>
+
+
+<!-- EXAMS -->
+
+<div class="card">
+
+<h2>Examinations</h2>
+
+<div class="stat">
+<span id="exams">0</span>/12
+</div>
+
+<p>Monthly exams completed</p>
+
+</div>
+
+
+<!-- OVERALL PROGRESS -->
+
+<div class="card progress-card">
+
+<h2>Course Progress</h2>
+
+<p>
+Your overall progress through the one-year program.
+</p>
+
+<div class="progress-row">
+
+<div class="progress-head">
+<span>12-Month Program</span>
+<strong id="coursePercent">0%</strong>
+</div>
+
+<div class="bar">
+<div class="fill" id="courseBar"></div>
 </div>
 
 </div>
 
+<div class="progress-row">
 
-<div class="notice">
-Students cannot skip an academic level. All required courses,
-lessons, assessments and examinations must be completed before
-the next level becomes available.
+<div class="progress-head">
+<span>600 MCQs</span>
+<strong id="mcqPercent">0%</strong>
 </div>
 
+<div class="bar">
+<div class="fill gold-fill" id="mcqBar"></div>
+</div>
 
-<div class="path">
+</div>
+
+</div>
 
 
 <!-- CERTIFICATE -->
 
-<div class="level-wrap">
+<div class="card certificate">
 
-<div class="level unlocked">
+<h2>🎓 Certificate Progress</h2>
 
-<div class="level-number">01</div>
+<p>
+Complete the required academic and discipleship
+requirements to become eligible for your certificate.
+</p>
 
-<div class="level-info">
+<div class="requirements">
 
-<h3>Certificate Level</h3>
+<div class="requirement">
+<strong id="correctReq">0/480</strong>
+<span>Correct MCQs Required</span>
+</div>
 
-<p>Foundation in Biblical Studies</p>
+<div class="requirement">
+<strong id="examReq">0/12</strong>
+<span>Exams Completed</span>
+</div>
 
-<div class="level-progress">
-<span style="width:0%"></span>
+<div class="requirement">
+<strong id="programReq">0%</strong>
+<span>Program Completion</span>
+</div>
+
+<div class="requirement">
+<strong id="ministryReq">Pending</strong>
+<span>Ministry Requirement</span>
 </div>
 
 </div>
 
-<div class="level-status open">
-UNLOCKED
+<div class="progress-row">
+
+<div class="progress-head">
+<span>Certificate Academic Progress</span>
+<strong id="certificatePercent">0%</strong>
+</div>
+
+<div class="bar">
+<div class="fill green-fill" id="certificateBar"></div>
 </div>
 
 </div>
 
-
-<div class="subcourses">
-
-<a href="course.html?level=certificate&course=1"
-class="subcourse">
-
-<div>
-<div class="subcourse-title">
-Introduction to the Bible
+<div class="status" id="certificateStatus">
+🔒 Certificate locked — continue your studies.
 </div>
-
-<div class="subcourse-meta">
-Required course · 0% complete
-</div>
-</div>
-
-<span class="subcourse-status start">
-START
-</span>
-
-</a>
-
-
-<a href="course.html?level=certificate&course=2"
-class="subcourse locked">
-
-<div>
-<div class="subcourse-title">
-Old Testament Foundations
-</div>
-
-<div class="subcourse-meta">
-Complete previous course first
-</div>
-</div>
-
-<span class="subcourse-status lock">
-LOCKED
-</span>
-
-</a>
-
-
-<a href="course.html?level=certificate&course=3"
-class="subcourse locked">
-
-<div>
-<div class="subcourse-title">
-New Testament Foundations
-</div>
-
-<div class="subcourse-meta">
-Complete previous course first
-</div>
-</div>
-
-<span class="subcourse-status lock">
-LOCKED
-</span>
-
-</a>
-
-</div>
-
-</div>
-
-
-<!-- DIPLOMA -->
-
-<div class="level-wrap">
-
-<div class="level locked">
-
-<div class="level-number">02</div>
-
-<div class="level-info">
-
-<h3>Diploma Level</h3>
-
-<p>Diploma in Biblical and Christian Studies</p>
-
-<div class="level-progress">
-<span style="width:0%"></span>
-</div>
-
-</div>
-
-<div class="level-status lock">
-LOCKED
-</div>
-
-</div>
-
-</div>
-
-
-<!-- ADVANCED DIPLOMA -->
-
-<div class="level-wrap">
-
-<div class="level locked">
-
-<div class="level-number">03</div>
-
-<div class="level-info">
-
-<h3>Advanced Diploma</h3>
-
-<p>Advanced Biblical and Christian Studies</p>
-
-<div class="level-progress">
-<span style="width:0%"></span>
-</div>
-
-</div>
-
-<div class="level-status lock">
-LOCKED
-</div>
-
-</div>
-
-</div>
-
-
-<!-- BACHELOR -->
-
-<div class="level-wrap">
-
-<div class="level locked">
-
-<div class="level-number">04</div>
-
-<div class="level-info">
-
-<h3>Bachelor's Level</h3>
-
-<p>Bachelor of Biblical Studies</p>
-
-<div class="level-progress">
-<span style="width:0%"></span>
-</div>
-
-</div>
-
-<div class="level-status lock">
-LOCKED
-</div>
-
-</div>
-
-</div>
-
-
-<!-- MASTER -->
-
-<div class="level-wrap">
-
-<div class="level locked">
-
-<div class="level-number">05</div>
-
-<div class="level-info">
-
-<h3>Master's Level</h3>
-
-<p>Master of Biblical Studies</p>
-
-<div class="level-progress">
-<span style="width:0%"></span>
-</div>
-
-</div>
-
-<div class="level-status lock">
-LOCKED
-</div>
-
-</div>
-
-</div>
-
-
-<!-- PHD -->
-
-<div class="level-wrap">
-
-<div class="level locked">
-
-<div class="level-number">06</div>
-
-<div class="level-info">
-
-<h3>PhD Level</h3>
-
-<p>Doctoral Biblical Research</p>
-
-<div class="level-progress">
-<span style="width:0%"></span>
-</div>
-
-</div>
-
-<div class="level-status lock">
-LOCKED
-</div>
-
-</div>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<div class="grid">
-
-
-<div>
-
-
-<section class="card">
-
-<div class="card-head">
-
-<h2>Continue Learning</h2>
-
-<a href="bible-courses.html"
-class="card-link">
-All Courses
-</a>
-
-</div>
-
-
-<div class="course">
-
-<div class="course-top">
-
-<div class="course-name">
-Introduction to the Bible
-</div>
-
-<div class="course-level">
-CERTIFICATE
-</div>
-
-</div>
-
-<div class="progress">
-<span style="width:0%"></span>
-</div>
-
-<div class="course-bottom">
-
-<span>Not started</span>
-
-<span>0%</span>
-
-</div>
-
-</div>
-
-</section>
-
-
-<section class="card">
-
-<div class="card-head">
-<h2>Learning Center</h2>
-</div>
-
 
 <div class="actions">
 
-<a href="bible-courses.html"
-class="action primary">
-
-<strong>My Courses</strong>
-
-<span>
-Access your unlocked courses
-</span>
-
+<a href="bible-courses.html" class="btn secondary">
+View Course
 </a>
 
-
-<a href="assessment.html"
-class="action">
-
-<strong>Assessments</strong>
-
-<span>
-Complete required assessments
-</span>
-
+<a href="mcq.html" class="btn primary">
+Continue Learning
 </a>
 
-
-<a href="exam.html"
-class="action">
-
-<strong>Final Examination</strong>
-
-<span>
-Complete your required examination
-</span>
-
-</a>
-
-
-<a href="certificates.html"
-class="action">
-
-<strong>Certificates</strong>
-
-<span>
-View your earned certificates
-</span>
-
-</a>
-
-</div>
-
-</section>
-
-</div>
-
-
-<div>
-
-
-<section class="card">
-
-<div class="card-head">
-<h2>Student Account</h2>
-</div>
-
-
-<div class="profile-row">
-
-<span>Name</span>
-
-<strong id="profileName">
-Student
-</strong>
-
-</div>
-
-
-<div class="profile-row">
-
-<span>Email</span>
-
-<strong id="profileEmail">
-—
-</strong>
-
-</div>
-
-
-<div class="profile-row">
-
-<span>Student ID</span>
-
-<strong id="studentId">
-—
-</strong>
-
-</div>
-
-
-<div class="profile-row">
-
-<span>Current Level</span>
-
-<strong id="currentLevel">
+<a href="certificate.html" class="btn secondary">
 Certificate
-</strong>
-
-</div>
-
-
-<div class="profile-row">
-
-<span>Status</span>
-
-<strong>
-<span class="status"
-id="membershipStatus">
-Active
-</span>
-</strong>
-
-</div>
-
-</section>
-
-
-<section class="card">
-
-<div class="card-head">
-<h2>Quick Links</h2>
-</div>
-
-
-<div class="actions">
-
-<a href="profile.html"
-class="action">
-
-<strong>My Profile</strong>
-
-<span>
-Manage account information
-</span>
-
-</a>
-
-
-<a href="contact.html"
-class="action">
-
-<strong>Support</strong>
-
-<span>
-Contact the academy
-</span>
-
 </a>
 
 </div>
 
-</section>
-
 </div>
 
 
+<!-- MONTHLY PROGRESS -->
+
+<div class="card progress-card">
+
+<h2>Monthly Progress</h2>
+
+<p>
+Complete each month's lessons and examination.
+</p>
+
+<div class="months">
+
+<div class="month">
+<strong>MONTH 01</strong>
+<h3>New Life in Christ</h3>
+<span id="m1">Pending</span>
+</div>
+
+<div class="month">
+<strong>MONTH 02</strong>
+<h3>The Word of God</h3>
+<span id="m2">Pending</span>
+</div>
+
+<div class="month">
+<strong>MONTH 03</strong>
+<h3>Prayer & Worship</h3>
+<span id="m3">Pending</span>
+</div>
+
+<div class="month">
+<strong>MONTH 04</strong>
+<h3>Life & Teachings of Jesus</h3>
+<span id="m4">Pending</span>
+</div>
+
+<div class="month">
+<strong>MONTH 05</strong>
+<h3>Christian Character</h3>
+<span id="m5">Pending</span>
+</div>
+
+<div class="month">
+<strong>MONTH 06</strong>
+<h3>The Holy Spirit</h3>
+<span id="m6">Pending</span>
+</div>
+
+<div class="month">
+<strong>MONTH 07</strong>
+<h3>Bible Foundations</h3>
+<span id="m7">Pending</span>
+</div>
+
+<div class="month">
+<strong>MONTH 08</strong>
+<h3>Christian Doctrine</h3>
+<span id="m8">Pending</span>
+</div>
+
+<div class="month">
+<strong>MONTH 09</strong>
+<h3>Discipleship</h3>
+<span id="m9">Pending</span>
+</div>
+
+<div class="month">
+<strong>MONTH 10</strong>
+<h3>Evangelism & Missions</h3>
+<span id="m10">Pending</span>
+</div>
+
+<div class="month">
+<strong>MONTH 11</strong>
+<h3>Ministry & Leadership</h3>
+<span id="m11">Pending</span>
+</div>
+
+<div class="month">
+<strong>MONTH 12</strong>
+<h3>Ministry Preparation</h3>
+<span id="m12">Pending</span>
 </div>
 
 </div>
+
+<div class="notice">
+<strong>Certificate requirement:</strong>
+Students should achieve at least
+<strong>480 correct answers out of 600</strong>,
+complete all 12 examinations, complete the
+one-year program and meet the required
+ministry/disciple activities.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </main>
 
 
 <footer>
-
-<div class="container">
-
-<div class="footer-grid">
-
-
-<div>
-
-<h3>GOH Bible Academy</h3>
-
-<p>
-Structured Christian Biblical Studies through
-online learning, assessment and examination.
-</p>
-
-</div>
-
-
-<div>
-
-<h3>Academy</h3>
-
-<a href="index.html">Home</a>
-
-<a href="about.html">About</a>
-
-<a href="bible-courses.html">Courses</a>
-
-<a href="enroll.html">Enroll</a>
-
-</div>
-
-
-<div>
-
-<h3>Student</h3>
-
-<a href="dashboard.html">Dashboard</a>
-
-<a href="assessment.html">Assessments</a>
-
-<a href="certificates.html">Certificates</a>
-
-<a href="contact.html">Support</a>
-
-</div>
-
-
-</div>
-
-
-<div class="bottom">
-
-© 2026 GOH Bible Academy · Gate of Heaven Ministries
-
-</div>
-
-</div>
-
+© 2026 GOH Bible Academy. All rights reserved.
 </footer>
 
 
 <script>
 
 /*
-==================================================
-GOH BIBLE ACADEMY
-STUDENT DASHBOARD
-==================================================
-
-FRONTEND DISPLAY ONLY
-
-Actual access control must be performed
-by the Cloudflare Workers.
-
-Recommended Workers:
-
-goh-auth
-goh-student
-goh-courses
-goh-progress
-goh-assessment
-goh-certificate
-goh-admin
-
-The browser must NEVER be trusted to decide
-whether a student can access a higher level.
-
-==================================================
+Connect these values to your API/database later.
 */
 
-
-/*
-TEMPORARY STUDENT DATA
-
-Later this will come from:
-
-goh-student
-
-using the authenticated student session.
-*/
-
-const student = {
-
-  id:"",
-  name:"Student",
-  email:"",
-
-  status:"Active",
-
-  currentLevel:"Certificate",
-
-  courses:0,
-
-  progress:0,
-
-  assessments:0,
-
-  certificates:0
-
+const student={
+name:"Student",
+correct:0,
+exams:0,
+program:0,
+ministry:false,
+months:[]
 };
 
-
-/* DISPLAY */
-
-document.getElementById("studentName").textContent =
-student.name;
-
-document.getElementById("profileName").textContent =
-student.name;
-
-document.getElementById("profileEmail").textContent =
-student.email || "—";
-
-document.getElementById("studentId").textContent =
-student.id || "—";
-
-document.getElementById("currentLevel").textContent =
-student.currentLevel;
-
-document.getElementById("membershipStatus").textContent =
-student.status;
-
-document.getElementById("courseCount").textContent =
-student.courses;
-
-document.getElementById("progressValue").textContent =
-student.progress + "%";
-
-document.getElementById("assessmentCount").textContent =
-student.assessments;
-
-document.getElementById("certificateCount").textContent =
-student.certificates;
+document.getElementById("welcome").textContent=
+"Welcome, "+student.name+".";
 
 
-/*
-LOGOUT
-*/
+/* MCQ */
+
+const correct=student.correct;
+
+document.getElementById("correct").textContent=correct;
+
+const mcqPercent=Math.min(100,(correct/600)*100);
+
+document.getElementById("mcqPercent").textContent=
+Math.round(mcqPercent)+"%";
+
+document.getElementById("mcqBar").style.width=
+mcqPercent+"%";
+
+
+/* EXAMS */
+
+document.getElementById("exams").textContent=
+student.exams;
+
+document.getElementById("examReq").textContent=
+student.exams+"/12";
+
+
+/* PROGRAM */
+
+document.getElementById("programPercent").textContent=
+Math.round(student.program)+"%";
+
+document.getElementById("coursePercent").textContent=
+Math.round(student.program)+"%";
+
+document.getElementById("courseBar").style.width=
+student.program+"%";
+
+document.getElementById("programReq").textContent=
+Math.round(student.program)+"%";
+
+
+/* CERTIFICATE */
+
+const mcqRequirement=Math.min(100,(correct/480)*100);
+
+const certificateAcademic=
+Math.min(mcqRequirement,student.program);
+
+document.getElementById("certificatePercent").textContent=
+Math.round(certificateAcademic)+"%";
+
+document.getElementById("certificateBar").style.width=
+certificateAcademic+"%";
+
+document.getElementById("correctReq").textContent=
+Math.min(correct,480)+"/480";
+
+
+/* MINISTRY */
+
+if(student.ministry){
+document.getElementById("ministryReq").textContent="Complete";
+document.getElementById("ministryReq").style.color="#f3c95c";
+}
+
+
+/* CERTIFICATE STATUS */
+
+if(
+correct>=480 &&
+student.exams>=12 &&
+student.program>=100 &&
+student.ministry
+){
+
+const status=document.getElementById("certificateStatus");
+
+status.className="status ready";
+status.textContent=
+"✓ Certificate requirements completed. You are eligible to receive your certificate.";
+
+}
+
+
+/* MONTHS */
+
+student.months.forEach((completed,index)=>{
+
+if(completed){
+
+const el=document.getElementById("m"+(index+1));
+
+if(el){
+el.textContent="✓ Completed";
+el.className="done";
+}
+
+}
+
+});
+
+
+/* LOGOUT */
 
 function logout(){
 
-sessionStorage.removeItem("student");
-sessionStorage.removeItem("token");
+sessionStorage.clear();
+localStorage.removeItem("createlk_token");
 
-sessionStorage.removeItem("goh_student");
-sessionStorage.removeItem("goh_token");
-
-window.location.href="login.html";
+location.href="login.html";
 
 }
 
