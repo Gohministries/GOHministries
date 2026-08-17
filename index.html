@@ -4,1491 +4,636 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>GOH Bible Academy | Christian Biblical Studies</title>
+<title>GOH Bible Academy | Biblical Studies & Ministry</title>
 
-<meta name="description" content="GOH Bible Academy provides structured online Christian Biblical Studies, assessments, examinations and certificates through Gate of Heaven Ministries.">
+<meta name="description" content="GOH Bible Academy offers a one-year Christian Biblical Studies and Ministry Preparation program with multilingual AI Bible learning.">
 
 <meta name="theme-color" content="#0b376d">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-
 html{scroll-behavior:smooth}
-
-body{
-font-family:Arial,Helvetica,sans-serif;
-color:#172033;
-background:#fff;
-line-height:1.6
-}
-
+body{font-family:Arial,sans-serif;color:#172033;line-height:1.6}
 a{text-decoration:none;color:inherit}
-button{font:inherit}
-
-.container{
-width:min(1080px,92%);
-margin:auto
-}
-
-/* HEADER */
+.container{width:min(1080px,92%);margin:auto}
 
 header{
-position:sticky;
-top:0;
-z-index:1000;
-background:rgba(255,255,255,.97);
-border-bottom:1px solid #e6eaf0;
-backdrop-filter:blur(12px)
+position:sticky;top:0;z-index:10;
+background:#fff;border-bottom:1px solid #e5eaf1
 }
-
 .nav{
-min-height:68px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:18px
+min-height:68px;display:flex;align-items:center;
+justify-content:space-between
 }
-
-.brand{
-display:flex;
-align-items:center;
-gap:10px
-}
-
+.brand{display:flex;align-items:center;gap:10px}
 .logo{
-width:41px;
-height:41px;
-display:grid;
-place-items:center;
-border-radius:10px;
-background:#0b376d;
-color:#fff;
-font-size:12px;
-font-weight:900
+width:41px;height:41px;display:grid;place-items:center;
+border-radius:10px;background:#0b376d;color:#fff;
+font-size:12px;font-weight:900
 }
-
-.brand strong{
-display:block;
-color:#0b376d;
-font-size:15px;
-line-height:1.2
+.brand strong{display:block;color:#0b376d;font-size:15px}
+.brand small{display:block;color:#667085;font-size:8px;font-weight:700}
+.nav-links{display:flex;align-items:center;gap:18px}
+.nav-links a{font-size:13px;font-weight:700;color:#344054}
+.register{
+padding:9px 16px;border-radius:8px;
+background:#0b376d;color:#fff!important
 }
-
-.brand small{
-display:block;
-color:#667085;
-font-size:8px;
-font-weight:700;
-letter-spacing:.8px
-}
-
-.nav-links{
-display:flex;
-align-items:center;
-gap:18px
-}
-
-.nav-links a{
-font-size:13px;
-font-weight:700;
-color:#344054
-}
-
-.nav-links a:hover{
-color:#0b376d
-}
-
-.nav-enroll{
-padding:9px 16px;
-border-radius:8px;
-background:#0b376d;
-color:#fff!important
-}
-
-.menu{
-display:none;
-border:0;
-background:none;
-color:#0b376d;
-font-size:26px;
-cursor:pointer
-}
-
-/* HERO */
+.menu{display:none;border:0;background:none;font-size:25px;color:#0b376d}
 
 .hero{
-background:
-radial-gradient(circle at 90% 10%,rgba(243,201,92,.16),transparent 28%),
-linear-gradient(135deg,#061d39,#0b376d);
+background:linear-gradient(135deg,#061d39,#0b376d);
 color:#fff
 }
-
-.hero-inner{
-min-height:590px;
-display:flex;
-align-items:center
-}
-
-.hero-content{
-max-width:760px;
-padding:65px 0
-}
-
-.eyebrow{
-display:inline-block;
-padding:7px 12px;
-margin-bottom:17px;
-border:1px solid rgba(255,255,255,.2);
-border-radius:30px;
-color:#f3c95c;
-font-size:11px;
-font-weight:900;
+.hero-inner{min-height:560px;display:flex;align-items:center}
+.hero-content{max-width:750px}
+.tag{
+display:inline-block;margin-bottom:16px;padding:6px 12px;
+border:1px solid #ffffff33;border-radius:30px;
+color:#f3c95c;font-size:10px;font-weight:900;
 letter-spacing:1px
 }
-
+h1,h2,h3{line-height:1.2}
 .hero h1{
-font-family:Georgia,"Times New Roman",serif;
-font-size:clamp(42px,7vw,67px);
-line-height:1.05;
-letter-spacing:-1.5px;
-margin-bottom:18px
+font-family:Georgia,serif;
+font-size:clamp(40px,7vw,64px);
+margin-bottom:16px
 }
-
-.hero h1 span{
-color:#f3c95c
-}
-
-.hero p{
-max-width:660px;
-color:#dce7f3;
-font-size:17px;
-line-height:1.7;
-margin-bottom:25px
-}
-
-.buttons{
-display:flex;
-flex-wrap:wrap;
-gap:10px
-}
-
+.hero h1 span{color:#f3c95c}
+.hero p{max-width:650px;color:#dce7f3;font-size:16px;margin-bottom:23px}
+.buttons{display:flex;gap:10px;flex-wrap:wrap}
 .btn{
-min-height:46px;
-display:inline-flex;
-align-items:center;
-justify-content:center;
-padding:11px 19px;
-border-radius:8px;
-font-size:13px;
-font-weight:800;
-transition:.2s
+display:inline-flex;align-items:center;justify-content:center;
+min-height:45px;padding:10px 18px;border-radius:8px;
+font-size:13px;font-weight:800
 }
-
-.btn:hover{
-transform:translateY(-2px)
-}
-
-.gold{
-background:#f3c95c;
-color:#172033
-}
-
-.white{
-background:#fff;
-color:#0b376d
-}
-
-.outline{
-border:1px solid #d5dce6;
-background:#fff;
-color:#0b376d
-}
+.gold{background:#f3c95c;color:#172033}
+.white{background:#fff;color:#0b376d}
 
 .stats{
-max-width:700px;
-display:grid;
-grid-template-columns:repeat(4,1fr);
-margin-top:38px;
-padding-top:19px;
-border-top:1px solid rgba(255,255,255,.15)
+display:grid;grid-template-columns:repeat(4,1fr);
+max-width:650px;margin-top:35px;padding-top:18px;
+border-top:1px solid #ffffff26
 }
+.stat{border-right:1px solid #ffffff20}
+.stat:last-child{border:0}
+.stat strong{display:block;font-size:17px}
+.stat span{color:#b9c9dc;font-size:10px}
 
-.stat{
-padding-right:12px;
-border-right:1px solid rgba(255,255,255,.12)
-}
-
-.stat:last-child{
-border:0
-}
-
-.stat strong{
-display:block;
-font-size:18px
-}
-
-.stat span{
-color:#b9c9dc;
-font-size:11px
-}
-
-/* COMMON */
-
-section{
-padding:68px 0
-}
-
-.section-head{
-max-width:680px;
-margin:0 auto 35px;
-text-align:center
-}
-
+section{padding:65px 0}
+.head{text-align:center;max-width:650px;margin:0 auto 32px}
 .label{
-margin-bottom:6px;
-color:#0b376d;
-font-size:11px;
-font-weight:900;
-text-transform:uppercase;
-letter-spacing:1.3px
+color:#0b376d;font-size:10px;font-weight:900;
+letter-spacing:1.2px;text-transform:uppercase
 }
-
-.section-head h2{
-font-family:Georgia,"Times New Roman",serif;
-font-size:clamp(30px,5vw,43px);
-line-height:1.15;
-margin-bottom:9px
+.head h2{
+font-family:Georgia,serif;
+font-size:clamp(30px,5vw,42px);
+margin:6px 0 8px
 }
+.head p{color:#667085;font-size:13px}
 
-.section-head p{
-color:#667085;
-font-size:14px
-}
-
-/* ABOUT */
-
-.about{
-background:#fff
-}
-
-.about-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:17px
-}
+.grid{display:grid;gap:16px}
+.three{grid-template-columns:repeat(3,1fr)}
+.four{grid-template-columns:repeat(4,1fr)}
 
 .card{
-padding:24px;
-border:1px solid #e5eaf1;
-border-radius:15px;
-background:#fff
+padding:22px;border:1px solid #e5eaf1;
+border-radius:14px;background:#fff
 }
-
-.icon{
-width:46px;
-height:46px;
-display:grid;
-place-items:center;
-margin-bottom:13px;
-border-radius:11px;
-background:#edf4ff;
-font-size:20px
+.card .icon{
+width:43px;height:43px;display:grid;place-items:center;
+border-radius:10px;background:#edf4ff;margin-bottom:12px
 }
+.card h3{font-size:17px;margin-bottom:5px}
+.card p{color:#667085;font-size:12px}
 
-.card h3{
-font-size:18px;
-margin-bottom:6px
-}
-
-.card p{
-color:#667085;
-font-size:13px
-}
-
-/* WHO */
-
-.who{
-background:#f7f9fc
-}
-
-.who-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:15px
-}
-
-.who-card{
-padding:22px;
-background:#fff;
-border:1px solid #e5eaf1;
-border-radius:14px
-}
-
-.who-card strong{
-display:block;
-color:#0b376d;
-font-size:15px;
-margin-bottom:5px
-}
-
-.who-card p{
-color:#667085;
-font-size:12px
-}
-
-/* COURSE */
-
-.course{
-background:#fff
-}
+.light{background:#f7f9fc}
 
 .course-grid{
-display:grid;
-grid-template-columns:1fr 350px;
-gap:42px;
-align-items:center
+display:grid;grid-template-columns:1fr 330px;
+gap:35px;align-items:center
 }
-
 .course h2{
-font-family:Georgia,"Times New Roman",serif;
-font-size:clamp(31px,5vw,44px);
-line-height:1.15;
-margin-bottom:14px
+font-family:Georgia,serif;
+font-size:clamp(30px,5vw,43px);
+margin:6px 0 12px
 }
-
-.course-content p{
-color:#667085;
-font-size:14px;
-margin-bottom:13px
-}
-
-.checks{
-display:grid;
-gap:8px;
-margin-top:18px;
-font-size:13px
-}
-
-.check{
-color:#0b376d;
-font-weight:900
-}
-
-.price-box{
-padding:28px;
-border-radius:18px;
-background:#0b376d;
-color:#fff;
-box-shadow:0 15px 35px rgba(11,55,109,.16)
-}
-
-.price-label{
-color:#f3c95c;
-font-size:10px;
-font-weight:900;
-text-transform:uppercase;
-letter-spacing:1px
-}
-
-.price-box h3{
-font-family:Georgia,"Times New Roman",serif;
-font-size:25px;
-margin:7px 0 16px
-}
+.course p{color:#667085;font-size:13px}
+.checks{display:grid;gap:7px;margin-top:17px;font-size:13px}
+.check{color:#0b376d;font-weight:900}
 
 .price{
-padding:14px 0;
-margin-bottom:15px;
-border-top:1px solid rgba(255,255,255,.14);
-border-bottom:1px solid rgba(255,255,255,.14)
+padding:26px;border-radius:17px;
+background:#0b376d;color:#fff
 }
-
-.price strong{
-font-size:28px
+.price small{color:#f3c95c;font-weight:900;text-transform:uppercase}
+.price h3{font-family:Georgia,serif;font-size:23px;margin:8px 0 15px}
+.amount{
+padding:12px 0;border-top:1px solid #ffffff20;
+border-bottom:1px solid #ffffff20;margin-bottom:14px
 }
+.amount strong{font-size:27px}
+.price ul{list-style:none;display:grid;gap:6px;font-size:12px;color:#dce7f3}
 
-.price span{
-color:#c7d5e5;
-font-size:12px
+.ai{
+background:#061d39;color:#fff
 }
-
-.price-box ul{
-list-style:none;
-display:grid;
-gap:7px;
-color:#e2eaf3;
-font-size:12px
+.ai-grid{
+display:grid;grid-template-columns:1fr 1fr;
+gap:30px;align-items:center
 }
-
-/* CURRICULUM */
-
-.curriculum{
-background:#f7f9fc
+.ai h2{
+font-family:Georgia,serif;
+font-size:clamp(30px,5vw,43px);
+margin:6px 0 12px
 }
-
-.modules{
-max-width:850px;
-margin:auto;
-display:grid;
-gap:10px
+.ai p{color:#cbd8e7;font-size:13px;margin-bottom:16px}
+.languages{display:flex;gap:8px;flex-wrap:wrap}
+.language{
+padding:7px 12px;border:1px solid #ffffff25;
+border-radius:20px;color:#f3c95c;font-size:11px;font-weight:800
 }
+.ai-box{
+padding:24px;border-radius:16px;background:#0b376d
+}
+.ai-box h3{font-size:19px;margin-bottom:7px}
+.ai-box ul{list-style:none;display:grid;gap:7px;color:#dce7f3;font-size:12px}
 
+.modules{max-width:800px;margin:auto;display:grid;gap:9px}
 .module{
-display:flex;
-align-items:center;
-gap:14px;
-padding:15px;
-border:1px solid #e5eaf1;
-border-radius:12px;
-background:#fff
+display:flex;gap:13px;align-items:center;
+padding:13px;background:#fff;
+border:1px solid #e5eaf1;border-radius:11px
 }
-
 .number{
-width:43px;
-height:43px;
-flex:none;
-display:grid;
-place-items:center;
-border-radius:9px;
-background:#0b376d;
-color:#fff;
-font-size:11px;
-font-weight:900
+width:40px;height:40px;flex:none;display:grid;place-items:center;
+background:#0b376d;color:#fff;border-radius:8px;
+font-size:10px;font-weight:900
 }
-
-.module h3{
-font-size:16px;
-margin-bottom:2px
-}
-
-.module p{
-color:#667085;
-font-size:12px
-}
-
-/* PROCESS */
-
-.process{
-background:#fff
-}
-
-.process-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:17px
-}
-
-.process-card{
-padding:24px;
-border:1px solid #e5eaf1;
-border-radius:15px;
-background:#fff
-}
-
-.process-card strong{
-display:block;
-margin-bottom:7px;
-color:#0b376d;
-font-size:10px;
-letter-spacing:1px
-}
-
-.process-card h3{
-font-size:18px;
-margin-bottom:5px
-}
-
-.process-card p{
-color:#667085;
-font-size:13px
-}
-
-/* ASSESSMENT */
+.module h3{font-size:15px}
+.module p{color:#667085;font-size:11px}
 
 .assessment{
-background:#f7f9fc
+display:grid;grid-template-columns:1fr 1fr;gap:16px
 }
-
-.assessment-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:17px
-}
-
-.assessment-card{
-padding:26px;
-border:1px solid #e5eaf1;
-border-radius:15px;
-background:#fff
-}
-
-.assessment-card h3{
-font-family:Georgia,"Times New Roman",serif;
-font-size:25px;
-margin-bottom:8px
-}
-
-.assessment-card p{
-color:#667085;
-font-size:13px;
-margin-bottom:13px
-}
-
-.assessment-card ul{
-list-style:none;
-display:grid;
-gap:6px;
-color:#475467;
-font-size:12px
-}
-
-/* FOUNDER */
 
 .founder{
-background:#faf8f1
-}
-
-.founder-box{
-max-width:820px;
-margin:auto;
-padding:32px;
-border-radius:18px;
-background:#fff;
-border:1px solid #e8e2d3
-}
-
-.founder-box h3{
-font-family:Georgia,"Times New Roman",serif;
-font-size:28px;
-margin-bottom:4px
-}
-
-.founder-role{
-color:#0b376d;
-font-size:12px;
-font-weight:800;
-margin-bottom:13px
-}
-
-.founder-box p{
-color:#667085;
-font-size:14px;
-margin-bottom:10px
-}
-
-/* CTA */
-
-.cta{
+max-width:800px;margin:auto;padding:28px;
+border:1px solid #e8e2d3;border-radius:16px;
 background:#fff
 }
+.founder h3{font-family:Georgia,serif;font-size:25px}
+.role{color:#0b376d;font-size:11px;font-weight:800;margin:3px 0 12px}
+.founder p{color:#667085;font-size:13px;margin-bottom:8px}
 
 .cta-box{
-padding:48px 24px;
-text-align:center;
-border-radius:20px;
-background:#0b376d;
-color:#fff
+padding:45px 20px;text-align:center;
+background:#0b376d;color:#fff;border-radius:18px
 }
-
-.cta-box h2{
-font-family:Georgia,"Times New Roman",serif;
-font-size:clamp(30px,5vw,41px);
-margin-bottom:9px
-}
-
-.cta-box p{
-max-width:600px;
-margin:auto;
-color:#dce7f3;
-font-size:14px
-}
-
-.cta-buttons{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:10px;
-margin-top:22px
-}
-
-/* FOOTER */
+.cta-box h2{font-family:Georgia,serif;font-size:clamp(29px,5vw,40px)}
+.cta-box p{color:#dce7f3;font-size:13px;margin:8px auto 20px;max-width:580px}
 
 footer{
-padding:45px 0 20px;
-background:#081d38;
-color:#fff
+padding:38px 0 18px;background:#081d38;color:#fff
 }
-
-.footer-grid{
-display:grid;
-grid-template-columns:1.5fr 1fr 1fr;
-gap:35px
+.footer{
+display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:30px
 }
-
-.footer-grid h3{
-font-size:16px;
-margin-bottom:10px
+footer h3{font-size:15px;margin-bottom:9px}
+footer p,footer a{display:block;color:#aebdd0;font-size:11px;margin:5px 0}
+.bottom{
+margin-top:25px;padding-top:14px;
+border-top:1px solid #ffffff15;
+text-align:center;color:#8192a8;font-size:9px
 }
-
-.footer-grid p,
-.footer-grid a{
-color:#aebdd0;
-font-size:12px
-}
-
-.footer-grid p{
-max-width:420px
-}
-
-.footer-grid a{
-display:block;
-margin:6px 0
-}
-
-.footer-grid a:hover{
-color:#fff
-}
-
-.footer-bottom{
-margin-top:32px;
-padding-top:17px;
-border-top:1px solid rgba(255,255,255,.1);
-text-align:center;
-color:#8192a8;
-font-size:10px
-}
-
-/* WHATSAPP */
 
 .whatsapp{
-position:fixed;
-right:17px;
-bottom:17px;
-width:53px;
-height:53px;
-display:grid;
-place-items:center;
-border-radius:50%;
-background:#18a957;
-color:#fff;
-font-size:23px;
-box-shadow:0 7px 22px rgba(0,0,0,.2);
-z-index:900
+position:fixed;right:17px;bottom:17px;
+width:52px;height:52px;display:grid;place-items:center;
+border-radius:50%;background:#18a957;color:#fff;
+font-size:22px;z-index:20;
+box-shadow:0 6px 20px #0003
 }
-
-/* MOBILE */
 
 @media(max-width:850px){
-
-.menu{
-display:block
-}
-
+.menu{display:block}
 .nav-links{
-display:none;
-position:absolute;
-top:68px;
-left:0;
-right:0;
-padding:12px 5%;
-flex-direction:column;
-align-items:stretch;
-gap:0;
-background:#fff;
-border-bottom:1px solid #e6eaf0;
-box-shadow:0 10px 25px rgba(0,0,0,.08)
+display:none;position:absolute;top:68px;left:0;right:0;
+background:#fff;padding:10px 5%;
+flex-direction:column;align-items:stretch;
+box-shadow:0 8px 20px #0001
 }
-
-.nav-links.show{
-display:flex
-}
-
-.nav-links a{
-padding:10px 0
-}
-
-.nav-enroll{
-text-align:center
-}
-
-.hero-inner{
-min-height:590px
-}
-
-.hero h1{
-font-size:46px
-}
-
-.stats{
-grid-template-columns:repeat(2,1fr);
-gap:14px
-}
-
-.stat{
-border:0
-}
-
-.about-grid,
-.who-grid,
-.process-grid{
+.nav-links.show{display:flex}
+.nav-links a{padding:9px 0}
+.register{text-align:center}
+.three,.four,.course-grid,.ai-grid,.assessment,.footer{
 grid-template-columns:1fr
 }
-
-.course-grid,
-.assessment-grid{
-grid-template-columns:1fr
-}
-
-.footer-grid{
-grid-template-columns:1fr;
-gap:27px
-}
-
+.stats{grid-template-columns:repeat(2,1fr);gap:12px}
+.stat{border:0}
+.hero-inner{min-height:540px}
 }
 
 @media(max-width:480px){
-
-.brand strong{
-font-size:14px
-}
-
-.brand small{
-font-size:7px
-}
-
-.hero h1{
-font-size:39px
-}
-
-.hero p{
-font-size:15px
-}
-
-.buttons,
-.cta-buttons{
-flex-direction:column
-}
-
-.buttons .btn,
-.cta-buttons .btn{
-width:100%
-}
-
-section{
-padding:56px 0
-}
-
-.module{
-align-items:flex-start
-}
-
+.brand strong{font-size:14px}
+.brand small{font-size:7px}
+.hero h1{font-size:39px}
+.hero p{font-size:14px}
+.buttons{flex-direction:column}
+.buttons .btn{width:100%}
+section{padding:52px 0}
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-
 <header>
 <div class="container nav">
 
 <a href="index.html" class="brand">
-
 <div class="logo">GOH</div>
-
 <div>
 <strong>GOH Bible Academy</strong>
 <small>GATE OF HEAVEN MINISTRIES</small>
 </div>
-
 </a>
 
-<button
-class="menu"
-onclick="toggleMenu()"
-aria-label="Open menu">
-☰
-</button>
+<button class="menu" onclick="toggleMenu()">☰</button>
 
 <nav class="nav-links" id="navLinks">
-
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
 <a href="bible-courses.html">Courses</a>
-<a href="ai-bible-teacher.html">Bible Teacher</a>
+<a href="ai-bible-teacher.html">AI Bible Teacher</a>
 <a href="media.html">Media</a>
 <a href="contact.html">Contact</a>
-
-<a href="enroll.html" class="nav-enroll">
-Register
-</a>
-
+<a href="enroll.html" class="register">Register</a>
 </nav>
 
 </div>
 </header>
 
-
 <!-- HERO -->
 
 <section class="hero">
-
 <div class="container hero-inner">
-
 <div class="hero-content">
 
-<div class="eyebrow">
-✝ GOH BIBLE ACADEMY
-</div>
+<div class="tag">✝ GOH BIBLE ACADEMY</div>
 
 <h1>
 Study the Bible.<br>
-<span>Grow in Truth.</span>
+<span>Prepare for Ministry.</span>
 </h1>
 
 <p>
-A structured online Christian Biblical Studies
-program designed to help students understand
-Scripture, strengthen their faith and prepare
-for Christian service.
+A one-year Christian Biblical Studies and Ministry
+Preparation program helping believers grow in Scripture,
+faith and practical Christian service.
 </p>
 
 <div class="buttons">
-
-<a href="enroll.html" class="btn gold">
-Register Now
-</a>
-
-<a href="bible-courses.html" class="btn white">
-View Courses
-</a>
-
+<a href="enroll.html" class="btn gold">Register Now</a>
+<a href="bible-courses.html" class="btn white">View Courses</a>
 </div>
 
 <div class="stats">
-
-<div class="stat">
-<strong>6 Months</strong>
-<span>Program</span>
-</div>
-
-<div class="stat">
-<strong>6</strong>
-<span>Core Modules</span>
-</div>
-
-<div class="stat">
-<strong>Online</strong>
-<span>Learning</span>
-</div>
-
-<div class="stat">
-<strong>Exam</strong>
-<span>Final Assessment</span>
-</div>
-
+<div class="stat"><strong>1 Year</strong><span>Program</span></div>
+<div class="stat"><strong>6</strong><span>Core Areas</span></div>
+<div class="stat"><strong>Online</strong><span>Learning</span></div>
+<div class="stat"><strong>Exam</strong><span>Final Assessment</span></div>
 </div>
 
 </div>
 </div>
 </section>
-
 
 <!-- ABOUT -->
 
-<section class="about">
-
+<section>
 <div class="container">
 
-<div class="section-head">
-
+<div class="head">
 <div class="label">About The Academy</div>
-
-<h2>
-Learn Scripture With Purpose
-</h2>
-
+<h2>Learn Scripture With Purpose</h2>
 <p>
-A simple and structured approach to Christian
-Biblical Studies for students who want to grow
-in biblical knowledge and faith.
+Structured biblical education for believers who desire
+to grow in God's Word and prepare for Christian service.
 </p>
-
 </div>
 
-<div class="about-grid">
+<div class="grid three">
 
 <div class="card">
-
 <div class="icon">📖</div>
-
 <h3>Biblical Studies</h3>
-
-<p>
-Study Scripture, biblical themes, Christian
-doctrine and the life and teachings of Jesus.
-</p>
-
+<p>Study Scripture, doctrine and the life and teachings of Jesus.</p>
 </div>
 
 <div class="card">
-
 <div class="icon">💻</div>
-
 <h3>Online Learning</h3>
-
-<p>
-Access lessons and learning resources online
-from wherever you are.
-</p>
-
+<p>Access lessons and learning resources online.</p>
 </div>
 
 <div class="card">
-
 <div class="icon">📝</div>
-
 <h3>Assessment</h3>
-
-<p>
-Complete learning activities and a final
-examination as part of the program.
-</p>
-
+<p>Complete assignments, assessments and a final examination.</p>
 </div>
 
 </div>
 </div>
 </section>
-
-
-<!-- WHO IS THIS FOR -->
-
-<section class="who">
-
-<div class="container">
-
-<div class="section-head">
-
-<div class="label">Who Is This For?</div>
-
-<h2>
-Biblical Learning For Christian Service
-</h2>
-
-<p>
-The program is designed for people who desire
-to grow in Scripture and Christian knowledge.
-</p>
-
-</div>
-
-<div class="who-grid">
-
-<div class="who-card">
-<strong>Church Members</strong>
-<p>
-Grow deeper in biblical understanding and Christian faith.
-</p>
-</div>
-
-<div class="who-card">
-<strong>Bible Students</strong>
-<p>
-Build a structured foundation for studying Scripture.
-</p>
-</div>
-
-<div class="who-card">
-<strong>Bible Teachers</strong>
-<p>
-Strengthen biblical knowledge for teaching and discipleship.
-</p>
-</div>
-
-<div class="who-card">
-<strong>Ministry Workers</strong>
-<p>
-Prepare for faithful Christian service and ministry.
-</p>
-</div>
-
-</div>
-</div>
-</section>
-
 
 <!-- COURSE -->
 
-<section class="course">
+<section class="light">
+<div class="container course-grid">
 
-<div class="container">
-
-<div class="course-grid">
-
-<div class="course-content">
+<div class="course">
 
 <div class="label">Featured Program</div>
 
-<h2>
-Diploma in Christian Biblical Studies
-</h2>
+<h2>Diploma in Christian Biblical Studies & Ministry</h2>
 
 <p>
-A six-month structured program covering
-essential biblical and Christian studies.
+A one-year structured program covering biblical studies,
+Christian doctrine and practical ministry preparation.
 </p>
 
 <div class="checks">
-
-<div>
-<span class="check">✓</span>
-Six-month study program
-</div>
-
-<div>
-<span class="check">✓</span>
-Six core modules
-</div>
-
-<div>
-<span class="check">✓</span>
-Online lessons
-</div>
-
-<div>
-<span class="check">✓</span>
-Assignments and assessments
-</div>
-
-<div>
-<span class="check">✓</span>
-Final examination
-</div>
-
-<div>
-<span class="check">✓</span>
-Certificate upon meeting requirements
+<div><span class="check">✓</span> One-year program</div>
+<div><span class="check">✓</span> Six core study areas</div>
+<div><span class="check">✓</span> Online lessons</div>
+<div><span class="check">✓</span> Ministry preparation</div>
+<div><span class="check">✓</span> Final examination</div>
+<div><span class="check">✓</span> Certificate upon meeting requirements</div>
 </div>
 
 </div>
-
-</div>
-
-<div class="price-box">
-
-<div class="price-label">Enrollment</div>
-
-<h3>Christian Biblical Studies</h3>
 
 <div class="price">
-<strong>LKR 1,500</strong>
-<span> / month</span>
+
+<small>Enrollment</small>
+
+<h3>Christian Biblical Studies & Ministry</h3>
+
+<div class="amount">
+<strong>LKR 1,500</strong> <small>/ month</small>
 </div>
 
 <ul>
-<li>✓ Online course access</li>
+<li>✓ Course access</li>
 <li>✓ Bible lessons</li>
 <li>✓ Assessments</li>
+<li>✓ Ministry preparation</li>
 <li>✓ Final examination</li>
-<li>✓ Certificate upon completion</li>
 </ul>
 
-<a
-href="enroll.html"
-class="btn gold"
-style="width:100%;margin-top:20px">
+<a href="enroll.html" class="btn gold" style="width:100%;margin-top:18px">
 Register Now
 </a>
 
 </div>
 
 </div>
+</section>
+
+<!-- AI -->
+
+<section class="ai">
+<div class="container ai-grid">
+
+<div>
+
+<div class="label" style="color:#f3c95c">AI BIBLE TEACHER</div>
+
+<h2>Learn With AI in Your Language</h2>
+
+<p>
+Ask Bible questions, understand lessons and practise
+your learning with an AI Bible Teacher.
+</p>
+
+<div class="languages">
+<span class="language">English</span>
+<span class="language">தமிழ்</span>
+<span class="language">සිංහල</span>
+</div>
+
+</div>
+
+<div class="ai-box">
+<h3>Multilingual Bible Learning</h3>
+
+<ul>
+<li>✓ Bible questions and explanations</li>
+<li>✓ Lesson assistance</li>
+<li>✓ Scripture study support</li>
+<li>✓ Ministry learning support</li>
+<li>✓ English, Tamil and Sinhala</li>
+</ul>
+
+<a href="ai-bible-teacher.html"
+class="btn gold"
+style="margin-top:18px">
+Meet AI Bible Teacher
+</a>
+</div>
+
 </div>
 </section>
 
-
 <!-- CURRICULUM -->
 
-<section class="curriculum">
-
+<section class="light">
 <div class="container">
 
-<div class="section-head">
-
-<div class="label">Curriculum</div>
-
-<h2>
-Six Core Areas of Study
-</h2>
-
-<p>
-Progress through the program step by step.
-</p>
-
+<div class="head">
+<div class="label">One-Year Curriculum</div>
+<h2>Six Core Areas</h2>
+<p>Build biblical knowledge and prepare for Christian ministry.</p>
 </div>
 
 <div class="modules">
 
 <div class="module">
 <div class="number">01</div>
-<div>
-<h3>Bible Foundations</h3>
-<p>Understanding Scripture and responsible Bible study.</p>
-</div>
+<div><h3>Bible Foundations</h3><p>Scripture and responsible Bible study.</p></div>
 </div>
 
 <div class="module">
 <div class="number">02</div>
-<div>
-<h3>Old Testament Studies</h3>
-<p>Major books, people, events and biblical themes.</p>
-</div>
+<div><h3>Old Testament Studies</h3><p>Books, people, events and biblical themes.</p></div>
 </div>
 
 <div class="module">
 <div class="number">03</div>
-<div>
-<h3>New Testament Studies</h3>
-<p>The Gospels, Acts, Epistles and New Testament message.</p>
-</div>
+<div><h3>New Testament Studies</h3><p>Gospels, Acts, Epistles and Christian teaching.</p></div>
 </div>
 
 <div class="module">
 <div class="number">04</div>
-<div>
-<h3>Life &amp; Teachings of Jesus</h3>
-<p>The ministry, teachings, death and resurrection of Christ.</p>
-</div>
+<div><h3>Christian Doctrine & Theology</h3><p>Core Christian beliefs and biblical foundations.</p></div>
 </div>
 
 <div class="module">
 <div class="number">05</div>
-<div>
-<h3>Christian Doctrine</h3>
-<p>Core Christian beliefs and practical Christian living.</p>
-</div>
+<div><h3>Christian Life & Ministry</h3><p>Discipleship, leadership, service and character.</p></div>
 </div>
 
 <div class="module">
 <div class="number">06</div>
-<div>
-<h3>Evangelism &amp; Ministry</h3>
-<p>Gospel ministry, missions, service and leadership.</p>
-</div>
+<div><h3>Evangelism & Missions</h3><p>Gospel ministry, missions and practical service.</p></div>
 </div>
 
 </div>
 </div>
 </section>
 
+<!-- COMPLETION -->
 
-<!-- PROCESS -->
-
-<section class="process">
-
+<section>
 <div class="container">
 
-<div class="section-head">
-
-<div class="label">How It Works</div>
-
-<h2>
-From Registration to Completion
-</h2>
-
-<p>
-Follow a simple learning process.
-</p>
-
-</div>
-
-<div class="process-grid">
-
-<div class="process-card">
-
-<strong>01 — REGISTER</strong>
-
-<h3>Join the Academy</h3>
-
-<p>
-Create your student account and complete
-the enrollment process.
-</p>
-
-</div>
-
-<div class="process-card">
-
-<strong>02 — LEARN</strong>
-
-<h3>Study &amp; Practise</h3>
-
-<p>
-Complete lessons, activities and required
-course assessments.
-</p>
-
-</div>
-
-<div class="process-card">
-
-<strong>03 — COMPLETE</strong>
-
-<h3>Final Examination</h3>
-
-<p>
-Complete the final examination after
-meeting the required course progress.
-</p>
-
-</div>
-
-</div>
-</div>
-</section>
-
-
-<!-- ASSESSMENT -->
-
-<section class="assessment">
-
-<div class="container">
-
-<div class="section-head">
-
+<div class="head">
 <div class="label">Completion</div>
-
-<h2>
-Assessment &amp; Certificate
-</h2>
-
-<p>
-Students must meet the required academic
-and course completion requirements.
-</p>
-
+<h2>Assessment & Certificate</h2>
+<p>Students must meet the required course completion requirements.</p>
 </div>
 
-<div class="assessment-grid">
+<div class="grid three">
 
-<div class="assessment-card">
-
-<h3>Final Examination</h3>
-
-<p>
-The final examination evaluates understanding
-of the subjects studied during the program.
-</p>
-
-<ul>
-<li>✓ Course-based questions</li>
-<li>✓ Final assessment</li>
-<li>✓ Examination result</li>
-</ul>
-
+<div class="card">
+<h3>Study</h3>
+<p>Complete lessons and required learning activities.</p>
 </div>
 
-<div class="assessment-card">
+<div class="card">
+<h3>Examination</h3>
+<p>Complete the final examination after meeting course requirements.</p>
+</div>
 
+<div class="card">
 <h3>Certificate</h3>
-
-<p>
-Eligible students who successfully complete
-the required program requirements may receive
-a ministry-issued certificate.
-</p>
-
-<ul>
-<li>✓ Student name</li>
-<li>✓ Program title</li>
-<li>✓ Completion date</li>
-</ul>
-
+<p>Eligible students may receive a ministry-issued certificate.</p>
 </div>
 
 </div>
 </div>
 </section>
-
 
 <!-- FOUNDER -->
 
-<section class="founder">
-
+<section class="light">
 <div class="container">
 
-<div class="section-head">
-
+<div class="head">
 <div class="label">Leadership</div>
-
-<h2>
-About the Founder
-</h2>
-
+<h2>About the Founder</h2>
 </div>
 
-<div class="founder-box">
+<div class="founder">
 
-<h3>
-Pastor Saththiyanadan
-</h3>
+<h3>Pastor Saththiyanadan</h3>
 
-<div class="founder-role">
-Founder &amp; Pastor — Gate of Heaven Ministries
+<div class="role">
+Founder & Pastor — Gate of Heaven Ministries
 </div>
 
 <p>
 GOH Bible Academy was established as an educational
 initiative of Gate of Heaven Ministries to provide
-structured Christian Biblical Studies and encourage
-students to grow in the knowledge of God's Word.
-</p>
-
-<p>
-The academy focuses on accessible Bible education,
-Christian learning and preparation for faithful
-service and ministry.
+biblical education and prepare believers for faithful
+Christian service.
 </p>
 
 </div>
 </div>
 </section>
 
-
 <!-- CTA -->
 
-<section class="cta">
-
+<section>
 <div class="container">
 
 <div class="cta-box">
 
-<h2>
-Ready to Begin Your Biblical Studies?
-</h2>
+<h2>Ready to Prepare for Ministry?</h2>
 
 <p>
-Register with GOH Bible Academy and begin your
-structured six-month Christian Biblical Studies program.
+Begin your one-year journey in Biblical Studies
+and Ministry Preparation.
 </p>
 
-<div class="cta-buttons">
-
-<a href="enroll.html" class="btn gold">
-Register Now
-</a>
-
-<a href="bible-courses.html" class="btn white">
-View Courses
-</a>
-
+<div class="buttons" style="justify-content:center">
+<a href="enroll.html" class="btn gold">Register Now</a>
+<a href="bible-courses.html" class="btn white">View Courses</a>
 </div>
 
 </div>
 </div>
 </section>
 
-
 <!-- FOOTER -->
 
 <footer>
-
 <div class="container">
 
-<div class="footer-grid">
+<div class="footer">
 
 <div>
-
-<h3>
-GOH Bible Academy
-</h3>
-
+<h3>GOH Bible Academy</h3>
 <p>
-An educational initiative of Gate of Heaven
-Ministries providing structured Christian
-Biblical Studies through online learning.
+An educational initiative of Gate of Heaven Ministries
+providing Christian Biblical Studies and ministry preparation.
 </p>
-
 </div>
 
 <div>
-
-<h3>
-Academy
-</h3>
-
+<h3>Academy</h3>
 <a href="about.html">About</a>
 <a href="bible-courses.html">Courses</a>
+<a href="ai-bible-teacher.html">AI Bible Teacher</a>
 <a href="enroll.html">Register</a>
-<a href="contact.html">Contact</a>
-
 </div>
 
 <div>
-
-<h3>
-Information
-</h3>
-
+<h3>Information</h3>
 <a href="payment.html">Payment</a>
 <a href="refund-policy.html">Refund Policy</a>
 <a href="privacy.html">Privacy Policy</a>
-<a href="terms.html">Terms &amp; Conditions</a>
-
+<a href="terms.html">Terms & Conditions</a>
 </div>
 
 </div>
 
-<div class="footer-bottom">
-
-© 2026 GOH Bible Academy.
-All rights reserved.
-
+<div class="bottom">
+© 2026 GOH Bible Academy. All rights reserved.
 </div>
 
 </div>
-
 </footer>
 
-
-<!-- FLOATING WHATSAPP -->
-
-<a
-class="whatsapp"
+<a class="whatsapp"
 href="https://wa.me/94771190395"
 target="_blank"
 rel="noopener"
-aria-label="WhatsApp GOH Bible Academy">
-
+aria-label="WhatsApp">
 💬
-
 </a>
 
-
 <script>
-
 function toggleMenu(){
-
-const nav=document.getElementById("navLinks");
-
-nav.classList.toggle("show");
-
+document.getElementById("navLinks").classList.toggle("show");
 }
 
-document.querySelectorAll(".nav-links a").forEach(link=>{
-
-link.addEventListener("click",()=>{
-
-document
-.getElementById("navLinks")
-.classList.remove("show");
-
+document.querySelectorAll(".nav-links a").forEach(a=>{
+a.onclick=()=>document.getElementById("navLinks").classList.remove("show");
 });
-
-});
-
 </script>
 
 </body>
