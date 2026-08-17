@@ -1,533 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>Contact | GOH Bible Academy</title>
-
-<meta
-name="description"
-content="Contact GOH Bible Academy for course enrollment, student support and Christian Biblical Studies information."
->
-
+<meta name="description" content="Contact GOH Bible Academy for questions about the one-year Christian discipleship course, registration and ministry preparation.">
 <meta name="theme-color" content="#0b376d">
 
 <style>
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f7f9fc;
-  color:#172033;
-  line-height:1.6;
-}
-
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-.container{
-  width:min(1050px,92%);
-  margin:auto;
-}
-
-/* HEADER */
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;color:#172033;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{width:min(1050px,92%);margin:auto}
 
 header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-
-  background:rgba(255,255,255,.97);
-
-  border-bottom:1px solid #e5eaf1;
-
-  backdrop-filter:blur(10px);
+position:sticky;top:0;z-index:10;
+background:#fff;border-bottom:1px solid #e5eaf1
 }
-
 .nav{
-  min-height:68px;
-
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  gap:15px;
+height:68px;display:flex;align-items:center;justify-content:space-between
 }
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
+.brand{display:flex;align-items:center;gap:10px}
 .logo{
-  width:42px;
-  height:42px;
-
-  display:grid;
-  place-items:center;
-
-  border-radius:11px;
-
-  background:#0b376d;
-  color:#fff;
-
-  font-size:12px;
-  font-weight:900;
+width:41px;height:41px;display:grid;place-items:center;
+border-radius:10px;background:#0b376d;color:#fff;
+font-size:12px;font-weight:900
 }
-
-.brand strong{
-  display:block;
-
-  color:#0b376d;
-
-  font-size:15px;
-  line-height:1.2;
-}
-
+.brand strong{display:block;color:#0b376d;font-size:15px}
 .brand small{
-  display:block;
-
-  color:#667085;
-
-  font-size:8px;
-
-  letter-spacing:1px;
+display:block;color:#667085;font-size:8px;
+font-weight:700;letter-spacing:.7px
 }
-
-.back{
-  color:#0b376d;
-
-  font-size:13px;
-  font-weight:800;
+.nav-links{display:flex;align-items:center;gap:18px}
+.nav-links a{font-size:13px;font-weight:700;color:#344054}
+.register{
+padding:9px 15px;border-radius:8px;
+background:#0b376d;color:#fff!important
+}
+.menu{
+display:none;border:0;background:none;
+font-size:25px;color:#0b376d
 }
 
 /* HERO */
 
 .hero{
-  padding:55px 20px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #061d39,
-      #0b376d
-    );
-
-  color:#fff;
+padding:75px 0;
+background:
+radial-gradient(circle at 90% 10%,#f3c95c22,transparent 30%),
+linear-gradient(135deg,#061d39,#0b376d);
+color:#fff
 }
-
-.hero-inner{
-  max-width:850px;
-  margin:auto;
-}
-
+.hero-content{max-width:720px}
 .label{
-  margin-bottom:9px;
-
-  color:#f3c95c;
-
-  font-size:11px;
-  font-weight:900;
-
-  letter-spacing:1.3px;
+color:#f3c95c;font-size:10px;
+font-weight:900;letter-spacing:1.3px;
+text-transform:uppercase
 }
-
 .hero h1{
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:
-    clamp(36px,6vw,52px);
-
-  line-height:1.12;
-
-  margin-bottom:12px;
+font-family:Georgia,"Times New Roman",serif;
+font-size:clamp(38px,7vw,58px);
+line-height:1.08;margin:7px 0 14px
 }
+.hero p{color:#dce7f3;font-size:15px}
 
-.hero p{
-  max-width:650px;
+/* CONTENT */
 
-  color:#dce7f3;
+section{padding:65px 0}
+.light{background:#f7f9fc}
 
-  font-size:15px;
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px
 }
-
-/* MAIN */
-
-main{
-  padding:45px 0 70px;
-}
-
-.contact-grid{
-  display:grid;
-
-  grid-template-columns:
-    1fr
-    1fr;
-
-  gap:22px;
-}
-
-/* CARD */
 
 .card{
-  padding:28px;
-
-  background:#fff;
-
-  border:1px solid #e1e7ef;
-
-  border-radius:17px;
-
-  box-shadow:
-    0 7px 25px
-    rgba(16,24,40,.04);
+padding:25px;
+border:1px solid #e5eaf1;
+border-radius:15px;
+background:#fff
 }
 
 .card h2{
-  margin-bottom:8px;
-
-  color:#0b376d;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:27px;
+font-family:Georgia,"Times New Roman",serif;
+font-size:27px;margin-bottom:10px
 }
 
-.card-intro{
-  color:#667085;
-
-  font-size:14px;
-
-  margin-bottom:23px;
+.card p{
+color:#667085;
+font-size:13px;
+margin-bottom:15px
 }
 
-/* CONTACT ITEMS */
-
-.contact-list{
-  display:grid;
-
-  gap:13px;
+.info{
+display:grid;
+gap:10px
 }
 
-.contact-item{
-  display:flex;
-
-  align-items:flex-start;
-
-  gap:13px;
-
-  padding:16px;
-
-  border:1px solid #e7ebf0;
-
-  border-radius:12px;
-
-  background:#fff;
+.info a,.info div{
+padding:13px 15px;
+border:1px solid #e5eaf1;
+border-radius:9px;
+font-size:12px;
+background:#fff
 }
 
-.contact-icon{
-  width:43px;
-  height:43px;
-
-  flex:none;
-
-  display:grid;
-  place-items:center;
-
-  border-radius:10px;
-
-  background:#edf4ff;
-
-  font-size:20px;
+.info strong{
+display:block;
+color:#0b376d;
+font-size:10px;
+letter-spacing:.7px;
+margin-bottom:2px
 }
 
-.contact-item strong{
-  display:block;
-
-  margin-bottom:2px;
-
-  color:#172033;
-
-  font-size:14px;
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:11px 19px;
+border-radius:8px;
+background:#18a957;
+color:#fff;
+font-size:13px;
+font-weight:800
 }
 
-.contact-item span,
-.contact-item a{
-  color:#667085;
+/* CTA */
 
-  font-size:13px;
+.cta{text-align:center}
+.cta-box{
+padding:42px 22px;
+border-radius:18px;
+background:#0b376d;
+color:#fff
 }
-
-.contact-item a{
-  color:#0b376d;
-
-  font-weight:800;
+.cta h2{
+font-family:Georgia,"Times New Roman",serif;
+font-size:clamp(29px,5vw,40px)
 }
-
-.contact-item a:hover{
-  text-decoration:underline;
-}
-
-/* WHATSAPP */
-
-.whatsapp-card{
-  padding:28px;
-
-  border-radius:17px;
-
-  background:#18a957;
-
-  color:#fff;
-}
-
-.whatsapp-card h2{
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:29px;
-
-  margin-bottom:8px;
-}
-
-.whatsapp-card p{
-  color:#e5f8ec;
-
-  font-size:14px;
-
-  margin-bottom:20px;
-}
-
-.whatsapp-button{
-  display:inline-flex;
-
-  align-items:center;
-  justify-content:center;
-
-  min-height:48px;
-
-  padding:11px 20px;
-
-  border-radius:9px;
-
-  background:#fff;
-
-  color:#137a3a;
-
-  font-size:14px;
-  font-weight:900;
-
-  transition:.2s;
-}
-
-.whatsapp-button:hover{
-  transform:translateY(-2px);
-}
-
-/* SUPPORT */
-
-.support{
-  margin-top:22px;
-
-  padding:24px;
-
-  border-radius:17px;
-
-  background:#fff;
-
-  border:1px solid #e1e7ef;
-}
-
-.support h3{
-  margin-bottom:8px;
-
-  color:#0b376d;
-
-  font-size:19px;
-}
-
-.support p{
-  color:#667085;
-
-  font-size:13px;
-}
-
-.support ul{
-  list-style:none;
-
-  display:grid;
-
-  gap:7px;
-
-  margin-top:14px;
-
-  color:#475467;
-
-  font-size:13px;
+.cta p{
+max-width:600px;margin:8px auto 20px;
+color:#dce7f3;font-size:13px
 }
 
 /* FOOTER */
 
 footer{
-  padding:45px 0 22px;
-
-  background:#081d38;
-
-  color:#fff;
+padding:40px 0 18px;
+background:#081d38;color:#fff
+}
+.footer{
+display:grid;
+grid-template-columns:1.5fr 1fr 1fr;
+gap:30px
+}
+.footer h3{font-size:15px;margin-bottom:8px}
+.footer p,.footer a{
+display:block;color:#aebdd0;
+font-size:11px;margin:5px 0
+}
+.bottom{
+margin-top:25px;padding-top:14px;
+border-top:1px solid #ffffff15;
+text-align:center;color:#8192a8;font-size:9px
 }
 
-.footer-links{
-  display:flex;
+/* WHATSAPP */
 
-  justify-content:center;
-
-  flex-wrap:wrap;
-
-  gap:16px;
-
-  margin-bottom:16px;
+.whatsapp{
+position:fixed;
+right:17px;bottom:17px;
+width:52px;height:52px;
+display:grid;place-items:center;
+border-radius:50%;
+background:#18a957;color:#fff;
+font-size:22px;
+box-shadow:0 6px 20px #0003;
+z-index:20
 }
 
-.footer-links a{
-  color:#c8d5e4;
+@media(max-width:800px){
+.menu{display:block}
 
-  font-size:12px;
+.nav-links{
+display:none;
+position:absolute;
+top:68px;left:0;right:0;
+padding:10px 5%;
+background:#fff;
+flex-direction:column;
+gap:0;
+box-shadow:0 8px 20px #0001
 }
+.nav-links.show{display:flex}
+.nav-links a{padding:9px 0}
+.register{text-align:center}
 
-.footer-links a:hover{
-  color:#fff;
-}
-
-.footer-bottom{
-  padding-top:17px;
-
-  border-top:
-    1px solid
-    rgba(255,255,255,.1);
-
-  text-align:center;
-
-  color:#8192a8;
-
-  font-size:11px;
-}
-
-/* MOBILE */
-
-@media(max-width:750px){
-
-  .contact-grid{
-    grid-template-columns:1fr;
-  }
-
+.grid,.footer{grid-template-columns:1fr}
 }
 
 @media(max-width:480px){
-
-  .brand small{
-    display:none;
-  }
-
-  .hero{
-    padding:45px 18px;
-  }
-
-  main{
-    padding:32px 0 55px;
-  }
-
-  .card,
-  .whatsapp-card,
-  .support{
-    padding:22px;
-  }
-
-  .footer-links{
-    gap:11px 15px;
-  }
-
+.hero{padding:60px 0}
+.hero h1{font-size:39px}
+section{padding:52px 0}
 }
-
 </style>
-
 </head>
 
 <body>
 
-
-<!-- HEADER -->
-
 <header>
-
 <div class="container nav">
 
 <a href="index.html" class="brand">
-
-<div class="logo">
-GOH
-</div>
-
+<div class="logo">GOH</div>
 <div>
-
-<strong>
-GOH Bible Academy
-</strong>
-
-<small>
-GATE OF HEAVEN MINISTRIES
-</small>
-
+<strong>GOH Bible Academy</strong>
+<small>GATE OF HEAVEN MINISTRIES</small>
 </div>
-
 </a>
 
-<a href="index.html" class="back">
-← Home
-</a>
+<button class="menu" onclick="toggleMenu()" aria-label="Open menu">
+☰
+</button>
+
+<nav class="nav-links" id="navLinks">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="bible-courses.html">Course</a>
+<a href="ai-bible-teacher.html">AI Bible Teacher</a>
+<a href="media.html">Media</a>
+<a href="contact.html">Contact</a>
+<a href="enroll.html" class="register">Register</a>
+</nav>
 
 </div>
-
 </header>
 
 
-<!-- HERO -->
-
 <section class="hero">
 
-<div class="container hero-inner">
+<div class="container hero-content">
 
-<div class="label">
-GOH BIBLE ACADEMY
-</div>
+<div class="label">Contact Us</div>
 
 <h1>
-Contact Us
+We're Here to Help
 </h1>
 
 <p>
-Have a question about our courses, enrollment,
-payments or student support? We are happy to help.
+Have questions about the one-year discipleship
+course, registration, examinations or ministry
+preparation? Contact GOH Bible Academy.
 </p>
 
 </div>
@@ -535,261 +261,202 @@ payments or student support? We are happy to help.
 </section>
 
 
-<!-- MAIN -->
+<section>
 
-<main>
-
-<div class="container">
-
-
-<div class="contact-grid">
-
-
-<!-- CONTACT DETAILS -->
+<div class="container grid">
 
 <div class="card">
 
-<h2>
-Get in Touch
-</h2>
+<h2>Contact GOH Bible Academy</h2>
 
-<p class="card-intro">
-For course information and student support,
-contact GOH Bible Academy through WhatsApp.
+<p>
+For course information, registration assistance
+or general questions, please contact us through
+WhatsApp.
 </p>
-
-
-<div class="contact-list">
-
-
-<div class="contact-item">
-
-<div class="contact-icon">
-💬
-</div>
-
-<div>
-
-<strong>
-WhatsApp
-</strong>
 
 <a
 href="https://wa.me/94771190395"
 target="_blank"
-rel="noopener noreferrer">
+rel="noopener"
+class="btn">
+WhatsApp Us
+</a>
 
-0771190395
+</div>
 
+
+<div class="card">
+
+<h2>Academy Information</h2>
+
+<div class="info">
+
+<div>
+<strong>ACADEMY</strong>
+GOH Bible Academy
+</div>
+
+<div>
+<strong>MINISTRY</strong>
+Gate of Heaven Ministries
+</div>
+
+<div>
+<strong>PROGRAM</strong>
+One-Year Christian Discipleship
+</div>
+
+<div>
+<strong>EXAMINATIONS</strong>
+12 Monthly MCQ Exams
+</div>
+
+<div>
+<strong>QUESTIONS</strong>
+50 MCQs Per Month
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="light">
+
+<div class="container">
+
+<div class="card">
+
+<h2>Before You Contact Us</h2>
+
+<p>
+You can review the course structure, registration
+information and academy policies before contacting
+the academy.
+</p>
+
+<div class="info">
+
+<a href="bible-courses.html">
+<strong>COURSE</strong>
+View the one-year discipleship program
+</a>
+
+<a href="enroll.html">
+<strong>REGISTRATION</strong>
+Register as a student
+</a>
+
+<a href="payment.html">
+<strong>PAYMENT</strong>
+View payment information
+</a>
+
+<a href="terms.html">
+<strong>TERMS</strong>
+Read Terms & Conditions
 </a>
 
 </div>
 
 </div>
 
-
-<div class="contact-item">
-
-<div class="contact-icon">
-🎓
 </div>
 
-<div>
-
-<strong>
-Course Support
-</strong>
-
-<span>
-Questions about lessons, examinations,
-certificates or enrollment.
-</span>
-
-</div>
-
-</div>
+</section>
 
 
-<div class="contact-item">
+<section class="cta">
 
-<div class="contact-icon">
-💳
-</div>
+<div class="container">
 
-<div>
+<div class="cta-box">
 
-<strong>
-Payment Support
-</strong>
-
-<span>
-Contact us if you experience a problem
-with your course payment.
-</span>
-
-</div>
-
-</div>
-
-
-<div class="contact-item">
-
-<div class="contact-icon">
-📚
-</div>
-
-<div>
-
-<strong>
-Student Support
-</strong>
-
-<span>
-Get assistance with your online learning
-account and course access.
-</span>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<!-- WHATSAPP -->
-
-<div>
-
-<div class="whatsapp-card">
-
-<h2>
-Chat With Us
-</h2>
+<h2>Ready to Begin?</h2>
 
 <p>
-The quickest way to contact GOH Bible Academy
-is through WhatsApp.
+Start your one-year journey of biblical learning,
+discipleship and ministry preparation.
 </p>
 
-<a
-href="https://wa.me/94771190395"
-target="_blank"
-rel="noopener noreferrer"
-class="whatsapp-button">
-
-💬 WhatsApp 0771190395
-
+<a href="enroll.html" class="btn" style="background:#f3c95c;color:#172033">
+Register Now
 </a>
 
 </div>
 
-
-<div class="support">
-
-<h3>
-How We Can Help
-</h3>
-
-<p>
-You can contact us about:
-</p>
-
-<ul>
-
-<li>
-✓ Course information
-</li>
-
-<li>
-✓ Enrollment
-</li>
-
-<li>
-✓ Payment questions
-</li>
-
-<li>
-✓ Student account access
-</li>
-
-<li>
-✓ Examination information
-</li>
-
-<li>
-✓ Certificate requirements
-</li>
-
-<li>
-✓ General academy enquiries
-</li>
-
-</ul>
-
 </div>
 
-</div>
+</section>
 
-
-</div>
-
-</div>
-
-</main>
-
-
-<!-- FOOTER -->
 
 <footer>
 
 <div class="container">
 
-<div class="footer-links">
+<div class="footer">
 
-<a href="index.html">
-Home
-</a>
+<div>
+<h3>GOH Bible Academy</h3>
+<p>
+Christian discipleship, biblical learning and
+ministry preparation through Gate of Heaven Ministries.
+</p>
+</div>
 
-<a href="about.html">
-About
-</a>
+<div>
+<h3>Academy</h3>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="bible-courses.html">Course</a>
+<a href="enroll.html">Register</a>
+</div>
 
-<a href="bible-courses.html">
-Courses
-</a>
-
-<a href="enroll.html">
-Enroll
-</a>
-
-<a href="terms.html">
-Terms & Conditions
-</a>
-
-<a href="privacy.html">
-Privacy Policy
-</a>
-
-<a href="refund.html">
-Refund Policy
-</a>
+<div>
+<h3>Information</h3>
+<a href="payment.html">Payment</a>
+<a href="refund-policy.html">Refund Policy</a>
+<a href="privacy.html">Privacy Policy</a>
+<a href="terms.html">Terms & Conditions</a>
+</div>
 
 </div>
 
-
-<div class="footer-bottom">
-
-© 2026 GOH Bible Academy · Gate of Heaven Ministries.
-All Rights Reserved.
-
+<div class="bottom">
+© 2026 GOH Bible Academy. All rights reserved.
 </div>
 
 </div>
 
 </footer>
+
+
+<a
+class="whatsapp"
+href="https://wa.me/94771190395"
+target="_blank"
+rel="noopener"
+aria-label="WhatsApp">
+💬
+</a>
+
+
+<script>
+function toggleMenu(){
+document.getElementById("navLinks").classList.toggle("show");
+}
+
+document.querySelectorAll(".nav-links a").forEach(a=>{
+a.onclick=()=>{
+document.getElementById("navLinks").classList.remove("show");
+};
+});
+</script>
 
 </body>
 </html>
