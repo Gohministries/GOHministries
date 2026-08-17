@@ -4,248 +4,272 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Study Notes | GOH Bible Academy</title>
+<title>Month 01 Study Notes | GOH Bible Academy</title>
 
 <meta name="theme-color" content="#0b376d">
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-  --primary:#0b376d;
-  --blue:#155eef;
-  --text:#172033;
-  --muted:#667085;
-  --bg:#f4f7fb;
-  --card:#fff;
-  --border:#e4e7ec;
+--navy:#0b376d;
+--blue:#155eef;
+--purple:#6941c6;
+--green:#079455;
+--orange:#f79009;
+--pink:#db2777;
+--cyan:#0891b2;
+--text:#172033;
+--muted:#667085;
+--bg:#f4f7fb;
+--border:#e4e7ec;
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.65;
+font-family:Arial,Helvetica,sans-serif;
+background:var(--bg);
+color:var(--text);
+min-height:100vh;
 }
 
 header{
-  background:var(--primary);
-  color:#fff;
-  padding:12px 16px;
+background:linear-gradient(135deg,#0b376d,#155eef);
+color:#fff;
+padding:12px 18px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 4px 18px #0002;
 }
 
-.header{
-  max-width:900px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  gap:11px;
+.header-inner{
+max-width:1050px;
+margin:auto;
+display:flex;
+align-items:center;
+gap:12px;
 }
 
 .logo{
-  width:42px;
-  height:42px;
-  border-radius:10px;
-  background:#fff;
-  color:var(--primary);
-  display:grid;
-  place-items:center;
-  font-weight:900;
+width:43px;
+height:43px;
+border-radius:11px;
+background:#fff;
+color:var(--navy);
+display:grid;
+place-items:center;
+font-weight:900;
+flex-shrink:0;
 }
 
-.brand{
-  font-size:16px;
-  font-weight:800;
+.brand-title{
+font-size:17px;
+font-weight:800;
 }
 
-.sub{
-  font-size:9px;
-  opacity:.75;
-  margin-top:2px;
-  letter-spacing:.5px;
+.brand-sub{
+font-size:9px;
+opacity:.8;
+margin-top:3px;
+letter-spacing:.5px;
 }
 
 main{
-  max-width:900px;
-  margin:auto;
-  padding:20px 15px 45px;
+max-width:900px;
+margin:auto;
+padding:22px 15px 45px;
 }
 
 .back{
-  display:inline-flex;
-  color:var(--primary);
-  font-size:13px;
-  font-weight:800;
-  margin-bottom:18px;
+display:inline-flex;
+align-items:center;
+gap:6px;
+color:var(--blue);
+font-size:13px;
+font-weight:800;
+text-decoration:none;
+margin-bottom:18px;
 }
 
 .hero{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:22px;
-  margin-bottom:14px;
+background:linear-gradient(135deg,#155eef,#6941c6);
+color:#fff;
+border-radius:18px;
+padding:25px;
+margin-bottom:16px;
+box-shadow:0 10px 25px #155eef25;
 }
 
-.month{
-  color:var(--blue);
-  font-size:11px;
-  font-weight:900;
-  letter-spacing:.8px;
+.label{
+font-size:10px;
+font-weight:900;
+letter-spacing:1px;
+opacity:.8;
 }
 
-h1{
-  font-size:27px;
-  line-height:1.25;
-  margin:6px 0;
+.hero h1{
+font-size:27px;
+margin:7px 0;
 }
 
-.description{
-  color:var(--muted);
-  font-size:13px;
+.hero p{
+font-size:13px;
+color:#e6edff;
+line-height:1.5;
 }
 
 .languages{
-  display:flex;
-  gap:7px;
-  margin-top:17px;
-  flex-wrap:wrap;
+display:flex;
+gap:7px;
+margin-bottom:15px;
 }
 
 .lang{
-  border:1px solid var(--border);
-  background:#fff;
-  color:var(--text);
-  padding:8px 14px;
-  border-radius:8px;
-  cursor:pointer;
-  font-size:12px;
-  font-weight:800;
+border:1px solid var(--border);
+background:#fff;
+padding:9px 14px;
+border-radius:9px;
+font-size:12px;
+font-weight:800;
+cursor:pointer;
+color:var(--text);
 }
 
 .lang.active{
-  background:var(--primary);
-  border-color:var(--primary);
-  color:#fff;
+background:var(--navy);
+color:#fff;
+border-color:var(--navy);
 }
 
 .notes{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:22px;
-  min-height:220px;
+background:#fff;
+border:1px solid var(--border);
+border-radius:16px;
+padding:24px;
+box-shadow:0 5px 18px #10182808;
 }
 
-.note{
-  padding-bottom:22px;
-  margin-bottom:22px;
-  border-bottom:1px solid var(--border);
-}
-
-.note:last-child{
-  border-bottom:0;
-  margin-bottom:0;
-  padding-bottom:0;
-}
-
-.note h2{
-  font-size:19px;
-  color:var(--primary);
-  margin-bottom:12px;
+.notes-title{
+font-size:22px;
+font-weight:900;
+margin-bottom:15px;
+color:var(--navy);
 }
 
 .content{
-  white-space:pre-wrap;
-  font-size:14px;
-  color:#344054;
+font-size:14px;
+line-height:1.75;
+color:#344054;
+white-space:pre-line;
+}
+
+.content strong{
+color:var(--navy);
 }
 
 .loading{
-  text-align:center;
-  padding:45px 10px;
-  color:var(--muted);
-  font-size:13px;
+text-align:center;
+padding:30px;
+color:var(--muted);
 }
 
 .error{
-  text-align:center;
-  padding:35px 10px;
-  color:#b42318;
-  font-size:13px;
+background:#fff1f3;
+border:1px solid #fecdd3;
+color:#be123c;
+border-radius:12px;
+padding:18px;
+font-size:13px;
+line-height:1.6;
 }
 
 .retry{
-  margin-top:12px;
-  background:var(--primary);
-  color:#fff;
-  border:0;
-  padding:10px 16px;
-  border-radius:8px;
-  cursor:pointer;
-  font-weight:800;
+margin-top:12px;
+border:0;
+background:var(--blue);
+color:#fff;
+padding:10px 15px;
+border-radius:8px;
+font-weight:800;
+cursor:pointer;
 }
 
 .navigation{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  margin-top:15px;
+display:flex;
+justify-content:space-between;
+gap:10px;
+margin-top:18px;
 }
 
 .nav-btn{
-  flex:1;
-  text-align:center;
-  background:#fff;
-  border:1px solid var(--border);
-  color:var(--primary);
-  padding:11px;
-  border-radius:9px;
-  font-size:12px;
-  font-weight:800;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:11px 16px;
+border-radius:9px;
+background:var(--navy);
+color:#fff;
+text-decoration:none;
+font-size:12px;
+font-weight:800;
 }
 
-.nav-btn:hover{
-  background:#f8fafc;
+.nav-btn.disabled{
+background:#eaecf0;
+color:#98a2b3;
+pointer-events:none;
 }
 
 footer{
-  text-align:center;
-  color:var(--muted);
-  font-size:11px;
-  padding:20px 15px;
+text-align:center;
+color:var(--muted);
+font-size:11px;
+padding:25px 15px;
 }
 
 @media(max-width:600px){
 
-  main{
-    padding:17px 12px 35px;
-  }
+main{
+padding:18px 12px 35px;
+}
 
-  .hero{
-    padding:18px;
-  }
+.hero{
+padding:21px;
+}
 
-  h1{
-    font-size:23px;
-  }
+.hero h1{
+font-size:23px;
+}
 
-  .notes{
-    padding:18px;
-  }
+.notes{
+padding:18px;
+}
 
-  .content{
-    font-size:13px;
-  }
+.notes-title{
+font-size:20px;
+}
 
-  .lang{
-    flex:1;
-    text-align:center;
-  }
+.content{
+font-size:13px;
+line-height:1.7;
+}
+
+.languages{
+width:100%;
+}
+
+.lang{
+flex:1;
+padding:9px 5px;
+}
+
+.navigation{
+position:relative;
+}
+
+.nav-btn{
+flex:1;
+}
 }
 </style>
 </head>
@@ -253,288 +277,269 @@ footer{
 <body>
 
 <header>
-  <div class="header">
-    <div class="logo">GOH</div>
 
-    <div>
-      <div class="brand">GOH Bible Academy</div>
-      <div class="sub">GATE OF HEAVEN MINISTRIES</div>
-    </div>
-  </div>
+<div class="header-inner">
+
+<div class="logo">GOH</div>
+
+<div>
+<div class="brand-title">
+GOH Bible Academy
+</div>
+
+<div class="brand-sub">
+GATE OF HEAVEN MINISTRIES
+</div>
+</div>
+
+</div>
+
 </header>
-
 
 <main>
 
 <a class="back" href="course.html">
-  ← Course
+← Course
 </a>
-
 
 <section class="hero">
 
-  <div class="month">
-    MONTH <span id="monthNumber">01</span> • STUDY NOTES
-  </div>
+<div class="label">
+MONTH 01 • STUDY NOTES
+</div>
 
-  <h1 id="pageTitle">
-    Study Notes
-  </h1>
+<h1 id="heroTitle">
+Study Notes
+</h1>
 
-  <div class="description" id="description">
-    Biblical study notes for your course.
-  </div>
-
-
-  <div class="languages">
-
-    <button
-      class="lang active"
-      id="langEn"
-      onclick="setLanguage('en')">
-      English
-    </button>
-
-    <button
-      class="lang"
-      id="langTa"
-      onclick="setLanguage('ta')">
-      தமிழ்
-    </button>
-
-    <button
-      class="lang"
-      id="langSi"
-      onclick="setLanguage('si')">
-      සිංහල
-    </button>
-
-  </div>
+<p>
+Biblical study notes for your course.
+</p>
 
 </section>
 
+<div class="languages">
 
-<section class="notes" id="notes">
+<button class="lang active"
+onclick="changeLanguage('en',this)">
+English
+</button>
 
-  <div class="loading">
-    Loading lesson notes...
-  </div>
+<button class="lang"
+onclick="changeLanguage('ta',this)">
+தமிழ்
+</button>
+
+<button class="lang"
+onclick="changeLanguage('si',this)">
+සිංහල
+</button>
+
+</div>
+
+<section class="notes">
+
+<div id="notesArea">
+
+<div class="loading">
+Loading study notes...
+</div>
+
+</div>
 
 </section>
-
 
 <div class="navigation">
 
-  <a class="nav-btn" href="course.html">
-    ← Previous
-  </a>
+<a class="nav-btn disabled"
+id="previousBtn">
+← Previous
+</a>
 
-  <a class="nav-btn" href="exam.html?month=1">
-    Next →
-  </a>
+<a class="nav-btn"
+id="nextBtn"
+href="month2-notes.html">
+Next →
+</a>
 
 </div>
 
 </main>
 
-
 <footer>
 © 2026 GOH Bible Academy. All rights reserved.
 </footer>
 
-
 <script>
 
-const API =
+const API=
 "https://goh-bible-exam-api.createlk.workers.dev";
 
-const params =
-new URLSearchParams(location.search);
+const MONTH=1;
 
-const month =
-Number(params.get("month") || 1);
+let currentLanguage="en";
 
-let notesData = [];
-
-let language = "en";
-
-
-document.getElementById("monthNumber").textContent =
-String(month).padStart(2,"0");
+let noteData=null;
 
 
 /* LOAD NOTES */
 
 async function loadNotes(){
 
-  const box =
-    document.getElementById("notes");
+const area=document.getElementById("notesArea");
 
-  box.innerHTML =
-    '<div class="loading">Loading lesson notes...</div>';
+area.innerHTML=
+`<div class="loading">Loading study notes...</div>`;
 
-  try{
+try{
 
-    const response =
-      await fetch(
-        API + "/notes?month=" + month
-      );
+const response=
+await fetch(
+API+"/notes?month="+MONTH
+);
 
-    const data =
-      await response.json();
+if(!response.ok){
+throw new Error("Unable to connect to Notes API");
+}
 
-    if(
-      !response.ok ||
-      !data.success
-    ){
-      throw new Error(
-        data.error || "Unable to load notes"
-      );
-    }
+const data=
+await response.json();
 
-    notesData =
-      Array.isArray(data.notes)
-      ? data.notes
-      : [];
+if(
+!data.success ||
+!data.notes ||
+!data.notes.length
+){
 
-    if(!notesData.length){
+throw new Error(
+"No study notes were found for this month."
+);
 
-      box.innerHTML = `
-        <div class="loading">
-          No study notes are available for this month yet.
-        </div>
-      `;
+}
 
-      return;
-    }
+noteData=data.notes[0];
 
-    renderNotes();
+showNotes();
 
-  }catch(error){
+}catch(error){
 
-    console.error(error);
+area.innerHTML=`
 
-    box.innerHTML = `
-      <div class="error">
-        Unable to load the lesson notes.
-        <br>
-        <button class="retry" onclick="loadNotes()">
-          Try Again
-        </button>
-      </div>
-    `;
-  }
+<div class="error">
+
+<strong>Unable to load the lesson notes.</strong>
+
+<br><br>
+
+${escapeHtml(error.message)}
+
+<br>
+
+<button class="retry"
+onclick="loadNotes()">
+Try Again
+</button>
+
+</div>
+
+`;
+
+}
+
+}
+
+
+/* SHOW NOTES */
+
+function showNotes(){
+
+if(!noteData)return;
+
+const title=
+currentLanguage==="ta"
+?
+(noteData.title_tamil || noteData.title)
+:
+currentLanguage==="si"
+?
+(noteData.title_sinhala || noteData.title)
+:
+noteData.title;
+
+const content=
+currentLanguage==="ta"
+?
+(noteData.content_tamil || noteData.content)
+:
+currentLanguage==="si"
+?
+(noteData.content_sinhala || noteData.content)
+:
+noteData.content;
+
+document.getElementById("heroTitle").textContent=
+title || "Study Notes";
+
+document.getElementById("notesArea").innerHTML=`
+
+<div class="notes-title">
+${escapeHtml(title || "Study Notes")}
+</div>
+
+<div class="content">
+${formatContent(content || "")}
+</div>
+
+`;
+
 }
 
 
 /* LANGUAGE */
 
-function setLanguage(lang){
+function changeLanguage(language,button){
 
-  language = lang;
+currentLanguage=language;
 
-  document
-    .getElementById("langEn")
-    .classList.toggle(
-      "active",
-      lang === "en"
-    );
+document
+.querySelectorAll(".lang")
+.forEach(btn=>{
+btn.classList.remove("active");
+});
 
-  document
-    .getElementById("langTa")
-    .classList.toggle(
-      "active",
-      lang === "ta"
-    );
+button.classList.add("active");
 
-  document
-    .getElementById("langSi")
-    .classList.toggle(
-      "active",
-      lang === "si"
-    );
-
-  renderNotes();
-}
-
-
-/* RENDER */
-
-function renderNotes(){
-
-  const box =
-    document.getElementById("notes");
-
-  if(!notesData.length){
-    return;
-  }
-
-  box.innerHTML =
-    notesData.map(note => {
-
-      let title =
-        note.title || "Study Note";
-
-      let content =
-        note.content || "";
-
-      if(language === "ta"){
-
-        if(note.content_tamil){
-          content =
-            note.content_tamil;
-        }else{
-          content =
-            note.content || "";
-        }
-
-      }
-
-      if(language === "si"){
-
-        if(note.content_sinhala){
-          content =
-            note.content_sinhala;
-        }else{
-          content =
-            note.content || "";
-        }
-
-      }
-
-      return `
-        <article class="note">
-
-          <h2>
-            ${escapeHTML(title)}
-          </h2>
-
-          <div class="content">
-            ${escapeHTML(content)}
-          </div>
-
-        </article>
-      `;
-
-    }).join("");
+showNotes();
 
 }
 
 
-/* SAFE HTML */
+/* FORMAT TEXT SAFELY */
 
-function escapeHTML(value){
+function formatContent(text){
 
-  return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+return escapeHtml(text)
+.replace(
+/(Ephesians 2:8-9|Ephesians 2:8–9|John 3:16|2 Corinthians 5:17|Acts 3:19|Romans 10:9|Galatians 2:20)/g,
+"<strong>$1</strong>"
+);
+
 }
 
 
-/* START */
+function escapeHtml(text){
+
+return String(text)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* LOAD */
 
 loadNotes();
 
