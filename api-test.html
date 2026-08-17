@@ -1,47 +1,297 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GOH Auth API Test</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f4f7fb;
+  color:#172033;
+  padding:30px 16px;
+}
+
+.box{
+  max-width:600px;
+  margin:auto;
+  background:#fff;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 5px 25px #0001;
+}
+
+h1{
+  margin:0 0 8px;
+  color:#0b376d;
+}
+
+p{
+  color:#667085;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  margin-top:10px;
+  border:0;
+  border-radius:10px;
+  background:#0b376d;
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+}
+
+button:hover{
+  opacity:.9;
+}
+
+pre{
+  margin-top:20px;
+  padding:15px;
+  background:#101828;
+  color:#fff;
+  border-radius:10px;
+  white-space:pre-wrap;
+  word-break:break-word;
+}
+</style>
+</head>
+
 <body>
 
-<h2>GOH Auth API Test</h2>
+<div class="box">
 
-<button onclick="register()">Test Registration</button>
+<h1>GOH Auth API Test</h1>
 
-<pre id="result"></pre>
+<p>
+Testing registration, login, session and logout.
+</p>
+
+<button onclick="register()">
+Test Registration
+</button>
+
+<button onclick="login()">
+Test Login
+</button>
+
+<button onclick="me()">
+Test Current Student
+</button>
+
+<button onclick="logout()">
+Test Logout
+</button>
+
+<pre id="result">Ready...</pre>
+
+</div>
 
 <script>
-async function register(){
 
-  const result = document.getElementById("result");
+const API =
+"https://goh-auth-api.createlk.workers.dev";
+
+let token =
+localStorage.getItem("goh_test_token") || "";
+
+
+function show(data){
+
+  document.getElementById("result")
+    .textContent =
+    JSON.stringify(data,null,2);
+
+}
+
+
+async function register(){
 
   try{
 
-    const res = await fetch(
-      "https://goh-auth-api.createlk.workers.dev/register",
-      {
+    const res =
+      await fetch(API + "/register",{
+
         method:"POST",
+
         headers:{
-          "Content-Type":"application/json"
+          "Content-Type":
+          "application/json"
         },
+
         body:JSON.stringify({
+
           name:"Test Student",
-          email:"test@example.com",
-          password:"TestPassword123"
+
+          email:
+          "test2@example.com",
+
+          password:
+          "TestPassword123"
+
         })
-      }
-    );
 
-    const data = await res.json();
+      });
 
-    result.textContent =
-      JSON.stringify(data,null,2);
+    show(await res.json());
 
-  }catch(error){
+  }catch(e){
 
-    result.textContent =
-      "Error: "+error.message;
+    show({
+      success:false,
+      error:e.message
+    });
 
   }
+
 }
+
+
+async function login(){
+
+  try{
+
+    const res =
+      await fetch(API + "/login",{
+
+        method:"POST",
+
+        headers:{
+          "Content-Type":
+          "application/json"
+        },
+
+        body:JSON.stringify({
+
+          email:
+          "test@example.com",
+
+          password:
+          "TestPassword123"
+
+        })
+
+      });
+
+    const data =
+      await res.json();
+
+    if(data.success && data.token){
+
+      token = data.token;
+
+      localStorage.setItem(
+        "goh_test_token",
+        token
+      );
+
+    }
+
+    show(data);
+
+  }catch(e){
+
+    show({
+      success:false,
+      error:e.message
+    });
+
+  }
+
+}
+
+
+async function me(){
+
+  if(!token){
+
+    show({
+      success:false,
+      error:"Please login first."
+    });
+
+    return;
+  }
+
+  try{
+
+    const res =
+      await fetch(API + "/me",{
+
+        headers:{
+          "Authorization":
+          "Bearer " + token
+        }
+
+      });
+
+    show(await res.json());
+
+  }catch(e){
+
+    show({
+      success:false,
+      error:e.message
+    });
+
+  }
+
+}
+
+
+async function logout(){
+
+  if(!token){
+
+    show({
+      success:true,
+      message:"Already logged out."
+    });
+
+    return;
+  }
+
+  try{
+
+    const res =
+      await fetch(API + "/logout",{
+
+        method:"POST",
+
+        headers:{
+          "Authorization":
+          "Bearer " + token
+        }
+
+      });
+
+    const data =
+      await res.json();
+
+    token = "";
+
+    localStorage.removeItem(
+      "goh_test_token"
+    );
+
+    show(data);
+
+  }catch(e){
+
+    show({
+      success:false,
+      error:e.message
+    });
+
+  }
+
+}
+
 </script>
 
 </body>
