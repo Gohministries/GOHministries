@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>About Us | GOH Bible Academy</title>
+
+<meta name="description"
+content="Learn about GOH Bible Academy, a Christian Biblical Studies education initiative of Gate of Heaven Ministries.">
+
+<meta name="theme-color" content="#0b376d">
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  color:#172033;
+  background:#fff;
+  line-height:1.6;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.container{
+  width:min(1100px,92%);
+  margin:auto;
+}
+
+/* HEADER */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,255,255,.97);
+  border-bottom:1px solid #e7ebf0;
+  backdrop-filter:blur(12px);
+}
+
+.nav{
+  min-height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:11px;
+  background:#0b376d;
+  color:#fff;
+  font-size:13px;
+  font-weight:900;
+}
+
+.brand strong{
+  display:block;
+  color:#0b376d;
+  font-size:15px;
+  line-height:1.2;
+}
+
+.brand small{
+  display:block;
+  color:#667085;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.nav-links a{
+  color:#344054;
+  font-size:13px;
+  font-weight:700;
+}
+
+.nav-links a:hover{
+  color:#0b376d;
+}
+
+.nav-enroll{
+  padding:9px 16px;
+  border-radius:8px;
+  background:#0b376d;
+  color:#fff!important;
+}
+
+.menu{
+  display:none;
+  border:0;
+  background:none;
+  color:#0b376d;
+  font-size:27px;
+  cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+  padding:80px 0;
+  background:
+    radial-gradient(circle at 90% 10%,rgba(243,201,92,.18),transparent 30%),
+    linear-gradient(135deg,#061d39,#0b376d);
+  color:#fff;
+}
+
+.hero-content{
+  max-width:780px;
+}
+
+.label{
+  margin-bottom:10px;
+  color:#f3c95c;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(40px,7vw,62px);
+  line-height:1.08;
+  margin-bottom:18px;
+}
+
+.hero p{
+  max-width:700px;
+  color:#dce7f3;
+  font-size:17px;
+}
+
+/* SECTIONS */
+
+section{
+  padding:70px 0;
+}
+
+.section-head{
+  max-width:700px;
+  margin:0 auto 35px;
+  text-align:center;
+}
+
+.section-label{
+  color:#0b376d;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+  margin-bottom:7px;
+}
+
+.section-head h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(30px,5vw,43px);
+  line-height:1.15;
+  margin-bottom:10px;
+}
+
+.section-head p{
+  color:#667085;
+  font-size:14px;
+}
+
+/* ABOUT */
+
+.about{
+  background:#fff;
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:45px;
+  align-items:center;
+}
+
+.about h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(30px,5vw,42px);
+  line-height:1.15;
+  margin-bottom:15px;
+}
+
+.about p{
+  color:#667085;
+  font-size:14px;
+  margin-bottom:14px;
+}
+
+.about-box{
+  padding:30px;
+  border-radius:18px;
+  background:#f7f9fc;
+  border:1px solid #e5eaf1;
+}
+
+.about-box h3{
+  color:#0b376d;
+  margin-bottom:12px;
+  font-size:20px;
+}
+
+.about-box ul{
+  list-style:none;
+  display:grid;
+  gap:10px;
+  color:#475467;
+  font-size:14px;
+}
+
+.about-box li::before{
+  content:"✓";
+  color:#0b376d;
+  font-weight:900;
+  margin-right:9px;
+}
+
+/* MISSION */
+
+.mission{
+  background:#f7f9fc;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.card{
+  padding:26px;
+  background:#fff;
+  border:1px solid #e5eaf1;
+  border-radius:16px;
+}
+
+.icon{
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  background:#edf4ff;
+  border-radius:12px;
+  font-size:21px;
+  margin-bottom:15px;
+}
+
+.card h3{
+  font-size:18px;
+  margin-bottom:7px;
+}
+
+.card p{
+  color:#667085;
+  font-size:13px;
+}
+
+/* FOUNDER */
+
+.founder{
+  background:#fff;
+}
+
+.founder-box{
+  max-width:850px;
+  margin:auto;
+  padding:35px;
+  border:1px solid #e5eaf1;
+  border-radius:18px;
+  background:#fff;
+}
+
+.founder-box h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:32px;
+  margin-bottom:5px;
+}
+
+.founder-role{
+  color:#0b376d;
+  font-weight:800;
+  font-size:13px;
+  margin-bottom:16px;
+}
+
+.founder-box p{
+  color:#667085;
+  font-size:14px;
+  margin-bottom:12px;
+}
+
+/* ACADEMY */
+
+.academy{
+  background:#f7f9fc;
+}
+
+.academy-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.academy-card{
+  padding:27px;
+  background:#fff;
+  border:1px solid #e5eaf1;
+  border-radius:16px;
+}
+
+.academy-card h3{
+  color:#0b376d;
+  font-size:20px;
+  margin-bottom:9px;
+}
+
+.academy-card p{
+  color:#667085;
+  font-size:14px;
+}
+
+/* CERTIFICATE NOTICE */
+
+.notice{
+  background:#fff;
+}
+
+.notice-box{
+  max-width:850px;
+  margin:auto;
+  padding:28px;
+  border-left:4px solid #0b376d;
+  background:#f7f9fc;
+  border-radius:10px;
+}
+
+.notice-box h3{
+  margin-bottom:8px;
+  font-size:19px;
+}
+
+.notice-box p{
+  color:#667085;
+  font-size:13px;
+}
+
+/* SCRIPTURE */
+
+.scripture{
+  padding:75px 20px;
+  text-align:center;
+  background:#faf8f1;
+}
+
+blockquote{
+  max-width:800px;
+  margin:auto;
+  font-family:Georgia,"Times New Roman",serif;
+  color:#26364e;
+  font-size:clamp(24px,4vw,34px);
+  line-height:1.4;
+}
+
+cite{
+  display:block;
+  margin-top:14px;
+  color:#0b376d;
+  font-size:13px;
+  font-weight:800;
+  font-style:normal;
+}
+
+/* CTA */
+
+.cta{
+  padding:70px 0;
+}
+
+.cta-box{
+  padding:50px 25px;
+  text-align:center;
+  border-radius:20px;
+  background:#0b376d;
+  color:#fff;
+}
+
+.cta-box h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(30px,5vw,42px);
+  margin-bottom:10px;
+}
+
+.cta-box p{
+  max-width:620px;
+  margin:auto;
+  color:#dce7f3;
+  font-size:14px;
+}
+
+.buttons{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:23px;
+}
+
+.btn{
+  min-height:46px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:11px 19px;
+  border-radius:8px;
+  font-size:13px;
+  font-weight:800;
+}
+
+.btn-gold{
+  background:#f3c95c;
+  color:#172033;
+}
+
+.btn-green{
+  background:#18a957;
+  color:#fff;
+}
+
+/* FOOTER */
+
+footer{
+  padding:50px 0 22px;
+  background:#081d38;
+  color:#fff;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;
+  gap:40px;
+}
+
+.footer-grid h3{
+  font-size:16px;
+  margin-bottom:12px;
+}
+
+.footer-grid p,
+.footer-grid a{
+  color:#aebdd0;
+  font-size:13px;
+}
+
+.footer-grid p{
+  max-width:430px;
+}
+
+.footer-grid a{
+  display:block;
+  margin:6px 0;
+}
+
+.footer-grid a:hover{
+  color:#fff;
+}
+
+.footer-bottom{
+  margin-top:35px;
+  padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.1);
+  text-align:center;
+  color:#8192a8;
+  font-size:11px;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+  .menu{
+    display:block;
+  }
+
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:70px;
+    left:0;
+    right:0;
+    padding:12px 5%;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    background:#fff;
+    border-bottom:1px solid #e7ebf0;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+  }
+
+  .nav-links.show{
+    display:flex;
+  }
+
+  .nav-links a{
+    padding:10px 0;
+  }
+
+  .nav-enroll{
+    text-align:center;
+  }
+
+  .about-grid,
+  .academy-grid{
+    grid-template-columns:1fr;
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+}
+
+@media(max-width:480px){
+
+  .brand strong{
+    font-size:14px;
+  }
+
+  .brand small{
+    font-size:7px;
+  }
+
+  .hero{
+    padding:65px 0;
+  }
+
+  section{
+    padding:58px 0;
+  }
+
+  .buttons{
+    flex-direction:column;
+  }
+
+  .buttons .btn{
+    width:100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="container nav">
+
+<a href="index.html" class="brand">
+
+<div class="logo">GOH</div>
+
+<div>
+<strong>GOH Bible Academy</strong>
+<small>GATE OF HEAVEN MINISTRIES</small>
+</div>
+
+</a>
+
+<button
+class="menu"
+onclick="toggleMenu()"
+aria-label="Open menu">
+☰
+</button>
+
+<nav class="nav-links" id="navLinks">
+
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="bible-courses.html">Courses</a>
+<a href="ai-bible-teacher.html">Bible Teacher</a>
+<a href="media.html">Media</a>
+<a href="contact.html">Contact</a>
+<a href="enroll.html" class="nav-enroll">Enroll Now</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="container">
+
+<div class="hero-content">
+
+<div class="label">
+GOH BIBLE ACADEMY
+</div>
+
+<h1>
+About Our
+Academy
+</h1>
+
+<p>
+GOH Bible Academy is a Christian Biblical Studies
+education initiative of Gate of Heaven Ministries,
+created to provide structured opportunities for
+people who desire to study the Bible and grow in
+their understanding of Christian faith and ministry.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about">
+
+<div class="container">
+
+<div class="about-grid">
+
+<div>
+
+<div class="section-label">
+Our Story
+</div>
+
+<h2>
+Biblical Learning With Purpose
+</h2>
+
+<p>
+Gate of Heaven Ministries has a passion for sharing
+the Gospel of Jesus Christ, teaching the Word of God
+and serving people through Christian ministry.
+</p>
+
+<p>
+GOH Bible Academy extends this vision through
+structured online Biblical Studies designed for
+students, believers and those who desire deeper
+knowledge of Scripture.
+</p>
+
+<p>
+Our courses combine Scripture-based learning,
+structured lessons, assessments and examinations
+to provide a clear learning journey.
+</p>
+
+</div>
+
+
+<div class="about-box">
+
+<h3>
+What We Focus On
+</h3>
+
+<ul>
+
+<li>Biblical knowledge and understanding</li>
+
+<li>Christian doctrine and faith</li>
+
+<li>Scripture-based learning</li>
+
+<li>Christian character and practical living</li>
+
+<li>Evangelism and ministry preparation</li>
+
+<li>Continuous personal Bible study</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MISSION -->
+
+<section class="mission">
+
+<div class="container">
+
+<div class="section-head">
+
+<div class="section-label">
+Our Foundation
+</div>
+
+<h2>
+Faith, Scripture & Service
+</h2>
+
+<p>
+Our educational approach is built around the
+importance of knowing Scripture and applying
+biblical truth responsibly.
+</p>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+
+<div class="icon">📖</div>
+
+<h3>
+Biblical Foundation
+</h3>
+
+<p>
+We encourage students to study Scripture carefully
+and develop a stronger understanding of the Bible.
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="icon">✝️</div>
+
+<h3>
+Christian Faith
+</h3>
+
+<p>
+Our studies explore central Christian beliefs,
+the life and teachings of Jesus Christ and Christian living.
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="icon">🤝</div>
+
+<h3>
+Christian Service
+</h3>
+
+<p>
+Learning should lead to faithful service, practical
+ministry and sharing the Gospel with others.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOUNDER -->
+
+<section class="founder">
+
+<div class="container">
+
+<div class="section-head">
+
+<div class="section-label">
+Leadership
+</div>
+
+<h2>
+Ministry Leadership
+</h2>
+
+</div>
+
+<div class="founder-box">
+
+<h2>
+Pastor Saththiyanadan
+</h2>
+
+<div class="founder-role">
+Founder & Ministry Leader — Gate of Heaven Ministries
+</div>
+
+<p>
+Gate of Heaven Ministries was established with a
+desire to proclaim Jesus Christ, teach the Word of God
+and serve communities through prayer, worship,
+evangelism and Christian outreach.
+</p>
+
+<p>
+The vision behind GOH Bible Academy is to make
+structured Biblical learning accessible to people who
+desire to grow in Scripture and prepare themselves
+for Christian service.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ACADEMY -->
+
+<section class="academy">
+
+<div class="container">
+
+<div class="section-head">
+
+<div class="section-label">
+About The Academy
+</div>
+
+<h2>
+What Students Can Expect
+</h2>
+
+</div>
+
+<div class="academy-grid">
+
+<div class="academy-card">
+
+<h3>
+Structured Courses
+</h3>
+
+<p>
+Courses are organized into subjects and learning
+modules so students can progress systematically.
+</p>
+
+</div>
+
+<div class="academy-card">
+
+<h3>
+Online Access
+</h3>
+
+<p>
+Students can access their learning materials online
+and study according to the schedule of their program.
+</p>
+
+</div>
+
+<div class="academy-card">
+
+<h3>
+Assessments
+</h3>
+
+<p>
+Learning activities and assessments help students
+review and demonstrate their understanding.
+</p>
+
+</div>
+
+<div class="academy-card">
+
+<h3>
+Final Examination
+</h3>
+
+<p>
+Eligible students may complete a final examination
+according to the requirements of their selected program.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CERTIFICATE -->
+
+<section class="notice">
+
+<div class="container">
+
+<div class="notice-box">
+
+<h3>
+About Our Certificates
+</h3>
+
+<p>
+Certificates issued through GOH Bible Academy are
+ministry-issued certificates representing completion
+of the relevant academy program. They are not
+represented as government, university, UGC or other
+state-accredited academic qualifications unless such
+recognition is specifically stated for a particular program.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SCRIPTURE -->
+
+<section class="scripture">
+
+<blockquote>
+“Study to shew thyself approved unto God,
+a workman that needeth not to be ashamed,
+rightly dividing the word of truth.”
+</blockquote>
+
+<cite>
+2 Timothy 2:15 — KJV
+</cite>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta">
+
+<div class="container">
+
+<div class="cta-box">
+
+<h2>
+Start Your Biblical Studies
+</h2>
+
+<p>
+Explore our courses and find a structured program
+to help you grow in your understanding of Scripture.
+</p>
+
+<div class="buttons">
+
+<a href="bible-courses.html" class="btn btn-gold">
+📖 View Courses
+</a>
+
+<a
+href="https://wa.me/94771190395"
+target="_blank"
+rel="noopener noreferrer"
+class="btn btn-green">
+💬 Contact Us
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="container">
+
+<div class="footer-grid">
+
+<div>
+
+<h3>GOH Bible Academy</h3>
+
+<p>
+A Christian Biblical Studies education initiative
+of Gate of Heaven Ministries, focused on Scripture,
+Christian faith and ministry preparation.
+</p>
+
+</div>
+
+<div>
+
+<h3>Academy</h3>
+
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="bible-courses.html">Courses</a>
+<a href="ai-bible-teacher.html">Bible Teacher</a>
+<a href="enroll.html">Enroll</a>
+
+</div>
+
+<div>
+
+<h3>Information</h3>
+
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy Policy</a>
+<a href="terms.html">Terms & Conditions</a>
+<a href="refund-policy.html">Refund Policy</a>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+© 2026 Gate of Heaven Ministries. All Rights Reserved.
+
+</div>
+
+</div>
+
+</footer>
+
+
+<script>
+
+function toggleMenu(){
+
+  document
+    .getElementById("navLinks")
+    .classList
+    .toggle("show");
+
+}
+
+document
+  .querySelectorAll(".nav-links a")
+  .forEach(function(link){
+
+    link.addEventListener("click",function(){
+
+      document
+        .getElementById("navLinks")
+        .classList
+        .remove("show");
+
+    });
+
+  });
+
+</script>
+
+</body>
+</html>
