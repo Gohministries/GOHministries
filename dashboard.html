@@ -7,672 +7,486 @@
 <title>Student Dashboard | GOH Bible Academy</title>
 
 <meta name="description"
-content="GOH Bible Academy student dashboard with discipleship progress, examinations and certificate progress.">
-
-<meta name="theme-color" content="#0b376d">
+content="GOH Bible Academy student dashboard for Christian discipleship and ministry preparation.">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+:root{
+  --primary:#0b376d;
+  --primary2:#155eef;
+  --text:#172033;
+  --muted:#667085;
+  --bg:#f4f7fb;
+  --card:#ffffff;
+  --border:#e4e7ec;
+  --green:#027a48;
+  --greenbg:#ecfdf3;
+  --orange:#b54708;
+  --orangebg:#fffaeb;
+}
 
 body{
-font-family:Arial,Helvetica,sans-serif;
-background:#f6f8fb;
-color:#172033;
-line-height:1.5
+  font-family:Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
 }
 
-a{text-decoration:none;color:inherit}
-
-.container{
-width:min(1050px,92%);
-margin:auto
-}
 
 /* HEADER */
 
 header{
-background:#fff;
-border-bottom:1px solid #e5eaf1
+  background:var(--primary);
+  color:#fff;
+  padding:16px 20px;
 }
 
-.nav{
-height:68px;
-display:flex;
-align-items:center;
-justify-content:space-between
+.header-inner{
+  max-width:1150px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
 }
 
 .brand{
-display:flex;
-align-items:center;
-gap:10px
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
 .logo{
-width:41px;
-height:41px;
-display:grid;
-place-items:center;
-border-radius:10px;
-background:#0b376d;
-color:#fff;
-font-size:12px;
-font-weight:900
+  width:44px;
+  height:44px;
+  border-radius:10px;
+  background:#fff;
+  color:var(--primary);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  font-size:18px;
 }
 
-.brand strong{
-display:block;
-color:#0b376d;
-font-size:15px
+.brand-title{
+  font-size:18px;
+  font-weight:800;
 }
 
-.brand small{
-display:block;
-color:#667085;
-font-size:8px;
-font-weight:700;
-letter-spacing:.7px
+.brand-sub{
+  font-size:12px;
+  opacity:.8;
+  margin-top:3px;
 }
 
 .logout{
-border:1px solid #d9e0e9;
-background:#fff;
-color:#344054;
-padding:8px 13px;
-border-radius:7px;
-font-size:11px;
-font-weight:700
+  border:1px solid rgba(255,255,255,.35);
+  background:transparent;
+  color:#fff;
+  padding:9px 14px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
 }
 
-/* HERO */
-
-.hero{
-background:linear-gradient(135deg,#061d39,#0b376d);
-color:#fff;
-padding:38px 0
-}
-
-.hero h1{
-font-family:Georgia,"Times New Roman",serif;
-font-size:34px;
-margin-bottom:5px
-}
-
-.hero p{
-color:#cbd8e7;
-font-size:13px
-}
 
 /* MAIN */
 
 main{
-padding:30px 0 60px
+  max-width:1150px;
+  margin:auto;
+  padding:28px 18px 50px;
 }
 
+.welcome{
+  margin-bottom:24px;
+}
+
+.welcome h1{
+  font-size:28px;
+  margin-bottom:7px;
+}
+
+.welcome p{
+  color:var(--muted);
+}
+
+
+/* CARDS */
+
 .grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px
+  display:grid;
+  grid-template-columns:
+    repeat(4,minmax(0,1fr));
+  gap:15px;
+  margin-bottom:20px;
 }
 
 .card{
-background:#fff;
-border:1px solid #e5eaf1;
-border-radius:14px;
-padding:21px
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
 }
 
-.card h2{
-font-size:17px;
-margin-bottom:5px
+.card-title{
+  color:var(--muted);
+  font-size:14px;
+  margin-bottom:10px;
 }
 
-.card p{
-font-size:12px;
-color:#667085
+.big{
+  font-size:26px;
+  font-weight:800;
 }
 
-.stat{
-font-size:27px;
-font-weight:900;
-color:#0b376d;
-margin:5px 0
+.small{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:5px;
 }
+
+
+/* SECTION */
+
+.section{
+  margin-top:20px;
+}
+
+.section h2{
+  font-size:21px;
+  margin-bottom:14px;
+}
+
 
 /* PROGRESS */
 
 .progress-card{
-grid-column:1/-1
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:22px;
 }
 
 .progress-row{
-margin-top:17px
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:8px;
+  font-weight:600;
 }
 
-.progress-head{
-display:flex;
-justify-content:space-between;
-font-size:12px;
-font-weight:700;
-margin-bottom:7px
+.progress-bar{
+  height:12px;
+  background:#eaecf0;
+  border-radius:20px;
+  overflow:hidden;
 }
 
-.bar{
-height:10px;
-background:#e8edf3;
-border-radius:20px;
-overflow:hidden
+.progress-fill{
+  height:100%;
+  width:0;
+  background:var(--primary2);
+  border-radius:20px;
+  transition:width .5s ease;
 }
 
-.fill{
-height:100%;
-width:0;
-background:#0b376d;
-border-radius:20px;
-transition:.4s
-}
-
-.gold-fill{
-background:#f3c95c
-}
-
-.green-fill{
-background:#18a957
-}
 
 /* CERTIFICATE */
 
 .certificate{
-grid-column:1/-1;
-background:#0b376d;
-color:#fff;
-border:0
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:25px;
 }
 
-.certificate h2{
-font-family:Georgia,"Times New Roman",serif;
-font-size:27px
+.certificate-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:20px;
 }
 
-.certificate p{
-color:#dce7f3
+.certificate-title{
+  font-size:22px;
+  font-weight:800;
+}
+
+.lock{
+  background:var(--orangebg);
+  color:var(--orange);
+  padding:9px 13px;
+  border-radius:20px;
+  font-size:13px;
+  font-weight:700;
 }
 
 .requirements{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:10px;
-margin:20px 0
+  display:grid;
+  grid-template-columns:
+    repeat(4,minmax(0,1fr));
+  gap:12px;
 }
 
 .requirement{
-padding:14px;
-border:1px solid #ffffff20;
-border-radius:9px
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:15px;
 }
 
 .requirement strong{
-display:block;
-font-size:20px;
-color:#f3c95c
+  display:block;
+  font-size:20px;
+  margin-bottom:5px;
 }
 
 .requirement span{
-font-size:10px;
-color:#cbd8e7
+  color:var(--muted);
+  font-size:13px;
 }
 
-.status{
-padding:12px;
-border-radius:8px;
-background:#ffffff12;
-font-size:12px;
-margin-top:12px
+.certificate-progress{
+  margin-top:20px;
 }
 
-.status.ready{
-background:#18a957;
-color:#fff
+.certificate-message{
+  margin-top:15px;
+  padding:13px;
+  border-radius:10px;
+  background:var(--orangebg);
+  color:var(--orange);
+  font-weight:600;
 }
+
+.certificate-message.ready{
+  background:var(--greenbg);
+  color:var(--green);
+}
+
 
 /* BUTTONS */
 
 .actions{
-display:flex;
-flex-wrap:wrap;
-gap:9px;
-margin-top:20px
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:20px;
 }
 
-.btn{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-padding:10px 16px;
-border-radius:8px;
-font-size:12px;
-font-weight:800
+.action{
+  text-decoration:none;
+  padding:12px 18px;
+  border-radius:9px;
+  font-weight:700;
+  background:var(--primary);
+  color:#fff;
 }
 
-.primary{
-background:#f3c95c;
-color:#172033
+.action.secondary{
+  background:#eef4ff;
+  color:var(--primary);
 }
 
-.secondary{
-background:#fff;
-color:#0b376d
-}
-
-.dark{
-background:#0b376d;
-color:#fff
-}
 
 /* MONTHS */
 
 .months{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
-margin-top:15px
+  display:grid;
+  grid-template-columns:
+    repeat(3,minmax(0,1fr));
+  gap:13px;
 }
 
 .month{
-padding:15px;
-border:1px solid #e5eaf1;
-border-radius:11px;
-background:#fff
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:17px;
 }
 
-.month strong{
-display:block;
-color:#0b376d;
-font-size:11px
+.month-number{
+  color:var(--primary2);
+  font-size:12px;
+  font-weight:800;
+  margin-bottom:7px;
 }
 
 .month h3{
-font-size:14px;
-margin:3px 0
+  font-size:16px;
+  margin-bottom:12px;
 }
 
-.month span{
-font-size:10px;
-color:#667085
+.status{
+  display:inline-block;
+  padding:6px 9px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:700;
+  background:#f2f4f7;
+  color:var(--muted);
 }
 
-.done{
-color:#18a957!important;
-font-weight:800
+.status.complete{
+  background:var(--greenbg);
+  color:var(--green);
 }
 
-.pending{
-color:#d97706!important
+.status.progress{
+  background:#eef4ff;
+  color:var(--primary2);
 }
 
-/* NOTICE */
-
-.notice{
-margin-top:15px;
-padding:14px;
-border-radius:10px;
-background:#fff8e5;
-border:1px solid #f3df9b;
-font-size:11px;
-color:#705b18
-}
 
 /* FOOTER */
 
 footer{
-padding:25px 0;
-text-align:center;
-background:#081d38;
-color:#8192a8;
-font-size:10px
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+  padding:25px 15px;
 }
 
-@media(max-width:800px){
 
-.grid{
-grid-template-columns:1fr
-}
+/* LOADING */
 
-.progress-card,
-.certificate{
-grid-column:auto
+.loading{
+  text-align:center;
+  padding:50px 20px;
+  color:var(--muted);
 }
 
-.requirements{
-grid-template-columns:repeat(2,1fr)
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+  .grid{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+  }
+
+  .requirements{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+  }
+
+  .months{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+  }
+
 }
 
-.months{
-grid-template-columns:1fr 1fr
-}
+@media(max-width:600px){
+
+  header{
+    padding:13px 14px;
+  }
+
+  .brand-title{
+    font-size:15px;
+  }
+
+  .brand-sub{
+    font-size:10px;
+  }
+
+  .logo{
+    width:38px;
+    height:38px;
+  }
+
+  main{
+    padding:22px 14px 40px;
+  }
+
+  .welcome h1{
+    font-size:24px;
+  }
+
+  .grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .card{
+    padding:16px;
+  }
+
+  .big{
+    font-size:22px;
+  }
+
+  .certificate-top{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .requirements{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .months{
+    grid-template-columns:1fr;
+  }
+
 }
 
-@media(max-width:480px){
-
-.hero h1{
-font-size:29px
-}
-
-.requirements,
-.months{
-grid-template-columns:1fr
-}
-
-.actions{
-flex-direction:column
-}
-
-.actions .btn{
-width:100%
-}
-}
 </style>
 </head>
 
 <body>
 
+
 <header>
 
-<div class="container nav">
+<div class="header-inner">
 
-<a href="index.html" class="brand">
+  <div class="brand">
 
-<div class="logo">GOH</div>
+    <div class="logo">
+      GOH
+    </div>
 
-<div>
-<strong>GOH Bible Academy</strong>
-<small>GATE OF HEAVEN MINISTRIES</small>
-</div>
+    <div>
 
-</a>
+      <div class="brand-title">
+        GOH Bible Academy
+      </div>
 
-<button class="logout" onclick="logout()">
-Logout
-</button>
+      <div class="brand-sub">
+        GATE OF HEAVEN MINISTRIES
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <button
+    class="logout"
+    onclick="logout()"
+  >
+    Logout
+  </button>
 
 </div>
 
 </header>
 
 
-<section class="hero">
+<main id="app">
 
-<div class="container">
-
-<h1>Student Dashboard</h1>
-
-<p id="welcome">
-Welcome to your discipleship journey.
-</p>
-
-</div>
-
-</section>
-
-
-<main>
-
-<div class="container">
-
-<div class="grid">
-
-<!-- STUDENT -->
-
-<div class="card">
-
-<h2>My Program</h2>
-
-<div class="stat">12 Months</div>
-
-<p>Christian Discipleship & Ministry Preparation</p>
-
-</div>
-
-
-<!-- QUESTIONS -->
-
-<div class="card">
-
-<h2>MCQ Progress</h2>
-
-<div class="stat">
-<span id="correct">0</span>/600
-</div>
-
-<p>Correct answers</p>
-
-</div>
-
-
-<!-- EXAMS -->
-
-<div class="card">
-
-<h2>Examinations</h2>
-
-<div class="stat">
-<span id="exams">0</span>/12
-</div>
-
-<p>Monthly exams completed</p>
-
-</div>
-
-
-<!-- OVERALL PROGRESS -->
-
-<div class="card progress-card">
-
-<h2>Course Progress</h2>
-
-<p>
-Your overall progress through the one-year program.
-</p>
-
-<div class="progress-row">
-
-<div class="progress-head">
-<span>12-Month Program</span>
-<strong id="coursePercent">0%</strong>
-</div>
-
-<div class="bar">
-<div class="fill" id="courseBar"></div>
-</div>
-
-</div>
-
-<div class="progress-row">
-
-<div class="progress-head">
-<span>600 MCQs</span>
-<strong id="mcqPercent">0%</strong>
-</div>
-
-<div class="bar">
-<div class="fill gold-fill" id="mcqBar"></div>
-</div>
-
-</div>
-
-</div>
-
-
-<!-- CERTIFICATE -->
-
-<div class="card certificate">
-
-<h2>🎓 Certificate Progress</h2>
-
-<p>
-Complete the required academic and discipleship
-requirements to become eligible for your certificate.
-</p>
-
-<div class="requirements">
-
-<div class="requirement">
-<strong id="correctReq">0/480</strong>
-<span>Correct MCQs Required</span>
-</div>
-
-<div class="requirement">
-<strong id="examReq">0/12</strong>
-<span>Exams Completed</span>
-</div>
-
-<div class="requirement">
-<strong id="programReq">0%</strong>
-<span>Program Completion</span>
-</div>
-
-<div class="requirement">
-<strong id="ministryReq">Pending</strong>
-<span>Ministry Requirement</span>
-</div>
-
-</div>
-
-<div class="progress-row">
-
-<div class="progress-head">
-<span>Certificate Academic Progress</span>
-<strong id="certificatePercent">0%</strong>
-</div>
-
-<div class="bar">
-<div class="fill green-fill" id="certificateBar"></div>
-</div>
-
-</div>
-
-<div class="status" id="certificateStatus">
-🔒 Certificate locked — continue your studies.
-</div>
-
-<div class="actions">
-
-<a href="bible-courses.html" class="btn secondary">
-View Course
-</a>
-
-<a href="mcq.html" class="btn primary">
-Continue Learning
-</a>
-
-<a href="certificate.html" class="btn secondary">
-Certificate
-</a>
-
-</div>
-
-</div>
-
-
-<!-- MONTHLY PROGRESS -->
-
-<div class="card progress-card">
-
-<h2>Monthly Progress</h2>
-
-<p>
-Complete each month's lessons and examination.
-</p>
-
-<div class="months">
-
-<div class="month">
-<strong>MONTH 01</strong>
-<h3>New Life in Christ</h3>
-<span id="m1">Pending</span>
-</div>
-
-<div class="month">
-<strong>MONTH 02</strong>
-<h3>The Word of God</h3>
-<span id="m2">Pending</span>
-</div>
-
-<div class="month">
-<strong>MONTH 03</strong>
-<h3>Prayer & Worship</h3>
-<span id="m3">Pending</span>
-</div>
-
-<div class="month">
-<strong>MONTH 04</strong>
-<h3>Life & Teachings of Jesus</h3>
-<span id="m4">Pending</span>
-</div>
-
-<div class="month">
-<strong>MONTH 05</strong>
-<h3>Christian Character</h3>
-<span id="m5">Pending</span>
-</div>
-
-<div class="month">
-<strong>MONTH 06</strong>
-<h3>The Holy Spirit</h3>
-<span id="m6">Pending</span>
-</div>
-
-<div class="month">
-<strong>MONTH 07</strong>
-<h3>Bible Foundations</h3>
-<span id="m7">Pending</span>
-</div>
-
-<div class="month">
-<strong>MONTH 08</strong>
-<h3>Christian Doctrine</h3>
-<span id="m8">Pending</span>
-</div>
-
-<div class="month">
-<strong>MONTH 09</strong>
-<h3>Discipleship</h3>
-<span id="m9">Pending</span>
-</div>
-
-<div class="month">
-<strong>MONTH 10</strong>
-<h3>Evangelism & Missions</h3>
-<span id="m10">Pending</span>
-</div>
-
-<div class="month">
-<strong>MONTH 11</strong>
-<h3>Ministry & Leadership</h3>
-<span id="m11">Pending</span>
-</div>
-
-<div class="month">
-<strong>MONTH 12</strong>
-<h3>Ministry Preparation</h3>
-<span id="m12">Pending</span>
-</div>
-
-</div>
-
-<div class="notice">
-<strong>Certificate requirement:</strong>
-Students should achieve at least
-<strong>480 correct answers out of 600</strong>,
-complete all 12 examinations, complete the
-one-year program and meet the required
-ministry/disciple activities.
-</div>
-
-</div>
-
-</div>
-
+<div class="loading">
+  Loading your dashboard...
 </div>
 
 </main>
@@ -685,133 +499,628 @@ ministry/disciple activities.
 
 <script>
 
-/*
-Connect these values to your API/database later.
-*/
 
-const student={
-name:"Student",
-correct:0,
-exams:0,
-program:0,
-ministry:false,
-months:[]
-};
+/* API */
 
-document.getElementById("welcome").textContent=
-"Welcome, "+student.name+".";
-
-
-/* MCQ */
-
-const correct=student.correct;
-
-document.getElementById("correct").textContent=correct;
-
-const mcqPercent=Math.min(100,(correct/600)*100);
-
-document.getElementById("mcqPercent").textContent=
-Math.round(mcqPercent)+"%";
-
-document.getElementById("mcqBar").style.width=
-mcqPercent+"%";
-
-
-/* EXAMS */
-
-document.getElementById("exams").textContent=
-student.exams;
-
-document.getElementById("examReq").textContent=
-student.exams+"/12";
+const API =
+"https://goh-auth-api.createlk.workers.dev";
 
 
 /* PROGRAM */
 
-document.getElementById("programPercent").textContent=
-Math.round(student.program)+"%";
+const TOTAL_MCQ = 600;
 
-document.getElementById("coursePercent").textContent=
-Math.round(student.program)+"%";
+const REQUIRED_CORRECT = 480;
 
-document.getElementById("courseBar").style.width=
-student.program+"%";
-
-document.getElementById("programReq").textContent=
-Math.round(student.program)+"%";
-
-
-/* CERTIFICATE */
-
-const mcqRequirement=Math.min(100,(correct/480)*100);
-
-const certificateAcademic=
-Math.min(mcqRequirement,student.program);
-
-document.getElementById("certificatePercent").textContent=
-Math.round(certificateAcademic)+"%";
-
-document.getElementById("certificateBar").style.width=
-certificateAcademic+"%";
-
-document.getElementById("correctReq").textContent=
-Math.min(correct,480)+"/480";
-
-
-/* MINISTRY */
-
-if(student.ministry){
-document.getElementById("ministryReq").textContent="Complete";
-document.getElementById("ministryReq").style.color="#f3c95c";
-}
-
-
-/* CERTIFICATE STATUS */
-
-if(
-correct>=480 &&
-student.exams>=12 &&
-student.program>=100 &&
-student.ministry
-){
-
-const status=document.getElementById("certificateStatus");
-
-status.className="status ready";
-status.textContent=
-"✓ Certificate requirements completed. You are eligible to receive your certificate.";
-
-}
+const TOTAL_EXAMS = 12;
 
 
 /* MONTHS */
 
-student.months.forEach((completed,index)=>{
+const months = [
 
-if(completed){
+  "New Life in Christ",
 
-const el=document.getElementById("m"+(index+1));
+  "The Word of God",
 
-if(el){
-el.textContent="✓ Completed";
-el.className="done";
+  "Prayer & Worship",
+
+  "Life & Teachings of Jesus",
+
+  "Christian Character",
+
+  "The Holy Spirit",
+
+  "Bible Foundations",
+
+  "Christian Doctrine",
+
+  "Discipleship",
+
+  "Evangelism & Missions",
+
+  "Ministry & Leadership",
+
+  "Ministry Preparation"
+
+];
+
+
+/* GET TOKEN */
+
+const token =
+localStorage.getItem("goh_token");
+
+
+/* NO LOGIN */
+
+if(!token){
+
+  window.location.href =
+    "login.html";
+
 }
 
+
+/* LOAD STUDENT */
+
+async function loadDashboard(){
+
+  try{
+
+    const response =
+      await fetch(
+        API + "/me",
+        {
+          method:"GET",
+
+          headers:{
+            "Authorization":
+              "Bearer " + token
+          }
+        }
+      );
+
+
+    const data =
+      await response.json();
+
+
+    if(!data.success){
+
+      localStorage.removeItem(
+        "goh_token"
+      );
+
+      localStorage.removeItem(
+        "goh_student"
+      );
+
+      window.location.href =
+        "login.html";
+
+      return;
+    }
+
+
+    const student =
+      data.student;
+
+
+    renderDashboard(student);
+
+
+  }catch(error){
+
+    console.error(error);
+
+    document.getElementById("app")
+      .innerHTML = `
+
+        <div class="card">
+
+          <h2>
+            Unable to load dashboard
+          </h2>
+
+          <p style="margin-top:10px;color:#667085">
+            Please check your internet connection
+            and try again.
+          </p>
+
+        </div>
+
+      `;
+
+  }
+
 }
 
-});
+
+/* RENDER */
+
+function renderDashboard(student){
+
+  /*
+    Current authentication API only
+    provides student information.
+
+    Academic progress is initialized
+    to zero until the course/progress
+    API is connected.
+  */
+
+  const correctMCQ = 0;
+
+  const completedExams = 0;
+
+  const programCompletion = 0;
+
+  const ministryRequirement = false;
+
+
+  const mcqPercent =
+    Math.min(
+      100,
+      Math.round(
+        correctMCQ /
+        REQUIRED_CORRECT *
+        100
+      )
+    );
+
+
+  const examPercent =
+    Math.min(
+      100,
+      Math.round(
+        completedExams /
+        TOTAL_EXAMS *
+        100
+      )
+    );
+
+
+  const certificateAcademic =
+    Math.min(
+      100,
+      Math.round(
+        (
+          mcqPercent +
+          examPercent +
+          programCompletion
+        ) / 3
+      )
+    );
+
+
+  const certificateReady =
+    correctMCQ >= REQUIRED_CORRECT &&
+    completedExams >= TOTAL_EXAMS &&
+    programCompletion >= 100 &&
+    ministryRequirement;
+
+
+  document.getElementById("app")
+    .innerHTML = `
+
+<div class="welcome">
+
+  <h1>
+    Student Dashboard
+  </h1>
+
+  <p>
+    Welcome,
+    <strong>
+      ${escapeHTML(student.name)}
+    </strong>.
+  </p>
+
+</div>
+
+
+<div class="grid">
+
+
+  <div class="card">
+
+    <div class="card-title">
+      My Program
+    </div>
+
+    <div class="big">
+      12 Months
+    </div>
+
+    <div class="small">
+      Christian Discipleship & Ministry Preparation
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-title">
+      MCQ Progress
+    </div>
+
+    <div class="big">
+      ${correctMCQ}/${TOTAL_MCQ}
+    </div>
+
+    <div class="small">
+      Correct answers
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-title">
+      Examinations
+    </div>
+
+    <div class="big">
+      ${completedExams}/${TOTAL_EXAMS}
+    </div>
+
+    <div class="small">
+      Monthly exams completed
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-title">
+      Program Progress
+    </div>
+
+    <div class="big">
+      ${programCompletion}%
+    </div>
+
+    <div class="small">
+      One-year program
+    </div>
+
+  </div>
+
+
+</div>
+
+
+<div class="section">
+
+<h2>
+  Course Progress
+</h2>
+
+<div class="progress-card">
+
+  <div class="progress-row">
+    <span>
+      12-Month Program
+    </span>
+
+    <span>
+      ${programCompletion}%
+    </span>
+  </div>
+
+  <div class="progress-bar">
+    <div
+      class="progress-fill"
+      style="width:${programCompletion}%"
+    ></div>
+  </div>
+
+
+  <div style="height:20px"></div>
+
+
+  <div class="progress-row">
+    <span>
+      600 MCQs
+    </span>
+
+    <span>
+      ${correctMCQ}/${TOTAL_MCQ}
+    </span>
+  </div>
+
+  <div class="progress-bar">
+    <div
+      class="progress-fill"
+      style="width:${Math.round(correctMCQ/TOTAL_MCQ*100)}%"
+    ></div>
+  </div>
+
+</div>
+
+</div>
+
+
+<div class="section">
+
+<h2>
+  🎓 Certificate Progress
+</h2>
+
+
+<div class="certificate">
+
+  <div class="certificate-top">
+
+    <div>
+
+      <div class="certificate-title">
+        Certificate Progress
+      </div>
+
+      <p style="color:#667085;margin-top:6px">
+        Complete the required academic and
+        discipleship requirements to become
+        eligible for your certificate.
+      </p>
+
+    </div>
+
+    <div class="lock">
+      ${certificateReady ? "Eligible" : "🔒 Pending"}
+    </div>
+
+  </div>
+
+
+  <div class="requirements">
+
+
+    <div class="requirement">
+
+      <strong>
+        ${correctMCQ}/${REQUIRED_CORRECT}
+      </strong>
+
+      <span>
+        Correct MCQs Required
+      </span>
+
+    </div>
+
+
+    <div class="requirement">
+
+      <strong>
+        ${completedExams}/${TOTAL_EXAMS}
+      </strong>
+
+      <span>
+        Exams Completed
+      </span>
+
+    </div>
+
+
+    <div class="requirement">
+
+      <strong>
+        ${programCompletion}%
+      </strong>
+
+      <span>
+        Program Completion
+      </span>
+
+    </div>
+
+
+    <div class="requirement">
+
+      <strong>
+        ${ministryRequirement ? "Complete" : "Pending"}
+      </strong>
+
+      <span>
+        Ministry Requirement
+      </span>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="certificate-progress">
+
+    <div class="progress-row">
+
+      <span>
+        Certificate Academic Progress
+      </span>
+
+      <span>
+        ${certificateAcademic}%
+      </span>
+
+    </div>
+
+
+    <div class="progress-bar">
+
+      <div
+        class="progress-fill"
+        style="width:${certificateAcademic}%"
+      ></div>
+
+    </div>
+
+  </div>
+
+
+  <div class="
+    certificate-message
+    ${certificateReady ? "ready" : ""}
+  ">
+
+    ${
+      certificateReady
+      ?
+      "🎓 You have completed all certificate requirements."
+      :
+      "🔒 Certificate locked — continue your studies."
+    }
+
+  </div>
+
+
+  <div class="actions">
+
+    <a
+      class="action"
+      href="course.html"
+    >
+      Continue Learning
+    </a>
+
+    <a
+      class="action secondary"
+      href="certificate.html"
+    >
+      Certificate
+    </a>
+
+  </div>
+
+</div>
+
+</div>
+
+
+<div class="section">
+
+<h2>
+  Monthly Progress
+</h2>
+
+<p style="color:#667085;margin-bottom:14px">
+  Complete each month's lessons and examination.
+</p>
+
+
+<div class="months">
+
+${months.map((month,index)=>`
+
+  <div class="month">
+
+    <div class="month-number">
+      MONTH ${String(index+1).padStart(2,"0")}
+    </div>
+
+    <h3>
+      ${month}
+    </h3>
+
+    <span class="status">
+      Pending
+    </span>
+
+  </div>
+
+`).join("")}
+
+</div>
+
+</div>
+
+
+<div class="section">
+
+<div class="card">
+
+  <strong>
+    Certificate requirement:
+  </strong>
+
+  <span style="color:#667085">
+    Students should achieve at least
+    <strong>480 correct answers out of 600</strong>,
+    complete all 12 examinations, complete the
+    one-year program and meet the required
+    ministry/discipleship activities.
+  </span>
+
+</div>
+
+</div>
+
+`;
+
+}
 
 
 /* LOGOUT */
 
-function logout(){
+async function logout(){
 
-sessionStorage.clear();
-localStorage.removeItem("createlk_token");
+  try{
 
-location.href="login.html";
+    await fetch(
+      API + "/logout",
+      {
+        method:"POST",
+
+        headers:{
+          "Authorization":
+            "Bearer " + token
+        }
+      }
+    );
+
+  }catch(e){
+
+    console.error(e);
+
+  }
+
+
+  localStorage.removeItem(
+    "goh_token"
+  );
+
+  localStorage.removeItem(
+    "goh_student"
+  );
+
+
+  window.location.href =
+    "login.html";
 
 }
+
+
+/* SECURITY */
+
+function escapeHTML(value){
+
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* START */
+
+loadDashboard();
 
 </script>
 
