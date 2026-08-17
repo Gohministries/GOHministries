@@ -1,32 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<title>Month 01 Study Notes | GOH Bible Academy</title>
-
-<meta name="description"
-content="GOH Bible Academy Month 01 study notes - New Life in Christ.">
-
-<style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Month 01 | New Life in Christ | GOH Bible Academy</title>
+<meta name="theme-color" content="#0b376d"><style>
+*{box-sizing:border-box;margin:0;padding:0}
 
 :root{
   --primary:#0b376d;
-  --primary2:#155eef;
+  --blue:#155eef;
   --text:#172033;
   --muted:#667085;
   --bg:#f4f7fb;
   --card:#fff;
   --border:#e4e7ec;
-  --gold:#f3c95c;
-  --green:#027a48;
-  --greenbg:#ecfdf3;
 }
 
 body{
@@ -39,739 +25,404 @@ body{
 header{
   background:var(--primary);
   color:#fff;
+  padding:12px 16px;
   position:sticky;
   top:0;
-  z-index:100;
-  box-shadow:0 2px 10px #0002;
+  z-index:10;
 }
 
-.header-inner{
-  max-width:1000px;
+.header{
+  max-width:900px;
   margin:auto;
-  padding:12px 16px;
   display:flex;
   align-items:center;
-  justify-content:space-between;
   gap:12px;
 }
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
 .logo{
-  width:40px;
-  height:40px;
-  border-radius:9px;
+  width:42px;
+  height:42px;
+  border-radius:10px;
   background:#fff;
   color:var(--primary);
   display:grid;
   place-items:center;
-  font-size:12px;
   font-weight:900;
+  font-size:13px;
 }
 
-.brand-title{
+.brand{
   font-size:16px;
   font-weight:800;
 }
 
-.brand-sub{
+.sub{
   font-size:9px;
-  opacity:.8;
+  opacity:.75;
+  letter-spacing:.5px;
   margin-top:2px;
-}
-
-.back{
-  color:#fff;
-  text-decoration:none;
-  font-size:13px;
-  font-weight:700;
-  padding:8px 11px;
-  border:1px solid #ffffff35;
-  border-radius:8px;
 }
 
 main{
   max-width:900px;
   margin:auto;
-  padding:25px 15px 50px;
+  padding:22px 15px 45px;
+}
+
+.back{
+  display:inline-flex;
+  color:var(--primary);
+  font-size:13px;
+  font-weight:800;
+  margin-bottom:15px;
 }
 
 .hero{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:24px;
-  margin-bottom:18px;
+  background:linear-gradient(135deg,#0b376d,#155eef);
+  color:#fff;
+  border-radius:18px;
+  padding:25px;
+  margin-bottom:15px;
 }
 
 .label{
-  color:var(--primary2);
   font-size:11px;
-  font-weight:900;
+  font-weight:800;
   letter-spacing:.8px;
-  margin-bottom:5px;
+  opacity:.8;
 }
 
 h1{
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:32px;
-  line-height:1.2;
-  margin-bottom:7px;
+  font-size:28px;
+  margin:6px 0;
 }
 
-.subtitle{
-  color:var(--muted);
-  font-size:14px;
+.hero p{
+  font-size:13px;
+  color:#dce7f3;
 }
 
-.languages{
+.tabs{
   display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:20px;
+  gap:7px;
+  background:#fff;
+  border:1px solid var(--border);
+  padding:7px;
+  border-radius:12px;
+  margin-bottom:15px;
 }
 
-.lang{
-  border:1px solid var(--border);
-  background:#fff;
-  color:var(--primary);
-  padding:9px 15px;
+.tab{
+  flex:1;
+  border:0;
+  background:#f2f4f7;
+  color:#475467;
+  padding:11px 8px;
   border-radius:8px;
   cursor:pointer;
-  font-weight:800;
   font-size:13px;
+  font-weight:800;
 }
 
-.lang.active{
+.tab.active{
   background:var(--primary);
   color:#fff;
-  border-color:var(--primary);
-}
-
-.loading{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:35px 20px;
-  text-align:center;
-  color:var(--muted);
-}
-
-.error{
-  background:#fff;
-  border:1px solid #f0d5d5;
-  border-radius:14px;
-  padding:25px;
-  text-align:center;
-  color:#b42318;
 }
 
 .lesson{
-  background:#fff;
+  background:var(--card);
   border:1px solid var(--border);
-  border-radius:14px;
-  padding:22px;
-  margin-bottom:14px;
-}
-
-.lesson-number{
-  color:var(--primary2);
-  font-size:11px;
-  font-weight:900;
-  letter-spacing:.7px;
-  margin-bottom:5px;
+  border-radius:15px;
+  padding:24px;
 }
 
 .lesson h2{
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:24px;
-  line-height:1.25;
-  margin-bottom:12px;
+  color:var(--primary);
+  font-size:21px;
+  margin:20px 0 8px;
+}
+
+.lesson h2:first-child{
+  margin-top:0;
+}
+
+.lesson h3{
+  font-size:16px;
+  margin:16px 0 6px;
 }
 
 .lesson p{
   color:#344054;
   font-size:14px;
-  margin-bottom:11px;
-}
-
-.lesson blockquote{
-  margin:15px 0;
-  padding:13px 15px;
-  border-left:4px solid var(--gold);
-  background:#fffaf0;
-  color:#344054;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:14px;
-}
-
-.lesson ul{
-  margin:10px 0 12px 20px;
-  color:#344054;
-  font-size:14px;
-}
-
-.lesson li{
-  margin:5px 0;
-}
-
-.key{
-  margin-top:15px;
-  padding:12px 14px;
-  border-radius:9px;
-  background:var(--greenbg);
-  color:var(--green);
-  font-weight:700;
-  font-size:13px;
-}
-
-.review{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:15px;
-  padding:23px;
-  margin-top:20px;
-}
-
-.review h2{
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:24px;
   margin-bottom:10px;
 }
 
-.review p{
-  color:var(--muted);
-  font-size:14px;
+.lesson ul{
+  padding-left:21px;
+  margin-bottom:12px;
 }
 
-.actions{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
+.lesson li{
+  color:#344054;
+  font-size:14px;
+  margin:5px 0;
+}
+
+.verse{
+  background:#eef4ff;
+  border-left:4px solid var(--blue);
+  padding:13px 15px;
+  margin:13px 0;
+  border-radius:0 9px 9px 0;
+  font-size:13px;
+  color:#344054;
+}
+
+.key{
+  background:#f8fafc;
+  border:1px solid var(--border);
+  border-radius:11px;
+  padding:15px;
   margin-top:18px;
 }
 
-.btn{
-  display:inline-block;
-  text-decoration:none;
-  padding:11px 16px;
-  border-radius:8px;
-  background:var(--primary);
-  color:#fff;
-  font-size:13px;
-  font-weight:800;
-}
-
-.btn.secondary{
-  background:#eef4ff;
+.key strong{
+  display:block;
   color:var(--primary);
+  margin-bottom:5px;
 }
 
 footer{
   text-align:center;
   color:var(--muted);
-  font-size:12px;
+  font-size:11px;
   padding:25px 15px;
 }
 
 @media(max-width:600px){
-
-  main{
-    padding:18px 12px 40px;
-  }
-
-  h1{
-    font-size:27px;
-  }
-
-  .hero{
-    padding:20px;
-  }
-
-  .lesson{
-    padding:18px;
-  }
-
-  .lesson h2{
-    font-size:21px;
-  }
-
-  .actions .btn{
-    width:100%;
-    text-align:center;
-  }
-
+  main{padding:18px 12px 35px}
+  .hero{padding:21px}
+  h1{font-size:24px}
+  .lesson{padding:18px}
+  .tabs{gap:5px}
+  .tab{font-size:12px;padding:10px 5px}
 }
-</style>
-</head>
-
-<body>
-
-<header>
-
-  <div class="header-inner">
-
-    <div class="brand">
-
-      <div class="logo">GOH</div>
-
-      <div>
-        <div class="brand-title">
-          GOH Bible Academy
-        </div>
-
-        <div class="brand-sub">
-          GATE OF HEAVEN MINISTRIES
-        </div>
-      </div>
-
+</style></head><body><header>
+  <div class="header">
+    <div class="logo">GOH</div>
+    <div>
+      <div class="brand">GOH Bible Academy</div>
+      <div class="sub">GATE OF HEAVEN MINISTRIES</div>
     </div>
-
-    <a class="back" href="course.html">
-      ← Course
-    </a>
-
   </div>
+</header><main><a class="back" href="course.html">← Course</a>
 
-</header>
-
-
-<main>
-
-  <section class="hero">
-
-    <div class="label">
-      MONTH 01 • STUDY NOTES
-    </div>
-
-    <h1 id="title">
-      New Life in Christ
-    </h1>
-
-    <p class="subtitle" id="subtitle">
-      Understanding salvation, repentance, faith and your new identity in Christ.
-    </p>
-
-    <div class="languages">
-
-      <button
-        class="lang active"
-        data-lang="en"
-        onclick="changeLanguage('en')">
-        English
-      </button>
-
-      <button
-        class="lang"
-        data-lang="ta"
-        onclick="changeLanguage('ta')">
-        தமிழ்
-      </button>
-
-      <button
-        class="lang"
-        data-lang="si"
-        onclick="changeLanguage('si')">
-        සිංහල
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <div id="content">
-
-    <div class="loading">
-      Loading study notes...
-    </div>
-
-  </div>
-
-
-  <div class="review" id="review" style="display:none">
-
-    <h2 id="reviewTitle">
-      MONTH 01 REVIEW
-    </h2>
-
-    <p id="reviewText">
-      Review all ten lessons carefully before taking the Month 01 examination.
-    </p>
-
-    <div class="actions">
-
-      <a
-        class="btn secondary"
-        href="course.html">
-        ← Back to Course
-      </a>
-
-      <a
-        class="btn"
-        href="month1-exam.html">
-        📝 Take Month 01 Exam
-      </a>
-
-    </div>
-
-  </div>
-
-</main>
-
-
-<footer>
+<section class="hero">
+  <div class="label">MONTH 01 • STUDY NOTES</div>
+  <h1>New Life in Christ</h1>
+  <p>
+    Understanding salvation, repentance, faith and your new identity in Christ.
+  </p>
+</section><div class="tabs">
+  <button class="tab active" onclick="showLanguage('en',this)">
+    English
+  </button>
+  <button class="tab" onclick="showLanguage('ta',this)">
+    தமிழ்
+  </button>
+  <button class="tab" onclick="showLanguage('si',this)">
+    සිංහල
+  </button>
+</div><section class="lesson" id="lesson"><!-- ENGLISH --><div id="en"><h2>1. What Is Salvation?</h2><p>
+Salvation is God's gracious work of rescuing us from sin and bringing us
+into a right relationship with Him through Jesus Christ.
+</p><p>
+We cannot earn salvation through good works. Salvation is received by
+God's grace through faith in Jesus Christ.
+</p><div class="verse">
+<strong>Ephesians 2:8–9</strong><br>
+“For by grace are ye saved through faith; and that not of yourselves:
+it is the gift of God: Not of works, lest any man should boast.”
+</div><h2>2. Repentance</h2><p>
+Repentance means turning away from sin and turning toward God. True
+repentance involves a change of heart, mind and direction.
+</p><ul>
+<li>Recognize sin.</li>
+<li>Confess sin before God.</li>
+<li>Turn away from sinful ways.</li>
+<li>Choose to follow God's Word.</li>
+</ul><div class="verse">
+<strong>Acts 3:19</strong><br>
+“Repent ye therefore, and be converted, that your sins may be blotted out.”
+</div><h2>3. Faith in Jesus Christ</h2><p>
+Faith means trusting Jesus Christ completely and believing that He is the
+Son of God who died for our sins and rose again.
+</p><p>
+Christian faith is not merely knowing facts about Jesus. It is personally
+trusting Him and committing your life to Him.
+</p><div class="verse">
+<strong>Romans 10:9</strong><br>
+“If thou shalt confess with thy mouth the Lord Jesus, and shalt believe
+in thine heart that God hath raised him from the dead, thou shalt be saved.”
+</div><h2>4. A New Creation</h2><p>
+When a person comes to Christ, God begins a new work in that person's
+life. The believer receives a new identity and a new direction.
+</p><div class="verse">
+<strong>2 Corinthians 5:17</strong><br>
+“Therefore if any man be in Christ, he is a new creature: old things are
+passed away; behold, all things are become new.”
+</div><h2>5. Your New Identity</h2><p>
+As a believer, your identity is no longer defined by your past. Your
+identity is found in Christ.
+</p><ul>
+<li>You are a child of God.</li>
+<li>You are forgiven.</li>
+<li>You are accepted in Christ.</li>
+<li>You are called to live a holy life.</li>
+<li>You are called to serve God.</li>
+</ul><h2>6. Living the New Life</h2><p>
+The Christian life is a daily walk with God. Prayer, Bible study,
+obedience, fellowship and service help us grow spiritually.
+</p><div class="verse">
+<strong>Galatians 2:20</strong><br>
+“I am crucified with Christ: nevertheless I live; yet not I, but Christ
+liveth in me.”
+</div><div class="key">
+<strong>Key Lesson</strong>
+Your new life begins with Jesus Christ. Receive God's grace, turn away
+from sin, trust Christ and continue growing in Him every day.
+</div></div><!-- TAMIL --><div id="ta" style="display:none"><h2>1. இரட்சிப்பு என்றால் என்ன?</h2><p>
+இரட்சிப்பு என்பது பாவத்திலிருந்து நம்மை மீட்டு, இயேசு கிறிஸ்துவின் மூலம்
+தேவனுடன் சரியான உறவுக்குள் கொண்டு வருகிற தேவனுடைய கிருபையான செயலாகும்.
+</p><p>
+நல்ல செயல்களால் நாம் இரட்சிப்பைப் பெற முடியாது. தேவனுடைய கிருபையினால்,
+இயேசு கிறிஸ்துவின் மேல் விசுவாசம் வைப்பதன் மூலம் இரட்சிப்பைப் பெறுகிறோம்.
+</p><div class="verse">
+<strong>எபேசியர் 2:8–9</strong><br>
+“கிருபையினாலே விசுவாசத்தைக் கொண்டு இரட்சிக்கப்பட்டீர்கள்; இது
+உங்களால் உண்டானதல்ல, தேவனுடைய ஈவு.”
+</div><h2>2. மனந்திரும்புதல்</h2><p>
+மனந்திரும்புதல் என்பது பாவத்தை விட்டு தேவனை நோக்கித் திரும்புவதாகும்.
+இது இருதயம், சிந்தனை மற்றும் வாழ்க்கையின் திசையில் மாற்றத்தை ஏற்படுத்துகிறது.
+</p><ul>
+<li>பாவத்தை உணருதல்.</li>
+<li>தேவனிடம் பாவத்தை அறிக்கையிடுதல்.</li>
+<li>பாவமான வழிகளை விட்டுத் திரும்புதல்.</li>
+<li>தேவனுடைய வார்த்தையின்படி வாழத் தீர்மானித்தல்.</li>
+</ul><div class="verse">
+<strong>அப்போஸ்தலர் 3:19</strong><br>
+“ஆகையால் உங்கள் பாவங்கள் நிவிர்த்தி செய்யப்படும்படிக்கு
+மனந்திரும்பிக் குணப்படுங்கள்.”
+</div><h2>3. இயேசு கிறிஸ்துவின் மேல் விசுவாசம்</h2><p>
+விசுவாசம் என்பது இயேசு கிறிஸ்துவை முழுமையாக நம்புவதாகும். அவர் தேவனுடைய
+குமாரன் என்றும், நமது பாவங்களுக்காக மரித்து உயிர்த்தெழுந்தார் என்றும்
+நம்புகிறோம்.
+</p><div class="verse">
+<strong>ரோமர் 10:9</strong><br>
+“கர்த்தராகிய இயேசுவை நீ உன் வாயினாலே அறிக்கையிட்டு, தேவன் அவரை
+மரித்தோரிலிருந்து எழுப்பினாரென்று உன் இருதயத்திலே விசுவாசித்தால்,
+இரட்சிக்கப்படுவாய்.”
+</div><h2>4. புதிய சிருஷ்டி</h2><p>
+ஒருவர் கிறிஸ்துவுக்குள் வரும்போது தேவன் அவருடைய வாழ்க்கையில் ஒரு புதிய
+காரியத்தை ஆரம்பிக்கிறார். விசுவாசி புதிய அடையாளத்தையும் புதிய வாழ்க்கை
+திசையையும் பெறுகிறார்.
+</p><div class="verse">
+<strong>2 கொரிந்தியர் 5:17</strong><br>
+“ஒருவன் கிறிஸ்துவுக்குள் இருந்தால் புதுச்சிருஷ்டியாயிருக்கிறான்;
+பழையவைகள் ஒழிந்துபோயின, எல்லாம் புதிதாயின.”
+</div><h2>5. உங்கள் புதிய அடையாளம்</h2><p>
+ஒரு விசுவாசியாக உங்கள் கடந்த காலம் உங்கள் அடையாளத்தை நிர்ணயிப்பதில்லை.
+உங்கள் உண்மையான அடையாளம் கிறிஸ்துவுக்குள் உள்ளது.
+</p><ul>
+<li>நீங்கள் தேவனுடைய பிள்ளை.</li>
+<li>நீங்கள் மன்னிக்கப்பட்டவர்.</li>
+<li>கிறிஸ்துவில் ஏற்றுக்கொள்ளப்பட்டவர்.</li>
+<li>பரிசுத்த வாழ்க்கைக்காக அழைக்கப்பட்டவர்.</li>
+<li>தேவனைச் சேவிக்க அழைக்கப்பட்டவர்.</li>
+</ul><h2>6. புதிய வாழ்க்கையில் வாழுதல்</h2><p>
+கிறிஸ்தவ வாழ்க்கை என்பது தேவனுடன் தினமும் நடப்பதாகும். ஜெபம்,
+வேதாகமப் படிப்பு, கீழ்ப்படிதல், ஐக்கியம் மற்றும் ஊழியம் ஆகியவை
+ஆவிக்குரிய வளர்ச்சிக்கு உதவுகின்றன.
+</p><div class="key">
+<strong>முக்கிய பாடம்</strong>
+உங்கள் புதிய வாழ்க்கை இயேசு கிறிஸ்துவில் ஆரம்பிக்கிறது. தேவனுடைய
+கிருபையைப் பெற்றுக்கொண்டு, பாவத்தை விட்டு, கிறிஸ்துவை நம்பி,
+ஒவ்வொரு நாளும் அவருக்குள் வளருங்கள்.
+</div></div><!-- SINHALA --><div id="si" style="display:none"><h2>1. ගැළවීම යනු කුමක්ද?</h2><p>
+ගැළවීම යනු පාපයෙන් අපව ගළවා, යේසුස් ක්‍රිස්තුස් වහන්සේ තුළින්
+දෙවියන් වහන්සේ සමඟ නිවැරදි සම්බන්ධතාවයකට ගෙන ඒම සඳහා දෙවියන්
+වහන්සේගේ කරුණාවෙන් සිදු කරන කාර්යයයි.
+</p><p>
+යහපත් ක්‍රියා මගින් අපට ගැළවීම උපයාගත නොහැක. දෙවියන් වහන්සේගේ
+කරුණාවෙන් සහ යේසුස් ක්‍රිස්තුස් වහන්සේ කෙරෙහි ඇදහිල්ලෙන් ගැළවීම
+ලබා ගනිමු.
+</p><div class="verse">
+<strong>එපීස 2:8–9</strong><br>
+“මක්නිසාද ඇදහිල්ල කරණකොටගෙන කරුණාවෙන් නුඹලා ගළවනු ලැබ සිටින්නහුය;
+එය නුඹලාගෙන් නොව, දෙවියන් වහන්සේගේ දීමනාවකි.”
+</div><h2>2. පසුතැවීම</h2><p>
+පසුතැවීම යනු පාපයෙන් ඉවත්ව දෙවියන් වහන්සේ වෙත හැරීමයි. සැබෑ
+පසුතැවීම හදවත, සිතුවිලි සහ ජීවිතයේ දිශාව වෙනස් කරයි.
+</p><ul>
+<li>පාපය හඳුනා ගැනීම.</li>
+<li>දෙවියන් වහන්සේ ඉදිරියේ පාපය පිළිගැනීම.</li>
+<li>පාපයේ මාර්ගයෙන් ඉවත්වීම.</li>
+<li>දෙවියන් වහන්සේගේ වචනය අනුව ජීවත් වීමට තීරණය කිරීම.</li>
+</ul><div class="verse">
+<strong>ක්‍රියා 3:19</strong><br>
+“එබැවින් නුඹලාගේ පාප මකා දමනු ලබන පිණිස පසුතැවී හැරෙන්න.”
+</div><h2>3. යේසුස් ක්‍රිස්තුස් වහන්සේ කෙරෙහි ඇදහිල්ල</h2><p>
+ඇදහිල්ල යනු යේසුස් ක්‍රිස්තුස් වහන්සේ සම්පූර්ණයෙන් විශ්වාස කිරීමයි.
+ඔහු දෙවියන් වහන්සේගේ පුත්‍රයා බවත්, අපගේ පාප වෙනුවෙන් මිය ගොස්
+නැවත නැඟිටි බවත් අපි විශ්වාස කරමු.
+</p><div class="verse">
+<strong>රෝම 10:9</strong><br>
+“යේසුස් වහන්සේ ස්වාමීන් බව ඔබේ මුඛයෙන් ප්‍රකාශ කර, දෙවියන් වහන්සේ
+ඔහුව මළවුන්ගෙන් නැඟිටවූ බව ඔබේ සිතින් විශ්වාස කරන්නේ නම්,
+ඔබ ගැළවෙන්නේය.”
+</div><h2>4. නව මැවිල්ල</h2><p>
+යම් පුද්ගලයෙකු ක්‍රිස්තුස් වහන්සේ තුළට පැමිණි විට දෙවියන් වහන්සේ
+ඔහුගේ ජීවිතයේ නව කාර්යයක් ආරම්භ කරයි. ඇදහිලිවන්තයාට නව අනන්‍යතාවයක්
+සහ නව ජීවන දිශාවක් ලැබේ.
+</p><div class="verse">
+<strong>2 කොරින්ති 5:17</strong><br>
+“යමෙක් ක්‍රිස්තුස් තුළ සිටී නම් ඔහු නව මැවිල්ලකි.”
+</div><h2>5. ඔබගේ නව අනන්‍යතාවය</h2><p>
+ඇදහිලිවන්තයෙකු ලෙස ඔබගේ අතීතය ඔබගේ අනන්‍යතාවය තීරණය නොකරයි.
+ඔබගේ සැබෑ අනන්‍යතාවය ක්‍රිස්තුස් වහන්සේ තුළ ඇත.
+</p><ul>
+<li>ඔබ දෙවියන් වහන්සේගේ දරුවෙකි.</li>
+<li>ඔබට සමාව ලැබී ඇත.</li>
+<li>ඔබ ක්‍රිස්තුස් තුළ පිළිගෙන ඇත.</li>
+<li>ශුද්ධ ජීවිතයක් සඳහා කැඳවා ඇත.</li>
+<li>දෙවියන් වහන්සේට සේවය කිරීමට කැඳවා ඇත.</li>
+</ul><h2>6. නව ජීවිතය ජීවත් වීම</h2><p>
+ක්‍රිස්තියානි ජීවිතය යනු දිනපතා දෙවියන් වහන්සේ සමඟ ගමන් කිරීමයි.
+යාච්ඤාව, බයිබල් අධ්‍යයනය, කීකරුකම, සහභාගීත්වය සහ සේවය අපගේ
+ආත්මික වර්ධනයට උපකාර කරයි.
+</p><div class="key">
+<strong>ප්‍රධාන පාඩම</strong>
+ඔබගේ නව ජීවිතය යේසුස් ක්‍රිස්තුස් වහන්සේ තුළ ආරම්භ වේ. දෙවියන්
+වහන්සේගේ කරුණාව පිළිගෙන, පාපයෙන් ඉවත්ව, ක්‍රිස්තුස් වහන්සේ විශ්වාස
+කරමින් සෑම දිනකම ඔහු තුළ වර්ධනය වන්න.
+</div></div></section></main><footer>
 © 2026 GOH Bible Academy. All rights reserved.
-</footer>
+</footer><script>
+function showLanguage(lang,button){
 
+  document.getElementById("en").style.display="none";
+  document.getElementById("ta").style.display="none";
+  document.getElementById("si").style.display="none";
 
-<script>
+  document.getElementById(lang).style.display="block";
 
-/*
-  IMPORTANT:
-  Replace this URL ONLY if your existing
-  Cloudflare notes API uses another URL.
-*/
-const NOTES_API =
-"https://goh-bible-exam-api.createlk.workers.dev";
+  document.querySelectorAll(".tab").forEach(tab=>{
+    tab.classList.remove("active");
+  });
 
+  button.classList.add("active");
 
-let currentLanguage = "en";
-
-
-async function loadNotes(language){
-
-  currentLanguage = language;
-
-  setActiveLanguage(language);
-
-  const content =
-    document.getElementById("content");
-
-  content.innerHTML = `
-    <div class="loading">
-      Loading ${languageName(language)} notes...
-    </div>
-  `;
-
-  try{
-
-    /*
-      Expected API:
-
-      GET /notes?month=1&lang=en
-      GET /notes?month=1&lang=ta
-      GET /notes?month=1&lang=si
-
-      The Worker should return either:
-
-      {
-        "success":true,
-        "notes":[...]
-      }
-
-      or
-
-      {
-        "success":true,
-        "data":[...]
-      }
-    */
-
-    const response =
-      await fetch(
-        NOTES_API +
-        "/notes?month=1&lang=" +
-        encodeURIComponent(language),
-        {
-          method:"GET",
-          cache:"no-store"
-        }
-      );
-
-    if(!response.ok){
-      throw new Error(
-        "HTTP " + response.status
-      );
-    }
-
-    const data =
-      await response.json();
-
-    const notes =
-      data.notes ||
-      data.data ||
-      [];
-
-    if(!Array.isArray(notes) || !notes.length){
-
-      throw new Error(
-        "No notes returned"
-      );
-
-    }
-
-    renderNotes(notes,language);
-
-  }catch(error){
-
-    console.error(
-      "Notes error:",
-      error
-    );
-
-    content.innerHTML = `
-
-      <div class="error">
-
-        <h2>
-          Unable to load the lesson notes.
-        </h2>
-
-        <p style="margin-top:8px">
-          Please try again.
-        </p>
-
-        <button
-          class="lang"
-          style="margin-top:15px"
-          onclick="loadNotes(currentLanguage)">
-          Try Again
-        </button>
-
-      </div>
-
-    `;
-
-    document
-      .getElementById("review")
-      .style.display="none";
-
-  }
-
+  document.documentElement.lang=lang;
 }
-
-
-function renderNotes(notes,language){
-
-  const content =
-    document.getElementById("content");
-
-  content.innerHTML =
-    notes.map((note,index)=>{
-
-      return `
-
-        <article class="lesson">
-
-          <div class="lesson-number">
-            LESSON ${String(index+1).padStart(2,"0")}
-          </div>
-
-          <h2>
-            ${safe(
-              note.title ||
-              note.name ||
-              ""
-            )}
-          </h2>
-
-          ${
-            note.content
-            ? formatContent(note.content)
-            : ""
-          }
-
-          ${
-            note.description
-            ? `<p>${safe(note.description)}</p>`
-            : ""
-          }
-
-          ${
-            note.verse
-            ? `
-              <blockquote>
-                ${safe(note.verse)}
-              </blockquote>
-            `
-            : ""
-          }
-
-          ${
-            Array.isArray(note.points)
-            ? `
-              <ul>
-                ${
-                  note.points.map(point=>
-                    `<li>${safe(point)}</li>`
-                  ).join("")
-                }
-              </ul>
-            `
-            : ""
-          }
-
-          ${
-            note.key_truth
-            ? `
-              <div class="key">
-                ${safe(note.key_truth)}
-              </div>
-            `
-            : ""
-          }
-
-        </article>
-
-      `;
-
-    }).join("");
-
-  updateLanguageText(language);
-
-  document
-    .getElementById("review")
-    .style.display="block";
-
-}
-
-
-function formatContent(value){
-
-  if(!value) return "";
-
-  /*
-    Allows the API to return simple paragraphs
-    separated by blank lines.
-  */
-
-  return String(value)
-    .split(/\n\s*\n/)
-    .map(paragraph =>
-      `<p>${safe(paragraph).replace(/\n/g,"<br>")}</p>`
-    )
-    .join("");
-
-}
-
-
-function updateLanguageText(language){
-
-  const title =
-    document.getElementById("title");
-
-  const subtitle =
-    document.getElementById("subtitle");
-
-  const reviewTitle =
-    document.getElementById("reviewTitle");
-
-  const reviewText =
-    document.getElementById("reviewText");
-
-  if(language==="ta"){
-
-    title.textContent =
-      "கிறிஸ்துவில் புதிய வாழ்க்கை";
-
-    subtitle.textContent =
-      "இரட்சிப்பு, மனந்திரும்புதல், விசுவாசம் மற்றும் கிறிஸ்துவில் உங்கள் புதிய அடையாளத்தைப் புரிந்துகொள்வோம்.";
-
-    reviewTitle.textContent =
-      "மாதம் 01 மீளாய்வு";
-
-    reviewText.textContent =
-      "மாதம் 01 பரீட்சையை எழுதுவதற்கு முன் அனைத்து பத்து பாடங்களையும் கவனமாகப் படியுங்கள்.";
-
-  }else if(language==="si"){
-
-    title.textContent =
-      "ක්‍රිස්තුස් තුළ නව ජීවිතය";
-
-    subtitle.textContent =
-      "ගැළවීම, පසුතැවීම, ඇදහිල්ල සහ ක්‍රිස්තුස් තුළ ඔබගේ නව අනන්‍යතාවය අවබෝධ කරගැනීම.";
-
-    reviewTitle.textContent =
-      "මාසය 01 නැවත සමාලෝචනය";
-
-    reviewText.textContent =
-      "මාසය 01 විභාගයට පෙර පාඩම් දහයම හොඳින් නැවත අධ්‍යයනය කරන්න.";
-
-  }else{
-
-    title.textContent =
-      "New Life in Christ";
-
-    subtitle.textContent =
-      "Understanding salvation, repentance, faith and your new identity in Christ.";
-
-    reviewTitle.textContent =
-      "MONTH 01 REVIEW";
-
-    reviewText.textContent =
-      "Review all ten lessons carefully before taking the Month 01 examination.";
-
-  }
-
-}
-
-
-function changeLanguage(language){
-
-  loadNotes(language);
-
-}
-
-
-function setActiveLanguage(language){
-
-  document
-    .querySelectorAll(".lang")
-    .forEach(button=>{
-
-      button.classList.toggle(
-        "active",
-        button.dataset.lang === language
-      );
-
-    });
-
-}
-
-
-function languageName(language){
-
-  if(language==="ta") return "Tamil";
-  if(language==="si") return "Sinhala";
-
-  return "English";
-
-}
-
-
-function safe(value){
-
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-
-/*
-  Load English by default.
-*/
-loadNotes("en");
-
-</script>
-
-</body>
+</script></body>
 </html>
