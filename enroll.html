@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Enroll | GOH Bible Academy</title>
+
+<meta name="description"
+content="Enroll in the GOH Bible Academy Diploma in Christian Biblical Studies.">
+
+<meta name="theme-color" content="#0b376d">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f7f9fc;
+  color:#172033;
+  line-height:1.6;
+}
+
+a{text-decoration:none;color:inherit}
+
+.container{
+  width:min(1000px,92%);
+  margin:auto;
+}
+
+/* HEADER */
+
+header{
+  background:#fff;
+  border-bottom:1px solid #e5eaf1;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.nav{
+  min-height:68px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:11px;
+  background:#0b376d;
+  color:#fff;
+  font-size:12px;
+  font-weight:900;
+}
+
+.brand strong{
+  display:block;
+  color:#0b376d;
+  font-size:15px;
+}
+
+.brand small{
+  display:block;
+  color:#667085;
+  font-size:8px;
+  letter-spacing:1px;
+}
+
+.back{
+  color:#0b376d;
+  font-size:13px;
+  font-weight:800;
+}
+
+/* HERO */
+
+.hero{
+  background:linear-gradient(135deg,#061d39,#0b376d);
+  color:#fff;
+  text-align:center;
+  padding:65px 20px;
+}
+
+.hero .label{
+  color:#f3c95c;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1.3px;
+  margin-bottom:10px;
+}
+
+.hero h1{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(34px,6vw,52px);
+  line-height:1.12;
+  margin-bottom:12px;
+}
+
+.hero p{
+  max-width:650px;
+  margin:auto;
+  color:#dce7f3;
+  font-size:15px;
+}
+
+/* MAIN */
+
+main{
+  padding:55px 0;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 380px;
+  gap:25px;
+  align-items:start;
+}
+
+/* CARDS */
+
+.card{
+  background:#fff;
+  border:1px solid #e3e8ef;
+  border-radius:17px;
+  padding:27px;
+  box-shadow:0 8px 25px rgba(16,24,40,.04);
+}
+
+.card h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:27px;
+  margin-bottom:15px;
+}
+
+.card h3{
+  font-size:17px;
+  margin:20px 0 8px;
+}
+
+.card p{
+  color:#667085;
+  font-size:14px;
+}
+
+.list{
+  list-style:none;
+  display:grid;
+  gap:9px;
+  margin-top:12px;
+}
+
+.list li{
+  color:#475467;
+  font-size:14px;
+}
+
+.check{
+  color:#0b376d;
+  font-weight:900;
+}
+
+/* PRICE */
+
+.price-box{
+  background:#0b376d;
+  color:#fff;
+  border-radius:17px;
+  padding:27px;
+  position:sticky;
+  top:90px;
+}
+
+.price-box .small{
+  color:#f3c95c;
+  font-size:11px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.price-box h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:26px;
+  margin:8px 0 16px;
+}
+
+.price{
+  padding:16px 0;
+  border-top:1px solid rgba(255,255,255,.15);
+  border-bottom:1px solid rgba(255,255,255,.15);
+  margin-bottom:18px;
+}
+
+.price strong{
+  font-size:30px;
+}
+
+.price span{
+  color:#cbd8e6;
+  font-size:12px;
+}
+
+.price-box ul{
+  list-style:none;
+  display:grid;
+  gap:8px;
+  color:#e2eaf3;
+  font-size:13px;
+}
+
+/* FORM */
+
+.form{
+  margin-top:25px;
+}
+
+.form h2{
+  margin-bottom:18px;
+}
+
+.field{
+  margin-bottom:14px;
+}
+
+.field label{
+  display:block;
+  margin-bottom:5px;
+  font-size:13px;
+  font-weight:800;
+}
+
+.field input,
+.field select{
+  width:100%;
+  height:46px;
+  padding:10px 12px;
+  border:1px solid #d8dee8;
+  border-radius:8px;
+  outline:none;
+  font-size:14px;
+  background:#fff;
+}
+
+.field input:focus,
+.field select:focus{
+  border-color:#0b376d;
+}
+
+.payhere{
+  margin-top:20px;
+  padding:18px;
+  border-radius:12px;
+  background:#f7f9fc;
+  border:1px solid #e5eaf1;
+}
+
+.payhere strong{
+  display:block;
+  color:#0b376d;
+  margin-bottom:5px;
+}
+
+.payhere p{
+  font-size:13px;
+  color:#667085;
+}
+
+.btn{
+  width:100%;
+  min-height:48px;
+  border:0;
+  border-radius:8px;
+  cursor:pointer;
+  background:#0b376d;
+  color:#fff;
+  font-size:14px;
+  font-weight:900;
+  margin-top:18px;
+}
+
+.btn:hover{
+  background:#082b55;
+}
+
+.notice{
+  margin-top:15px;
+  color:#667085;
+  font-size:11px;
+  text-align:center;
+}
+
+/* TERMS */
+
+.terms{
+  margin-top:25px;
+  padding:18px;
+  border-radius:12px;
+  background:#faf8f1;
+  border:1px solid #eee6d1;
+}
+
+.terms p{
+  color:#667085;
+  font-size:12px;
+}
+
+.terms a{
+  color:#0b376d;
+  font-weight:800;
+}
+
+/* FOOTER */
+
+footer{
+  margin-top:20px;
+  padding:35px 0;
+  background:#081d38;
+  color:#fff;
+  text-align:center;
+}
+
+footer p{
+  color:#aebdd0;
+  font-size:12px;
+}
+
+.footer-links{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-bottom:13px;
+}
+
+.footer-links a{
+  color:#c8d5e4;
+  font-size:12px;
+}
+
+.footer-links a:hover{
+  color:#fff;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .price-box{
+    position:static;
+    order:-1;
+  }
+}
+
+@media(max-width:480px){
+
+  .hero{
+    padding:50px 15px;
+  }
+
+  main{
+    padding:40px 0;
+  }
+
+  .card,
+  .price-box{
+    padding:22px;
+  }
+
+  .brand small{
+    display:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      <div class="logo">GOH</div>
+
+      <div>
+        <strong>GOH Bible Academy</strong>
+        <small>GATE OF HEAVEN MINISTRIES</small>
+      </div>
+    </a>
+
+    <a href="bible-courses.html" class="back">
+      ← Course Details
+    </a>
+
+  </div>
+</header>
+
+
+<section class="hero">
+
+  <div class="label">GOH BIBLE ACADEMY</div>
+
+  <h1>Enroll in Biblical Studies</h1>
+
+  <p>
+    Begin your structured study of Scripture
+    through the Diploma in Christian Biblical Studies.
+  </p>
+
+</section>
+
+
+<main>
+
+<div class="container">
+
+<div class="grid">
+
+
+<!-- COURSE INFORMATION -->
+
+<div>
+
+<div class="card">
+
+<h2>Diploma in Christian Biblical Studies</h2>
+
+<p>
+A structured six-month online program designed
+to help students develop a stronger understanding
+of Scripture, Christian doctrine and Christian ministry.
+</p>
+
+
+<h3>What You Will Study</h3>
+
+<ul class="list">
+
+<li>
+<span class="check">✓</span>
+Bible Foundations
+</li>
+
+<li>
+<span class="check">✓</span>
+Old Testament Studies
+</li>
+
+<li>
+<span class="check">✓</span>
+New Testament Studies
+</li>
+
+<li>
+<span class="check">✓</span>
+Life & Teachings of Jesus
+</li>
+
+<li>
+<span class="check">✓</span>
+Christian Doctrine
+</li>
+
+<li>
+<span class="check">✓</span>
+Evangelism & Christian Ministry
+</li>
+
+</ul>
+
+
+<h3>Program Requirements</h3>
+
+<ul class="list">
+
+<li>
+<span class="check">✓</span>
+Complete the required lessons
+</li>
+
+<li>
+<span class="check">✓</span>
+Complete assessments
+</li>
+
+<li>
+<span class="check">✓</span>
+Complete the final examination
+</li>
+
+<li>
+<span class="check">✓</span>
+Meet the certificate requirements
+</li>
+
+</ul>
+
+
+<h3>Certificate</h3>
+
+<p>
+Students who successfully complete the required
+coursework and assessment requirements may receive
+a ministry-issued certificate from Gate of Heaven Ministries.
+</p>
+
+</div>
+
+
+<!-- STUDENT FORM -->
+
+<div class="card form">
+
+<h2>Student Information</h2>
+
+<form id="enrollForm">
+
+<div class="field">
+
+<label for="name">
+Full Name
+</label>
+
+<input
+type="text"
+id="name"
+name="name"
+placeholder="Enter your full name"
+required>
+
+</div>
+
+
+<div class="field">
+
+<label for="phone">
+Phone Number
+</label>
+
+<input
+type="tel"
+id="phone"
+name="phone"
+placeholder="Enter your phone number"
+required>
+
+</div>
+
+
+<div class="field">
+
+<label for="country">
+Country
+</label>
+
+<input
+type="text"
+id="country"
+name="country"
+placeholder="Enter your country"
+value="Sri Lanka"
+required>
+
+</div>
+
+
+<div class="field">
+
+<label for="course">
+Program
+</label>
+
+<select id="course" name="course" required>
+
+<option value="Diploma in Christian Biblical Studies">
+Diploma in Christian Biblical Studies
+</option>
+
+</select>
+
+</div>
+
+
+<div class="payhere">
+
+<strong>Secure Payment</strong>
+
+<p>
+After submitting your enrollment information,
+you will proceed to the available payment method
+for your selected subscription.
+</p>
+
+<!--
+PAYHERE PAYMENT FORM WILL BE CONNECTED HERE.
+
+Do not put your PayHere merchant secret
+or other private credentials in this HTML file.
+-->
+
+</div>
+
+
+<button
+type="submit"
+class="btn">
+
+Continue to Payment
+
+</button>
+
+
+<div class="notice">
+
+By enrolling, you confirm that the information
+you provide is accurate.
+
+</div>
+
+</form>
+
+
+<div class="terms">
+
+<p>
+Before payment, please read our
+<a href="terms.html">Terms & Conditions</a>,
+<a href="privacy.html">Privacy Policy</a> and
+<a href="refund.html">Refund Policy</a>.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PAYMENT SUMMARY -->
+
+<aside class="price-box">
+
+<div class="small">
+Monthly Subscription
+</div>
+
+<h2>
+Diploma in Christian Biblical Studies
+</h2>
+
+<div class="price">
+
+<strong>LKR 1,500</strong>
+
+<span>/ month</span>
+
+</div>
+
+<ul>
+
+<li>✓ Online course access</li>
+
+<li>✓ Structured Bible lessons</li>
+
+<li>✓ Assessments</li>
+
+<li>✓ Final examination</li>
+
+<li>✓ Certificate eligibility</li>
+
+</ul>
+
+</aside>
+
+</div>
+
+</div>
+
+</main>
+
+
+<footer>
+
+<div class="container">
+
+<div class="footer-links">
+
+<a href="index.html">Home</a>
+
+<a href="about.html">About</a>
+
+<a href="bible-courses.html">Courses</a>
+
+<a href="terms.html">Terms</a>
+
+<a href="privacy.html">Privacy</a>
+
+<a href="refund.html">Refund Policy</a>
+
+<a href="contact.html">Contact</a>
+
+</div>
+
+<p>
+© 2026 Gate of Heaven Ministries. All Rights Reserved.
+</p>
+
+</div>
+
+</footer>
+
+
+<script>
+
+function $(id){
+  return document.getElementById(id);
+}
+
+$("enrollForm").addEventListener("submit",function(e){
+
+  e.preventDefault();
+
+  const name=$("name").value.trim();
+  const phone=$("phone").value.trim();
+  const country=$("country").value.trim();
+
+  if(!name || !phone || !country){
+    alert("Please complete all required fields.");
+    return;
+  }
+
+  /*
+    NEXT STEP:
+
+    Connect this form to your Cloudflare Worker.
+
+    The Worker should:
+    1. Validate the student information.
+    2. Create/store the enrollment.
+    3. Create the PayHere payment request.
+    4. Redirect the student to PayHere.
+    5. Handle PayHere notifications securely.
+    6. Activate the subscription only after
+       confirmed successful payment.
+
+    IMPORTANT:
+    Never place your PayHere merchant secret
+    in this HTML.
+  */
+
+  alert(
+    "Your enrollment information is ready. PayHere integration can now be connected."
+  );
+
+});
+
+</script>
+
+</body>
+</html>
