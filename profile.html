@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>My Profile | GOH Bible Academy</title>
+
+<meta name="description"
+content="GOH Bible Academy student profile and account information.">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --primary:#0b376d;
+  --primary2:#155eef;
+  --text:#172033;
+  --muted:#667085;
+  --bg:#f4f7fb;
+  --card:#fff;
+  --border:#e4e7ec;
+  --green:#027a48;
+  --greenbg:#ecfdf3;
+  --red:#b42318;
+  --redbg:#fef3f2;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+}
+
+header{
+  background:var(--primary);
+  color:#fff;
+  padding:13px 20px;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.header-inner{
+  max-width:1150px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo{
+  width:44px;
+  height:44px;
+  border-radius:10px;
+  background:#fff;
+  color:var(--primary);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  font-size:17px;
+}
+
+.brand-title{
+  font-size:18px;
+  font-weight:800;
+}
+
+.brand-sub{
+  font-size:11px;
+  opacity:.8;
+  margin-top:3px;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+.nav a{
+  color:#fff;
+  text-decoration:none;
+  padding:9px 10px;
+  border-radius:8px;
+  font-size:13px;
+  font-weight:600;
+}
+
+.nav a:hover,
+.nav a.active{
+  background:rgba(255,255,255,.15);
+}
+
+.logout{
+  border:1px solid rgba(255,255,255,.35);
+  background:transparent;
+  color:#fff;
+  padding:9px 13px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+  font-size:13px;
+}
+
+.menu-btn{
+  display:none;
+  border:1px solid rgba(255,255,255,.35);
+  background:transparent;
+  color:#fff;
+  padding:8px 11px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:18px;
+}
+
+main{
+  max-width:900px;
+  margin:auto;
+  padding:30px 18px 55px;
+}
+
+.page-title{
+  margin-bottom:22px;
+}
+
+.page-title h1{
+  font-size:28px;
+  margin-bottom:7px;
+}
+
+.page-title p{
+  color:var(--muted);
+}
+
+.profile-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:16px;
+  overflow:hidden;
+}
+
+.profile-head{
+  background:linear-gradient(135deg,#0b376d,#155eef);
+  color:#fff;
+  padding:28px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.avatar{
+  width:72px;
+  height:72px;
+  border-radius:50%;
+  background:#fff;
+  color:var(--primary);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+  font-weight:800;
+  flex-shrink:0;
+}
+
+.profile-head h2{
+  font-size:23px;
+  margin-bottom:5px;
+}
+
+.profile-head p{
+  font-size:13px;
+  opacity:.85;
+}
+
+.info{
+  padding:25px;
+}
+
+.info-title{
+  font-size:19px;
+  font-weight:800;
+  margin-bottom:16px;
+}
+
+.info-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:13px;
+}
+
+.info-item{
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:15px;
+}
+
+.label{
+  color:var(--muted);
+  font-size:12px;
+  margin-bottom:6px;
+}
+
+.value{
+  font-size:15px;
+  font-weight:700;
+  word-break:break-word;
+}
+
+.status{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:20px;
+  background:var(--greenbg);
+  color:var(--green);
+  font-size:12px;
+  font-weight:800;
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:22px;
+}
+
+.btn{
+  display:inline-block;
+  text-decoration:none;
+  border:0;
+  cursor:pointer;
+  padding:12px 17px;
+  border-radius:9px;
+  background:var(--primary);
+  color:#fff;
+  font-size:13px;
+  font-weight:700;
+}
+
+.btn.secondary{
+  background:#eef4ff;
+  color:var(--primary);
+}
+
+.danger{
+  background:var(--redbg);
+  color:var(--red);
+}
+
+.account-card{
+  margin-top:20px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:22px;
+}
+
+.account-card h2{
+  font-size:19px;
+  margin-bottom:9px;
+}
+
+.account-card p{
+  color:var(--muted);
+  line-height:1.6;
+  font-size:14px;
+}
+
+.notice{
+  margin-top:15px;
+  padding:13px;
+  border-radius:10px;
+  background:#f8fafc;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
+}
+
+footer{
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+  padding:25px 15px;
+}
+
+.loading{
+  text-align:center;
+  padding:50px;
+  color:var(--muted);
+}
+
+@media(max-width:1000px){
+
+  .nav{
+    display:none;
+    position:absolute;
+    top:70px;
+    left:14px;
+    right:14px;
+    background:var(--primary);
+    border-radius:12px;
+    padding:8px;
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .nav.open{
+    display:flex;
+  }
+
+  .nav a,
+  .nav .logout{
+    width:100%;
+    text-align:left;
+    padding:12px;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .desktop-logout{
+    display:none;
+  }
+}
+
+@media(max-width:600px){
+
+  header{
+    padding:11px 14px;
+  }
+
+  .logo{
+    width:38px;
+    height:38px;
+    font-size:15px;
+  }
+
+  .brand-title{
+    font-size:15px;
+  }
+
+  .brand-sub{
+    font-size:9px;
+  }
+
+  main{
+    padding:22px 14px 40px;
+  }
+
+  .page-title h1{
+    font-size:24px;
+  }
+
+  .profile-head{
+    padding:22px;
+  }
+
+  .avatar{
+    width:60px;
+    height:60px;
+    font-size:21px;
+  }
+
+  .profile-head h2{
+    font-size:19px;
+  }
+
+  .info{
+    padding:18px;
+  }
+
+  .info-grid{
+    grid-template-columns:1fr;
+  }
+
+  .btn{
+    width:100%;
+    text-align:center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="header-inner">
+
+  <div class="brand">
+
+    <div class="logo">GOH</div>
+
+    <div>
+      <div class="brand-title">
+        GOH Bible Academy
+      </div>
+
+      <div class="brand-sub">
+        GATE OF HEAVEN MINISTRIES
+      </div>
+    </div>
+
+  </div>
+
+
+  <nav class="nav" id="nav">
+
+    <a href="dashboard.html">
+      Dashboard
+    </a>
+
+    <a href="course.html">
+      My Course
+    </a>
+
+    <a href="exams.html">
+      Exams
+    </a>
+
+    <a href="progress.html">
+      Progress
+    </a>
+
+    <a href="certificate.html">
+      Certificate
+    </a>
+
+    <a class="active" href="profile.html">
+      Profile
+    </a>
+
+    <a href="support.html">
+      Support
+    </a>
+
+    <button class="logout" onclick="logout()">
+      Logout
+    </button>
+
+  </nav>
+
+
+  <button
+    class="menu-btn"
+    onclick="toggleMenu()"
+  >
+    ☰
+  </button>
+
+
+  <button
+    class="logout desktop-logout"
+    onclick="logout()"
+  >
+    Logout
+  </button>
+
+</div>
+
+</header>
+
+
+<main id="app">
+
+<div class="loading">
+  Loading your profile...
+</div>
+
+</main>
+
+
+<footer>
+© 2026 GOH Bible Academy. All rights reserved.
+</footer>
+
+
+<script>
+
+const API =
+"https://goh-auth-api.createlk.workers.dev";
+
+const token =
+localStorage.getItem("goh_token");
+
+
+if(!token){
+
+  window.location.href =
+    "login.html";
+
+}
+
+
+async function loadProfile(){
+
+  try{
+
+    const response =
+      await fetch(
+        API + "/me",
+        {
+          method:"GET",
+
+          headers:{
+            "Authorization":
+              "Bearer " + token
+          }
+        }
+      );
+
+
+    const data =
+      await response.json();
+
+
+    if(!data.success){
+
+      logout();
+
+      return;
+
+    }
+
+
+    const student =
+      data.student;
+
+
+    try{
+
+      localStorage.setItem(
+        "goh_student",
+        JSON.stringify(student)
+      );
+
+    }catch(e){}
+
+
+    renderProfile(student);
+
+
+  }catch(error){
+
+    console.error(error);
+
+    /*
+      Fallback to cached student information
+      if the API is temporarily unavailable.
+    */
+
+    try{
+
+      const cached =
+        JSON.parse(
+          localStorage.getItem(
+            "goh_student"
+          ) || "null"
+        );
+
+      if(cached){
+
+        renderProfile(cached);
+
+        return;
+
+      }
+
+    }catch(e){}
+
+
+    document.getElementById("app")
+      .innerHTML = `
+
+        <div class="account-card">
+
+          <h2>
+            Unable to load profile
+          </h2>
+
+          <p style="margin-top:8px">
+            Please check your internet connection
+            and try again.
+          </p>
+
+          <div class="actions">
+
+            <button
+              class="btn"
+              onclick="location.reload()"
+            >
+              Try Again
+            </button>
+
+          </div>
+
+        </div>
+
+      `;
+
+  }
+
+}
+
+
+function renderProfile(student){
+
+  const name =
+    student.name ||
+    student.full_name ||
+    "Student";
+
+
+  const email =
+    student.email ||
+    "Not provided";
+
+
+  const phone =
+    student.phone ||
+    student.whatsapp ||
+    "Not provided";
+
+
+  const studentId =
+    student.id ||
+    student.student_id ||
+    "—";
+
+
+  const status =
+    student.membership_status ||
+    student.status ||
+    "Active";
+
+
+  const initials =
+    getInitials(name);
+
+
+  document.getElementById("app")
+    .innerHTML = `
+
+      <div class="page-title">
+
+        <h1>
+          My Profile
+        </h1>
+
+        <p>
+          View your GOH Bible Academy account information.
+        </p>
+
+      </div>
+
+
+      <div class="profile-card">
+
+        <div class="profile-head">
+
+          <div class="avatar">
+            ${escapeHTML(initials)}
+          </div>
+
+          <div>
+
+            <h2>
+              ${escapeHTML(name)}
+            </h2>
+
+            <p>
+              GOH Bible Academy Student
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="info">
+
+          <div class="info-title">
+            Account Information
+          </div>
+
+
+          <div class="info-grid">
+
+
+            <div class="info-item">
+
+              <div class="label">
+                Full Name
+              </div>
+
+              <div class="value">
+                ${escapeHTML(name)}
+              </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+              <div class="label">
+                Student ID
+              </div>
+
+              <div class="value">
+                ${escapeHTML(studentId)}
+              </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+              <div class="label">
+                Email
+              </div>
+
+              <div class="value">
+                ${escapeHTML(email)}
+              </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+              <div class="label">
+                Phone
+              </div>
+
+              <div class="value">
+                ${escapeHTML(phone)}
+              </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+              <div class="label">
+                Account Status
+              </div>
+
+              <div class="value">
+
+                <span class="status">
+                  ${escapeHTML(status)}
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+              <div class="label">
+                Program
+              </div>
+
+              <div class="value">
+                12-Month Bible Academy
+              </div>
+
+            </div>
+
+
+          </div>
+
+
+          <div class="notice">
+
+            Your academic progress, examination results
+            and certificate eligibility are managed
+            separately from your profile information.
+
+          </div>
+
+
+          <div class="actions">
+
+            <a
+              class="btn"
+              href="dashboard.html"
+            >
+              Dashboard
+            </a>
+
+            <a
+              class="btn secondary"
+              href="progress.html"
+            >
+              View Progress
+            </a>
+
+            <a
+              class="btn secondary"
+              href="support.html"
+            >
+              Contact Support
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="account-card">
+
+        <h2>
+          Account Security
+        </h2>
+
+        <p>
+          Keep your login information private.
+          Never share your password or authentication
+          token with another person.
+        </p>
+
+        <div class="actions">
+
+          <button
+            class="btn danger"
+            onclick="logout()"
+          >
+            Logout from Account
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+}
+
+
+function getInitials(name){
+
+  return String(name)
+    .trim()
+    .split(/\s+/)
+    .slice(0,2)
+    .map(word => word.charAt(0).toUpperCase())
+    .join("") || "GOH";
+
+}
+
+
+function escapeHTML(value){
+
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+function toggleMenu(){
+
+  document
+    .getElementById("nav")
+    .classList.toggle("open");
+
+}
+
+
+async function logout(){
+
+  try{
+
+    await fetch(
+      API + "/logout",
+      {
+        method:"POST",
+
+        headers:{
+          "Authorization":
+            "Bearer " + token
+        }
+      }
+    );
+
+  }catch(e){
+
+    console.error(e);
+
+  }
+
+
+  localStorage.removeItem(
+    "goh_token"
+  );
+
+  localStorage.removeItem(
+    "goh_student"
+  );
+
+
+  window.location.href =
+    "login.html";
+
+}
+
+
+loadProfile();
+
+</script>
+
+</body>
+</html>
