@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>GOH Auth API Test</h2>
+
+<button onclick="register()">Test Registration</button>
+
+<pre id="result"></pre>
+
+<script>
+async function register(){
+
+  const result = document.getElementById("result");
+
+  try{
+
+    const res = await fetch(
+      "https://goh-auth-api.createlk.workers.dev/register",
+      {
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          name:"Test Student",
+          email:"test@example.com",
+          password:"TestPassword123"
+        })
+      }
+    );
+
+    const data = await res.json();
+
+    result.textContent =
+      JSON.stringify(data,null,2);
+
+  }catch(error){
+
+    result.textContent =
+      "Error: "+error.message;
+
+  }
+}
+</script>
+
+</body>
+</html>
