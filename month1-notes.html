@@ -4,209 +4,91 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Month 01 Study Notes | GOH Bible Academy</title>
-<meta name="theme-color" content="#0b376d">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-
 :root{
---navy:#0b376d;
---blue:#155eef;
---purple:#6941c6;
---green:#079455;
---orange:#f79009;
---text:#172033;
---muted:#667085;
---bg:#f4f7fb;
---border:#e4e7ec
+--navy:#0b376d;--blue:#155eef;--text:#172033;
+--muted:#667085;--bg:#f4f7fb;--border:#e4e7ec
 }
-
 body{
 font-family:Arial,Helvetica,sans-serif;
-background:var(--bg);
-color:var(--text);
-min-height:100vh
+background:var(--bg);color:var(--text);min-height:100vh
 }
-
 header{
 background:linear-gradient(135deg,#0b376d,#155eef);
-color:#fff;
-padding:12px 16px;
-position:sticky;
-top:0;
-z-index:10
+color:#fff;padding:12px 15px
 }
-
 .header{
-max-width:900px;
-margin:auto;
-display:flex;
-align-items:center;
-gap:11px
+max-width:900px;margin:auto;display:flex;align-items:center;gap:11px
 }
-
 .logo{
-width:42px;
-height:42px;
-border-radius:10px;
-background:#fff;
-color:var(--navy);
-display:grid;
-place-items:center;
-font-weight:900
+width:42px;height:42px;border-radius:10px;background:#fff;
+color:var(--navy);display:grid;place-items:center;font-weight:900
 }
+.brand{font-size:16px;font-weight:800}
+.sub{font-size:9px;opacity:.8;margin-top:3px;letter-spacing:.5px}
 
-.brand{
-font-size:17px;
-font-weight:800
-}
-
-.sub{
-font-size:9px;
-opacity:.8;
-margin-top:3px;
-letter-spacing:.5px
-}
-
-main{
-max-width:900px;
-margin:auto;
-padding:20px 14px 40px
-}
+main{max-width:900px;margin:auto;padding:20px 13px 40px}
 
 .back{
-display:inline-block;
-color:var(--blue);
-font-size:13px;
-font-weight:800;
-text-decoration:none;
-margin-bottom:15px
+display:inline-block;color:var(--blue);font-weight:800;
+font-size:13px;text-decoration:none;margin-bottom:15px
 }
 
 .hero{
 background:linear-gradient(135deg,#155eef,#6941c6);
-color:#fff;
-border-radius:18px;
-padding:23px;
-margin-bottom:15px;
-box-shadow:0 10px 25px #155eef25
+color:#fff;border-radius:17px;padding:22px;margin-bottom:14px
 }
-
-.label{
-font-size:10px;
-font-weight:900;
-letter-spacing:1px;
-opacity:.8
-}
-
-.hero h1{
-font-size:26px;
-margin:7px 0
-}
-
-.hero p{
-font-size:13px;
-color:#e5edff
-}
+.label{font-size:10px;font-weight:800;letter-spacing:1px;opacity:.8}
+.hero h1{font-size:25px;margin:6px 0}
+.hero p{font-size:12px;color:#e5edff}
 
 .languages{
-display:flex;
-gap:7px;
-margin-bottom:14px
+display:flex;gap:7px;margin-bottom:14px
 }
-
 .lang{
-flex:1;
-padding:10px;
-border:1px solid var(--border);
-background:#fff;
-border-radius:9px;
-font-weight:800;
-cursor:pointer
+flex:1;border:1px solid var(--border);background:#fff;
+padding:10px;border-radius:8px;font-weight:800;
+cursor:pointer;color:var(--text)
 }
-
-.lang.active{
-background:var(--navy);
-color:#fff;
-border-color:var(--navy)
-}
+.lang.active{background:var(--navy);color:#fff}
 
 .notes{
-background:#fff;
-border:1px solid var(--border);
-border-radius:15px;
-padding:22px;
-box-shadow:0 4px 15px #00000008
+background:#fff;border:1px solid var(--border);
+border-radius:15px;padding:20px
 }
-
 .title{
-font-size:22px;
-font-weight:900;
-color:var(--navy);
+font-size:21px;font-weight:900;color:var(--navy);
 margin-bottom:14px
 }
-
 .content{
-font-size:14px;
-line-height:1.8;
-color:#344054;
+font-size:14px;line-height:1.75;color:#344054;
 white-space:pre-line
 }
-
-.loading{
-text-align:center;
-padding:30px;
-color:var(--muted)
-}
-
+.loading{text-align:center;color:var(--muted);padding:30px}
 .error{
-padding:18px;
-background:#fff1f2;
-border:1px solid #fecdd3;
-border-radius:12px;
-color:#be123c;
-line-height:1.6
-}
-
-.retry{
-margin-top:10px;
-padding:9px 14px;
-border:0;
-border-radius:8px;
-background:var(--blue);
-color:#fff;
-font-weight:800;
-cursor:pointer
+background:#fff1f2;color:#be123c;border:1px solid #fecdd3;
+padding:16px;border-radius:10px;font-size:13px;line-height:1.5
 }
 
 .navigation{
-display:flex;
-gap:10px;
-margin-top:16px
+display:flex;justify-content:space-between;gap:10px;margin-top:16px
 }
-
-.nav-btn{
-flex:1;
-text-align:center;
-padding:11px;
-border-radius:9px;
-background:var(--navy);
-color:#fff;
-text-decoration:none;
-font-size:12px;
-font-weight:800
+.btn{
+display:inline-flex;justify-content:center;align-items:center;
+padding:11px 16px;border-radius:8px;background:var(--navy);
+color:#fff;text-decoration:none;font-size:12px;font-weight:800
 }
+.btn.disabled{background:#eaecf0;color:#98a2b3}
 
 footer{
-text-align:center;
-padding:25px;
-font-size:11px;
-color:var(--muted)
+text-align:center;color:var(--muted);font-size:11px;padding:25px
 }
 
 @media(max-width:600px){
 main{padding:18px 12px 35px}
-.hero h1{font-size:23px}
+.hero h1{font-size:22px}
 .notes{padding:17px}
 .content{font-size:13px}
 }
@@ -217,78 +99,39 @@ main{padding:18px 12px 35px}
 
 <header>
 <div class="header">
-
 <div class="logo">GOH</div>
-
 <div>
 <div class="brand">GOH Bible Academy</div>
 <div class="sub">GATE OF HEAVEN MINISTRIES</div>
 </div>
-
 </div>
 </header>
 
 <main>
 
-<a class="back" href="course.html">
-← Course
-</a>
+<a class="back" href="course.html">← Course</a>
 
 <section class="hero">
-
-<div class="label">
-MONTH 01 • STUDY NOTES
-</div>
-
-<h1 id="heroTitle">
-New Life in Christ
-</h1>
-
-<p>
-Biblical study notes for your course.
-</p>
-
+<div class="label">MONTH 01 • STUDY NOTES</div>
+<h1 id="heroTitle">Study Notes</h1>
+<p>Biblical study notes for your course.</p>
 </section>
 
 <div class="languages">
-
-<button class="lang active"
-onclick="changeLanguage('en',this)">
-English
-</button>
-
-<button class="lang"
-onclick="changeLanguage('ta',this)">
-தமிழ்
-</button>
-
-<button class="lang"
-onclick="changeLanguage('si',this)">
-සිංහල
-</button>
-
+<button class="lang active" onclick="setLanguage('en',this)">English</button>
+<button class="lang" onclick="setLanguage('ta',this)">தமிழ்</button>
+<button class="lang" onclick="setLanguage('si',this)">සිංහල</button>
 </div>
 
-<section class="notes" id="notes">
-
-<div class="loading">
-Loading study notes...
+<section class="notes">
+<div id="notes">
+<div class="loading">Loading study notes...</div>
 </div>
-
 </section>
 
 <div class="navigation">
-
-<a class="nav-btn"
-href="course.html">
-← Course
-</a>
-
-<a class="nav-btn"
-href="month1-exam.html">
-MCQ Practice →
-</a>
-
+<a class="btn" href="course.html">← Course</a>
+<a class="btn" href="month1-exam.html">MCQ Practice →</a>
 </div>
 
 </main>
@@ -298,161 +141,120 @@ MCQ Practice →
 </footer>
 
 <script>
+const API="https://goh-bible-exam-api.createlk.workers.dev";
+const MONTH=1;
 
-const API=
-"https://goh-bible-exam-api.createlk.workers.dev";
-
-let note=null;
+let data=null;
 let language="en";
-
 
 async function loadNotes(){
 
 const box=document.getElementById("notes");
 
-box.innerHTML=
-'<div class="loading">Loading study notes...</div>';
+box.innerHTML='<div class="loading">Loading study notes...</div>';
 
 try{
 
-const response=
-await fetch(API+"/notes?month=1");
+const r=await fetch(API+"/notes?month=1");
 
-const data=
-await response.json();
+if(!r.ok)throw new Error("Notes API error: "+r.status);
 
-if(!response.ok||
-!data.success||
-!data.notes||
-!data.notes.length){
+const json=await r.json();
 
-throw new Error(
-data.error||"No study notes found."
-);
+console.log("Notes API:",json);
 
+if(json.notes && json.notes.length){
+data=json.notes[0];
+}
+else if(json.note){
+data=json.note;
+}
+else if(json.data && json.data.length){
+data=json.data[0];
+}
+else if(json.data){
+data=json.data;
+}
+else{
+throw new Error("Month 1 notes were not found.");
 }
 
-note=data.notes[0];
+render();
 
-showNotes();
+}catch(e){
 
-}catch(error){
-
-box.innerHTML=`
-
-<div class="error">
-
-<strong>
-Unable to load the lesson notes.
-</strong>
-
-<br><br>
-
-${escapeHtml(error.message)}
-
-<br>
-
-<button class="retry"
-onclick="loadNotes()">
-Try Again
-</button>
-
-</div>
-`;
+box.innerHTML=
+'<div class="error">'+
+'Unable to load Month 1 study notes.<br><br>'+
+escapeHtml(e.message)+
+'</div>';
 
 }
 
 }
 
+function render(){
 
-function showNotes(){
+if(!data)return;
 
-if(!note)return;
+let title=data.title||"New Life in Christ";
 
-let title=note.title||"New Life in Christ";
-let content=note.content||"";
-
+let content=data.content||"";
 
 if(language==="ta"){
-
-title=
-note.title_tamil||
-note.title||
-"New Life in Christ";
-
-content=
-note.content_tamil||
-note.content||
-"";
-
+title=data.title_tamil||data.title||"New Life in Christ";
+content=data.content_tamil||data.content||"";
 }
-
 
 if(language==="si"){
+title=data.title_sinhala||data.title||"New Life in Christ";
+content=data.content_sinhala||data.content||"";
+}
 
-title=
-note.title_sinhala||
-note.title||
-"New Life in Christ";
+document.getElementById("heroTitle").textContent=title;
 
-content=
-note.content_sinhala||
-note.content||
-"";
+document.getElementById("notes").innerHTML=
+'<div class="title">'+escapeHtml(title)+'</div>'+
+'<div class="content">'+format(content)+'</div>';
 
 }
 
-
-document.getElementById("heroTitle")
-.textContent=title;
-
-
-document.getElementById("notes").innerHTML=`
-
-<div class="title">
-${escapeHtml(title)}
-</div>
-
-<div class="content">
-${escapeHtml(content)}
-</div>
-
-`;
-
-}
-
-
-function changeLanguage(lang,button){
+function setLanguage(lang,button){
 
 language=lang;
 
-document
-.querySelectorAll(".lang")
-.forEach(x=>{
-x.classList.remove("active");
+document.querySelectorAll(".lang").forEach(b=>{
+b.classList.remove("active");
 });
 
 button.classList.add("active");
 
-showNotes();
+render();
 
 }
 
+function format(text){
+
+return escapeHtml(text)
+.replace(/\n/g,"<br>")
+.replace(
+/(John 3:16|Ephesians 2:8-9|2 Corinthians 5:17|Acts 3:19)/g,
+"<strong>$1</strong>"
+);
+
+}
 
 function escapeHtml(text){
 
-return String(text||"")
+return String(text)
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
 .replace(/"/g,"&quot;")
 .replace(/'/g,"&#039;");
-
 }
 
-
 loadNotes();
-
 </script>
 
 </body>
