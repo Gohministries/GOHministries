@@ -233,11 +233,6 @@ main{
   color:var(--primary2);
 }
 
-.status.complete{
-  background:var(--greenbg);
-  color:var(--green);
-}
-
 .status.locked{
   background:var(--orangebg);
   color:var(--orange);
@@ -292,6 +287,7 @@ footer{
     padding:8px;
     flex-direction:column;
     align-items:stretch;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
   }
 
   .nav.open{
@@ -423,14 +419,13 @@ footer{
   <button
     class="menu-btn"
     onclick="toggleMenu()"
-  >
+    aria-label="Open navigation">
     ☰
   </button>
 
   <button
     class="logout desktop-logout"
-    onclick="logout()"
-  >
+    onclick="logout()">
     Logout
   </button>
 
@@ -443,9 +438,7 @@ footer{
 
 <div class="page-title">
 
-  <h1>
-    My Course
-  </h1>
+  <h1>My Course</h1>
 
   <p>
     12-month Christian Discipleship & Ministry Preparation Program
@@ -480,10 +473,12 @@ footer{
     </div>
 
     <div class="progress">
+
       <div
         class="progress-fill"
-        style="width:0%"
-      ></div>
+        style="width:0%">
+      </div>
+
     </div>
 
   </div>
@@ -532,15 +527,13 @@ footer{
 
     <a
       class="btn"
-      href="progress.html"
-    >
+      href="progress.html">
       View Progress
     </a>
 
     <a
       class="btn secondary"
-      href="certificate.html"
-    >
+      href="certificate.html">
       Certificate
     </a>
 
@@ -569,70 +562,110 @@ if(!token){
 }
 
 
+/* COURSE DATA */
+
 const months = [
 
   {
     title:"New Life in Christ",
-    description:"Understanding salvation, repentance, faith and your new identity in Christ."
+    description:
+      "Understanding salvation, repentance, faith and your new identity in Christ.",
+    notes:"month1-notes.html",
+    exam:"month1-exam.html"
   },
 
   {
     title:"The Word of God",
-    description:"Learning the importance of Scripture, Bible study and applying God's Word."
+    description:
+      "Learning the importance of Scripture, Bible study and applying God's Word.",
+    notes:"month2-notes.html",
+    exam:"month2-exam.html"
   },
 
   {
     title:"Prayer & Worship",
-    description:"Developing a consistent prayer life and understanding biblical worship."
+    description:
+      "Developing a consistent prayer life and understanding biblical worship.",
+    notes:"month3-notes.html",
+    exam:"month3-exam.html"
   },
 
   {
     title:"Life & Teachings of Jesus",
-    description:"Studying the life, ministry, teachings, death and resurrection of Jesus Christ."
+    description:
+      "Studying the life, ministry, teachings, death and resurrection of Jesus Christ.",
+    notes:"month4-notes.html",
+    exam:"month4-exam.html"
   },
 
   {
     title:"Christian Character",
-    description:"Growing in holiness, love, obedience, humility and spiritual maturity."
+    description:
+      "Growing in holiness, love, obedience, humility and spiritual maturity.",
+    notes:"month5-notes.html",
+    exam:"month5-exam.html"
   },
 
   {
     title:"The Holy Spirit",
-    description:"Understanding the person and work of the Holy Spirit in the believer's life."
+    description:
+      "Understanding the person and work of the Holy Spirit in the believer's life.",
+    notes:"month6-notes.html",
+    exam:"month6-exam.html"
   },
 
   {
     title:"Bible Foundations",
-    description:"Exploring major biblical themes, books, covenants and foundations of faith."
+    description:
+      "Exploring major biblical themes, books, covenants and foundations of faith.",
+    notes:"month7-notes.html",
+    exam:"month7-exam.html"
   },
 
   {
     title:"Christian Doctrine",
-    description:"Building a strong foundation in essential Christian doctrines and beliefs."
+    description:
+      "Building a strong foundation in essential Christian doctrines and beliefs.",
+    notes:"month8-notes.html",
+    exam:"month8-exam.html"
   },
 
   {
     title:"Discipleship",
-    description:"Learning how to follow Christ faithfully and help others become disciples."
+    description:
+      "Learning how to follow Christ faithfully and help others become disciples.",
+    notes:"month9-notes.html",
+    exam:"month9-exam.html"
   },
 
   {
     title:"Evangelism & Missions",
-    description:"Preparing to share the Gospel and participate in Christian mission."
+    description:
+      "Preparing to share the Gospel and participate in Christian mission.",
+    notes:"month10-notes.html",
+    exam:"month10-exam.html"
   },
 
   {
     title:"Ministry & Leadership",
-    description:"Developing biblical leadership, service, responsibility and ministry skills."
+    description:
+      "Developing biblical leadership, service, responsibility and ministry skills.",
+    notes:"month11-notes.html",
+    exam:"month11-exam.html"
   },
 
   {
     title:"Ministry Preparation",
-    description:"Bringing together biblical knowledge, discipleship and practical ministry preparation."
+    description:
+      "Bringing together biblical knowledge, discipleship and practical ministry preparation.",
+    notes:"month12-notes.html",
+    exam:"month12-exam.html"
   }
 
 ];
 
+
+/* RENDER MONTHS */
 
 function renderMonths(){
 
@@ -661,25 +694,53 @@ function renderMonths(){
             ${month.description}
           </p>
 
-          <span class="status ${active ? "active" : "locked"}">
+          <span class="status ${
+            active ? "active" : "locked"
+          }">
+
             ${active ? "Available" : "Locked"}
+
           </span>
+
 
           <div class="actions">
 
-            <a
-              class="btn ${active ? "" : "disabled"}"
-              href="${active ? "lesson.html?month="+(index+1) : "#"}"
-            >
-              ${active ? "Start Lessons" : "Locked"}
-            </a>
+            ${
+              active
 
-            <a
-              class="btn secondary ${active ? "" : "disabled"}"
-              href="${active ? "mcq.html?month="+(index+1) : "#"}"
-            >
-              MCQ Practice
-            </a>
+              ?
+
+              `
+              <a
+                class="btn"
+                href="${month.notes}">
+                Start Lessons
+              </a>
+
+              <a
+                class="btn secondary"
+                href="${month.exam}">
+                MCQ Practice
+              </a>
+              `
+
+              :
+
+              `
+              <a
+                class="btn disabled"
+                href="#">
+                Locked
+              </a>
+
+              <a
+                class="btn secondary disabled"
+                href="#">
+                MCQ Practice
+              </a>
+              `
+
+            }
 
           </div>
 
@@ -692,6 +753,8 @@ function renderMonths(){
 }
 
 
+/* MOBILE MENU */
+
 function toggleMenu(){
 
   document
@@ -701,18 +764,39 @@ function toggleMenu(){
 }
 
 
-function logout(){
+/* CLOSE MOBILE MENU */
 
-  fetch(
-    API + "/logout",
-    {
-      method:"POST",
-      headers:{
-        "Authorization":
-          "Bearer " + token
+document.addEventListener("click",function(e){
+
+  if(e.target.matches(".nav a")){
+
+    document
+      .getElementById("nav")
+      .classList.remove("open");
+
+  }
+
+});
+
+
+/* LOGOUT */
+
+async function logout(){
+
+  try{
+
+    await fetch(
+      API + "/logout",
+      {
+        method:"POST",
+        headers:{
+          "Authorization":
+            "Bearer " + token
+        }
       }
-    }
-  ).catch(()=>{});
+    );
+
+  }catch(e){}
 
   localStorage.removeItem("goh_token");
   localStorage.removeItem("goh_student");
@@ -721,6 +805,8 @@ function logout(){
 
 }
 
+
+/* START */
 
 renderMonths();
 
