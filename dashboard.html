@@ -3,243 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Study Notes | GOH Bible Academy</title>
+<title>Student Dashboard | GOH Bible Academy</title>
+<meta name="theme-color" content="#0b376d">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-
 :root{
-  --primary:#0b376d;
-  --blue:#155eef;
-  --purple:#6941c6;
-  --green:#079455;
-  --bg:#f4f7fb;
-  --text:#172033;
-  --muted:#667085;
-  --border:#e4e7ec;
+--p:#0b376d;--b:#155eef;--g:#079455;--v:#6941c6;
+--o:#f79009;--r:#e04f5f;--bg:#f4f7fb;--text:#172033;--muted:#667085
 }
+body{font-family:Arial,sans-serif;background:var(--bg);color:var(--text)}
+a{text-decoration:none}
+header{background:var(--p);color:#fff;padding:11px 15px;position:sticky;top:0;z-index:10}
+.head{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;gap:10px;align-items:center}
+.logo{width:40px;height:40px;background:#fff;color:var(--p);border-radius:9px;display:grid;place-items:center;font-weight:900}
+.brand b{display:block;font-size:16px}.brand small{font-size:9px;opacity:.75}
+.nav{display:flex;gap:3px;align-items:center}
+.nav a,.logout{color:#fff;padding:8px 9px;border-radius:7px;font-size:12px;font-weight:700}
+.nav a:hover,.nav a.active{background:#ffffff25}
+.logout{background:transparent;border:1px solid #ffffff55;cursor:pointer}
+.menu{display:none;background:none;border:1px solid #ffffff55;color:#fff;padding:7px 10px;border-radius:7px;font-size:18px}
 
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  min-height:100vh;
+main{max-width:1100px;margin:auto;padding:20px 14px 40px}
+.welcome{background:linear-gradient(135deg,#0b376d,#155eef);color:#fff;border-radius:16px;padding:22px;margin-bottom:15px}
+.welcome small{font-size:10px;font-weight:bold;letter-spacing:1px}
+.welcome h1{font-size:25px;margin:5px 0}.welcome p{font-size:12px;opacity:.85}
+
+.profile{background:#fff;border:1px solid #e4e7ec;border-radius:14px;padding:16px;margin-bottom:15px;display:flex;align-items:center;gap:12px}
+.avatar{width:48px;height:48px;border-radius:50%;background:#eef4ff;color:var(--b);display:grid;place-items:center;font-weight:900;font-size:20px}
+.profile b{font-size:16px}.profile small{display:block;color:var(--muted);margin-top:3px}
+
+.boxes{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.box{color:#fff;border-radius:13px;padding:15px 10px;min-height:105px}
+.box:nth-child(1){background:linear-gradient(135deg,#155eef,#004eeb)}
+.box:nth-child(2){background:linear-gradient(135deg,#079455,#027a48)}
+.box:nth-child(3){background:linear-gradient(135deg,#6941c6,#53389e)}
+.box:nth-child(4){background:linear-gradient(135deg,#f79009,#dc6803)}
+.box:nth-child(5){background:linear-gradient(135deg,#e04f5f,#c43245)}
+.box:nth-child(6){background:linear-gradient(135deg,#0086c9,#026aa2)}
+.box .icon{font-size:20px}.box small{display:block;font-size:9px;margin-top:9px;opacity:.85}
+.box strong{display:block;font-size:19px;margin-top:3px}
+
+.section{margin-top:20px}
+.title{font-size:19px;margin-bottom:10px}
+.card{background:#fff;border:1px solid #e4e7ec;border-radius:14px;padding:17px}
+.row{display:flex;justify-content:space-between;gap:10px;margin-bottom:8px;font-size:13px;font-weight:bold}
+.bar{height:9px;background:#eaecf0;border-radius:20px;overflow:hidden}
+.fill{height:100%;background:var(--b);border-radius:20px}
+.info{font-size:11px;color:var(--muted);margin-top:7px}
+
+.course{display:flex;align-items:center;justify-content:space-between;gap:15px}
+.course h2{font-size:18px;margin-bottom:5px}.course p{font-size:12px;color:var(--muted)}
+.pills{display:flex;gap:5px;margin-top:10px;flex-wrap:wrap}
+.pill{background:#eef4ff;color:var(--p);padding:5px 8px;border-radius:20px;font-size:9px;font-weight:bold}
+.btn{display:inline-block;background:var(--p);color:#fff;padding:10px 15px;border-radius:8px;font-size:12px;font-weight:bold;white-space:nowrap}
+
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.quick a{background:#fff;border:1px solid #e4e7ec;border-radius:11px;padding:14px;color:var(--text)}
+.quick b{display:block;font-size:13px;margin-top:5px}.quick small{color:var(--muted);font-size:10px}
+
+footer{text-align:center;color:var(--muted);font-size:10px;padding:25px}
+
+@media(max-width:900px){
+.nav{display:none;position:absolute;top:63px;left:10px;right:10px;background:var(--p);padding:8px;border-radius:10px;flex-direction:column}
+.nav.open{display:flex}.nav a,.nav .logout{width:100%;text-align:left;padding:11px}
+.menu{display:block}.desktop{display:none}
+.boxes{grid-template-columns:repeat(3,1fr)}
 }
-
-header{
-  background:var(--primary);
-  color:#fff;
-  padding:12px 18px;
-}
-
-.header{
-  max-width:1100px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.logo{
-  width:42px;
-  height:42px;
-  border-radius:10px;
-  background:#fff;
-  color:var(--primary);
-  display:grid;
-  place-items:center;
-  font-weight:900;
-}
-
-.brand-title{
-  font-size:17px;
-  font-weight:800;
-}
-
-.brand-sub{
-  font-size:9px;
-  opacity:.75;
-  margin-top:3px;
-}
-
-main{
-  max-width:900px;
-  margin:auto;
-  padding:22px 15px 45px;
-}
-
-.back{
-  display:inline-block;
-  color:var(--primary);
-  font-size:13px;
-  font-weight:800;
-  text-decoration:none;
-  margin-bottom:18px;
-}
-
-.hero{
-  background:linear-gradient(135deg,#0b376d,#155eef);
-  color:#fff;
-  border-radius:18px;
-  padding:24px;
-  margin-bottom:15px;
-}
-
-.month{
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:.8px;
-  opacity:.8;
-}
-
-h1{
-  font-size:27px;
-  margin:7px 0;
-}
-
-.subtitle{
-  color:#dce7f3;
-  font-size:13px;
-  line-height:1.5;
-}
-
-.languages{
-  display:flex;
-  gap:7px;
-  margin-top:18px;
-}
-
-.lang{
-  border:0;
-  background:#fff;
-  color:var(--primary);
-  padding:9px 14px;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:800;
-  cursor:pointer;
-}
-
-.lang.active{
-  background:#dbeafe;
-  color:#155eef;
-}
-
-.notes{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:24px;
-  line-height:1.75;
-  font-size:14px;
-  white-space:pre-wrap;
-  min-height:250px;
-}
-
-.notes-title{
-  font-size:22px;
-  font-weight:800;
-  margin-bottom:15px;
-  color:var(--primary);
-}
-
-.loading{
-  text-align:center;
-  color:var(--muted);
-  padding:35px 10px;
-}
-
-.error{
-  text-align:center;
-  background:#fff;
-  border:1px solid #fecdca;
-  color:#b42318;
-  border-radius:14px;
-  padding:22px;
-  line-height:1.6;
-}
-
-.retry{
-  margin-top:12px;
-  border:0;
-  background:var(--primary);
-  color:#fff;
-  padding:10px 16px;
-  border-radius:8px;
-  font-weight:800;
-  cursor:pointer;
-}
-
-.navigation{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  margin-top:18px;
-}
-
-.nav-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-width:120px;
-  padding:11px 16px;
-  border-radius:9px;
-  background:var(--primary);
-  color:#fff;
-  text-decoration:none;
-  font-size:13px;
-  font-weight:800;
-}
-
-.nav-btn.disabled{
-  background:#eaecf0;
-  color:#98a2b3;
-  pointer-events:none;
-}
-
-footer{
-  text-align:center;
-  color:var(--muted);
-  font-size:11px;
-  padding:25px 15px;
-}
-
-@media(max-width:600px){
-
-  main{
-    padding:18px 12px 35px;
-  }
-
-  .hero{
-    padding:20px;
-  }
-
-  h1{
-    font-size:23px;
-  }
-
-  .languages{
-    width:100%;
-  }
-
-  .lang{
-    flex:1;
-    padding:9px 5px;
-  }
-
-  .notes{
-    padding:18px;
-    font-size:13px;
-  }
-
-  .navigation{
-    gap:8px;
-  }
-
-  .nav-btn{
-    flex:1;
-    min-width:0;
-  }
+@media(max-width:550px){
+.brand b{font-size:14px}.brand small{font-size:8px}
+.welcome h1{font-size:22px}
+.boxes{grid-template-columns:repeat(2,1fr)}
+.course{flex-direction:column;align-items:stretch}
+.btn{text-align:center}
+.quick{grid-template-columns:repeat(2,1fr)}
 }
 </style>
 </head>
@@ -247,334 +85,224 @@ footer{
 <body>
 
 <header>
-  <div class="header">
+<div class="head">
 
-    <div class="logo">GOH</div>
+<div class="brand">
+<div class="logo">GOH</div>
+<div>
+<b>GOH Bible Academy</b>
+<small>GATE OF HEAVEN MINISTRIES</small>
+</div>
+</div>
 
-    <div>
-      <div class="brand-title">GOH Bible Academy</div>
-      <div class="brand-sub">GATE OF HEAVEN MINISTRIES</div>
-    </div>
+<nav class="nav" id="nav">
+<a class="active" href="dashboard.html">Dashboard</a>
+<a href="course.html">My Course</a>
+<a href="exams.html">Exams</a>
+<a href="progress.html">Progress</a>
+<a href="certificate.html">Certificate</a>
+<a href="profile.html">Profile & Settings</a>
+<a href="support.html">Support</a>
+<button class="logout" onclick="logout()">Logout</button>
+</nav>
 
-  </div>
+<div>
+<button class="menu" onclick="toggleMenu()">☰</button>
+<button class="logout desktop" onclick="logout()">Logout</button>
+</div>
+
+</div>
 </header>
 
 <main>
 
-<a class="back" href="course.html">
-  ← Course
-</a>
+<section class="welcome">
+<small>STUDENT DASHBOARD</small>
+<h1>Welcome, <span id="name">Student</span> 👋</h1>
+<p>Grow in God's Word and prepare for faithful Christian service.</p>
+</section>
 
-<section class="hero">
+<section class="profile">
+<div class="avatar" id="avatar">S</div>
+<div>
+<b id="fullName">Student</b>
+<small id="email">Student account</small>
+</div>
+</section>
 
-  <div class="month" id="monthLabel">
-    MONTH 01 • STUDY NOTES
-  </div>
+<section class="boxes">
 
-  <h1 id="pageTitle">
-    Study Notes
-  </h1>
+<div class="box">
+<div class="icon">📚</div>
+<small>PROGRAM</small>
+<strong>12 Months</strong>
+</div>
 
-  <div class="subtitle">
-    Biblical study notes for your course.
-  </div>
+<div class="box">
+<div class="icon">📖</div>
+<small>SUBJECTS</small>
+<strong>12</strong>
+</div>
 
-  <div class="languages">
+<div class="box">
+<div class="icon">📝</div>
+<small>EXAMS</small>
+<strong id="examCount">0 / 12</strong>
+</div>
 
-    <button class="lang active" onclick="changeLanguage('en')">
-      English
-    </button>
+<div class="box">
+<div class="icon">✓</div>
+<small>MCQs</small>
+<strong id="mcqCount">0 / 600</strong>
+</div>
 
-    <button class="lang" onclick="changeLanguage('ta')">
-      தமிழ்
-    </button>
+<div class="box">
+<div class="icon">📊</div>
+<small>PROGRESS</small>
+<strong id="progress">0%</strong>
+</div>
 
-    <button class="lang" onclick="changeLanguage('si')">
-      සිංහල
-    </button>
-
-  </div>
+<div class="box">
+<div class="icon">🎓</div>
+<small>CERTIFICATE</small>
+<strong id="certificate">Pending</strong>
+</div>
 
 </section>
 
-<section id="content">
+<section class="section">
+<h2 class="title">My Progress</h2>
+<div class="card">
 
-  <div class="loading">
-    Loading lesson notes...
-  </div>
+<div class="row">
+<span>Course Completion</span>
+<span id="progressText">0%</span>
+</div>
 
-</section>
+<div class="bar">
+<div class="fill" id="progressBar" style="width:0%"></div>
+</div>
 
-<div class="navigation">
-
-  <a id="previous" class="nav-btn" href="#">
-    ← Previous
-  </a>
-
-  <a id="next" class="nav-btn" href="#">
-    Next →
-  </a>
+<div class="info">Complete all 12 months and examinations.</div>
 
 </div>
+</section>
+
+<section class="section">
+<div class="card course">
+
+<div>
+<h2>Christian Discipleship & Ministry Preparation</h2>
+<p>Study 12 subjects, complete 600 MCQs and 12 examinations.</p>
+
+<div class="pills">
+<span class="pill">12 Months</span>
+<span class="pill">12 Subjects</span>
+<span class="pill">12 Exams</span>
+<span class="pill">600 MCQs</span>
+</div>
+</div>
+
+<a class="btn" href="course.html">View Course →</a>
+
+</div>
+</section>
+
+<section class="section">
+<h2 class="title">Quick Access</h2>
+
+<div class="quick">
+
+<a href="course.html">
+<span>📚</span><b>My Course</b>
+<small>Study lessons</small>
+</a>
+
+<a href="exams.html">
+<span>📝</span><b>Exams</b>
+<small>Take examinations</small>
+</a>
+
+<a href="progress.html">
+<span>📊</span><b>Progress</b>
+<small>View progress</small>
+</a>
+
+<a href="certificate.html">
+<span>🎓</span><b>Certificate</b>
+<small>Certificate status</small>
+</a>
+
+<a href="profile.html">
+<span>👤</span><b>Profile & Settings</b>
+<small>Account settings</small>
+</a>
+
+<a href="ai-bible-teacher.html">
+<span>✨</span><b>AI Bible Teacher</b>
+<small>Ask Bible questions</small>
+</a>
+
+</div>
+</section>
 
 </main>
 
-<footer>
-© 2026 GOH Bible Academy. All rights reserved.
-</footer>
+<footer>© 2026 GOH Bible Academy. All rights reserved.</footer>
 
 <script>
+const API="https://goh-auth-api.createlk.workers.dev";
+const token=localStorage.getItem("goh_token");
 
-const API =
-"https://goh-bible-exam-api.createlk.workers.dev";
+if(!token)location.href="login.html";
 
-const params =
-new URLSearchParams(window.location.search);
-
-let month =
-Number(params.get("month") || 1);
-
-if(month < 1) month = 1;
-if(month > 12) month = 12;
-
-let currentLanguage = "en";
-
-let noteData = null;
-
-
-/* LOAD NOTES */
-
-async function loadNotes(){
-
-  const content =
-    document.getElementById("content");
-
-  content.innerHTML = `
-    <div class="loading">
-      Loading lesson notes...
-    </div>
-  `;
-
-  try{
-
-    const response =
-      await fetch(
-        API + "/notes?month=" + month
-      );
-
-    const data =
-      await response.json();
-
-    if(!response.ok || !data.success){
-      throw new Error(
-        data.error || "Unable to load notes"
-      );
-    }
-
-    if(!data.notes || !data.notes.length){
-      throw new Error(
-        "No notes found for this month."
-      );
-    }
-
-    noteData = data.notes[0];
-
-    renderNotes();
-
-    updateNavigation();
-
-  }catch(error){
-
-    console.error(error);
-
-    content.innerHTML = `
-      <div class="error">
-
-        <strong>
-          Unable to load the lesson notes.
-        </strong>
-
-        <div style="margin-top:6px">
-          ${escapeHtml(error.message)}
-        </div>
-
-        <button
-          class="retry"
-          onclick="loadNotes()">
-          Try Again
-        </button>
-
-      </div>
-    `;
-
-  }
-
+function toggleMenu(){
+document.getElementById("nav").classList.toggle("open");
 }
 
-
-/* DISPLAY NOTES */
-
-function renderNotes(){
-
-  if(!noteData) return;
-
-  let title =
-    noteData.title || "Study Notes";
-
-  let text = "";
-
-  if(currentLanguage === "ta"){
-
-    text =
-      noteData.content_tamil ||
-      noteData.content ||
-      "தமிழ் குறிப்புகள் கிடைக்கவில்லை.";
-
-  }else if(currentLanguage === "si"){
-
-    text =
-      noteData.content_sinhala ||
-      noteData.content ||
-      "සිංහල සටහන් ලබාගත නොහැක.";
-
-  }else{
-
-    text =
-      noteData.content ||
-      "Lesson notes are not available.";
-
-  }
-
-  document.getElementById("pageTitle")
-    .textContent = title;
-
-  document.getElementById("content").innerHTML = `
-
-    <article class="notes">
-
-      <div class="notes-title">
-        ${escapeHtml(title)}
-      </div>
-
-      <div>
-        ${formatText(text)}
-      </div>
-
-    </article>
-
-  `;
-
+function logout(){
+localStorage.removeItem("goh_token");
+localStorage.removeItem("goh_student");
+location.href="login.html";
 }
 
+function loadProgress(){
+const correct=Number(localStorage.getItem("goh_correct_answers"))||0;
+const exams=Number(localStorage.getItem("goh_exams_completed"))||0;
+const course=Number(localStorage.getItem("goh_course_progress"))||0;
 
-/* LANGUAGE */
+document.getElementById("mcqCount").textContent=correct+" / 600";
+document.getElementById("examCount").textContent=exams+" / 12";
+document.getElementById("progress").textContent=course+"%";
+document.getElementById("progressText").textContent=course+"%";
+document.getElementById("progressBar").style.width=Math.min(course,100)+"%";
 
-function changeLanguage(language){
-
-  currentLanguage = language;
-
-  document.querySelectorAll(".lang")
-    .forEach(button=>{
-      button.classList.remove("active");
-    });
-
-  if(language === "en")
-    document.querySelectorAll(".lang")[0]
-      .classList.add("active");
-
-  if(language === "ta")
-    document.querySelectorAll(".lang")[1]
-      .classList.add("active");
-
-  if(language === "si")
-    document.querySelectorAll(".lang")[2]
-      .classList.add("active");
-
-  renderNotes();
+if(correct>=450)
+document.getElementById("certificate").textContent="Unlocked";
 }
 
+async function loadStudent(){
+try{
+const r=await fetch(API+"/me",{headers:{Authorization:"Bearer "+token}});
+if(!r.ok)return;
 
-/* PREVIOUS / NEXT */
+const d=await r.json(),s=d.student;
+if(!s)return;
 
-function updateNavigation(){
+const first=s.first_name||s.name||"Student";
+const full=s.first_name&&s.last_name
+?s.first_name+" "+s.last_name
+:(s.name||first);
 
-  const previous =
-    document.getElementById("previous");
-
-  const next =
-    document.getElementById("next");
-
-  document.getElementById("monthLabel")
-    .textContent =
-    "MONTH " +
-    String(month).padStart(2,"0") +
-    " • STUDY NOTES";
-
-
-  if(month <= 1){
-
-    previous.classList.add("disabled");
-    previous.removeAttribute("href");
-
-  }else{
-
-    previous.classList.remove("disabled");
-
-    previous.href =
-      "month" +
-      (month - 1) +
-      "-notes.html";
-
-  }
-
-
-  if(month >= 12){
-
-    next.classList.add("disabled");
-    next.removeAttribute("href");
-
-  }else{
-
-    next.classList.remove("disabled");
-
-    next.href =
-      "month" +
-      (month + 1) +
-      "-notes.html";
-
-  }
-
+document.getElementById("name").textContent=first;
+document.getElementById("fullName").textContent=full;
+document.getElementById("email").textContent=s.email||s.phone||"Student account";
+document.getElementById("avatar").textContent=first[0].toUpperCase();
+}catch(e){}
 }
 
-
-/* FORMAT TEXT */
-
-function formatText(text){
-
-  return escapeHtml(text)
-    .replace(/\n\n/g,"</p><p>")
-    .replace(/\n/g,"<br>");
-}
-
-
-/* SECURITY */
-
-function escapeHtml(value){
-
-  return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-
-/* START */
-
-loadNotes();
-
+loadStudent();
+loadProgress();
 </script>
 
 </body>
