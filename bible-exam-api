@@ -1,0 +1,189 @@
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+    // CORS
+    if (request.method === "OPTIONS") {
+      return new Response(null, {
+        headers: corsHeaders()
+      });
+    }
+
+    try {
+      // --------------------------------------------------
+      // HOME
+      // --------------------------------------------------
+      if (url.pathname === "/") {
+        return json({
+          success: true,
+          service: "GOH Bible Academy Exam API",
+          status: "online",
+          endpoints: [
+            "/exam?month=1",
+            "/lessons?month=1",
+            "/notes?month=1"
+          ]
+        });
+      }
+
+      // --------------------------------------------------
+      // EXAM
+      // GET /exam?month=1
+      // --------------------------------------------------
+      if (url.pathname === "/exam") {
+        const month = Number(url.searchParams.get("month") || 1);
+
+        if (!Number.isInteger(month) || month < 1 || month > 12) {
+          return json({
+            success: false,
+            error: "Invalid month"
+          }, 400);
+        }
+
+        const result = await env.DB.prepare(`
+          SELECT
+            question_no,
+            lesson,
+            question_en,
+            question_tamil,
+            question_sinhala,
+
+            option_a_en,
+            option_b_en,
+            option_c_en,
+            option_d_en,
+
+            option_a_tamil,
+            option_b_tamil,
+            option_c_tamil,
+            option_d_tamil,
+
+            option_a_sinhala,
+            option_b_sinhala,
+            option_c_sinhala,
+            option_d_sinhala
+
+          FROM mcq_questions
+          WHERE month = ?
+          ORDER BY question_no ASC
+          LIMIT 50
+        `).bind(month).all();
+
+        return json({
+          success: true,
+          month,
+          total: result.results.length,
+          questions: result.results
+        });
+      }
+
+      // --------------------------------------------------
+      // LESSONS
+      // GET /lessons?month=1
+      // --------------------------------------------------
+      if (url.pathname === "/lessons") {
+        const month = Number(url.searchParams.get("month") || 1);
+
+        const result = await env.DB.prepare(`
+          SELECT
+            id,
+            month,
+            lesson,
+            title_en
+          FROM bible_lessons
+          WHERE month = ?
+          ORDER BY lesson ASC
+        `).bind(month).all();
+
+        return json({
+          success: true,
+          month,
+          total: result.results.length,
+          lessons: result.results
+        });
+      }
+
+      // --------------------------------------------------
+      // NOTES
+      // GET /notes?month=1
+      //
+      // This reads all columns from bible_notes.
+      // --------------------------------------------------
+      if (url.pathname === "/notes") {
+        const month = Number(url.searchParams.get("month") || 1);
+        const lesson = url.searchParams.get("lesson");
+
+        let result;
+
+        if (lesson) {
+          result = await env.DB.prepare(`
+            SELECT *
+            FROM bible_notes
+            WHERE month = ?
+              AND lesson = ?
+            ORDER BY lesson ASC
+          `).bind(month, Number(lesson)).all();
+        } else {
+          result = await env.DB.prepare(`
+            SELECT *
+            FROM bible_notes
+            WHERE month = ?
+            ORDER BY lesson ASC
+          `).bind(month).all();
+        }
+
+        return json({
+          success: true,
+          month,
+          total: result.results.length,
+          notes: result.results
+        });
+      }
+
+      // --------------------------------------------------
+      // 404
+      // --------------------------------------------------
+      return json({
+        success: false,
+        error: "Endpoint not found"
+      }, 404);
+
+    } catch (error) {
+      return json({
+        success: false,
+        error: error.message
+      }, 500);
+    }
+  }
+};
+
+
+// --------------------------------------------------
+// JSON RESPONSE
+// --------------------------------------------------
+
+function json(data, status = 200) {
+  return new Response(
+    JSON.stringify(data),
+    {
+      status,
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+        ...corsHeaders()
+      }
+    }
+  );
+}
+
+
+// --------------------------------------------------
+// CORS
+// --------------------------------------------------
+
+function corsHeaders() {
+  return {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type,Authorization"
+  };
+}
