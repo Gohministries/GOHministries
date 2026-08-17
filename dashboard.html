@@ -10,7 +10,6 @@
 content="GOH Bible Academy student dashboard for Christian discipleship and ministry preparation.">
 
 <style>
-
 *{
   box-sizing:border-box;
   margin:0;
@@ -23,7 +22,7 @@ content="GOH Bible Academy student dashboard for Christian discipleship and mini
   --text:#172033;
   --muted:#667085;
   --bg:#f4f7fb;
-  --card:#ffffff;
+  --card:#fff;
   --border:#e4e7ec;
   --green:#027a48;
   --greenbg:#ecfdf3;
@@ -38,13 +37,15 @@ body{
   min-height:100vh;
 }
 
-
 /* HEADER */
 
 header{
   background:var(--primary);
   color:#fff;
-  padding:16px 20px;
+  padding:13px 20px;
+  position:sticky;
+  top:0;
+  z-index:100;
 }
 
 .header-inner{
@@ -53,13 +54,14 @@ header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:15px;
+  gap:20px;
 }
 
 .brand{
   display:flex;
   align-items:center;
   gap:12px;
+  flex-shrink:0;
 }
 
 .logo{
@@ -81,21 +83,56 @@ header{
 }
 
 .brand-sub{
-  font-size:12px;
+  font-size:11px;
   opacity:.8;
   margin-top:3px;
+}
+
+/* NAVIGATION */
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+.nav a{
+  color:#fff;
+  text-decoration:none;
+  padding:9px 10px;
+  border-radius:8px;
+  font-size:13px;
+  font-weight:600;
+  opacity:.9;
+}
+
+.nav a:hover,
+.nav a.active{
+  background:rgba(255,255,255,.15);
+  opacity:1;
 }
 
 .logout{
   border:1px solid rgba(255,255,255,.35);
   background:transparent;
   color:#fff;
-  padding:9px 14px;
+  padding:9px 13px;
   border-radius:8px;
   cursor:pointer;
   font-weight:600;
+  font-size:13px;
 }
 
+.menu-btn{
+  display:none;
+  border:1px solid rgba(255,255,255,.35);
+  background:transparent;
+  color:#fff;
+  padding:8px 11px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:18px;
+}
 
 /* MAIN */
 
@@ -118,13 +155,11 @@ main{
   color:var(--muted);
 }
 
-
 /* CARDS */
 
 .grid{
   display:grid;
-  grid-template-columns:
-    repeat(4,minmax(0,1fr));
+  grid-template-columns:repeat(4,minmax(0,1fr));
   gap:15px;
   margin-bottom:20px;
 }
@@ -153,7 +188,6 @@ main{
   margin-top:5px;
 }
 
-
 /* SECTION */
 
 .section{
@@ -164,7 +198,6 @@ main{
   font-size:21px;
   margin-bottom:14px;
 }
-
 
 /* PROGRESS */
 
@@ -197,7 +230,6 @@ main{
   border-radius:20px;
   transition:width .5s ease;
 }
-
 
 /* CERTIFICATE */
 
@@ -232,8 +264,7 @@ main{
 
 .requirements{
   display:grid;
-  grid-template-columns:
-    repeat(4,minmax(0,1fr));
+  grid-template-columns:repeat(4,minmax(0,1fr));
   gap:12px;
 }
 
@@ -272,7 +303,6 @@ main{
   color:var(--green);
 }
 
-
 /* BUTTONS */
 
 .actions{
@@ -296,13 +326,11 @@ main{
   color:var(--primary);
 }
 
-
 /* MONTHS */
 
 .months{
   display:grid;
-  grid-template-columns:
-    repeat(3,minmax(0,1fr));
+  grid-template-columns:repeat(3,minmax(0,1fr));
   gap:13px;
 }
 
@@ -345,7 +373,6 @@ main{
   color:var(--primary2);
 }
 
-
 /* FOOTER */
 
 footer{
@@ -355,7 +382,6 @@ footer{
   padding:25px 15px;
 }
 
-
 /* LOADING */
 
 .loading{
@@ -364,32 +390,73 @@ footer{
   color:var(--muted);
 }
 
-
 /* MOBILE */
 
-@media(max-width:850px){
+@media(max-width:1000px){
+
+  .nav{
+    display:none;
+    position:absolute;
+    top:70px;
+    left:14px;
+    right:14px;
+    background:var(--primary);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:12px;
+    padding:8px;
+    flex-direction:column;
+    align-items:stretch;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+  }
+
+  .nav.open{
+    display:flex;
+  }
+
+  .nav a,
+  .nav .logout{
+    width:100%;
+    text-align:left;
+    padding:12px;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .header-actions{
+    display:flex;
+    align-items:center;
+    gap:7px;
+  }
+
+  .desktop-logout{
+    display:none;
+  }
 
   .grid{
-    grid-template-columns:
-      repeat(2,minmax(0,1fr));
+    grid-template-columns:repeat(2,minmax(0,1fr));
   }
 
   .requirements{
-    grid-template-columns:
-      repeat(2,minmax(0,1fr));
+    grid-template-columns:repeat(2,minmax(0,1fr));
   }
 
   .months{
-    grid-template-columns:
-      repeat(2,minmax(0,1fr));
+    grid-template-columns:repeat(2,minmax(0,1fr));
   }
-
 }
 
 @media(max-width:600px){
 
   header{
-    padding:13px 14px;
+    padding:11px 14px;
+  }
+
+  .logo{
+    width:38px;
+    height:38px;
+    font-size:15px;
   }
 
   .brand-title{
@@ -397,12 +464,7 @@ footer{
   }
 
   .brand-sub{
-    font-size:10px;
-  }
-
-  .logo{
-    width:38px;
-    height:38px;
+    font-size:9px;
   }
 
   main{
@@ -415,6 +477,7 @@ footer{
 
   .grid{
     grid-template-columns:1fr 1fr;
+    gap:10px;
   }
 
   .card{
@@ -422,7 +485,11 @@ footer{
   }
 
   .big{
-    font-size:22px;
+    font-size:21px;
+  }
+
+  .certificate{
+    padding:18px;
   }
 
   .certificate-top{
@@ -432,127 +499,152 @@ footer{
 
   .requirements{
     grid-template-columns:1fr 1fr;
+    gap:9px;
+  }
+
+  .requirement{
+    padding:13px;
   }
 
   .months{
     grid-template-columns:1fr;
   }
 
+  .action{
+    width:100%;
+    text-align:center;
+  }
 }
-
 </style>
 </head>
 
 <body>
 
-
 <header>
 
-<div class="header-inner">
+  <div class="header-inner">
 
-  <div class="brand">
+    <div class="brand">
 
-    <div class="logo">
-      GOH
+      <div class="logo">GOH</div>
+
+      <div>
+        <div class="brand-title">
+          GOH Bible Academy
+        </div>
+
+        <div class="brand-sub">
+          GATE OF HEAVEN MINISTRIES
+        </div>
+      </div>
+
     </div>
 
-    <div>
+    <div class="header-actions">
 
-      <div class="brand-title">
-        GOH Bible Academy
-      </div>
+      <nav class="nav" id="nav">
 
-      <div class="brand-sub">
-        GATE OF HEAVEN MINISTRIES
-      </div>
+        <a class="active" href="dashboard.html">
+          Dashboard
+        </a>
+
+        <a href="course.html">
+          My Course
+        </a>
+
+        <a href="exams.html">
+          Exams
+        </a>
+
+        <a href="progress.html">
+          Progress
+        </a>
+
+        <a href="certificate.html">
+          Certificate
+        </a>
+
+        <a href="profile.html">
+          Profile
+        </a>
+
+        <a href="support.html">
+          Support
+        </a>
+
+        <button class="logout" onclick="logout()">
+          Logout
+        </button>
+
+      </nav>
+
+      <button
+        class="menu-btn"
+        onclick="toggleMenu()"
+        aria-label="Open navigation"
+      >
+        ☰
+      </button>
+
+      <button
+        class="logout desktop-logout"
+        onclick="logout()"
+      >
+        Logout
+      </button>
 
     </div>
 
   </div>
-
-
-  <button
-    class="logout"
-    onclick="logout()"
-  >
-    Logout
-  </button>
-
-</div>
 
 </header>
 
 
 <main id="app">
 
-<div class="loading">
-  Loading your dashboard...
-</div>
+  <div class="loading">
+    Loading your dashboard...
+  </div>
 
 </main>
 
 
 <footer>
-© 2026 GOH Bible Academy. All rights reserved.
+  © 2026 GOH Bible Academy. All rights reserved.
 </footer>
 
 
 <script>
 
-
-/* API */
-
 const API =
 "https://goh-auth-api.createlk.workers.dev";
 
-
-/* PROGRAM */
-
 const TOTAL_MCQ = 600;
-
 const REQUIRED_CORRECT = 480;
-
 const TOTAL_EXAMS = 12;
-
-
-/* MONTHS */
 
 const months = [
 
   "New Life in Christ",
-
   "The Word of God",
-
   "Prayer & Worship",
-
   "Life & Teachings of Jesus",
-
   "Christian Character",
-
   "The Holy Spirit",
-
   "Bible Foundations",
-
   "Christian Doctrine",
-
   "Discipleship",
-
   "Evangelism & Missions",
-
   "Ministry & Leadership",
-
   "Ministry Preparation"
 
 ];
-
-
-/* GET TOKEN */
 
 const token =
 localStorage.getItem("goh_token");
 
 
-/* NO LOGIN */
+/* LOGIN CHECK */
 
 if(!token){
 
@@ -560,6 +652,32 @@ if(!token){
     "login.html";
 
 }
+
+
+/* MOBILE MENU */
+
+function toggleMenu(){
+
+  document
+    .getElementById("nav")
+    .classList.toggle("open");
+
+}
+
+
+/* CLOSE MENU AFTER LINK */
+
+document.addEventListener("click",function(e){
+
+  if(e.target.matches(".nav a")){
+
+    document
+      .getElementById("nav")
+      .classList.remove("open");
+
+  }
+
+});
 
 
 /* LOAD STUDENT */
@@ -573,7 +691,6 @@ async function loadDashboard(){
         API + "/me",
         {
           method:"GET",
-
           headers:{
             "Authorization":
               "Bearer " + token
@@ -581,20 +698,13 @@ async function loadDashboard(){
         }
       );
 
-
     const data =
       await response.json();
 
-
     if(!data.success){
 
-      localStorage.removeItem(
-        "goh_token"
-      );
-
-      localStorage.removeItem(
-        "goh_student"
-      );
+      localStorage.removeItem("goh_token");
+      localStorage.removeItem("goh_student");
 
       window.location.href =
         "login.html";
@@ -602,13 +712,7 @@ async function loadDashboard(){
       return;
     }
 
-
-    const student =
-      data.student;
-
-
-    renderDashboard(student);
-
+    renderDashboard(data.student);
 
   }catch(error){
 
@@ -628,6 +732,17 @@ async function loadDashboard(){
             and try again.
           </p>
 
+          <div class="actions">
+
+            <a
+              class="action"
+              href="dashboard.html"
+            >
+              Try Again
+            </a>
+
+          </div>
+
         </div>
 
       `;
@@ -642,22 +757,14 @@ async function loadDashboard(){
 function renderDashboard(student){
 
   /*
-    Current authentication API only
-    provides student information.
-
-    Academic progress is initialized
-    to zero until the course/progress
-    API is connected.
+    Connect your academic progress API here
+    when the course/exam/progress system is ready.
   */
 
   const correctMCQ = 0;
-
   const completedExams = 0;
-
   const programCompletion = 0;
-
   const ministryRequirement = false;
-
 
   const mcqPercent =
     Math.min(
@@ -669,7 +776,6 @@ function renderDashboard(student){
       )
     );
 
-
   const examPercent =
     Math.min(
       100,
@@ -679,7 +785,6 @@ function renderDashboard(student){
         100
       )
     );
-
 
   const certificateAcademic =
     Math.min(
@@ -693,7 +798,6 @@ function renderDashboard(student){
       )
     );
 
-
   const certificateReady =
     correctMCQ >= REQUIRED_CORRECT &&
     completedExams >= TOTAL_EXAMS &&
@@ -704,362 +808,376 @@ function renderDashboard(student){
   document.getElementById("app")
     .innerHTML = `
 
-<div class="welcome">
+      <div class="welcome">
 
-  <h1>
-    Student Dashboard
-  </h1>
+        <h1>
+          Student Dashboard
+        </h1>
 
-  <p>
-    Welcome,
-    <strong>
-      ${escapeHTML(student.name)}
-    </strong>.
-  </p>
+        <p>
+          Welcome,
+          <strong>
+            ${escapeHTML(student.name)}
+          </strong>.
+        </p>
 
-</div>
-
-
-<div class="grid">
-
-
-  <div class="card">
-
-    <div class="card-title">
-      My Program
-    </div>
-
-    <div class="big">
-      12 Months
-    </div>
-
-    <div class="small">
-      Christian Discipleship & Ministry Preparation
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="card-title">
-      MCQ Progress
-    </div>
-
-    <div class="big">
-      ${correctMCQ}/${TOTAL_MCQ}
-    </div>
-
-    <div class="small">
-      Correct answers
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="card-title">
-      Examinations
-    </div>
-
-    <div class="big">
-      ${completedExams}/${TOTAL_EXAMS}
-    </div>
-
-    <div class="small">
-      Monthly exams completed
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="card-title">
-      Program Progress
-    </div>
-
-    <div class="big">
-      ${programCompletion}%
-    </div>
-
-    <div class="small">
-      One-year program
-    </div>
-
-  </div>
-
-
-</div>
-
-
-<div class="section">
-
-<h2>
-  Course Progress
-</h2>
-
-<div class="progress-card">
-
-  <div class="progress-row">
-    <span>
-      12-Month Program
-    </span>
-
-    <span>
-      ${programCompletion}%
-    </span>
-  </div>
-
-  <div class="progress-bar">
-    <div
-      class="progress-fill"
-      style="width:${programCompletion}%"
-    ></div>
-  </div>
-
-
-  <div style="height:20px"></div>
-
-
-  <div class="progress-row">
-    <span>
-      600 MCQs
-    </span>
-
-    <span>
-      ${correctMCQ}/${TOTAL_MCQ}
-    </span>
-  </div>
-
-  <div class="progress-bar">
-    <div
-      class="progress-fill"
-      style="width:${Math.round(correctMCQ/TOTAL_MCQ*100)}%"
-    ></div>
-  </div>
-
-</div>
-
-</div>
-
-
-<div class="section">
-
-<h2>
-  🎓 Certificate Progress
-</h2>
-
-
-<div class="certificate">
-
-  <div class="certificate-top">
-
-    <div>
-
-      <div class="certificate-title">
-        Certificate Progress
       </div>
 
-      <p style="color:#667085;margin-top:6px">
-        Complete the required academic and
-        discipleship requirements to become
-        eligible for your certificate.
-      </p>
 
-    </div>
+      <div class="grid">
 
-    <div class="lock">
-      ${certificateReady ? "Eligible" : "🔒 Pending"}
-    </div>
+        <div class="card">
 
-  </div>
+          <div class="card-title">
+            My Program
+          </div>
 
+          <div class="big">
+            12 Months
+          </div>
 
-  <div class="requirements">
+          <div class="small">
+            Christian Discipleship & Ministry Preparation
+          </div>
 
+        </div>
 
-    <div class="requirement">
 
-      <strong>
-        ${correctMCQ}/${REQUIRED_CORRECT}
-      </strong>
+        <div class="card">
 
-      <span>
-        Correct MCQs Required
-      </span>
+          <div class="card-title">
+            MCQ Progress
+          </div>
 
-    </div>
+          <div class="big">
+            ${correctMCQ}/${TOTAL_MCQ}
+          </div>
 
+          <div class="small">
+            Correct answers
+          </div>
 
-    <div class="requirement">
+        </div>
 
-      <strong>
-        ${completedExams}/${TOTAL_EXAMS}
-      </strong>
 
-      <span>
-        Exams Completed
-      </span>
+        <div class="card">
 
-    </div>
+          <div class="card-title">
+            Examinations
+          </div>
 
+          <div class="big">
+            ${completedExams}/${TOTAL_EXAMS}
+          </div>
 
-    <div class="requirement">
+          <div class="small">
+            Monthly exams completed
+          </div>
 
-      <strong>
-        ${programCompletion}%
-      </strong>
+        </div>
 
-      <span>
-        Program Completion
-      </span>
 
-    </div>
+        <div class="card">
 
+          <div class="card-title">
+            Program Progress
+          </div>
 
-    <div class="requirement">
+          <div class="big">
+            ${programCompletion}%
+          </div>
 
-      <strong>
-        ${ministryRequirement ? "Complete" : "Pending"}
-      </strong>
+          <div class="small">
+            One-year program
+          </div>
 
-      <span>
-        Ministry Requirement
-      </span>
+        </div>
 
-    </div>
+      </div>
 
 
-  </div>
+      <div class="section">
 
+        <h2>
+          Course Progress
+        </h2>
 
-  <div class="certificate-progress">
+        <div class="progress-card">
 
-    <div class="progress-row">
+          <div class="progress-row">
 
-      <span>
-        Certificate Academic Progress
-      </span>
+            <span>
+              12-Month Program
+            </span>
 
-      <span>
-        ${certificateAcademic}%
-      </span>
+            <span>
+              ${programCompletion}%
+            </span>
 
-    </div>
+          </div>
 
+          <div class="progress-bar">
 
-    <div class="progress-bar">
+            <div
+              class="progress-fill"
+              style="width:${programCompletion}%"
+            ></div>
 
-      <div
-        class="progress-fill"
-        style="width:${certificateAcademic}%"
-      ></div>
+          </div>
 
-    </div>
 
-  </div>
+          <div style="height:20px"></div>
 
 
-  <div class="
-    certificate-message
-    ${certificateReady ? "ready" : ""}
-  ">
+          <div class="progress-row">
 
-    ${
-      certificateReady
-      ?
-      "🎓 You have completed all certificate requirements."
-      :
-      "🔒 Certificate locked — continue your studies."
-    }
+            <span>
+              600 MCQs
+            </span>
 
-  </div>
+            <span>
+              ${correctMCQ}/${TOTAL_MCQ}
+            </span>
 
+          </div>
 
-  <div class="actions">
+          <div class="progress-bar">
 
-    <a
-      class="action"
-      href="course.html"
-    >
-      Continue Learning
-    </a>
+            <div
+              class="progress-fill"
+              style="width:${Math.round(correctMCQ/TOTAL_MCQ*100)}%"
+            ></div>
 
-    <a
-      class="action secondary"
-      href="certificate.html"
-    >
-      Certificate
-    </a>
+          </div>
 
-  </div>
+        </div>
 
-</div>
+      </div>
 
-</div>
 
+      <div class="section">
 
-<div class="section">
+        <h2>
+          🎓 Certificate Progress
+        </h2>
 
-<h2>
-  Monthly Progress
-</h2>
+        <div class="certificate">
 
-<p style="color:#667085;margin-bottom:14px">
-  Complete each month's lessons and examination.
-</p>
+          <div class="certificate-top">
 
+            <div>
 
-<div class="months">
+              <div class="certificate-title">
+                Certificate Progress
+              </div>
 
-${months.map((month,index)=>`
+              <p style="color:#667085;margin-top:6px">
+                Complete the required academic and
+                discipleship requirements to become
+                eligible for your certificate.
+              </p>
 
-  <div class="month">
+            </div>
 
-    <div class="month-number">
-      MONTH ${String(index+1).padStart(2,"0")}
-    </div>
+            <div class="lock">
 
-    <h3>
-      ${month}
-    </h3>
+              ${
+                certificateReady
+                ? "Eligible"
+                : "🔒 Pending"
+              }
 
-    <span class="status">
-      Pending
-    </span>
+            </div>
 
-  </div>
+          </div>
 
-`).join("")}
 
-</div>
+          <div class="requirements">
 
-</div>
+            <div class="requirement">
 
+              <strong>
+                ${correctMCQ}/${REQUIRED_CORRECT}
+              </strong>
 
-<div class="section">
+              <span>
+                Correct MCQs Required
+              </span>
 
-<div class="card">
+            </div>
 
-  <strong>
-    Certificate requirement:
-  </strong>
 
-  <span style="color:#667085">
-    Students should achieve at least
-    <strong>480 correct answers out of 600</strong>,
-    complete all 12 examinations, complete the
-    one-year program and meet the required
-    ministry/discipleship activities.
-  </span>
+            <div class="requirement">
 
-</div>
+              <strong>
+                ${completedExams}/${TOTAL_EXAMS}
+              </strong>
 
-</div>
+              <span>
+                Exams Completed
+              </span>
 
-`;
+            </div>
+
+
+            <div class="requirement">
+
+              <strong>
+                ${programCompletion}%
+              </strong>
+
+              <span>
+                Program Completion
+              </span>
+
+            </div>
+
+
+            <div class="requirement">
+
+              <strong>
+                ${
+                  ministryRequirement
+                  ? "Complete"
+                  : "Pending"
+                }
+              </strong>
+
+              <span>
+                Ministry Requirement
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="certificate-progress">
+
+            <div class="progress-row">
+
+              <span>
+                Certificate Academic Progress
+              </span>
+
+              <span>
+                ${certificateAcademic}%
+              </span>
+
+            </div>
+
+            <div class="progress-bar">
+
+              <div
+                class="progress-fill"
+                style="width:${certificateAcademic}%"
+              ></div>
+
+            </div>
+
+          </div>
+
+
+          <div class="
+            certificate-message
+            ${certificateReady ? "ready" : ""}
+          ">
+
+            ${
+              certificateReady
+              ?
+              "🎓 You have completed all certificate requirements."
+              :
+              "🔒 Certificate locked — continue your studies."
+            }
+
+          </div>
+
+
+          <div class="actions">
+
+            <a
+              class="action"
+              href="course.html"
+            >
+              Continue Learning
+            </a>
+
+            <a
+              class="action secondary"
+              href="certificate.html"
+            >
+              View Certificate
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="section">
+
+        <h2>
+          Monthly Progress
+        </h2>
+
+        <p style="color:#667085;margin-bottom:14px">
+          Complete each month's lessons and examination.
+        </p>
+
+
+        <div class="months">
+
+          ${months.map((month,index)=>`
+
+            <div class="month">
+
+              <div class="month-number">
+                MONTH ${String(index+1).padStart(2,"0")}
+              </div>
+
+              <h3>
+                ${month}
+              </h3>
+
+              <span class="status">
+                Pending
+              </span>
+
+            </div>
+
+          `).join("")}
+
+        </div>
+
+      </div>
+
+
+      <div class="section">
+
+        <div class="card">
+
+          <strong>
+            Certificate requirement:
+          </strong>
+
+          <span style="color:#667085">
+
+            Students should achieve at least
+            <strong>480 correct answers out of 600</strong>,
+            complete all 12 examinations, complete the
+            one-year program and meet the required
+            ministry/discipleship activities.
+
+          </span>
+
+        </div>
+
+      </div>
+
+    `;
 
 }
 
@@ -1074,7 +1192,6 @@ async function logout(){
       API + "/logout",
       {
         method:"POST",
-
         headers:{
           "Authorization":
             "Bearer " + token
@@ -1088,15 +1205,8 @@ async function logout(){
 
   }
 
-
-  localStorage.removeItem(
-    "goh_token"
-  );
-
-  localStorage.removeItem(
-    "goh_student"
-  );
-
+  localStorage.removeItem("goh_token");
+  localStorage.removeItem("goh_student");
 
   window.location.href =
     "login.html";
