@@ -1,77 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GOH Ministries | Admin</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Church Admin | Gate of Heaven Ministries</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
     <h1>Gate of Heaven Ministries</h1>
-    <p>Private Administration</p>
+    <p>Administration Panel</p>
 </header>
 
+
 <nav>
-    <button onclick="show('dashboard')">Dashboard</button>
-    <button onclick="show('finance')">Finance</button>
-    <button onclick="show('projects')">Projects</button>
-    <button onclick="show('meetings')">Meetings</button>
-    <button onclick="show('documents')">Documents</button>
-    <button onclick="show('reports')">Reports</button>
-    <button onclick="show('backup')">Backup</button>
+
+    <button onclick="showSection('dashboard')">
+        Dashboard
+    </button>
+
+    <button onclick="showSection('finance')">
+        Finance
+    </button>
+
+    <button onclick="showSection('projects')">
+        Projects
+    </button>
+
+    <button onclick="showSection('events')">
+        Events
+    </button>
+
+    <button onclick="showSection('meetings')">
+        Meetings
+    </button>
+
+    <button onclick="showSection('documents')">
+        Documents
+    </button>
+
+    <button onclick="showSection('reports')">
+        Reports
+    </button>
+
+    <button onclick="showSection('backup')">
+        Backup
+    </button>
+
 </nav>
+
 
 <main>
 
-<section id="dashboard" class="page">
+
+<!-- DASHBOARD -->
+
+<section id="dashboard">
+
     <h2>Dashboard</h2>
 
     <div class="cards">
+
         <div class="card">
-            <small>Income</small>
-            <h3 id="income">LKR 0</h3>
+            <h3>Total Income</h3>
+            <p id="totalIncome">LKR 0</p>
         </div>
 
         <div class="card">
-            <small>Expenses</small>
-            <h3 id="expenses">LKR 0</h3>
+            <h3>Total Expenses</h3>
+            <p id="totalExpenses">LKR 0</p>
         </div>
 
         <div class="card">
-            <small>Balance</small>
-            <h3 id="balance">LKR 0</h3>
+            <h3>Balance</h3>
+            <p id="balance">LKR 0</p>
         </div>
 
         <div class="card">
-            <small>Projects</small>
-            <h3 id="projectCount">0</h3>
+            <h3>Projects</h3>
+            <p id="projectCount">0</p>
         </div>
+
+        <div class="card">
+            <h3>Events</h3>
+            <p id="eventCount">0</p>
+        </div>
+
     </div>
+
 </section>
 
 
-<section id="finance" class="page hidden">
 
-    <div class="title">
-        <h2>Finance</h2>
-        <button onclick="toggle('financeForm')">+ Add Record</button>
-    </div>
+<!-- FINANCE -->
 
-    <div id="financeForm" class="box hidden">
+<section id="finance" class="hidden">
 
-        <select id="type">
-            <option value="income">Income</option>
-            <option value="expense">Expense</option>
+    <h2>Finance</h2>
+
+    <div class="box">
+
+        <h3>Add Income / Expense</h3>
+
+        <select id="financeType">
+
+            <option value="income">
+                Income
+            </option>
+
+            <option value="expense">
+                Expense
+            </option>
+
         </select>
 
-        <input id="date" type="date">
-        <input id="description" placeholder="Description">
-        <input id="amount" type="number" placeholder="Amount (LKR)">
+        <input
+            type="date"
+            id="financeDate"
+        >
 
-        <button onclick="saveFinance()">Save</button>
+        <input
+            type="text"
+            id="financeDescription"
+            placeholder="Description"
+        >
+
+        <input
+            type="number"
+            id="financeAmount"
+            placeholder="Amount"
+        >
+
+        <button onclick="addFinance()">
+            Save
+        </button>
 
     </div>
 
@@ -80,26 +146,44 @@
 </section>
 
 
-<section id="projects" class="page hidden">
 
-    <div class="title">
-        <h2>Projects</h2>
-        <button onclick="toggle('projectForm')">+ Add Project</button>
-    </div>
+<!-- PROJECTS -->
 
-    <div id="projectForm" class="box hidden">
+<section id="projects" class="hidden">
 
-        <input id="projectName" placeholder="Project name">
-        <input id="projectBudget" type="number" placeholder="Budget (LKR)">
-        <input id="projectSpent" type="number" placeholder="Amount spent (LKR)">
+    <h2>Projects</h2>
+
+    <div class="box">
+
+        <input
+            type="text"
+            id="projectName"
+            placeholder="Project name"
+        >
+
+        <input
+            type="number"
+            id="projectBudget"
+            placeholder="Budget"
+        >
+
+        <input
+            type="number"
+            id="projectSpent"
+            placeholder="Amount spent"
+        >
 
         <select id="projectStatus">
+
             <option>Planning</option>
-            <option>In Progress</option>
+            <option>Active</option>
             <option>Completed</option>
+
         </select>
 
-        <button onclick="saveProject()">Save</button>
+        <button onclick="addProject()">
+            Save Project
+        </button>
 
     </div>
 
@@ -108,34 +192,168 @@
 </section>
 
 
-<section id="meetings" class="page hidden">
+
+<!-- EVENTS -->
+
+<section id="events" class="hidden">
+
+    <h2>Events</h2>
+
+    <div class="box">
+
+        <h3>Add New Event</h3>
+
+        <input
+            type="text"
+            id="eventTitle"
+            placeholder="Event title"
+        >
+
+        <input
+            type="date"
+            id="eventDate"
+        >
+
+        <input
+            type="text"
+            id="eventTime"
+            placeholder="Time"
+        >
+
+        <input
+            type="text"
+            id="eventVenue"
+            placeholder="Venue"
+        >
+
+        <input
+            type="text"
+            id="eventDescription"
+            placeholder="Short description"
+        >
+
+        <button onclick="addEvent()">
+            Save Event
+        </button>
+
+    </div>
+
+    <div id="eventList"></div>
+
+</section>
+
+
+
+<!-- MEETINGS -->
+
+<section id="meetings" class="hidden">
+
     <h2>Meetings</h2>
-    <p>Meeting records will be added here.</p>
+
+    <div class="box">
+
+        <input
+            type="date"
+            id="meetingDate"
+        >
+
+        <input
+            type="text"
+            id="meetingTitle"
+            placeholder="Meeting title"
+        >
+
+        <textarea
+            id="meetingNotes"
+            placeholder="Meeting notes"
+        ></textarea>
+
+        <button onclick="addMeeting()">
+            Save Meeting
+        </button>
+
+    </div>
+
+    <div id="meetingList"></div>
+
 </section>
 
 
-<section id="documents" class="page hidden">
+
+<!-- DOCUMENTS -->
+
+<section id="documents" class="hidden">
+
     <h2>Documents</h2>
-    <p>Church documents will be added here.</p>
+
+    <div class="box">
+
+        <p>
+            Document management will be connected
+            to secure cloud storage.
+        </p>
+
+    </div>
+
 </section>
 
 
-<section id="reports" class="page hidden">
+
+<!-- REPORTS -->
+
+<section id="reports" class="hidden">
+
     <h2>Reports</h2>
-    <p>Reports will be added here.</p>
+
+    <div class="box">
+
+        <button onclick="generateReport()">
+            Generate Report
+        </button>
+
+        <div id="reportResult"></div>
+
+    </div>
+
 </section>
 
 
-<section id="backup" class="page hidden">
+
+<!-- BACKUP -->
+
+<section id="backup" class="hidden">
+
     <h2>Backup</h2>
-    <button onclick="backup()">Export Records</button>
+
+    <div class="box">
+
+        <p>
+            Download a backup of your current
+            browser data.
+        </p>
+
+        <button onclick="downloadBackup()">
+            Download Backup
+        </button>
+
+        <button onclick="clearAllData()">
+            Clear All Data
+        </button>
+
+    </div>
+
 </section>
+
 
 </main>
 
+
 <footer>
-    Gate of Heaven Ministries · Private Administration
+
+    © 2026 Gate of Heaven Ministries
+
 </footer>
+
 
 <script src="script.js"></script>
 
