@@ -1,64 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Events | Gate of Heaven Ministries</title>
-  <meta name="description" content="Upcoming events and programs of Gate of Heaven Ministries.">
+    <title>Events | Gate of Heaven Ministries</title>
 
-  <link rel="stylesheet" href="style.css">
+    <meta name="description"
+          content="Upcoming events and programs of Gate of Heaven Ministries.">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-  <h2>Gate of Heaven Ministries</h2>
+    <h1>Gate of Heaven Ministries</h1>
+    <p>Events & Programs</p>
+</header>
 
-  <nav>
+<nav>
     <a href="index.html">Home</a>
     <a href="index.html#about">About</a>
     <a href="events.html">Events</a>
+    <a href="index.html#ministries">Ministries</a>
     <a href="index.html#contact">Contact</a>
-  </nav>
-</header>
+</nav>
 
-<section class="page-title">
-  <h1>Upcoming Events</h1>
-  <p>Join us for worship, prayer and fellowship.</p>
-</section>
+<main>
 
-<section class="events">
+    <section class="page-title">
+        <h2>Upcoming Events</h2>
+        <p>Join us for worship, prayer, fellowship and ministry.</p>
+    </section>
 
-  <div class="event-card">
-    <h2>Sunday Worship</h2>
-    <p><strong>Every Sunday</strong></p>
-    <p>9:00 AM</p>
-    <p>Worship • Word • Prayer</p>
-    <a href="#" class="btn">Get Information</a>
-  </div>
+    <section class="cards">
 
-  <div class="event-card">
-    <h2>Children's Program</h2>
-    <p><strong>Special Event</strong></p>
-    <p>12:00 PM</p>
-    <p>Bible Teaching • Activities • Fellowship</p>
-    <a href="#" class="btn">Register</a>
-  </div>
+        <article class="card">
+            <h3>Sunday Worship</h3>
 
-  <div class="event-card">
-    <h2>Prayer Meeting</h2>
-    <p><strong>Weekly Prayer</strong></p>
-    <p>10:00 AM – 12:00 PM</p>
-    <p>Prayer • Fellowship • Intercession</p>
-    <a href="#" class="btn">Prayer Request</a>
-  </div>
+            <p><strong>Date:</strong> Every Sunday</p>
+            <p><strong>Time:</strong> 9:00 AM</p>
+            <p><strong>Venue:</strong> Gate of Heaven Ministries</p>
 
-</section>
+            <p>
+                Join us for worship, God's Word, prayer and fellowship.
+            </p>
+
+            <a href="#contact">
+                <button>Get Information</button>
+            </a>
+        </article>
+
+
+        <article class="card">
+            <h3>Children's Program</h3>
+
+            <p><strong>Date:</strong> Special Events</p>
+            <p><strong>Time:</strong> 12:00 PM</p>
+            <p><strong>For:</strong> Children & Families</p>
+
+            <p>
+                Bible teaching, activities, fellowship and fun for children.
+            </p>
+
+            <a href="#contact">
+                <button>Register</button>
+            </a>
+        </article>
+
+
+        <article class="card">
+            <h3>Prayer Meeting</h3>
+
+            <p><strong>Date:</strong> Weekly</p>
+            <p><strong>Time:</strong> 10:00 AM – 12:00 PM</p>
+
+            <p>
+                A special time of prayer, intercession and fellowship.
+            </p>
+
+            <a href="#contact">
+                <button>Prayer Request</button>
+            </a>
+        </article>
+
+
+        <article class="card">
+            <h3>Youth Ministry</h3>
+
+            <p><strong>Date:</strong> Announced Monthly</p>
+            <p><strong>Time:</strong> To Be Announced</p>
+
+            <p>
+                Fellowship, Bible teaching, worship and activities for young people.
+            </p>
+
+            <a href="#contact">
+                <button>Learn More</button>
+            </a>
+        </article>
+
+
+        <article class="card">
+            <h3>Outreach Ministry</h3>
+
+            <p><strong>Date:</strong> Special Programs</p>
+            <p><strong>Location:</strong> Various Locations</p>
+
+            <p>
+                Sharing the Gospel and serving people in our communities.
+            </p>
+
+            <a href="#contact">
+                <button>Learn More</button>
+            </a>
+        </article>
+
+
+        <article class="card">
+            <h3>Special Ministry Events</h3>
+
+            <p><strong>Date:</strong> Coming Soon</p>
+            <p><strong>Time:</strong> To Be Announced</p>
+
+            <p>
+                Stay connected for upcoming conferences, camps and special programs.
+            </p>
+
+            <a href="#contact">
+                <button>Get Updates</button>
+            </a>
+        </article>
+
+    </section>
+
+
+    <section class="box" id="contact">
+
+        <h2>Need More Information?</h2>
+
+        <p>
+            Contact Gate of Heaven Ministries for event information,
+            registration and prayer requests.
+        </p>
+
+        <button onclick="contactUs()">
+            Contact Us
+        </button>
+
+    </section>
+
+</main>
+
 
 <footer>
-  <p>© 2026 Gate of Heaven Ministries. All Rights Reserved.</p>
+    <p>© 2026 Gate of Heaven Ministries</p>
+    <p>Worship • Word • Prayer • Service</p>
 </footer>
+
+
+<script>
+function contactUs() {
+    window.location.href =
+        "https://wa.me/YOURNUMBER?text=Hello%20Gate%20of%20Heaven%20Ministries";
+}
+</script>
 
 </body>
 </html>
