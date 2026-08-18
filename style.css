@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
+
+header {
+    background: #182848;
+    color: white;
+    text-align: center;
+    padding: 22px;
+}
+
+header h1 {
+    margin: 0 0 5px;
+}
+
+nav {
+    background: white;
+    padding: 12px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+button {
+    border: 0;
+    padding: 10px 15px;
+    border-radius: 6px;
+    background: #182848;
+    color: white;
+    cursor: pointer;
+}
+
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+    gap: 15px;
+}
+
+.card,
+.box,
+.record {
+    background: white;
+    padding: 18px;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #0001;
+}
+
+.card h3 {
+    color: #182848;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 11px;
+    margin: 6px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.record {
+    border-left: 4px solid #182848;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #777;
+}
