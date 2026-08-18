@@ -3,354 +3,245 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Church Administration | Admin Dashboard</title>
-
-<meta name="description" content="Private church administration and record management dashboard.">
+<title>Church Administration | Gate of Heaven Ministries</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f6f9;
+    color:#1f2937;
 }
 
-:root {
-    --primary: #243b64;
-    --secondary: #3f5f95;
-    --accent: #d4a017;
-    --background: #f4f6f9;
-    --card: #ffffff;
-    --text: #1f2937;
-    --muted: #6b7280;
-    --border: #e5e7eb;
-    --success: #16803c;
-    --danger: #c62828;
-    --shadow: 0 8px 25px rgba(0,0,0,0.08);
+.header{
+    background:linear-gradient(135deg,#243b64,#3f5f95);
+    color:white;
+    padding:20px;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: var(--background);
-    color: var(--text);
+.header-content{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
 }
 
-/* HEADER */
+.brand h1{font-size:21px}
+.brand p{font-size:13px;margin-top:5px;opacity:.85}
 
-.header {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white;
-    padding: 20px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+.security{
+    background:rgba(255,255,255,.15);
+    padding:8px 12px;
+    border-radius:20px;
+    font-size:12px;
 }
 
-.header-content {
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
+.nav{
+    background:white;
+    border-bottom:1px solid #e5e7eb;
 }
 
-.brand h1 {
-    font-size: 21px;
+.nav-inner{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    overflow-x:auto;
 }
 
-.brand p {
-    font-size: 13px;
-    opacity: 0.85;
-    margin-top: 4px;
+.nav button{
+    border:0;
+    background:none;
+    padding:15px;
+    cursor:pointer;
+    font-weight:bold;
+    color:#6b7280;
+    white-space:nowrap;
 }
 
-.security {
-    font-size: 12px;
-    background: rgba(255,255,255,0.15);
-    padding: 8px 12px;
-    border-radius: 20px;
+.nav button.active,
+.nav button:hover{
+    color:#243b64;
+    border-bottom:3px solid #d4a017;
 }
 
-/* NAVIGATION */
-
-.nav {
-    background: white;
-    border-bottom: 1px solid var(--border);
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:25px 18px 60px;
 }
 
-.nav-inner {
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    gap: 5px;
-    overflow-x: auto;
+.page-title{margin-bottom:20px}
+.page-title h2{
+    color:#243b64;
+    font-size:26px;
 }
 
-.nav button {
-    border: none;
-    background: transparent;
-    padding: 15px 16px;
-    cursor: pointer;
-    color: var(--muted);
-    font-weight: 600;
-    white-space: nowrap;
+.page-title p{
+    color:#6b7280;
+    margin-top:6px;
 }
 
-.nav button:hover,
-.nav button.active {
-    color: var(--primary);
-    border-bottom: 3px solid var(--accent);
+.card{
+    background:white;
+    border:1px solid #e5e7eb;
+    border-radius:14px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 6px 20px rgba(0,0,0,.06);
 }
 
-/* MAIN */
-
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 25px 18px 60px;
+button.primary{
+    background:#243b64;
+    color:white;
+    border:0;
+    padding:11px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
 }
 
-.page-title {
-    margin-bottom: 20px;
+button.primary:hover{background:#3f5f95}
+
+button.secondary{
+    background:#eef2f8;
+    color:#243b64;
+    border:0;
+    padding:10px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
 }
 
-.page-title h2 {
-    font-size: 26px;
-    color: var(--primary);
+button.danger{
+    background:#c62828;
+    color:white;
+    border:0;
+    padding:10px 14px;
+    border-radius:8px;
+    cursor:pointer;
 }
 
-.page-title p {
-    color: var(--muted);
-    margin-top: 6px;
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
 }
 
-/* CARDS */
-
-.stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 25px;
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
 }
 
-.card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px;
-    box-shadow: var(--shadow);
+.form-group.full{
+    grid-column:1/-1;
 }
 
-.stat-title {
-    color: var(--muted);
-    font-size: 13px;
+label{
+    font-size:13px;
+    font-weight:bold;
+    color:#374151;
 }
 
-.stat-value {
-    font-size: 25px;
-    font-weight: bold;
-    margin-top: 8px;
-    color: var(--primary);
+input,select,textarea{
+    width:100%;
+    padding:11px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    font-size:14px;
+    background:white;
 }
 
-.stat-note {
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 5px;
+textarea{
+    min-height:100px;
+    resize:vertical;
 }
 
-/* MODULES */
-
-.modules {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+.project-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:15px;
 }
 
-.module {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 22px;
-    box-shadow: var(--shadow);
-    transition: 0.2s;
+.project-title{
+    color:#243b64;
+    font-size:20px;
 }
 
-.module:hover {
-    transform: translateY(-3px);
+.project-meta{
+    color:#6b7280;
+    font-size:13px;
+    margin-top:5px;
 }
 
-.icon {
-    width: 48px;
-    height: 48px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 12px;
-    background: #eef2f8;
-    font-size: 23px;
-    margin-bottom: 15px;
+.project-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin:15px 0;
 }
 
-.module h3 {
-    color: var(--primary);
-    margin-bottom: 8px;
+.project-stat{
+    background:#f8fafc;
+    padding:13px;
+    border-radius:9px;
 }
 
-.module p {
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.5;
+.project-stat span{
+    display:block;
+    color:#6b7280;
+    font-size:12px;
 }
 
-.module button {
-    margin-top: 16px;
-    border: none;
-    background: var(--primary);
-    color: white;
-    padding: 10px 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
+.project-stat strong{
+    display:block;
+    margin-top:5px;
+    color:#243b64;
 }
 
-.module button:hover {
-    background: var(--secondary);
+.project-actions{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
 }
 
-/* ACTIVITY */
-
-.section {
-    margin-top: 28px;
+.photo-preview{
+    max-width:180px;
+    margin-top:10px;
+    border-radius:10px;
+    display:none;
 }
 
-.section-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
+.empty{
+    text-align:center;
+    padding:35px;
+    color:#6b7280;
 }
 
-.section-title h3 {
-    color: var(--primary);
+.footer{
+    text-align:center;
+    color:#6b7280;
+    font-size:12px;
+    line-height:1.6;
+    margin-top:30px;
 }
 
-.activity {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-}
-
-.activity-row {
-    padding: 15px 18px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-}
-
-.activity-row:last-child {
-    border-bottom: none;
-}
-
-.activity-name {
-    font-weight: 600;
-}
-
-.activity-date {
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 4px;
-}
-
-.badge {
-    align-self: center;
-    padding: 5px 9px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: bold;
-}
-
-.badge.success {
-    background: #e7f7ed;
-    color: var(--success);
-}
-
-.badge.pending {
-    background: #fff6d9;
-    color: #8a6500;
-}
-
-/* FOOTER */
-
-.footer {
-    text-align: center;
-    color: var(--muted);
-    font-size: 12px;
-    margin-top: 35px;
-    line-height: 1.6;
-}
-
-/* MOBILE */
-
-@media (max-width: 900px) {
-
-    .stats {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .modules {
-        grid-template-columns: repeat(2, 1fr);
+@media(max-width:800px){
+    .form-grid{grid-template-columns:1fr}
+    .project-grid{grid-template-columns:repeat(2,1fr)}
+    .header-content{
+        flex-direction:column;
+        align-items:flex-start;
     }
 }
 
-@media (max-width: 600px) {
-
-    .header-content {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .stats {
-        grid-template-columns: 1fr;
-    }
-
-    .modules {
-        grid-template-columns: 1fr;
-    }
-
-    .page-title h2 {
-        font-size: 22px;
-    }
-}
-
-/* PRINT */
-
-@media print {
-
-    .header,
-    .nav,
-    .footer {
-        display: none;
-    }
-
-    body {
-        background: white;
-    }
-
-    .container {
-        max-width: 100%;
-    }
-
-    .card,
-    .module,
-    .activity {
-        box-shadow: none;
-    }
+@media(max-width:500px){
+    .project-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -358,55 +249,31 @@ body {
 <body>
 
 <header class="header">
-    <div class="header-content">
+<div class="header-content">
 
-        <div class="brand">
-            <h1>Gate of Heaven Ministries</h1>
-            <p>Private Church Administration System</p>
-        </div>
+<div class="brand">
+<h1>Gate of Heaven Ministries</h1>
+<p>Private Church Administration System</p>
+</div>
 
-        <div class="security">
-            🔒 Private Administration
-        </div>
+<div class="security">🔒 Private Administration</div>
 
-    </div>
+</div>
 </header>
 
 
 <nav class="nav">
+<div class="nav-inner">
 
-    <div class="nav-inner">
+<button onclick="showSection('dashboard',this)">Dashboard</button>
+<button onclick="showSection('finance',this)">Finance</button>
+<button onclick="showSection('meetings',this)">Meetings</button>
+<button class="active" onclick="showSection('projects',this)">Projects</button>
+<button onclick="showSection('documents',this)">Documents</button>
+<button onclick="showSection('reports',this)">Reports</button>
+<button onclick="showSection('backup',this)">Backup</button>
 
-        <button class="active" onclick="showSection('dashboard', this)">
-            Dashboard
-        </button>
-
-        <button onclick="showSection('finance', this)">
-            Finance
-        </button>
-
-        <button onclick="showSection('meetings', this)">
-            Meetings
-        </button>
-
-        <button onclick="showSection('projects', this)">
-            Projects
-        </button>
-
-        <button onclick="showSection('documents', this)">
-            Documents
-        </button>
-
-        <button onclick="showSection('reports', this)">
-            Reports
-        </button>
-
-        <button onclick="showSection('backup', this)">
-            Backup
-        </button>
-
-    </div>
-
+</div>
 </nav>
 
 
@@ -415,361 +282,260 @@ body {
 
 <!-- DASHBOARD -->
 
-<section id="dashboard">
-
-    <div class="page-title">
-
-        <h2>Administration Dashboard</h2>
-
-        <p>
-            Central management area for authorized church leaders.
-        </p>
-
-    </div>
-
-
-    <div class="stats">
-
-        <div class="card">
-            <div class="stat-title">Total Income</div>
-            <div class="stat-value">Rs. 0.00</div>
-            <div class="stat-note">Current period</div>
-        </div>
-
-        <div class="card">
-            <div class="stat-title">Total Expenses</div>
-            <div class="stat-value">Rs. 0.00</div>
-            <div class="stat-note">Current period</div>
-        </div>
-
-        <div class="card">
-            <div class="stat-title">Projects</div>
-            <div class="stat-value">0</div>
-            <div class="stat-note">Active projects</div>
-        </div>
-
-        <div class="card">
-            <div class="stat-title">Documents</div>
-            <div class="stat-value">0</div>
-            <div class="stat-note">Recorded documents</div>
-        </div>
-
-    </div>
-
-
-    <div class="modules">
-
-        <div class="module">
-
-            <div class="icon">💰</div>
-
-            <h3>Finance</h3>
-
-            <p>
-                Manage income, donations, expenses,
-                receipts and financial summaries.
-            </p>
-
-            <button onclick="openModule('Finance')">
-                Open Finance
-            </button>
-
-        </div>
-
-
-        <div class="module">
-
-            <div class="icon">📝</div>
-
-            <h3>Meetings</h3>
-
-            <p>
-                Keep meeting minutes, decisions,
-                resolutions and approvals.
-            </p>
-
-            <button onclick="openModule('Meetings')">
-                Open Meetings
-            </button>
-
-        </div>
-
-
-        <div class="module">
-
-            <div class="icon">🏗️</div>
-
-            <h3>Projects</h3>
-
-            <p>
-                Track construction, purchases,
-                labour, budgets and project photos.
-            </p>
-
-            <button onclick="openModule('Projects')">
-                Open Projects
-            </button>
-
-        </div>
-
-
-        <div class="module">
-
-            <div class="icon">📁</div>
-
-            <h3>Documents</h3>
-
-            <p>
-                Organize church, property,
-                construction and legal documents.
-            </p>
-
-            <button onclick="openModule('Documents')">
-                Open Documents
-            </button>
-
-        </div>
-
-
-        <div class="module">
-
-            <div class="icon">📊</div>
-
-            <h3>Reports</h3>
-
-            <p>
-                Prepare monthly, quarterly and
-                annual administrative reports.
-            </p>
-
-            <button onclick="openModule('Reports')">
-                Open Reports
-            </button>
-
-        </div>
-
-
-        <div class="module">
-
-            <div class="icon">💾</div>
-
-            <h3>Backup</h3>
-
-            <p>
-                Export important information and
-                maintain secure backup copies.
-            </p>
-
-            <button onclick="openModule('Backup')">
-                Open Backup
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <div class="section">
-
-        <div class="section-title">
-
-            <h3>Recent Activity</h3>
-
-        </div>
-
-
-        <div class="activity">
-
-            <div class="activity-row">
-
-                <div>
-                    <div class="activity-name">
-                        System Created
-                    </div>
-
-                    <div class="activity-date">
-                        No records have been entered yet.
-                    </div>
-                </div>
-
-                <span class="badge success">
-                    Ready
-                </span>
-
-            </div>
-
-
-            <div class="activity-row">
-
-                <div>
-                    <div class="activity-name">
-                        Backup
-                    </div>
-
-                    <div class="activity-date">
-                        Backup system not configured yet.
-                    </div>
-                </div>
-
-                <span class="badge pending">
-                    Pending
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
+<section id="dashboard" style="display:none">
+
+<div class="page-title">
+<h2>Administration Dashboard</h2>
+<p>Central management area for authorized church leaders.</p>
+</div>
+
+<div class="card">
+<h3>Welcome</h3>
+<p style="margin-top:8px;color:#6b7280">
+Use the navigation menu to manage church administration records.
+</p>
+</div>
 
 </section>
 
 
-<!-- OTHER SECTIONS -->
+<!-- FINANCE -->
 
 <section id="finance" style="display:none">
 
-    <div class="page-title">
-        <h2>Finance</h2>
-        <p>Financial administration and records.</p>
-    </div>
+<div class="page-title">
+<h2>Finance</h2>
+<p>Financial administration and records.</p>
+</div>
 
-    <div class="card">
-
-        <h3>Finance Module</h3>
-
-        <p style="margin-top:10px;color:#6b7280;">
-            Income, donations, expenses, receipts and
-            financial reports will be added here.
-        </p>
-
-    </div>
+<div class="card">
+<h3>Finance Module</h3>
+<p style="margin-top:10px;color:#6b7280">
+Finance functions will be added next.
+</p>
+</div>
 
 </section>
 
+
+<!-- MEETINGS -->
 
 <section id="meetings" style="display:none">
 
-    <div class="page-title">
-        <h2>Meetings</h2>
-        <p>Meeting minutes, decisions and resolutions.</p>
-    </div>
+<div class="page-title">
+<h2>Meetings</h2>
+<p>Meeting minutes, decisions and resolutions.</p>
+</div>
 
-    <div class="card">
-
-        <h3>Meeting Records</h3>
-
-        <p style="margin-top:10px;color:#6b7280;">
-            Meeting records will be added here.
-        </p>
-
-    </div>
+<div class="card">
+<h3>Meeting Records</h3>
+<p style="margin-top:10px;color:#6b7280">
+Meeting functions will be added later.
+</p>
+</div>
 
 </section>
 
 
-<section id="projects" style="display:none">
+<!-- PROJECTS -->
 
-    <div class="page-title">
-        <h2>Projects</h2>
-        <p>Church projects and construction records.</p>
-    </div>
+<section id="projects">
 
-    <div class="card">
+<div class="page-title">
 
-        <h3>Project Management</h3>
+<h2>Projects</h2>
 
-        <p style="margin-top:10px;color:#6b7280;">
-            Project records, budgets, purchases,
-            labour and photos will be added here.
-        </p>
+<p>
+Church projects and construction records.
+</p>
 
-    </div>
+</div>
+
+
+<div class="card">
+
+<div class="project-header">
+
+<div>
+<h3 class="project-title">Project Management</h3>
+<p class="project-meta">
+Create and maintain project records.
+</p>
+</div>
+
+<button class="primary" onclick="showProjectForm()">
++ Add Project
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ADD PROJECT -->
+
+<div class="card" id="projectForm" style="display:none">
+
+<h3 style="color:#243b64;margin-bottom:18px">
+New Project
+</h3>
+
+<div class="form-grid">
+
+<div class="form-group">
+<label>Project Name</label>
+<input id="projectName" type="text" placeholder="Example: Church Building">
+</div>
+
+<div class="form-group">
+<label>Project ID</label>
+<input id="projectId" type="text" placeholder="Example: PROJ-001">
+</div>
+
+<div class="form-group">
+<label>Start Date</label>
+<input id="projectDate" type="date">
+</div>
+
+<div class="form-group">
+<label>Status</label>
+<select id="projectStatus">
+<option>Planning</option>
+<option>In Progress</option>
+<option>Completed</option>
+<option>On Hold</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Budget (LKR)</label>
+<input id="projectBudget" type="number" min="0" placeholder="0">
+</div>
+
+<div class="form-group">
+<label>Amount Spent (LKR)</label>
+<input id="projectSpent" type="number" min="0" placeholder="0">
+</div>
+
+<div class="form-group">
+<label>Labour Cost (LKR)</label>
+<input id="projectLabour" type="number" min="0" placeholder="0">
+</div>
+
+<div class="form-group">
+<label>Materials Cost (LKR)</label>
+<input id="projectMaterials" type="number" min="0" placeholder="0">
+</div>
+
+<div class="form-group full">
+<label>Project Description</label>
+<textarea id="projectDescription"
+placeholder="Describe the project..."></textarea>
+</div>
+
+<div class="form-group full">
+<label>Project Photo</label>
+<input id="projectPhoto" type="file" accept="image/*" onchange="previewPhoto(event)">
+<img id="photoPreview" class="photo-preview">
+</div>
+
+</div>
+
+<div style="margin-top:18px;display:flex;gap:8px">
+
+<button class="primary" onclick="saveProject()">
+Save Project
+</button>
+
+<button class="secondary" onclick="hideProjectForm()">
+Cancel
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PROJECT LIST -->
+
+<div id="projectList"></div>
 
 </section>
 
+
+<!-- DOCUMENTS -->
 
 <section id="documents" style="display:none">
 
-    <div class="page-title">
-        <h2>Documents</h2>
-        <p>Important church and administrative documents.</p>
-    </div>
+<div class="page-title">
+<h2>Documents</h2>
+<p>Important church and administrative documents.</p>
+</div>
 
-    <div class="card">
-
-        <h3>Document Management</h3>
-
-        <p style="margin-top:10px;color:#6b7280;">
-            Documents will be organized here.
-        </p>
-
-    </div>
+<div class="card">
+<h3>Document Management</h3>
+<p style="margin-top:10px;color:#6b7280">
+Document management will be added after the Projects module.
+</p>
+</div>
 
 </section>
 
+
+<!-- REPORTS -->
 
 <section id="reports" style="display:none">
 
-    <div class="page-title">
-        <h2>Reports</h2>
-        <p>Administrative and financial reports.</p>
-    </div>
+<div class="page-title">
+<h2>Reports</h2>
+<p>Administrative and financial reports.</p>
+</div>
 
-    <div class="card">
-
-        <h3>Reports</h3>
-
-        <p style="margin-top:10px;color:#6b7280;">
-            Monthly, quarterly and annual reports
-            will be added here.
-        </p>
-
-    </div>
+<div class="card">
+<h3>Reports</h3>
+<p style="margin-top:10px;color:#6b7280">
+Reporting functions will be added later.
+</p>
+</div>
 
 </section>
 
 
+<!-- BACKUP -->
+
 <section id="backup" style="display:none">
 
-    <div class="page-title">
-        <h2>Backup</h2>
-        <p>Manage copies and exports of important records.</p>
-    </div>
+<div class="page-title">
+<h2>Backup</h2>
+<p>Manage copies and exports of important records.</p>
+</div>
 
-    <div class="card">
+<div class="card">
 
-        <h3>Backup Center</h3>
+<h3>Backup Center</h3>
 
-        <p style="margin-top:10px;color:#6b7280;">
-            Backup and export functions will be added here.
-        </p>
+<p style="margin-top:10px;color:#6b7280">
+Backup functions will be added after the record modules are completed.
+</p>
 
-        <button
-            onclick="window.print()"
-            style="
-            margin-top:18px;
-            padding:10px 15px;
-            border:0;
-            border-radius:8px;
-            background:#243b64;
-            color:white;
-            cursor:pointer;
-            ">
-            🖨️ Print / Save PDF
-        </button>
+<br>
 
-    </div>
+<button class="secondary" onclick="window.print()">
+🖨️ Print / Save PDF
+</button>
+
+</div>
 
 </section>
 
 
 <div class="footer">
 
-    Gate of Heaven Ministries<br>
+Gate of Heaven Ministries<br>
 
-    Private Administration System · Version 1.0<br>
+Private Administration System · Version 1.1<br>
 
-    Authorized users only
+Authorized users only
 
 </div>
 
@@ -778,52 +544,450 @@ body {
 
 <script>
 
-function showSection(sectionId, button) {
-
-    const sections = [
-        "dashboard",
-        "finance",
-        "meetings",
-        "projects",
-        "documents",
-        "reports",
-        "backup"
-    ];
-
-    sections.forEach(function(id) {
-
-        const section = document.getElementById(id);
-
-        if (section) {
-            section.style.display =
-                id === sectionId ? "block" : "none";
-        }
-
-    });
+let projects =
+JSON.parse(localStorage.getItem("churchProjects")) || [];
 
 
-    document.querySelectorAll(".nav button")
-        .forEach(function(btn) {
-            btn.classList.remove("active");
-        });
+function showSection(id,button){
 
+const sections=[
+"dashboard",
+"finance",
+"meetings",
+"projects",
+"documents",
+"reports",
+"backup"
+];
 
-    if (button) {
-        button.classList.add("active");
-    }
+sections.forEach(function(section){
+
+const element=document.getElementById(section);
+
+if(element){
+element.style.display =
+section===id ? "block" : "none";
+}
+
+});
+
+document.querySelectorAll(".nav button")
+.forEach(function(btn){
+btn.classList.remove("active");
+});
+
+if(button){
+button.classList.add("active");
+}
 
 }
 
 
-function openModule(name) {
+function showProjectForm(){
 
-    alert(
-        name +
-        " module is ready for development.\n\n" +
-        "We will add the secure record functions next."
-    );
+document.getElementById("projectForm").style.display="block";
+
+window.scrollTo({
+top:document.getElementById("projectForm").offsetTop-80,
+behavior:"smooth"
+});
 
 }
+
+
+function hideProjectForm(){
+
+document.getElementById("projectForm").style.display="none";
+
+}
+
+
+function previewPhoto(event){
+
+const file=event.target.files[0];
+
+if(!file)return;
+
+const reader=new FileReader();
+
+reader.onload=function(e){
+
+const preview=document.getElementById("photoPreview");
+
+preview.src=e.target.result;
+
+preview.style.display="block";
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+
+function saveProject(){
+
+const name=document.getElementById("projectName").value.trim();
+
+if(!name){
+
+alert("Please enter a project name.");
+
+return;
+
+}
+
+
+const project={
+
+id:
+document.getElementById("projectId").value.trim()
+|| "PROJ-"+Date.now(),
+
+name:name,
+
+date:
+document.getElementById("projectDate").value,
+
+status:
+document.getElementById("projectStatus").value,
+
+budget:
+Number(document.getElementById("projectBudget").value)||0,
+
+spent:
+Number(document.getElementById("projectSpent").value)||0,
+
+labour:
+Number(document.getElementById("projectLabour").value)||0,
+
+materials:
+Number(document.getElementById("projectMaterials").value)||0,
+
+description:
+document.getElementById("projectDescription").value.trim(),
+
+photo:
+document.getElementById("photoPreview").src || "",
+
+createdAt:new Date().toISOString()
+
+};
+
+
+projects.push(project);
+
+localStorage.setItem(
+"churchProjects",
+JSON.stringify(projects)
+);
+
+
+clearForm();
+
+renderProjects();
+
+alert("Project saved successfully.");
+
+}
+
+
+function clearForm(){
+
+document.getElementById("projectName").value="";
+document.getElementById("projectId").value="";
+document.getElementById("projectDate").value="";
+document.getElementById("projectStatus").value="Planning";
+document.getElementById("projectBudget").value="";
+document.getElementById("projectSpent").value="";
+document.getElementById("projectLabour").value="";
+document.getElementById("projectMaterials").value="";
+document.getElementById("projectDescription").value="";
+document.getElementById("projectPhoto").value="";
+
+document.getElementById("photoPreview").src="";
+document.getElementById("photoPreview").style.display="none";
+
+hideProjectForm();
+
+}
+
+
+function deleteProject(index){
+
+if(!confirm("Delete this project record?")){
+return;
+}
+
+projects.splice(index,1);
+
+localStorage.setItem(
+"churchProjects",
+JSON.stringify(projects)
+);
+
+renderProjects();
+
+}
+
+
+function printProject(index){
+
+const p=projects[index];
+
+const printWindow=window.open("","_blank");
+
+printWindow.document.write(`
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>${escapeHtml(p.name)}</title>
+
+<style>
+
+body{
+font-family:Arial;
+padding:40px;
+color:#222;
+}
+
+h1{
+color:#243b64;
+}
+
+.info{
+margin-top:20px;
+line-height:1.8;
+}
+
+img{
+max-width:400px;
+margin-top:20px;
+border-radius:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Gate of Heaven Ministries</h1>
+
+<h2>${escapeHtml(p.name)}</h2>
+
+<div class="info">
+
+<strong>Project ID:</strong> ${escapeHtml(p.id)}<br>
+
+<strong>Date:</strong> ${escapeHtml(p.date || "-")}<br>
+
+<strong>Status:</strong> ${escapeHtml(p.status)}<br>
+
+<strong>Budget:</strong> LKR ${formatMoney(p.budget)}<br>
+
+<strong>Amount Spent:</strong> LKR ${formatMoney(p.spent)}<br>
+
+<strong>Labour:</strong> LKR ${formatMoney(p.labour)}<br>
+
+<strong>Materials:</strong> LKR ${formatMoney(p.materials)}<br>
+
+<strong>Remaining:</strong> LKR ${formatMoney(p.budget-p.spent)}
+
+</div>
+
+<h3 style="margin-top:25px">Description</h3>
+
+<p>${escapeHtml(p.description || "-")}</p>
+
+${p.photo ? `<img src="${p.photo}">` : ""}
+
+<p style="margin-top:40px;font-size:12px">
+Private Church Administration Record
+</p>
+
+</body>
+
+</html>
+
+`);
+
+printWindow.document.close();
+
+printWindow.print();
+
+}
+
+
+function formatMoney(value){
+
+return Number(value||0).toLocaleString(
+"en-LK",
+{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+}
+);
+
+}
+
+
+function escapeHtml(value){
+
+return String(value || "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+function renderProjects(){
+
+const container=document.getElementById("projectList");
+
+if(projects.length===0){
+
+container.innerHTML=`
+
+<div class="card empty">
+
+<h3>No projects recorded</h3>
+
+<p style="margin-top:8px">
+Click "Add Project" to create your first project.
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+container.innerHTML=projects.map(function(p,index){
+
+const remaining=p.budget-p.spent;
+
+return `
+
+<div class="card">
+
+<div class="project-header">
+
+<div>
+
+<h3 class="project-title">
+${escapeHtml(p.name)}
+</h3>
+
+<p class="project-meta">
+Project ID: ${escapeHtml(p.id)}
+· ${escapeHtml(p.status)}
+</p>
+
+</div>
+
+</div>
+
+
+<div class="project-grid">
+
+<div class="project-stat">
+<span>Budget</span>
+<strong>LKR ${formatMoney(p.budget)}</strong>
+</div>
+
+<div class="project-stat">
+<span>Spent</span>
+<strong>LKR ${formatMoney(p.spent)}</strong>
+</div>
+
+<div class="project-stat">
+<span>Labour</span>
+<strong>LKR ${formatMoney(p.labour)}</strong>
+</div>
+
+<div class="project-stat">
+<span>Materials</span>
+<strong>LKR ${formatMoney(p.materials)}</strong>
+</div>
+
+</div>
+
+
+<div style="margin-bottom:15px;color:#6b7280;font-size:13px">
+
+<strong>Remaining:</strong>
+LKR ${formatMoney(remaining)}
+
+<br><br>
+
+<strong>Start Date:</strong>
+${escapeHtml(p.date || "-")}
+
+</div>
+
+
+${p.description ? `
+
+<div style="margin-bottom:15px">
+
+<strong>Description</strong>
+
+<p style="margin-top:7px;color:#6b7280;line-height:1.6">
+${escapeHtml(p.description)}
+</p>
+
+</div>
+
+` : ""}
+
+
+${p.photo ? `
+
+<img src="${p.photo}"
+style="max-width:220px;border-radius:10px;margin-bottom:15px">
+
+` : ""}
+
+
+<div class="project-actions">
+
+<button class="secondary"
+onclick="printProject(${index})">
+
+🖨️ Save / Print
+
+</button>
+
+<button class="danger"
+onclick="deleteProject(${index})">
+
+Delete
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}).join("");
+
+}
+
+
+renderProjects();
 
 </script>
 
