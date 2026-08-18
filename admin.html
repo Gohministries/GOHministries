@@ -1,361 +1,933 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Church Admin | Gate of Heaven Ministries</title>
 
-    <title>Church Admin | Gate of Heaven Ministries</title>
+<style>
+*{box-sizing:border-box}
 
-    <link rel="stylesheet" href="style.css">
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f6f8;
+    color:#222
+}
+
+header{
+    background:#182848;
+    color:white;
+    text-align:center;
+    padding:22px
+}
+
+header h1{margin:0 0 5px}
+header p{margin:0;opacity:.85}
+
+nav{
+    background:white;
+    padding:12px;
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    justify-content:center;
+    box-shadow:0 2px 5px #0001
+}
+
+button{
+    border:0;
+    padding:10px 15px;
+    border-radius:6px;
+    background:#182848;
+    color:white;
+    cursor:pointer
+}
+
+button:hover{background:#4b6cb7}
+
+main{
+    max-width:1100px;
+    margin:auto;
+    padding:20px
+}
+
+.hidden{display:none}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px
+}
+
+.card,.box,.record{
+    background:white;
+    padding:18px;
+    margin:15px 0;
+    border-radius:10px;
+    box-shadow:0 2px 8px #0001
+}
+
+.card h3{
+    color:#182848;
+    margin-top:0
+}
+
+.card p{
+    font-size:22px;
+    font-weight:bold
+}
+
+input,select,textarea{
+    width:100%;
+    padding:11px;
+    margin:6px 0;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-family:inherit
+}
+
+textarea{
+    min-height:100px;
+    resize:vertical
+}
+
+.record{
+    border-left:4px solid #182848
+}
+
+.record h3{
+    color:#182848
+}
+
+.delete{
+    background:#b42318
+}
+
+.delete:hover{
+    background:#8f1c13
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#777
+}
+
+@media(max-width:600px){
+    nav button{
+        flex:1 1 auto
+    }
+
+    .cards{
+        grid-template-columns:1fr 1fr
+    }
+}
+
+@media(max-width:400px){
+    .cards{
+        grid-template-columns:1fr
+    }
+}
+</style>
 </head>
 
 <body>
 
 <header>
     <h1>Gate of Heaven Ministries</h1>
-    <p>Administration Panel</p>
+    <p>Church Administration</p>
 </header>
 
-
 <nav>
-
-    <button onclick="showSection('dashboard')">
-        Dashboard
-    </button>
-
-    <button onclick="showSection('finance')">
-        Finance
-    </button>
-
-    <button onclick="showSection('projects')">
-        Projects
-    </button>
-
-    <button onclick="showSection('events')">
-        Events
-    </button>
-
-    <button onclick="showSection('meetings')">
-        Meetings
-    </button>
-
-    <button onclick="showSection('documents')">
-        Documents
-    </button>
-
-    <button onclick="showSection('reports')">
-        Reports
-    </button>
-
-    <button onclick="showSection('backup')">
-        Backup
-    </button>
-
+    <button onclick="show('dashboard')">Dashboard</button>
+    <button onclick="show('finance')">Finance</button>
+    <button onclick="show('projects')">Projects</button>
+    <button onclick="show('events')">Events</button>
+    <button onclick="show('meetings')">Meetings</button>
+    <button onclick="show('documents')">Documents</button>
+    <button onclick="show('reports')">Reports</button>
+    <button onclick="show('backup')">Backup</button>
 </nav>
 
-
 <main>
-
 
 <!-- DASHBOARD -->
 
 <section id="dashboard">
 
-    <h2>Dashboard</h2>
+<h2>Dashboard</h2>
 
-    <div class="cards">
+<div class="cards">
 
-        <div class="card">
-            <h3>Total Income</h3>
-            <p id="totalIncome">LKR 0</p>
-        </div>
+<div class="card">
+<h3>Income</h3>
+<p id="income">LKR 0</p>
+</div>
 
-        <div class="card">
-            <h3>Total Expenses</h3>
-            <p id="totalExpenses">LKR 0</p>
-        </div>
+<div class="card">
+<h3>Expenses</h3>
+<p id="expenses">LKR 0</p>
+</div>
 
-        <div class="card">
-            <h3>Balance</h3>
-            <p id="balance">LKR 0</p>
-        </div>
+<div class="card">
+<h3>Balance</h3>
+<p id="balance">LKR 0</p>
+</div>
 
-        <div class="card">
-            <h3>Projects</h3>
-            <p id="projectCount">0</p>
-        </div>
+<div class="card">
+<h3>Projects</h3>
+<p id="projectsCount">0</p>
+</div>
 
-        <div class="card">
-            <h3>Events</h3>
-            <p id="eventCount">0</p>
-        </div>
+<div class="card">
+<h3>Events</h3>
+<p id="eventsCount">0</p>
+</div>
 
-    </div>
+<div class="card">
+<h3>Meetings</h3>
+<p id="meetingsCount">0</p>
+</div>
+
+</div>
 
 </section>
-
 
 
 <!-- FINANCE -->
 
 <section id="finance" class="hidden">
 
-    <h2>Finance</h2>
+<h2>Finance</h2>
 
-    <div class="box">
+<div class="box">
 
-        <h3>Add Income / Expense</h3>
+<select id="financeType">
+<option value="income">Income</option>
+<option value="expense">Expense</option>
+</select>
 
-        <select id="financeType">
+<input type="date" id="financeDate">
 
-            <option value="income">
-                Income
-            </option>
+<input
+id="financeDescription"
+placeholder="Description">
 
-            <option value="expense">
-                Expense
-            </option>
+<input
+type="number"
+id="financeAmount"
+placeholder="Amount">
 
-        </select>
+<button onclick="addFinance()">Save</button>
 
-        <input
-            type="date"
-            id="financeDate"
-        >
+</div>
 
-        <input
-            type="text"
-            id="financeDescription"
-            placeholder="Description"
-        >
-
-        <input
-            type="number"
-            id="financeAmount"
-            placeholder="Amount"
-        >
-
-        <button onclick="addFinance()">
-            Save
-        </button>
-
-    </div>
-
-    <div id="financeList"></div>
+<div id="financeList"></div>
 
 </section>
-
 
 
 <!-- PROJECTS -->
 
 <section id="projects" class="hidden">
 
-    <h2>Projects</h2>
+<h2>Projects</h2>
 
-    <div class="box">
+<div class="box">
 
-        <input
-            type="text"
-            id="projectName"
-            placeholder="Project name"
-        >
+<input
+id="projectName"
+placeholder="Project name">
 
-        <input
-            type="number"
-            id="projectBudget"
-            placeholder="Budget"
-        >
+<input
+type="number"
+id="projectBudget"
+placeholder="Budget">
 
-        <input
-            type="number"
-            id="projectSpent"
-            placeholder="Amount spent"
-        >
+<input
+type="number"
+id="projectSpent"
+placeholder="Amount spent">
 
-        <select id="projectStatus">
+<select id="projectStatus">
+<option>Planning</option>
+<option>Active</option>
+<option>Completed</option>
+</select>
 
-            <option>Planning</option>
-            <option>Active</option>
-            <option>Completed</option>
+<button onclick="addProject()">Save Project</button>
 
-        </select>
+</div>
 
-        <button onclick="addProject()">
-            Save Project
-        </button>
-
-    </div>
-
-    <div id="projectList"></div>
+<div id="projectList"></div>
 
 </section>
-
 
 
 <!-- EVENTS -->
 
 <section id="events" class="hidden">
 
-    <h2>Events</h2>
+<h2>Events</h2>
 
-    <div class="box">
+<div class="box">
 
-        <h3>Add New Event</h3>
+<input
+id="eventTitle"
+placeholder="Event title">
 
-        <input
-            type="text"
-            id="eventTitle"
-            placeholder="Event title"
-        >
+<input
+type="date"
+id="eventDate">
 
-        <input
-            type="date"
-            id="eventDate"
-        >
+<input
+id="eventTime"
+placeholder="Time">
 
-        <input
-            type="text"
-            id="eventTime"
-            placeholder="Time"
-        >
+<input
+id="eventVenue"
+placeholder="Venue">
 
-        <input
-            type="text"
-            id="eventVenue"
-            placeholder="Venue"
-        >
+<textarea
+id="eventDescription"
+placeholder="Event description"></textarea>
 
-        <input
-            type="text"
-            id="eventDescription"
-            placeholder="Short description"
-        >
+<button onclick="addEvent()">Save Event</button>
 
-        <button onclick="addEvent()">
-            Save Event
-        </button>
+</div>
 
-    </div>
-
-    <div id="eventList"></div>
+<div id="eventList"></div>
 
 </section>
-
 
 
 <!-- MEETINGS -->
 
 <section id="meetings" class="hidden">
 
-    <h2>Meetings</h2>
+<h2>Meetings</h2>
 
-    <div class="box">
+<div class="box">
 
-        <input
-            type="date"
-            id="meetingDate"
-        >
+<input
+type="date"
+id="meetingDate">
 
-        <input
-            type="text"
-            id="meetingTitle"
-            placeholder="Meeting title"
-        >
+<input
+id="meetingTitle"
+placeholder="Meeting title">
 
-        <textarea
-            id="meetingNotes"
-            placeholder="Meeting notes"
-        ></textarea>
+<textarea
+id="meetingNotes"
+placeholder="Meeting notes"></textarea>
 
-        <button onclick="addMeeting()">
-            Save Meeting
-        </button>
+<button onclick="addMeeting()">Save Meeting</button>
 
-    </div>
+</div>
 
-    <div id="meetingList"></div>
+<div id="meetingList"></div>
 
 </section>
-
 
 
 <!-- DOCUMENTS -->
 
 <section id="documents" class="hidden">
 
-    <h2>Documents</h2>
+<h2>Documents</h2>
 
-    <div class="box">
+<div class="box">
 
-        <p>
-            Document management will be connected
-            to secure cloud storage.
-        </p>
+<h3>Church Documents</h3>
 
-    </div>
+<p>
+Document management will be connected to secure
+cloud storage in the next stage.
+</p>
+
+</div>
 
 </section>
-
 
 
 <!-- REPORTS -->
 
 <section id="reports" class="hidden">
 
-    <h2>Reports</h2>
+<h2>Reports</h2>
 
-    <div class="box">
+<div class="box">
 
-        <button onclick="generateReport()">
-            Generate Report
-        </button>
+<button onclick="report()">Generate Financial Report</button>
 
-        <div id="reportResult"></div>
+<div id="report"></div>
 
-    </div>
+</div>
 
 </section>
-
 
 
 <!-- BACKUP -->
 
 <section id="backup" class="hidden">
 
-    <h2>Backup</h2>
+<h2>Backup</h2>
 
-    <div class="box">
+<div class="box">
 
-        <p>
-            Download a backup of your current
-            browser data.
-        </p>
+<p>
+Create a backup of the information currently
+stored in this browser.
+</p>
 
-        <button onclick="downloadBackup()">
-            Download Backup
-        </button>
+<button onclick="backup()">Download Backup</button>
 
-        <button onclick="clearAllData()">
-            Clear All Data
-        </button>
-
-    </div>
+</div>
 
 </section>
-
 
 </main>
 
 
 <footer>
-
-    © 2026 Gate of Heaven Ministries
-
+© 2026 Gate of Heaven Ministries
 </footer>
 
 
-<script src="script.js"></script>
+<script>
+
+function show(id){
+
+document.querySelectorAll("main section")
+.forEach(s=>s.classList.add("hidden"));
+
+document.getElementById(id)
+.classList.remove("hidden");
+
+update();
+}
+
+
+/* FINANCE */
+
+function addFinance(){
+
+let data=JSON.parse(
+localStorage.getItem("finance")||"[]"
+);
+
+let item={
+type:financeType.value,
+date:financeDate.value,
+description:financeDescription.value,
+amount:Number(financeAmount.value)
+};
+
+if(!item.date||!item.description||!item.amount){
+alert("Please complete all fields");
+return;
+}
+
+data.push(item);
+
+localStorage.setItem(
+"finance",
+JSON.stringify(data)
+);
+
+financeDescription.value="";
+financeAmount.value="";
+
+displayFinance();
+update();
+}
+
+
+function displayFinance(){
+
+let data=JSON.parse(
+localStorage.getItem("finance")||"[]"
+);
+
+financeList.innerHTML="";
+
+data.forEach((x,i)=>{
+
+financeList.innerHTML+=`
+
+<div class="record">
+
+<h3>${x.type.toUpperCase()}</h3>
+
+<p>Date: ${x.date}</p>
+
+<p>${x.description}</p>
+
+<p>
+<strong>
+LKR ${x.amount.toLocaleString()}
+</strong>
+</p>
+
+<button class="delete"
+onclick="deleteFinance(${i})">
+Delete
+</button>
+
+</div>
+
+`;
+
+});
+}
+
+
+function deleteFinance(i){
+
+let data=JSON.parse(
+localStorage.getItem("finance")||"[]"
+);
+
+data.splice(i,1);
+
+localStorage.setItem(
+"finance",
+JSON.stringify(data)
+);
+
+displayFinance();
+update();
+}
+
+
+/* PROJECTS */
+
+function addProject(){
+
+let data=JSON.parse(
+localStorage.getItem("projects")||"[]"
+);
+
+let item={
+name:projectName.value,
+budget:Number(projectBudget.value),
+spent:Number(projectSpent.value),
+status:projectStatus.value
+};
+
+if(!item.name){
+alert("Enter project name");
+return;
+}
+
+data.push(item);
+
+localStorage.setItem(
+"projects",
+JSON.stringify(data)
+);
+
+projectName.value="";
+projectBudget.value="";
+projectSpent.value="";
+
+displayProjects();
+update();
+}
+
+
+function displayProjects(){
+
+let data=JSON.parse(
+localStorage.getItem("projects")||"[]"
+);
+
+projectList.innerHTML="";
+
+data.forEach((x,i)=>{
+
+projectList.innerHTML+=`
+
+<div class="record">
+
+<h3>${x.name}</h3>
+
+<p>Budget:
+LKR ${x.budget.toLocaleString()}</p>
+
+<p>Spent:
+LKR ${x.spent.toLocaleString()}</p>
+
+<p>Status: ${x.status}</p>
+
+<button class="delete"
+onclick="deleteProject(${i})">
+Delete
+</button>
+
+</div>
+
+`;
+
+});
+}
+
+
+function deleteProject(i){
+
+let data=JSON.parse(
+localStorage.getItem("projects")||"[]"
+);
+
+data.splice(i,1);
+
+localStorage.setItem(
+"projects",
+JSON.stringify(data)
+);
+
+displayProjects();
+update();
+}
+
+
+/* EVENTS */
+
+function addEvent(){
+
+let data=JSON.parse(
+localStorage.getItem("events")||"[]"
+);
+
+let item={
+title:eventTitle.value,
+date:eventDate.value,
+time:eventTime.value,
+venue:eventVenue.value,
+description:eventDescription.value
+};
+
+if(!item.title||!item.date){
+alert("Event title and date are required");
+return;
+}
+
+data.push(item);
+
+localStorage.setItem(
+"events",
+JSON.stringify(data)
+);
+
+eventTitle.value="";
+eventDate.value="";
+eventTime.value="";
+eventVenue.value="";
+eventDescription.value="";
+
+displayEvents();
+update();
+}
+
+
+function displayEvents(){
+
+let data=JSON.parse(
+localStorage.getItem("events")||"[]"
+);
+
+eventList.innerHTML="";
+
+data.forEach((x,i)=>{
+
+eventList.innerHTML+=`
+
+<div class="record">
+
+<h3>${x.title}</h3>
+
+<p>
+<strong>Date:</strong> ${x.date}
+</p>
+
+<p>
+<strong>Time:</strong> ${x.time||"-"}
+</p>
+
+<p>
+<strong>Venue:</strong> ${x.venue||"-"}
+</p>
+
+<p>${x.description||""}</p>
+
+<button class="delete"
+onclick="deleteEvent(${i})">
+Delete
+</button>
+
+</div>
+
+`;
+
+});
+}
+
+
+function deleteEvent(i){
+
+let data=JSON.parse(
+localStorage.getItem("events")||"[]"
+);
+
+data.splice(i,1);
+
+localStorage.setItem(
+"events",
+JSON.stringify(data)
+);
+
+displayEvents();
+update();
+}
+
+
+/* MEETINGS */
+
+function addMeeting(){
+
+let data=JSON.parse(
+localStorage.getItem("meetings")||"[]"
+);
+
+let item={
+date:meetingDate.value,
+title:meetingTitle.value,
+notes:meetingNotes.value
+};
+
+if(!item.date||!item.title){
+alert("Date and title are required");
+return;
+}
+
+data.push(item);
+
+localStorage.setItem(
+"meetings",
+JSON.stringify(data)
+);
+
+meetingTitle.value="";
+meetingNotes.value="";
+
+displayMeetings();
+update();
+}
+
+
+function displayMeetings(){
+
+let data=JSON.parse(
+localStorage.getItem("meetings")||"[]"
+);
+
+meetingList.innerHTML="";
+
+data.forEach((x,i)=>{
+
+meetingList.innerHTML+=`
+
+<div class="record">
+
+<h3>${x.title}</h3>
+
+<p>Date: ${x.date}</p>
+
+<p>${x.notes||""}</p>
+
+<button class="delete"
+onclick="deleteMeeting(${i})">
+Delete
+</button>
+
+</div>
+
+`;
+
+});
+}
+
+
+function deleteMeeting(i){
+
+let data=JSON.parse(
+localStorage.getItem("meetings")||"[]"
+);
+
+data.splice(i,1);
+
+localStorage.setItem(
+"meetings",
+JSON.stringify(data)
+);
+
+displayMeetings();
+update();
+}
+
+
+/* DASHBOARD */
+
+function update(){
+
+let finance=JSON.parse(
+localStorage.getItem("finance")||"[]"
+);
+
+let projects=JSON.parse(
+localStorage.getItem("projects")||"[]"
+);
+
+let events=JSON.parse(
+localStorage.getItem("events")||"[]"
+);
+
+let meetings=JSON.parse(
+localStorage.getItem("meetings")||"[]"
+);
+
+let inc=0;
+let exp=0;
+
+finance.forEach(x=>{
+
+if(x.type==="income")
+inc+=Number(x.amount);
+
+if(x.type==="expense")
+exp+=Number(x.amount);
+
+});
+
+income.textContent=
+"LKR "+inc.toLocaleString();
+
+expenses.textContent=
+"LKR "+exp.toLocaleString();
+
+balance.textContent=
+"LKR "+(inc-exp).toLocaleString();
+
+projectsCount.textContent=
+projects.length;
+
+eventsCount.textContent=
+events.length;
+
+meetingsCount.textContent=
+meetings.length;
+}
+
+
+/* REPORT */
+
+function report(){
+
+let finance=JSON.parse(
+localStorage.getItem("finance")||"[]"
+);
+
+let inc=0;
+let exp=0;
+
+finance.forEach(x=>{
+
+if(x.type==="income")
+inc+=Number(x.amount);
+
+if(x.type==="expense")
+exp+=Number(x.amount);
+
+});
+
+let bal=inc-exp;
+
+document.getElementById("report").innerHTML=`
+
+<div class="record">
+
+<h3>Financial Report</h3>
+
+<p>Total Income:
+<strong>LKR ${inc.toLocaleString()}</strong>
+</p>
+
+<p>Total Expenses:
+<strong>LKR ${exp.toLocaleString()}</strong>
+</p>
+
+<p>Balance:
+<strong>LKR ${bal.toLocaleString()}</strong>
+</p>
+
+</div>
+
+`;
+}
+
+
+/* BACKUP */
+
+function backup(){
+
+let data={
+
+finance:JSON.parse(
+localStorage.getItem("finance")||"[]"
+),
+
+projects:JSON.parse(
+localStorage.getItem("projects")||"[]"
+),
+
+events:JSON.parse(
+localStorage.getItem("events")||"[]"
+),
+
+meetings:JSON.parse(
+localStorage.getItem("meetings")||"[]"
+)
+
+};
+
+let file=new Blob(
+[JSON.stringify(data,null,2)],
+{type:"application/json"}
+);
+
+let url=URL.createObjectURL(file);
+
+let a=document.createElement("a");
+
+a.href=url;
+a.download="church-admin-backup.json";
+
+a.click();
+
+URL.revokeObjectURL(url);
+}
+
+
+/* START */
+
+displayFinance();
+displayProjects();
+displayEvents();
+displayMeetings();
+update();
+
+</script>
 
 </body>
 </html>
