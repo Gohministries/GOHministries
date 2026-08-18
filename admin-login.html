@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GOH Ministries | Admin Login</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:Arial,sans-serif;
+  background:#eef3f8;
+  padding:20px;
+}
+
+.card{
+  width:100%;
+  max-width:390px;
+  background:#fff;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 10px 35px #0002;
+}
+
+.logo{
+  width:58px;
+  height:58px;
+  margin:auto auto 15px;
+  border-radius:16px;
+  background:#0b376d;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  font-size:20px;
+}
+
+h1{
+  text-align:center;
+  color:#0b376d;
+  font-size:23px;
+}
+
+.sub{
+  text-align:center;
+  color:#667085;
+  margin:7px 0 25px;
+}
+
+label{
+  display:block;
+  margin:14px 0 6px;
+  font-size:14px;
+  font-weight:bold;
+}
+
+input{
+  width:100%;
+  padding:13px;
+  border:1px solid #ccd5df;
+  border-radius:10px;
+  font-size:16px;
+  outline:none;
+}
+
+input:focus{
+  border-color:#0b376d;
+}
+
+button{
+  width:100%;
+  margin-top:20px;
+  padding:14px;
+  border:0;
+  border-radius:10px;
+  background:#0b376d;
+  color:#fff;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:disabled{
+  opacity:.6;
+}
+
+.msg{
+  margin-top:15px;
+  padding:11px;
+  border-radius:9px;
+  display:none;
+  text-align:center;
+  font-size:14px;
+}
+
+.error{
+  display:block;
+  background:#fee4e2;
+  color:#b42318;
+}
+
+.success{
+  display:block;
+  background:#dcfae6;
+  color:#067647;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="logo">GOH</div>
+
+  <h1>GOH Ministries</h1>
+  <div class="sub">Church Administration</div>
+
+  <form id="loginForm">
+
+    <label>Username</label>
+    <input
+      id="username"
+      type="text"
+      autocomplete="username"
+      value="admin"
+      required
+    >
+
+    <label>Password</label>
+    <input
+      id="password"
+      type="password"
+      autocomplete="current-password"
+      required
+    >
+
+    <button id="loginBtn" type="submit">
+      Login
+    </button>
+
+  </form>
+
+  <div id="msg" class="msg"></div>
+
+</div>
+
+<script>
+
+const API = "YOUR_ADMIN_API_WORKER_URL";
+
+const form = document.getElementById("loginForm");
+const username = document.getElementById("username");
+const password = document.getElementById("password");
+const button = document.getElementById("loginBtn");
+const msg = document.getElementById("msg");
+
+function showMessage(text,type="error"){
+  msg.textContent = text;
+  msg.className = "msg " + type;
+}
+
+form.addEventListener("submit",async e=>{
+
+  e.preventDefault();
+
+  button.disabled = true;
+  button.textContent = "Logging in...";
+  msg.className = "msg";
+
+  try{
+
+    const response = await fetch(API + "/login",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      credentials:"include",
+      body:JSON.stringify({
+        username:username.value.trim(),
+        password:password.value
+      })
+    });
+
+    const data = await response.json();
+
+    if(!response.ok || !data.success){
+      throw new Error(data.error || "Invalid login");
+    }
+
+    showMessage("Login successful","success");
+
+    setTimeout(()=>{
+      location.href="admin-panel.html";
+    },500);
+
+  }catch(error){
+
+    showMessage(error.message || "Login failed");
+
+    button.disabled = false;
+    button.textContent = "Login";
+  }
+
+});
+
+</script>
+
+</body>
+</html>
