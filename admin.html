@@ -2,132 +2,106 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Church Admin | Gate of Heaven Ministries</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GOH Ministries | Admin</title>
 
 <style>
 *{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f6f9;color:#222}
+header{background:#182848;color:white;padding:18px;text-align:center}
+header h1{margin:0;font-size:22px}
+header p{margin:5px 0 0;opacity:.8}
 
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#f4f6f8;
-    color:#222
-}
+nav{display:flex;gap:8px;overflow:auto;background:white;padding:10px;border-bottom:1px solid #ddd}
+nav button{border:0;background:#eee;padding:10px 15px;border-radius:8px;white-space:nowrap;cursor:pointer}
+nav button.active{background:#182848;color:white}
 
-header{
-    background:#182848;
-    color:white;
-    text-align:center;
-    padding:22px
-}
+main{max-width:1100px;margin:auto;padding:20px}
+section{display:none}
+section.active{display:block}
 
-header h1{margin:0 0 5px}
-header p{margin:0;opacity:.85}
-
-nav{
-    background:white;
-    padding:12px;
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-    justify-content:center;
-    box-shadow:0 2px 5px #0001
-}
-
-button{
-    border:0;
-    padding:10px 15px;
-    border-radius:6px;
-    background:#182848;
-    color:white;
-    cursor:pointer
-}
-
-button:hover{background:#4b6cb7}
-
-main{
-    max-width:1100px;
-    margin:auto;
-    padding:20px
-}
-
-.hidden{display:none}
+h2{margin-top:0}
 
 .cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:15px
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+margin-bottom:20px
 }
 
-.card,.box,.record{
-    background:white;
-    padding:18px;
-    margin:15px 0;
-    border-radius:10px;
-    box-shadow:0 2px 8px #0001
+.card{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 2px 8px #0001
 }
 
-.card h3{
-    color:#182848;
-    margin-top:0
-}
+.card strong{display:block;font-size:25px;margin-top:8px}
 
-.card p{
-    font-size:22px;
-    font-weight:bold
+.form{
+background:white;
+padding:20px;
+border-radius:12px;
+margin-bottom:20px;
+box-shadow:0 2px 8px #0001
 }
 
 input,select,textarea{
-    width:100%;
-    padding:11px;
-    margin:6px 0;
-    border:1px solid #ccc;
-    border-radius:6px;
-    font-family:inherit
+width:100%;
+padding:11px;
+margin:6px 0 12px;
+border:1px solid #ccc;
+border-radius:7px;
+font-size:15px
 }
 
-textarea{
-    min-height:100px;
-    resize:vertical
+textarea{min-height:90px}
+
+button.primary{
+background:#182848;
+color:white;
+border:0;
+padding:11px 18px;
+border-radius:7px;
+cursor:pointer
 }
 
-.record{
-    border-left:4px solid #182848
+button.delete{
+background:#d93025;
+color:white;
+border:0;
+padding:7px 10px;
+border-radius:6px;
+cursor:pointer
 }
 
-.record h3{
-    color:#182848
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+border-radius:10px;
+overflow:hidden
 }
 
-.delete{
-    background:#b42318
+th,td{
+padding:11px;
+border-bottom:1px solid #eee;
+text-align:left
 }
 
-.delete:hover{
-    background:#8f1c13
-}
+th{background:#182848;color:white}
 
-footer{
-    text-align:center;
-    padding:30px;
-    color:#777
+.status{
+padding:10px;
+background:#e8f5e9;
+border-radius:7px;
+margin-bottom:15px
 }
 
 @media(max-width:600px){
-    nav button{
-        flex:1 1 auto
-    }
-
-    .cards{
-        grid-template-columns:1fr 1fr
-    }
-}
-
-@media(max-width:400px){
-    .cards{
-        grid-template-columns:1fr
-    }
+main{padding:12px}
+table{font-size:13px}
+th,td{padding:8px}
 }
 </style>
 </head>
@@ -135,59 +109,59 @@ footer{
 <body>
 
 <header>
-    <h1>Gate of Heaven Ministries</h1>
-    <p>Church Administration</p>
+<h1>Gate of Heaven Ministries</h1>
+<p>Church Administration System</p>
 </header>
 
 <nav>
-    <button onclick="show('dashboard')">Dashboard</button>
-    <button onclick="show('finance')">Finance</button>
-    <button onclick="show('projects')">Projects</button>
-    <button onclick="show('events')">Events</button>
-    <button onclick="show('meetings')">Meetings</button>
-    <button onclick="show('documents')">Documents</button>
-    <button onclick="show('reports')">Reports</button>
-    <button onclick="show('backup')">Backup</button>
+<button class="active" onclick="showPage('dashboard',this)">Dashboard</button>
+<button onclick="showPage('finance',this)">Finance</button>
+<button onclick="showPage('projects',this)">Projects</button>
+<button onclick="showPage('events',this)">Events</button>
+<button onclick="showPage('meetings',this)">Meetings</button>
+<button onclick="showPage('reports',this)">Reports</button>
+<button onclick="showPage('backup',this)">Backup</button>
 </nav>
 
 <main>
 
-<!-- DASHBOARD -->
+<div id="status" class="status">Connecting to database...</div>
 
-<section id="dashboard">
+<!-- DASHBOARD -->
+<section id="dashboard" class="active">
 
 <h2>Dashboard</h2>
 
 <div class="cards">
 
 <div class="card">
-<h3>Income</h3>
-<p id="income">LKR 0</p>
+Income
+<strong id="incomeTotal">Rs. 0</strong>
 </div>
 
 <div class="card">
-<h3>Expenses</h3>
-<p id="expenses">LKR 0</p>
+Expenses
+<strong id="expenseTotal">Rs. 0</strong>
 </div>
 
 <div class="card">
-<h3>Balance</h3>
-<p id="balance">LKR 0</p>
+Balance
+<strong id="balanceTotal">Rs. 0</strong>
 </div>
 
 <div class="card">
-<h3>Projects</h3>
-<p id="projectsCount">0</p>
+Projects
+<strong id="projectCount">0</strong>
 </div>
 
 <div class="card">
-<h3>Events</h3>
-<p id="eventsCount">0</p>
+Events
+<strong id="eventCount">0</strong>
 </div>
 
 <div class="card">
-<h3>Meetings</h3>
-<p id="meetingsCount">0</p>
+Meetings
+<strong id="meetingCount">0</strong>
 </div>
 
 </div>
@@ -196,172 +170,177 @@ footer{
 
 
 <!-- FINANCE -->
-
-<section id="finance" class="hidden">
+<section id="finance">
 
 <h2>Finance</h2>
 
-<div class="box">
+<div class="form">
 
 <select id="financeType">
 <option value="income">Income</option>
 <option value="expense">Expense</option>
 </select>
 
-<input type="date" id="financeDate">
+<input id="financeDate" type="date">
 
-<input
-id="financeDescription"
-placeholder="Description">
+<input id="financeDescription" placeholder="Description">
 
-<input
-type="number"
-id="financeAmount"
-placeholder="Amount">
+<input id="financeAmount" type="number" placeholder="Amount">
 
-<button onclick="addFinance()">Save</button>
+<button class="primary" onclick="addFinance()">Save Finance Record</button>
 
 </div>
 
-<div id="financeList"></div>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Type</th>
+<th>Description</th>
+<th>Amount</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody id="financeList"></tbody>
+</table>
 
 </section>
 
 
 <!-- PROJECTS -->
-
-<section id="projects" class="hidden">
+<section id="projects">
 
 <h2>Projects</h2>
 
-<div class="box">
+<div class="form">
 
-<input
-id="projectName"
-placeholder="Project name">
+<input id="projectName" placeholder="Project name">
 
-<input
-type="number"
-id="projectBudget"
-placeholder="Budget">
+<input id="projectBudget" type="number" placeholder="Budget">
 
-<input
-type="number"
-id="projectSpent"
-placeholder="Amount spent">
+<input id="projectSpent" type="number" placeholder="Spent">
 
 <select id="projectStatus">
 <option>Planning</option>
 <option>Active</option>
 <option>Completed</option>
+<option>Paused</option>
 </select>
 
-<button onclick="addProject()">Save Project</button>
+<button class="primary" onclick="addProject()">Save Project</button>
 
 </div>
 
-<div id="projectList"></div>
+<table>
+<thead>
+<tr>
+<th>Project</th>
+<th>Budget</th>
+<th>Spent</th>
+<th>Status</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody id="projectList"></tbody>
+</table>
 
 </section>
 
 
 <!-- EVENTS -->
-
-<section id="events" class="hidden">
+<section id="events">
 
 <h2>Events</h2>
 
-<div class="box">
+<div class="form">
 
-<input
-id="eventTitle"
-placeholder="Event title">
+<input id="eventTitle" placeholder="Event title">
 
-<input
-type="date"
-id="eventDate">
+<input id="eventDate" type="date">
 
-<input
-id="eventTime"
-placeholder="Time">
+<input id="eventTime" type="time">
 
-<input
-id="eventVenue"
-placeholder="Venue">
+<input id="eventVenue" placeholder="Venue">
 
-<textarea
-id="eventDescription"
-placeholder="Event description"></textarea>
+<textarea id="eventDescription" placeholder="Description"></textarea>
 
-<button onclick="addEvent()">Save Event</button>
+<button class="primary" onclick="addEvent()">Save Event</button>
 
 </div>
 
-<div id="eventList"></div>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Date</th>
+<th>Time</th>
+<th>Venue</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody id="eventList"></tbody>
+</table>
 
 </section>
 
 
 <!-- MEETINGS -->
-
-<section id="meetings" class="hidden">
+<section id="meetings">
 
 <h2>Meetings</h2>
 
-<div class="box">
+<div class="form">
 
-<input
-type="date"
-id="meetingDate">
+<input id="meetingDate" type="date">
 
-<input
-id="meetingTitle"
-placeholder="Meeting title">
+<input id="meetingTitle" placeholder="Meeting title">
 
-<textarea
-id="meetingNotes"
-placeholder="Meeting notes"></textarea>
+<textarea id="meetingNotes" placeholder="Meeting notes"></textarea>
 
-<button onclick="addMeeting()">Save Meeting</button>
+<button class="primary" onclick="addMeeting()">Save Meeting</button>
 
 </div>
 
-<div id="meetingList"></div>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Title</th>
+<th>Notes</th>
+<th></th>
+</tr>
+</thead>
 
-</section>
-
-
-<!-- DOCUMENTS -->
-
-<section id="documents" class="hidden">
-
-<h2>Documents</h2>
-
-<div class="box">
-
-<h3>Church Documents</h3>
-
-<p>
-Document management will be connected to secure
-cloud storage in the next stage.
-</p>
-
-</div>
+<tbody id="meetingList"></tbody>
+</table>
 
 </section>
 
 
 <!-- REPORTS -->
+<section id="reports">
 
-<section id="reports" class="hidden">
+<h2>Financial Report</h2>
 
-<h2>Reports</h2>
+<div class="cards">
 
-<div class="box">
+<div class="card">
+Total Income
+<strong id="reportIncome">Rs. 0</strong>
+</div>
 
-<button onclick="report()">Generate Financial Report</button>
+<div class="card">
+Total Expenses
+<strong id="reportExpense">Rs. 0</strong>
+</div>
 
-<div id="report"></div>
+<div class="card">
+Current Balance
+<strong id="reportBalance">Rs. 0</strong>
+</div>
 
 </div>
 
@@ -369,19 +348,17 @@ cloud storage in the next stage.
 
 
 <!-- BACKUP -->
-
-<section id="backup" class="hidden">
+<section id="backup">
 
 <h2>Backup</h2>
 
-<div class="box">
+<div class="form">
 
-<p>
-Create a backup of the information currently
-stored in this browser.
-</p>
+<p>Download the current database records as a JSON backup file.</p>
 
-<button onclick="backup()">Download Backup</button>
+<button class="primary" onclick="downloadBackup()">
+Download Backup
+</button>
 
 </div>
 
@@ -390,542 +367,438 @@ stored in this browser.
 </main>
 
 
-<footer>
-© 2026 Gate of Heaven Ministries
-</footer>
-
-
 <script>
 
-function show(id){
+const API="https://goh-church-api.YOUR-SUBDOMAIN.workers.dev";
 
-document.querySelectorAll("main section")
-.forEach(s=>s.classList.add("hidden"));
+let finance=[];
+let projects=[];
+let events=[];
+let meetings=[];
 
-document.getElementById(id)
-.classList.remove("hidden");
 
-update();
+function showPage(id,button){
+
+document.querySelectorAll("section").forEach(x=>{
+x.classList.remove("active")
+});
+
+document.getElementById(id).classList.add("active");
+
+document.querySelectorAll("nav button").forEach(x=>{
+x.classList.remove("active")
+});
+
+button.classList.add("active");
+
+}
+
+
+async function api(path,options={}){
+
+const response=await fetch(API+path,{
+headers:{
+"Content-Type":"application/json"
+},
+...options
+});
+
+if(!response.ok){
+throw new Error("API request failed");
+}
+
+return response.json();
+
+}
+
+
+async function loadAll(){
+
+try{
+
+finance=await api("/finance");
+projects=await api("/projects");
+events=await api("/events");
+meetings=await api("/meetings");
+
+renderFinance();
+renderProjects();
+renderEvents();
+renderMeetings();
+updateDashboard();
+
+document.getElementById("status").textContent=
+"Database connected successfully.";
+
+}catch(error){
+
+console.error(error);
+
+document.getElementById("status").textContent=
+"Database connection failed. Check your Worker URL.";
+
+}
+
 }
 
 
 /* FINANCE */
 
-function addFinance(){
+async function addFinance(){
 
-let data=JSON.parse(
-localStorage.getItem("finance")||"[]"
-);
-
-let item={
-type:financeType.value,
-date:financeDate.value,
-description:financeDescription.value,
-amount:Number(financeAmount.value)
+const data={
+type:document.getElementById("financeType").value,
+date:document.getElementById("financeDate").value,
+description:document.getElementById("financeDescription").value,
+amount:Number(document.getElementById("financeAmount").value)
 };
 
-if(!item.date||!item.description||!item.amount){
-alert("Please complete all fields");
+if(!data.date||!data.description||!data.amount){
+alert("Please complete all fields.");
 return;
 }
 
-data.push(item);
+await api("/finance",{
+method:"POST",
+body:JSON.stringify(data)
+});
 
-localStorage.setItem(
-"finance",
-JSON.stringify(data)
-);
+document.getElementById("financeDescription").value="";
+document.getElementById("financeAmount").value="";
 
-financeDescription.value="";
-financeAmount.value="";
+await loadAll();
 
-displayFinance();
-update();
 }
 
 
-function displayFinance(){
+async function deleteFinance(id){
 
-let data=JSON.parse(
-localStorage.getItem("finance")||"[]"
-);
+if(!confirm("Delete this finance record?"))return;
 
-financeList.innerHTML="";
+await api("/finance/"+id,{
+method:"DELETE"
+});
 
-data.forEach((x,i)=>{
+await loadAll();
 
-financeList.innerHTML+=`
+}
 
-<div class="record">
 
-<h3>${x.type.toUpperCase()}</h3>
+function renderFinance(){
 
-<p>Date: ${x.date}</p>
+document.getElementById("financeList").innerHTML=
+finance.map(x=>`
 
-<p>${x.description}</p>
-
-<p>
-<strong>
-LKR ${x.amount.toLocaleString()}
-</strong>
-</p>
-
-<button class="delete"
-onclick="deleteFinance(${i})">
+<tr>
+<td>${x.date}</td>
+<td>${x.type}</td>
+<td>${escapeHTML(x.description)}</td>
+<td>Rs. ${Number(x.amount).toLocaleString()}</td>
+<td>
+<button class="delete" onclick="deleteFinance(${x.id})">
 Delete
 </button>
+</td>
+</tr>
 
-</div>
+`).join("");
 
-`;
-
-});
-}
-
-
-function deleteFinance(i){
-
-let data=JSON.parse(
-localStorage.getItem("finance")||"[]"
-);
-
-data.splice(i,1);
-
-localStorage.setItem(
-"finance",
-JSON.stringify(data)
-);
-
-displayFinance();
-update();
 }
 
 
 /* PROJECTS */
 
-function addProject(){
+async function addProject(){
 
-let data=JSON.parse(
-localStorage.getItem("projects")||"[]"
-);
-
-let item={
-name:projectName.value,
-budget:Number(projectBudget.value),
-spent:Number(projectSpent.value),
-status:projectStatus.value
+const data={
+name:document.getElementById("projectName").value,
+budget:Number(document.getElementById("projectBudget").value||0),
+spent:Number(document.getElementById("projectSpent").value||0),
+status:document.getElementById("projectStatus").value
 };
 
-if(!item.name){
-alert("Enter project name");
+if(!data.name){
+alert("Enter project name.");
 return;
 }
 
-data.push(item);
+await api("/projects",{
+method:"POST",
+body:JSON.stringify(data)
+});
 
-localStorage.setItem(
-"projects",
-JSON.stringify(data)
-);
+document.getElementById("projectName").value="";
+document.getElementById("projectBudget").value="";
+document.getElementById("projectSpent").value="";
 
-projectName.value="";
-projectBudget.value="";
-projectSpent.value="";
+await loadAll();
 
-displayProjects();
-update();
 }
 
 
-function displayProjects(){
+async function deleteProject(id){
 
-let data=JSON.parse(
-localStorage.getItem("projects")||"[]"
-);
+if(!confirm("Delete this project?"))return;
 
-projectList.innerHTML="";
+await api("/projects/"+id,{
+method:"DELETE"
+});
 
-data.forEach((x,i)=>{
+await loadAll();
 
-projectList.innerHTML+=`
+}
 
-<div class="record">
 
-<h3>${x.name}</h3>
+function renderProjects(){
 
-<p>Budget:
-LKR ${x.budget.toLocaleString()}</p>
+document.getElementById("projectList").innerHTML=
+projects.map(x=>`
 
-<p>Spent:
-LKR ${x.spent.toLocaleString()}</p>
-
-<p>Status: ${x.status}</p>
-
-<button class="delete"
-onclick="deleteProject(${i})">
+<tr>
+<td>${escapeHTML(x.name)}</td>
+<td>Rs. ${Number(x.budget).toLocaleString()}</td>
+<td>Rs. ${Number(x.spent).toLocaleString()}</td>
+<td>${escapeHTML(x.status||"")}</td>
+<td>
+<button class="delete" onclick="deleteProject(${x.id})">
 Delete
 </button>
+</td>
+</tr>
 
-</div>
+`).join("");
 
-`;
-
-});
-}
-
-
-function deleteProject(i){
-
-let data=JSON.parse(
-localStorage.getItem("projects")||"[]"
-);
-
-data.splice(i,1);
-
-localStorage.setItem(
-"projects",
-JSON.stringify(data)
-);
-
-displayProjects();
-update();
 }
 
 
 /* EVENTS */
 
-function addEvent(){
+async function addEvent(){
 
-let data=JSON.parse(
-localStorage.getItem("events")||"[]"
-);
-
-let item={
-title:eventTitle.value,
-date:eventDate.value,
-time:eventTime.value,
-venue:eventVenue.value,
-description:eventDescription.value
+const data={
+title:document.getElementById("eventTitle").value,
+event_date:document.getElementById("eventDate").value,
+event_time:document.getElementById("eventTime").value,
+venue:document.getElementById("eventVenue").value,
+description:document.getElementById("eventDescription").value
 };
 
-if(!item.title||!item.date){
-alert("Event title and date are required");
+if(!data.title||!data.event_date){
+alert("Enter event title and date.");
 return;
 }
 
-data.push(item);
+await api("/events",{
+method:"POST",
+body:JSON.stringify(data)
+});
 
-localStorage.setItem(
-"events",
-JSON.stringify(data)
-);
+document.getElementById("eventTitle").value="";
+document.getElementById("eventDate").value="";
+document.getElementById("eventTime").value="";
+document.getElementById("eventVenue").value="";
+document.getElementById("eventDescription").value="";
 
-eventTitle.value="";
-eventDate.value="";
-eventTime.value="";
-eventVenue.value="";
-eventDescription.value="";
+await loadAll();
 
-displayEvents();
-update();
 }
 
 
-function displayEvents(){
+async function deleteEvent(id){
 
-let data=JSON.parse(
-localStorage.getItem("events")||"[]"
-);
+if(!confirm("Delete this event?"))return;
 
-eventList.innerHTML="";
+await api("/events/"+id,{
+method:"DELETE"
+});
 
-data.forEach((x,i)=>{
+await loadAll();
 
-eventList.innerHTML+=`
+}
 
-<div class="record">
 
-<h3>${x.title}</h3>
+function renderEvents(){
 
-<p>
-<strong>Date:</strong> ${x.date}
-</p>
+document.getElementById("eventList").innerHTML=
+events.map(x=>`
 
-<p>
-<strong>Time:</strong> ${x.time||"-"}
-</p>
-
-<p>
-<strong>Venue:</strong> ${x.venue||"-"}
-</p>
-
-<p>${x.description||""}</p>
-
-<button class="delete"
-onclick="deleteEvent(${i})">
+<tr>
+<td>${escapeHTML(x.title)}</td>
+<td>${x.event_date}</td>
+<td>${x.event_time||""}</td>
+<td>${escapeHTML(x.venue||"")}</td>
+<td>
+<button class="delete" onclick="deleteEvent(${x.id})">
 Delete
 </button>
+</td>
+</tr>
 
-</div>
+`).join("");
 
-`;
-
-});
-}
-
-
-function deleteEvent(i){
-
-let data=JSON.parse(
-localStorage.getItem("events")||"[]"
-);
-
-data.splice(i,1);
-
-localStorage.setItem(
-"events",
-JSON.stringify(data)
-);
-
-displayEvents();
-update();
 }
 
 
 /* MEETINGS */
 
-function addMeeting(){
+async function addMeeting(){
 
-let data=JSON.parse(
-localStorage.getItem("meetings")||"[]"
-);
-
-let item={
-date:meetingDate.value,
-title:meetingTitle.value,
-notes:meetingNotes.value
+const data={
+meeting_date:document.getElementById("meetingDate").value,
+title:document.getElementById("meetingTitle").value,
+notes:document.getElementById("meetingNotes").value
 };
 
-if(!item.date||!item.title){
-alert("Date and title are required");
+if(!data.meeting_date||!data.title){
+alert("Enter meeting date and title.");
 return;
 }
 
-data.push(item);
+await api("/meetings",{
+method:"POST",
+body:JSON.stringify(data)
+});
 
-localStorage.setItem(
-"meetings",
-JSON.stringify(data)
-);
+document.getElementById("meetingDate").value="";
+document.getElementById("meetingTitle").value="";
+document.getElementById("meetingNotes").value="";
 
-meetingTitle.value="";
-meetingNotes.value="";
+await loadAll();
 
-displayMeetings();
-update();
 }
 
 
-function displayMeetings(){
+async function deleteMeeting(id){
 
-let data=JSON.parse(
-localStorage.getItem("meetings")||"[]"
-);
+if(!confirm("Delete this meeting?"))return;
 
-meetingList.innerHTML="";
+await api("/meetings/"+id,{
+method:"DELETE"
+});
 
-data.forEach((x,i)=>{
+await loadAll();
 
-meetingList.innerHTML+=`
+}
 
-<div class="record">
 
-<h3>${x.title}</h3>
+function renderMeetings(){
 
-<p>Date: ${x.date}</p>
+document.getElementById("meetingList").innerHTML=
+meetings.map(x=>`
 
-<p>${x.notes||""}</p>
-
-<button class="delete"
-onclick="deleteMeeting(${i})">
+<tr>
+<td>${x.meeting_date}</td>
+<td>${escapeHTML(x.title)}</td>
+<td>${escapeHTML(x.notes||"")}</td>
+<td>
+<button class="delete" onclick="deleteMeeting(${x.id})">
 Delete
 </button>
+</td>
+</tr>
 
-</div>
+`).join("");
 
-`;
-
-});
-}
-
-
-function deleteMeeting(i){
-
-let data=JSON.parse(
-localStorage.getItem("meetings")||"[]"
-);
-
-data.splice(i,1);
-
-localStorage.setItem(
-"meetings",
-JSON.stringify(data)
-);
-
-displayMeetings();
-update();
 }
 
 
 /* DASHBOARD */
 
-function update(){
+function updateDashboard(){
 
-let finance=JSON.parse(
-localStorage.getItem("finance")||"[]"
-);
-
-let projects=JSON.parse(
-localStorage.getItem("projects")||"[]"
-);
-
-let events=JSON.parse(
-localStorage.getItem("events")||"[]"
-);
-
-let meetings=JSON.parse(
-localStorage.getItem("meetings")||"[]"
-);
-
-let inc=0;
-let exp=0;
+let income=0;
+let expense=0;
 
 finance.forEach(x=>{
 
-if(x.type==="income")
-inc+=Number(x.amount);
-
-if(x.type==="expense")
-exp+=Number(x.amount);
-
-});
-
-income.textContent=
-"LKR "+inc.toLocaleString();
-
-expenses.textContent=
-"LKR "+exp.toLocaleString();
-
-balance.textContent=
-"LKR "+(inc-exp).toLocaleString();
-
-projectsCount.textContent=
-projects.length;
-
-eventsCount.textContent=
-events.length;
-
-meetingsCount.textContent=
-meetings.length;
+if(x.type==="income"){
+income+=Number(x.amount);
+}else{
+expense+=Number(x.amount);
 }
 
-
-/* REPORT */
-
-function report(){
-
-let finance=JSON.parse(
-localStorage.getItem("finance")||"[]"
-);
-
-let inc=0;
-let exp=0;
-
-finance.forEach(x=>{
-
-if(x.type==="income")
-inc+=Number(x.amount);
-
-if(x.type==="expense")
-exp+=Number(x.amount);
-
 });
 
-let bal=inc-exp;
+let balance=income-expense;
 
-document.getElementById("report").innerHTML=`
+document.getElementById("incomeTotal").textContent=
+"Rs. "+income.toLocaleString();
 
-<div class="record">
+document.getElementById("expenseTotal").textContent=
+"Rs. "+expense.toLocaleString();
 
-<h3>Financial Report</h3>
+document.getElementById("balanceTotal").textContent=
+"Rs. "+balance.toLocaleString();
 
-<p>Total Income:
-<strong>LKR ${inc.toLocaleString()}</strong>
-</p>
+document.getElementById("projectCount").textContent=
+projects.length;
 
-<p>Total Expenses:
-<strong>LKR ${exp.toLocaleString()}</strong>
-</p>
+document.getElementById("eventCount").textContent=
+events.length;
 
-<p>Balance:
-<strong>LKR ${bal.toLocaleString()}</strong>
-</p>
+document.getElementById("meetingCount").textContent=
+meetings.length;
 
-</div>
+document.getElementById("reportIncome").textContent=
+"Rs. "+income.toLocaleString();
 
-`;
+document.getElementById("reportExpense").textContent=
+"Rs. "+expense.toLocaleString();
+
+document.getElementById("reportBalance").textContent=
+"Rs. "+balance.toLocaleString();
+
 }
 
 
 /* BACKUP */
 
-function backup(){
+function downloadBackup(){
 
-let data={
-
-finance:JSON.parse(
-localStorage.getItem("finance")||"[]"
-),
-
-projects:JSON.parse(
-localStorage.getItem("projects")||"[]"
-),
-
-events:JSON.parse(
-localStorage.getItem("events")||"[]"
-),
-
-meetings:JSON.parse(
-localStorage.getItem("meetings")||"[]"
-)
-
+const backup={
+created_at:new Date().toISOString(),
+finance,
+projects,
+events,
+meetings
 };
 
-let file=new Blob(
-[JSON.stringify(data,null,2)],
+const blob=new Blob(
+[JSON.stringify(backup,null,2)],
 {type:"application/json"}
 );
 
-let url=URL.createObjectURL(file);
+const url=URL.createObjectURL(blob);
 
-let a=document.createElement("a");
+const a=document.createElement("a");
 
 a.href=url;
-a.download="church-admin-backup.json";
+a.download="goh-church-backup.json";
 
 a.click();
 
 URL.revokeObjectURL(url);
+
+}
+
+
+/* SECURITY */
+
+function escapeHTML(value){
+
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
 }
 
 
 /* START */
 
-displayFinance();
-displayProjects();
-displayEvents();
-displayMeetings();
-update();
+loadAll();
 
 </script>
 
