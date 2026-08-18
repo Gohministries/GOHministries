@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>GOH Ministries | Admin Panel</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#f3f6fa;
+  color:#172033;
+}
+
+header{
+  height:64px;
+  background:#0b376d;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
+}
+
+.brand{
+  font-weight:bold;
+  font-size:18px;
+}
+
+.logout{
+  border:1px solid #ffffff55;
+  background:#ffffff15;
+  color:#fff;
+  padding:9px 13px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+}
+
+.welcome{
+  margin-bottom:20px;
+}
+
+.welcome h1{
+  font-size:24px;
+  color:#0b376d;
+}
+
+.welcome p{
+  color:#667085;
+  margin-top:5px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
+}
+
+.card{
+  background:#fff;
+  border-radius:14px;
+  padding:20px;
+  box-shadow:0 3px 12px #0000000d;
+  border:1px solid #e5e9ef;
+  cursor:pointer;
+  transition:.15s;
+}
+
+.card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 7px 20px #00000015;
+}
+
+.icon{
+  font-size:27px;
+  margin-bottom:12px;
+}
+
+.card h3{
+  color:#0b376d;
+  margin-bottom:5px;
+}
+
+.card p{
+  color:#667085;
+  font-size:13px;
+}
+
+.status{
+  margin-top:25px;
+  padding:15px;
+  background:#fff;
+  border-radius:12px;
+  border:1px solid #e5e9ef;
+}
+
+#message{
+  color:#667085;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="brand">
+    GOH Ministries — Admin Panel
+  </div>
+
+  <button class="logout" onclick="logout()">
+    Logout
+  </button>
+
+</header>
+
+<main class="container">
+
+  <section class="welcome">
+    <h1 id="welcome">Administrator</h1>
+    <p>Full Church Administration Access</p>
+  </section>
+
+  <section class="grid">
+
+    <div class="card" onclick="openModule('members')">
+      <div class="icon">👥</div>
+      <h3>Members</h3>
+      <p>Church member records</p>
+    </div>
+
+    <div class="card" onclick="openModule('attendance')">
+      <div class="icon">📋</div>
+      <h3>Attendance</h3>
+      <p>Service attendance</p>
+    </div>
+
+    <div class="card" onclick="openModule('donors')">
+      <div class="icon">🤝</div>
+      <h3>Donors</h3>
+      <p>Donor records</p>
+    </div>
+
+    <div class="card" onclick="openModule('donations')">
+      <div class="icon">💰</div>
+      <h3>Donations</h3>
+      <p>Donation records</p>
+    </div>
+
+    <div class="card" onclick="openModule('finance')">
+      <div class="icon">💳</div>
+      <h3>Finance</h3>
+      <p>Church finances</p>
+    </div>
+
+    <div class="card" onclick="openModule('events')">
+      <div class="icon">📅</div>
+      <h3>Events</h3>
+      <p>Church events</p>
+    </div>
+
+    <div class="card" onclick="openModule('meetings')">
+      <div class="icon">📝</div>
+      <h3>Meetings</h3>
+      <p>Meeting records</p>
+    </div>
+
+    <div class="card" onclick="openModule('projects')">
+      <div class="icon">🏗️</div>
+      <h3>Projects</h3>
+      <p>Church projects</p>
+    </div>
+
+    <div class="card" onclick="openModule('expenses')">
+      <div class="icon">🧾</div>
+      <h3>Project Expenses</h3>
+      <p>Project spending</p>
+    </div>
+
+    <div class="card" onclick="openModule('ministries')">
+      <div class="icon">⛪</div>
+      <h3>Ministries</h3>
+      <p>Ministry management</p>
+    </div>
+
+    <div class="card" onclick="openModule('prayer_requests')">
+      <div class="icon">🙏</div>
+      <h3>Prayer Requests</h3>
+      <p>Prayer request records</p>
+    </div>
+
+    <div class="card" onclick="openModule('documents')">
+      <div class="icon">📁</div>
+      <h3>Documents</h3>
+      <p>Church documents</p>
+    </div>
+
+    <div class="card" onclick="openModule('tasks')">
+      <div class="icon">✅</div>
+      <h3>Tasks</h3>
+      <p>Administrative tasks</p>
+    </div>
+
+    <div class="card" onclick="openModule('notifications')">
+      <div class="icon">🔔</div>
+      <h3>Notifications</h3>
+      <p>Admin notifications</p>
+    </div>
+
+    <div class="card" onclick="openModule('settings')">
+      <div class="icon">⚙️</div>
+      <h3>Settings</h3>
+      <p>System settings</p>
+    </div>
+
+    <div class="card" onclick="openModule('admins')">
+      <div class="icon">🔐</div>
+      <h3>Administrators</h3>
+      <p>Admin accounts</p>
+    </div>
+
+    <div class="card" onclick="openModule('audit_logs')">
+      <div class="icon">📊</div>
+      <h3>Audit Logs</h3>
+      <p>Administrative activity</p>
+    </div>
+
+  </section>
+
+  <div class="status">
+    <strong>System Status</strong>
+    <p id="message">Checking authentication...</p>
+  </div>
+
+</main>
+
+<script>
+
+const API = "YOUR_ADMIN_API_WORKER_URL";
+
+async function checkLogin(){
+
+  try{
+
+    const response = await fetch(API + "/me",{
+      credentials:"include"
+    });
+
+    const data = await response.json();
+
+    if(!response.ok || !data.success){
+      location.href="admin-login.html";
+      return;
+    }
+
+    document.getElementById("welcome").textContent =
+      "Welcome, " + (data.user.name || "Administrator");
+
+    document.getElementById("message").textContent =
+      "Authenticated as " +
+      data.user.username +
+      " • Full administrator access";
+
+  }catch(error){
+
+    location.href="admin-login.html";
+
+  }
+}
+
+async function logout(){
+
+  try{
+
+    await fetch(API + "/logout",{
+      method:"POST",
+      credentials:"include"
+    });
+
+  }catch(e){}
+
+  location.href="admin-login.html";
+}
+
+function openModule(module){
+
+  alert(
+    module.replaceAll("_"," ")
+      .replace(/\b\w/g,c=>c.toUpperCase()) +
+    " module"
+  );
+
+}
+
+checkLogin();
+
+</script>
+
+</body>
+</html>
