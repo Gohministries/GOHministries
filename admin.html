@@ -6,22 +6,22 @@
 <title>GOH Ministries Admin</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font:14px Arial;background:#f4f7fb;color:#172033}
-button,input,select,textarea{font:inherit}input,select,textarea{width:100%;padding:9px;margin:4px 0 9px;border:1px solid #ddd;border-radius:7px}textarea{min-height:70px}
-button{border:0;border-radius:7px;padding:9px 13px;background:#174ea6;color:#fff;font-weight:bold}.green{background:#188038}.red{background:#d93025}
-.login{min-height:100vh;display:grid;place-items:center;padding:20px}.box,.panel,.card{background:#fff;border-radius:11px;box-shadow:0 2px 8px #0001}
-.box{width:100%;max-width:390px;padding:25px}.app{display:none}
-header{height:58px;background:#123b70;color:#fff;padding:0 15px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:5}
+button,input,select,textarea{font:inherit}input,select,textarea{width:100%;padding:10px;margin:5px 0 9px;border:1px solid #ddd;border-radius:7px}
+textarea{min-height:70px}button{border:0;border-radius:7px;padding:10px 13px;background:#174ea6;color:#fff;font-weight:bold;cursor:pointer}
+.green{background:#188038}.red{background:#d93025}.login{min-height:100vh;display:grid;place-items:center;padding:20px}
+.box,.panel,.card{background:#fff;border-radius:11px;box-shadow:0 2px 8px #0001}.box{width:100%;max-width:390px;padding:25px}
+.app{display:none}header{height:58px;background:#123b70;color:#fff;padding:0 14px;display:flex;align-items:center;justify-content:space-between}
 .menu{display:none;background:#fff;color:#123b70}.layout{display:flex;min-height:calc(100vh - 58px)}
 nav{width:215px;background:#fff;padding:8px;border-right:1px solid #ddd}nav button{display:block;width:100%;text-align:left;background:none;color:#172033;margin:2px 0}
 nav button.on,nav button:hover{background:#e8f0ff;color:#174ea6}main{flex:1;padding:15px}.sec{display:none}.sec.on{display:block}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}.card{padding:13px}.card b{display:block;font-size:20px;margin-top:5px}
-.panel{padding:14px;margin-bottom:12px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}.actions{display:flex;gap:6px;flex-wrap:wrap}
-.table{overflow:auto}table{width:100%;border-collapse:collapse;min-width:500px}th,td{padding:8px;border-bottom:1px solid #eee;text-align:left}th{background:#f5f6f8}
-.small{font-size:12px;color:#687386}.file{padding:9px;background:#f5f7fa;border-radius:7px;margin:6px 0}.file a{margin-right:10px;color:#174ea6;font-weight:bold}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}.card{padding:14px}.card b{display:block;font-size:20px;margin-top:5px}
+.panel{padding:15px;margin-bottom:12px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.actions{display:flex;gap:6px;flex-wrap:wrap}.table{overflow:auto}table{width:100%;border-collapse:collapse;min-width:500px}
+th,td{padding:8px;border-bottom:1px solid #eee;text-align:left}th{background:#f5f6f8}.small{font-size:12px;color:#687386}
+.file{padding:9px;background:#f5f7fa;border-radius:7px;margin:6px 0}.file a{margin-right:10px;color:#174ea6;font-weight:bold}
 @media(max-width:700px){.menu{display:block}nav{position:fixed;top:58px;bottom:0;left:-230px;width:220px;z-index:10;transition:.2s;box-shadow:2px 0 12px #0002}nav.open{left:0}main{padding:9px}.cards{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
-
 <body>
 
 <div id="login" class="login">
@@ -30,7 +30,7 @@ nav button.on,nav button:hover{background:#e8f0ff;color:#174ea6}main{flex:1;padd
 <p style="text-align:center;color:#777">Church Administration</p>
 <input id="user" placeholder="Username" autocomplete="username">
 <input id="pass" type="password" placeholder="Password" autocomplete="current-password">
-<input id="otp" maxlength="6" inputmode="numeric" placeholder="2FA Code" style="display:none">
+<input id="otp" placeholder="2FA Code" maxlength="6" inputmode="numeric" style="display:none">
 <button style="width:100%" onclick="login()">Login</button>
 <p id="error" style="color:#d93025"></p>
 </div>
@@ -38,10 +38,8 @@ nav button.on,nav button:hover{background:#e8f0ff;color:#174ea6}main{flex:1;padd
 
 <div id="app" class="app">
 <header>
-<div style="display:flex;align-items:center;gap:8px">
-<button class="menu" onclick="nav.classList.toggle('open')">☰</button>
-<b>GOH Ministries Admin</b>
-</div>
+<div><button class="menu" onclick="nav.classList.toggle('open')">☰</button>
+<b>GOH Ministries Admin</b></div>
 <button class="red" onclick="logout()">Logout</button>
 </header>
 
@@ -74,466 +72,276 @@ nav button.on,nav button:hover{background:#e8f0ff;color:#174ea6}main{flex:1;padd
 <div class="card">Donations<b id="donationsCount">LKR 0</b></div>
 <div class="card">Documents<b id="documentsCount">0</b></div>
 </div>
-
-<div class="panel">
-<h3>Quick Actions</h3>
-<div class="actions">
-<button onclick="go('finance')">Finance</button>
-<button onclick="go('donations')">Donation</button>
-<button onclick="go('projects')">Project</button>
-<button onclick="go('events')">Event</button>
-<button onclick="go('documents')">Upload</button>
-</div>
-</div>
-
-<div class="panel">
-<h3>Recent Activity</h3>
-<div id="recent">Loading...</div>
-</div>
+<div class="panel"><h3>Recent Activity</h3><div id="recent">Loading...</div></div>
 </section>
 
 <section id="finance" class="sec">
 <h2>Finance</h2>
 <div class="panel">
-<select id="financeType"><option value="income">Income</option><option value="expense">Expense</option></select>
-<input id="financeDate" type="date">
-<input id="financeAmount" type="number" placeholder="Amount">
+<select id="financeType"><option>income</option><option>expense</option></select>
+<input id="financeDate" type="date"><input id="financeAmount" type="number" placeholder="Amount">
 <input id="financeDesc" placeholder="Description">
-<input id="financeFile" type="file" accept="image/*,.pdf">
 <button class="green" onclick="save('finance')">Save</button>
 </div>
-<div class="panel" id="financeList">Loading...</div>
+<div class="panel" id="financeList"></div>
 </section>
 
 <section id="donations" class="sec">
 <h2>Donations</h2>
-
 <div class="panel">
-<h3>Add Donor</h3>
-<input id="donorName" placeholder="Donor name">
-<input id="donorPhone" placeholder="Phone">
+<input id="donorName" placeholder="Donor name"><input id="donorPhone" placeholder="Phone">
 <input id="donorEmail" placeholder="Email">
 <button class="green" onclick="addDonor()">Add Donor</button>
 </div>
-
 <div class="panel">
-<h3>Record Donation</h3>
 <select id="donor"><option value="">Select donor</option></select>
-<input id="donDate" type="date">
-<input id="donAmount" type="number" placeholder="Amount">
+<input id="donDate" type="date"><input id="donAmount" type="number" placeholder="Amount">
 <input id="donPurpose" placeholder="Purpose">
-<select id="donMethod">
-<option>Cash</option><option>Bank Transfer</option><option>Cheque</option><option>Online</option><option>Other</option>
-</select>
+<select id="donMethod"><option>Cash</option><option>Bank Transfer</option><option>Cheque</option><option>Online</option><option>Other</option></select>
 <input id="donRef" placeholder="Reference">
-<input id="donFile" type="file" accept="image/*,.pdf">
 <button class="green" onclick="save('donation')">Save</button>
 </div>
-<div class="panel" id="donationList">Loading...</div>
+<div class="panel" id="donationList"></div>
 </section>
 
 <section id="projects" class="sec">
-<h2>Projects</h2>
-<div class="panel">
+<h2>Projects</h2><div class="panel">
 <input id="projectName" placeholder="Project name">
-<div class="grid">
-<input id="projectBudget" type="number" placeholder="Budget">
-<input id="projectSpent" type="number" placeholder="Spent">
-</div>
-<select id="projectStatus">
-<option>Planning</option><option>Active</option><option>Completed</option><option>On Hold</option>
-</select>
-<input id="projectFile" type="file" accept="image/*,.pdf,.doc,.docx">
+<div class="grid"><input id="projectBudget" type="number" placeholder="Budget"><input id="projectSpent" type="number" placeholder="Spent"></div>
+<select id="projectStatus"><option>Planning</option><option>Active</option><option>Completed</option><option>On Hold</option></select>
 <button class="green" onclick="save('project')">Save</button>
-</div>
-<div class="panel" id="projectList">Loading...</div>
+</div><div class="panel" id="projectList"></div>
 </section>
 
 <section id="events" class="sec">
-<h2>Events</h2>
-<div class="panel">
+<h2>Events</h2><div class="panel">
 <input id="eventTitle" placeholder="Event title">
-<div class="grid">
-<input id="eventDate" type="date">
-<input id="eventTime" type="time">
-</div>
-<input id="eventVenue" placeholder="Venue">
-<textarea id="eventDescription" placeholder="Description"></textarea>
-<input id="eventFile" type="file" accept="image/*,.pdf">
+<div class="grid"><input id="eventDate" type="date"><input id="eventTime" type="time"></div>
+<input id="eventVenue" placeholder="Venue"><textarea id="eventDescription" placeholder="Description"></textarea>
 <button class="green" onclick="save('event')">Save</button>
-</div>
-<div class="panel" id="eventList">Loading...</div>
+</div><div class="panel" id="eventList"></div>
 </section>
 
 <section id="meetings" class="sec">
-<h2>Meetings</h2>
-<div class="panel">
-<input id="meetingDate" type="date">
-<input id="meetingTitle" placeholder="Meeting title">
+<h2>Meetings</h2><div class="panel">
+<input id="meetingDate" type="date"><input id="meetingTitle" placeholder="Meeting title">
 <textarea id="meetingNotes" placeholder="Notes"></textarea>
-<input id="meetingFile" type="file" accept="image/*,.pdf,.doc,.docx">
 <button class="green" onclick="save('meeting')">Save</button>
-</div>
-<div class="panel" id="meetingList">Loading...</div>
+</div><div class="panel" id="meetingList"></div>
 </section>
 
 <section id="tasks" class="sec">
-<h2>Tasks</h2>
-<div class="panel">
-<input id="taskTitle" placeholder="Task title">
-<textarea id="taskDescription" placeholder="Description"></textarea>
-<div class="grid">
-<input id="taskDue" type="date">
-<select id="taskPriority"><option>Normal</option><option>Low</option><option>High</option><option>Urgent</option></select>
-</div>
+<h2>Tasks</h2><div class="panel">
+<input id="taskTitle" placeholder="Task title"><textarea id="taskDescription" placeholder="Description"></textarea>
+<div class="grid"><input id="taskDue" type="date"><select id="taskPriority"><option>Normal</option><option>Low</option><option>High</option><option>Urgent</option></select></div>
 <select id="taskStatus"><option>Pending</option><option>In Progress</option><option>Completed</option></select>
-<input id="taskFile" type="file" accept="image/*,.pdf,.doc,.docx">
 <button class="green" onclick="save('task')">Save</button>
-</div>
-<div class="panel" id="taskList">Loading...</div>
+</div><div class="panel" id="taskList"></div>
 </section>
 
 <section id="documents" class="sec">
-<h2>Documents & Photos</h2>
-<div class="panel">
+<h2>Documents & Photos</h2><div class="panel">
 <input id="documentTitle" placeholder="Title">
-<div class="grid">
-<select id="documentCategory">
-<option>Finance</option><option>Project</option><option>Event</option>
-<option>Meeting</option><option>Church</option><option>Other</option>
-</select>
-<input id="documentDate" type="date">
-</div>
+<div class="grid"><select id="documentCategory"><option>Finance</option><option>Project</option><option>Event</option><option>Meeting</option><option>Church</option><option>Other</option></select><input id="documentDate" type="date"></div>
 <textarea id="documentDescription" placeholder="Description"></textarea>
 <input id="documentFile" type="file" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx">
 <button class="green" onclick="uploadDocument()">Upload</button>
-</div>
-<div class="panel" id="documentList">Loading...</div>
+</div><div class="panel" id="documentList"></div>
 </section>
 
 <section id="reports" class="sec">
-<h2>Reports</h2>
-<div class="panel">
-<div class="grid">
-<input id="reportFrom" type="date">
-<input id="reportTo" type="date">
-</div>
-<div class="actions">
-<button onclick="report('finance')">Finance</button>
-<button onclick="report('donations')">Donations</button>
-<button onclick="report('projects')">Projects</button>
-<button onclick="report('events')">Events</button>
-</div>
-</div>
-<div class="panel" id="reportResult">Select a report.</div>
+<h2>Reports</h2><div class="panel">
+<div class="grid"><input id="reportFrom" type="date"><input id="reportTo" type="date"></div>
+<div class="actions"><button onclick="report('finance')">Finance</button><button onclick="report('donations')">Donations</button><button onclick="report('projects')">Projects</button><button onclick="report('events')">Events</button></div>
+</div><div class="panel" id="reportResult">Select a report.</div>
 </section>
 
-<section id="audit" class="sec">
-<h2>Audit Log</h2>
-<div class="panel" id="auditList">Loading...</div>
-</section>
+<section id="audit" class="sec"><h2>Audit Log</h2><div class="panel" id="auditList"></div></section>
 
 <section id="admins" class="sec">
-<h2>Administrators</h2>
-<div class="panel">
-<input id="adminUsername" placeholder="Username">
-<input id="adminName" placeholder="Name">
+<h2>Administrators</h2><div class="panel">
+<input id="adminUsername" placeholder="Username"><input id="adminName" placeholder="Name">
 <input id="adminPassword" type="password" placeholder="Password">
 <select id="adminRole">
-<option value="admin">Admin</option>
-<option value="administrator">Administrator</option>
+<option value="admin">Full Admin</option>
+<option value="administrator">Full Administrator</option>
 <option value="finance">Finance</option>
 <option value="events">Events</option>
 <option value="documents">Documents</option>
 </select>
 <button class="green" onclick="createAdmin()">Create Administrator</button>
-</div>
-<div class="panel" id="adminList">Loading...</div>
+</div><div class="panel" id="adminList"></div>
 </section>
 
 <section id="settings" class="sec">
-<h2>Settings</h2>
-<div class="panel">
-<input id="churchName" placeholder="Church Name">
-<input id="currency" placeholder="Currency">
-<input id="timezone" placeholder="Timezone">
-<input id="defaultService" placeholder="Default Service">
+<h2>Settings</h2><div class="panel">
+<input id="churchName" placeholder="Church Name"><input id="currency" placeholder="Currency">
+<input id="timezone" placeholder="Timezone"><input id="defaultService" placeholder="Default Service">
 <button class="green" onclick="saveSettings()">Save</button>
 </div>
 </section>
 
-</main>
-</div>
-</div>
+</main></div></div>
 
 <script>
 const API="https://goh-church-api.createlk.workers.dev";
 const $=id=>document.getElementById(id),v=id=>$(id)?.value||"";
+const money=n=>"LKR "+(+n||0).toLocaleString();
 const today=new Date().toISOString().slice(0,10);
 
 ["financeDate","donDate","eventDate","meetingDate","taskDue","documentDate","reportFrom","reportTo"]
-.forEach(id=>$(id)&&($(id).value=today));
+.forEach(x=>$(x)&&($(x).value=today));
 
-async function api(path,opt={}){
- const r=await fetch(API+path,{credentials:"include",...opt});
- let d={};try{d=await r.json()}catch{}
- if(!r.ok)throw Error(d.error||d.message||"Request failed");
- return d;
+async function api(p,o={}){
+ try{
+  const r=await fetch(API+p,{credentials:"include",...o});
+  let d={};try{d=await r.json()}catch{}
+  if(!r.ok)throw Error(d.error||d.message||"Request failed");
+  return d;
+ }catch(e){throw Error(e.message==="Failed to fetch"?"Failed to fetch. Check CORS and HTTPS.":e.message)}
 }
 
 async function login(){
  $("error").textContent="";
  try{
-  const d=await api("/admin/login",{
-   method:"POST",headers:{"Content-Type":"application/json"},
-   body:JSON.stringify({username:v("user"),password:v("pass"),otp:v("otp")||undefined})
-  });
-  if(d.requires_2fa){
-   $("otp").style.display="block";
-   $("error").textContent="Enter 2FA code";
-   return;
-  }
-  $("login").style.display="none";
-  $("app").style.display="block";
-  loadDashboard();
+  const d=await api("/admin/login",{method:"POST",headers:{"Content-Type":"application/json"},
+   body:JSON.stringify({username:v("user"),password:v("pass"),otp:v("otp")||undefined})});
+  if(d.requires_2fa){$("otp").style.display="block";$("error").textContent="Enter 2FA code";return}
+  $("login").style.display="none";$("app").style.display="block";loadDashboard();
  }catch(e){$("error").textContent=e.message}
 }
 
-async function logout(){
- try{await api("/admin/logout",{method:"POST"})}catch{}
- location.reload();
-}
+async function logout(){try{await api("/admin/logout",{method:"POST"})}catch{}location.reload()}
 
-function go(id){
- const b=[...document.querySelectorAll("nav button")]
- .find(x=>x.getAttribute("onclick")?.includes("'"+id+"'"));
- page(id,b);
-}
-
-const loaders={
- dashboard:loadDashboard,finance:loadFinance,donations:loadDonations,
- projects:loadProjects,events:loadEvents,meetings:loadMeetings,
- tasks:loadTasks,documents:loadDocuments,audit:loadAudit,
- admins:loadAdmins,settings:loadSettings
-};
+const loaders={dashboard:loadDashboard,finance:loadFinance,donations:loadDonations,
+projects:loadProjects,events:loadEvents,meetings:loadMeetings,tasks:loadTasks,
+documents:loadDocuments,reports:()=>{},audit:loadAudit,admins:loadAdmins,settings:loadSettings};
 
 function page(id,b){
  document.querySelectorAll(".sec").forEach(x=>x.classList.remove("on"));
  document.querySelectorAll("nav button").forEach(x=>x.classList.remove("on"));
- $(id).classList.add("on");if(b)b.classList.add("on");
- nav.classList.remove("open");loaders[id]?.();
+ $(id).classList.add("on");if(b)b.classList.add("on");nav.classList.remove("open");
+ loaders[id]?.();
 }
 
-const money=n=>"LKR "+(+n||0).toLocaleString();
-const esc=x=>String(x??"").replace(/[&<>"']/g,m=>({
- "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-}[m]));
+function go(id){page(id,[...document.querySelectorAll("nav button")].find(x=>x.getAttribute("onclick")?.includes("'"+id+"'")))}
 
-async function records(path){
- const d=await api(path);
- return d.records||d.data||d.items||d.admins||[];
-}
+function esc(x){return String(x??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
 
-async function table(path,id,cols){
+async function records(p){const d=await api(p);return d.records||d.data||d.items||d.admins||[]}
+
+async function table(p,id,cols){
  try{
-  const a=await records(path);
-  if(!a.length)return $(id).innerHTML="<p class=small>No records.</p>";
-  $(id).innerHTML=`<div class=table><table><tr>
-  ${cols.map(c=>`<th>${c[0]}</th>`).join("")}</tr>
-  ${a.map(r=>`<tr>${cols.map(c=>`<td>${esc(c[1](r))}</td>`).join("")}</tr>`).join("")}
-  </table></div>`;
+  const a=await records(p);
+  $(id).innerHTML=!a.length?"<p class=small>No records.</p>":
+  `<div class=table><table><tr>${cols.map(c=>`<th>${c[0]}</th>`).join("")}</tr>
+  ${a.map(r=>`<tr>${cols.map(c=>`<td>${esc(c[1](r))}</td>`).join("")}</tr>`).join("")}</table></div>`;
  }catch(e){$(id).textContent=e.message}
 }
 
 async function loadDashboard(){
  try{
   const d=await api("/dashboard");
-  $("income").textContent=money(d.income);
-  $("expense").textContent=money(d.expense);
-  $("balance").textContent=money(d.balance);
-  $("projectsCount").textContent=d.projects||0;
-  $("eventsCount").textContent=d.events||0;
-  $("donationsCount").textContent=money(d.donations);
-  $("documentsCount").textContent=d.documents||0;
-  $("recent").innerHTML=Array.isArray(d.recent)
-   ?d.recent.map(x=>`<div class=file>${esc(x.description||x.action||x.title||"Activity")}</div>`).join("")
-   :esc(d.recent||"No recent activity");
- }catch(e){$("recent").textContent=e.message}
+  income.textContent=money(d.income);expense.textContent=money(d.expense);
+  balance.textContent=money(d.balance);projectsCount.textContent=d.projects||0;
+  eventsCount.textContent=d.events||0;donationsCount.textContent=money(d.donations);
+  documentsCount.textContent=d.documents||0;
+  recent.innerHTML=(d.recent||[]).map(x=>`<div class=file><b>${esc(x.action)}</b><div class=small>${esc(x.details)}</div></div>`).join("")||"No activity";
+ }catch(e){recent.textContent=e.message}
 }
 
 const cfg={
- finance:["/finance","financeFile","Finance",()=>({type:v("financeType"),date:v("financeDate"),amount:+v("financeAmount"),description:v("financeDesc")})],
- donation:["/donations","donFile","Donation",()=>({donor_id:v("donor")||null,donation_date:v("donDate"),amount:+v("donAmount"),purpose:v("donPurpose"),payment_method:v("donMethod"),reference_no:v("donRef")})],
- project:["/projects","projectFile","Project",()=>({name:v("projectName"),budget:+v("projectBudget"),spent:+v("projectSpent"),status:v("projectStatus")})],
- event:["/events","eventFile","Event",()=>({title:v("eventTitle"),event_date:v("eventDate"),event_time:v("eventTime"),venue:v("eventVenue"),description:v("eventDescription")})],
- meeting:["/meetings","meetingFile","Meeting",()=>({meeting_date:v("meetingDate"),title:v("meetingTitle"),notes:v("meetingNotes")})],
- task:["/tasks","taskFile","Task",()=>({title:v("taskTitle"),description:v("taskDescription"),due_date:v("taskDue"),priority:v("taskPriority"),status:v("taskStatus")})]
+finance:["/finance",()=>({type:v("financeType"),date:v("financeDate"),amount:+v("financeAmount"),description:v("financeDesc")})],
+donation:["/donations",()=>({donor_id:v("donor")||null,donation_date:v("donDate"),amount:+v("donAmount"),purpose:v("donPurpose"),payment_method:v("donMethod"),reference_no:v("donRef")})],
+project:["/projects",()=>({name:v("projectName"),budget:+v("projectBudget"),spent:+v("projectSpent"),status:v("projectStatus")})],
+event:["/events",()=>({title:v("eventTitle"),event_date:v("eventDate"),event_time:v("eventTime"),venue:v("eventVenue"),description:v("eventDescription")})],
+meeting:["/meetings",()=>({meeting_date:v("meetingDate"),title:v("meetingTitle"),notes:v("meetingNotes")})],
+task:["/tasks",()=>({title:v("taskTitle"),description:v("taskDescription"),due_date:v("taskDue"),priority:v("taskPriority"),status:v("taskStatus")})]
 };
 
 async function save(type){
- const [path,file,cat,dataFn]=cfg[type];
  try{
-  const data=dataFn();
-  await api(path,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});
-  const f=$(file)?.files[0];
-  if(f)await uploadFile(f,cat,data.title||data.name||f.name);
-  alert("Saved");
-  loaders[type]?.();loadDashboard();
+  const [p,data]=cfg[type];
+  await api(p,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data())});
+  alert("Saved");loaders[type]();loadDashboard();
  }catch(e){alert(e.message)}
 }
 
 async function addDonor(){
  try{
-  await api("/donors",{
-   method:"POST",headers:{"Content-Type":"application/json"},
-   body:JSON.stringify({name:v("donorName"),phone:v("donorPhone"),email:v("donorEmail")})
-  });
+  await api("/donors",{method:"POST",headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({name:v("donorName"),phone:v("donorPhone"),email:v("donorEmail")})});
   alert("Donor added");loadDonations();
  }catch(e){alert(e.message)}
 }
 
-function loadFinance(){
- table("/finance","financeList",[
-  ["Date",r=>r.date||r.record_date],["Type",r=>r.type],
-  ["Description",r=>r.description],["Amount",r=>money(r.amount)]
- ]);
-}
+function loadFinance(){table("/finance","financeList",[["Date",r=>r.date],["Type",r=>r.type],["Description",r=>r.description],["Amount",r=>money(r.amount)]])}
 
 async function loadDonations(){
- try{
-  const a=await records("/donors");
-  $("donor").innerHTML="<option value=''>Select donor</option>"+
-  a.map(r=>`<option value="${esc(r.id)}">${esc(r.name)}</option>`).join("");
- }catch{}
- table("/donations","donationList",[
-  ["Date",r=>r.donation_date],["Donor",r=>r.donor_name||r.name],
-  ["Amount",r=>money(r.amount)],["Purpose",r=>r.purpose],
-  ["Method",r=>r.payment_method]
- ]);
+ try{const a=await records("/donors");donor.innerHTML="<option value=''>Select donor</option>"+a.map(r=>`<option value="${r.id}">${esc(r.name)}</option>`).join("")}catch{}
+ table("/donations","donationList",[["Date",r=>r.donation_date],["Donor",r=>r.donor_name],["Amount",r=>money(r.amount)],["Purpose",r=>r.purpose],["Method",r=>r.payment_method]])
 }
 
-function loadProjects(){table("/projects","projectList",[
- ["Name",r=>r.name],["Budget",r=>money(r.budget)],
- ["Spent",r=>money(r.spent)],["Status",r=>r.status]
-])}
-
-function loadEvents(){table("/events","eventList",[
- ["Date",r=>r.event_date],["Title",r=>r.title],
- ["Time",r=>r.event_time],["Venue",r=>r.venue]
-])}
-
-function loadMeetings(){table("/meetings","meetingList",[
- ["Date",r=>r.meeting_date],["Title",r=>r.title],["Notes",r=>r.notes]
-])}
-
-function loadTasks(){table("/tasks","taskList",[
- ["Title",r=>r.title],["Due",r=>r.due_date],
- ["Priority",r=>r.priority],["Status",r=>r.status]
-])}
-
-async function uploadFile(file,category,title){
- const f=new FormData();
- f.append("title",title||file.name);
- f.append("category",category);
- f.append("record_date",today);
- f.append("file",file);
- return api("/documents",{method:"POST",body:f});
-}
+function loadProjects(){table("/projects","projectList",[["Name",r=>r.name],["Budget",r=>money(r.budget)],["Spent",r=>money(r.spent)],["Status",r=>r.status]])}
+function loadEvents(){table("/events","eventList",[["Date",r=>r.event_date],["Title",r=>r.title],["Time",r=>r.event_time],["Venue",r=>r.venue]])}
+function loadMeetings(){table("/meetings","meetingList",[["Date",r=>r.meeting_date],["Title",r=>r.title],["Notes",r=>r.notes]])}
+function loadTasks(){table("/tasks","taskList",[["Title",r=>r.title],["Due",r=>r.due_date],["Priority",r=>r.priority],["Status",r=>r.status]])}
 
 async function uploadDocument(){
- const file=$("documentFile").files[0];
- if(!file)return alert("Select a file");
+ const f=documentFile.files[0];if(!f)return alert("Select a file");
  try{
-  const f=new FormData();
-  f.append("title",v("documentTitle")||file.name);
-  f.append("category",v("documentCategory"));
-  f.append("record_date",v("documentDate"));
-  f.append("description",v("documentDescription"));
-  f.append("file",file);
-  await api("/documents",{method:"POST",body:f});
-  alert("Uploaded");loadDocuments();loadDashboard();
+  const x=new FormData();
+  x.append("title",v("documentTitle")||f.name);x.append("category",v("documentCategory"));
+  x.append("record_date",v("documentDate"));x.append("description",v("documentDescription"));x.append("file",f);
+  await api("/documents",{method:"POST",body:x});alert("Uploaded");loadDocuments();loadDashboard();
  }catch(e){alert(e.message)}
 }
 
 async function loadDocuments(){
  try{
   const a=await records("/documents");
-  $("documentList").innerHTML=a.length?a.map(r=>{
-   const u=r.url||r.file_url||r.download_url||"";
-   return `<div class=file><b>${esc(r.title||r.filename||"File")}</b>
-   <div class=small>${esc(r.category||"")} ${esc(r.record_date||"")}</div>
-   ${u?`<a href="${esc(u)}" target=_blank>View</a>
-   <a href="${esc(u)}" download>Download</a>`:""}</div>`;
-  }).join(""):"<p class=small>No documents.</p>";
- }catch(e){$("documentList").textContent=e.message}
+  documentList.innerHTML=a.map(r=>`<div class=file><b>${esc(r.title||r.filename)}</b>
+  <div class=small>${esc(r.category)} ${esc(r.record_date)}</div>
+  ${r.file_url?`<a href="${esc(r.file_url)}" target=_blank>View</a><a href="${esc(r.file_url)}" download>Download</a>`:""}</div>`).join("")||"<p class=small>No documents.</p>";
+ }catch(e){documentList.textContent=e.message}
 }
 
 async function report(type){
  try{
-  const q="?from="+encodeURIComponent(v("reportFrom"))+"&to="+encodeURIComponent(v("reportTo"));
-  const a=await records("/"+type+q);
-  if(!a.length)return $("reportResult").innerHTML="<p class=small>No records.</p>";
+  const a=await records("/"+type+"?from="+encodeURIComponent(v("reportFrom"))+"&to="+encodeURIComponent(v("reportTo")));
+  if(!a.length)return reportResult.innerHTML="<p class=small>No records.</p>";
   const k=Object.keys(a[0]);
-  $("reportResult").innerHTML=`<div class=table><table><tr>
-  ${k.map(x=>`<th>${esc(x)}</th>`).join("")}</tr>
-  ${a.map(r=>`<tr>${k.map(x=>`<td>${esc(r[x])}</td>`).join("")}</tr>`).join("")}
-  </table></div>`;
- }catch(e){$("reportResult").textContent=e.message}
+  reportResult.innerHTML=`<div class=table><table><tr>${k.map(x=>`<th>${esc(x)}</th>`).join("")}</tr>${a.map(r=>`<tr>${k.map(x=>`<td>${esc(r[x])}</td>`).join("")}</tr>`).join("")}</table></div>`;
+ }catch(e){reportResult.textContent=e.message}
 }
 
-function loadAudit(){
- table("/audit-log","auditList",[
-  ["Date",r=>r.created_at||r.date],
-  ["Admin",r=>r.username||r.admin_username],
-  ["Action",r=>r.action],["Details",r=>r.details||r.description]
- ]);
-}
+function loadAudit(){table("/audit-log","auditList",[["Date",r=>r.created_at],["Admin",r=>r.username],["Action",r=>r.action],["Details",r=>r.details]])}
 
 async function createAdmin(){
  try{
-  await api("/admin/users",{
-   method:"POST",headers:{"Content-Type":"application/json"},
-   body:JSON.stringify({
-    username:v("adminUsername"),name:v("adminName"),
-    password:v("adminPassword"),role:v("adminRole")
-   })
-  });
+  await api("/admin/users",{method:"POST",headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({username:v("adminUsername"),name:v("adminName"),password:v("adminPassword"),role:v("adminRole")})});
   alert("Administrator created");loadAdmins();
  }catch(e){alert(e.message)}
 }
 
-function loadAdmins(){
- table("/admin/users","adminList",[
-  ["Username",r=>r.username],["Name",r=>r.name],
-  ["Role",r=>r.role],["Status",r=>r.status||"Active"]
- ]);
-}
+function loadAdmins(){table("/admin/users","adminList",[["Username",r=>r.username],["Name",r=>r.name],["Role",r=>r.role],["Status",r=>r.status]])}
 
 async function loadSettings(){
  try{
   const d=await api("/settings");
-  $("churchName").value=d.church_name||"";
-  $("currency").value=d.currency||"LKR";
-  $("timezone").value=d.timezone||"Asia/Colombo";
-  $("defaultService").value=d.default_service||"";
- }catch(e){}
+  churchName.value=d.church_name||"";currency.value=d.currency||"LKR";
+  timezone.value=d.timezone||"Asia/Colombo";defaultService.value=d.default_service||"";
+ }catch(e){alert(e.message)}
 }
 
 async function saveSettings(){
  try{
-  await api("/settings",{
-   method:"POST",headers:{"Content-Type":"application/json"},
-   body:JSON.stringify({
-    church_name:v("churchName"),
-    currency:v("currency"),
-    timezone:v("timezone"),
-    default_service:v("defaultService")
-   })
-  });
+  await api("/settings",{method:"POST",headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({church_name:v("churchName"),currency:v("currency"),timezone:v("timezone"),default_service:v("defaultService")})});
   alert("Settings saved");
  }catch(e){alert(e.message)}
 }
 </script>
-
 </body>
 </html>
