@@ -2,419 +2,407 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GOH Bible Academy | One-Year Discipleship</title>
-<meta name="description" content="GOH Bible Academy one-year Christian discipleship and ministry preparation program.">
-<meta name="theme-color" content="#0b376d">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gate of Heaven Ministries | Sri Lanka</title>
+
+<meta name="description"
+content="Gate of Heaven Ministries - Spreading the Gospel, building faith and serving people with the love of Jesus Christ.">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Arial,sans-serif;color:#172033;line-height:1.6}
-a{text-decoration:none;color:inherit}
-.container{width:min(1080px,92%);margin:auto}
-
-header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid #e5eaf1}
-header.scrolled{box-shadow:0 5px 20px #10182812}
-.nav{height:68px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:10px}
-.logo{width:41px;height:41px;display:grid;place-items:center;border-radius:10px;background:#0b376d;color:#fff;font-size:11px;font-weight:900}
-.brand strong{display:block;color:#0b376d;font-size:15px;line-height:1.1}
-.brand small{display:block;color:#667085;font-size:8px;font-weight:bold}
-
-.nav-links{display:flex;align-items:center;gap:3px}
-.nav-links a{padding:9px 10px;border-radius:7px;font-size:12px;font-weight:bold;color:#344054}
-.nav-links a:hover{background:#f2f5f9;color:#0b376d}
-.nav-links .login{color:#0b376d}
-.nav-links .register{background:#0b376d;color:#fff;padding:10px 16px}
-.nav-links .register:hover{background:#082b55;color:#fff}
-
-.menu{display:none;width:42px;height:42px;border:1px solid #e1e7ef;border-radius:10px;background:#fff;color:#0b376d;font-size:21px}
-
-.hero{background:linear-gradient(135deg,#061d39,#0b376d);color:#fff}
-.hero-inner{min-height:550px;display:flex;align-items:center}
-.hero-content{max-width:760px}
-.tag,.label{font-size:10px;font-weight:900;letter-spacing:1.2px}
-.tag{display:inline-block;padding:6px 12px;margin-bottom:16px;border:1px solid #ffffff30;border-radius:30px;color:#f3c95c}
-h1,h2{font-family:Georgia,serif}
-h1{font-size:clamp(40px,7vw,64px);line-height:1.05;margin-bottom:17px}
-h1 span{color:#f3c95c}
-.hero p{max-width:650px;color:#dce7f3;font-size:16px;margin-bottom:24px}
-
-.buttons{display:flex;flex-wrap:wrap;gap:10px}
-.btn{min-height:45px;padding:10px 18px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;font-size:13px;font-weight:bold}
-.gold{background:#f3c95c;color:#172033}
-.white{background:#fff;color:#0b376d}
-.outline{border:1px solid #ffffff55;color:#fff}
-
-.stats{display:grid;grid-template-columns:repeat(4,1fr);max-width:700px;margin-top:35px;padding-top:18px;border-top:1px solid #ffffff25}
-.stat{border-right:1px solid #ffffff20;padding-right:10px}
-.stat:last-child{border:0}
-.stat strong{display:block;font-size:18px}
-.stat span{color:#b9c9dc;font-size:10px}
-
-section{padding:60px 0}
-.light{background:#f7f9fc}
-.head{text-align:center;max-width:680px;margin:0 auto 30px}
-.label{color:#0b376d}
-.head h2{font-size:clamp(30px,5vw,42px);line-height:1.15;margin:6px 0 9px}
-.head p,.card p,.program p,.month p,.step p,.founder p{color:#667085;font-size:13px}
-
-.grid,.months,.steps{display:grid;gap:14px}
-.three,.months{grid-template-columns:repeat(3,1fr)}
-.card,.month,.step{padding:20px;border:1px solid #e5eaf1;border-radius:14px;background:#fff}
-.card:hover,.month:hover,.step:hover{box-shadow:0 7px 22px #1018280b}
-.icon{width:42px;height:42px;display:grid;place-items:center;margin-bottom:10px;border-radius:10px;background:#edf4ff}
-.card h3,.month h3,.step h3{font-size:17px;margin-bottom:5px}
-
-.program-grid,.ministry-grid{display:grid;grid-template-columns:1fr 330px;gap:35px;align-items:center}
-.program h2,.ministry h2{font-size:clamp(30px,5vw,43px);line-height:1.15;margin:6px 0 12px}
-.checks{display:grid;gap:8px;margin-top:18px;font-size:13px}
-.check{color:#0b376d;font-weight:bold}
-
-.price{padding:25px;border-radius:16px;background:#0b376d;color:#fff}
-.price h3{font-family:Georgia,serif;font-size:23px;margin:7px 0 15px}
-.amount{padding:12px 0;margin-bottom:14px;border-block:1px solid #ffffff20}
-.amount strong{font-size:28px}
-.amount span{font-size:11px;color:#c7d5e5}
-.price ul{list-style:none;display:grid;gap:7px;font-size:12px;color:#dce7f3}
-
-.month-number{color:#0b376d;font-size:10px;font-weight:bold}
-.exam{display:inline-block;margin-top:8px;padding:4px 8px;border-radius:5px;background:#edf4ff;color:#0b376d;font-size:9px;font-weight:bold}
-
-.assessment{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.assessment h3{font-family:Georgia,serif;font-size:22px}
-
-.ministry{background:#061d39;color:#fff}
-.ministry p{color:#cbd8e7;font-size:13px}
-.ministry-list{display:grid;gap:8px}
-.ministry-item{padding:12px;border:1px solid #ffffff18;border-radius:9px;color:#dce7f3;font-size:12px}
-.ministry-item strong{color:#f3c95c;margin-right:5px}
-
-.steps{grid-template-columns:repeat(3,1fr)}
-.step strong{color:#0b376d;font-size:10px}
-.step h3{margin:5px 0}
-
-.founder{max-width:820px;margin:auto;padding:28px;border-radius:16px;background:#fff;border:1px solid #e8e2d3}
-.founder h3{font-family:Georgia,serif;font-size:25px}
-.role{color:#0b376d;font-size:11px;font-weight:bold;margin:3px 0 12px}
-
-.cta{padding:42px 20px;text-align:center;border-radius:18px;background:#0b376d;color:#fff}
-.cta h2{font-size:clamp(29px,5vw,40px)}
-.cta p{max-width:600px;margin:8px auto 20px;color:#dce7f3;font-size:13px}
-
-footer{padding:35px 0 18px;background:#081d38;color:#fff}
-.footer{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:25px}
-.footer h3{font-size:15px;margin-bottom:8px}
-.footer p,.footer a{display:block;color:#aebdd0;font-size:11px;margin:5px 0}
-.bottom{text-align:center;margin-top:22px;padding-top:13px;border-top:1px solid #ffffff15;color:#8192a8;font-size:9px}
-
-.whatsapp{position:fixed;right:17px;bottom:17px;width:50px;height:50px;display:grid;place-items:center;border-radius:50%;background:#18a957;color:#fff;font-size:21px;z-index:30}
-
-@media(max-width:850px){
-.menu{display:grid;place-items:center;cursor:pointer}
-.nav-links{
-display:none;position:absolute;top:73px;left:4%;right:4%;
-padding:9px;background:#fff;border:1px solid #e5eaf1;border-radius:14px;
-box-shadow:0 15px 35px #10182818;flex-direction:column;align-items:stretch
-}
-.nav-links.show{display:flex}
-.nav-links a{padding:12px 13px}
-.nav-links .login{margin-top:4px;border-top:1px solid #edf0f4;padding-top:14px}
-.nav-links .register{text-align:center;margin:4px 0 2px}
-.three,.months,.program-grid,.ministry-grid,.assessment,.steps,.footer{grid-template-columns:1fr}
-.stats{grid-template-columns:repeat(2,1fr);gap:12px}
-.stat{border:0}
-.hero-inner{min-height:520px}
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-@media(max-width:480px){
-.container{width:90%}
-.brand strong{font-size:14px}
-.hero h1{font-size:39px}
-.hero p{font-size:14px}
-.buttons{flex-direction:column}
-.buttons .btn{width:100%}
-section{padding:50px 0}
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    line-height:1.6;
+    color:#222;
+    background:#fff;
+}
+
+header{
+    background:#172554;
+    color:white;
+    padding:18px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:bold;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-size:14px;
+}
+
+.hero{
+    min-height:85vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:60px 20px;
+    background:linear-gradient(#0008,#0008),
+    url("hero.jpg") center/cover;
+    color:white;
+}
+
+.hero h1{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    max-width:650px;
+    margin:auto;
+    font-size:18px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:25px;
+    padding:12px 22px;
+    background:#f59e0b;
+    color:white;
+    text-decoration:none;
+    border-radius:6px;
+    font-weight:bold;
+}
+
+section{
+    padding:70px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.section-title h2{
+    color:#172554;
+    font-size:30px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    padding:25px;
+    background:#f8fafc;
+    border-radius:10px;
+    text-align:center;
+}
+
+.card h3{
+    color:#172554;
+    margin-bottom:10px;
+}
+
+.about{
+    max-width:800px;
+    margin:auto;
+    text-align:center;
+}
+
+.event{
+    background:#172554;
+    color:white;
+    text-align:center;
+}
+
+.event h2{
+    font-size:30px;
+}
+
+.contact{
+    text-align:center;
+    background:#f8fafc;
+}
+
+footer{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+}
+
+.social a{
+    color:white;
+    margin:0 8px;
+    text-decoration:none;
+}
+
+@media(max-width:700px){
+
+    header{
+        flex-direction:column;
+        gap:12px;
+    }
+
+    nav a{
+        margin:0 6px;
+        font-size:13px;
+    }
+
+    .hero h1{
+        font-size:34px;
+    }
+
+    section{
+        padding:50px 20px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<header id="header">
-<div class="container nav">
+<header>
 
-<a href="index.html" class="brand">
-<div class="logo">GOH</div>
-<div>
-<strong>GOH Bible Academy</strong>
-<small>GATE OF HEAVEN MINISTRIES</small>
+<div class="logo">
+    Gate of Heaven Ministries
 </div>
-</a>
 
-<button class="menu" id="menuBtn" type="button" aria-label="Open menu">☰</button>
-
-<nav class="nav-links" id="navLinks">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="bible-courses.html">Course</a>
-<a href="ai-bible-teacher.html">AI Bible Teacher</a>
-<a href="media.html">Media</a>
-<a href="contact.html">Contact</a>
-<a href="login.html" class="login">Login</a>
-<a href="enroll.html" class="register">Register</a>
+<nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#ministries">Ministries</a>
+    <a href="#events">Events</a>
+    <a href="#prayer">Prayer</a>
+    <a href="#contact">Contact</a>
 </nav>
 
-</div>
 </header>
 
-<section class="hero">
-<div class="container hero-inner">
-<div class="hero-content">
 
-<div class="tag">✝ GOH BIBLE ACADEMY</div>
+<!-- HERO -->
 
-<h1>Grow in Christ.<br><span>Prepare for Ministry.</span></h1>
+<section id="home" class="hero">
+
+<div>
+
+<h1>Gate of Heaven Ministries</h1>
 
 <p>
-A complete one-year Christian discipleship course designed to help believers grow in God's Word, develop Christian character and prepare for faithful service and ministry.
+Spreading the Gospel, strengthening families,
+building faith and serving people through
+the love of Jesus Christ.
 </p>
 
-<div class="buttons">
-<a href="login.html" class="btn white">Student Login</a>
-<a href="enroll.html" class="btn gold">Register Now</a>
-<a href="bible-courses.html" class="btn outline">View Course</a>
-</div>
-
-<div class="stats">
-<div class="stat"><strong>1 Year</strong><span>Discipleship</span></div>
-<div class="stat"><strong>12</strong><span>Monthly Lessons</span></div>
-<div class="stat"><strong>12</strong><span>MCQ Exams</span></div>
-<div class="stat"><strong>600</strong><span>Total MCQs</span></div>
-</div>
+<a href="#about" class="btn">
+Learn More
+</a>
 
 </div>
-</div>
+
 </section>
 
-<section>
-<div class="container">
-<div class="head">
-<div class="label">THE PURPOSE</div>
-<h2>More Than a Bible Course</h2>
-<p>The goal is not only biblical knowledge, but Christian growth, discipleship and preparation for faithful ministry.</p>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="section-title">
+<h2>About Us</h2>
 </div>
 
-<div class="grid three">
-<div class="card"><div class="icon">📖</div><h3>Know God's Word</h3><p>Build a strong foundation in Scripture and learn to understand and apply God's Word.</p></div>
-<div class="card"><div class="icon">❤️</div><h3>Grow in Christ</h3><p>Develop prayer, faith, obedience and Christian character through discipleship.</p></div>
-<div class="card"><div class="icon">⛪</div><h3>Serve in Ministry</h3><p>Prepare for evangelism, discipleship, leadership and practical Christian service.</p></div>
+<div class="about">
+
+<p>
+Gate of Heaven Ministries exists to share the
+Good News of Jesus Christ, encourage believers,
+reach children and families, and serve our
+community with faith, hope and love.
+</p>
+
+<br>
+
+<p>
+Our desire is to see lives transformed through
+the Word of God and the power of prayer.
+</p>
+
 </div>
-</div>
+
 </section>
 
-<section class="light">
-<div class="container program-grid">
 
-<div class="program">
-<div class="label">ONE-YEAR PROGRAM</div>
-<h2>Christian Discipleship & Ministry Preparation</h2>
-<p>A structured twelve-month journey from foundational Christian teaching to practical ministry preparation.</p>
+<!-- VERSE -->
 
-<div class="checks">
-<div><span class="check">✓</span> 12-month discipleship program</div>
-<div><span class="check">✓</span> 12 monthly subjects</div>
-<div><span class="check">✓</span> 50 MCQs each month</div>
-<div><span class="check">✓</span> 12 monthly examinations</div>
-<div><span class="check">✓</span> Practical ministry activities</div>
-<div><span class="check">✓</span> Certificate upon completion</div>
-</div>
-</div>
+<section class="event">
 
-<div class="price">
-<div class="label">ENROLLMENT</div>
-<h3>One-Year Discipleship Course</h3>
-<div class="amount"><strong>LKR 1,500</strong> <span>/ month</span></div>
-<ul>
-<li>✓ Online lessons</li>
-<li>✓ Monthly MCQ exam</li>
-<li>✓ 50 questions per exam</li>
-<li>✓ Ministry preparation</li>
-<li>✓ Progress tracking</li>
-<li>✓ Certificate requirements</li>
-</ul>
-<a href="enroll.html" class="btn gold" style="width:100%;margin-top:18px">Register Now</a>
-</div>
+<h2>
+“Go into all the world and preach the gospel
+to all creation.”
+</h2>
 
-</div>
+<p>
+Mark 16:15
+</p>
+
 </section>
 
-<section>
-<div class="container">
 
-<div class="head">
-<div class="label">12-MONTH JOURNEY</div>
-<h2>One Year of Discipleship</h2>
-<p>Each month includes lessons, learning activities and a 50-question MCQ examination.</p>
+<!-- MINISTRIES -->
+
+<section id="ministries">
+
+<div class="section-title">
+<h2>Our Ministries</h2>
 </div>
 
-<div class="months">
-<div class="month"><div class="month-number">MONTH 01</div><h3>New Life in Christ</h3><p>Salvation, repentance, faith and assurance.</p><span class="exam">50 MCQs</span></div>
-<div class="month"><div class="month-number">MONTH 02</div><h3>The Word of God</h3><p>Scripture, Bible study and obedience.</p><span class="exam">50 MCQs</span></div>
-<div class="month"><div class="month-number">MONTH 03</div><h3>Prayer & Worship</h3><p>Developing a consistent spiritual life.</p><span class="exam">50 MCQs</span></div>
-<div class="month"><div class="month-number">MONTH 04</div><h3>Life & Teachings of Jesus</h3><p>The ministry and teachings of Christ.</p><span class="exam">50 MCQs</span></div>
-<div class="month"><div class="month-number">MONTH 05</div><h3>Christian Character</h3><p>Holiness, love, forgiveness and maturity.</p><span class="exam">50 MCQs</span></div>
-<div class="month"><div class="month-number">MONTH 06</div><h3>The Holy Spirit</h3><p>Understanding the Spirit and Christian living.</p><span class="exam">50 MCQs</span></div>
-<div class="month"><div class="month-number">MONTH 07</div><h3>Bible Foundations</h3><p>Understanding the Old and New Testaments.</p><span class="exam">50 MCQs</span></div>
-<div class="month"><div class="month-number">MONTH 08</div><h3>Christian Doctrine</h3><p>Core biblical beliefs and Christian teaching.</p><span class="exam">50 MCQs</span></div>
-<div class="month"><div class="month-number">MONTH 09</div><h3>Discipleship</h3><p>Growing personally and helping others grow.</p><span class="exam">50 MCQs</span></div>
-<div class="month"><div class="month-number">MONTH 10</div><h3>Evangelism & Missions</h3><p>Sharing the Gospel and reaching others.</p><span class="exam">50 MCQs</span></div>
-<div class="month"><div class="month-number">MONTH 11</div><h3>Ministry & Leadership</h3><p>Serving, leading and caring for people.</p><span class="exam">50 MCQs</span></div>
-<div class="month"><div class="month-number">MONTH 12</div><h3>Ministry Preparation</h3><p>Practical service, review and preparation.</p><span class="exam">50 MCQs</span></div>
+<div class="cards">
+
+<div class="card">
+<h3>Sunday Worship</h3>
+<p>
+Gathering together to worship God,
+hear His Word and grow in faith.
+</p>
+</div>
+
+<div class="card">
+<h3>Children's Ministry</h3>
+<p>
+Helping children learn God's Word and
+grow in Christian faith.
+</p>
+</div>
+
+<div class="card">
+<h3>Prayer Ministry</h3>
+<p>
+Standing together in prayer for families,
+the church and our community.
+</p>
+</div>
+
+<div class="card">
+<h3>Community Outreach</h3>
+<p>
+Serving people and sharing the hope
+of Jesus Christ.
+</p>
 </div>
 
 </div>
+
 </section>
 
-<section class="light">
-<div class="container">
-<div class="head">
-<div class="label">ASSESSMENT</div>
-<h2>12 Monthly MCQ Examinations</h2>
-<p>Every month has a dedicated examination based on that month's lessons.</p>
-</div>
 
-<div class="assessment">
-<div class="card"><h3>📝 50 Questions</h3><p>Each monthly examination contains 50 multiple-choice questions.</p><p><strong>600 MCQs across the full year.</strong></p></div>
-<div class="card"><h3>🎓 70% Pass Mark</h3><p>Students should achieve at least 70% to successfully complete each examination.</p><p><strong>Retake available if required.</strong></p></div>
-</div>
-</div>
+<!-- EVENTS -->
+
+<section id="events" class="event">
+
+<h2>Upcoming Events</h2>
+
+<p>
+Stay connected with Gate of Heaven Ministries
+for upcoming worship services, children's programs,
+prayer meetings and outreach activities.
+</p>
+
+<a href="#contact" class="btn">
+Contact Us
+</a>
+
 </section>
 
-<section class="ministry">
-<div class="container ministry-grid">
-<div>
-<div class="label">PRACTICAL DISCIPLESHIP</div>
-<h2>Learn. Live. Serve.</h2>
-<p>The purpose of discipleship is transformation and faithful service.</p>
+
+<!-- PRAYER -->
+
+<section id="prayer">
+
+<div class="section-title">
+<h2>Prayer Request</h2>
 </div>
 
-<div class="ministry-list">
-<div class="ministry-item"><strong>01</strong> Personal Bible Study</div>
-<div class="ministry-item"><strong>02</strong> Prayer & Spiritual Growth</div>
-<div class="ministry-item"><strong>03</strong> Christian Character</div>
-<div class="ministry-item"><strong>04</strong> Evangelism & Outreach</div>
-<div class="ministry-item"><strong>05</strong> Practical Ministry Service</div>
-<div class="ministry-item"><strong>06</strong> Bible Teaching Practice</div>
+<div class="about">
+
+<p>
+Do you have a prayer request?
+We would be honored to pray with you.
+</p>
+
+<a class="btn"
+href="https://wa.me/"
+target="_blank">
+Send Prayer Request
+</a>
+
 </div>
-</div>
+
 </section>
 
-<section>
-<div class="container">
-<div class="head">
-<div class="label">COMPLETION</div>
-<h2>Path to Completion</h2>
-<p>Progress through the full twelve-month discipleship journey.</p>
+
+<!-- CONTACT -->
+
+<section id="contact" class="contact">
+
+<div class="section-title">
+<h2>Contact Us</h2>
 </div>
 
-<div class="steps">
-<div class="step"><strong>01 — LEARN</strong><h3>Study Each Month</h3><p>Complete the monthly lessons and required activities.</p></div>
-<div class="step"><strong>02 — EXAM</strong><h3>Pass Monthly MCQ</h3><p>Complete the 50-question examination for each month.</p></div>
-<div class="step"><strong>03 — SERVE</strong><h3>Prepare for Ministry</h3><p>Complete practical ministry requirements and finish the program.</p></div>
-</div>
-</div>
+<p>
+Gate of Heaven Ministries
+</p>
+
+<p>
+Udapussellawa, Sri Lanka
+</p>
+
+<p>
+For ministry information, prayer requests
+and upcoming events, please contact us.
+</p>
+
+<a class="btn"
+href="https://wa.me/"
+target="_blank">
+WhatsApp Us
+</a>
+
 </section>
 
-<section class="light">
-<div class="container">
-<div class="head"><div class="label">LEADERSHIP</div><h2>About the Founder</h2></div>
-<div class="founder">
-<h3>Pastor Saththiyanadan</h3>
-<div class="role">Founder & Pastor — Gate of Heaven Ministries</div>
-<p>GOH Bible Academy was established as an educational initiative of Gate of Heaven Ministries to encourage believers to grow in God's Word and prepare for faithful Christian service.</p>
-<p>The academy focuses on biblical learning, discipleship, Christian character and practical ministry preparation.</p>
-</div>
-</div>
-</section>
-
-<section>
-<div class="container">
-<div class="cta">
-<h2>Begin Your One-Year Journey</h2>
-<p>Grow in God's Word, develop Christian maturity and prepare yourself for faithful service and ministry.</p>
-<div class="buttons" style="justify-content:center">
-<a href="login.html" class="btn white">Student Login</a>
-<a href="enroll.html" class="btn gold">Register Now</a>
-<a href="bible-courses.html" class="btn outline">View Course</a>
-</div>
-</div>
-</div>
-</section>
 
 <footer>
-<div class="container">
-<div class="footer">
 
-<div>
-<h3>GOH Bible Academy</h3>
-<p>An educational initiative of Gate of Heaven Ministries focused on Christian discipleship, biblical learning and ministry preparation.</p>
+<p>
+© 2026 Gate of Heaven Ministries
+</p>
+
+<p>
+Spreading Faith • Hope • Love
+</p>
+
+<br>
+
+<div class="social">
+<a href="#">Facebook</a>
+<a href="#">YouTube</a>
+<a href="#">WhatsApp</a>
 </div>
 
-<div>
-<h3>Academy</h3>
-<a href="about.html">About</a>
-<a href="bible-courses.html">Course</a>
-<a href="ai-bible-teacher.html">AI Bible Teacher</a>
-<a href="login.html">Student Login</a>
-<a href="enroll.html">Register</a>
-</div>
-
-<div>
-<h3>Information</h3>
-<a href="payment.html">Payment</a>
-<a href="refund-policy.html">Refund Policy</a>
-<a href="privacy.html">Privacy Policy</a>
-<a href="terms.html">Terms & Conditions</a>
-</div>
-
-</div>
-
-<div class="bottom">© 2026 GOH Bible Academy. All rights reserved.</div>
-</div>
 </footer>
-
-<a class="whatsapp" href="https://wa.me/94771190395" target="_blank" rel="noopener">💬</a>
-
-<script>
-const menu=document.getElementById("menuBtn");
-const nav=document.getElementById("navLinks");
-const header=document.getElementById("header");
-
-menu.onclick=()=>{
-nav.classList.toggle("show");
-menu.textContent=nav.classList.contains("show")?"✕":"☰";
-};
-
-document.querySelectorAll(".nav-links a").forEach(a=>{
-a.onclick=()=>{
-nav.classList.remove("show");
-menu.textContent="☰";
-};
-});
-
-document.addEventListener("click",e=>{
-if(window.innerWidth<=850&&!nav.contains(e.target)&&!menu.contains(e.target)){
-nav.classList.remove("show");
-menu.textContent="☰";
-}
-});
-
-window.addEventListener("scroll",()=>{
-header.classList.toggle("scrolled",scrollY>8);
-});
-</script>
 
 </body>
 </html>
