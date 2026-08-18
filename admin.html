@@ -3,105 +3,91 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GOH Ministries | Admin</title>
+<title>GOH Ministries | Church Admin</title>
 
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f4f6f9;color:#222}
-header{background:#182848;color:white;padding:18px;text-align:center}
-header h1{margin:0;font-size:22px}
-header p{margin:5px 0 0;opacity:.8}
+header{background:#182848;color:#fff;padding:20px;text-align:center}
+header h1{margin:0;font-size:24px}
+header p{margin:6px 0 0;opacity:.85}
 
-nav{display:flex;gap:8px;overflow:auto;background:white;padding:10px;border-bottom:1px solid #ddd}
-nav button{border:0;background:#eee;padding:10px 15px;border-radius:8px;white-space:nowrap;cursor:pointer}
-nav button.active{background:#182848;color:white}
+nav{
+display:flex;gap:7px;overflow:auto;padding:10px;
+background:#fff;border-bottom:1px solid #ddd
+}
+nav button{
+border:0;padding:10px 14px;border-radius:7px;
+cursor:pointer;white-space:nowrap;background:#eee
+}
+nav button.active{background:#182848;color:#fff}
 
-main{max-width:1100px;margin:auto;padding:20px}
+main{max-width:1150px;margin:auto;padding:20px}
 section{display:none}
 section.active{display:block}
 
 h2{margin-top:0}
 
+.status{
+padding:11px;margin-bottom:18px;
+border-radius:8px;background:#fff3cd
+}
+
 .cards{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:15px;
-margin-bottom:20px
+grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+gap:15px
 }
 
 .card{
-background:white;
-padding:20px;
-border-radius:12px;
+background:#fff;padding:20px;border-radius:12px;
 box-shadow:0 2px 8px #0001
 }
-
-.card strong{display:block;font-size:25px;margin-top:8px}
+.card strong{
+display:block;font-size:25px;margin-top:8px
+}
 
 .form{
-background:white;
-padding:20px;
-border-radius:12px;
-margin-bottom:20px;
-box-shadow:0 2px 8px #0001
+background:#fff;padding:20px;border-radius:12px;
+margin-bottom:20px;box-shadow:0 2px 8px #0001
 }
 
 input,select,textarea{
-width:100%;
-padding:11px;
-margin:6px 0 12px;
-border:1px solid #ccc;
-border-radius:7px;
+width:100%;padding:11px;margin:6px 0 12px;
+border:1px solid #ccc;border-radius:7px;
 font-size:15px
 }
-
 textarea{min-height:90px}
 
-button.primary{
-background:#182848;
-color:white;
-border:0;
-padding:11px 18px;
-border-radius:7px;
-cursor:pointer
+.primary{
+background:#182848;color:#fff;border:0;
+padding:11px 18px;border-radius:7px;cursor:pointer
 }
 
-button.delete{
-background:#d93025;
-color:white;
-border:0;
-padding:7px 10px;
-border-radius:6px;
-cursor:pointer
+.delete{
+background:#d93025;color:#fff;border:0;
+padding:7px 10px;border-radius:6px;cursor:pointer
 }
+
+.table-box{overflow-x:auto}
 
 table{
-width:100%;
-border-collapse:collapse;
-background:white;
-border-radius:10px;
-overflow:hidden
+width:100%;border-collapse:collapse;
+background:#fff;min-width:650px
 }
-
 th,td{
-padding:11px;
-border-bottom:1px solid #eee;
+padding:11px;border-bottom:1px solid #eee;
 text-align:left
 }
+th{background:#182848;color:#fff}
 
-th{background:#182848;color:white}
-
-.status{
-padding:10px;
-background:#e8f5e9;
-border-radius:7px;
-margin-bottom:15px
+.empty{
+text-align:center;padding:25px;color:#777
 }
 
 @media(max-width:600px){
 main{padding:12px}
-table{font-size:13px}
-th,td{padding:8px}
+.card strong{font-size:21px}
 }
 </style>
 </head>
@@ -125,9 +111,12 @@ th,td{padding:8px}
 
 <main>
 
-<div id="status" class="status">Connecting to database...</div>
+<div id="status" class="status">
+Connecting to database...
+</div>
 
 <!-- DASHBOARD -->
+
 <section id="dashboard" class="active">
 
 <h2>Dashboard</h2>
@@ -170,6 +159,7 @@ Meetings
 
 
 <!-- FINANCE -->
+
 <section id="finance">
 
 <h2>Finance</h2>
@@ -181,16 +171,19 @@ Meetings
 <option value="expense">Expense</option>
 </select>
 
-<input id="financeDate" type="date">
+<input type="date" id="financeDate">
 
 <input id="financeDescription" placeholder="Description">
 
-<input id="financeAmount" type="number" placeholder="Amount">
+<input type="number" id="financeAmount" placeholder="Amount">
 
-<button class="primary" onclick="addFinance()">Save Finance Record</button>
+<button class="primary" onclick="addFinance()">
+Save Finance Record
+</button>
 
 </div>
 
+<div class="table-box">
 <table>
 <thead>
 <tr>
@@ -198,17 +191,18 @@ Meetings
 <th>Type</th>
 <th>Description</th>
 <th>Amount</th>
-<th></th>
+<th>Action</th>
 </tr>
 </thead>
-
 <tbody id="financeList"></tbody>
 </table>
+</div>
 
 </section>
 
 
 <!-- PROJECTS -->
+
 <section id="projects">
 
 <h2>Projects</h2>
@@ -217,9 +211,9 @@ Meetings
 
 <input id="projectName" placeholder="Project name">
 
-<input id="projectBudget" type="number" placeholder="Budget">
+<input type="number" id="projectBudget" placeholder="Budget">
 
-<input id="projectSpent" type="number" placeholder="Spent">
+<input type="number" id="projectSpent" placeholder="Spent">
 
 <select id="projectStatus">
 <option>Planning</option>
@@ -228,10 +222,13 @@ Meetings
 <option>Paused</option>
 </select>
 
-<button class="primary" onclick="addProject()">Save Project</button>
+<button class="primary" onclick="addProject()">
+Save Project
+</button>
 
 </div>
 
+<div class="table-box">
 <table>
 <thead>
 <tr>
@@ -239,17 +236,18 @@ Meetings
 <th>Budget</th>
 <th>Spent</th>
 <th>Status</th>
-<th></th>
+<th>Action</th>
 </tr>
 </thead>
-
 <tbody id="projectList"></tbody>
 </table>
+</div>
 
 </section>
 
 
 <!-- EVENTS -->
+
 <section id="events">
 
 <h2>Events</h2>
@@ -258,18 +256,22 @@ Meetings
 
 <input id="eventTitle" placeholder="Event title">
 
-<input id="eventDate" type="date">
+<input type="date" id="eventDate">
 
-<input id="eventTime" type="time">
+<input type="time" id="eventTime">
 
 <input id="eventVenue" placeholder="Venue">
 
-<textarea id="eventDescription" placeholder="Description"></textarea>
+<textarea id="eventDescription"
+placeholder="Description"></textarea>
 
-<button class="primary" onclick="addEvent()">Save Event</button>
+<button class="primary" onclick="addEvent()">
+Save Event
+</button>
 
 </div>
 
+<div class="table-box">
 <table>
 <thead>
 <tr>
@@ -277,50 +279,56 @@ Meetings
 <th>Date</th>
 <th>Time</th>
 <th>Venue</th>
-<th></th>
+<th>Action</th>
 </tr>
 </thead>
-
 <tbody id="eventList"></tbody>
 </table>
+</div>
 
 </section>
 
 
 <!-- MEETINGS -->
+
 <section id="meetings">
 
 <h2>Meetings</h2>
 
 <div class="form">
 
-<input id="meetingDate" type="date">
+<input type="date" id="meetingDate">
 
 <input id="meetingTitle" placeholder="Meeting title">
 
-<textarea id="meetingNotes" placeholder="Meeting notes"></textarea>
+<textarea id="meetingNotes"
+placeholder="Meeting notes"></textarea>
 
-<button class="primary" onclick="addMeeting()">Save Meeting</button>
+<button class="primary" onclick="addMeeting()">
+Save Meeting
+</button>
 
 </div>
 
+<div class="table-box">
 <table>
 <thead>
 <tr>
 <th>Date</th>
 <th>Title</th>
 <th>Notes</th>
-<th></th>
+<th>Action</th>
 </tr>
 </thead>
-
 <tbody id="meetingList"></tbody>
 </table>
+</div>
 
 </section>
 
 
 <!-- REPORTS -->
+
 <section id="reports">
 
 <h2>Financial Report</h2>
@@ -338,7 +346,7 @@ Total Expenses
 </div>
 
 <div class="card">
-Current Balance
+Balance
 <strong id="reportBalance">Rs. 0</strong>
 </div>
 
@@ -348,13 +356,16 @@ Current Balance
 
 
 <!-- BACKUP -->
+
 <section id="backup">
 
 <h2>Backup</h2>
 
 <div class="form">
 
-<p>Download the current database records as a JSON backup file.</p>
+<p>
+Download a copy of your current records.
+</p>
 
 <button class="primary" onclick="downloadBackup()">
 Download Backup
@@ -369,7 +380,10 @@ Download Backup
 
 <script>
 
-const API="https://goh-church-api.YOUR-SUBDOMAIN.workers.dev";
+/* YOUR CLOUDFLARE WORKER */
+
+const API="https://goh-church-api.createlk.workers.dev";
+
 
 let finance=[];
 let projects=[];
@@ -377,40 +391,46 @@ let events=[];
 let meetings=[];
 
 
+/* NAVIGATION */
+
 function showPage(id,button){
 
-document.querySelectorAll("section").forEach(x=>{
-x.classList.remove("active")
-});
+document.querySelectorAll("section")
+.forEach(s=>s.classList.remove("active"));
 
-document.getElementById(id).classList.add("active");
+document.getElementById(id)
+.classList.add("active");
 
-document.querySelectorAll("nav button").forEach(x=>{
-x.classList.remove("active")
-});
+document.querySelectorAll("nav button")
+.forEach(b=>b.classList.remove("active"));
 
 button.classList.add("active");
 
 }
 
 
+/* API */
+
 async function api(path,options={}){
 
 const response=await fetch(API+path,{
+...options,
 headers:{
-"Content-Type":"application/json"
-},
-...options
+"Content-Type":"application/json",
+...(options.headers||{})
+}
 });
 
 if(!response.ok){
-throw new Error("API request failed");
+throw new Error("API error: "+response.status);
 }
 
 return response.json();
 
 }
 
+
+/* LOAD DATABASE */
 
 async function loadAll(){
 
@@ -430,12 +450,18 @@ updateDashboard();
 document.getElementById("status").textContent=
 "Database connected successfully.";
 
+document.getElementById("status").style.background=
+"#d1e7dd";
+
 }catch(error){
 
 console.error(error);
 
 document.getElementById("status").textContent=
-"Database connection failed. Check your Worker URL.";
+"Database connection failed.";
+
+document.getElementById("status").style.background=
+"#f8d7da";
 
 }
 
@@ -449,24 +475,36 @@ async function addFinance(){
 const data={
 type:document.getElementById("financeType").value,
 date:document.getElementById("financeDate").value,
-description:document.getElementById("financeDescription").value,
+description:document.getElementById("financeDescription").value.trim(),
 amount:Number(document.getElementById("financeAmount").value)
 };
 
-if(!data.date||!data.description||!data.amount){
-alert("Please complete all fields.");
+if(!data.date||!data.description||data.amount<=0){
+
+alert("Please enter date, description and amount.");
+
 return;
+
 }
+
+try{
 
 await api("/finance",{
 method:"POST",
 body:JSON.stringify(data)
 });
 
+document.getElementById("financeDate").value="";
 document.getElementById("financeDescription").value="";
 document.getElementById("financeAmount").value="";
 
 await loadAll();
+
+}catch(e){
+
+alert("Could not save finance record.");
+
+}
 
 }
 
@@ -486,16 +524,27 @@ await loadAll();
 
 function renderFinance(){
 
-document.getElementById("financeList").innerHTML=
-finance.map(x=>`
+const list=document.getElementById("financeList");
+
+if(!finance.length){
+
+list.innerHTML=
+'<tr><td colspan="5" class="empty">No finance records</td></tr>';
+
+return;
+
+}
+
+list.innerHTML=finance.map(x=>`
 
 <tr>
-<td>${x.date}</td>
-<td>${x.type}</td>
-<td>${escapeHTML(x.description)}</td>
+<td>${safe(x.date)}</td>
+<td>${safe(x.type)}</td>
+<td>${safe(x.description)}</td>
 <td>Rs. ${Number(x.amount).toLocaleString()}</td>
 <td>
-<button class="delete" onclick="deleteFinance(${x.id})">
+<button class="delete"
+onclick="deleteFinance(${x.id})">
 Delete
 </button>
 </td>
@@ -511,15 +560,18 @@ Delete
 async function addProject(){
 
 const data={
-name:document.getElementById("projectName").value,
+name:document.getElementById("projectName").value.trim(),
 budget:Number(document.getElementById("projectBudget").value||0),
 spent:Number(document.getElementById("projectSpent").value||0),
 status:document.getElementById("projectStatus").value
 };
 
 if(!data.name){
+
 alert("Enter project name.");
+
 return;
+
 }
 
 await api("/projects",{
@@ -551,16 +603,27 @@ await loadAll();
 
 function renderProjects(){
 
-document.getElementById("projectList").innerHTML=
-projects.map(x=>`
+const list=document.getElementById("projectList");
+
+if(!projects.length){
+
+list.innerHTML=
+'<tr><td colspan="5" class="empty">No projects</td></tr>';
+
+return;
+
+}
+
+list.innerHTML=projects.map(x=>`
 
 <tr>
-<td>${escapeHTML(x.name)}</td>
+<td>${safe(x.name)}</td>
 <td>Rs. ${Number(x.budget).toLocaleString()}</td>
 <td>Rs. ${Number(x.spent).toLocaleString()}</td>
-<td>${escapeHTML(x.status||"")}</td>
+<td>${safe(x.status||"")}</td>
 <td>
-<button class="delete" onclick="deleteProject(${x.id})">
+<button class="delete"
+onclick="deleteProject(${x.id})">
 Delete
 </button>
 </td>
@@ -576,16 +639,19 @@ Delete
 async function addEvent(){
 
 const data={
-title:document.getElementById("eventTitle").value,
+title:document.getElementById("eventTitle").value.trim(),
 event_date:document.getElementById("eventDate").value,
 event_time:document.getElementById("eventTime").value,
-venue:document.getElementById("eventVenue").value,
-description:document.getElementById("eventDescription").value
+venue:document.getElementById("eventVenue").value.trim(),
+description:document.getElementById("eventDescription").value.trim()
 };
 
 if(!data.title||!data.event_date){
+
 alert("Enter event title and date.");
+
 return;
+
 }
 
 await api("/events",{
@@ -619,16 +685,27 @@ await loadAll();
 
 function renderEvents(){
 
-document.getElementById("eventList").innerHTML=
-events.map(x=>`
+const list=document.getElementById("eventList");
+
+if(!events.length){
+
+list.innerHTML=
+'<tr><td colspan="5" class="empty">No events</td></tr>';
+
+return;
+
+}
+
+list.innerHTML=events.map(x=>`
 
 <tr>
-<td>${escapeHTML(x.title)}</td>
-<td>${x.event_date}</td>
-<td>${x.event_time||""}</td>
-<td>${escapeHTML(x.venue||"")}</td>
+<td>${safe(x.title)}</td>
+<td>${safe(x.event_date)}</td>
+<td>${safe(x.event_time||"")}</td>
+<td>${safe(x.venue||"")}</td>
 <td>
-<button class="delete" onclick="deleteEvent(${x.id})">
+<button class="delete"
+onclick="deleteEvent(${x.id})">
 Delete
 </button>
 </td>
@@ -645,13 +722,16 @@ async function addMeeting(){
 
 const data={
 meeting_date:document.getElementById("meetingDate").value,
-title:document.getElementById("meetingTitle").value,
-notes:document.getElementById("meetingNotes").value
+title:document.getElementById("meetingTitle").value.trim(),
+notes:document.getElementById("meetingNotes").value.trim()
 };
 
 if(!data.meeting_date||!data.title){
+
 alert("Enter meeting date and title.");
+
 return;
+
 }
 
 await api("/meetings",{
@@ -683,15 +763,26 @@ await loadAll();
 
 function renderMeetings(){
 
-document.getElementById("meetingList").innerHTML=
-meetings.map(x=>`
+const list=document.getElementById("meetingList");
+
+if(!meetings.length){
+
+list.innerHTML=
+'<tr><td colspan="4" class="empty">No meetings</td></tr>';
+
+return;
+
+}
+
+list.innerHTML=meetings.map(x=>`
 
 <tr>
-<td>${x.meeting_date}</td>
-<td>${escapeHTML(x.title)}</td>
-<td>${escapeHTML(x.notes||"")}</td>
+<td>${safe(x.meeting_date)}</td>
+<td>${safe(x.title)}</td>
+<td>${safe(x.notes||"")}</td>
 <td>
-<button class="delete" onclick="deleteMeeting(${x.id})">
+<button class="delete"
+onclick="deleteMeeting(${x.id})">
 Delete
 </button>
 </td>
@@ -711,15 +802,17 @@ let expense=0;
 
 finance.forEach(x=>{
 
+const amount=Number(x.amount)||0;
+
 if(x.type==="income"){
-income+=Number(x.amount);
+income+=amount;
 }else{
-expense+=Number(x.amount);
+expense+=amount;
 }
 
 });
 
-let balance=income-expense;
+const balance=income-expense;
 
 document.getElementById("incomeTotal").textContent=
 "Rs. "+income.toLocaleString();
@@ -755,16 +848,16 @@ document.getElementById("reportBalance").textContent=
 
 function downloadBackup(){
 
-const backup={
-created_at:new Date().toISOString(),
-finance,
-projects,
-events,
-meetings
+const data={
+backup_date:new Date().toISOString(),
+finance:finance,
+projects:projects,
+events:events,
+meetings:meetings
 };
 
 const blob=new Blob(
-[JSON.stringify(backup,null,2)],
+[JSON.stringify(data,null,2)],
 {type:"application/json"}
 );
 
@@ -775,18 +868,20 @@ const a=document.createElement("a");
 a.href=url;
 a.download="goh-church-backup.json";
 
+document.body.appendChild(a);
 a.click();
+a.remove();
 
 URL.revokeObjectURL(url);
 
 }
 
 
-/* SECURITY */
+/* HTML SAFETY */
 
-function escapeHTML(value){
+function safe(value){
 
-return String(value)
+return String(value??"")
 .replaceAll("&","&amp;")
 .replaceAll("<","&lt;")
 .replaceAll(">","&gt;")
