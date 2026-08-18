@@ -7,9 +7,10 @@
 <title>Gate of Heaven Ministries | Sri Lanka</title>
 
 <meta name="description"
-content="Gate of Heaven Ministries - Spreading the Gospel, building faith and serving people with the love of Jesus Christ.">
+content="Gate of Heaven Ministries - Sharing the Gospel of Jesus Christ, building faith, serving families and reaching communities.">
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -29,14 +30,14 @@ body{
 
 header{
     background:#172554;
-    color:white;
-    padding:18px 6%;
+    color:#fff;
+    padding:16px 6%;
     display:flex;
     justify-content:space-between;
     align-items:center;
     position:sticky;
     top:0;
-    z-index:100;
+    z-index:1000;
 }
 
 .logo{
@@ -44,72 +45,123 @@ header{
     font-weight:bold;
 }
 
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+}
+
 nav a{
-    color:white;
+    color:#fff;
     text-decoration:none;
-    margin-left:20px;
     font-size:14px;
 }
 
+nav a:hover{
+    color:#fbbf24;
+}
+
 .hero{
-    min-height:85vh;
+    min-height:88vh;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
     padding:60px 20px;
-    background:linear-gradient(#0008,#0008),
-    url("hero.jpg") center/cover;
-    color:white;
+    color:#fff;
+
+    background:
+    linear-gradient(#0008,#0008),
+    url("hero.jpg") center/cover no-repeat;
+}
+
+.hero-content{
+    max-width:800px;
 }
 
 .hero h1{
-    font-size:48px;
-    margin-bottom:15px;
+    font-size:50px;
+    line-height:1.2;
+    margin-bottom:20px;
 }
 
 .hero p{
-    max-width:650px;
+    font-size:19px;
+    max-width:680px;
     margin:auto;
-    font-size:18px;
 }
 
 .btn{
     display:inline-block;
     margin-top:25px;
-    padding:12px 22px;
+    padding:12px 24px;
     background:#f59e0b;
-    color:white;
+    color:#fff;
     text-decoration:none;
-    border-radius:6px;
+    border-radius:7px;
     font-weight:bold;
 }
 
+.btn:hover{
+    background:#d97706;
+}
+
 section{
-    padding:70px 7%;
+    padding:75px 7%;
 }
 
 .section-title{
     text-align:center;
-    margin-bottom:35px;
+    margin-bottom:40px;
 }
 
 .section-title h2{
     color:#172554;
-    font-size:30px;
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.section-title p{
+    color:#666;
+}
+
+.about{
+    max-width:850px;
+    margin:auto;
+    text-align:center;
+    font-size:17px;
+}
+
+.verse{
+    background:#172554;
+    color:#fff;
+    text-align:center;
+}
+
+.verse h2{
+    font-size:28px;
+    max-width:850px;
+    margin:auto;
+}
+
+.verse p{
+    margin-top:12px;
+    color:#fbbf24;
 }
 
 .cards{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
     gap:20px;
 }
 
 .card{
-    padding:25px;
     background:#f8fafc;
-    border-radius:10px;
+    padding:28px 22px;
+    border-radius:12px;
     text-align:center;
+    border:1px solid #e5e7eb;
 }
 
 .card h3{
@@ -117,64 +169,145 @@ section{
     margin-bottom:10px;
 }
 
-.about{
-    max-width:800px;
+.card p{
+    color:#555;
+}
+
+.events{
+    background:#f8fafc;
+}
+
+.event-card{
+    background:#fff;
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 3px 12px #00000012;
+}
+
+.event-card h3{
+    color:#172554;
+    margin-bottom:10px;
+}
+
+.event-date{
+    color:#d97706;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.sermons{
+    text-align:center;
+}
+
+.sermon-box{
+    max-width:750px;
     margin:auto;
-    text-align:center;
+    background:#f8fafc;
+    padding:30px;
+    border-radius:12px;
 }
 
-.event{
+.prayer{
     background:#172554;
-    color:white;
+    color:#fff;
     text-align:center;
 }
 
-.event h2{
-    font-size:30px;
+.prayer h2{
+    font-size:32px;
+}
+
+.prayer p{
+    max-width:650px;
+    margin:10px auto;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+}
+
+.gallery img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:10px;
 }
 
 .contact{
-    text-align:center;
     background:#f8fafc;
+    text-align:center;
+}
+
+.contact p{
+    margin:7px;
 }
 
 footer{
     background:#111827;
-    color:white;
+    color:#fff;
     text-align:center;
-    padding:30px 20px;
+    padding:35px 20px;
+}
+
+.social{
+    margin-top:15px;
 }
 
 .social a{
-    color:white;
-    margin:0 8px;
+    color:#fff;
     text-decoration:none;
+    margin:0 8px;
 }
 
-@media(max-width:700px){
+.social a:hover{
+    color:#fbbf24;
+}
+
+@media(max-width:750px){
 
     header{
         flex-direction:column;
         gap:12px;
     }
 
+    nav{
+        justify-content:center;
+        gap:10px;
+    }
+
     nav a{
-        margin:0 6px;
         font-size:13px;
     }
 
     .hero h1{
-        font-size:34px;
+        font-size:36px;
+    }
+
+    .hero p{
+        font-size:16px;
     }
 
     section{
-        padding:50px 20px;
+        padding:55px 20px;
     }
+
+    .verse h2{
+        font-size:23px;
+    }
+
 }
+
 </style>
 </head>
 
+
 <body>
+
+
+<!-- HEADER -->
 
 <header>
 
@@ -187,6 +320,8 @@ footer{
     <a href="#about">About</a>
     <a href="#ministries">Ministries</a>
     <a href="#events">Events</a>
+    <a href="#sermons">Sermons</a>
+    <a href="#gallery">Gallery</a>
     <a href="#prayer">Prayer</a>
     <a href="#contact">Contact</a>
 </nav>
@@ -194,22 +329,25 @@ footer{
 </header>
 
 
-<!-- HERO -->
+<!-- HOME -->
 
 <section id="home" class="hero">
 
-<div>
+<div class="hero-content">
 
-<h1>Gate of Heaven Ministries</h1>
+<h1>
+Gate of Heaven Ministries
+</h1>
 
 <p>
-Spreading the Gospel, strengthening families,
-building faith and serving people through
-the love of Jesus Christ.
+Sharing the Gospel of Jesus Christ,
+building faith, serving families
+and reaching communities with
+the love of God.
 </p>
 
 <a href="#about" class="btn">
-Learn More
+Discover Our Ministry
 </a>
 
 </div>
@@ -222,23 +360,29 @@ Learn More
 <section id="about">
 
 <div class="section-title">
+
 <h2>About Us</h2>
+
+<p>Who we are and what we believe</p>
+
 </div>
 
 <div class="about">
 
 <p>
-Gate of Heaven Ministries exists to share the
-Good News of Jesus Christ, encourage believers,
-reach children and families, and serve our
-community with faith, hope and love.
+Gate of Heaven Ministries is committed to
+sharing the Good News of Jesus Christ and
+helping people grow in faith through the
+Word of God, prayer, worship and service.
 </p>
 
 <br>
 
 <p>
-Our desire is to see lives transformed through
-the Word of God and the power of prayer.
+Our desire is to see individuals, children
+and families experience the love of God,
+discover their purpose and become a blessing
+to their communities.
 </p>
 
 </div>
@@ -246,9 +390,9 @@ the Word of God and the power of prayer.
 </section>
 
 
-<!-- VERSE -->
+<!-- BIBLE VERSE -->
 
-<section class="event">
+<section class="verse">
 
 <h2>
 “Go into all the world and preach the gospel
@@ -267,41 +411,87 @@ Mark 16:15
 <section id="ministries">
 
 <div class="section-title">
+
 <h2>Our Ministries</h2>
+
+<p>
+Serving God and people with faith, hope and love.
+</p>
+
 </div>
+
 
 <div class="cards">
 
 <div class="card">
+
 <h3>Sunday Worship</h3>
+
 <p>
-Gathering together to worship God,
-hear His Word and grow in faith.
+Gather together to worship God,
+hear His Word, pray and grow in faith.
 </p>
+
 </div>
 
-<div class="card">
-<h3>Children's Ministry</h3>
-<p>
-Helping children learn God's Word and
-grow in Christian faith.
-</p>
-</div>
 
 <div class="card">
+
+<h3>Sunday School</h3>
+
+<p>
+Helping children learn God's Word
+and build a strong foundation of faith.
+</p>
+
+</div>
+
+
+<div class="card">
+
 <h3>Prayer Ministry</h3>
+
 <p>
-Standing together in prayer for families,
-the church and our community.
+Standing together in prayer for
+individuals, families and communities.
 </p>
+
 </div>
 
+
 <div class="card">
-<h3>Community Outreach</h3>
+
+<h3>Youth Ministry</h3>
+
 <p>
-Serving people and sharing the hope
-of Jesus Christ.
+Encouraging young people to follow
+Christ and live according to God's Word.
 </p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Outreach Ministry</h3>
+
+<p>
+Sharing the Gospel and reaching people
+with the hope of Jesus Christ.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Community Service</h3>
+
+<p>
+Serving people in need and showing
+God's love through practical action.
+</p>
+
 </div>
 
 </div>
@@ -311,45 +501,166 @@ of Jesus Christ.
 
 <!-- EVENTS -->
 
-<section id="events" class="event">
+<section id="events" class="events">
+
+<div class="section-title">
 
 <h2>Upcoming Events</h2>
 
 <p>
-Stay connected with Gate of Heaven Ministries
-for upcoming worship services, children's programs,
-prayer meetings and outreach activities.
+Join us in worship, prayer and fellowship.
+</p>
+
+</div>
+
+
+<div class="cards">
+
+<div class="event-card">
+
+<div class="event-date">
+Sunday Worship
+</div>
+
+<h3>Sunday Service</h3>
+
+<p>
+Join us for worship, prayer,
+fellowship and God's Word.
 </p>
 
 <a href="#contact" class="btn">
-Contact Us
+Get Information
 </a>
+
+</div>
+
+
+<div class="event-card">
+
+<div class="event-date">
+Children
+</div>
+
+<h3>Children's Program</h3>
+
+<p>
+A special time for children to
+learn God's Word and enjoy fellowship.
+</p>
+
+<a href="#contact" class="btn">
+Get Information
+</a>
+
+</div>
+
+
+<div class="event-card">
+
+<div class="event-date">
+Prayer
+</div>
+
+<h3>Prayer Meetings</h3>
+
+<p>
+Come together as we seek God
+and pray for our families and community.
+</p>
+
+<a href="#prayer" class="btn">
+Prayer Request
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SERMONS -->
+
+<section id="sermons" class="sermons">
+
+<div class="section-title">
+
+<h2>Sermons & Messages</h2>
+
+<p>
+Grow in God's Word wherever you are.
+</p>
+
+</div>
+
+
+<div class="sermon-box">
+
+<h3>Latest Messages</h3>
+
+<p>
+Watch and listen to Bible messages,
+teachings and encouragement from
+Gate of Heaven Ministries.
+</p>
+
+<a href="#" class="btn">
+Watch Messages
+</a>
+
+</div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section id="gallery">
+
+<div class="section-title">
+
+<h2>Ministry Gallery</h2>
+
+<p>
+Moments from our ministry and fellowship.
+</p>
+
+</div>
+
+
+<div class="gallery">
+
+<img src="gallery1.jpg" alt="Gate of Heaven Ministries">
+
+<img src="gallery2.jpg" alt="Church ministry">
+
+<img src="gallery3.jpg" alt="Children ministry">
+
+<img src="gallery4.jpg" alt="Ministry event">
+
+</div>
 
 </section>
 
 
 <!-- PRAYER -->
 
-<section id="prayer">
+<section id="prayer" class="prayer">
 
-<div class="section-title">
-<h2>Prayer Request</h2>
-</div>
-
-<div class="about">
+<h2>
+Need Prayer?
+</h2>
 
 <p>
-Do you have a prayer request?
-We would be honored to pray with you.
+Whatever you are facing, you do not have
+to face it alone. Send us your prayer request
+and our ministry team will pray with you.
 </p>
 
-<a class="btn"
-href="https://wa.me/"
-target="_blank">
+<a href="#" class="btn">
 Send Prayer Request
 </a>
-
-</div>
 
 </section>
 
@@ -359,11 +670,17 @@ Send Prayer Request
 <section id="contact" class="contact">
 
 <div class="section-title">
+
 <h2>Contact Us</h2>
+
+<p>
+We would love to hear from you.
+</p>
+
 </div>
 
 <p>
-Gate of Heaven Ministries
+<strong>Gate of Heaven Ministries</strong>
 </p>
 
 <p>
@@ -371,38 +688,48 @@ Udapussellawa, Sri Lanka
 </p>
 
 <p>
-For ministry information, prayer requests
-and upcoming events, please contact us.
+For ministry information, prayer requests,
+events and fellowship, please contact us.
 </p>
 
-<a class="btn"
-href="https://wa.me/"
-target="_blank">
-WhatsApp Us
+<a href="#" class="btn">
+Contact Us
 </a>
 
 </section>
 
 
+<!-- FOOTER -->
+
 <footer>
 
-<p>
-© 2026 Gate of Heaven Ministries
-</p>
+<h3>
+Gate of Heaven Ministries
+</h3>
 
 <p>
-Spreading Faith • Hope • Love
+Faith • Hope • Love
 </p>
+
+<div class="social">
+
+<a href="#">Facebook</a>
+
+<a href="#">YouTube</a>
+
+<a href="#">WhatsApp</a>
+
+</div>
 
 <br>
 
-<div class="social">
-<a href="#">Facebook</a>
-<a href="#">YouTube</a>
-<a href="#">WhatsApp</a>
-</div>
+<p>
+© 2026 Gate of Heaven Ministries.
+All rights reserved.
+</p>
 
 </footer>
+
 
 </body>
 </html>
