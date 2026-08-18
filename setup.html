@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>GOH Ministries - Admin Setup</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .box {
+      background: white;
+      width: 360px;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.1);
+    }
+
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 12px;
+      margin: 8px 0 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #123b6d;
+      color: white;
+      border: 0;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    #message {
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+
+  <h2>GOH Ministries</h2>
+  <p>Create Super Administrator</p>
+
+  <form id="setupForm">
+
+    <label>Name</label>
+    <input
+      id="name"
+      type="text"
+      placeholder="Administrator name"
+      required
+    >
+
+    <label>Username</label>
+    <input
+      id="username"
+      type="text"
+      placeholder="admin"
+      required
+    >
+
+    <label>Password</label>
+    <input
+      id="password"
+      type="password"
+      placeholder="Minimum 10 characters"
+      required
+    >
+
+    <label>Confirm Password</label>
+    <input
+      id="confirm"
+      type="password"
+      placeholder="Repeat password"
+      required
+    >
+
+    <button type="submit">
+      Create Super Admin
+    </button>
+
+  </form>
+
+  <div id="message"></div>
+
+</div>
+
+<script>
+
+const WORKER_URL =
+  "YOUR_WORKER_URL";
+
+document
+  .getElementById("setupForm")
+  .addEventListener("submit", async function(e) {
+
+    e.preventDefault();
+
+    const name =
+      document.getElementById("name").value.trim();
+
+    const username =
+      document.getElementById("username").value.trim();
+
+    const password =
+      document.getElementById("password").value;
+
+    const confirm =
+      document.getElementById("confirm").value;
+
+    const message =
+      document.getElementById("message");
+
+    if (password !== confirm) {
+      message.textContent =
+        "Passwords do not match.";
+      return;
+    }
+
+    try {
+
+      const response = await fetch(
+        WORKER_URL + "/setup-admin",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name,
+            username,
+            password
+          })
+        }
+      );
+
+      const data =
+        await response.json();
+
+      message.textContent =
+        data.message || data.error;
+
+      if (data.success) {
+        document.getElementById("setupForm").reset();
+      }
+
+    } catch (error) {
+
+      message.textContent =
+        "Unable to connect to the server.";
+
+    }
+
+  });
+
+</script>
+
+</body>
+</html>
