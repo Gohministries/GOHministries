@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Church Administration | Admin Dashboard</title>
+
+<meta name="description" content="Private church administration and record management dashboard.">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #243b64;
+    --secondary: #3f5f95;
+    --accent: #d4a017;
+    --background: #f4f6f9;
+    --card: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --success: #16803c;
+    --danger: #c62828;
+    --shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+}
+
+/* HEADER */
+
+.header {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.brand h1 {
+    font-size: 21px;
+}
+
+.brand p {
+    font-size: 13px;
+    opacity: 0.85;
+    margin-top: 4px;
+}
+
+.security {
+    font-size: 12px;
+    background: rgba(255,255,255,0.15);
+    padding: 8px 12px;
+    border-radius: 20px;
+}
+
+/* NAVIGATION */
+
+.nav {
+    background: white;
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    gap: 5px;
+    overflow-x: auto;
+}
+
+.nav button {
+    border: none;
+    background: transparent;
+    padding: 15px 16px;
+    cursor: pointer;
+    color: var(--muted);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.nav button:hover,
+.nav button.active {
+    color: var(--primary);
+    border-bottom: 3px solid var(--accent);
+}
+
+/* MAIN */
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 25px 18px 60px;
+}
+
+.page-title {
+    margin-bottom: 20px;
+}
+
+.page-title h2 {
+    font-size: 26px;
+    color: var(--primary);
+}
+
+.page-title p {
+    color: var(--muted);
+    margin-top: 6px;
+}
+
+/* CARDS */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 25px;
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+}
+
+.stat-title {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.stat-value {
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 8px;
+    color: var(--primary);
+}
+
+.stat-note {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 5px;
+}
+
+/* MODULES */
+
+.modules {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.module {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: var(--shadow);
+    transition: 0.2s;
+}
+
+.module:hover {
+    transform: translateY(-3px);
+}
+
+.icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    background: #eef2f8;
+    font-size: 23px;
+    margin-bottom: 15px;
+}
+
+.module h3 {
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+.module p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.module button {
+    margin-top: 16px;
+    border: none;
+    background: var(--primary);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.module button:hover {
+    background: var(--secondary);
+}
+
+/* ACTIVITY */
+
+.section {
+    margin-top: 28px;
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.section-title h3 {
+    color: var(--primary);
+}
+
+.activity {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.activity-row {
+    padding: 15px 18px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.activity-row:last-child {
+    border-bottom: none;
+}
+
+.activity-name {
+    font-weight: 600;
+}
+
+.activity-date {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+}
+
+.badge {
+    align-self: center;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.badge.success {
+    background: #e7f7ed;
+    color: var(--success);
+}
+
+.badge.pending {
+    background: #fff6d9;
+    color: #8a6500;
+}
+
+/* FOOTER */
+
+.footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 35px;
+    line-height: 1.6;
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .modules {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+
+    .header-content {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .modules {
+        grid-template-columns: 1fr;
+    }
+
+    .page-title h2 {
+        font-size: 22px;
+    }
+}
+
+/* PRINT */
+
+@media print {
+
+    .header,
+    .nav,
+    .footer {
+        display: none;
+    }
+
+    body {
+        background: white;
+    }
+
+    .container {
+        max-width: 100%;
+    }
+
+    .card,
+    .module,
+    .activity {
+        box-shadow: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header-content">
+
+        <div class="brand">
+            <h1>Gate of Heaven Ministries</h1>
+            <p>Private Church Administration System</p>
+        </div>
+
+        <div class="security">
+            🔒 Private Administration
+        </div>
+
+    </div>
+</header>
+
+
+<nav class="nav">
+
+    <div class="nav-inner">
+
+        <button class="active" onclick="showSection('dashboard', this)">
+            Dashboard
+        </button>
+
+        <button onclick="showSection('finance', this)">
+            Finance
+        </button>
+
+        <button onclick="showSection('meetings', this)">
+            Meetings
+        </button>
+
+        <button onclick="showSection('projects', this)">
+            Projects
+        </button>
+
+        <button onclick="showSection('documents', this)">
+            Documents
+        </button>
+
+        <button onclick="showSection('reports', this)">
+            Reports
+        </button>
+
+        <button onclick="showSection('backup', this)">
+            Backup
+        </button>
+
+    </div>
+
+</nav>
+
+
+<main class="container">
+
+
+<!-- DASHBOARD -->
+
+<section id="dashboard">
+
+    <div class="page-title">
+
+        <h2>Administration Dashboard</h2>
+
+        <p>
+            Central management area for authorized church leaders.
+        </p>
+
+    </div>
+
+
+    <div class="stats">
+
+        <div class="card">
+            <div class="stat-title">Total Income</div>
+            <div class="stat-value">Rs. 0.00</div>
+            <div class="stat-note">Current period</div>
+        </div>
+
+        <div class="card">
+            <div class="stat-title">Total Expenses</div>
+            <div class="stat-value">Rs. 0.00</div>
+            <div class="stat-note">Current period</div>
+        </div>
+
+        <div class="card">
+            <div class="stat-title">Projects</div>
+            <div class="stat-value">0</div>
+            <div class="stat-note">Active projects</div>
+        </div>
+
+        <div class="card">
+            <div class="stat-title">Documents</div>
+            <div class="stat-value">0</div>
+            <div class="stat-note">Recorded documents</div>
+        </div>
+
+    </div>
+
+
+    <div class="modules">
+
+        <div class="module">
+
+            <div class="icon">💰</div>
+
+            <h3>Finance</h3>
+
+            <p>
+                Manage income, donations, expenses,
+                receipts and financial summaries.
+            </p>
+
+            <button onclick="openModule('Finance')">
+                Open Finance
+            </button>
+
+        </div>
+
+
+        <div class="module">
+
+            <div class="icon">📝</div>
+
+            <h3>Meetings</h3>
+
+            <p>
+                Keep meeting minutes, decisions,
+                resolutions and approvals.
+            </p>
+
+            <button onclick="openModule('Meetings')">
+                Open Meetings
+            </button>
+
+        </div>
+
+
+        <div class="module">
+
+            <div class="icon">🏗️</div>
+
+            <h3>Projects</h3>
+
+            <p>
+                Track construction, purchases,
+                labour, budgets and project photos.
+            </p>
+
+            <button onclick="openModule('Projects')">
+                Open Projects
+            </button>
+
+        </div>
+
+
+        <div class="module">
+
+            <div class="icon">📁</div>
+
+            <h3>Documents</h3>
+
+            <p>
+                Organize church, property,
+                construction and legal documents.
+            </p>
+
+            <button onclick="openModule('Documents')">
+                Open Documents
+            </button>
+
+        </div>
+
+
+        <div class="module">
+
+            <div class="icon">📊</div>
+
+            <h3>Reports</h3>
+
+            <p>
+                Prepare monthly, quarterly and
+                annual administrative reports.
+            </p>
+
+            <button onclick="openModule('Reports')">
+                Open Reports
+            </button>
+
+        </div>
+
+
+        <div class="module">
+
+            <div class="icon">💾</div>
+
+            <h3>Backup</h3>
+
+            <p>
+                Export important information and
+                maintain secure backup copies.
+            </p>
+
+            <button onclick="openModule('Backup')">
+                Open Backup
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="section">
+
+        <div class="section-title">
+
+            <h3>Recent Activity</h3>
+
+        </div>
+
+
+        <div class="activity">
+
+            <div class="activity-row">
+
+                <div>
+                    <div class="activity-name">
+                        System Created
+                    </div>
+
+                    <div class="activity-date">
+                        No records have been entered yet.
+                    </div>
+                </div>
+
+                <span class="badge success">
+                    Ready
+                </span>
+
+            </div>
+
+
+            <div class="activity-row">
+
+                <div>
+                    <div class="activity-name">
+                        Backup
+                    </div>
+
+                    <div class="activity-date">
+                        Backup system not configured yet.
+                    </div>
+                </div>
+
+                <span class="badge pending">
+                    Pending
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- OTHER SECTIONS -->
+
+<section id="finance" style="display:none">
+
+    <div class="page-title">
+        <h2>Finance</h2>
+        <p>Financial administration and records.</p>
+    </div>
+
+    <div class="card">
+
+        <h3>Finance Module</h3>
+
+        <p style="margin-top:10px;color:#6b7280;">
+            Income, donations, expenses, receipts and
+            financial reports will be added here.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section id="meetings" style="display:none">
+
+    <div class="page-title">
+        <h2>Meetings</h2>
+        <p>Meeting minutes, decisions and resolutions.</p>
+    </div>
+
+    <div class="card">
+
+        <h3>Meeting Records</h3>
+
+        <p style="margin-top:10px;color:#6b7280;">
+            Meeting records will be added here.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section id="projects" style="display:none">
+
+    <div class="page-title">
+        <h2>Projects</h2>
+        <p>Church projects and construction records.</p>
+    </div>
+
+    <div class="card">
+
+        <h3>Project Management</h3>
+
+        <p style="margin-top:10px;color:#6b7280;">
+            Project records, budgets, purchases,
+            labour and photos will be added here.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section id="documents" style="display:none">
+
+    <div class="page-title">
+        <h2>Documents</h2>
+        <p>Important church and administrative documents.</p>
+    </div>
+
+    <div class="card">
+
+        <h3>Document Management</h3>
+
+        <p style="margin-top:10px;color:#6b7280;">
+            Documents will be organized here.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section id="reports" style="display:none">
+
+    <div class="page-title">
+        <h2>Reports</h2>
+        <p>Administrative and financial reports.</p>
+    </div>
+
+    <div class="card">
+
+        <h3>Reports</h3>
+
+        <p style="margin-top:10px;color:#6b7280;">
+            Monthly, quarterly and annual reports
+            will be added here.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section id="backup" style="display:none">
+
+    <div class="page-title">
+        <h2>Backup</h2>
+        <p>Manage copies and exports of important records.</p>
+    </div>
+
+    <div class="card">
+
+        <h3>Backup Center</h3>
+
+        <p style="margin-top:10px;color:#6b7280;">
+            Backup and export functions will be added here.
+        </p>
+
+        <button
+            onclick="window.print()"
+            style="
+            margin-top:18px;
+            padding:10px 15px;
+            border:0;
+            border-radius:8px;
+            background:#243b64;
+            color:white;
+            cursor:pointer;
+            ">
+            🖨️ Print / Save PDF
+        </button>
+
+    </div>
+
+</section>
+
+
+<div class="footer">
+
+    Gate of Heaven Ministries<br>
+
+    Private Administration System · Version 1.0<br>
+
+    Authorized users only
+
+</div>
+
+</main>
+
+
+<script>
+
+function showSection(sectionId, button) {
+
+    const sections = [
+        "dashboard",
+        "finance",
+        "meetings",
+        "projects",
+        "documents",
+        "reports",
+        "backup"
+    ];
+
+    sections.forEach(function(id) {
+
+        const section = document.getElementById(id);
+
+        if (section) {
+            section.style.display =
+                id === sectionId ? "block" : "none";
+        }
+
+    });
+
+
+    document.querySelectorAll(".nav button")
+        .forEach(function(btn) {
+            btn.classList.remove("active");
+        });
+
+
+    if (button) {
+        button.classList.add("active");
+    }
+
+}
+
+
+function openModule(name) {
+
+    alert(
+        name +
+        " module is ready for development.\n\n" +
+        "We will add the secure record functions next."
+    );
+
+}
+
+</script>
+
+</body>
+</html>
