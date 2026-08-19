@@ -4,52 +4,60 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0b376d">
-<title>GOH Ministries | Administration</title>
+<title>GOH Ministries | Finance</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--p:#0b376d;--bg:#f6f8fb;--b:#e2e8f0;--t:#172033;--m:#64748b}
-body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--t)}
-button,input,select,textarea{font:inherit}
-header{height:56px;background:var(--p);color:white;position:sticky;top:0;z-index:10}
-.head{height:100%;max-width:1200px;margin:auto;padding:8px 14px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:9px}.logo{width:38px;height:38px;border-radius:50%;background:#fff;color:var(--p);display:grid;place-items:center;font-weight:800;font-size:11px}
+body{font-family:system-ui,sans-serif;background:#f8fafc;color:#1e293b}
+header{height:56px;background:#0b376d;color:#fff;display:flex;align-items:center;padding:0 15px}
+.head{width:100%;display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:center;gap:9px}
+.logo{width:36px;height:36px;border-radius:50%;background:#fff;color:#0b376d;display:grid;place-items:center;font-weight:800;font-size:11px}
 .brand h1{font-size:15px}.brand p{font-size:10px;opacity:.7}
-.menuBtn{border:0;background:#ffffff20;color:#fff;padding:8px 12px;border-radius:7px;font-size:18px}
-.menu{display:none;position:absolute;right:14px;top:53px;width:225px;background:#fff;padding:6px;border:1px solid var(--b);border-radius:10px;box-shadow:0 10px 30px #0002}
-.menu.show{display:block}.menu button{width:100%;border:0;background:none;text-align:left;padding:10px;border-radius:7px;color:var(--t);font-size:13px}
-.menu button:hover,.menu button.active{background:#e8f1fb;color:var(--p)}
-.logout{color:#b91c1c!important;border-top:1px solid var(--b)!important;margin-top:4px}
+.menuBtn{border:0;background:#ffffff22;color:#fff;padding:8px 12px;border-radius:7px;font-size:18px}
+.menu{display:none;position:absolute;right:14px;top:52px;background:#fff;border:1px solid #e2e8f0;border-radius:9px;padding:6px;width:210px;box-shadow:0 8px 25px #0002;z-index:20}
+.menu.show{display:block}
+.menu button{width:100%;border:0;background:none;text-align:left;padding:9px;border-radius:6px}
+.menu button:hover{background:#e0f2fe}
 main{max-width:1200px;margin:auto;padding:18px}
 .page{display:none}.page.active{display:block}
-h2{font-size:19px;color:var(--p);margin-bottom:15px}
-.card,.form,.table,.stat{background:#fff;border:1px solid var(--b);border-radius:10px;padding:16px;margin-bottom:15px}
-.welcome h2{margin-bottom:4px}.welcome p{font-size:13px;color:var(--m)}
-.role{display:inline-block;margin-top:8px;padding:4px 9px;border-radius:20px;background:#e8f1fb;color:var(--p);font-size:11px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
-.stat small{font-size:11px;color:var(--m)}.stat strong{display:block;color:var(--p);font-size:18px;margin-top:4px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.module{cursor:pointer}.module h3{font-size:14px}.module p{font-size:12px;color:var(--m);margin-top:4px}
-.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-label{display:block;font-size:11px;font-weight:700;margin-bottom:5px}
-input,select,textarea{width:100%;padding:10px;border:1px solid var(--b);border-radius:7px;background:#fff}
-textarea{min-height:80px;resize:vertical}.full{grid-column:1/-1}
-.btn{border:0;border-radius:7px;padding:10px 14px;margin-top:12px;font-size:12px;font-weight:700}
-.primary{background:var(--p);color:#fff}.secondary{background:#f1f5f9;border:1px solid var(--b)}
-.danger{background:#dc2626;color:#fff}.approve{background:#15803d;color:#fff}
-.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:700px}
-th,td{padding:9px;border-bottom:1px solid var(--b);font-size:12px;text-align:left}
-th{background:#f8fafc;color:var(--p)}
-.message{display:none;padding:10px;border-radius:7px;margin-bottom:14px;font-size:12px}
-.message.show{display:block}.error{background:#fee2e2;color:#991b1b}.success{background:#dcfce7;color:#166534}
-.status{font-size:10px;padding:4px 7px;border-radius:10px;background:#f1f5f9}
-.access{padding:15px;background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;border-radius:9px}
-footer{text-align:center;padding:20px;color:var(--m);font-size:10px}
+.title{color:#0b376d;font-size:19px;margin-bottom:15px}
+.card,.form,.table{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:16px;margin-bottom:15px;box-shadow:0 1px 4px #0000000d}
+.notice{padding:11px;border-radius:8px;margin-bottom:15px;font-size:13px;display:none}
+.notice.show{display:block}
+.ok{background:#dcfce7;color:#166534}
+.err{background:#fee2e2;color:#991b1b}
+.info{background:#e0f2fe;color:#075985}
+.role{display:inline-block;background:#e0f2fe;color:#0369a1;padding:4px 9px;border-radius:20px;font-size:11px;margin-top:5px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.field label{display:block;font-size:11px;font-weight:700;margin-bottom:5px}
+input,select,textarea{width:100%;padding:10px;border:1px solid #dbe2ea;border-radius:7px;background:#fff;font-size:13px}
+textarea{min-height:85px;resize:vertical}
+.full{grid-column:1/-1}
+.slip{background:#f8fafc;border:1px dashed #94a3b8;padding:12px;border-radius:8px}
+.slip small{display:block;color:#64748b;margin-top:5px}
+.btn{border:0;border-radius:7px;padding:9px 13px;font-size:12px;font-weight:600;margin:5px 4px 0 0}
+.primary{background:#0b376d;color:#fff}
+.green{background:#16a34a;color:#fff}
+.red{background:#dc2626;color:#fff}
+.gray{background:#f1f5f9;color:#334155;border:1px solid #e2e8f0}
+.btn:disabled{opacity:.5}
+.tableWrap{overflow:auto}
+table{width:100%;border-collapse:collapse;min-width:700px}
+th,td{padding:10px;border-bottom:1px solid #e2e8f0;text-align:left;font-size:12px}
+th{background:#f8fafc;color:#0b376d}
+.status{display:inline-block;padding:4px 8px;border-radius:15px;font-size:10px;font-weight:700}
+.pending{background:#fef3c7;color:#92400e}
+.approved{background:#dcfce7;color:#166534}
+.empty{text-align:center;color:#64748b;padding:20px}
+.actions{white-space:nowrap}
+footer{text-align:center;color:#64748b;font-size:11px;padding:20px}
 
-@media(max-width:800px){
-.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:600px){
-main{padding:12px}.stats,.grid,.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.brand p{display:none}
+@media(max-width:650px){
+main{padding:12px}
+.grid{grid-template-columns:1fr}
+.full{grid-column:auto}
+.brand p{display:none}
 }
 </style>
 </head>
@@ -58,76 +66,50 @@ main{padding:12px}.stats,.grid,.formgrid{grid-template-columns:1fr}.full{grid-co
 
 <header>
 <div class="head">
+
 <div class="brand">
 <div class="logo">GOH</div>
-<div><h1>GOH Ministries</h1><p>Church Administration</p></div>
+<div>
+<h1>GOH Ministries</h1>
+<p>Church Administration</p>
 </div>
+</div>
+
 <button class="menuBtn" id="menuBtn">☰</button>
 
 <div class="menu" id="menu">
-<button data-page="dashboard">🏠 Dashboard</button>
-<button data-page="finance" data-finance>💰 Finance</button>
-<button data-page="reports" data-finance>📊 Reports</button>
-<button data-page="history" data-admin>📜 History</button>
-<button data-page="activities" data-admin>⛪ Activities</button>
-<button data-page="members" data-admin>👥 Members</button>
-<button data-page="meetings" data-admin>📋 Meetings</button>
-<button data-page="documents" data-admin>📁 Documents</button>
-<button data-page="property" data-admin>🏗️ Property</button>
-<button data-page="media" data-admin>📸 Media</button>
-<button data-page="users" data-admin>🔐 Users</button>
-<button data-page="audit" data-audit>🛡️ Audit</button>
-<button class="logout" id="logout">Logout</button>
+<button onclick="location.href='admin.html'">🏠 Dashboard</button>
+<button onclick="location.reload()">💰 Finance</button>
+<button id="logout">Logout</button>
 </div>
+
 </div>
 </header>
 
 <main>
 
-<div id="msg" class="message"></div>
+<div id="msg" class="notice"></div>
 
-<section class="page active" id="dashboard">
+<section class="page active">
 
-<div class="card welcome">
-<h2>Welcome, <span id="name">Administrator</span></h2>
-<p>GOH Ministries Church Administration Portal</p>
-<span class="role" id="role">Administrator</span>
+<h2 class="title">💰 Finance</h2>
+
+<div class="card">
+<div id="userInfo">Loading user...</div>
 </div>
 
-<div class="stats">
-<div class="stat"><small>Total Income</small><strong id="income">LKR 0</strong></div>
-<div class="stat"><small>Total Expenses</small><strong id="expense">LKR 0</strong></div>
-<div class="stat"><small>Minister Support</small><strong id="support">LKR 0</strong></div>
-<div class="stat"><small>Balance</small><strong id="balance">LKR 0</strong></div>
-</div>
-
-<div class="grid">
-<div class="card module" onclick="openPage('finance')"><h3>💰 Finance</h3><p>Financial records and slips.</p></div>
-<div class="card module" onclick="openPage('reports')"><h3>📊 Reports</h3><p>Financial reports.</p></div>
-<div class="card module" data-admin><h3>📜 History</h3><p>Ministry history.</p></div>
-<div class="card module" data-admin><h3>⛪ Activities</h3><p>Church activities.</p></div>
-<div class="card module" data-admin><h3>📁 Documents</h3><p>Official documents.</p></div>
-<div class="card module" data-audit><h3>🛡️ Audit</h3><p>Official audit records.</p></div>
-</div>
-
-</section>
-
-<section class="page" id="finance">
-
-<h2>💰 Finance</h2>
-
-<div id="financeAccess"></div>
+<div id="financeFormBox">
 
 <form class="form" id="financeForm">
 
-<div class="formgrid">
+<div class="grid">
 
-<div>
+<div class="field">
 <label>Date *</label>
 <input id="fDate" type="date" required>
 </div>
 
-<div>
+<div class="field">
 <label>Type *</label>
 <select id="fType" required>
 <option value="">Select</option>
@@ -136,7 +118,7 @@ main{padding:12px}.stats,.grid,.formgrid{grid-template-columns:1fr}.full{grid-co
 </select>
 </div>
 
-<div>
+<div class="field">
 <label>Category *</label>
 <select id="fCategory" required>
 <option value="">Select</option>
@@ -174,12 +156,12 @@ main{padding:12px}.stats,.grid,.formgrid{grid-template-columns:1fr}.full{grid-co
 </select>
 </div>
 
-<div>
+<div class="field">
 <label>Amount (LKR) *</label>
 <input id="fAmount" type="number" min=".01" step=".01" required>
 </div>
 
-<div>
+<div class="field">
 <label>Payment Method *</label>
 <select id="fMethod" required>
 <option value="">Select</option>
@@ -192,35 +174,46 @@ main{padding:12px}.stats,.grid,.formgrid{grid-template-columns:1fr}.full{grid-co
 </select>
 </div>
 
-<div>
+<div class="field">
 <label>Reference</label>
 <input id="fRef" placeholder="Receipt / bank reference">
 </div>
 
-<div class="full">
+<div class="field full">
 <label>Description *</label>
 <textarea id="fDesc" required></textarea>
 </div>
 
-<div class="full">
+<div class="field full">
+<div class="slip">
 <label>Supporting Slip / Receipt *</label>
-<input id="fSlip" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp" required>
-<small style="font-size:10px;color:#64748b">Maximum 10 MB</small>
+<input id="fSlip" type="file"
+accept=".pdf,.jpg,.jpeg,.png,.webp"
+required>
+<small>Maximum 10 MB</small>
+</div>
 </div>
 
 </div>
 
-<button class="btn primary" id="saveBtn">Save Financial Record</button>
+<button class="btn primary" id="saveBtn">
+Save Financial Record
+</button>
 
 </form>
 
+</div>
+
 <div class="table">
 
-<h3 style="font-size:14px;margin-bottom:10px">Financial Records</h3>
+<h3 style="font-size:14px;margin-bottom:10px">
+Financial Records
+</h3>
 
-<div class="tablewrap">
+<div class="tableWrap">
 
 <table>
+
 <thead>
 <tr>
 <th>Date</th>
@@ -234,7 +227,9 @@ main{padding:12px}.stats,.grid,.formgrid{grid-template-columns:1fr}.full{grid-co
 </thead>
 
 <tbody id="financeBody">
-<tr><td colspan="7">Loading...</td></tr>
+<tr>
+<td colspan="7" class="empty">Loading...</td>
+</tr>
 </tbody>
 
 </table>
@@ -244,172 +239,91 @@ main{padding:12px}.stats,.grid,.formgrid{grid-template-columns:1fr}.full{grid-co
 
 </section>
 
-<section class="page" id="reports">
-<h2>📊 Reports</h2>
-<div class="card">
-<p style="font-size:13px;color:#64748b">
-Financial reports will use approved finance records.
-</p>
-<button class="btn primary" onclick="loadFinance()">Refresh Records</button>
-</div>
-</section>
-
-<section class="page" id="history">
-<h2>📜 History</h2>
-<div class="form">
-<div class="formgrid">
-<div><label>Date</label><input type="date"></div>
-<div><label>Milestone</label><input></div>
-<div class="full"><label>Description</label><textarea></textarea></div>
-</div>
-<button class="btn primary" onclick="note('History module ready for API connection.')">Save</button>
-</div>
-</section>
-
-<section class="page" id="activities">
-<h2>⛪ Activities</h2>
-<div class="card">Activities management module.</div>
-</section>
-
-<section class="page" id="members">
-<h2>👥 Members</h2>
-<div class="card">Members management module.</div>
-</section>
-
-<section class="page" id="meetings">
-<h2>📋 Meetings</h2>
-<div class="card">Meetings management module.</div>
-</section>
-
-<section class="page" id="documents">
-<h2>📁 Documents</h2>
-<div class="card">Official documents module.</div>
-</section>
-
-<section class="page" id="property">
-<h2>🏗️ Property</h2>
-<div class="card">Property management module.</div>
-</section>
-
-<section class="page" id="media">
-<h2>📸 Media</h2>
-<div class="card">Media management module.</div>
-</section>
-
-<section class="page" id="users">
-<h2>🔐 Users</h2>
-<div class="card">
-Name: <b id="userName">-</b><br><br>
-Username: <b id="userUsername">-</b><br><br>
-Role: <b id="userRole">-</b>
-</div>
-</section>
-
-<section class="page" id="audit">
-<h2>🛡️ Audit Logs</h2>
-<div class="card">
-<p style="font-size:13px;color:#64748b">
-Auditor can view official administration and financial activity.
-</p>
-</div>
-</section>
-
-<footer>© 2026 GOH Ministries · Administration Portal</footer>
+<footer>
+© 2026 GOH Ministries · Administration Portal
+</footer>
 
 </main>
 
 <script>
-const FINANCE_API="https://goh-finance.createlk.workers.dev";
+
+const API="https://goh-finance.createlk.workers.dev";
 
 const user=JSON.parse(
 sessionStorage.getItem("goh_admin")||"null"
 );
 
+const loginType=
+sessionStorage.getItem("goh_login_type")||"";
+
 if(!user){
 location.href="login.html";
 }
 
-const loginType=
-sessionStorage.getItem("goh_login_type")||"";
+const username=
+user?.username||"";
 
-const userRole=
-String(user?.role||loginType).toLowerCase();
+const role=
+String(user?.role||loginType||"").toLowerCase();
 
-let perms=user?.permissions||{};
+const permissions=user?.permissions||{};
 
-if(typeof perms==="string"){
-try{perms=JSON.parse(perms)}
-catch{perms={}}
-}
-
-const admin=
-userRole==="admin"||
-userRole==="super_admin"||
-perms==="full";
+const full=
+role==="admin"||
+role==="super_admin"||
+permissions==="full";
 
 const finance=
-admin||
-userRole==="finance"||
-perms.finance===true||
-perms.donations===true;
+full||
+role==="finance"||
+permissions?.finance===true||
+permissions?.donations===true;
 
-const auditor=
-admin||
-userRole==="auditor";
+const auditor=role==="auditor";
 
-document.getElementById("name").textContent=
-user.name||user.username||"Administrator";
 
-document.getElementById("userName").textContent=
-user.name||"-";
+/* USER */
 
-document.getElementById("userUsername").textContent=
-user.username||"-";
+document.getElementById("userInfo").innerHTML=
+`<b>${escapeHtml(user?.name||username)}</b>
+<br>
+<span class="role">${
+full?"Administrator":
+finance?"Finance Officer":
+auditor?"Auditor — Read Only":
+"User"
+}</span>`;
 
-document.getElementById("userRole").textContent=
-userRole||"-";
-
-document.getElementById("role").textContent=
-admin?"Administrator":
-userRole==="finance"?"Finance Officer":
-userRole==="auditor"?"Auditor":"User";
-
-/* MENU */
-
-document.querySelectorAll("[data-finance]").forEach(x=>{
-if(!finance&&!auditor)x.remove();
-});
-
-document.querySelectorAll("[data-admin]").forEach(x=>{
-if(!admin)x.remove();
-});
-
-document.querySelectorAll("[data-audit]").forEach(x=>{
-if(!auditor)x.remove();
-});
-
-/* FINANCE FORM */
-
-if(!finance){
-document.getElementById("financeForm").style.display="none";
-
-document.getElementById("financeAccess").innerHTML=
-`<div class="access">
-<b>Read-only access</b><br>
-You can view financial records and supporting slips.
-</div>`;
-}
-
-if(userRole==="auditor"){
-document.getElementById("financeForm").style.display="none";
-
-document.getElementById("financeAccess").innerHTML=
-`<div class="access">
+if(auditor){
+document.getElementById("financeFormBox").innerHTML=
+`<div class="card info">
 <b>Auditor — Read Only</b><br>
 You can view all financial records and slips.
 You cannot add, edit, delete or approve records.
 </div>`;
 }
+
+function escapeHtml(v){
+return String(v??"")
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;");
+}
+
+
+/* MESSAGE */
+
+function note(text,type="err"){
+const m=document.getElementById("msg");
+m.textContent=text;
+m.className="notice show "+type;
+
+setTimeout(()=>{
+m.className="notice";
+},4000);
+}
+
 
 /* MENU */
 
@@ -420,130 +334,134 @@ menu.classList.toggle("show");
 };
 
 document.addEventListener("click",e=>{
-if(!e.target.closest("#menu")&&!e.target.closest("#menuBtn"))
+if(
+!e.target.closest("#menu") &&
+!e.target.closest("#menuBtn")
+){
 menu.classList.remove("show");
+}
 });
 
-function openPage(id){
 
-const page=document.getElementById(id);
+/* LOAD RECORDS */
 
-if(!page)return;
-
-const btn=document.querySelector(`[data-page="${id}"]`);
-
-if(!btn){
-note("You do not have permission.");
-return;
-}
-
-document.querySelectorAll(".page").forEach(x=>{
-x.classList.toggle("active",x.id===id);
-});
-
-document.querySelectorAll("[data-page]").forEach(x=>{
-x.classList.toggle("active",x.dataset.page===id);
-});
-
-menu.classList.remove("show");
-scrollTo(0,0);
-
-if(id==="finance")loadFinance();
-}
-
-document.querySelectorAll("[data-page]").forEach(btn=>{
-btn.onclick=()=>openPage(btn.dataset.page);
-});
-
-/* MESSAGE */
-
-function note(text,type="error"){
-const m=document.getElementById("msg");
-m.textContent=text;
-m.className="message show "+type;
-setTimeout(()=>m.className="message",4000);
-}
-
-/* AUTH HEADER */
-
-function headers(){
-return {
-"X-Admin-Key":user.username
-};
-}
-
-/* LOAD FINANCE */
-
-async function loadFinance(){
+async function loadRecords(){
 
 const body=document.getElementById("financeBody");
 
 body.innerHTML=
-`<tr><td colspan="7">Loading...</td></tr>`;
+`<tr><td colspan="7" class="empty">Loading records...</td></tr>`;
 
 try{
 
-const r=await fetch(
-FINANCE_API+"/transactions",
-{
+const r=await fetch(API+"/transactions",{
 method:"GET",
-headers:headers()
-}
+headers:{
+"X-Admin-Key":username
+},
+cache:"no-store"
+});
+
+const text=await r.text();
+
+let data={};
+
+try{
+data=JSON.parse(text);
+}catch{
+throw new Error(
+"Server returned an invalid response."
 );
+}
 
-const d=await r.json();
+if(!r.ok){
+throw new Error(
+data.error||`Server error ${r.status}`
+);
+}
 
-if(!r.ok)
-throw Error(d.error||"Unable to load records");
-
-const records=d.records||[];
+const records=data.records||[];
 
 if(!records.length){
+
 body.innerHTML=
-`<tr><td colspan="7">No records available.</td></tr>`;
+`<tr>
+<td colspan="7" class="empty">
+No financial records available.
+</td>
+</tr>`;
+
 return;
 }
 
 body.innerHTML="";
 
-records.forEach(x=>{
+records.forEach(row=>{
 
 const tr=document.createElement("tr");
 
 const amount=
-Number(x.amount||0).toLocaleString(
+Number(row.amount||0).toLocaleString(
 "en-LK",
-{minimumFractionDigits:2}
+{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+}
 );
 
-let actions="";
+const status=
+String(row.status||"Pending");
 
-if(x.slip_key){
-actions+=
-`<button class="btn secondary" onclick="viewSlip('${x.id}')">Slip</button>`;
-}
-
-if(admin){
-
-actions+=
-` <button class="btn approve" onclick="approveRecord('${x.id}')">Approve</button>`;
-
-actions+=
-` <button class="btn danger" onclick="deleteRecord('${x.id}')">Delete</button>`;
-}
+const statusClass=
+status.toLowerCase()==="approved"
+?"approved":"pending";
 
 tr.innerHTML=`
-<td>${safe(x.date)}</td>
-<td>${safe(x.type)}</td>
-<td>${safe(x.category)}</td>
+
+<td>${escapeHtml(row.date)}</td>
+
+<td>${escapeHtml(row.type)}</td>
+
+<td>${escapeHtml(row.category)}</td>
+
 <td>LKR ${amount}</td>
-<td><span class="status">${safe(x.status||"Pending")}</span></td>
+
 <td>
-${x.slip_key?
-`<button class="btn secondary" onclick="viewSlip('${x.id}')">View</button>`:
-"-"}
+<span class="status ${statusClass}">
+${escapeHtml(status)}
+</span>
 </td>
-<td>${actions||"View only"}</td>
+
+<td>
+<button class="btn gray"
+onclick="viewSlip('${encodeURIComponent(row.id)}')">
+View
+</button>
+</td>
+
+<td class="actions">
+
+${
+!auditor && status!=="Approved" && full
+?
+`<button class="btn green"
+onclick="approveRecord('${encodeURIComponent(row.id)}')">
+Approve
+</button>`
+:""
+}
+
+${
+!auditor && full
+?
+`<button class="btn red"
+onclick="deleteRecord('${encodeURIComponent(row.id)}')">
+Delete
+</button>`
+:""
+}
+
+</td>
 `;
 
 body.appendChild(tr);
@@ -552,21 +470,200 @@ body.appendChild(tr);
 
 }catch(e){
 
+console.error(e);
+
 body.innerHTML=
-`<tr><td colspan="7">Unable to load records.</td></tr>`;
+`<tr>
+<td colspan="7" class="empty">
+Unable to load records.<br>
+<small>${escapeHtml(e.message)}</small>
+</td>
+</tr>`;
 
-note(e.message);
+}
+
+}
+
+
+/* VIEW SLIP */
+
+async function viewSlip(encodedId){
+
+const id=decodeURIComponent(encodedId);
+
+try{
+
+const r=await fetch(
+API+"/transactions/"+encodeURIComponent(id)+"/slip",
+{
+headers:{
+"X-Admin-Key":username
 }
 }
+);
 
-/* SAVE */
+if(!r.ok){
+
+const text=await r.text();
+
+let data={};
+
+try{
+data=JSON.parse(text);
+}catch{}
+
+throw new Error(
+data.error||"Unable to open slip"
+);
+}
+
+const blob=await r.blob();
+
+const url=URL.createObjectURL(blob);
+
+window.open(url,"_blank");
+
+setTimeout(()=>{
+URL.revokeObjectURL(url);
+},60000);
+
+}catch(e){
+
+console.error(e);
+
+note(e.message,"err");
+
+}
+
+}
+
+
+/* APPROVE */
+
+async function approveRecord(encodedId){
+
+const id=decodeURIComponent(encodedId);
+
+if(!confirm(
+"Approve this financial record?"
+))return;
+
+try{
+
+const r=await fetch(
+API+"/transactions/"+encodeURIComponent(id)+"/approve",
+{
+method:"POST",
+headers:{
+"X-Admin-Key":username
+}
+}
+);
+
+const text=await r.text();
+
+let data={};
+
+try{
+data=JSON.parse(text);
+}catch{}
+
+if(!r.ok){
+
+throw new Error(
+data.error||"Approval failed"
+);
+}
+
+note(
+"Financial record approved successfully.",
+"ok"
+);
+
+/*
+IMPORTANT:
+Reload table AFTER successful approval.
+*/
+
+await loadRecords();
+
+}catch(e){
+
+console.error(e);
+
+note(e.message,"err");
+
+}
+
+}
+
+
+/* DELETE */
+
+async function deleteRecord(encodedId){
+
+const id=decodeURIComponent(encodedId);
+
+if(!confirm(
+"Delete this financial record permanently?"
+))return;
+
+try{
+
+const r=await fetch(
+API+"/transactions/"+encodeURIComponent(id),
+{
+method:"DELETE",
+headers:{
+"X-Admin-Key":username
+}
+}
+);
+
+const text=await r.text();
+
+let data={};
+
+try{
+data=JSON.parse(text);
+}catch{}
+
+if(!r.ok){
+
+throw new Error(
+data.error||"Delete failed"
+);
+}
+
+note(
+"Financial record deleted.",
+"ok"
+);
+
+await loadRecords();
+
+}catch(e){
+
+console.error(e);
+
+note(e.message,"err");
+
+}
+
+}
+
+
+/* CREATE */
+
+if(document.getElementById("financeForm")){
 
 document.getElementById("financeForm").onsubmit=
 async function(e){
 
 e.preventDefault();
 
-const file=document.getElementById("fSlip").files[0];
+const file=
+document.getElementById("fSlip").files[0];
 
 if(!file){
 note("Supporting slip is required.");
@@ -578,52 +675,99 @@ note("Slip must be smaller than 10 MB.");
 return;
 }
 
-const btn=document.getElementById("saveBtn");
+const btn=
+document.getElementById("saveBtn");
 
 btn.disabled=true;
 btn.textContent="Saving...";
 
-const fd=new FormData();
-
-fd.append("date",document.getElementById("fDate").value);
-fd.append("type",document.getElementById("fType").value);
-fd.append("category",document.getElementById("fCategory").value);
-fd.append("amount",document.getElementById("fAmount").value);
-fd.append("payment_method",document.getElementById("fMethod").value);
-fd.append("reference",document.getElementById("fRef").value);
-fd.append("description",document.getElementById("fDesc").value);
-fd.append("slip",file);
-
 try{
 
+const form=new FormData();
+
+form.append(
+"date",
+document.getElementById("fDate").value
+);
+
+form.append(
+"type",
+document.getElementById("fType").value
+);
+
+form.append(
+"category",
+document.getElementById("fCategory").value
+);
+
+form.append(
+"amount",
+document.getElementById("fAmount").value
+);
+
+form.append(
+"payment_method",
+document.getElementById("fMethod").value
+);
+
+form.append(
+"reference",
+document.getElementById("fRef").value
+);
+
+form.append(
+"description",
+document.getElementById("fDesc").value
+);
+
+form.append("slip",file);
+
 const r=await fetch(
-FINANCE_API+"/transactions",
+API+"/transactions",
 {
 method:"POST",
-headers:headers(),
-body:fd
+headers:{
+"X-Admin-Key":username
+},
+body:form
 }
 );
 
-const d=await r.json();
+const text=await r.text();
 
-if(!r.ok)
-throw Error(d.error||"Save failed");
+let data={};
+
+try{
+data=JSON.parse(text);
+}catch{
+throw new Error(
+"Server returned an invalid response."
+);
+}
+
+if(!r.ok){
+
+throw new Error(
+data.error||"Financial record failed"
+);
+}
 
 note(
-d.status==="Approved"
+data.status==="Approved"
 ?"Financial record approved."
-:"Financial record submitted for approval.",
-"success"
+:"Financial account submitted for approval.",
+"ok"
 );
 
 this.reset();
 
-loadFinance();
+await loadRecords();
 
 }catch(e){
 
-note(e.message);
+console.error(e);
+
+note(e.message,"err");
 
 }finally{
 
@@ -631,139 +775,55 @@ btn.disabled=false;
 btn.textContent="Save Financial Record";
 
 }
+
 };
 
-/* VIEW SLIP */
-
-async function viewSlip(id){
-
-try{
-
-const r=await fetch(
-FINANCE_API+"/transactions/"+id+"/slip",
-{
-headers:headers()
-}
-);
-
-if(!r.ok){
-
-const d=await r.json().catch(()=>({}));
-
-throw Error(d.error||"Unable to open slip");
 }
 
-const blob=await r.blob();
-
-const url=URL.createObjectURL(blob);
-
-window.open(url,"_blank");
-
-}catch(e){
-
-note(e.message);
-}
-}
-
-/* APPROVE */
-
-async function approveRecord(id){
-
-if(!admin){
-note("Only Administrator can approve.");
-return;
-}
-
-if(!confirm("Approve this financial record?"))
-return;
-
-try{
-
-const r=await fetch(
-FINANCE_API+"/transactions/"+id+"/approve",
-{
-method:"POST",
-headers:headers()
-}
-);
-
-const d=await r.json();
-
-if(!r.ok)
-throw Error(d.error||"Approval failed");
-
-note("Financial record approved.","success");
-
-loadFinance();
-
-}catch(e){
-note(e.message);
-}
-}
-
-/* DELETE */
-
-async function deleteRecord(id){
-
-if(!admin){
-note("Only Administrator can delete.");
-return;
-}
-
-if(!confirm(
-"Delete this financial record permanently?"
-))
-return;
-
-try{
-
-const r=await fetch(
-FINANCE_API+"/transactions/"+id,
-{
-method:"DELETE",
-headers:headers()
-}
-);
-
-const d=await r.json();
-
-if(!r.ok)
-throw Error(d.error||"Delete failed");
-
-note("Financial record deleted.","success");
-
-loadFinance();
-
-}catch(e){
-note(e.message);
-}
-}
-
-/* ESCAPE */
-
-function safe(v){
-
-return String(v??"")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-}
 
 /* LOGOUT */
 
-document.getElementById("logout").onclick=()=>{
+document.getElementById("logout").onclick=async()=>{
 
-if(!confirm("Logout?"))return;
+if(!confirm("Logout from administration?"))
+return;
+
+try{
+
+await fetch(
+"https://goh-admin-auth.createlk.workers.dev/logout",
+{
+method:"POST",
+headers:{
+"X-Admin-Key":username
+}
+}
+);
+
+}catch(e){}
 
 sessionStorage.removeItem("goh_admin");
 sessionStorage.removeItem("goh_login_type");
 
 location.href="login.html";
+
 };
 
-openPage("dashboard");
+
+/* INITIAL */
+
+const today=new Date()
+.toISOString()
+.slice(0,10);
+
+const dateInput=
+document.getElementById("fDate");
+
+if(dateInput)
+dateInput.value=today;
+
+loadRecords();
+
 </script>
 
 </body>
