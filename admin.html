@@ -4,56 +4,312 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0b376d">
-<title>GOH Ministries | Admin</title>
+<title>GOH Ministries | Administration</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font:14px Arial;background:#f5f7fa;color:#172033}
-button{font:inherit;cursor:pointer}
-.header{background:#fff;border-bottom:1px solid #ddd;position:sticky;top:0;z-index:10}
-.head{max-width:1200px;margin:auto;height:62px;padding:0 16px;display:flex;align-items:center;gap:20px}
-.brand{display:flex;align-items:center;gap:9px;flex:1}
-.logo{width:38px;height:38px;border-radius:50%;background:#0b376d;color:#fff;display:grid;place-items:center;font-weight:bold;font-size:11px}
-.brand h1{font-size:16px;color:#0b376d}.brand p{font-size:10px;color:#98a2b3}
-.nav{display:flex;gap:3px}
-.nav>button,.drop>button{border:0;background:none;padding:9px 11px;border-radius:7px;font-weight:bold;font-size:12px;color:#344054}
-.nav>button:hover,.nav>button.active{background:#edf4fc;color:#0b376d}
-.drop{position:relative}
-.dropbox{display:none;position:absolute;top:40px;left:0;background:#fff;border:1px solid #ddd;border-radius:8px;padding:5px;width:170px;box-shadow:0 6px 20px #0002}
-.drop:hover .dropbox{display:block}
-.dropbox button{display:block;width:100%;text-align:left}
-.dropbox button:hover{background:#edf4fc;color:#0b376d}
-.logout{border:0;background:#fee2e2;color:#991b1b;padding:8px 10px;border-radius:7px;font-weight:bold;font-size:11px}
-.menu{display:none;border:0;background:#edf4fc;color:#0b376d;padding:9px;border-radius:7px}
-main{max-width:1200px;margin:auto;padding:18px}
-.page{display:none}.page.active{display:block}
-.welcome,.card,.form,.table,.stat{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:16px;margin-bottom:14px}
-.welcome h2,.section{color:#0b376d}
-.welcome p,.card p{color:#667085;margin-top:5px;font-size:12px}
-.role{display:inline-block;margin-top:8px;background:#edf4fc;color:#0b376d;padding:5px 9px;border-radius:20px;font-size:10px;font-weight:bold}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.stat small{color:#667085}.stat strong{display:block;color:#0b376d;font-size:22px;margin-top:5px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.section{font-size:19px;margin:5px 0 13px}
-.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-label{display:block;font-size:11px;font-weight:bold;margin-bottom:4px}
-input,select,textarea{width:100%;padding:9px;border:1px solid #d0d5dd;border-radius:7px}
-textarea{min-height:90px}.full{grid-column:1/-1}
-.btn{border:0;border-radius:7px;padding:9px 12px;margin:10px 5px 0 0;font-size:11px;font-weight:bold}
-.primary{background:#0b376d;color:#fff}.secondary{background:#edf1f5;color:#344054}
-table{width:100%;border-collapse:collapse}th,td{padding:9px;border-bottom:1px solid #eee;text-align:left;font-size:11px}
-th{color:#0b376d;background:#f8fafc}
-.wrap{overflow:auto}.footer{text-align:center;color:#98a2b3;font-size:10px;padding:20px}
-.msg{display:none;padding:10px;background:#fee2e2;color:#991b1b;border-radius:7px;margin-bottom:10px;font-size:12px}
-@media(max-width:800px){
-.nav{display:none;position:absolute;top:62px;left:0;right:0;background:#fff;padding:8px;box-shadow:0 5px 15px #0002;flex-direction:column}
-.nav.show{display:flex}.nav>button,.drop>button{width:100%;text-align:left}
-.dropbox{position:static;width:100%;box-shadow:none;border:0;background:#f8fafc}
-.drop:hover .dropbox{display:none}.drop.open .dropbox{display:block}
-.menu{display:block}.stats{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:repeat(2,1fr)}
+body{
+font-family:Arial,sans-serif;
+background:#f4f7fb;
+color:#172033
 }
-@media(max-width:550px){
-.formgrid,.cards{grid-template-columns:1fr}.full{grid-column:auto}.head{gap:8px}.brand h1{font-size:14px}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+
+.header{
+background:#0b376d;
+color:#fff;
+position:sticky;
+top:0;
+z-index:20
+}
+.header-in{
+max-width:1200px;
+margin:auto;
+padding:10px 16px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px
+}
+.brand{
+display:flex;
+align-items:center;
+gap:10px
+}
+.logo{
+width:42px;
+height:42px;
+border-radius:50%;
+background:#fff;
+color:#0b376d;
+display:grid;
+place-items:center;
+font-weight:800
+}
+.brand h1{font-size:18px}
+.brand p{font-size:11px;opacity:.8}
+
+.top-actions{
+display:flex;
+gap:8px;
+align-items:center
+}
+.dashboard-btn,.logout{
+border:0;
+border-radius:9px;
+padding:11px 15px;
+font-size:13px;
+font-weight:bold
+}
+.dashboard-btn{
+background:#fff;
+color:#0b376d
+}
+.logout{
+background:#dc2626;
+color:#fff
+}
+
+.layout{
+max-width:1200px;
+margin:auto;
+display:flex;
+min-height:calc(100vh - 62px)
+}
+
+.sidebar{
+width:220px;
+background:#fff;
+border-right:1px solid #e5e7eb;
+padding:12px;
+flex-shrink:0
+}
+.title{
+font-size:10px;
+font-weight:bold;
+color:#98a2b3;
+margin:13px 8px 5px;
+text-transform:uppercase
+}
+.nav{
+width:100%;
+border:0;
+background:none;
+text-align:left;
+padding:10px;
+margin:2px 0;
+border-radius:8px;
+font-size:13px;
+font-weight:600;
+color:#344054
+}
+.nav:hover,.nav.active{
+background:#eaf1fb;
+color:#0b376d
+}
+
+.main{
+flex:1;
+padding:18px;
+min-width:0
+}
+.page{display:none}
+.page.active{display:block}
+
+.message{
+display:none;
+padding:11px;
+border-radius:8px;
+margin-bottom:12px;
+font-size:13px
+}
+.message.error{
+display:block;
+background:#fee2e2;
+color:#991b1b
+}
+.message.success{
+display:block;
+background:#dcfce7;
+color:#166534
+}
+
+.welcome,.card,.form,.table{
+background:#fff;
+border-radius:12px;
+padding:18px;
+box-shadow:0 3px 14px rgba(0,0,0,.05);
+margin-bottom:15px
+}
+
+.welcome h2,.section{
+color:#0b376d
+}
+.welcome p{
+color:#667085;
+margin-top:5px
+}
+.role{
+display:inline-block;
+margin-top:9px;
+padding:5px 9px;
+border-radius:20px;
+background:#eaf1fb;
+color:#0b376d;
+font-size:11px;
+font-weight:bold
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px
+}
+.stat{
+background:#fff;
+padding:15px;
+border-radius:11px;
+box-shadow:0 3px 14px rgba(0,0,0,.05)
+}
+.stat small{
+display:block;
+color:#667085
+}
+.stat strong{
+display:block;
+font-size:24px;
+color:#0b376d;
+margin-top:5px
+}
+
+.section{
+font-size:20px;
+margin:5px 0 14px
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px
+}
+.card h3{
+font-size:16px;
+margin-bottom:6px
+}
+.card p{
+font-size:13px;
+line-height:1.5;
+color:#667085
+}
+
+.btn{
+border:0;
+border-radius:8px;
+padding:9px 12px;
+margin:10px 5px 0 0;
+font-size:12px;
+font-weight:bold
+}
+.primary{
+background:#0b376d;
+color:#fff
+}
+.secondary{
+background:#edf2f7;
+color:#344054
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px
+}
+.field label{
+display:block;
+font-size:12px;
+font-weight:bold;
+margin-bottom:5px
+}
+.field input,
+.field select,
+.field textarea{
+width:100%;
+padding:10px;
+border:1px solid #d0d5dd;
+border-radius:8px;
+background:#fff
+}
+.field textarea{
+min-height:100px;
+resize:vertical
+}
+.full{grid-column:1/-1}
+
+.table-wrap{
+overflow:auto;
+margin-top:15px
+}
+table{
+width:100%;
+border-collapse:collapse;
+min-width:600px
+}
+th,td{
+padding:9px;
+border-bottom:1px solid #eee;
+text-align:left;
+font-size:12px
+}
+th{
+background:#f8fafc;
+color:#0b376d
+}
+
+.footer{
+text-align:center;
+padding:20px;
+font-size:11px;
+color:#98a2b3
+}
+
+@media(max-width:850px){
+.sidebar{width:190px}
+.stats{grid-template-columns:repeat(2,1fr)}
+.grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:650px){
+.header-in{padding:9px 10px}
+.brand h1{font-size:15px}
+.brand p{font-size:9px}
+.logo{
+width:36px;
+height:36px;
+font-size:11px
+}
+.dashboard-btn,.logout{
+padding:9px 10px;
+font-size:12px
+}
+.layout{display:block}
+.sidebar{
+width:100%;
+border-right:0;
+border-bottom:1px solid #e5e7eb
+}
+.main{padding:12px}
+.stats{grid-template-columns:repeat(2,1fr)}
+.grid{grid-template-columns:1fr}
+.form-grid{grid-template-columns:1fr}
+.full{grid-column:auto}
+}
+
+@media(max-width:400px){
+.top-actions{gap:5px}
+.dashboard-btn{font-size:11px;padding:8px}
+.logout{font-size:11px;padding:8px}
+.stats{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -61,282 +317,853 @@ th{color:#0b376d;background:#f8fafc}
 <body>
 
 <header class="header">
-<div class="head">
+<div class="header-in">
 
 <div class="brand">
 <div class="logo">GOH</div>
-<div><h1>GOH Ministries</h1><p>Church Administration</p></div>
-</div>
-
-<button class="menu" onclick="menu()">☰</button>
-
-<nav class="nav" id="nav">
-
-<button onclick="page('dashboard',this)">⌂ Dashboard</button>
-
-<div class="drop">
-<button onclick="drop(this)">Finance ▾</button>
-<div class="dropbox">
-<button onclick="page('finance')">💰 Finance</button>
-<button onclick="page('reports')">📊 Reports</button>
+<div>
+<h1>GOH Ministries</h1>
+<p>Church Administration</p>
 </div>
 </div>
 
-<div class="drop">
-<button onclick="drop(this)">Ministry ▾</button>
-<div class="dropbox">
-<button onclick="page('history')">📜 History</button>
-<button onclick="page('activities')">⛪ Activities</button>
-<button onclick="page('members')">👥 Members</button>
-<button onclick="page('meetings')">📋 Meetings</button>
-</div>
-</div>
+<div class="top-actions">
+<button class="dashboard-btn" onclick="showPage('dashboard')">
+🏠 Dashboard
+</button>
 
-<div class="drop">
-<button onclick="drop(this)">Documents ▾</button>
-<div class="dropbox">
-<button onclick="page('documents')">📁 Documents</button>
-<button onclick="page('property')">🏗️ Property</button>
-<button onclick="page('media')">📸 Media</button>
+<button class="logout" id="logoutBtn">
+Logout
+</button>
 </div>
-</div>
-
-<div class="drop">
-<button onclick="drop(this)">Security ▾</button>
-<div class="dropbox">
-<button onclick="page('users')">🔐 Users</button>
-<button onclick="page('audit')">🛡️ Audit Logs</button>
-</div>
-</div>
-
-</nav>
-
-<button class="logout" onclick="logout()">Logout</button>
 
 </div>
 </header>
 
-<main>
+<div class="layout">
 
-<div id="msg" class="msg"></div>
+<aside class="sidebar">
 
-<section id="dashboard" class="page active">
+<div class="title">Main</div>
+<button class="nav active" data-page="dashboard">🏠 Dashboard</button>
+<button class="nav" data-page="finance">💰 Finance</button>
+<button class="nav" data-page="reports">📊 Reports</button>
+
+<div class="title">Ministry</div>
+<button class="nav" data-page="history">📜 History</button>
+<button class="nav" data-page="activities">⛪ Activities</button>
+<button class="nav" data-page="members">👥 Members</button>
+<button class="nav" data-page="meetings">📋 Meetings</button>
+
+<div class="title">Documents</div>
+<button class="nav" data-page="documents">📁 Documents</button>
+<button class="nav" data-page="property">🏗️ Property</button>
+<button class="nav" data-page="media">📸 Media</button>
+
+<div class="title">Security</div>
+<button class="nav" data-page="users">🔐 Users</button>
+<button class="nav" data-page="audit">🛡️ Audit Logs</button>
+
+</aside>
+
+<main class="main">
+
+<div id="message" class="message"></div>
+
+<!-- DASHBOARD -->
+
+<section class="page active" id="dashboard">
+
 <div class="welcome">
-<h2>Welcome, <span id="name">Administrator</span></h2>
+<h2>Welcome, <span id="adminName">Administrator</span></h2>
 <p>GOH Ministries Church Administration</p>
-<span class="role" id="role">Administrator</span>
+<span class="role" id="adminRole">Administrator</span>
 </div>
 
 <div class="stats">
-<div class="stat"><small>Members</small><strong id="members">0</strong></div>
-<div class="stat"><small>Ministries</small><strong id="ministries">0</strong></div>
-<div class="stat"><small>Activities</small><strong id="activitiesCount">0</strong></div>
-<div class="stat"><small>Documents</small><strong id="documentsCount">0</strong></div>
+
+<div class="stat">
+<small>Members</small>
+<strong id="members">0</strong>
 </div>
 
-<h2 class="section">Administration</h2>
-
-<div class="cards">
-<div class="card"><h3>💰 Finance</h3><p>Income and expenses.</p><button class="btn primary" onclick="page('finance')">Open</button></div>
-<div class="card"><h3>📊 Reports</h3><p>Financial and ministry reports.</p><button class="btn primary" onclick="page('reports')">Open</button></div>
-<div class="card"><h3>📜 History</h3><p>Ministry history.</p><button class="btn primary" onclick="page('history')">Open</button></div>
-<div class="card"><h3>⛪ Activities</h3><p>Church activities.</p><button class="btn primary" onclick="page('activities')">Open</button></div>
-<div class="card"><h3>👥 Members</h3><p>Member records.</p><button class="btn primary" onclick="page('members')">Open</button></div>
-<div class="card"><h3>📁 Documents</h3><p>Important documents.</p><button class="btn primary" onclick="page('documents')">Open</button></div>
+<div class="stat">
+<small>Ministries</small>
+<strong id="ministries">0</strong>
 </div>
+
+<div class="stat">
+<small>Activities</small>
+<strong id="events">0</strong>
+</div>
+
+<div class="stat">
+<small>Documents</small>
+<strong id="documents">0</strong>
+</div>
+
+</div>
+
+<h2 class="section" style="margin-top:22px">
+Administration
+</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>💰 Finance</h3>
+<p>Income, expenses, donations and financial records.</p>
+<button class="btn primary" onclick="showPage('finance')">Open</button>
+</div>
+
+<div class="card">
+<h3>📊 Reports</h3>
+<p>Monthly and annual ministry reports.</p>
+<button class="btn primary" onclick="showPage('reports')">Open</button>
+</div>
+
+<div class="card">
+<h3>📜 History</h3>
+<p>Important ministry history and milestones.</p>
+<button class="btn primary" onclick="showPage('history')">Open</button>
+</div>
+
+<div class="card">
+<h3>⛪ Activities</h3>
+<p>Church services, prayer and outreach.</p>
+<button class="btn primary" onclick="showPage('activities')">Open</button>
+</div>
+
+<div class="card">
+<h3>📁 Documents</h3>
+<p>Important ministry and supporting documents.</p>
+<button class="btn primary" onclick="showPage('documents')">Open</button>
+</div>
+
+<div class="card">
+<h3>🛡️ Audit</h3>
+<p>Review administrator activity.</p>
+<button class="btn primary" onclick="showPage('audit')">Open</button>
+</div>
+
+</div>
+
 </section>
 
-<section id="finance" class="page">
+<!-- FINANCE -->
+
+<section class="page" id="finance">
+
 <h2 class="section">💰 Finance</h2>
-<div class="form"><div class="formgrid">
-<div><label>Date</label><input type="date"></div>
-<div><label>Type</label><select><option>Income</option><option>Expense</option></select></div>
-<div><label>Category</label><select><option>Donation</option><option>Offering</option><option>Tithe</option><option>Construction</option><option>Utilities</option><option>Other</option></select></div>
-<div><label>Amount (LKR)</label><input type="number"></div>
-<div><label>Payment Method</label><select><option>Cash</option><option>Bank Transfer</option><option>Bank Deposit</option><option>Cheque</option></select></div>
-<div><label>Reference</label><input></div>
-<div class="full"><label>Description</label><textarea></textarea></div>
-</div><button class="btn primary" onclick="ready('Finance')">Save</button></div>
+
+<div class="form">
+<div class="form-grid">
+
+<div class="field">
+<label>Date</label>
+<input type="date">
+</div>
+
+<div class="field">
+<label>Type</label>
+<select>
+<option>Income</option>
+<option>Expense</option>
+</select>
+</div>
+
+<div class="field">
+<label>Category</label>
+<select>
+<option>Donation</option>
+<option>Offering</option>
+<option>Tithe</option>
+<option>Grant</option>
+<option>Construction</option>
+<option>Utilities</option>
+<option>Transport</option>
+<option>Ministry Activity</option>
+<option>Community Assistance</option>
+<option>Equipment</option>
+<option>Other</option>
+</select>
+</div>
+
+<div class="field">
+<label>Amount (LKR)</label>
+<input type="number" min="0" step="0.01">
+</div>
+
+<div class="field">
+<label>Payment Method</label>
+<select>
+<option>Cash</option>
+<option>Bank Transfer</option>
+<option>Bank Deposit</option>
+<option>Cheque</option>
+<option>Other</option>
+</select>
+</div>
+
+<div class="field">
+<label>Reference</label>
+<input placeholder="Receipt / bank reference">
+</div>
+
+<div class="field full">
+<label>Description</label>
+<textarea placeholder="Financial record details"></textarea>
+</div>
+
+</div>
+
+<button class="btn primary" onclick="notice('Finance API is not connected yet.')">
+Save Financial Record
+</button>
+
+</div>
 </section>
 
-<section id="reports" class="page">
+<!-- REPORTS -->
+
+<section class="page" id="reports">
+
 <h2 class="section">📊 Reports</h2>
-<div class="form"><div class="formgrid">
-<div><label>From</label><input type="date"></div>
-<div><label>To</label><input type="date"></div>
-</div><button class="btn primary" onclick="ready('Report')">Generate Report</button><button class="btn secondary">PDF</button><button class="btn secondary">CSV</button></div>
+
+<div class="form">
+
+<div class="form-grid">
+
+<div class="field">
+<label>Report Type</label>
+<select>
+<option>Monthly</option>
+<option>Annual</option>
+<option>Custom Date Range</option>
+</select>
+</div>
+
+<div class="field">
+<label>Year</label>
+<select id="reportYear"></select>
+</div>
+
+<div class="field">
+<label>From</label>
+<input type="date">
+</div>
+
+<div class="field">
+<label>To</label>
+<input type="date">
+</div>
+
+</div>
+
+<button class="btn primary" onclick="notice('Report API is not connected yet.')">
+Generate Report
+</button>
+
+<button class="btn secondary" onclick="notice('PDF export will be connected to the report API.')">
+PDF
+</button>
+
+<button class="btn secondary" onclick="notice('CSV export will be connected to the report API.')">
+CSV
+</button>
+
+</div>
 </section>
 
-<section id="history" class="page">
+<!-- HISTORY -->
+
+<section class="page" id="history">
+
 <h2 class="section">📜 Ministry History</h2>
-<div class="form"><div class="formgrid">
-<div><label>Date</label><input type="date"></div>
-<div><label>Milestone</label><input></div>
-<div class="full"><label>Description</label><textarea></textarea></div>
-</div><button class="btn primary" onclick="ready('History')">Save</button></div>
+
+<div class="form">
+
+<div class="form-grid">
+
+<div class="field">
+<label>Date</label>
+<input type="date">
+</div>
+
+<div class="field">
+<label>Milestone</label>
+<input placeholder="Important milestone">
+</div>
+
+<div class="field full">
+<label>Description</label>
+<textarea placeholder="Historical information"></textarea>
+</div>
+
+</div>
+
+<button class="btn primary" onclick="notice('History API is not connected yet.')">
+Save History
+</button>
+
+</div>
 </section>
 
-<section id="activities" class="page">
+<!-- ACTIVITIES -->
+
+<section class="page" id="activities">
+
 <h2 class="section">⛪ Activities</h2>
-<div class="form"><div class="formgrid">
-<div><label>Date</label><input type="date"></div>
-<div><label>Activity</label><select><option>Worship Service</option><option>Prayer Meeting</option><option>Bible Study</option><option>Evangelism</option><option>Outreach</option></select></div>
-<div><label>Location</label><input></div>
-<div><label>Participants</label><input type="number"></div>
-<div class="full"><label>Description</label><textarea></textarea></div>
-</div><button class="btn primary" onclick="ready('Activity')">Save</button></div>
+
+<div class="form">
+
+<div class="form-grid">
+
+<div class="field">
+<label>Date</label>
+<input type="date">
+</div>
+
+<div class="field">
+<label>Activity</label>
+<select>
+<option>Worship Service</option>
+<option>Prayer Meeting</option>
+<option>Bible Study</option>
+<option>Evangelism</option>
+<option>Outreach</option>
+<option>Youth Ministry</option>
+<option>Children's Ministry</option>
+<option>Community Assistance</option>
+<option>Special Event</option>
+</select>
+</div>
+
+<div class="field">
+<label>Location</label>
+<input>
+</div>
+
+<div class="field">
+<label>Participants</label>
+<input type="number" min="0">
+</div>
+
+<div class="field full">
+<label>Description</label>
+<textarea placeholder="Activity details"></textarea>
+</div>
+
+</div>
+
+<button class="btn primary" onclick="notice('Activities API is not connected yet.')">
+Save Activity
+</button>
+
+</div>
 </section>
 
-<section id="members" class="page">
+<!-- MEMBERS -->
+
+<section class="page" id="members">
+
 <h2 class="section">👥 Members</h2>
-<div class="form"><div class="formgrid">
-<div><label>Name</label><input></div>
-<div><label>Phone</label><input></div>
-<div><label>Date Joined</label><input type="date"></div>
-<div><label>Status</label><select><option>Active</option><option>Inactive</option></select></div>
-</div><button class="btn primary" onclick="ready('Member')">Save</button></div>
+
+<div class="form">
+
+<div class="form-grid">
+
+<div class="field">
+<label>Name</label>
+<input placeholder="Full name">
+</div>
+
+<div class="field">
+<label>Phone</label>
+<input placeholder="Phone">
+</div>
+
+<div class="field">
+<label>Date Joined</label>
+<input type="date">
+</div>
+
+<div class="field">
+<label>Status</label>
+<select>
+<option>Active</option>
+<option>Inactive</option>
+</select>
+</div>
+
+</div>
+
+<button class="btn primary" onclick="notice('Members API is not connected yet.')">
+Save Member
+</button>
+
+</div>
 </section>
 
-<section id="meetings" class="page">
-<h2 class="section">📋 Meetings</h2>
-<div class="form"><div class="formgrid">
-<div><label>Date</label><input type="date"></div>
-<div><label>Type</label><select><option>Leadership Meeting</option><option>Church Meeting</option><option>Special Meeting</option></select></div>
-<div class="full"><label>Decision / Resolution</label><textarea></textarea></div>
-</div><button class="btn primary" onclick="ready('Meeting')">Save</button></div>
+<!-- MEETINGS -->
+
+<section class="page" id="meetings">
+
+<h2 class="section">📋 Meetings & Decisions</h2>
+
+<div class="form">
+
+<div class="form-grid">
+
+<div class="field">
+<label>Date</label>
+<input type="date">
+</div>
+
+<div class="field">
+<label>Meeting Type</label>
+<select>
+<option>Leadership Meeting</option>
+<option>Church Meeting</option>
+<option>Special Meeting</option>
+</select>
+</div>
+
+<div class="field full">
+<label>Decision / Resolution</label>
+<textarea placeholder="Record decision"></textarea>
+</div>
+
+</div>
+
+<button class="btn primary" onclick="notice('Meetings API is not connected yet.')">
+Save Meeting
+</button>
+
+</div>
 </section>
 
-<section id="documents" class="page">
+<!-- DOCUMENTS -->
+
+<section class="page" id="documents">
+
 <h2 class="section">📁 Documents</h2>
-<div class="form"><div class="formgrid">
-<div><label>Date</label><input type="date"></div>
-<div><label>Type</label><select><option>Ministry Document</option><option>Financial Record</option><option>Bank Document</option><option>Property Document</option><option>Construction Document</option></select></div>
-<div class="full"><label>Description</label><textarea></textarea></div>
-<div class="full"><label>File</label><input type="file"></div>
-</div><button class="btn primary" onclick="ready('Document upload')">Upload</button></div>
+
+<div class="form">
+
+<div class="form-grid">
+
+<div class="field">
+<label>Date</label>
+<input type="date">
+</div>
+
+<div class="field">
+<label>Type</label>
+<select>
+<option>Ministry Document</option>
+<option>Financial Record</option>
+<option>Bank Document</option>
+<option>Property Document</option>
+<option>Construction Document</option>
+<option>Meeting Minutes</option>
+<option>Other</option>
+</select>
+</div>
+
+<div class="field full">
+<label>Description</label>
+<textarea></textarea>
+</div>
+
+<div class="field full">
+<label>File</label>
+<input type="file">
+</div>
+
+</div>
+
+<button class="btn primary" onclick="notice('Document API is not connected yet.')">
+Upload Document
+</button>
+
+</div>
 </section>
 
-<section id="property" class="page">
+<!-- PROPERTY -->
+
+<section class="page" id="property">
+
 <h2 class="section">🏗️ Property & Building</h2>
-<div class="form"><div class="formgrid">
-<div><label>Date</label><input type="date"></div>
-<div><label>Type</label><select><option>Land</option><option>Building</option><option>Construction</option><option>Equipment</option></select></div>
-<div class="full"><label>Description</label><textarea></textarea></div>
-</div><button class="btn primary" onclick="ready('Property')">Save</button></div>
+
+<div class="form">
+
+<div class="form-grid">
+
+<div class="field">
+<label>Date</label>
+<input type="date">
+</div>
+
+<div class="field">
+<label>Record Type</label>
+<select>
+<option>Land</option>
+<option>Building</option>
+<option>Construction</option>
+<option>Equipment</option>
+<option>Other</option>
+</select>
+</div>
+
+<div class="field full">
+<label>Description</label>
+<textarea placeholder="Property or construction information"></textarea>
+</div>
+
+</div>
+
+<button class="btn primary" onclick="notice('Property API is not connected yet.')">
+Save Record
+</button>
+
+</div>
 </section>
 
-<section id="media" class="page">
-<h2 class="section">📸 Media</h2>
-<div class="form"><label>Photos / Videos</label><input type="file" multiple accept="image/*,video/*"><button class="btn primary" onclick="ready('Media upload')">Upload</button></div>
+<!-- MEDIA -->
+
+<section class="page" id="media">
+
+<h2 class="section">📸 Media Archive</h2>
+
+<div class="form">
+
+<div class="form-grid">
+
+<div class="field">
+<label>Date</label>
+<input type="date">
+</div>
+
+<div class="field">
+<label>Category</label>
+<select>
+<option>Church Service</option>
+<option>Construction</option>
+<option>Outreach</option>
+<option>Community Assistance</option>
+<option>Event</option>
+</select>
+</div>
+
+<div class="field full">
+<label>Photos / Videos</label>
+<input type="file" multiple accept="image/*,video/*">
+</div>
+
+</div>
+
+<button class="btn primary" onclick="notice('Media API is not connected yet.')">
+Upload Media
+</button>
+
+</div>
 </section>
 
-<section id="users" class="page">
+<!-- USERS -->
+
+<section class="page" id="users">
+
 <h2 class="section">🔐 Users & Permissions</h2>
-<div class="table"><div class="wrap"><table><thead><tr><th>Name</th><th>Username</th><th>Role</th><th>Status</th></tr></thead><tbody><tr><td id="userName">-</td><td id="username">-</td><td id="userRole">-</td><td>Active</td></tr></tbody></table></div></div>
+
+<div class="card">
+
+<h3>Current Administrator</h3>
+
+<div class="table-wrap">
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Username</th>
+<th>Role</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td id="userName">-</td>
+<td id="userUsername">-</td>
+<td id="userRole">-</td>
+<td>Active</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<p style="margin-top:12px;color:#667085">
+Permissions are controlled by the GOH Admin Worker.
+</p>
+
+</div>
 </section>
 
-<section id="audit" class="page">
+<!-- AUDIT -->
+
+<section class="page" id="audit">
+
 <h2 class="section">🛡️ Audit Logs</h2>
-<div class="table"><button class="btn primary" onclick="audit()">Refresh</button><div class="wrap"><table><thead><tr><th>ID</th><th>Admin</th><th>Action</th><th>Module</th><th>Date</th></tr></thead><tbody id="auditBody"><tr><td colspan="5">Loading...</td></tr></tbody></table></div></div>
+
+<div class="table">
+
+<button class="btn primary" onclick="loadAudit()">
+Refresh Audit Logs
+</button>
+
+<div class="table-wrap">
+
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Admin</th>
+<th>Action</th>
+<th>Module</th>
+<th>Details</th>
+<th>Date</th>
+</tr>
+</thead>
+
+<tbody id="auditBody">
+<tr>
+<td colspan="6">Loading...</td>
+</tr>
+</tbody>
+
+</table>
+
+</div>
+</div>
+
 </section>
 
-<div class="footer">GOH Ministries • Administrative Records</div>
+<div class="footer">
+GOH Ministries • Administrative Records
+</div>
 
 </main>
+</div>
 
 <script>
 const API="https://admin-workerjs.createlk.workers.dev";
 const token=sessionStorage.getItem("goh_admin_token");
 
-if(!token)location.replace("login.html");
-
-function menu(){
-document.getElementById("nav").classList.toggle("show");
-}
-
-function drop(btn){
-const d=btn.parentElement;
-d.classList.toggle("open");
-}
-
-function page(id,btn){
-document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
-document.getElementById(id)?.classList.add("active");
-document.querySelectorAll(".nav>button").forEach(x=>x.classList.remove("active"));
-if(btn)btn.classList.add("active");
-document.querySelectorAll(".drop").forEach(x=>x.classList.remove("open"));
-document.getElementById("nav").classList.remove("show");
-scrollTo(0,0);
-}
-
-function msg(t){
-const x=document.getElementById("msg");
-x.textContent=t;
-x.style.display="block";
-setTimeout(()=>x.style.display="none",3000);
-}
-
-function ready(x){msg(x+" API is not connected yet.");}
-
-async function api(path,opt={}){
-opt.headers={...(opt.headers||{}),Authorization:"Bearer "+token};
-const r=await fetch(API+path,opt);
-let d={};try{d=await r.json()}catch{}
-if(r.status===401){
-sessionStorage.clear();
+if(!token){
 location.replace("login.html");
+}
+
+function showPage(page){
+
+document.querySelectorAll(".page").forEach(p=>{
+p.classList.remove("active");
+});
+
+document.querySelectorAll(".nav").forEach(n=>{
+n.classList.remove("active");
+});
+
+const pageEl=document.getElementById(page);
+const nav=document.querySelector(`[data-page="${page}"]`);
+
+if(pageEl)pageEl.classList.add("active");
+if(nav)nav.classList.add("active");
+
+window.scrollTo({top:0,behavior:"smooth"});
+}
+
+document.querySelectorAll(".nav").forEach(btn=>{
+btn.onclick=()=>showPage(btn.dataset.page);
+});
+
+function notice(text,type="error"){
+const box=document.getElementById("message");
+box.textContent=text;
+box.className="message "+type;
+
+setTimeout(()=>{
+box.className="message";
+},3500);
+}
+
+async function api(path,options={}){
+
+options.headers={
+...(options.headers||{}),
+Authorization:"Bearer "+token
+};
+
+const res=await fetch(API+path,options);
+
+let data={};
+
+try{
+data=await res.json();
+}catch{}
+
+if(res.status===401){
+sessionStorage.removeItem("goh_admin_token");
+sessionStorage.removeItem("goh_admin");
+location.replace("login.html");
+return null;
+}
+
+if(!res.ok){
+throw new Error(data.error||"Request failed");
+}
+
+return data;
+}
+
+async function loadAdmin(){
+
+try{
+
+const data=await api("/me");
+
+if(!data)return;
+
+const admin=data.admin;
+
+document.getElementById("adminName").textContent=
+admin.name||"Administrator";
+
+document.getElementById("adminRole").textContent=
+admin.role||"Administrator";
+
+document.getElementById("userName").textContent=
+admin.name||"-";
+
+document.getElementById("userUsername").textContent=
+admin.username||"-";
+
+document.getElementById("userRole").textContent=
+admin.role||"-";
+
+}catch(e){
+notice(e.message);
+}
+}
+
+async function loadDashboard(){
+
+try{
+
+const data=await api("/dashboard");
+
+if(!data)return;
+
+const totals=data.totals||{};
+
+document.getElementById("members").textContent=
+totals.members??0;
+
+document.getElementById("ministries").textContent=
+totals.ministries??0;
+
+document.getElementById("events").textContent=
+totals.events??0;
+
+document.getElementById("documents").textContent=
+totals.documents??0;
+
+}catch(e){
+notice("Dashboard data could not be loaded.");
+}
+}
+
+async function loadAudit(){
+
+const body=document.getElementById("auditBody");
+
+body.innerHTML=
+"<tr><td colspan='6'>Loading...</td></tr>";
+
+try{
+
+const data=await api("/audit-logs");
+
+if(!data)return;
+
+const logs=data.logs||[];
+
+if(!logs.length){
+body.innerHTML=
+"<tr><td colspan='6'>No audit records found.</td></tr>";
 return;
 }
-if(!r.ok)throw Error(d.error||"Request failed");
-return d;
-}
 
-async function load(){
-try{
-const d=await api("/me");
-const a=d.admin;
-name.textContent=a.name||"Administrator";
-role.textContent=a.role||"Administrator";
-userName.textContent=a.name||"-";
-username.textContent=a.username||"-";
-userRole.textContent=a.role||"-";
-}catch(e){msg(e.message)}
+body.innerHTML="";
 
-try{
-const d=await api("/dashboard"),t=d.totals||{};
-members.textContent=t.members||0;
-ministries.textContent=t.ministries||0;
-activitiesCount.textContent=t.events||0;
-documentsCount.textContent=t.documents||0;
-}catch(e){}
-}
+logs.forEach(log=>{
 
-async function audit(){
-const b=document.getElementById("auditBody");
-b.innerHTML="<tr><td colspan='5'>Loading...</td></tr>";
-try{
-const d=await api("/audit-logs");
-b.innerHTML=d.logs?.length?d.logs.map(x=>`
-<tr>
-<td>${x.id}</td>
-<td>${x.admin_id||"-"}</td>
-<td>${x.action||"-"}</td>
-<td>${x.module||"-"}</td>
-<td>${x.created_at||"-"}</td>
-</tr>`).join(""):"<tr><td colspan='5'>No records</td></tr>";
+const tr=document.createElement("tr");
+
+[
+log.id,
+log.admin_id||"-",
+log.action||"-",
+log.module||"-",
+log.details||"-",
+log.created_at||"-"
+].forEach(value=>{
+
+const td=document.createElement("td");
+td.textContent=value;
+tr.appendChild(td);
+
+});
+
+body.appendChild(tr);
+
+});
+
 }catch(e){
-b.innerHTML="<tr><td colspan='5'>Unable to load</td></tr>";
-msg(e.message);
+
+body.innerHTML=
+"<tr><td colspan='6'>Unable to load audit logs.</td></tr>";
+
+notice(e.message);
 }
 }
 
-async function logout(){
-try{await api("/logout",{method:"POST"})}catch{}
-sessionStorage.clear();
+document.getElementById("logoutBtn").onclick=async()=>{
+
+try{
+await api("/logout",{method:"POST"});
+}catch{}
+
+sessionStorage.removeItem("goh_admin_token");
+sessionStorage.removeItem("goh_admin");
+
 location.replace("login.html");
+};
+
+const year=new Date().getFullYear();
+
+for(let y=year-5;y<=year+1;y++){
+
+const option=document.createElement("option");
+option.value=y;
+option.textContent=y;
+
+document.getElementById("reportYear").appendChild(option);
 }
 
-load();
+loadAdmin();
+loadDashboard();
 </script>
 
 </body>
