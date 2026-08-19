@@ -7,324 +7,75 @@
 <title>GOH Ministries | Administration</title>
 
 <style>
-:root{
- --p:#0b376d;--ph:#082952;--bg:#f8fafc;--card:#fff;
- --txt:#1e293b;--muted:#64748b;--border:#e2e8f0
-}
+:root{--p:#0b376d;--ph:#082952;--bg:#f8fafc;--c:#fff;--t:#1e293b;--m:#64748b;--b:#e2e8f0}
 *{box-sizing:border-box;margin:0;padding:0}
-body{
- font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
- background:var(--bg);color:var(--txt)
-}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
+body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--t)}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
 
-.header{
- position:sticky;top:0;z-index:100;
- background:var(--p);color:#fff;
- box-shadow:0 2px 8px #0002
-}
-.header-in{
- max-width:1280px;margin:auto;height:56px;
- padding:7px 14px;display:flex;
- align-items:center;justify-content:space-between;
- position:relative
-}
-.brand{display:flex;align-items:center;gap:9px}
-.logo{
- width:37px;height:37px;border-radius:50%;
- background:#fff;color:var(--p);
- display:grid;place-items:center;
- font-size:11px;font-weight:800
-}
-.brand h1{font-size:15px}
-.brand p{font-size:10px;opacity:.7}
+header{height:56px;background:var(--p);color:#fff;position:sticky;top:0;z-index:10}
+.head{max-width:1280px;height:100%;margin:auto;padding:8px 14px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:9px}.logo{width:37px;height:37px;border-radius:50%;background:#fff;color:var(--p);display:grid;place-items:center;font-size:11px;font-weight:800}
+.brand h1{font-size:15px}.brand p{font-size:10px;opacity:.7}
+.menuBtn{border:0;background:#ffffff18;color:#fff;padding:8px 11px;border-radius:7px;font-size:18px}
 
-.menu-btn{
- border:0;background:#ffffff18;color:#fff;
- border-radius:7px;padding:8px 11px;
- font-size:17px;font-weight:700
-}
-.menu-btn:hover{background:#ffffff2b}
+.menu{display:none;position:absolute;right:14px;top:52px;width:220px;background:#fff;padding:6px;border:1px solid var(--b);border-radius:9px;box-shadow:0 8px 25px #0002}
+.menu.show{display:block}.menu button{width:100%;border:0;background:none;text-align:left;padding:9px 10px;border-radius:6px;font-size:13px;color:var(--t)}
+.menu button:hover,.menu button.active{background:#e0f2fe;color:#0369a1}
+.menu .logout{color:#b91c1c;border-top:1px solid var(--b);margin-top:4px}
 
-.menu{
- display:none;
- position:absolute;
- right:12px;top:52px;
- width:220px;
- max-height:calc(100vh - 65px);
- overflow:auto;
- background:#fff;
- border:1px solid var(--border);
- border-radius:9px;
- padding:6px;
- box-shadow:0 8px 25px #0002
-}
-.menu.show{display:block}
+main{max-width:1280px;margin:auto;padding:22px}
+.page{display:none}.page.active{display:block}
+.section{font-size:19px;color:var(--p);margin:5px 0 15px}
 
-.menu button{
- width:100%;border:0;background:none;
- color:var(--txt);text-align:left;
- padding:10px;border-radius:6px;
- font-size:13px
-}
-.menu button:hover,
-.menu button.active{
- background:#e0f2fe;color:#0369a1
-}
-.menu .logout{
- color:#b91c1c;
- margin-top:4px;
- border-top:1px solid var(--border);
- border-radius:0
-}
+.welcome,.card,.form,.table,.stat{background:var(--c);border:1px solid var(--b);border-radius:10px;box-shadow:0 1px 4px #0000000d}
+.welcome,.form,.card,.table{padding:18px;margin-bottom:16px}
+.welcome h2{font-size:20px;color:var(--p)}.welcome p,.card p{font-size:13px;color:var(--m)}
+.role{display:inline-block;margin-top:8px;padding:4px 9px;border-radius:20px;background:#e0f2fe;color:#0369a1;font-size:11px}
 
-.main{
- max-width:1280px;
- margin:auto;
- padding:22px
-}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat{padding:15px}.stat small{font-size:11px;color:var(--m)}.stat strong{display:block;color:var(--p);font-size:20px;margin-top:4px}
 
-.page{display:none}
-.page.active{display:block}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card h3{font-size:14px;margin-bottom:5px}
 
-.section{
- font-size:19px;
- color:var(--p);
- margin:5px 0 15px
-}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+.field label{display:block;font-size:11px;font-weight:700;margin-bottom:5px}
+.field input,.field select,.field textarea{width:100%;padding:9px;border:1px solid var(--b);border-radius:7px;font-size:13px}
+.field textarea{min-height:90px;resize:vertical}.full{grid-column:1/-1}
+.required{color:#dc2626}
 
-.welcome,.card,.form,.table,.stat{
- background:var(--card);
- border:1px solid var(--border);
- border-radius:10px;
- box-shadow:0 1px 4px #0000000d
-}
+.slip{padding:12px;background:#f8fafc;border:1px dashed #94a3b8;border-radius:7px}
+.slip small{display:block;color:var(--m);margin-top:5px}
 
-.welcome,.form,.table,.card{
- padding:20px;
- margin-bottom:18px
-}
+.btn{border:0;border-radius:7px;padding:9px 14px;margin-top:12px;font-size:12px;font-weight:600}
+.primary{background:var(--p);color:#fff}.secondary{background:#f1f5f9;border:1px solid var(--b)}
 
-.welcome h2{
- font-size:21px;
- color:var(--p)
-}
+.tableWrap{overflow:auto;border:1px solid var(--b);border-radius:7px}
+table{width:100%;border-collapse:collapse;min-width:550px}
+th,td{padding:9px 12px;border-bottom:1px solid var(--b);font-size:12px;text-align:left}
+th{background:#f8fafc;color:var(--p)}
 
-.welcome p,.card p{
- font-size:13px;
- color:var(--muted)
-}
+.message{display:none;padding:10px;margin-bottom:15px;border-radius:7px;font-size:13px}
+.message.show{display:block}.error{background:#fee2e2;color:#991b1b}.success{background:#dcfce7;color:#166534}
+footer{text-align:center;padding:20px;color:var(--m);font-size:11px}
 
-.role{
- display:inline-block;
- margin-top:9px;
- padding:4px 9px;
- border-radius:20px;
- background:#e0f2fe;
- color:#0369a1;
- font-size:11px;
- font-weight:600
-}
-
-/* DASHBOARD */
-.stats{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:14px
-}
-
-.stat{padding:17px}
-
-.stat small{
- display:block;
- font-size:12px;
- color:var(--muted)
-}
-
-.stat strong{
- display:block;
- font-size:22px;
- color:var(--p);
- margin-top:5px;
- line-height:1.25
-}
-
-.stat.support strong{
- font-size:19px
-}
-
-.grid{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:14px
-}
-
-.card h3{
- font-size:15px;
- margin-bottom:5px
-}
-
-/* FORMS */
-.form-grid{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:14px
-}
-
-.field label{
- display:block;
- font-size:11px;
- font-weight:700;
- margin-bottom:5px
-}
-
-.field input,
-.field select,
-.field textarea{
- width:100%;
- padding:9px 11px;
- border:1px solid var(--border);
- border-radius:7px;
- font-size:13px;
- background:#fff
-}
-
-.field textarea{
- min-height:100px;
- resize:vertical
-}
-
-.full{grid-column:1/-1}
-
-.btn{
- border:0;
- border-radius:7px;
- padding:9px 14px;
- margin:12px 5px 0 0;
- font-size:12px;
- font-weight:600
-}
-
-.primary{
- background:var(--p);
- color:#fff
-}
-.primary:hover{background:var(--ph)}
-
-.secondary{
- background:#f1f5f9;
- border:1px solid var(--border)
-}
-
-/* TABLE */
-.table-wrap{
- overflow:auto;
- border:1px solid var(--border);
- border-radius:7px
-}
-
-table{
- width:100%;
- border-collapse:collapse;
- min-width:550px
-}
-
-th,td{
- padding:10px 13px;
- border-bottom:1px solid var(--border);
- font-size:12px;
- text-align:left
-}
-
-th{
- background:#f8fafc;
- color:var(--p)
-}
-
-/* MESSAGE */
-.message{
- display:none;
- padding:10px 14px;
- margin-bottom:15px;
- border-radius:7px;
- font-size:13px
-}
-
-.message.show{display:block}
-.message.error{background:#fee2e2;color:#991b1b}
-.message.success{background:#dcfce7;color:#166534}
-
-.footer{
- text-align:center;
- padding:20px;
- color:var(--muted);
- font-size:11px
-}
-
-@media(max-width:800px){
- .stats{grid-template-columns:repeat(2,1fr)}
- .grid{grid-template-columns:repeat(2,1fr)}
-}
-
-@media(max-width:600px){
- .header-in{
-  height:54px;
-  padding:7px 10px
- }
-
- .logo{
-  width:35px;
-  height:35px
- }
-
- .brand h1{font-size:14px}
- .brand p{display:none}
-
- .menu{
-  right:8px;
-  top:50px;
-  width:210px
- }
-
- .main{padding:14px}
-
- .stats,
- .grid,
- .form-grid{
-  grid-template-columns:1fr
- }
-
- .full{grid-column:auto}
-
- .welcome,
- .form,
- .card,
- .table{
-  padding:16px
- }
-}
+@media(max-width:800px){.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){main{padding:14px}.stats,.grid,.form-grid{grid-template-columns:1fr}.full{grid-column:auto}.brand p{display:none}}
 </style>
 </head>
 
 <body>
 
-<header class="header">
-<div class="header-in">
+<header>
+<div class="head">
 
 <div class="brand">
 <div class="logo">GOH</div>
-
-<div>
-<h1>GOH Ministries</h1>
-<p>Church Administration</p>
-</div>
+<div><h1>GOH Ministries</h1><p>Church Administration</p></div>
 </div>
 
-<button class="menu-btn" id="menuBtn">☰</button>
+<button class="menuBtn" id="menuBtn">☰</button>
 
 <div class="menu" id="menu">
-
 <button data-page="dashboard">🏠 Dashboard</button>
 <button data-page="finance">💰 Finance</button>
 <button data-page="reports">📊 Reports</button>
@@ -338,130 +89,69 @@ th{
 <button data-page="users">🔐 Users</button>
 <button data-page="audit">🛡️ Audit</button>
 <button class="logout" id="logout">Logout</button>
-
 </div>
+
 </div>
 </header>
 
-<main class="main">
+<main>
 
-<div id="message" class="message"></div>
-
+<div id="msg" class="message"></div>
 
 <!-- DASHBOARD -->
-
 <section class="page active" id="dashboard">
 
 <div class="welcome">
 <h2>Welcome, <span id="adminName">Administrator</span></h2>
 <p>GOH Ministries Church Administration Portal</p>
-<span class="role" id="adminRole">Administrator</span>
+<span class="role">Administrator</span>
 </div>
 
 <div class="stats">
-
-<div class="stat">
-<small>Total Income</small>
-<strong id="totalIncome">LKR 0.00</strong>
+<div class="stat"><small>Total Income</small><strong id="income">LKR 0.00</strong></div>
+<div class="stat"><small>Total Expenses</small><strong id="expense">LKR 0.00</strong></div>
+<div class="stat"><small>Minister Monthly Support</small><strong id="support">LKR 0.00</strong></div>
+<div class="stat"><small>Current Balance</small><strong id="balance">LKR 0.00</strong></div>
 </div>
 
-<div class="stat">
-<small>Total Expenses</small>
-<strong id="totalExpenses">LKR 0.00</strong>
-</div>
-
-<div class="stat support">
-<small>Minister Monthly Support</small>
-<strong id="ministerSupport">LKR 0.00</strong>
-</div>
-
-<div class="stat">
-<small>Current Balance</small>
-<strong id="currentBalance">LKR 0.00</strong>
-</div>
-
-</div>
-
-<h2 class="section" style="margin-top:25px">
-Administration Modules
-</h2>
+<h2 class="section" style="margin-top:24px">Administration Modules</h2>
 
 <div class="grid">
-
-<div class="card">
-<h3>💰 Finance</h3>
-<p>Manage income, expenses, donations and ministry financial records.</p>
-</div>
-
-<div class="card">
-<h3>📊 Reports</h3>
-<p>View monthly, annual and financial ministry reports.</p>
-</div>
-
-<div class="card">
-<h3>📜 History</h3>
-<p>Manage ministry history, milestones and important events.</p>
-</div>
-
-<div class="card">
-<h3>⛪ Activities</h3>
-<p>Manage worship services, prayer, evangelism and ministry activities.</p>
-</div>
-
-<div class="card">
-<h3>📁 Documents</h3>
-<p>Manage ministry, financial, property and official documents.</p>
-</div>
-
-<div class="card">
-<h3>🛡️ Audit</h3>
-<p>Review administrator activity and system audit records.</p>
-</div>
-
+<div class="card"><h3>💰 Finance</h3><p>Income, expenses, donations and support.</p></div>
+<div class="card"><h3>📊 Reports</h3><p>Monthly and annual financial reports.</p></div>
+<div class="card"><h3>📜 History</h3><p>Ministry history and milestones.</p></div>
+<div class="card"><h3>⛪ Activities</h3><p>Church and ministry activities.</p></div>
+<div class="card"><h3>📁 Documents</h3><p>Official and financial documents.</p></div>
+<div class="card"><h3>🛡️ Audit</h3><p>System and administrator records.</p></div>
 </div>
 
 </section>
 
-
 <!-- FINANCE -->
-
 <section class="page" id="finance">
 
-<h2 class="section">💰 Finance Management</h2>
+<h2 class="section">💰 Finance</h2>
 
-<div class="form">
+<form class="form" id="financeForm">
 
 <div class="form-grid">
 
-<div class="field">
-<label>Date</label>
-<input type="date">
-</div>
+<div class="field"><label>Date *</label><input id="fDate" type="date" required></div>
 
-<div class="field">
-<label>Type</label>
-<select id="financeType">
-<option>Income</option>
-<option>Expense</option>
-</select>
-</div>
+<div class="field"><label>Type *</label>
+<select id="fType" required>
+<option value="">Select</option><option>Income</option><option>Expense</option>
+</select></div>
 
-<div class="field">
-<label>Ministry Category</label>
-
-<select id="financeCategory">
-
-<optgroup label="Income">
+<div class="field"><label>Ministry Category *</label>
+<select id="fCategory" required>
+<option value="">Select category</option>
 <option>Tithe</option>
 <option>Offering</option>
 <option>General Donation</option>
 <option>Special Donation</option>
 <option>Grant</option>
 <option>Foreign Ministry Support</option>
-<option>Other Income</option>
-</optgroup>
-
-<optgroup label="Ministry & Support">
 <option>Minister Monthly Support</option>
 <option>Pastor / Minister Expenses</option>
 <option>Staff / Worker Support</option>
@@ -470,688 +160,260 @@ Administration Modules
 <option>Bible Ministry</option>
 <option>Prayer Ministry</option>
 <option>Worship Ministry</option>
-</optgroup>
-
-<optgroup label="Church Ministries">
 <option>Children's Ministry</option>
 <option>Youth Ministry</option>
 <option>Women's Ministry</option>
 <option>Men's Ministry</option>
+<option>Media Ministry</option>
 <option>Community Assistance</option>
 <option>Poor / Family Assistance</option>
-<option>Education / Training</option>
-</optgroup>
-
-<optgroup label="Property & Construction">
 <option>Church Building / Construction</option>
 <option>Land / Property</option>
 <option>Equipment</option>
-</optgroup>
-
-<optgroup label="Operations">
+<option>Maintenance</option>
 <option>Utilities</option>
 <option>Transport</option>
-<option>Media / Technology</option>
 <option>Church Events</option>
 <option>Bank Charges</option>
 <option>Administrative Expenses</option>
-</optgroup>
-
-<option>Other Expense</option>
-
-</select>
-</div>
-
-<div class="field">
-<label>Amount (LKR)</label>
-<input type="number" min="0" step=".01" placeholder="0.00">
-</div>
-
-<div class="field">
-<label>Payment Method</label>
-<select>
-<option>Cash</option>
-<option>Bank Transfer</option>
-<option>Bank Deposit</option>
-<option>Cheque</option>
-<option>Online Payment</option>
 <option>Other</option>
-</select>
-</div>
+</select></div>
 
-<div class="field">
-<label>Reference</label>
-<input placeholder="Receipt / bank reference">
-</div>
+<div class="field"><label>Amount (LKR) *</label><input id="fAmount" type="number" min=".01" step=".01" required></div>
 
-<div class="field full">
-<label>Description</label>
-<textarea placeholder="Financial record description"></textarea>
-</div>
+<div class="field"><label>Payment Method *</label>
+<select id="fMethod" required>
+<option value="">Select</option>
+<option>Cash</option><option>Bank Transfer</option><option>Bank Deposit</option><option>Cheque</option><option>Online Payment</option><option>Other</option>
+</select></div>
 
-</div>
+<div class="field"><label>Reference</label><input id="fRef" placeholder="Receipt / bank reference"></div>
 
-<button class="btn primary"
-onclick="notice('Finance API is not connected yet.')">
-Save Financial Record
-</button>
-
-</div>
-
-</section>
-
-
-<!-- REPORTS -->
-
-<section class="page" id="reports">
-
-<h2 class="section">📊 Ministry Reports</h2>
-
-<div class="form">
-
-<div class="form-grid">
-
-<div class="field">
-<label>Report Type</label>
-<select>
-<option>Monthly</option>
-<option>Annual</option>
-<option>Financial Summary</option>
-<option>Income Report</option>
-<option>Expense Report</option>
-<option>Minister Support Report</option>
-<option>Ministry Category Report</option>
-<option>Custom Date Range</option>
-</select>
-</div>
-
-<div class="field">
-<label>Year</label>
-<select id="reportYear"></select>
-</div>
-
-<div class="field">
-<label>From</label>
-<input type="date">
-</div>
-
-<div class="field">
-<label>To</label>
-<input type="date">
-</div>
-
-</div>
-
-<button class="btn primary"
-onclick="notice('Report API is not connected yet.')">
-Generate
-</button>
-
-<button class="btn secondary"
-onclick="notice('PDF export will be connected.')">
-PDF
-</button>
-
-<button class="btn secondary"
-onclick="notice('CSV export will be connected.')">
-CSV
-</button>
-
-</div>
-
-</section>
-
-
-<!-- HISTORY -->
-
-<section class="page" id="history">
-
-<h2 class="section">📜 Ministry History</h2>
-
-<div class="form">
-
-<div class="form-grid">
-
-<div class="field">
-<label>Date</label>
-<input type="date">
-</div>
-
-<div class="field">
-<label>Milestone</label>
-<input placeholder="Milestone title">
-</div>
-
-<div class="field">
-<label>Category</label>
-<select>
-<option>Ministry Beginning</option>
-<option>Church Development</option>
-<option>Evangelism</option>
-<option>Mission</option>
-<option>Building</option>
-<option>Community Work</option>
-<option>Leadership</option>
-<option>Other</option>
-</select>
-</div>
+<div class="field full"><label>Description *</label><textarea id="fDesc" required></textarea></div>
 
 <div class="field full">
-<label>Description</label>
-<textarea></textarea>
+<div class="slip">
+<label>Supporting Slip / Receipt *</label>
+<input id="fSlip" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp" required>
+<small>Required for every financial record. Maximum 10 MB.</small>
+</div>
 </div>
 
 </div>
 
-<button class="btn primary"
-onclick="notice('History API is not connected yet.')">
-Save History
-</button>
+<button class="btn primary">Save Financial Record</button>
 
-</div>
-
-</section>
-
-
-<!-- ACTIVITIES -->
-
-<section class="page" id="activities">
-
-<h2 class="section">⛪ Ministry Activities</h2>
-
-<div class="form">
-
-<div class="form-grid">
-
-<div class="field">
-<label>Date</label>
-<input type="date">
-</div>
-
-<div class="field">
-<label>Activity</label>
-
-<select>
-<option>Worship Service</option>
-<option>Prayer Meeting</option>
-<option>Bible Study</option>
-<option>Evangelism</option>
-<option>Missionary Work</option>
-<option>Outreach</option>
-<option>Youth Ministry</option>
-<option>Children's Ministry</option>
-<option>Women's Ministry</option>
-<option>Men's Ministry</option>
-<option>Community Assistance</option>
-<option>Poor / Family Assistance</option>
-<option>Special Event</option>
-</select>
-
-</div>
-
-<div class="field">
-<label>Location</label>
-<input>
-</div>
-
-<div class="field">
-<label>Participants</label>
-<input type="number" min="0">
-</div>
-
-<div class="field full">
-<label>Description</label>
-<textarea></textarea>
-</div>
-
-</div>
-
-<button class="btn primary"
-onclick="notice('Activities API is not connected yet.')">
-Save Activity
-</button>
-
-</div>
-
-</section>
-
-
-<!-- MEMBERS -->
-
-<section class="page" id="members">
-
-<h2 class="section">👥 Member Directory</h2>
-
-<div class="form">
-
-<div class="form-grid">
-
-<div class="field">
-<label>Full Name</label>
-<input>
-</div>
-
-<div class="field">
-<label>Phone</label>
-<input>
-</div>
-
-<div class="field">
-<label>Date Joined</label>
-<input type="date">
-</div>
-
-<div class="field">
-<label>Status</label>
-<select>
-<option>Active</option>
-<option>Inactive</option>
-</select>
-</div>
-
-<div class="field">
-<label>Ministry</label>
-<select>
-<option>General</option>
-<option>Worship</option>
-<option>Prayer</option>
-<option>Evangelism</option>
-<option>Youth</option>
-<option>Children</option>
-<option>Women</option>
-<option>Men</option>
-<option>Media</option>
-<option>Other</option>
-</select>
-</div>
-
-</div>
-
-<button class="btn primary"
-onclick="notice('Members API is not connected yet.')">
-Save Member
-</button>
-
-</div>
-
-</section>
-
-
-<!-- MEETINGS -->
-
-<section class="page" id="meetings">
-
-<h2 class="section">📋 Meetings & Decisions</h2>
-
-<div class="form">
-
-<div class="form-grid">
-
-<div class="field">
-<label>Date</label>
-<input type="date">
-</div>
-
-<div class="field">
-<label>Meeting Type</label>
-<select>
-<option>Leadership Meeting</option>
-<option>Church Meeting</option>
-<option>Ministry Meeting</option>
-<option>Finance Meeting</option>
-<option>Special Meeting</option>
-</select>
-</div>
-
-<div class="field">
-<label>Location</label>
-<input>
-</div>
-
-<div class="field">
-<label>Participants</label>
-<input type="number" min="0">
-</div>
-
-<div class="field full">
-<label>Decision / Resolution</label>
-<textarea></textarea>
-</div>
-
-</div>
-
-<button class="btn primary"
-onclick="notice('Meetings API is not connected yet.')">
-Save Minutes
-</button>
-
-</div>
-
-</section>
-
-
-<!-- DOCUMENTS -->
-
-<section class="page" id="documents">
-
-<h2 class="section">📁 Document Repository</h2>
-
-<div class="form">
-
-<div class="form-grid">
-
-<div class="field">
-<label>Date</label>
-<input type="date">
-</div>
-
-<div class="field">
-<label>Type</label>
-
-<select>
-<option>Ministry Document</option>
-<option>Financial Record</option>
-<option>Bank Document</option>
-<option>Property Document</option>
-<option>Construction Document</option>
-<option>Meeting Minutes</option>
-<option>Registration Document</option>
-<option>Official Letter</option>
-<option>Other</option>
-</select>
-
-</div>
-
-<div class="field full">
-<label>Description</label>
-<textarea></textarea>
-</div>
-
-<div class="field full">
-<label>File</label>
-<input type="file">
-</div>
-
-</div>
-
-<button class="btn primary"
-onclick="notice('Document API is not connected yet.')">
-Upload Document
-</button>
-
-</div>
-
-</section>
-
-
-<!-- PROPERTY -->
-
-<section class="page" id="property">
-
-<h2 class="section">🏗️ Property & Building</h2>
-
-<div class="form">
-
-<div class="form-grid">
-
-<div class="field">
-<label>Date</label>
-<input type="date">
-</div>
-
-<div class="field">
-<label>Record Type</label>
-
-<select>
-<option>Land</option>
-<option>Building</option>
-<option>Construction</option>
-<option>Equipment</option>
-<option>Property Document</option>
-<option>Maintenance</option>
-<option>Other</option>
-</select>
-
-</div>
-
-<div class="field">
-<label>Location</label>
-<input>
-</div>
-
-<div class="field">
-<label>Status</label>
-<select>
-<option>Active</option>
-<option>Under Construction</option>
-<option>Completed</option>
-<option>Maintenance</option>
-</select>
-</div>
-
-<div class="field full">
-<label>Description</label>
-<textarea></textarea>
-</div>
-
-</div>
-
-<button class="btn primary"
-onclick="notice('Property API is not connected yet.')">
-Save Property
-</button>
-
-</div>
-
-</section>
-
-
-<!-- MEDIA -->
-
-<section class="page" id="media">
-
-<h2 class="section">📸 Media Archive</h2>
-
-<div class="form">
-
-<div class="form-grid">
-
-<div class="field">
-<label>Date</label>
-<input type="date">
-</div>
-
-<div class="field">
-<label>Category</label>
-
-<select>
-<option>Church Service</option>
-<option>Prayer Meeting</option>
-<option>Construction</option>
-<option>Evangelism</option>
-<option>Outreach</option>
-<option>Community Assistance</option>
-<option>Children's Ministry</option>
-<option>Youth Ministry</option>
-<option>Special Event</option>
-<option>Other</option>
-</select>
-
-</div>
-
-<div class="field full">
-<label>Photos / Videos</label>
-<input type="file" multiple accept="image/*,video/*">
-</div>
-
-</div>
-
-<button class="btn primary"
-onclick="notice('Media API is not connected yet.')">
-Upload Media
-</button>
-
-</div>
-
-</section>
-
-
-<!-- USERS -->
-
-<section class="page" id="users">
-
-<h2 class="section">🔐 Users & Permissions</h2>
-
-<div class="card">
-
-<h3>Current Administrator</h3>
-
-<div class="table-wrap">
-
-<table>
-
-<thead>
-<tr>
-<th>Name</th>
-<th>Username</th>
-<th>Role</th>
-<th>Status</th>
-</tr>
-</thead>
-
-<tbody>
-
-<tr>
-<td id="userName">-</td>
-<td id="userUsername">-</td>
-<td id="userRole">-</td>
-<td>Active</td>
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-<p style="margin-top:12px">
-Permissions are controlled by the GOH Admin Worker.
-</p>
-
-</div>
-
-</section>
-
-
-<!-- AUDIT -->
-
-<section class="page" id="audit">
-
-<h2 class="section">🛡️ System Audit Logs</h2>
+</form>
 
 <div class="table">
-
-<div class="table-wrap">
-
+<h3 style="font-size:14px;margin-bottom:10px">Financial Records</h3>
+<div class="tableWrap">
 <table>
-
-<thead>
-<tr>
-<th>Date</th>
-<th>Administrator</th>
-<th>Action</th>
-<th>Status</th>
-</tr>
-</thead>
-
-<tbody id="auditBody">
-
-<tr>
-<td colspan="4">
-No audit records available.
-</td>
-</tr>
-
-</tbody>
-
+<thead><tr><th>Date</th><th>Type</th><th>Category</th><th>Amount</th><th>Status</th></tr></thead>
+<tbody id="financeBody"><tr><td colspan="5">No records available.</td></tr></tbody>
 </table>
-
 </div>
-
 </div>
 
 </section>
 
+<!-- REPORTS -->
+<section class="page" id="reports">
+<h2 class="section">📊 Reports</h2>
+<div class="form">
+<div class="form-grid">
+<div class="field"><label>Report</label><select><option>Monthly Finance</option><option>Annual Finance</option><option>Income</option><option>Expenses</option><option>Minister Support</option><option>Donations</option><option>Assets</option></select></div>
+<div class="field"><label>Year</label><select id="year"></select></div>
+<div class="field"><label>From</label><input type="date"></div>
+<div class="field"><label>To</label><input type="date"></div>
+</div>
+<p style="font-size:11px;color:#64748b;margin-top:10px">Reports use approved records with supporting slips.</p>
+<button class="btn primary" onclick="note('Report API is not connected yet.')">Generate</button>
+<button class="btn secondary" onclick="note('PDF export will be connected.')">PDF</button>
+</div>
+</section>
 
-<footer class="footer">
-© 2026 GOH Ministries · Administration Portal
-</footer>
+<!-- HISTORY -->
+<section class="page" id="history">
+<h2 class="section">📜 History</h2>
+<div class="form">
+<div class="form-grid">
+<div class="field"><label>Date</label><input type="date"></div>
+<div class="field"><label>Milestone</label><input></div>
+<div class="field full"><label>Description</label><textarea></textarea></div>
+</div>
+<button class="btn primary" onclick="note('History API is not connected yet.')">Save</button>
+</div>
+</section>
+
+<!-- ACTIVITIES -->
+<section class="page" id="activities">
+<h2 class="section">⛪ Activities</h2>
+<div class="form">
+<div class="form-grid">
+<div class="field"><label>Date</label><input type="date"></div>
+<div class="field"><label>Activity</label><select><option>Worship Service</option><option>Prayer Meeting</option><option>Bible Study</option><option>Evangelism</option><option>Outreach</option><option>Youth Ministry</option><option>Children's Ministry</option><option>Community Assistance</option></select></div>
+<div class="field"><label>Location</label><input></div>
+<div class="field"><label>Participants</label><input type="number"></div>
+<div class="field full"><label>Description</label><textarea></textarea></div>
+</div>
+<button class="btn primary" onclick="note('Activities API is not connected yet.')">Save</button>
+</div>
+</section>
+
+<!-- MEMBERS -->
+<section class="page" id="members">
+<h2 class="section">👥 Members</h2>
+<div class="form">
+<div class="form-grid">
+<div class="field"><label>Full Name</label><input></div>
+<div class="field"><label>Phone</label><input></div>
+<div class="field"><label>Date Joined</label><input type="date"></div>
+<div class="field"><label>Status</label><select><option>Active</option><option>Inactive</option></select></div>
+</div>
+<button class="btn primary" onclick="note('Members API is not connected yet.')">Save</button>
+</div>
+</section>
+
+<!-- MEETINGS -->
+<section class="page" id="meetings">
+<h2 class="section">📋 Meetings</h2>
+<div class="form">
+<div class="form-grid">
+<div class="field"><label>Date</label><input type="date"></div>
+<div class="field"><label>Type</label><select><option>Leadership Meeting</option><option>Church Meeting</option><option>Finance Meeting</option><option>Special Meeting</option></select></div>
+<div class="field full"><label>Decision / Resolution</label><textarea></textarea></div>
+</div>
+<button class="btn primary" onclick="note('Meetings API is not connected yet.')">Save</button>
+</div>
+</section>
+
+<!-- DOCUMENTS -->
+<section class="page" id="documents">
+<h2 class="section">📁 Documents</h2>
+<div class="form">
+<div class="form-grid">
+<div class="field"><label>Date</label><input type="date"></div>
+<div class="field"><label>Type</label><select><option>Ministry Document</option><option>Financial Record</option><option>Bank Document</option><option>Property Document</option><option>Construction Document</option><option>Meeting Minutes</option><option>Registration Document</option><option>Audit Report</option><option>Other</option></select></div>
+<div class="field full"><label>Description</label><textarea></textarea></div>
+<div class="field full"><label>File</label><input type="file"></div>
+</div>
+<button class="btn primary" onclick="note('Document API is not connected yet.')">Upload</button>
+</div>
+</section>
+
+<!-- PROPERTY -->
+<section class="page" id="property">
+<h2 class="section">🏗️ Property</h2>
+<div class="form">
+<div class="form-grid">
+<div class="field"><label>Date</label><input type="date"></div>
+<div class="field"><label>Type</label><select><option>Land</option><option>Building</option><option>Construction</option><option>Equipment</option><option>Maintenance</option></select></div>
+<div class="field full"><label>Description</label><textarea></textarea></div>
+</div>
+<button class="btn primary" onclick="note('Property API is not connected yet.')">Save</button>
+</div>
+</section>
+
+<!-- MEDIA -->
+<section class="page" id="media">
+<h2 class="section">📸 Media</h2>
+<div class="form">
+<div class="form-grid">
+<div class="field"><label>Date</label><input type="date"></div>
+<div class="field"><label>Category</label><select><option>Church Service</option><option>Construction</option><option>Outreach</option><option>Community Assistance</option><option>Event</option></select></div>
+<div class="field full"><label>Photos / Videos</label><input type="file" multiple accept="image/*,video/*"></div>
+</div>
+<button class="btn primary" onclick="note('Media API is not connected yet.')">Upload</button>
+</div>
+</section>
+
+<!-- USERS -->
+<section class="page" id="users">
+<h2 class="section">🔐 Users</h2>
+<div class="card">
+<div class="tableWrap">
+<table>
+<thead><tr><th>Name</th><th>Username</th><th>Role</th><th>Status</th></tr></thead>
+<tbody><tr><td id="userName">-</td><td id="userUsername">-</td><td id="userRole">-</td><td>Active</td></tr></tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- AUDIT -->
+<section class="page" id="audit">
+<h2 class="section">🛡️ Audit Logs</h2>
+<div class="table">
+<div class="tableWrap">
+<table>
+<thead><tr><th>Date</th><th>Administrator</th><th>Action</th><th>Status</th></tr></thead>
+<tbody><tr><td colspan="4">No audit records available.</td></tr></tbody>
+</table>
+</div>
+</div>
+</section>
+
+<footer>© 2026 GOH Ministries · Administration Portal</footer>
 
 </main>
 
-
 <script>
-const pages=document.querySelectorAll(".page");
 const menu=document.getElementById("menu");
-const items=menu.querySelectorAll("button[data-page]");
+const pages=document.querySelectorAll(".page");
+const items=document.querySelectorAll("[data-page]");
 
-document.getElementById("menuBtn").onclick=e=>{
- e.stopPropagation();
- menu.classList.toggle("show");
+document.getElementById("menuBtn").onclick=()=>{
+ menu.classList.toggle("show")
 };
 
 document.addEventListener("click",e=>{
- if(!e.target.closest("#menu")&&!e.target.closest("#menuBtn"))
- menu.classList.remove("show");
+ if(!e.target.closest(".menu")&&!e.target.closest("#menuBtn"))
+  menu.classList.remove("show")
 });
 
 function showPage(id){
- pages.forEach(p=>{
-  p.classList.toggle("active",p.id===id);
- });
-
- items.forEach(b=>{
-  b.classList.toggle("active",b.dataset.page===id);
- });
-
+ pages.forEach(p=>p.classList.toggle("active",p.id===id));
+ items.forEach(b=>b.classList.toggle("active",b.dataset.page===id));
  menu.classList.remove("show");
-
- window.scrollTo({
-  top:0,
-  behavior:"smooth"
- });
+ scrollTo(0,0);
 }
 
-items.forEach(b=>{
- b.onclick=()=>showPage(b.dataset.page);
-});
+items.forEach(b=>b.onclick=()=>showPage(b.dataset.page));
 
-function notice(text,type="error"){
- const m=document.getElementById("message");
-
+function note(text,type="error"){
+ const m=document.getElementById("msg");
  m.textContent=text;
  m.className="message show "+type;
-
- clearTimeout(window.msg);
-
- window.msg=setTimeout(()=>{
-  m.className="message";
- },3500);
+ setTimeout(()=>m.className="message",3500);
 }
 
-const year=new Date().getFullYear();
+const y=new Date().getFullYear();
+for(let i=y;i>=y-10;i--)
+ document.getElementById("year").innerHTML+=`<option>${i}</option>`;
 
-for(let y=year;y>=year-10;y--){
- document.getElementById("reportYear").innerHTML+=
- `<option>${y}</option>`;
-}
+document.getElementById("financeForm").onsubmit=e=>{
+ e.preventDefault();
+
+ const file=document.getElementById("fSlip").files[0];
+
+ if(!file){
+  note("Supporting slip is required.");
+  return;
+ }
+
+ if(file.size>10*1024*1024){
+  note("Slip must be smaller than 10 MB.");
+  return;
+ }
+
+ note("Record validated. Connect the Finance Worker to save it.","success");
+};
 
 document.getElementById("logout").onclick=()=>{
  if(confirm("Logout from administration?"))
- location.href="login.html";
+  location.href="login.html";
 };
-
-showPage("dashboard");
 </script>
 
 </body>
