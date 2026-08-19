@@ -5,69 +5,85 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0b376d">
 <title>GOH Ministries | Login</title>
+
 <style>
 *{box-sizing:border-box}
 body{
-margin:0;min-height:100vh;display:grid;place-items:center;
-background:#f1f5f9;font-family:system-ui,sans-serif;color:#1e293b
+ margin:0;min-height:100vh;display:grid;place-items:center;
+ background:#f1f5f9;font-family:system-ui,sans-serif;color:#1e293b
 }
 .box{
-width:min(390px,92%);background:#fff;padding:28px;
-border-radius:14px;box-shadow:0 8px 30px #0001
+ width:min(390px,92%);background:#fff;padding:28px;
+ border-radius:14px;box-shadow:0 8px 30px #0001
 }
 .logo{
-margin:auto;width:55px;height:55px;border-radius:50%;
-background:#0b376d;color:#fff;display:grid;place-items:center;
-font-weight:800
+ width:55px;height:55px;margin:auto;border-radius:50%;
+ display:grid;place-items:center;background:#0b376d;color:#fff;
+ font-weight:800
 }
 h1{text-align:center;color:#0b376d;font-size:21px;margin:12px 0 3px}
-p{text-align:center;color:#64748b;font-size:12px}
-label{display:block;font-size:12px;font-weight:700;margin:15px 0 5px}
+.sub{text-align:center;color:#64748b;font-size:12px;margin-bottom:22px}
+label{display:block;font-size:12px;font-weight:700;margin:14px 0 5px}
 input,select{
-width:100%;padding:11px;border:1px solid #dbe2ea;
-border-radius:8px;font:inherit
+ width:100%;padding:11px;border:1px solid #dbe2ea;
+ border-radius:8px;font:inherit;font-size:13px
 }
 button{
-width:100%;margin-top:18px;padding:11px;border:0;
-border-radius:8px;background:#0b376d;color:#fff;
-font-weight:700
+ width:100%;margin-top:18px;padding:11px;border:0;
+ border-radius:8px;background:#0b376d;color:#fff;
+ font-weight:700;cursor:pointer
 }
 button:disabled{opacity:.6}
 #msg{
-display:none;margin-top:12px;padding:10px;border-radius:7px;
-background:#fee2e2;color:#991b1b;font-size:12px
+ display:none;margin-top:12px;padding:10px;border-radius:7px;
+ background:#fee2e2;color:#991b1b;font-size:12px
 }
-footer{text-align:center;color:#94a3b8;font-size:10px;margin-top:18px}
+footer{
+ text-align:center;color:#94a3b8;font-size:10px;margin-top:18px
+}
 </style>
 </head>
 
 <body>
+
 <div class="box">
 
 <div class="logo">GOH</div>
 
 <h1>GOH Ministries</h1>
-<p>Administrative & Financial Database</p>
+
+<div class="sub">
+Administrative & Financial Database
+</div>
 
 <form id="login">
 
 <label>Username / Email</label>
-<input id="username" autocomplete="username" required>
+<input id="username"
+ type="text"
+ autocomplete="username"
+ required>
 
 <label>Password</label>
-<input id="password" type="password"
-autocomplete="current-password" required>
+<input id="password"
+ type="password"
+ autocomplete="current-password"
+ required>
 
 <label>Access Level</label>
-<select id="level">
+
+<select id="role" required>
 <option value="super_admin">Administration</option>
 <option value="finance">Finance Officer</option>
 <option value="auditor">Auditor / Viewer</option>
 </select>
 
-<button id="btn">Sign In</button>
+<button id="btn" type="submit">
+Sign In
+</button>
 
 <div id="msg"></div>
+
 </form>
 
 <footer>
@@ -77,68 +93,93 @@ autocomplete="current-password" required>
 </div>
 
 <script>
-const AUTH="https://goh-admin-auth.createlk.workers.dev";
+
+const AUTH=
+"https://goh-admin-auth.createlk.workers.dev";
 
 const form=document.getElementById("login");
 const btn=document.getElementById("btn");
 const msg=document.getElementById("msg");
 
-function show(text){
-msg.textContent=text;
-msg.style.display="block";
+function showError(text){
+ msg.textContent=text;
+ msg.style.display="block";
 }
 
 form.onsubmit=async e=>{
-e.preventDefault();
 
-msg.style.display="none";
-btn.disabled=true;
-btn.textContent="Signing in...";
+ e.preventDefault();
 
-const username=document.getElementById("username").value.trim();
-const password=document.getElementById("password").value;
-const level=document.getElementById("level").value;
+ msg.style.display="none";
+ btn.disabled=true;
+ btn.textContent="Signing in...";
 
-try{
+ const username=
+ document.getElementById("username").value.trim();
 
-const r=await fetch(AUTH+"/login",{
-method:"POST",
-headers:{"Content-Type":"application/json"},
-body:JSON.stringify({
-username,
-password
-})
-});
+ const password=
+ document.getElementById("password").value;
 
-const data=await r.json().catch(()=>({}));
+ const role=
+ document.getElementById("role").value;
 
-if(!r.ok)
-throw new Error(data.error||"Invalid username or password");
+ try{
 
-const user=data.user||data.admin||data;
+  const r=await fetch(AUTH+"/login",{
+   method:"POST",
+   headers:{
+    "Content-Type":"application/json"
+   },
+   body:JSON.stringify({
+    username,
+    password,
+    role
+   })
+  });
 
-if(!user.username||!user.role)
-throw new Error("Invalid authentication response");
+  const data=await r.json().catch(()=>({}));
 
-if(user.role!==level)
-throw new Error("Selected access level does not match this account");
+  if(!r.ok)
+   throw new Error(
+    data.error||"Invalid login"
+   );
 
-sessionStorage.setItem("goh_admin",JSON.stringify(user));
-sessionStorage.setItem("goh_login_type",user.role);
+  const user=
+   data.user||
+   data.admin||
+   data;
 
-location.href="admin.html";
+  if(!user.username)
+   throw new Error(
+    "Invalid authentication response"
+   );
 
-}catch(e){
+  sessionStorage.setItem(
+   "goh_admin",
+   JSON.stringify(user)
+  );
 
-show(e.message);
+  sessionStorage.setItem(
+   "goh_login_type",
+   user.role||role
+  );
 
-}finally{
+  location.href="admin.html";
 
-btn.disabled=false;
-btn.textContent="Sign In";
+ }catch(err){
 
-}
+  showError(err.message);
+
+ }finally{
+
+  btn.disabled=false;
+  btn.textContent="Sign In";
+
+ }
+
 };
+
 </script>
+
 </body>
 </html>
