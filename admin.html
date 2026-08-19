@@ -4,86 +4,79 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0b376d">
-<title>GOH Ministries | Admin</title>
+<title>GOH Ministries | Administration</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,sans-serif;background:#f4f7fb;color:#172033}
-button,input,select,textarea{font:inherit}
+button,input,select{font:inherit}
 button{cursor:pointer}
-
-header{background:#0b376d;color:#fff;position:sticky;top:0;z-index:10}
-.head{max-width:1200px;margin:auto;padding:11px 15px;display:flex;justify-content:space-between;align-items:center}
+.header{background:#0b376d;color:#fff;position:sticky;top:0;z-index:10}
+.header-in{max-width:1200px;margin:auto;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
 .brand{display:flex;align-items:center;gap:10px}
-.logo{width:40px;height:40px;border-radius:50%;background:#fff;color:#0b376d;display:grid;place-items:center;font-weight:bold}
+.logo{width:42px;height:42px;border-radius:50%;background:#fff;color:#0b376d;display:grid;place-items:center;font-weight:bold}
 .brand h1{font-size:18px}.brand p{font-size:11px;opacity:.8}
-.logout{border:0;border-radius:7px;padding:9px 12px;color:#0b376d;font-weight:bold}
-
-.layout{max-width:1200px;margin:auto;display:flex;min-height:calc(100vh - 62px)}
-aside{width:210px;background:#fff;padding:10px;border-right:1px solid #e5e7eb;flex-shrink:0}
-.title{font-size:10px;color:#98a2b3;font-weight:bold;margin:13px 7px 5px;text-transform:uppercase}
-.nav{width:100%;border:0;background:none;text-align:left;padding:9px;border-radius:7px;margin:1px 0;color:#344054;font-size:13px;font-weight:bold}
-.nav.active,.nav:hover{background:#eaf1fb;color:#0b376d}
-
-main{flex:1;padding:16px;min-width:0}
+.logout{border:0;border-radius:8px;padding:9px 13px;color:#0b376d;background:#fff;font-weight:bold}
+.layout{max-width:1200px;margin:auto;display:flex;min-height:calc(100vh - 66px)}
+.sidebar{width:220px;background:#fff;border-right:1px solid #e5e7eb;padding:12px;flex-shrink:0}
+.title{font-size:10px;font-weight:bold;color:#98a2b3;margin:14px 8px 5px;text-transform:uppercase}
+.nav{width:100%;border:0;background:none;text-align:left;padding:10px;margin:2px 0;border-radius:8px;font-size:13px;font-weight:bold;color:#344054}
+.nav:hover,.nav.active{background:#eaf1fb;color:#0b376d}
+.main{flex:1;padding:18px;min-width:0}
 .page{display:none}.page.active{display:block}
-.box,.card,.stat{background:#fff;border-radius:11px;padding:16px;box-shadow:0 2px 12px #0000000d;margin-bottom:13px}
-h2{color:#0b376d;font-size:20px;margin-bottom:13px}
-h3{font-size:15px;margin-bottom:6px}
-p{font-size:13px;color:#667085;line-height:1.5}
-.role{display:inline-block;margin-top:8px;background:#eaf1fb;color:#0b376d;padding:4px 8px;border-radius:15px;font-size:11px;font-weight:bold}
-
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.stat small{color:#667085}.stat strong{display:block;color:#0b376d;font-size:23px;margin-top:4px}
-
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.btn{border:0;border-radius:7px;padding:9px 12px;margin:9px 5px 0 0;font-size:12px;font-weight:bold}
-.primary{background:#0b376d;color:#fff}.secondary{background:#edf2f7;color:#344054}
-
-.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-label{display:block;font-size:12px;font-weight:bold;margin-bottom:4px}
-input,select,textarea{width:100%;padding:9px;border:1px solid #d0d5dd;border-radius:7px;background:#fff}
-textarea{min-height:90px;resize:vertical}.full{grid-column:1/-1}
-
-.msg{display:none;padding:10px;border-radius:7px;margin-bottom:12px;font-size:13px}
-.msg.ok{display:block;background:#dcfce7;color:#166534}
-.msg.err{display:block;background:#fee2e2;color:#991b1b}
-
-table{width:100%;border-collapse:collapse;min-width:550px}
-th,td{padding:8px;border-bottom:1px solid #eee;text-align:left;font-size:12px}
+.card,.form,.welcome,.table{background:#fff;border-radius:12px;padding:18px;margin-bottom:15px;box-shadow:0 3px 14px rgba(0,0,0,.05)}
+.welcome h2,.section{color:#0b376d}
+.welcome p{color:#667085;margin-top:5px}
+.role{display:inline-block;margin-top:9px;padding:5px 9px;border-radius:20px;background:#eaf1fb;color:#0b376d;font-size:11px;font-weight:bold}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat{background:#fff;padding:15px;border-radius:11px;box-shadow:0 3px 14px rgba(0,0,0,.05)}
+.stat small{color:#667085}.stat strong{display:block;font-size:24px;color:#0b376d;margin-top:5px}
+.section{font-size:20px;margin:5px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.card h3{font-size:16px;margin-bottom:6px}.card p{font-size:13px;color:#667085;line-height:1.5}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.field label{display:block;font-size:12px;font-weight:bold;margin-bottom:5px}
+.field input,.field select{width:100%;padding:10px;border:1px solid #d0d5dd;border-radius:8px;background:#fff}
+.full{grid-column:1/-1}
+.btn{border:0;border-radius:8px;padding:10px 13px;margin:10px 5px 0 0;font-size:12px;font-weight:bold}
+.primary{background:#0b376d;color:#fff}.secondary{background:#edf2f7;color:#344054}.danger{background:#fee2e2;color:#991b1b}
+.message{display:none;padding:11px;border-radius:8px;margin-bottom:12px;font-size:13px}
+.message.error{display:block;background:#fee2e2;color:#991b1b}
+.message.success{display:block;background:#dcfce7;color:#166534}
+.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:600px}
+th,td{padding:9px;border-bottom:1px solid #eee;text-align:left;font-size:12px}
 th{background:#f8fafc;color:#0b376d}
-.scroll{overflow:auto}
+.footer{text-align:center;padding:20px;font-size:11px;color:#98a2b3}
 
-footer{text-align:center;padding:18px;color:#98a2b3;font-size:11px}
-
-@media(max-width:800px){
-aside{width:185px}.stats{grid-template-columns:repeat(2,1fr)}
-.grid{grid-template-columns:repeat(2,1fr)}
+@media(max-width:850px){
+.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(2,1fr)}.sidebar{width:190px}
 }
-@media(max-width:600px){
-.layout{display:block}aside{width:100%;border:0;border-bottom:1px solid #ddd}
-main{padding:11px}.grid,.formgrid{grid-template-columns:1fr}
-.full{grid-column:auto}.stats{grid-template-columns:repeat(2,1fr)}
+@media(max-width:650px){
+.layout{display:block}.sidebar{width:100%;border-right:0;border-bottom:1px solid #e5e7eb}
+.main{padding:12px}.grid,.form-grid{grid-template-columns:1fr}.full{grid-column:auto}
 }
-@media(max-width:380px){.stats{grid-template-columns:1fr}}
 </style>
 </head>
 
 <body>
 
-<header>
-<div class="head">
+<header class="header">
+<div class="header-in">
 <div class="brand">
 <div class="logo">GOH</div>
-<div><h1>GOH Ministries</h1><p>Church Administration</p></div>
+<div>
+<h1>GOH Ministries</h1>
+<p>Church Administration</p>
 </div>
-<button class="logout" id="logout">Logout</button>
+</div>
+<button class="logout" id="logoutBtn">Logout</button>
 </div>
 </header>
 
 <div class="layout">
 
-<aside>
+<aside class="sidebar">
+
 <div class="title">Main</div>
 <button class="nav active" data-page="dashboard">🏠 Dashboard</button>
 <button class="nav" data-page="finance">💰 Finance</button>
@@ -101,18 +94,18 @@ main{padding:11px}.grid,.formgrid{grid-template-columns:1fr}
 <button class="nav" data-page="media">📸 Media</button>
 
 <div class="title">Security</div>
-<button class="nav" data-page="users">🔐 Users</button>
+<button class="nav" data-page="users">🔐 Users & Permissions</button>
 <button class="nav" data-page="audit">🛡️ Audit Logs</button>
+
 </aside>
 
-<main>
+<main class="main">
 
-<div id="msg" class="msg"></div>
+<div id="message" class="message"></div>
 
-<!-- DASHBOARD -->
 <section class="page active" id="dashboard">
 
-<div class="box">
+<div class="welcome">
 <h2>Welcome, <span id="adminName">Administrator</span></h2>
 <p>GOH Ministries Church Administration</p>
 <span class="role" id="adminRole">Administrator</span>
@@ -121,351 +114,649 @@ main{padding:11px}.grid,.formgrid{grid-template-columns:1fr}
 <div class="stats">
 <div class="stat"><small>Members</small><strong id="members">0</strong></div>
 <div class="stat"><small>Ministries</small><strong id="ministries">0</strong></div>
-<div class="stat"><small>Activities</small><strong id="activitiesCount">0</strong></div>
-<div class="stat"><small>Documents</small><strong id="documentsCount">0</strong></div>
+<div class="stat"><small>Activities</small><strong id="events">0</strong></div>
+<div class="stat"><small>Documents</small><strong id="documents">0</strong></div>
 </div>
 
-<h2 style="margin-top:20px">Administration</h2>
+<h2 class="section" style="margin-top:22px">Administration</h2>
 
 <div class="grid">
-<div class="card"><h3>💰 Finance</h3><p>Income, expenses and financial records.</p><button class="btn primary" onclick="show('finance')">Open</button></div>
-<div class="card"><h3>📊 Reports</h3><p>Monthly and annual reports.</p><button class="btn primary" onclick="show('reports')">Open</button></div>
-<div class="card"><h3>📜 History</h3><p>Ministry history and milestones.</p><button class="btn primary" onclick="show('history')">Open</button></div>
-<div class="card"><h3>⛪ Activities</h3><p>Church and ministry activities.</p><button class="btn primary" onclick="show('activities')">Open</button></div>
-<div class="card"><h3>📁 Documents</h3><p>Important ministry documents.</p><button class="btn primary" onclick="show('documents')">Open</button></div>
-<div class="card"><h3>🛡️ Audit</h3><p>Administrative security records.</p><button class="btn primary" onclick="show('audit')">Open</button></div>
+
+<div class="card">
+<h3>💰 Finance</h3>
+<p>Manage income and expenses.</p>
+<button class="btn primary" onclick="showPage('finance')">Open</button>
 </div>
 
+<div class="card">
+<h3>📊 Reports</h3>
+<p>View administration reports.</p>
+<button class="btn primary" onclick="showPage('reports')">Open</button>
+</div>
+
+<div class="card">
+<h3>📜 History</h3>
+<p>Maintain ministry history.</p>
+<button class="btn primary" onclick="showPage('history')">Open</button>
+</div>
+
+<div class="card">
+<h3>⛪ Activities</h3>
+<p>Record ministry activities.</p>
+<button class="btn primary" onclick="showPage('activities')">Open</button>
+</div>
+
+<div class="card">
+<h3>📁 Documents</h3>
+<p>Manage important documents.</p>
+<button class="btn primary" onclick="showPage('documents')">Open</button>
+</div>
+
+<div class="card">
+<h3>🔐 Users</h3>
+<p>Manage Manager and Staff accounts.</p>
+<button class="btn primary" onclick="showPage('users')">Open</button>
+</div>
+
+</div>
 </section>
 
-<!-- FINANCE -->
+
 <section class="page" id="finance">
-<h2>💰 Finance</h2>
-<div class="box">
-<div class="formgrid">
-<div><label>Date</label><input type="date"></div>
-<div><label>Type</label><select><option>Income</option><option>Expense</option></select></div>
-<div><label>Category</label><select>
-<option>Donation</option><option>Offering</option><option>Tithe</option>
-<option>Grant</option><option>Construction</option><option>Utilities</option>
-<option>Transport</option><option>Ministry Activity</option>
-<option>Community Assistance</option><option>Equipment</option><option>Other</option>
-</select></div>
-<div><label>Amount (LKR)</label><input type="number" min="0" step=".01"></div>
-<div><label>Payment Method</label><select><option>Cash</option><option>Bank Transfer</option><option>Bank Deposit</option><option>Cheque</option><option>Other</option></select></div>
-<div><label>Reference</label><input placeholder="Receipt / bank reference"></div>
-<div><label>Person / Organization</label><input placeholder="Donor or payee"></div>
-<div><label>Transaction No.</label><input placeholder="Transaction ID"></div>
-<div class="full"><label>Description</label><textarea></textarea></div>
-<div class="full"><label>Receipt / Slip</label><input type="file" accept=".pdf,.jpg,.jpeg,.png"></div>
-</div>
-<button class="btn primary" onclick="notice('Finance saving')">Save Record</button>
-<button class="btn secondary" onclick="notice('Receipt upload')">Upload Receipt</button>
+<h2 class="section">💰 Finance</h2>
+<div class="form">
+<p>Finance module ready for API connection.</p>
+<button class="btn primary" onclick="notice()">Save Financial Record</button>
 </div>
 </section>
 
-<!-- REPORTS -->
 <section class="page" id="reports">
-<h2>📊 Reports</h2>
-<div class="box">
-<div class="formgrid">
-<div><label>Report</label><select><option>Monthly</option><option>Annual</option><option>Custom</option></select></div>
-<div><label>Year</label><input type="number" id="reportYear"></div>
-<div><label>From</label><input type="date"></div>
-<div><label>To</label><input type="date"></div>
-</div>
-<button class="btn primary" onclick="notice('Report generation')">Generate</button>
-<button class="btn secondary" onclick="notice('PDF download')">PDF</button>
-<button class="btn secondary" onclick="notice('CSV download')">CSV</button>
-
-<div class="stats" style="margin-top:15px">
-<div class="stat"><small>Total Income</small><strong>LKR 0</strong></div>
-<div class="stat"><small>Expenses</small><strong>LKR 0</strong></div>
-<div class="stat"><small>Balance</small><strong>LKR 0</strong></div>
-</div>
+<h2 class="section">📊 Reports</h2>
+<div class="form">
+<p>Reports module ready for API connection.</p>
+<button class="btn primary" onclick="notice()">Generate Report</button>
 </div>
 </section>
 
-<!-- HISTORY -->
 <section class="page" id="history">
-<h2>📜 Ministry History</h2>
-<div class="box">
-<div class="formgrid">
-<div><label>Date</label><input type="date"></div>
-<div><label>Milestone</label><input placeholder="Important milestone"></div>
-<div class="full"><label>Description</label><textarea></textarea></div>
-<div class="full"><label>Document</label><input type="file"></div>
+<h2 class="section">📜 Ministry History</h2>
+<div class="form">
+<div class="form-grid">
+<div class="field"><label>Date</label><input type="date"></div>
+<div class="field"><label>Milestone</label><input></div>
+<div class="field full"><label>Description</label><input></div>
 </div>
-<button class="btn primary" onclick="notice('History saving')">Save History</button>
+<button class="btn primary" onclick="notice()">Save History</button>
 </div>
 </section>
 
-<!-- ACTIVITIES -->
 <section class="page" id="activities">
-<h2>⛪ Ministry Activities</h2>
-<div class="box">
-<div class="formgrid">
-<div><label>Date</label><input type="date"></div>
-<div><label>Activity</label><select>
-<option>Worship Service</option><option>Prayer Meeting</option>
-<option>Bible Study</option><option>Evangelism</option>
-<option>Outreach</option><option>Youth Ministry</option>
-<option>Children's Ministry</option><option>Community Assistance</option>
-<option>Special Event</option><option>Other</option>
-</select></div>
-<div><label>Location</label><input></div>
-<div><label>Participants</label><input type="number" min="0"></div>
-<div class="full"><label>Description</label><textarea></textarea></div>
-<div class="full"><label>Photos / Files</label><input type="file" multiple></div>
+<h2 class="section">⛪ Activities</h2>
+<div class="form">
+<div class="form-grid">
+<div class="field"><label>Date</label><input type="date"></div>
+<div class="field"><label>Activity</label><input></div>
+<div class="field"><label>Location</label><input></div>
+<div class="field"><label>Participants</label><input type="number"></div>
 </div>
-<button class="btn primary" onclick="notice('Activity saving')">Save Activity</button>
+<button class="btn primary" onclick="notice()">Save Activity</button>
 </div>
 </section>
 
-<!-- MEMBERS -->
 <section class="page" id="members">
-<h2>👥 Members</h2>
-<div class="box">
-<div class="formgrid">
-<div><label>Name</label><input placeholder="Full name"></div>
-<div><label>Phone</label><input></div>
-<div><label>Date Joined</label><input type="date"></div>
-<div><label>Status</label><select><option>Active</option><option>Inactive</option></select></div>
+<h2 class="section">👥 Members</h2>
+<div class="form">
+<div class="form-grid">
+<div class="field"><label>Name</label><input></div>
+<div class="field"><label>Phone</label><input></div>
+<div class="field"><label>Date Joined</label><input type="date"></div>
+<div class="field"><label>Status</label><select><option>Active</option><option>Inactive</option></select></div>
 </div>
-<button class="btn primary" onclick="notice('Member saving')">Save Member</button>
+<button class="btn primary" onclick="notice()">Save Member</button>
 </div>
 </section>
 
-<!-- MEETINGS -->
 <section class="page" id="meetings">
-<h2>📋 Meetings & Decisions</h2>
-<div class="box">
-<div class="formgrid">
-<div><label>Date</label><input type="date"></div>
-<div><label>Type</label><select><option>Leadership Meeting</option><option>Church Meeting</option><option>Special Meeting</option><option>Other</option></select></div>
-<div class="full"><label>Decision / Resolution</label><textarea></textarea></div>
-<div class="full"><label>Minutes</label><input type="file"></div>
-</div>
-<button class="btn primary" onclick="notice('Meeting saving')">Save Meeting</button>
+<h2 class="section">📋 Meetings</h2>
+<div class="form">
+<p>Meeting and decision records.</p>
+<button class="btn primary" onclick="notice()">Save Meeting</button>
 </div>
 </section>
 
-<!-- DOCUMENTS -->
 <section class="page" id="documents">
-<h2>📁 Important Documents</h2>
-<div class="box">
-<div class="formgrid">
-<div><label>Date</label><input type="date"></div>
-<div><label>Type</label><select>
-<option>Ministry Document</option><option>Financial Record</option>
-<option>Bank Document</option><option>Property Document</option>
-<option>Construction Document</option><option>Meeting Minutes</option>
-<option>Correspondence</option><option>Other</option>
-</select></div>
-<div class="full"><label>Description</label><textarea></textarea></div>
-<div class="full"><label>File</label><input type="file"></div>
-</div>
-<button class="btn primary" onclick="notice('Document upload')">Upload</button>
+<h2 class="section">📁 Documents</h2>
+<div class="form">
+<input type="file">
+<button class="btn primary" onclick="notice()">Upload Document</button>
 </div>
 </section>
 
-<!-- PROPERTY -->
 <section class="page" id="property">
-<h2>🏗️ Property & Building</h2>
-<div class="box">
-<div class="formgrid">
-<div><label>Date</label><input type="date"></div>
-<div><label>Type</label><select><option>Land</option><option>Building</option><option>Construction</option><option>Equipment</option><option>Other</option></select></div>
-<div class="full"><label>Description</label><textarea></textarea></div>
-<div class="full"><label>Document</label><input type="file"></div>
-</div>
-<button class="btn primary" onclick="notice('Property saving')">Save Record</button>
+<h2 class="section">🏗️ Property & Building</h2>
+<div class="form">
+<p>Property and construction records.</p>
+<button class="btn primary" onclick="notice()">Save Record</button>
 </div>
 </section>
 
-<!-- MEDIA -->
 <section class="page" id="media">
-<h2>📸 Media Archive</h2>
-<div class="box">
-<div class="formgrid">
-<div><label>Date</label><input type="date"></div>
-<div><label>Category</label><select><option>Church Service</option><option>Construction</option><option>Outreach</option><option>Community Assistance</option><option>Event</option><option>Other</option></select></div>
-<div class="full"><label>Photos / Videos</label><input type="file" multiple accept="image/*,video/*"></div>
-</div>
-<button class="btn primary" onclick="notice('Media upload')">Upload Media</button>
+<h2 class="section">📸 Media Archive</h2>
+<div class="form">
+<input type="file" multiple accept="image/*,video/*">
+<button class="btn primary" onclick="notice()">Upload Media</button>
 </div>
 </section>
+
 
 <!-- USERS -->
+
 <section class="page" id="users">
-<h2>🔐 Users & Permissions</h2>
-<div class="box">
-<div class="scroll">
+
+<h2 class="section">🔐 Users & Permissions</h2>
+
+<div class="card">
+
+<h3>Create Administrator</h3>
+
+<p style="margin:6px 0 15px">
+Only the Super Admin can create Manager and Staff accounts.
+</p>
+
+<div class="form-grid">
+
+<div class="field">
+<label>Name</label>
+<input id="newName" placeholder="Full name">
+</div>
+
+<div class="field">
+<label>Username</label>
+<input id="newUsername" placeholder="Username or email">
+</div>
+
+<div class="field">
+<label>Role</label>
+<select id="newRole">
+<option value="manager">Manager</option>
+<option value="staff">Staff</option>
+</select>
+</div>
+
+<div class="field">
+<label>Password</label>
+<input id="newPassword" type="password" placeholder="Minimum 8 characters">
+</div>
+
+<div class="field">
+<label>Confirm Password</label>
+<input id="confirmPassword" type="password" placeholder="Repeat password">
+</div>
+
+</div>
+
+<button class="btn primary" onclick="createAdmin()">
+Create Administrator
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h3>Administrators</h3>
+
+<div class="table-wrap">
+
 <table>
-<thead><tr><th>Name</th><th>Username</th><th>Role</th><th>Status</th></tr></thead>
-<tbody><tr><td id="userName">-</td><td id="userUsername">-</td><td id="userRole">-</td><td>Active</td></tr></tbody>
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Username</th>
+<th>Role</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody id="adminsBody">
+<tr>
+<td colspan="5">Loading...</td>
+</tr>
+</tbody>
+
 </table>
+
 </div>
-<p style="margin-top:10px">Permissions are controlled by the GOH Admin Worker.</p>
+
 </div>
+
 </section>
 
-<!-- AUDIT -->
+
 <section class="page" id="audit">
-<h2>🛡️ Audit Logs</h2>
-<div class="box">
-<button class="btn primary" onclick="loadAudit()">Refresh</button>
-<div class="scroll" style="margin-top:12px">
+
+<h2 class="section">🛡️ Audit Logs</h2>
+
+<div class="table">
+
+<button class="btn primary" onclick="loadAudit()">
+Refresh
+</button>
+
+<div class="table-wrap">
+
 <table>
 <thead>
-<tr><th>ID</th><th>Admin</th><th>Action</th><th>Module</th><th>Details</th><th>Date</th></tr>
+<tr>
+<th>ID</th>
+<th>Admin</th>
+<th>Action</th>
+<th>Module</th>
+<th>Details</th>
+<th>Date</th>
+</tr>
 </thead>
-<tbody id="auditBody"><tr><td colspan="6">Loading...</td></tr></tbody>
+
+<tbody id="auditBody">
+<tr>
+<td colspan="6">Loading...</td>
+</tr>
+</tbody>
+
 </table>
+
 </div>
 </div>
+
 </section>
 
-<footer>GOH Ministries • Administrative Records</footer>
+<div class="footer">
+GOH Ministries • Administrative Records
+</div>
 
 </main>
 </div>
 
 <script>
-const API="https://admin-workerjs.createlk.workers.dev";
-const token=sessionStorage.getItem("goh_admin_token");
 
-if(!token) location.replace("login.html");
+const API =
+"https://admin-workerjs.createlk.workers.dev";
 
-const $=id=>document.getElementById(id);
+const token =
+sessionStorage.getItem("goh_admin_token");
 
-function show(page){
-document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
-document.querySelectorAll(".nav").forEach(x=>x.classList.remove("active"));
+if(!token)
+window.location.replace("login.html");
 
-$(page)?.classList.add("active");
-document.querySelector(`[data-page="${page}"]`)?.classList.add("active");
-scrollTo(0,0);
 
-if(page==="audit") loadAudit();
+function showPage(page){
+
+document.querySelectorAll(".page")
+.forEach(x=>x.classList.remove("active"));
+
+document.querySelectorAll(".nav")
+.forEach(x=>x.classList.remove("active"));
+
+const p=document.getElementById(page);
+if(p)p.classList.add("active");
+
+const n=document.querySelector(
+'.nav[data-page="'+page+'"]'
+);
+
+if(n)n.classList.add("active");
+
+if(page==="users")
+loadAdmins();
+
+if(page==="audit")
+loadAudit();
+
+window.scrollTo(0,0);
 }
 
-document.querySelectorAll(".nav").forEach(x=>{
-x.onclick=()=>show(x.dataset.page);
+
+document.querySelectorAll(".nav")
+.forEach(btn=>{
+btn.onclick=()=>showPage(btn.dataset.page);
 });
 
-function notice(text){
-const m=$("msg");
-m.textContent=text+" is ready in the interface, but the server/database API is not connected yet.";
-m.className="msg err";
-setTimeout(()=>m.className="msg",3500);
+
+function msg(text,type="success"){
+
+const box=document.getElementById("message");
+
+box.textContent=text;
+box.className="message "+type;
+
+setTimeout(()=>{
+box.className="message";
+},4000);
 }
 
-function message(text,type="ok"){
-const m=$("msg");
-m.textContent=text;
-m.className="msg "+type;
-setTimeout(()=>m.className="msg",3500);
-}
 
-async function api(path,opt={}){
-opt.headers={
-...(opt.headers||{}),
-Authorization:"Bearer "+token
+async function api(path,options={}){
+
+options.headers={
+...(options.headers||{}),
+"Authorization":"Bearer "+token
 };
 
-const r=await fetch(API+path,opt);
-let d={};
+const response=
+await fetch(API+path,options);
 
-try{d=await r.json()}catch{}
+let data={};
 
-if(r.status===401){
+try{
+data=await response.json();
+}catch{}
+
+if(response.status===401){
+
 sessionStorage.removeItem("goh_admin_token");
 sessionStorage.removeItem("goh_admin");
 location.replace("login.html");
 return null;
 }
 
-if(!r.ok) throw Error(d.error||"Request failed");
-return d;
+if(!response.ok)
+throw new Error(data.error||"Request failed");
+
+return data;
 }
+
+
+/* ADMIN INFORMATION */
 
 async function loadAdmin(){
-try{
-const d=await api("/me");
-if(!d)return;
 
-$("adminName").textContent=d.admin.name||"Administrator";
-$("adminRole").textContent=d.admin.role||"Administrator";
-$("userName").textContent=d.admin.name||"-";
-$("userUsername").textContent=d.admin.username||"-";
-$("userRole").textContent=d.admin.role||"-";
-}catch(e){message(e.message,"err")}
+try{
+
+const data=await api("/me");
+
+if(!data)return;
+
+adminName.textContent=data.admin.name;
+adminRole.textContent=data.admin.role;
+
+}catch(e){
+msg(e.message,"error");
 }
+
+}
+
+
+/* DASHBOARD */
 
 async function loadDashboard(){
-try{
-const d=await api("/dashboard");
-if(!d?.totals)return;
 
-$("members").textContent=d.totals.members??0;
-$("ministries").textContent=d.totals.ministries??0;
-$("activitiesCount").textContent=d.totals.events??0;
-$("documentsCount").textContent=d.totals.documents??0;
+try{
+
+const data=await api("/dashboard");
+
+if(!data)return;
+
+members.textContent=data.totals.members;
+ministries.textContent=data.totals.ministries;
+events.textContent=data.totals.events;
+documents.textContent=data.totals.documents;
+
 }catch(e){
-message("Dashboard data could not be loaded.","err");
+
+msg("Dashboard data could not be loaded.","error");
+
 }
+
 }
+
+
+/* CREATE ADMIN */
+
+async function createAdmin(){
+
+const name=
+document.getElementById("newName").value.trim();
+
+const username=
+document.getElementById("newUsername").value.trim();
+
+const role=
+document.getElementById("newRole").value;
+
+const password=
+document.getElementById("newPassword").value;
+
+const confirm=
+document.getElementById("confirmPassword").value;
+
+
+if(!name||!username||!password){
+
+msg("Complete all required fields.","error");
+return;
+
+}
+
+if(password.length<8){
+
+msg("Password must contain at least 8 characters.","error");
+return;
+
+}
+
+if(password!==confirm){
+
+msg("Passwords do not match.","error");
+return;
+
+}
+
+
+try{
+
+const data=await api("/admins",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+name,
+username,
+role,
+password
+})
+
+});
+
+if(!data)return;
+
+
+document.getElementById("newName").value="";
+document.getElementById("newUsername").value="";
+document.getElementById("newPassword").value="";
+document.getElementById("confirmPassword").value="";
+
+msg(
+role==="manager"
+?"Manager account created successfully."
+:"Staff account created successfully.",
+"success"
+);
+
+loadAdmins();
+
+}catch(e){
+
+msg(e.message,"error");
+
+}
+
+}
+
+
+/* ADMIN LIST */
+
+async function loadAdmins(){
+
+const body=
+document.getElementById("adminsBody");
+
+try{
+
+const data=
+await api("/admins");
+
+if(!data)return;
+
+if(!data.admins.length){
+
+body.innerHTML=
+"<tr><td colspan='5'>No administrators.</td></tr>";
+
+return;
+
+}
+
+body.innerHTML="";
+
+data.admins.forEach(a=>{
+
+const tr=document.createElement("tr");
+
+tr.innerHTML=`
+
+<td>${safe(a.id)}</td>
+<td>${safe(a.name)}</td>
+<td>${safe(a.username)}</td>
+<td>${safe(a.role)}</td>
+<td>${a.active ? "Active":"Inactive"}</td>
+
+`;
+
+body.appendChild(tr);
+
+});
+
+}catch(e){
+
+body.innerHTML=
+"<tr><td colspan='5'>Unable to load administrators.</td></tr>";
+
+msg(e.message,"error");
+
+}
+
+}
+
+
+/* AUDIT */
 
 async function loadAudit(){
-const b=$("auditBody");
-b.innerHTML="<tr><td colspan='6'>Loading...</td></tr>";
+
+const body=
+document.getElementById("auditBody");
+
+body.innerHTML=
+"<tr><td colspan='6'>Loading...</td></tr>";
 
 try{
-const d=await api("/audit-logs");
-if(!d)return;
 
-if(!d.logs?.length){
-b.innerHTML="<tr><td colspan='6'>No audit records found.</td></tr>";
+const data=
+await api("/audit-logs");
+
+if(!data)return;
+
+if(!data.logs.length){
+
+body.innerHTML=
+"<tr><td colspan='6'>No audit records.</td></tr>";
+
 return;
+
 }
 
-b.innerHTML=d.logs.map(x=>`
-<tr>
-<td>${esc(x.id)}</td>
-<td>${esc(x.admin_id||"-")}</td>
-<td>${esc(x.action||"-")}</td>
-<td>${esc(x.module||"-")}</td>
-<td>${esc(x.details||"-")}</td>
-<td>${esc(x.created_at||"-")}</td>
-</tr>`).join("");
+body.innerHTML="";
+
+data.logs.forEach(log=>{
+
+const tr=document.createElement("tr");
+
+tr.innerHTML=`
+
+<td>${safe(log.id)}</td>
+<td>${safe(log.admin_id)}</td>
+<td>${safe(log.action)}</td>
+<td>${safe(log.module)}</td>
+<td>${safe(log.details)}</td>
+<td>${safe(log.created_at)}</td>
+
+`;
+
+body.appendChild(tr);
+
+});
 
 }catch(e){
-b.innerHTML="<tr><td colspan='6'>Unable to load audit logs.</td></tr>";
-message(e.message,"err");
-}
+
+body.innerHTML=
+"<tr><td colspan='6'>Unable to load logs.</td></tr>";
+
 }
 
-function esc(v){
-return String(v)
+}
+
+
+/* SECURITY */
+
+function safe(value){
+
+return String(value??"-")
 .replaceAll("&","&amp;")
 .replaceAll("<","&lt;")
 .replaceAll(">","&gt;")
 .replaceAll('"',"&quot;")
 .replaceAll("'","&#039;");
+
 }
 
-$("logout").onclick=async()=>{
-try{await api("/logout",{method:"POST"})}catch{}
+
+function notice(){
+
+msg(
+"This module is ready for the database API.",
+"error"
+);
+
+}
+
+
+/* LOGOUT */
+
+document.getElementById("logoutBtn")
+.onclick=async()=>{
+
+try{
+await api("/logout",{method:"POST"});
+}catch{}
+
 sessionStorage.removeItem("goh_admin_token");
 sessionStorage.removeItem("goh_admin");
+
 location.replace("login.html");
+
 };
 
-$("reportYear").value=new Date().getFullYear();
+
+/* START */
 
 loadAdmin();
 loadDashboard();
+
 </script>
 
 </body>
