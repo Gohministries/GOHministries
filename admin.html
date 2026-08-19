@@ -7,47 +7,27 @@
 <title>GOH Ministries | Administration</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui;background:#f8fafc;color:#1e293b}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-header{height:56px;background:#0b376d;color:#fff;position:sticky;top:0;z-index:9}
-.head{height:100%;max-width:1200px;margin:auto;padding:8px 14px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;gap:9px;align-items:center}
-.logo{width:37px;height:37px;border-radius:50%;background:#fff;color:#0b376d;display:grid;place-items:center;font-weight:800;font-size:11px}
+body{font-family:system-ui,sans-serif;background:#f6f8fb;color:#1e293b}
+header{height:58px;background:#0b376d;color:#fff;position:sticky;top:0;z-index:20}
+.head{height:100%;max-width:1280px;margin:auto;padding:0 14px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:9px}.logo{width:38px;height:38px;border-radius:50%;background:#fff;color:#0b376d;display:grid;place-items:center;font-weight:800;font-size:11px}
 .brand h1{font-size:15px}.brand p{font-size:10px;opacity:.7}
-.menuBtn{border:0;background:#ffffff20;color:#fff;padding:8px 12px;border-radius:7px;font-size:18px}
-.menu{display:none;position:absolute;right:14px;top:52px;width:220px;background:#fff;padding:6px;border:1px solid #e2e8f0;border-radius:9px;box-shadow:0 8px 25px #0002}
-.menu.show{display:block}
-.menu button{width:100%;border:0;background:none;text-align:left;padding:9px;border-radius:6px;color:#1e293b}
-.menu button:hover{background:#e0f2fe}
-.logout{color:#b91c1c!important;border-top:1px solid #eee;margin-top:4px}
-main{max-width:1200px;margin:auto;padding:18px}
-.page{display:none}.page.active{display:block}
-.title{color:#0b376d;font-size:19px;margin-bottom:15px}
-.card,.form,.table{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:16px;margin-bottom:15px}
-.card h3{font-size:14px;margin-bottom:5px}
-.card p{font-size:12px;color:#64748b}
-.grid,.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.stats{grid-template-columns:repeat(4,1fr);margin-bottom:20px}
-.stat{background:#fff;border:1px solid #e2e8f0;border-radius:9px;padding:14px}
-.stat small{color:#64748b;font-size:11px}.stat strong{display:block;color:#0b376d;font-size:19px;margin-top:4px}
-.field label{display:block;font-size:11px;font-weight:700;margin-bottom:5px}
-input,select,textarea{width:100%;padding:9px;border:1px solid #dbe2ea;border-radius:7px;font-size:13px}
-textarea{min-height:80px}.full{grid-column:1/-1}
-.btn{border:0;border-radius:7px;padding:9px 13px;font-size:12px;font-weight:600;margin:5px 4px 0 0}
-.primary{background:#0b376d;color:#fff}.green{background:#16a34a;color:#fff}
-.red{background:#dc2626;color:#fff}.gray{background:#f1f5f9;border:1px solid #e2e8f0}
-.notice{display:none;padding:10px;border-radius:7px;margin-bottom:15px;font-size:13px}
-.notice.show{display:block}.ok{background:#dcfce7;color:#166534}.err{background:#fee2e2;color:#991b1b}
-.tableWrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:600px}
-th,td{padding:9px 11px;border-bottom:1px solid #e2e8f0;font-size:12px;text-align:left}
-th{background:#f8fafc;color:#0b376d}
-.role{display:inline-block;background:#e0f2fe;color:#0369a1;padding:4px 9px;border-radius:20px;font-size:11px}
-.status{padding:4px 8px;border-radius:15px;font-size:10px;font-weight:700}
-.pending{background:#fef3c7;color:#92400e}.approved{background:#dcfce7;color:#166534}
-footer{text-align:center;padding:20px;color:#64748b;font-size:11px}
-@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:550px){main{padding:12px}.grid,.stats{grid-template-columns:1fr}.full{grid-column:auto}.brand p{display:none}}
+.menuBtn{border:0;background:#ffffff20;color:#fff;border-radius:7px;padding:8px 12px;font-size:18px}
+.menu{display:none;position:absolute;right:14px;top:54px;width:230px;background:#fff;border:1px solid #e2e8f0;border-radius:9px;padding:6px;box-shadow:0 8px 25px #0002}
+.menu.show{display:block}.menu button{width:100%;border:0;background:none;text-align:left;padding:10px;border-radius:6px;color:#1e293b}.menu button:hover,.menu button.active{background:#e0f2fe;color:#0369a1}.logout{color:#b91c1c!important;border-top:1px solid #e2e8f0;margin-top:5px}
+main{max-width:1280px;margin:auto;padding:18px}.page{display:none}.page.active{display:block}
+.title{font-size:19px;color:#0b376d;margin-bottom:15px}
+.card,.box,.table{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:16px;margin-bottom:15px;box-shadow:0 1px 4px #0000000d}
+.welcome h2{font-size:20px;color:#0b376d}.muted{font-size:12px;color:#64748b}
+.role{display:inline-block;margin-top:7px;padding:4px 9px;border-radius:20px;background:#e0f2fe;color:#0369a1;font-size:11px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{background:#fff;border:1px solid #e2e8f0;border-radius:9px;padding:14px}.stat small{color:#64748b;font-size:11px}.stat strong{display:block;color:#0b376d;font-size:19px;margin-top:4px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.module{cursor:pointer}.module h3{font-size:14px;margin-bottom:5px}
+table{width:100%;border-collapse:collapse;min-width:650px}th,td{padding:9px 11px;border-bottom:1px solid #e2e8f0;font-size:12px;text-align:left}th{background:#f8fafc;color:#0b376d}
+.wrap{overflow:auto}.status{padding:4px 8px;border-radius:15px;font-size:10px;font-weight:700}.pending{background:#fef3c7;color:#92400e}.approved{background:#dcfce7;color:#166534}
+.notice{display:none;padding:10px;border-radius:7px;margin-bottom:15px;font-size:12px}.notice.show{display:block}.ok{background:#dcfce7;color:#166534}.err{background:#fee2e2;color:#991b1b}
+footer{text-align:center;color:#64748b;font-size:11px;padding:20px}
+@media(max-width:800px){.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){main{padding:12px}.stats,.grid{grid-template-columns:1fr}.brand p{display:none}}
 </style>
 </head>
 
@@ -57,10 +37,27 @@ footer{text-align:center;padding:20px;color:#64748b;font-size:11px}
 <div class="head">
 <div class="brand">
 <div class="logo">GOH</div>
-<div><h1>GOH Ministries</h1><p>Church Administration</p></div>
+<div>
+<h1>GOH Ministries</h1>
+<p>Administrative & Financial Database</p>
+</div>
 </div>
 <button class="menuBtn" id="menuBtn">☰</button>
-<div class="menu" id="menu"></div>
+
+<div class="menu" id="menu">
+<button data-page="dashboard">🏠 Dashboard</button>
+<button data-page="finance">💰 Finance</button>
+<button data-page="reports">📊 Reports</button>
+<button data-page="documents">📁 Documents</button>
+<button data-page="organization" data-admin>🏛️ Organization</button>
+<button data-page="periods" data-admin>📅 Reporting Periods</button>
+<button data-page="donors" data-finance>👥 Donors</button>
+<button data-page="approvals" data-admin>✅ Approvals</button>
+<button data-page="audit">🛡️ Audit Trail</button>
+<button data-page="users" data-admin>🔐 Users</button>
+<button data-page="settings" data-admin>⚙️ Settings</button>
+<button class="logout" id="logout">Logout</button>
+</div>
 </div>
 </header>
 
@@ -69,137 +66,138 @@ footer{text-align:center;padding:20px;color:#64748b;font-size:11px}
 <div id="msg" class="notice"></div>
 
 <section class="page active" id="dashboard">
-<div class="card">
+
+<div class="card welcome">
 <h2>Welcome, <span id="name">Administrator</span></h2>
-<p>GOH Ministries Church Administration</p>
+<p class="muted">GOH Ministries Official Administrative & Financial Database</p>
 <span class="role" id="role">Administrator</span>
 </div>
 
 <div class="stats">
 <div class="stat"><small>Total Income</small><strong id="income">LKR 0.00</strong></div>
-<div class="stat"><small>Total Expenses</small><strong id="expense">LKR 0.00</strong></div>
-<div class="stat"><small>Minister Support</small><strong id="support">LKR 0.00</strong></div>
-<div class="stat"><small>Balance</small><strong id="balance">LKR 0.00</strong></div>
+<div class="stat"><small>Total Expenses</small><strong id="expenses">LKR 0.00</strong></div>
+<div class="stat"><small>Net Surplus</small><strong id="net">LKR 0.00</strong></div>
+<div class="stat"><small>Current Balance</small><strong id="balance">LKR 0.00</strong></div>
 </div>
 
-<h2 class="title">Administration</h2>
-<div class="grid" id="modules"></div>
+<div class="box">
+<h3 style="font-size:14px;margin-bottom:10px">Reporting Period</h3>
+<p class="muted" id="period">01 January 2026 – 31 December 2026</p>
+</div>
+
+<h2 class="title">Administration Modules</h2>
+
+<div class="grid">
+
+<div class="card module" onclick="openPage('finance')">
+<h3>💰 Finance</h3><p class="muted">Income, expenses and supporting records.</p>
+</div>
+
+<div class="card module" onclick="openPage('reports')">
+<h3>📊 Reports</h3><p class="muted">Financial and administrative reports.</p>
+</div>
+
+<div class="card module" onclick="openPage('documents')">
+<h3>📁 Documents</h3><p class="muted">Receipts, invoices and official documents.</p>
+</div>
+
+<div class="card module adminOnly" onclick="openPage('approvals')">
+<h3>✅ Approvals</h3><p class="muted">Review and approve submitted records.</p>
+</div>
+
+<div class="card module" onclick="openPage('audit')">
+<h3>🛡️ Audit Trail</h3><p class="muted">Review system and financial activity.</p>
+</div>
+
+<div class="card module adminOnly" onclick="openPage('users')">
+<h3>🔐 Users</h3><p class="muted">Manage authorized system users.</p>
+</div>
+
+</div>
 </section>
 
 <section class="page" id="finance">
 <h2 class="title">💰 Finance</h2>
-
-<div id="financeForm"></div>
-
-<div class="table">
-<h3>Financial Records</h3>
-<div class="tableWrap">
-<table>
-<thead>
-<tr><th>Date</th><th>Type</th><th>Category</th><th>Amount</th><th>Status</th><th>Slip</th><th>Action</th></tr>
-</thead>
-<tbody id="financeBody"></tbody>
-</table>
-</div>
+<div class="card">
+<h3>Financial Management</h3>
+<p class="muted" id="financeAccess"></p>
+<br>
+<button class="btn" onclick="location.href='finance.html'">Open Finance</button>
 </div>
 </section>
 
 <section class="page" id="reports">
 <h2 class="title">📊 Reports</h2>
 <div class="card">
-<p>Financial reports will use approved financial records.</p>
-<button class="btn primary" onclick="msg('Report system ready for API connection.','ok')">Generate Report</button>
-</div>
-</section>
-
-<section class="page" id="history">
-<h2 class="title">📜 Church History</h2>
-<div class="form">
-<div class="grid">
-<div class="field"><label>Date</label><input type="date"></div>
-<div class="field"><label>Milestone</label><input></div>
-<div class="field full"><label>Description</label><textarea></textarea></div>
-</div>
-<button class="btn primary" onclick="msg('History API connection required.','ok')">Save</button>
-</div>
-</section>
-
-<section class="page" id="activities">
-<h2 class="title">⛪ Activities</h2>
-<div class="form">
-<div class="grid">
-<div class="field"><label>Date</label><input type="date"></div>
-<div class="field"><label>Activity</label><input></div>
-<div class="field"><label>Participants</label><input type="number"></div>
-<div class="field"><label>Location</label><input></div>
-<div class="field full"><label>Description</label><textarea></textarea></div>
-</div>
-<button class="btn primary" onclick="msg('Activities API connection required.','ok')">Save</button>
-</div>
-</section>
-
-<section class="page" id="members">
-<h2 class="title">👥 Members</h2>
-<div class="form">
-<div class="grid">
-<div class="field"><label>Full Name</label><input></div>
-<div class="field"><label>Phone</label><input></div>
-<div class="field"><label>Date Joined</label><input type="date"></div>
-<div class="field"><label>Status</label><select><option>Active</option><option>Inactive</option></select></div>
-</div>
-<button class="btn primary" onclick="msg('Members API connection required.','ok')">Save</button>
-</div>
-</section>
-
-<section class="page" id="meetings">
-<h2 class="title">📋 Meetings</h2>
-<div class="form">
-<div class="grid">
-<div class="field"><label>Date</label><input type="date"></div>
-<div class="field"><label>Type</label><input></div>
-<div class="field full"><label>Decision / Resolution</label><textarea></textarea></div>
-</div>
-<button class="btn primary" onclick="msg('Meetings API connection required.','ok')">Save</button>
+<h3>Official Reports</h3>
+<p class="muted">Daily, monthly, quarterly, half-yearly and annual financial reports.</p>
+<br>
+<button class="btn" onclick="note('Report generator can be connected here.','ok')">Generate Report</button>
 </div>
 </section>
 
 <section class="page" id="documents">
-<h2 class="title">📁 Official Documents</h2>
-<div class="form">
-<div class="grid">
-<div class="field"><label>Document Type</label><input></div>
-<div class="field"><label>Date</label><input type="date"></div>
-<div class="field full"><label>Description</label><textarea></textarea></div>
-<div class="field full"><label>File</label><input type="file"></div>
-</div>
-<button class="btn primary" onclick="msg('Documents API connection required.','ok')">Upload</button>
+<h2 class="title">📁 Documents</h2>
+<div class="card">
+<h3>Official Documents</h3>
+<p class="muted">Receipts, invoices, bank statements, payment proofs and ministry documents.</p>
+<br>
+<button class="btn" onclick="note('Document API can be connected here.','ok')">Open Documents</button>
 </div>
 </section>
 
-<section class="page" id="property">
-<h2 class="title">🏗️ Property & Assets</h2>
-<div class="form">
-<div class="grid">
-<div class="field"><label>Type</label><input></div>
-<div class="field"><label>Date</label><input type="date"></div>
-<div class="field full"><label>Description</label><textarea></textarea></div>
-</div>
-<button class="btn primary" onclick="msg('Property API connection required.','ok')">Save</button>
+<section class="page" id="organization">
+<h2 class="title">🏛️ Organization</h2>
+<div class="card">
+<h3>GOH Ministries</h3>
+<p class="muted">Organization registration, contact information and official details.</p>
 </div>
 </section>
 
-<section class="page" id="media">
-<h2 class="title">📸 Media</h2>
-<div class="form">
-<input type="file" multiple accept="image/*,video/*">
-<button class="btn primary" onclick="msg('Media API connection required.','ok')">Upload</button>
+<section class="page" id="periods">
+<h2 class="title">📅 Reporting Periods</h2>
+<div class="card">
+<h3>Reporting Period Management</h3>
+<p class="muted">Create and manage financial reporting periods.</p>
+</div>
+</section>
+
+<section class="page" id="donors">
+<h2 class="title">👥 Donors</h2>
+<div class="card">
+<h3>Donor Management</h3>
+<p class="muted">Donor information, donation history and references.</p>
+</div>
+</section>
+
+<section class="page" id="approvals">
+<h2 class="title">✅ Approvals</h2>
+<div class="card">
+<h3>Pending Transactions</h3>
+<p class="muted">Only authorized administrators can approve financial transactions.</p>
+<br>
+<button class="btn" onclick="location.href='finance.html'">Review Finance</button>
+</div>
+</section>
+
+<section class="page" id="audit">
+<h2 class="title">🛡️ Audit Trail</h2>
+<div class="table">
+<div class="wrap">
+<table>
+<thead><tr><th>Date</th><th>User</th><th>Action</th><th>Record</th><th>Status</th></tr></thead>
+<tbody id="auditBody">
+<tr><td colspan="5">Audit API not connected.</td></tr>
+</tbody>
+</table>
+</div>
 </div>
 </section>
 
 <section class="page" id="users">
-<h2 class="title">🔐 Administration Users</h2>
-<div class="card">
-<div class="tableWrap">
+<h2 class="title">🔐 Users</h2>
+<div class="table">
+<div class="wrap">
 <table>
 <thead><tr><th>Name</th><th>Username</th><th>Role</th><th>Status</th></tr></thead>
 <tbody id="usersBody"></tbody>
@@ -208,210 +206,101 @@ footer{text-align:center;padding:20px;color:#64748b;font-size:11px}
 </div>
 </section>
 
-<section class="page" id="audit">
-<h2 class="title">🛡️ Audit</h2>
+<section class="page" id="settings">
+<h2 class="title">⚙️ Settings</h2>
 <div class="card">
-<p>Auditor access is read-only. Financial records, supporting slips and administrator actions can be reviewed.</p>
-</div>
-<div class="table">
-<div class="tableWrap">
-<table>
-<thead><tr><th>Date</th><th>User</th><th>Action</th><th>Record</th></tr></thead>
-<tbody id="auditBody"><tr><td colspan="4">Audit API connection required.</td></tr></tbody>
-</table>
-</div>
+<h3>System Settings</h3>
+<p class="muted">Organization, report numbering, financial year, categories and system preferences.</p>
 </div>
 </section>
 
-<footer>© 2026 GOH Ministries · Administration Portal</footer>
+<footer>
+© 2026 GOH Ministries · Official Administrative Record
+</footer>
+
 </main>
 
 <script>
-const API="https://goh-finance.createlk.workers.dev";
 const u=JSON.parse(sessionStorage.getItem("goh_admin")||"null");
 if(!u)location.href="login.html";
 
-const username=u.username||"";
-const role=String(u.role||sessionStorage.getItem("goh_login_type")||"").toLowerCase();
-let perm=u.permissions||{};
-if(typeof perm==="string"){
-try{perm=JSON.parse(perm)}catch{}
-}
+let p=u.permissions||{};
+if(typeof p==="string")try{p=JSON.parse(p)}catch{p={}}
 
-const full=role==="admin"||role==="super_admin"||perm==="full";
-const finance=full||role==="finance"||perm.finance===true||perm.donations===true;
+const role=String(u.role||"").toLowerCase();
+const admin=role==="admin"||role==="super_admin"||p==="full";
+const finance=admin||role==="finance"||p.finance===true;
 const auditor=role==="auditor";
 
-const menuItems=[
-["dashboard","🏠 Dashboard",1],
-["finance","💰 Finance",finance],
-["reports","📊 Reports",finance],
-["history","📜 History",full],
-["activities","⛪ Activities",full],
-["members","👥 Members",full],
-["meetings","📋 Meetings",full],
-["documents","📁 Documents",full],
-["property","🏗️ Property",full],
-["media","📸 Media",full],
-["users","🔐 Users",full],
-["audit","🛡️ Audit",full||auditor]
-];
+document.getElementById("name").textContent=u.name||u.username||"User";
+document.getElementById("role").textContent=
+admin?"Super Administrator":finance?"Finance Officer":auditor?"Auditor / Viewer":"User";
+
+document.getElementById("financeAccess").textContent=
+admin?"Full financial control, including approval and void/delete authority.":
+finance?"Add, edit and submit financial records. Approval and permanent deletion are restricted.":
+auditor?"Read-only access to financial records and supporting slips.":"Access restricted.";
+
+document.querySelectorAll("[data-admin]").forEach(x=>{
+if(!admin)x.remove();
+});
+
+document.querySelectorAll("[data-finance]").forEach(x=>{
+if(!finance&&!admin)x.remove();
+});
+
+if(auditor){
+document.querySelectorAll(".adminOnly").forEach(x=>x.remove());
+}
 
 const menu=document.getElementById("menu");
 
-menuItems.forEach(x=>{
-if(!x[2])return;
-const b=document.createElement("button");
-b.textContent=x[1];
-b.onclick=()=>show(x[0]);
-menu.appendChild(b);
+document.getElementById("menuBtn").onclick=()=>{
+menu.classList.toggle("show");
+};
+
+document.addEventListener("click",e=>{
+if(!e.target.closest("#menu")&&!e.target.closest("#menuBtn"))
+menu.classList.remove("show");
 });
 
-const out=document.createElement("button");
-out.className="logout";
-out.textContent="Logout";
-out.onclick=logout;
-menu.appendChild(out);
-
-document.getElementById("menuBtn").onclick=()=>menu.classList.toggle("show");
-
-function show(id){
-document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
-document.getElementById(id)?.classList.add("active");
+function openPage(id){
+const page=document.getElementById(id);
+if(!page)return;
+page.classList.add("active");
+document.querySelectorAll(".page").forEach(x=>{
+if(x!==page)x.classList.remove("active");
+});
 menu.classList.remove("show");
-if(id==="finance")loadFinance();
+scrollTo(0,0);
 }
 
-document.getElementById("name").textContent=u.name||username;
-document.getElementById("role").textContent=
-full?"Administrator":finance?"Finance Officer":auditor?"Auditor — Read Only":"User";
+document.querySelectorAll("[data-page]").forEach(b=>{
+b.onclick=()=>openPage(b.dataset.page);
+});
 
-document.getElementById("modules").innerHTML=menuItems
-.filter(x=>x[2]&&x[0]!=="dashboard")
-.map(x=>`<div class="card" onclick="show('${x[0]}')"><h3>${x[1]}</h3><p>Open module</p></div>`).join("");
+function note(t,type="err"){
+const m=document.getElementById("msg");
+m.textContent=t;
+m.className="notice show "+type;
+setTimeout(()=>m.className="notice",3500);
+}
 
+if(admin){
+document.getElementById("usersBody").innerHTML=`
+<tr><td>${u.name||"-"}</td><td>${u.username||"-"}</td>
+<td>Administrator</td><td>Active</td></tr>`;
+}else{
 document.getElementById("usersBody").innerHTML=
-`<tr><td>${esc(u.name||"-")}</td><td>${esc(username)}</td><td>${esc(role)}</td><td>Active</td></tr>`;
-
-function esc(v){
-return String(v??"").replace(/[&<>"']/g,x=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[x]));
+`<tr><td colspan="4">User management restricted.</td></tr>`;
 }
 
-function msg(t,type="err"){
-const x=document.getElementById("msg");
-x.textContent=t;x.className="notice show "+type;
-setTimeout(()=>x.className="notice",4000);
-}
-
-function financeForm(){
-if(auditor)return `<div class="card"><b>Auditor — Read Only</b><p>You can view records and slips. You cannot add, edit, delete or approve.</p></div>`;
-return `<form class="form" id="ff">
-<div class="grid">
-<div class="field"><label>Date *</label><input id="date" type="date" required></div>
-<div class="field"><label>Type *</label><select id="type" required><option value="">Select</option><option>Income</option><option>Expense</option></select></div>
-<div class="field"><label>Category *</label><input id="cat" required></div>
-<div class="field"><label>Amount (LKR) *</label><input id="amount" type="number" min=".01" step=".01" required></div>
-<div class="field"><label>Payment Method *</label><select id="method" required><option value="">Select</option><option>Cash</option><option>Bank Transfer</option><option>Bank Deposit</option><option>Cheque</option><option>Online Payment</option><option>Other</option></select></div>
-<div class="field"><label>Reference</label><input id="ref"></div>
-<div class="field full"><label>Description *</label><textarea id="desc" required></textarea></div>
-<div class="field full"><label>Supporting Slip *</label><input id="slip" type="file" required></div>
-</div>
-<button class="btn primary" id="save">Save Financial Record</button>
-</form>`;
-}
-
-document.getElementById("financeForm").innerHTML=financeForm();
-
-if(!auditor){
-document.getElementById("date").value=new Date().toISOString().slice(0,10);
-document.getElementById("ff").onsubmit=saveFinance;
-}
-
-async function req(url,opt={}){
-opt.headers={...(opt.headers||{}),"X-Admin-Key":username};
-const r=await fetch(url,opt);
-const text=await r.text();
-let d={};try{d=JSON.parse(text)}catch{}
-if(!r.ok)throw Error(d.error||"Request failed");
-return d;
-}
-
-async function loadFinance(){
-const body=document.getElementById("financeBody");
-body.innerHTML=`<tr><td colspan="7">Loading...</td></tr>`;
-try{
-const d=await req(API+"/transactions");
-body.innerHTML=d.records?.length?d.records.map(r=>{
-const id=encodeURIComponent(r.id);
-const approved=r.status==="Approved";
-return `<tr>
-<td>${esc(r.date)}</td><td>${esc(r.type)}</td><td>${esc(r.category)}</td>
-<td>LKR ${Number(r.amount).toLocaleString("en-LK",{minimumFractionDigits:2})}</td>
-<td><span class="status ${approved?"approved":"pending"}">${esc(r.status)}</span></td>
-<td><button class="btn gray" onclick="slip('${id}')">View</button></td>
-<td>
-${full&&!approved?`<button class="btn green" onclick="approve('${id}')">Approve</button>`:""}
-${full?`<button class="btn red" onclick="del('${id}')">Delete</button>`:""}
-${finance&&!full&&!auditor&&!approved?`<button class="btn gray" onclick="edit('${id}')">Edit</button>`:""}
-</td></tr>`;
-}).join(""):`<tr><td colspan="7">No records available.</td></tr>`;
-}catch(e){
-body.innerHTML=`<tr><td colspan="7">${esc(e.message)}</td></tr>`;
-}
-}
-
-async function saveFinance(e){
-e.preventDefault();
-const file=document.getElementById("slip").files[0];
-if(!file)return msg("Supporting slip required.");
-if(file.size>10*1024*1024)return msg("Slip must be below 10 MB.");
-
-const f=new FormData();
-f.append("date",date.value);f.append("type",type.value);
-f.append("category",cat.value);f.append("amount",amount.value);
-f.append("payment_method",method.value);f.append("reference",ref.value);
-f.append("description",desc.value);f.append("slip",file);
-
-try{
-const d=await req(API+"/transactions",{method:"POST",body:f});
-msg(d.status==="Approved"?"Financial record approved.":"Submitted for approval.","ok");
-e.target.reset();date.value=new Date().toISOString().slice(0,10);
-loadFinance();
-}catch(e){msg(e.message)}
-}
-
-async function approve(id){
-if(!confirm("Approve this financial record?"))return;
-try{await req(API+"/transactions/"+decodeURIComponent(id)+"/approve",{method:"POST"});
-msg("Financial record approved.","ok");loadFinance()}catch(e){msg(e.message)}
-}
-
-async function del(id){
-if(!confirm("Delete this financial record permanently?"))return;
-try{await req(API+"/transactions/"+decodeURIComponent(id),{method:"DELETE"});
-msg("Financial record deleted.","ok");loadFinance()}catch(e){msg(e.message)}
-}
-
-async function slip(id){
-try{
-const r=await fetch(API+"/transactions/"+decodeURIComponent(id)+"/slip",{headers:{"X-Admin-Key":username}});
-if(!r.ok){const d=await r.json();throw Error(d.error||"Unable to open slip")}
-const url=URL.createObjectURL(await r.blob());
-window.open(url,"_blank");
-}catch(e){msg(e.message)}
-}
-
-function edit(id){
-msg("Use the finance edit endpoint to update this record.","ok");
-}
-
-async function logout(){
+document.getElementById("logout").onclick=()=>{
 sessionStorage.removeItem("goh_admin");
 sessionStorage.removeItem("goh_login_type");
 location.href="login.html";
-}
-
-loadFinance();
+};
 </script>
+
 </body>
 </html>
