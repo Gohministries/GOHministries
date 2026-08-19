@@ -24,10 +24,14 @@ border-radius:14px;
 box-shadow:0 8px 30px #0001
 }
 .logo{
-width:54px;height:54px;border-radius:50%;
-background:#0b376d;color:#fff;
-display:grid;place-items:center;
-margin:auto;font-weight:bold
+width:54px;height:54px;
+border-radius:50%;
+background:#0b376d;
+color:#fff;
+display:grid;
+place-items:center;
+margin:auto;
+font-weight:bold
 }
 h1{
 text-align:center;
@@ -63,7 +67,8 @@ border:0;
 border-radius:8px;
 background:#0b376d;
 color:#fff;
-font-weight:bold
+font-weight:bold;
+cursor:pointer
 }
 button:disabled{opacity:.6}
 .msg{
@@ -141,42 +146,65 @@ Sign In
 
 <script>
 
-/* YOUR EXISTING AUTH WORKER */
-const AUTH_API="https://YOUR-EXISTING-AUTH-WORKER.workers.dev";
+/* EXISTING AUTH WORKER */
+const AUTH_API=
+"https://admin-workerjs.createlk.workers.dev";
 
-const form=document.getElementById("loginForm");
-const btn=document.getElementById("loginBtn");
-const msg=document.getElementById("msg");
+const form=
+document.getElementById("loginForm");
+
+const btn=
+document.getElementById("loginBtn");
+
+const msg=
+document.getElementById("msg");
+
 
 function show(text,type="error"){
+
 msg.textContent=text;
 msg.className="msg show "+type;
+
 }
 
-form.onsubmit=async e=>{
+
+form.addEventListener("submit",async e=>{
 
 e.preventDefault();
 
 const username=
-document.getElementById("username").value.trim();
+document.getElementById("username")
+.value.trim();
 
 const password=
-document.getElementById("password").value;
+document.getElementById("password")
+.value;
 
 const role=
-document.getElementById("role").value;
+document.getElementById("role")
+.value;
+
 
 if(!username||!password||!role){
-show("Username, password and access level are required.");
+
+show(
+"Username, password and access level are required."
+);
+
 return;
+
 }
+
 
 btn.disabled=true;
 btn.textContent="Signing in...";
 
+
 try{
 
-const r=await fetch(AUTH_API+"/login",{
+const response=await fetch(
+AUTH_API+"/login",
+{
 method:"POST",
 headers:{
 "Content-Type":"application/json"
@@ -186,47 +214,70 @@ username:username,
 password:password,
 role:role
 })
-});
+}
+);
 
-const text=await r.text();
 
-let data;
+const text=await response.text();
+
+let data={};
 
 try{
 data=JSON.parse(text);
 }catch{
-throw new Error("Invalid authentication response.");
+
+throw new Error(
+"Invalid response from authentication server."
+);
+
 }
 
-if(!r.ok){
-throw new Error(data.error||"Invalid login.");
+
+if(!response.ok){
+
+throw new Error(
+data.error||"Invalid login."
+);
+
 }
+
 
 /*
-Keep whatever session/token
-your EXISTING Auth Worker returns.
+Store the existing Auth Worker
+session/token without changing
+password hashing.
 */
 
-if(data.token)
+if(data.token){
+
 sessionStorage.setItem(
 "goh_admin_token",
 data.token
 );
 
-if(data.admin)
+}
+
+if(data.admin){
+
 sessionStorage.setItem(
 "goh_admin",
 JSON.stringify(data.admin)
 );
 
-if(data.user)
+}
+
+if(data.user){
+
 sessionStorage.setItem(
 "goh_admin",
 JSON.stringify(data.user)
 );
 
+}
+
+
 /*
-Keep login type for the dashboard.
+Keep selected access level.
 */
 
 sessionStorage.setItem(
@@ -239,18 +290,24 @@ sessionStorage.setItem(
 username
 );
 
-show("Login successful.","success");
+
+show(
+"Login successful.",
+"success"
+);
+
 
 setTimeout(()=>{
 location.href="admin.html";
-},400);
+},500);
 
-}catch(err){
 
-console.error(err);
+}catch(error){
+
+console.error(error);
 
 show(
-err.message||"Login failed."
+error.message||"Login failed."
 );
 
 }finally{
@@ -260,7 +317,7 @@ btn.textContent="Sign In";
 
 }
 
-};
+});
 
 </script>
 
