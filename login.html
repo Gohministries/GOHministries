@@ -38,7 +38,8 @@ background:#0b376d;
 color:#fff;
 display:grid;
 place-items:center;
-font-weight:800
+font-weight:800;
+font-size:15px
 }
 
 h1{
@@ -50,8 +51,8 @@ margin-top:12px
 
 .sub{
 text-align:center;
-font-size:12px;
 color:#64748b;
+font-size:12px;
 margin:4px 0 24px
 }
 
@@ -62,16 +63,17 @@ font-weight:700;
 margin:13px 0 6px
 }
 
-input{
+input,select{
 width:100%;
 padding:11px;
 border:1px solid #dbe2ea;
 border-radius:8px;
+background:#fff;
 font-size:14px;
 outline:0
 }
 
-input:focus{
+input:focus,select:focus{
 border-color:#0b376d
 }
 
@@ -93,8 +95,8 @@ opacity:.6
 
 .msg{
 display:none;
-margin-top:14px;
 padding:10px;
+margin-top:14px;
 border-radius:8px;
 font-size:12px;
 text-align:center
@@ -159,7 +161,15 @@ autocomplete="current-password"
 required
 >
 
-<button id="loginBtn">
+<label>Access Level</label>
+<select id="role" required>
+<option value="">Select access level</option>
+<option value="super_admin">Super Administrator</option>
+<option value="finance">Finance Officer</option>
+<option value="auditor">Auditor / Viewer</option>
+</select>
+
+<button id="loginBtn" type="submit">
 Sign In
 </button>
 
@@ -179,10 +189,6 @@ Super Administrator · Finance Officer · Auditor / Viewer
 
 <script>
 
-/* =========================
-   WORKERS
-========================= */
-
 const AUTH_API=
 "https://goh-admin-auth.createlk.workers.dev";
 
@@ -192,51 +198,32 @@ const ADMIN_API=
 const FINANCE_API=
 "https://goh-finance.createlk.workers.dev";
 
+const form=document.getElementById("loginForm");
+const btn=document.getElementById("loginBtn");
+const msg=document.getElementById("msg");
 
-/* =========================
-   ELEMENTS
-========================= */
-
-const form=
-document.getElementById("loginForm");
-
-const btn=
-document.getElementById("loginBtn");
-
-const msg=
-document.getElementById("msg");
-
-
-/* =========================
-   MESSAGE
-========================= */
-
-function error(text){
-
+function showError(text){
 msg.textContent=text;
 msg.className="msg show error";
-
 }
 
-
-/* =========================
-   LOGIN
-========================= */
-
-form.onsubmit=async e=>{
+form.addEventListener("submit",async e=>{
 
 e.preventDefault();
 
 const username=
-document.getElementById("username")
-.value.trim();
+document.getElementById("username").value.trim();
 
 const password=
-document.getElementById("password")
-.value;
+document.getElementById("password").value;
 
-if(!username||!password){
-error("Username and password are required.");
+const role=
+document.getElementById("role").value;
+
+if(!username||!password||!role){
+showError(
+"Username, password and access level are required."
+);
 return;
 }
 
@@ -246,52 +233,47 @@ msg.className="msg";
 
 try{
 
-const response=
-await fetch(AUTH_API+"/login",{
-
+const response=await fetch(
+AUTH_API+"/login",
+{
 method:"POST",
-
 headers:{
 "Content-Type":"application/json"
 },
-
 body:JSON.stringify({
-username,
-password
+username:username,
+password:password,
+role:role
 })
-
-});
-
-
-const data=
-await response.json()
-.catch(()=>({}));
-
-
-if(!response.ok){
-
-throw new Error(
-data.error||
-"Invalid username or password."
+}
 );
 
+const data=
+await response.json().catch(()=>({}));
+
+if(!response.ok){
+throw new Error(
+data.error||"Invalid login details."
+);
 }
 
-
 if(!data.user){
-
 throw new Error(
 "Login response is incomplete."
 );
-
 }
 
-
-/* =========================
-   SAVE SESSION
-========================= */
-
 const user=data.user;
+
+/* Verify returned role */
+
+if(String(user.role).toLowerCase()!==role){
+throw new Error(
+"Selected access level does not match this account."
+);
+}
+
+/* Save session */
 
 sessionStorage.setItem(
 "goh_admin",
@@ -300,7 +282,7 @@ JSON.stringify(user)
 
 sessionStorage.setItem(
 "goh_login_type",
-user.role||""
+user.role
 );
 
 sessionStorage.setItem(
@@ -313,19 +295,17 @@ sessionStorage.setItem(
 FINANCE_API
 );
 
-
-/* =========================
-   GO DASHBOARD
-========================= */
+/* Open dashboard */
 
 location.href="admin.html";
 
+}catch(error){
 
-}catch(e){
+console.error(error);
 
-console.error(e);
-
-error(e.message);
+showError(
+error.message||"Unable to sign in."
+);
 
 }finally{
 
@@ -334,7 +314,7 @@ btn.textContent="Sign In";
 
 }
 
-};
+});
 
 </script>
 
