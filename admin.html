@@ -5,380 +5,1131 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0b376d">
 
-<title>GOH Ministries | Church Administration</title>
+<title>GOH Ministries | Administration</title>
 
 <style>
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0
+box-sizing:border-box;
+margin:0;
+padding:0
 }
 
 body{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  font-family:Arial,sans-serif;
-  background:linear-gradient(135deg,#071b35,#0b376d);
+font-family:Arial,sans-serif;
+background:#f4f7fb;
+color:#172033;
+min-height:100vh
 }
 
-.card{
-  width:100%;
-  max-width:420px;
-  background:#fff;
-  border-radius:18px;
-  padding:32px 25px;
-  box-shadow:0 20px 50px rgba(0,0,0,.25);
+.header{
+background:#0b376d;
+color:#fff;
+padding:15px 18px;
+position:sticky;
+top:0;
+z-index:10;
+box-shadow:0 3px 12px rgba(0,0,0,.15)
+}
+
+.header-inner{
+max-width:1200px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:12px
 }
 
 .logo{
-  width:68px;
-  height:68px;
-  margin:0 auto 15px;
-  border-radius:50%;
-  background:#0b376d;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:23px;
-  font-weight:700;
+width:46px;
+height:46px;
+border-radius:50%;
+background:#fff;
+color:#0b376d;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:800
 }
 
-h1{
-  text-align:center;
-  color:#0b376d;
-  font-size:23px;
+.brand h1{
+font-size:19px
 }
 
-.subtitle{
-  text-align:center;
-  color:#666;
-  margin:7px 0 26px;
-  font-size:14px;
+.brand p{
+font-size:12px;
+opacity:.8;
+margin-top:3px
 }
 
-label{
-  display:block;
-  margin:15px 0 7px;
-  color:#333;
-  font-size:14px;
-  font-weight:700;
+.logout{
+border:1px solid rgba(255,255,255,.5);
+background:transparent;
+color:#fff;
+padding:9px 14px;
+border-radius:8px;
+font-weight:700;
+cursor:pointer
 }
 
-input{
-  width:100%;
-  padding:13px 14px;
-  border:1px solid #ccc;
-  border-radius:10px;
-  font-size:16px;
-  outline:none;
+.container{
+max-width:1200px;
+margin:auto;
+padding:20px 15px 40px
 }
 
-input:focus{
-  border-color:#0b376d;
-  box-shadow:0 0 0 3px rgba(11,55,109,.1);
+.welcome{
+background:#fff;
+padding:20px;
+border-radius:14px;
+box-shadow:0 3px 15px rgba(0,0,0,.06);
+margin-bottom:18px
 }
 
-button{
-  width:100%;
-  margin-top:22px;
-  padding:14px;
-  border:0;
-  border-radius:10px;
-  background:#0b376d;
-  color:#fff;
-  font-size:16px;
-  font-weight:700;
-  cursor:pointer;
+.welcome h2{
+color:#0b376d;
+font-size:22px
 }
 
-button:disabled{
-  opacity:.65;
-  cursor:not-allowed;
+.welcome p{
+color:#667085;
+margin-top:6px
 }
 
-.message{
-  display:none;
-  margin-top:15px;
-  padding:12px;
-  border-radius:9px;
-  text-align:center;
-  font-size:14px;
-  line-height:1.4;
+.role{
+display:inline-block;
+margin-top:10px;
+padding:5px 10px;
+border-radius:20px;
+background:#e8f0fb;
+color:#0b376d;
+font-size:12px;
+font-weight:700
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:14px
+}
+
+.stat{
+background:#fff;
+padding:18px;
+border-radius:14px;
+box-shadow:0 3px 15px rgba(0,0,0,.06)
+}
+
+.stat-icon{
+font-size:25px
+}
+
+.stat-title{
+font-size:13px;
+color:#667085;
+margin-top:8px
+}
+
+.stat-number{
+font-size:27px;
+font-weight:800;
+color:#0b376d;
+margin-top:4px
+}
+
+.title{
+color:#0b376d;
+font-size:19px;
+margin:25px 0 13px
+}
+
+.modules{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:14px
+}
+
+.module{
+background:#fff;
+padding:18px;
+border-radius:14px;
+box-shadow:0 3px 15px rgba(0,0,0,.06)
+}
+
+.module-icon{
+font-size:28px
+}
+
+.module h3{
+margin-top:8px
+}
+
+.module p{
+color:#667085;
+font-size:13px;
+line-height:1.5;
+margin-top:5px
+}
+
+.actions{
+display:flex;
+gap:7px;
+margin-top:14px;
+flex-wrap:wrap
+}
+
+.btn{
+border:0;
+padding:9px 11px;
+border-radius:8px;
+cursor:pointer;
+font-size:12px;
+font-weight:700
+}
+
+.primary{
+background:#0b376d;
+color:#fff
+}
+
+.secondary{
+background:#edf2f7;
+color:#172033
+}
+
+.audit{
+background:#fff;
+padding:18px;
+border-radius:14px;
+overflow:auto;
+box-shadow:0 3px 15px rgba(0,0,0,.06)
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+min-width:600px
+}
+
+th,td{
+padding:10px;
+border-bottom:1px solid #eee;
+text-align:left;
+font-size:13px
+}
+
+th{
+color:#0b376d;
+background:#f7f9fc
 }
 
 .error{
-  display:block;
-  background:#fee2e2;
-  color:#b91c1c;
-}
-
-.success{
-  display:block;
-  background:#dcfce7;
-  color:#166534;
+display:none;
+background:#fee2e2;
+color:#991b1b;
+padding:13px;
+border-radius:9px;
+margin-bottom:15px
 }
 
 .footer{
-  margin-top:22px;
-  text-align:center;
-  color:#777;
-  font-size:12px;
+text-align:center;
+color:#8993a4;
+font-size:12px;
+margin-top:30px
+}
+
+@media(max-width:850px){
+
+.stats{
+grid-template-columns:repeat(2,1fr)
+}
+
+.modules{
+grid-template-columns:repeat(2,1fr)
+}
+
+}
+
+@media(max-width:600px){
+
+.brand h1{
+font-size:17px
+}
+
+.brand p{
+font-size:11px
+}
+
+.logo{
+width:42px;
+height:42px
+}
+
+.logout{
+padding:8px 10px;
+font-size:12px
+}
+
+.stats{
+gap:10px
+}
+
+.stat{
+padding:14px
+}
+
+.stat-number{
+font-size:23px
+}
+
+.modules{
+grid-template-columns:1fr
+}
+
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<header class="header">
 
-  <div class="logo">GOH</div>
+<div class="header-inner">
 
-  <h1>GOH Ministries</h1>
+<div class="brand">
 
-  <div class="subtitle">
-    Church Administration
-  </div>
+<div class="logo">GOH</div>
 
-  <form id="loginForm">
-
-    <label for="username">
-      Username
-    </label>
-
-    <input
-      id="username"
-      type="text"
-      placeholder="Enter username"
-      autocomplete="username"
-      required
-    >
-
-    <label for="password">
-      Password
-    </label>
-
-    <input
-      id="password"
-      type="password"
-      placeholder="Enter password"
-      autocomplete="current-password"
-      required
-    >
-
-    <button id="loginBtn" type="submit">
-      Login
-    </button>
-
-    <div id="message" class="message"></div>
-
-  </form>
-
-  <div class="footer">
-    Authorized administrators only
-  </div>
+<div>
+<h1>GOH Ministries</h1>
+<p>Church Administration</p>
+</div>
 
 </div>
 
+<button
+id="logoutBtn"
+class="logout">
+Logout
+</button>
+
+</div>
+
+</header>
+
+
+<main class="container">
+
+<div
+id="errorBox"
+class="error">
+</div>
+
+
+<section class="welcome">
+
+<h2>
+Welcome,
+<span id="adminName">
+Administrator
+</span>
+</h2>
+
+<p>
+GOH Ministries Church Administration Dashboard
+</p>
+
+<span
+id="adminRole"
+class="role">
+Administrator
+</span>
+
+</section>
+
+
+<section class="stats">
+
+<div class="stat">
+
+<div class="stat-icon">👥</div>
+
+<div class="stat-title">
+Members
+</div>
+
+<div
+id="members"
+class="stat-number">
+0
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-icon">⛪</div>
+
+<div class="stat-title">
+Ministries
+</div>
+
+<div
+id="ministries"
+class="stat-number">
+0
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-icon">📅</div>
+
+<div class="stat-title">
+Events
+</div>
+
+<div
+id="events"
+class="stat-number">
+0
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-icon">📄</div>
+
+<div class="stat-title">
+Documents
+</div>
+
+<div
+id="documents"
+class="stat-number">
+0
+</div>
+
+</div>
+
+</section>
+
+
+<h2 class="title">
+Administration
+</h2>
+
+
+<section class="modules">
+
+
+<div class="module">
+
+<div class="module-icon">👥</div>
+
+<h3>Members</h3>
+
+<p>
+Manage church member records.
+</p>
+
+<div class="actions">
+
+<button
+class="btn primary"
+onclick="openModule('Members')">
+Open
+</button>
+
+<button
+class="btn secondary"
+onclick="upload('Members')">
+Upload
+</button>
+
+<button
+class="btn secondary"
+onclick="downloadFiles('Members')">
+Download
+</button>
+
+</div>
+
+</div>
+
+
+<div class="module">
+
+<div class="module-icon">⛪</div>
+
+<h3>Ministries</h3>
+
+<p>
+Manage church ministries.
+</p>
+
+<div class="actions">
+
+<button
+class="btn primary"
+onclick="openModule('Ministries')">
+Open
+</button>
+
+<button
+class="btn secondary"
+onclick="upload('Ministries')">
+Upload
+</button>
+
+<button
+class="btn secondary"
+onclick="downloadFiles('Ministries')">
+Download
+</button>
+
+</div>
+
+</div>
+
+
+<div class="module">
+
+<div class="module-icon">📅</div>
+
+<h3>Events</h3>
+
+<p>
+Manage church events and files.
+</p>
+
+<div class="actions">
+
+<button
+class="btn primary"
+onclick="openModule('Events')">
+Open
+</button>
+
+<button
+class="btn secondary"
+onclick="upload('Events')">
+Upload
+</button>
+
+<button
+class="btn secondary"
+onclick="downloadFiles('Events')">
+Download
+</button>
+
+</div>
+
+</div>
+
+
+<div class="module">
+
+<div class="module-icon">💳</div>
+
+<h3>Payment Slips</h3>
+
+<p>
+Manage payment slips and payment records.
+</p>
+
+<div class="actions">
+
+<button
+class="btn primary"
+onclick="openModule('Payment Slips')">
+Open
+</button>
+
+<button
+class="btn secondary"
+onclick="upload('Payment Slips')">
+Upload Slip
+</button>
+
+<button
+class="btn secondary"
+onclick="downloadFiles('Payment Slips')">
+Download
+</button>
+
+</div>
+
+</div>
+
+
+<div class="module">
+
+<div class="module-icon">📄</div>
+
+<h3>Documents</h3>
+
+<p>
+Manage church documents.
+</p>
+
+<div class="actions">
+
+<button
+class="btn primary"
+onclick="openModule('Documents')">
+Open
+</button>
+
+<button
+class="btn secondary"
+onclick="upload('Documents')">
+Upload
+</button>
+
+<button
+class="btn secondary"
+onclick="downloadFiles('Documents')">
+Download
+</button>
+
+</div>
+
+</div>
+
+
+<div class="module">
+
+<div class="module-icon">🧾</div>
+
+<h3>Certificates</h3>
+
+<p>
+Manage church certificates.
+</p>
+
+<div class="actions">
+
+<button
+class="btn primary"
+onclick="openModule('Certificates')">
+Open
+</button>
+
+<button
+class="btn secondary"
+onclick="upload('Certificates')">
+Upload
+</button>
+
+<button
+class="btn secondary"
+onclick="downloadFiles('Certificates')">
+Download
+</button>
+
+</div>
+
+</div>
+
+
+<div class="module">
+
+<div class="module-icon">📊</div>
+
+<h3>Reports</h3>
+
+<p>
+Manage administration reports.
+</p>
+
+<div class="actions">
+
+<button
+class="btn primary"
+onclick="openModule('Reports')">
+Open
+</button>
+
+<button
+class="btn secondary"
+onclick="upload('Reports')">
+Upload
+</button>
+
+<button
+class="btn secondary"
+onclick="downloadFiles('Reports')">
+Download
+</button>
+
+</div>
+
+</div>
+
+
+<div class="module">
+
+<div class="module-icon">🗂️</div>
+
+<h3>Church Records</h3>
+
+<p>
+Manage important church records.
+</p>
+
+<div class="actions">
+
+<button
+class="btn primary"
+onclick="openModule('Church Records')">
+Open
+</button>
+
+<button
+class="btn secondary"
+onclick="upload('Church Records')">
+Upload
+</button>
+
+<button
+class="btn secondary"
+onclick="downloadFiles('Church Records')">
+Download
+</button>
+
+</div>
+
+</div>
+
+
+<div
+class="module"
+id="auditModule">
+
+<div class="module-icon">📋</div>
+
+<h3>Audit Logs</h3>
+
+<p>
+View administrator security activity.
+</p>
+
+<div class="actions">
+
+<button
+class="btn primary"
+onclick="loadAuditLogs()">
+View Logs
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<div
+id="auditArea"
+style="display:none">
+
+<h2 class="title">
+Recent Audit Logs
+</h2>
+
+<section class="audit">
+
+<div id="auditContent">
+Loading...
+</div>
+
+</section>
+
+</div>
+
+
+<div class="footer">
+GOH Ministries • Authorized Administrators Only
+</div>
+
+</main>
+
+
 <script>
-const API_URL =
-  "https://admin-workerjs.createlk.workers.dev";
 
-const form =
-  document.getElementById("loginForm");
+const API =
+"https://admin-workerjs.createlk.workers.dev";
 
-const loginBtn =
-  document.getElementById("loginBtn");
+const LOGIN =
+"login.html";
 
-const message =
-  document.getElementById("message");
+const token =
+sessionStorage.getItem(
+"goh_admin_token"
+);
 
-function showMessage(text,type){
 
-  message.textContent = text;
-  message.className =
-    "message " + type;
+if(!token){
+
+window.location.replace(
+LOGIN
+);
+
+}else{
+
+verifySession();
+
 }
 
-form.addEventListener(
-  "submit",
-  async function(e){
 
-    e.preventDefault();
+async function api(path,options={}){
 
-    const username =
-      document
-        .getElementById("username")
-        .value
-        .trim();
-
-    const password =
-      document
-        .getElementById("password")
-        .value;
-
-    if(!username || !password){
-
-      showMessage(
-        "Please enter your username and password.",
-        "error"
-      );
-
-      return;
-    }
-
-    loginBtn.disabled = true;
-    loginBtn.textContent = "Logging in...";
-    message.className = "message";
-
-    try{
-
-      /*
-       * LOGIN
-       */
-
-      const response =
-        await fetch(
-          API_URL + "/login",
-          {
-            method:"POST",
-
-            headers:{
-              "Content-Type":
-                "application/json"
-            },
-
-            body:JSON.stringify({
-              username,
-              password
-            })
-          }
-        );
-
-      const data =
-        await response.json();
-
-      if(
-        !response.ok ||
-        !data.success ||
-        !data.token
-      ){
-
-        throw new Error(
-          data.error ||
-          data.message ||
-          "Invalid username or password."
-        );
-      }
-
-      /*
-       * SAVE TOKEN
-       */
-
-      sessionStorage.setItem(
-        "goh_admin_token",
-        data.token
-      );
-
-      /*
-       * SAVE ADMIN
-       */
-
-      if(data.admin){
-
-        sessionStorage.setItem(
-          "goh_admin",
-          JSON.stringify(data.admin)
-        );
-      }
-
-      /*
-       * VERIFY SESSION
-       */
-
-      const check =
-        await fetch(
-          API_URL + "/me",
-          {
-            method:"GET",
-
-            headers:{
-              "Authorization":
-                "Bearer " + data.token
-            }
-          }
-        );
-
-      const checkData =
-        await check.json();
-
-      if(
-        !check.ok ||
-        !checkData.success
-      ){
-
-        sessionStorage.removeItem(
-          "goh_admin_token"
-        );
-
-        sessionStorage.removeItem(
-          "goh_admin"
-        );
-
-        throw new Error(
-          "Login succeeded, but the administrator session could not be verified."
-        );
-      }
-
-      /*
-       * Update verified admin information
-       */
-
-      if(checkData.admin){
-
-        sessionStorage.setItem(
-          "goh_admin",
-          JSON.stringify(
-            checkData.admin
-          )
-        );
-      }
-
-      showMessage(
-        "Login successful. Opening administration...",
-        "success"
-      );
-
-      setTimeout(function(){
-
-        window.location.replace(
-          "admin.html"
-        );
-
-      },500);
-
-    }catch(error){
-
-      console.error(
-        "Admin login error:",
-        error
-      );
-
-      showMessage(
-        error.message ||
-        "Login failed. Please try again.",
-        "error"
-      );
-
-      loginBtn.disabled = false;
-      loginBtn.textContent = "Login";
-    }
-
-  }
+return fetch(
+API+path,
+{
+...options,
+headers:{
+...(options.headers||{}),
+"Authorization":
+"Bearer "+token
+}
+}
 );
+
+}
+
+
+async function verifySession(){
+
+try{
+
+const response =
+await api("/me");
+
+const data =
+await response.json();
+
+if(
+!response.ok ||
+!data.success
+){
+
+throw new Error(
+"Session expired."
+);
+
+}
+
+
+const admin =
+data.admin;
+
+if(admin){
+
+document.getElementById(
+"adminName"
+).textContent =
+admin.name ||
+"Administrator";
+
+document.getElementById(
+"adminRole"
+).textContent =
+admin.role ||
+"Administrator";
+
+
+if(
+admin.role !==
+"super_admin"
+){
+
+document.getElementById(
+"auditModule"
+).style.display =
+"none";
+
+}
+
+}
+
+await loadDashboard();
+
+}catch(error){
+
+sessionStorage.removeItem(
+"goh_admin_token"
+);
+
+sessionStorage.removeItem(
+"goh_admin"
+);
+
+window.location.replace(
+LOGIN
+);
+
+}
+
+}
+
+
+async function loadDashboard(){
+
+try{
+
+const response =
+await api("/dashboard");
+
+const data =
+await response.json();
+
+if(
+!response.ok ||
+!data.success
+){
+
+throw new Error(
+data.error ||
+"Dashboard unavailable."
+);
+
+}
+
+const totals =
+data.totals || {};
+
+document.getElementById(
+"members"
+).textContent =
+Number(totals.members||0);
+
+document.getElementById(
+"ministries"
+).textContent =
+Number(totals.ministries||0);
+
+document.getElementById(
+"events"
+).textContent =
+Number(totals.events||0);
+
+document.getElementById(
+"documents"
+).textContent =
+Number(totals.documents||0);
+
+}catch(error){
+
+showError(
+error.message
+);
+
+}
+
+}
+
+
+async function loadAuditLogs(){
+
+document.getElementById(
+"auditArea"
+).style.display =
+"block";
+
+const content =
+document.getElementById(
+"auditContent"
+);
+
+content.textContent =
+"Loading...";
+
+try{
+
+const response =
+await api("/audit-logs");
+
+const data =
+await response.json();
+
+if(
+!response.ok ||
+!data.success
+){
+
+throw new Error(
+data.error ||
+"Unable to load audit logs."
+);
+
+}
+
+const logs =
+data.logs || [];
+
+if(!logs.length){
+
+content.textContent =
+"No audit logs found.";
+
+return;
+
+}
+
+let html = `
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Action</th>
+<th>Module</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+`;
+
+logs.forEach(log=>{
+
+html+=`
+<tr>
+<td>${safe(log.created_at)}</td>
+<td>${safe(log.action)}</td>
+<td>${safe(log.module)}</td>
+<td>${safe(log.details)}</td>
+</tr>
+`;
+
+});
+
+html+=`
+</tbody>
+</table>
+`;
+
+content.innerHTML =
+html;
+
+}catch(error){
+
+content.textContent =
+error.message;
+
+}
+
+}
+
+
+function openModule(name){
+
+alert(
+name+
+" module will be connected next."
+);
+
+}
+
+
+function upload(name){
+
+alert(
+name+
+" upload will be connected to private Cloudflare R2 storage next."
+);
+
+}
+
+
+function downloadFiles(name){
+
+alert(
+name+
+" download will be connected to private Cloudflare R2 storage next."
+);
+
+}
+
+
+document.getElementById(
+"logoutBtn"
+).addEventListener(
+"click",
+async function(){
+
+this.disabled=true;
+this.textContent=
+"Logging out...";
+
+try{
+
+await api(
+"/logout",
+{
+method:"POST"
+}
+);
+
+}catch(error){
+
+console.error(error);
+
+}
+
+sessionStorage.removeItem(
+"goh_admin_token"
+);
+
+sessionStorage.removeItem(
+"goh_admin"
+);
+
+window.location.replace(
+LOGIN
+);
+
+});
+
+
+function showError(text){
+
+const box =
+document.getElementById(
+"errorBox"
+);
+
+box.textContent=text;
+box.style.display="block";
+
+}
+
+
+function safe(value){
+
+return String(
+value || ""
+)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
 </script>
 
 </body>
