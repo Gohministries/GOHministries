@@ -12,7 +12,10 @@
  --txt:#1e293b;--muted:#64748b;--border:#e2e8f0
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--txt)}
+body{
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+ background:var(--bg);color:var(--txt)
+}
 button,input,select,textarea{font:inherit}
 button{cursor:pointer}
 
@@ -39,7 +42,7 @@ button{cursor:pointer}
 
 .menu-btn{
  border:0;background:#ffffff18;color:#fff;
- border-radius:7px;padding:9px 12px;
+ border-radius:7px;padding:8px 11px;
  font-size:17px;font-weight:700
 }
 .menu-btn:hover{background:#ffffff2b}
@@ -49,6 +52,8 @@ button{cursor:pointer}
  position:absolute;
  right:12px;top:52px;
  width:220px;
+ max-height:calc(100vh - 65px);
+ overflow:auto;
  background:#fff;
  border:1px solid var(--border);
  border-radius:9px;
@@ -122,6 +127,7 @@ button{cursor:pointer}
  font-weight:600
 }
 
+/* DASHBOARD */
 .stats{
  display:grid;
  grid-template-columns:repeat(4,1fr);
@@ -129,14 +135,23 @@ button{cursor:pointer}
 }
 
 .stat{padding:17px}
+
 .stat small{
+ display:block;
  font-size:12px;
  color:var(--muted)
 }
+
 .stat strong{
  display:block;
- font-size:26px;
- color:var(--p)
+ font-size:22px;
+ color:var(--p);
+ margin-top:5px;
+ line-height:1.25
+}
+
+.stat.support strong{
+ font-size:19px
 }
 
 .grid{
@@ -150,6 +165,7 @@ button{cursor:pointer}
  margin-bottom:5px
 }
 
+/* FORMS */
 .form-grid{
  display:grid;
  grid-template-columns:repeat(2,1fr);
@@ -201,6 +217,7 @@ button{cursor:pointer}
  border:1px solid var(--border)
 }
 
+/* TABLE */
 .table-wrap{
  overflow:auto;
  border:1px solid var(--border);
@@ -225,6 +242,7 @@ th{
  color:var(--p)
 }
 
+/* MESSAGE */
 .message{
  display:none;
  padding:10px 14px;
@@ -250,8 +268,16 @@ th{
 }
 
 @media(max-width:600px){
- .header-in{height:54px;padding:7px 10px}
- .logo{width:35px;height:35px}
+ .header-in{
+  height:54px;
+  padding:7px 10px
+ }
+
+ .logo{
+  width:35px;
+  height:35px
+ }
+
  .brand h1{font-size:14px}
  .brand p{display:none}
 
@@ -288,6 +314,7 @@ th{
 
 <div class="brand">
 <div class="logo">GOH</div>
+
 <div>
 <h1>GOH Ministries</h1>
 <p>Church Administration</p>
@@ -320,7 +347,9 @@ th{
 
 <div id="message" class="message"></div>
 
+
 <!-- DASHBOARD -->
+
 <section class="page active" id="dashboard">
 
 <div class="welcome">
@@ -332,23 +361,23 @@ th{
 <div class="stats">
 
 <div class="stat">
-<small>Members</small>
-<strong id="members">0</strong>
+<small>Total Income</small>
+<strong id="totalIncome">LKR 0.00</strong>
 </div>
 
 <div class="stat">
-<small>Ministries</small>
-<strong id="ministries">0</strong>
+<small>Total Expenses</small>
+<strong id="totalExpenses">LKR 0.00</strong>
+</div>
+
+<div class="stat support">
+<small>Minister Monthly Support</small>
+<strong id="ministerSupport">LKR 0.00</strong>
 </div>
 
 <div class="stat">
-<small>Activities</small>
-<strong id="events">0</strong>
-</div>
-
-<div class="stat">
-<small>Documents</small>
-<strong id="documents">0</strong>
+<small>Current Balance</small>
+<strong id="currentBalance">LKR 0.00</strong>
 </div>
 
 </div>
@@ -361,32 +390,32 @@ Administration Modules
 
 <div class="card">
 <h3>💰 Finance</h3>
-<p>Manage income, expenses and donations.</p>
+<p>Manage income, expenses, donations and ministry financial records.</p>
 </div>
 
 <div class="card">
 <h3>📊 Reports</h3>
-<p>View monthly and annual ministry reports.</p>
+<p>View monthly, annual and financial ministry reports.</p>
 </div>
 
 <div class="card">
 <h3>📜 History</h3>
-<p>Manage ministry history and milestones.</p>
+<p>Manage ministry history, milestones and important events.</p>
 </div>
 
 <div class="card">
 <h3>⛪ Activities</h3>
-<p>Manage church services and outreach.</p>
+<p>Manage worship services, prayer, evangelism and ministry activities.</p>
 </div>
 
 <div class="card">
 <h3>📁 Documents</h3>
-<p>Manage important ministry documents.</p>
+<p>Manage ministry, financial, property and official documents.</p>
 </div>
 
 <div class="card">
 <h3>🛡️ Audit</h3>
-<p>Review administrator activity logs.</p>
+<p>Review administrator activity and system audit records.</p>
 </div>
 
 </div>
@@ -395,11 +424,13 @@ Administration Modules
 
 
 <!-- FINANCE -->
+
 <section class="page" id="finance">
 
 <h2 class="section">💰 Finance Management</h2>
 
 <div class="form">
+
 <div class="form-grid">
 
 <div class="field">
@@ -409,32 +440,71 @@ Administration Modules
 
 <div class="field">
 <label>Type</label>
-<select>
+<select id="financeType">
 <option>Income</option>
 <option>Expense</option>
 </select>
 </div>
 
 <div class="field">
-<label>Category</label>
-<select>
-<option>Donation</option>
-<option>Offering</option>
+<label>Ministry Category</label>
+
+<select id="financeCategory">
+
+<optgroup label="Income">
 <option>Tithe</option>
+<option>Offering</option>
+<option>General Donation</option>
+<option>Special Donation</option>
 <option>Grant</option>
-<option>Construction</option>
+<option>Foreign Ministry Support</option>
+<option>Other Income</option>
+</optgroup>
+
+<optgroup label="Ministry & Support">
+<option>Minister Monthly Support</option>
+<option>Pastor / Minister Expenses</option>
+<option>Staff / Worker Support</option>
+<option>Missionary Work</option>
+<option>Evangelism</option>
+<option>Bible Ministry</option>
+<option>Prayer Ministry</option>
+<option>Worship Ministry</option>
+</optgroup>
+
+<optgroup label="Church Ministries">
+<option>Children's Ministry</option>
+<option>Youth Ministry</option>
+<option>Women's Ministry</option>
+<option>Men's Ministry</option>
+<option>Community Assistance</option>
+<option>Poor / Family Assistance</option>
+<option>Education / Training</option>
+</optgroup>
+
+<optgroup label="Property & Construction">
+<option>Church Building / Construction</option>
+<option>Land / Property</option>
+<option>Equipment</option>
+</optgroup>
+
+<optgroup label="Operations">
 <option>Utilities</option>
 <option>Transport</option>
-<option>Ministry Activity</option>
-<option>Community Assistance</option>
-<option>Equipment</option>
-<option>Other</option>
+<option>Media / Technology</option>
+<option>Church Events</option>
+<option>Bank Charges</option>
+<option>Administrative Expenses</option>
+</optgroup>
+
+<option>Other Expense</option>
+
 </select>
 </div>
 
 <div class="field">
 <label>Amount (LKR)</label>
-<input type="number" min="0" step=".01">
+<input type="number" min="0" step=".01" placeholder="0.00">
 </div>
 
 <div class="field">
@@ -444,6 +514,7 @@ Administration Modules
 <option>Bank Transfer</option>
 <option>Bank Deposit</option>
 <option>Cheque</option>
+<option>Online Payment</option>
 <option>Other</option>
 </select>
 </div>
@@ -455,21 +526,23 @@ Administration Modules
 
 <div class="field full">
 <label>Description</label>
-<textarea></textarea>
+<textarea placeholder="Financial record description"></textarea>
 </div>
 
 </div>
 
 <button class="btn primary"
 onclick="notice('Finance API is not connected yet.')">
-Save Record
+Save Financial Record
 </button>
 
 </div>
+
 </section>
 
 
 <!-- REPORTS -->
+
 <section class="page" id="reports">
 
 <h2 class="section">📊 Ministry Reports</h2>
@@ -483,6 +556,11 @@ Save Record
 <select>
 <option>Monthly</option>
 <option>Annual</option>
+<option>Financial Summary</option>
+<option>Income Report</option>
+<option>Expense Report</option>
+<option>Minister Support Report</option>
+<option>Ministry Category Report</option>
 <option>Custom Date Range</option>
 </select>
 </div>
@@ -520,10 +598,12 @@ CSV
 </button>
 
 </div>
+
 </section>
 
 
 <!-- HISTORY -->
+
 <section class="page" id="history">
 
 <h2 class="section">📜 Ministry History</h2>
@@ -542,6 +622,20 @@ CSV
 <input placeholder="Milestone title">
 </div>
 
+<div class="field">
+<label>Category</label>
+<select>
+<option>Ministry Beginning</option>
+<option>Church Development</option>
+<option>Evangelism</option>
+<option>Mission</option>
+<option>Building</option>
+<option>Community Work</option>
+<option>Leadership</option>
+<option>Other</option>
+</select>
+</div>
+
 <div class="field full">
 <label>Description</label>
 <textarea></textarea>
@@ -555,10 +649,12 @@ Save History
 </button>
 
 </div>
+
 </section>
 
 
 <!-- ACTIVITIES -->
+
 <section class="page" id="activities">
 
 <h2 class="section">⛪ Ministry Activities</h2>
@@ -574,17 +670,23 @@ Save History
 
 <div class="field">
 <label>Activity</label>
+
 <select>
 <option>Worship Service</option>
 <option>Prayer Meeting</option>
 <option>Bible Study</option>
 <option>Evangelism</option>
+<option>Missionary Work</option>
 <option>Outreach</option>
 <option>Youth Ministry</option>
 <option>Children's Ministry</option>
+<option>Women's Ministry</option>
+<option>Men's Ministry</option>
 <option>Community Assistance</option>
+<option>Poor / Family Assistance</option>
 <option>Special Event</option>
 </select>
+
 </div>
 
 <div class="field">
@@ -610,10 +712,12 @@ Save Activity
 </button>
 
 </div>
+
 </section>
 
 
 <!-- MEMBERS -->
+
 <section class="page" id="members">
 
 <h2 class="section">👥 Member Directory</h2>
@@ -645,6 +749,22 @@ Save Activity
 </select>
 </div>
 
+<div class="field">
+<label>Ministry</label>
+<select>
+<option>General</option>
+<option>Worship</option>
+<option>Prayer</option>
+<option>Evangelism</option>
+<option>Youth</option>
+<option>Children</option>
+<option>Women</option>
+<option>Men</option>
+<option>Media</option>
+<option>Other</option>
+</select>
+</div>
+
 </div>
 
 <button class="btn primary"
@@ -653,10 +773,12 @@ Save Member
 </button>
 
 </div>
+
 </section>
 
 
 <!-- MEETINGS -->
+
 <section class="page" id="meetings">
 
 <h2 class="section">📋 Meetings & Decisions</h2>
@@ -675,8 +797,20 @@ Save Member
 <select>
 <option>Leadership Meeting</option>
 <option>Church Meeting</option>
+<option>Ministry Meeting</option>
+<option>Finance Meeting</option>
 <option>Special Meeting</option>
 </select>
+</div>
+
+<div class="field">
+<label>Location</label>
+<input>
+</div>
+
+<div class="field">
+<label>Participants</label>
+<input type="number" min="0">
 </div>
 
 <div class="field full">
@@ -692,10 +826,12 @@ Save Minutes
 </button>
 
 </div>
+
 </section>
 
 
 <!-- DOCUMENTS -->
+
 <section class="page" id="documents">
 
 <h2 class="section">📁 Document Repository</h2>
@@ -711,6 +847,7 @@ Save Minutes
 
 <div class="field">
 <label>Type</label>
+
 <select>
 <option>Ministry Document</option>
 <option>Financial Record</option>
@@ -718,8 +855,11 @@ Save Minutes
 <option>Property Document</option>
 <option>Construction Document</option>
 <option>Meeting Minutes</option>
+<option>Registration Document</option>
+<option>Official Letter</option>
 <option>Other</option>
 </select>
+
 </div>
 
 <div class="field full">
@@ -740,10 +880,12 @@ Upload Document
 </button>
 
 </div>
+
 </section>
 
 
 <!-- PROPERTY -->
+
 <section class="page" id="property">
 
 <h2 class="section">🏗️ Property & Building</h2>
@@ -759,12 +901,31 @@ Upload Document
 
 <div class="field">
 <label>Record Type</label>
+
 <select>
 <option>Land</option>
 <option>Building</option>
 <option>Construction</option>
 <option>Equipment</option>
+<option>Property Document</option>
+<option>Maintenance</option>
 <option>Other</option>
+</select>
+
+</div>
+
+<div class="field">
+<label>Location</label>
+<input>
+</div>
+
+<div class="field">
+<label>Status</label>
+<select>
+<option>Active</option>
+<option>Under Construction</option>
+<option>Completed</option>
+<option>Maintenance</option>
 </select>
 </div>
 
@@ -781,10 +942,12 @@ Save Property
 </button>
 
 </div>
+
 </section>
 
 
 <!-- MEDIA -->
+
 <section class="page" id="media">
 
 <h2 class="section">📸 Media Archive</h2>
@@ -800,13 +963,20 @@ Save Property
 
 <div class="field">
 <label>Category</label>
+
 <select>
 <option>Church Service</option>
+<option>Prayer Meeting</option>
 <option>Construction</option>
+<option>Evangelism</option>
 <option>Outreach</option>
 <option>Community Assistance</option>
-<option>Event</option>
+<option>Children's Ministry</option>
+<option>Youth Ministry</option>
+<option>Special Event</option>
+<option>Other</option>
 </select>
+
 </div>
 
 <div class="field full">
@@ -822,10 +992,12 @@ Upload Media
 </button>
 
 </div>
+
 </section>
 
 
 <!-- USERS -->
+
 <section class="page" id="users">
 
 <h2 class="section">🔐 Users & Permissions</h2>
@@ -848,12 +1020,14 @@ Upload Media
 </thead>
 
 <tbody>
+
 <tr>
 <td id="userName">-</td>
 <td id="userUsername">-</td>
 <td id="userRole">-</td>
 <td>Active</td>
 </tr>
+
 </tbody>
 
 </table>
@@ -865,10 +1039,12 @@ Permissions are controlled by the GOH Admin Worker.
 </p>
 
 </div>
+
 </section>
 
 
 <!-- AUDIT -->
+
 <section class="page" id="audit">
 
 <h2 class="section">🛡️ System Audit Logs</h2>
@@ -889,9 +1065,13 @@ Permissions are controlled by the GOH Admin Worker.
 </thead>
 
 <tbody id="auditBody">
+
 <tr>
-<td colspan="4">No audit records available.</td>
+<td colspan="4">
+No audit records available.
+</td>
 </tr>
+
 </tbody>
 
 </table>
@@ -899,6 +1079,7 @@ Permissions are controlled by the GOH Admin Worker.
 </div>
 
 </div>
+
 </section>
 
 
@@ -907,6 +1088,7 @@ Permissions are controlled by the GOH Admin Worker.
 </footer>
 
 </main>
+
 
 <script>
 const pages=document.querySelectorAll(".page");
@@ -924,10 +1106,20 @@ document.addEventListener("click",e=>{
 });
 
 function showPage(id){
- pages.forEach(p=>p.classList.toggle("active",p.id===id));
- items.forEach(b=>b.classList.toggle("active",b.dataset.page===id));
+ pages.forEach(p=>{
+  p.classList.toggle("active",p.id===id);
+ });
+
+ items.forEach(b=>{
+  b.classList.toggle("active",b.dataset.page===id);
+ });
+
  menu.classList.remove("show");
- window.scrollTo({top:0,behavior:"smooth"});
+
+ window.scrollTo({
+  top:0,
+  behavior:"smooth"
+ });
 }
 
 items.forEach(b=>{
@@ -936,9 +1128,12 @@ items.forEach(b=>{
 
 function notice(text,type="error"){
  const m=document.getElementById("message");
+
  m.textContent=text;
  m.className="message show "+type;
+
  clearTimeout(window.msg);
+
  window.msg=setTimeout(()=>{
   m.className="message";
  },3500);
