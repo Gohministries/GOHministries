@@ -61,15 +61,16 @@ font-weight:bold;
 margin:12px 0 5px
 }
 
-input{
+input,select{
 width:100%;
 padding:12px;
 border:1px solid #d0d5dd;
 border-radius:9px;
-outline:none
+outline:none;
+background:#fff
 }
 
-input:focus{
+input:focus,select:focus{
 border-color:#0b376d
 }
 
@@ -132,13 +133,21 @@ margin-top:18px
 
 <form id="loginForm">
 
+<label>Login Type</label>
+
+<select id="loginType" required>
+<option value="admin">Administrator</option>
+<option value="auditor">Auditor</option>
+<option value="finance">Finance</option>
+</select>
+
 <label>Username</label>
 
 <input
 id="username"
 type="text"
 autocomplete="username"
-placeholder="Username or email"
+placeholder="Username"
 required
 >
 
@@ -166,8 +175,11 @@ GOH Ministries • Secure Administration
 
 <script>
 
-const API =
+const ADMIN_API =
 "https://admin-workerjs.createlk.workers.dev";
+
+const NEW_AUTH =
+"https://goh-admin-auth.createlk.workers.dev";
 
 const form =
 document.getElementById("loginForm");
@@ -178,28 +190,49 @@ document.getElementById("message");
 const button =
 document.getElementById("loginBtn");
 
+const type =
+document.getElementById("loginType");
 
-function showMessage(text,type){
+function showMessage(text,kind){
 
 message.textContent=text;
-message.className="message "+type;
+message.className="message "+kind;
 
 }
 
+type.addEventListener("change",()=>{
+
+const t=type.value;
+
+if(t==="admin"){
+document.getElementById("username").placeholder="Administrator username";
+}
+
+if(t==="auditor"){
+document.getElementById("username").placeholder="Audit username";
+}
+
+if(t==="finance"){
+document.getElementById("username").placeholder="Finance username";
+}
+
+});
 
 form.addEventListener("submit",async e=>{
 
 e.preventDefault();
 
-const username =
+const loginType=type.value;
+
+const username=
 document.getElementById("username")
 .value.trim();
 
-const password =
+const password=
 document.getElementById("password")
 .value;
 
-if(!username || !password){
+if(!username||!password){
 
 showMessage(
 "Enter username and password.",
@@ -215,7 +248,17 @@ button.textContent="Signing in...";
 
 try{
 
-const response =
+/*
+Administrator continues using
+your existing working Worker.
+*/
+
+const API=
+loginType==="admin"
+?ADMIN_API
+:NEW_AUTH;
+
+const response=
 await fetch(API+"/login",{
 
 method:"POST",
@@ -224,9 +267,20 @@ headers:{
 "Content-Type":"application/json"
 },
 
+credentials:"include",
+
 body:JSON.stringify({
+
 username,
-password
+password,
+
+/*
+The new Worker uses this
+to identify the requested role.
+*/
+
+role:loginType
+
 })
 
 });
@@ -240,21 +294,26 @@ data=await response.json();
 if(!response.ok){
 
 throw new Error(
-data.error || "Invalid login"
+data.error||"Invalid login"
 );
 
 }
 
-if(!data.token || !data.admin){
+
+/*
+Existing Administrator Worker
+returns token + admin.
+*/
+
+if(loginType==="admin"){
+
+if(!data.token||!data.admin){
 
 throw new Error(
-"Invalid server response"
+"Invalid administrator response"
 );
 
 }
-
-
-/* Save login */
 
 sessionStorage.setItem(
 "goh_admin_token",
@@ -266,16 +325,34 @@ sessionStorage.setItem(
 JSON.stringify(data.admin)
 );
 
+}else{
 
-/* Success */
+/*
+New Cloudflare authentication
+uses the secure session cookie.
+*/
+
+if(data.user){
+
+sessionStorage.setItem(
+"goh_admin",
+JSON.stringify(data.user)
+);
+
+}
+
+sessionStorage.setItem(
+"goh_login_type",
+loginType
+);
+
+}
+
 
 showMessage(
 "Login successful. Opening administration...",
 "success"
 );
-
-
-/* Open dashboard */
 
 setTimeout(()=>{
 
@@ -285,11 +362,10 @@ window.location.replace(
 
 },500);
 
-
 }catch(error){
 
 showMessage(
-error.message,
+error.message||"Login failed",
 "error"
 );
 
