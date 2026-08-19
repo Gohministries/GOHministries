@@ -4,302 +4,606 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0b376d">
-<title>GOH Ministries | Administration</title>
+
+<title>GOH Ministries | Login</title>
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,sans-serif;background:#f6f8fb;color:#1e293b}
-header{height:58px;background:#0b376d;color:#fff;position:sticky;top:0;z-index:20}
-.head{height:100%;max-width:1280px;margin:auto;padding:0 14px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:9px}.logo{width:38px;height:38px;border-radius:50%;background:#fff;color:#0b376d;display:grid;place-items:center;font-weight:800;font-size:11px}
-.brand h1{font-size:15px}.brand p{font-size:10px;opacity:.7}
-.menuBtn{border:0;background:#ffffff20;color:#fff;border-radius:7px;padding:8px 12px;font-size:18px}
-.menu{display:none;position:absolute;right:14px;top:54px;width:230px;background:#fff;border:1px solid #e2e8f0;border-radius:9px;padding:6px;box-shadow:0 8px 25px #0002}
-.menu.show{display:block}.menu button{width:100%;border:0;background:none;text-align:left;padding:10px;border-radius:6px;color:#1e293b}.menu button:hover,.menu button.active{background:#e0f2fe;color:#0369a1}.logout{color:#b91c1c!important;border-top:1px solid #e2e8f0;margin-top:5px}
-main{max-width:1280px;margin:auto;padding:18px}.page{display:none}.page.active{display:block}
-.title{font-size:19px;color:#0b376d;margin-bottom:15px}
-.card,.box,.table{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:16px;margin-bottom:15px;box-shadow:0 1px 4px #0000000d}
-.welcome h2{font-size:20px;color:#0b376d}.muted{font-size:12px;color:#64748b}
-.role{display:inline-block;margin-top:7px;padding:4px 9px;border-radius:20px;background:#e0f2fe;color:#0369a1;font-size:11px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{background:#fff;border:1px solid #e2e8f0;border-radius:9px;padding:14px}.stat small{color:#64748b;font-size:11px}.stat strong{display:block;color:#0b376d;font-size:19px;margin-top:4px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.module{cursor:pointer}.module h3{font-size:14px;margin-bottom:5px}
-table{width:100%;border-collapse:collapse;min-width:650px}th,td{padding:9px 11px;border-bottom:1px solid #e2e8f0;font-size:12px;text-align:left}th{background:#f8fafc;color:#0b376d}
-.wrap{overflow:auto}.status{padding:4px 8px;border-radius:15px;font-size:10px;font-weight:700}.pending{background:#fef3c7;color:#92400e}.approved{background:#dcfce7;color:#166534}
-.notice{display:none;padding:10px;border-radius:7px;margin-bottom:15px;font-size:12px}.notice.show{display:block}.ok{background:#dcfce7;color:#166534}.err{background:#fee2e2;color:#991b1b}
-footer{text-align:center;color:#64748b;font-size:11px;padding:20px}
-@media(max-width:800px){.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){main{padding:12px}.stats,.grid{grid-template-columns:1fr}.brand p{display:none}}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  font-family:Arial,sans-serif;
+  background:#f4f7fb;
+  color:#172033;
+}
+
+.login-box{
+  width:100%;
+  max-width:410px;
+  background:#fff;
+  border:1px solid #e2e8f0;
+  border-radius:18px;
+  padding:32px;
+  box-shadow:0 12px 35px rgba(0,0,0,.08);
+}
+
+.logo{
+  width:64px;
+  height:64px;
+  margin:0 auto 16px;
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#0b376d;
+  color:#fff;
+  font-size:25px;
+  font-weight:bold;
+}
+
+h1{
+  text-align:center;
+  font-size:24px;
+  color:#0b376d;
+}
+
+.subtitle{
+  text-align:center;
+  margin:7px 0 28px;
+  color:#64748b;
+  font-size:14px;
+}
+
+label{
+  display:block;
+  margin:0 0 7px;
+  font-size:14px;
+  font-weight:bold;
+}
+
+.field{
+  margin-bottom:18px;
+}
+
+input{
+  width:100%;
+  height:48px;
+  border:1px solid #cbd5e1;
+  border-radius:10px;
+  padding:0 14px;
+  font-size:15px;
+  outline:none;
+}
+
+input:focus{
+  border-color:#0b376d;
+  box-shadow:0 0 0 3px rgba(11,55,109,.1);
+}
+
+.password-wrap{
+  position:relative;
+}
+
+.password-wrap input{
+  padding-right:55px;
+}
+
+.show-btn{
+  position:absolute;
+  right:0;
+  top:0;
+  height:48px;
+  width:50px;
+  border:0;
+  background:transparent;
+  color:#64748b;
+  cursor:pointer;
+  font-size:13px;
+}
+
+.login-btn{
+  width:100%;
+  height:50px;
+  border:0;
+  border-radius:10px;
+  background:#0b376d;
+  color:#fff;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.login-btn:hover{
+  background:#082952;
+}
+
+.login-btn:disabled{
+  opacity:.65;
+  cursor:not-allowed;
+}
+
+.message{
+  display:none;
+  margin-bottom:18px;
+  padding:12px;
+  border-radius:9px;
+  font-size:14px;
+  line-height:1.4;
+}
+
+.message.error{
+  display:block;
+  background:#fef2f2;
+  color:#b91c1c;
+  border:1px solid #fecaca;
+}
+
+.message.success{
+  display:block;
+  background:#f0fdf4;
+  color:#166534;
+  border:1px solid #bbf7d0;
+}
+
+.footer{
+  margin-top:22px;
+  text-align:center;
+  color:#94a3b8;
+  font-size:12px;
+}
+
+@media(max-width:480px){
+  .login-box{
+    padding:25px 20px;
+    border-radius:14px;
+  }
+}
 </style>
 </head>
 
 <body>
 
-<header>
-<div class="head">
-<div class="brand">
-<div class="logo">GOH</div>
-<div>
-<h1>GOH Ministries</h1>
-<p>Administrative & Financial Database</p>
-</div>
-</div>
-<button class="menuBtn" id="menuBtn">☰</button>
+<div class="login-box">
 
-<div class="menu" id="menu">
-<button data-page="dashboard">🏠 Dashboard</button>
-<button data-page="finance">💰 Finance</button>
-<button data-page="reports">📊 Reports</button>
-<button data-page="documents">📁 Documents</button>
-<button data-page="organization" data-admin>🏛️ Organization</button>
-<button data-page="periods" data-admin>📅 Reporting Periods</button>
-<button data-page="donors" data-finance>👥 Donors</button>
-<button data-page="approvals" data-admin>✅ Approvals</button>
-<button data-page="audit">🛡️ Audit Trail</button>
-<button data-page="users" data-admin>🔐 Users</button>
-<button data-page="settings" data-admin>⚙️ Settings</button>
-<button class="logout" id="logout">Logout</button>
-</div>
-</div>
-</header>
+  <div class="logo">GOH</div>
 
-<main>
+  <h1>GOH Ministries</h1>
 
-<div id="msg" class="notice"></div>
+  <div class="subtitle">
+    Church Administration
+  </div>
 
-<section class="page active" id="dashboard">
+  <div id="message" class="message"></div>
 
-<div class="card welcome">
-<h2>Welcome, <span id="name">Administrator</span></h2>
-<p class="muted">GOH Ministries Official Administrative & Financial Database</p>
-<span class="role" id="role">Administrator</span>
-</div>
+  <form id="loginForm">
 
-<div class="stats">
-<div class="stat"><small>Total Income</small><strong id="income">LKR 0.00</strong></div>
-<div class="stat"><small>Total Expenses</small><strong id="expenses">LKR 0.00</strong></div>
-<div class="stat"><small>Net Surplus</small><strong id="net">LKR 0.00</strong></div>
-<div class="stat"><small>Current Balance</small><strong id="balance">LKR 0.00</strong></div>
-</div>
+    <div class="field">
+      <label for="username">Username</label>
 
-<div class="box">
-<h3 style="font-size:14px;margin-bottom:10px">Reporting Period</h3>
-<p class="muted" id="period">01 January 2026 – 31 December 2026</p>
-</div>
+      <input
+        id="username"
+        name="username"
+        type="text"
+        autocomplete="username"
+        placeholder="Enter username"
+        required
+      >
+    </div>
 
-<h2 class="title">Administration Modules</h2>
+    <div class="field">
+      <label for="password">Password</label>
 
-<div class="grid">
+      <div class="password-wrap">
 
-<div class="card module" onclick="openPage('finance')">
-<h3>💰 Finance</h3><p class="muted">Income, expenses and supporting records.</p>
-</div>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          placeholder="Enter password"
+          required
+        >
 
-<div class="card module" onclick="openPage('reports')">
-<h3>📊 Reports</h3><p class="muted">Financial and administrative reports.</p>
-</div>
+        <button
+          type="button"
+          class="show-btn"
+          id="showPassword"
+        >Show</button>
 
-<div class="card module" onclick="openPage('documents')">
-<h3>📁 Documents</h3><p class="muted">Receipts, invoices and official documents.</p>
-</div>
+      </div>
+    </div>
 
-<div class="card module adminOnly" onclick="openPage('approvals')">
-<h3>✅ Approvals</h3><p class="muted">Review and approve submitted records.</p>
-</div>
+    <button
+      type="submit"
+      class="login-btn"
+      id="loginBtn"
+    >
+      Login
+    </button>
 
-<div class="card module" onclick="openPage('audit')">
-<h3>🛡️ Audit Trail</h3><p class="muted">Review system and financial activity.</p>
-</div>
+  </form>
 
-<div class="card module adminOnly" onclick="openPage('users')">
-<h3>🔐 Users</h3><p class="muted">Manage authorized system users.</p>
-</div>
+  <div class="footer">
+    GOH Ministries Administration
+  </div>
 
 </div>
-</section>
-
-<section class="page" id="finance">
-<h2 class="title">💰 Finance</h2>
-<div class="card">
-<h3>Financial Management</h3>
-<p class="muted" id="financeAccess"></p>
-<br>
-<button class="btn" onclick="location.href='finance.html'">Open Finance</button>
-</div>
-</section>
-
-<section class="page" id="reports">
-<h2 class="title">📊 Reports</h2>
-<div class="card">
-<h3>Official Reports</h3>
-<p class="muted">Daily, monthly, quarterly, half-yearly and annual financial reports.</p>
-<br>
-<button class="btn" onclick="note('Report generator can be connected here.','ok')">Generate Report</button>
-</div>
-</section>
-
-<section class="page" id="documents">
-<h2 class="title">📁 Documents</h2>
-<div class="card">
-<h3>Official Documents</h3>
-<p class="muted">Receipts, invoices, bank statements, payment proofs and ministry documents.</p>
-<br>
-<button class="btn" onclick="note('Document API can be connected here.','ok')">Open Documents</button>
-</div>
-</section>
-
-<section class="page" id="organization">
-<h2 class="title">🏛️ Organization</h2>
-<div class="card">
-<h3>GOH Ministries</h3>
-<p class="muted">Organization registration, contact information and official details.</p>
-</div>
-</section>
-
-<section class="page" id="periods">
-<h2 class="title">📅 Reporting Periods</h2>
-<div class="card">
-<h3>Reporting Period Management</h3>
-<p class="muted">Create and manage financial reporting periods.</p>
-</div>
-</section>
-
-<section class="page" id="donors">
-<h2 class="title">👥 Donors</h2>
-<div class="card">
-<h3>Donor Management</h3>
-<p class="muted">Donor information, donation history and references.</p>
-</div>
-</section>
-
-<section class="page" id="approvals">
-<h2 class="title">✅ Approvals</h2>
-<div class="card">
-<h3>Pending Transactions</h3>
-<p class="muted">Only authorized administrators can approve financial transactions.</p>
-<br>
-<button class="btn" onclick="location.href='finance.html'">Review Finance</button>
-</div>
-</section>
-
-<section class="page" id="audit">
-<h2 class="title">🛡️ Audit Trail</h2>
-<div class="table">
-<div class="wrap">
-<table>
-<thead><tr><th>Date</th><th>User</th><th>Action</th><th>Record</th><th>Status</th></tr></thead>
-<tbody id="auditBody">
-<tr><td colspan="5">Audit API not connected.</td></tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-
-<section class="page" id="users">
-<h2 class="title">🔐 Users</h2>
-<div class="table">
-<div class="wrap">
-<table>
-<thead><tr><th>Name</th><th>Username</th><th>Role</th><th>Status</th></tr></thead>
-<tbody id="usersBody"></tbody>
-</table>
-</div>
-</div>
-</section>
-
-<section class="page" id="settings">
-<h2 class="title">⚙️ Settings</h2>
-<div class="card">
-<h3>System Settings</h3>
-<p class="muted">Organization, report numbering, financial year, categories and system preferences.</p>
-</div>
-</section>
-
-<footer>
-© 2026 GOH Ministries · Official Administrative Record
-</footer>
-
-</main>
 
 <script>
-const u=JSON.parse(sessionStorage.getItem("goh_admin")||"null");
-if(!u)location.href="login.html";
 
-let p=u.permissions||{};
-if(typeof p==="string")try{p=JSON.parse(p)}catch{p={}}
+const AUTH_API =
+  "https://goh-admin-auth.createlk.workers.dev";
 
-const role=String(u.role||"").toLowerCase();
-const admin=role==="admin"||role==="super_admin"||p==="full";
-const finance=admin||role==="finance"||p.finance===true;
-const auditor=role==="auditor";
+const TOKEN_KEY =
+  "goh_admin_token";
 
-document.getElementById("name").textContent=u.name||u.username||"User";
-document.getElementById("role").textContent=
-admin?"Super Administrator":finance?"Finance Officer":auditor?"Auditor / Viewer":"User";
+const USER_KEY =
+  "goh_admin_user";
 
-document.getElementById("financeAccess").textContent=
-admin?"Full financial control, including approval and void/delete authority.":
-finance?"Add, edit and submit financial records. Approval and permanent deletion are restricted.":
-auditor?"Read-only access to financial records and supporting slips.":"Access restricted.";
 
-document.querySelectorAll("[data-admin]").forEach(x=>{
-if(!admin)x.remove();
-});
+// ===============================
+// ELEMENTS
+// ===============================
 
-document.querySelectorAll("[data-finance]").forEach(x=>{
-if(!finance&&!admin)x.remove();
-});
+const form =
+  document.getElementById("loginForm");
 
-if(auditor){
-document.querySelectorAll(".adminOnly").forEach(x=>x.remove());
+const username =
+  document.getElementById("username");
+
+const password =
+  document.getElementById("password");
+
+const loginBtn =
+  document.getElementById("loginBtn");
+
+const message =
+  document.getElementById("message");
+
+const showPassword =
+  document.getElementById("showPassword");
+
+
+// ===============================
+// MESSAGE
+// ===============================
+
+function showMessage(text,type="error"){
+
+  message.textContent = text;
+
+  message.className =
+    "message " + type;
 }
 
-const menu=document.getElementById("menu");
+function clearMessage(){
 
-document.getElementById("menuBtn").onclick=()=>{
-menu.classList.toggle("show");
-};
+  message.textContent = "";
 
-document.addEventListener("click",e=>{
-if(!e.target.closest("#menu")&&!e.target.closest("#menuBtn"))
-menu.classList.remove("show");
-});
-
-function openPage(id){
-const page=document.getElementById(id);
-if(!page)return;
-page.classList.add("active");
-document.querySelectorAll(".page").forEach(x=>{
-if(x!==page)x.classList.remove("active");
-});
-menu.classList.remove("show");
-scrollTo(0,0);
+  message.className =
+    "message";
 }
 
-document.querySelectorAll("[data-page]").forEach(b=>{
-b.onclick=()=>openPage(b.dataset.page);
-});
 
-function note(t,type="err"){
-const m=document.getElementById("msg");
-m.textContent=t;
-m.className="notice show "+type;
-setTimeout(()=>m.className="notice",3500);
+// ===============================
+// SHOW PASSWORD
+// ===============================
+
+showPassword.addEventListener(
+  "click",
+  () => {
+
+    const visible =
+      password.type === "text";
+
+    password.type =
+      visible ? "password" : "text";
+
+    showPassword.textContent =
+      visible ? "Show" : "Hide";
+  }
+);
+
+
+// ===============================
+// REDIRECT
+// ===============================
+
+function redirectByRole(role){
+
+  if(role === "admin"){
+
+    location.href =
+      "admin-dashboard.html";
+
+    return;
+  }
+
+  if(role === "finance"){
+
+    location.href =
+      "finance-dashboard.html";
+
+    return;
+  }
+
+  if(role === "auditor"){
+
+    location.href =
+      "audit-dashboard.html";
+
+    return;
+  }
+
+  throw new Error(
+    "Unknown account role"
+  );
 }
 
-if(admin){
-document.getElementById("usersBody").innerHTML=`
-<tr><td>${u.name||"-"}</td><td>${u.username||"-"}</td>
-<td>Administrator</td><td>Active</td></tr>`;
-}else{
-document.getElementById("usersBody").innerHTML=
-`<tr><td colspan="4">User management restricted.</td></tr>`;
+
+// ===============================
+// LOGIN
+// ===============================
+
+form.addEventListener(
+  "submit",
+  async event => {
+
+    event.preventDefault();
+
+    clearMessage();
+
+    const user =
+      username.value.trim();
+
+    const pass =
+      password.value;
+
+    if(!user || !pass){
+
+      showMessage(
+        "Enter your username and password."
+      );
+
+      return;
+    }
+
+    loginBtn.disabled = true;
+
+    loginBtn.textContent =
+      "Signing in...";
+
+    try{
+
+      const response =
+        await fetch(
+          AUTH_API + "/login",
+          {
+            method:"POST",
+
+            headers:{
+              "Content-Type":
+                "application/json"
+            },
+
+            body:JSON.stringify({
+              username:user,
+              password:pass
+            })
+          }
+        );
+
+
+      let data;
+
+      try{
+
+        data =
+          await response.json();
+
+      }catch{
+
+        throw new Error(
+          "Invalid server response."
+        );
+      }
+
+
+      if(!response.ok){
+
+        throw new Error(
+          data.error ||
+          "Login failed."
+        );
+      }
+
+
+      if(
+        !data.success ||
+        !data.token ||
+        !data.user
+      ){
+
+        throw new Error(
+          "Invalid login response."
+        );
+      }
+
+
+      const role =
+        data.user.role;
+
+
+      if(
+        role !== "admin" &&
+        role !== "finance" &&
+        role !== "auditor"
+      ){
+
+        throw new Error(
+          "Invalid account role."
+        );
+      }
+
+
+      // Save verified session
+      sessionStorage.setItem(
+        TOKEN_KEY,
+        data.token
+      );
+
+      sessionStorage.setItem(
+        USER_KEY,
+        JSON.stringify(
+          data.user
+        )
+      );
+
+
+      showMessage(
+        "Login successful. Opening administration...",
+        "success"
+      );
+
+
+      password.value = "";
+
+
+      setTimeout(
+        () => {
+
+          try{
+
+            redirectByRole(role);
+
+          }catch(error){
+
+            sessionStorage.removeItem(
+              TOKEN_KEY
+            );
+
+            sessionStorage.removeItem(
+              USER_KEY
+            );
+
+            showMessage(
+              error.message
+            );
+
+            loginBtn.disabled =
+              false;
+
+            loginBtn.textContent =
+              "Login";
+          }
+
+        },
+        500
+      );
+
+
+    }catch(error){
+
+      showMessage(
+        error.message ||
+        "Unable to connect to authentication server."
+      );
+
+      loginBtn.disabled =
+        false;
+
+      loginBtn.textContent =
+        "Login";
+    }
+
+  }
+);
+
+
+// ===============================
+// ALREADY LOGGED IN
+// ===============================
+
+async function checkExistingSession(){
+
+  const token =
+    sessionStorage.getItem(
+      TOKEN_KEY
+    );
+
+  if(!token){
+    return;
+  }
+
+  try{
+
+    const response =
+      await fetch(
+        AUTH_API + "/me",
+        {
+          method:"GET",
+
+          headers:{
+            "Authorization":
+              "Bearer " + token
+          }
+        }
+      );
+
+
+    if(!response.ok){
+
+      sessionStorage.removeItem(
+        TOKEN_KEY
+      );
+
+      sessionStorage.removeItem(
+        USER_KEY
+      );
+
+      return;
+    }
+
+
+    const data =
+      await response.json();
+
+
+    if(
+      data.success &&
+      data.user &&
+      data.user.role
+    ){
+
+      sessionStorage.setItem(
+        USER_KEY,
+        JSON.stringify(
+          data.user
+        )
+      );
+
+      redirectByRole(
+        data.user.role
+      );
+    }
+
+
+  }catch{
+
+    // Stay on login page
+  }
 }
 
-document.getElementById("logout").onclick=()=>{
-sessionStorage.removeItem("goh_admin");
-sessionStorage.removeItem("goh_login_type");
-location.href="login.html";
-};
+checkExistingSession();
+
 </script>
 
 </body>
