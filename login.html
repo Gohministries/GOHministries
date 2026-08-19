@@ -10,111 +10,112 @@
 *{box-sizing:border-box;margin:0;padding:0}
 
 body{
-font-family:Arial,sans-serif;
-min-height:100vh;
-display:grid;
-place-items:center;
-background:#f4f7fb;
-color:#172033;
-padding:20px
+ font-family:Arial,sans-serif;
+ min-height:100vh;
+ display:grid;
+ place-items:center;
+ background:#f4f7fb;
+ color:#172033;
+ padding:20px
 }
 
 .login{
-width:100%;
-max-width:390px;
-background:#fff;
-padding:25px;
-border-radius:16px;
-box-shadow:0 5px 25px rgba(0,0,0,.08)
+ width:100%;
+ max-width:390px;
+ background:#fff;
+ padding:25px;
+ border-radius:16px;
+ box-shadow:0 5px 25px rgba(0,0,0,.08)
 }
 
 .logo{
-width:58px;
-height:58px;
-border-radius:50%;
-background:#0b376d;
-color:#fff;
-display:grid;
-place-items:center;
-font-weight:800;
-font-size:16px;
-margin:0 auto 14px
+ width:58px;
+ height:58px;
+ border-radius:50%;
+ background:#0b376d;
+ color:#fff;
+ display:grid;
+ place-items:center;
+ font-weight:800;
+ font-size:16px;
+ margin:0 auto 14px
 }
 
 h1{
-text-align:center;
-font-size:21px;
-color:#0b376d
+ text-align:center;
+ font-size:21px;
+ color:#0b376d
 }
 
 .sub{
-text-align:center;
-font-size:12px;
-color:#667085;
-margin:5px 0 22px
+ text-align:center;
+ font-size:12px;
+ color:#667085;
+ margin:5px 0 22px
 }
 
 label{
-display:block;
-font-size:12px;
-font-weight:bold;
-margin:12px 0 5px
+ display:block;
+ font-size:12px;
+ font-weight:bold;
+ margin:12px 0 5px
 }
 
 input,select{
-width:100%;
-padding:12px;
-border:1px solid #d0d5dd;
-border-radius:9px;
-outline:none;
-background:#fff
+ width:100%;
+ padding:12px;
+ border:1px solid #d0d5dd;
+ border-radius:9px;
+ outline:none;
+ background:#fff
 }
 
 input:focus,select:focus{
-border-color:#0b376d
+ border-color:#0b376d
 }
 
 button{
-width:100%;
-border:0;
-background:#0b376d;
-color:#fff;
-padding:12px;
-border-radius:9px;
-font-weight:bold;
-margin-top:18px;
-cursor:pointer
+ width:100%;
+ border:0;
+ background:#0b376d;
+ color:#fff;
+ padding:12px;
+ border-radius:9px;
+ font-weight:bold;
+ margin-top:18px;
+ cursor:pointer
 }
 
 button:disabled{
-opacity:.6
+ opacity:.6;
+ cursor:not-allowed
 }
 
 .message{
-display:none;
-padding:10px;
-border-radius:8px;
-font-size:12px;
-margin-bottom:12px
+ display:none;
+ padding:10px;
+ border-radius:8px;
+ font-size:12px;
+ margin-bottom:12px
 }
 
-.error{
-display:block;
-background:#fee2e2;
-color:#991b1b
+.message.error{
+ display:block;
+ background:#fee2e2;
+ color:#991b1b
 }
 
-.success{
-display:block;
-background:#dcfce7;
-color:#166534
+.message.success{
+ display:block;
+ background:#dcfce7;
+ color:#166534
 }
 
 .footer{
-text-align:center;
-font-size:10px;
-color:#98a2b3;
-margin-top:18px
+ text-align:center;
+ font-size:10px;
+ color:#98a2b3;
+ margin-top:18px
 }
 </style>
 </head>
@@ -133,36 +134,36 @@ margin-top:18px
 
 <form id="loginForm">
 
-<label>Login Type</label>
+<label for="loginType">Login Type</label>
 
-<select id="loginType" required>
-<option value="admin">Administrator</option>
-<option value="auditor">Auditor</option>
-<option value="finance">Finance</option>
+<select id="loginType">
+ <option value="admin">Administrator</option>
+ <option value="auditor">Auditor</option>
+ <option value="finance">Finance</option>
 </select>
 
-<label>Username</label>
+<label for="username">Username</label>
 
 <input
-id="username"
-type="text"
-autocomplete="username"
-placeholder="Username"
-required
+ id="username"
+ type="text"
+ autocomplete="username"
+ placeholder="Username"
+ required
 >
 
-<label>Password</label>
+<label for="password">Password</label>
 
 <input
-id="password"
-type="password"
-autocomplete="current-password"
-placeholder="Password"
-required
+ id="password"
+ type="password"
+ autocomplete="current-password"
+ placeholder="Password"
+ required
 >
 
 <button id="loginBtn" type="submit">
-Login
+ Login
 </button>
 
 </form>
@@ -184,195 +185,226 @@ const NEW_AUTH =
 const form =
 document.getElementById("loginForm");
 
-const message =
-document.getElementById("message");
+const type =
+document.getElementById("loginType");
+
+const username =
+document.getElementById("username");
+
+const password =
+document.getElementById("password");
 
 const button =
 document.getElementById("loginBtn");
 
-const type =
-document.getElementById("loginType");
+const message =
+document.getElementById("message");
 
-function showMessage(text,kind){
 
-message.textContent=text;
-message.className="message "+kind;
+function showMessage(text,type){
+
+ message.textContent=text;
+ message.className="message "+type;
 
 }
+
 
 type.addEventListener("change",()=>{
 
-const t=type.value;
+ if(type.value==="admin"){
+  username.placeholder="Administrator username";
+ }
 
-if(t==="admin"){
-document.getElementById("username").placeholder="Administrator username";
-}
+ if(type.value==="auditor"){
+  username.placeholder="Audit username";
+ }
 
-if(t==="auditor"){
-document.getElementById("username").placeholder="Audit username";
-}
-
-if(t==="finance"){
-document.getElementById("username").placeholder="Finance username";
-}
+ if(type.value==="finance"){
+  username.placeholder="Finance username";
+ }
 
 });
+
 
 form.addEventListener("submit",async e=>{
 
-e.preventDefault();
+ e.preventDefault();
 
-const loginType=type.value;
+ const loginType=type.value;
+ const user=username.value.trim();
+ const pass=password.value;
 
-const username=
-document.getElementById("username")
-.value.trim();
+ if(!user||!pass){
 
-const password=
-document.getElementById("password")
-.value;
+  showMessage(
+   "Enter username and password.",
+   "error"
+  );
 
-if(!username||!password){
+  return;
+ }
 
-showMessage(
-"Enter username and password.",
-"error"
-);
-
-return;
-
-}
-
-button.disabled=true;
-button.textContent="Signing in...";
-
-try{
-
-/*
-Administrator continues using
-your existing working Worker.
-*/
-
-const API=
-loginType==="admin"
-?ADMIN_API
-:NEW_AUTH;
-
-const response=
-await fetch(API+"/login",{
-
-method:"POST",
-
-headers:{
-"Content-Type":"application/json"
-},
-
-credentials:"include",
-
-body:JSON.stringify({
-
-username,
-password,
-
-/*
-The new Worker uses this
-to identify the requested role.
-*/
-
-role:loginType
-
-})
-
-});
-
-let data={};
-
-try{
-data=await response.json();
-}catch{}
-
-if(!response.ok){
-
-throw new Error(
-data.error||"Invalid login"
-);
-
-}
+ button.disabled=true;
+ button.textContent="Signing in...";
+ message.className="message";
 
 
-/*
-Existing Administrator Worker
-returns token + admin.
-*/
+ try{
 
-if(loginType==="admin"){
+  /*
+   Administrator:
+   Existing working Worker
+  */
 
-if(!data.token||!data.admin){
+  if(loginType==="admin"){
 
-throw new Error(
-"Invalid administrator response"
-);
+   const response=
+   await fetch(
+    ADMIN_API+"/login",
+    {
+     method:"POST",
+     headers:{
+      "Content-Type":"application/json"
+     },
+     body:JSON.stringify({
+      username:user,
+      password:pass
+     })
+    }
+   );
 
-}
+   let data={};
 
-sessionStorage.setItem(
-"goh_admin_token",
-data.token
-);
+   try{
+    data=await response.json();
+   }catch{}
 
-sessionStorage.setItem(
-"goh_admin",
-JSON.stringify(data.admin)
-);
+   if(!response.ok){
 
-}else{
+    throw new Error(
+     data.error||"Invalid login"
+    );
 
-/*
-New Cloudflare authentication
-uses the secure session cookie.
-*/
+   }
 
-if(data.user){
+   if(!data.token||!data.admin){
 
-sessionStorage.setItem(
-"goh_admin",
-JSON.stringify(data.user)
-);
+    throw new Error(
+     "Invalid server response"
+    );
 
-}
+   }
 
-sessionStorage.setItem(
-"goh_login_type",
-loginType
-);
+   sessionStorage.setItem(
+    "goh_admin_token",
+    data.token
+   );
 
-}
+   sessionStorage.setItem(
+    "goh_admin",
+    JSON.stringify(data.admin)
+   );
+
+   sessionStorage.setItem(
+    "goh_login_type",
+    "admin"
+   );
+
+  }
 
 
-showMessage(
-"Login successful. Opening administration...",
-"success"
-);
+  /*
+   Auditor / Finance:
+   New Cloudflare Worker
+  */
 
-setTimeout(()=>{
+  else{
 
-window.location.replace(
-"admin.html"
-);
+   const response=
+   await fetch(
+    NEW_AUTH+"/login",
+    {
+     method:"POST",
+     headers:{
+      "Content-Type":"application/json"
+     },
+     credentials:"include",
+     body:JSON.stringify({
+      username:user,
+      password:pass,
+      role:loginType
+     })
+    }
+   );
 
-},500);
+   let data={};
 
-}catch(error){
+   try{
+    data=await response.json();
+   }catch{}
 
-showMessage(
-error.message||"Login failed",
-"error"
-);
+   if(!response.ok){
 
-button.disabled=false;
-button.textContent="Login";
+    throw new Error(
+     data.error||"Invalid login"
+    );
 
-}
+   }
+
+   if(!data.success||!data.user){
+
+    throw new Error(
+     "Invalid authentication response"
+    );
+
+   }
+
+   /*
+    Store only non-sensitive
+    user information.
+   */
+
+   sessionStorage.setItem(
+    "goh_admin",
+    JSON.stringify(data.user)
+   );
+
+   sessionStorage.setItem(
+    "goh_login_type",
+    loginType
+   );
+
+  }
+
+
+  showMessage(
+   "Login successful. Opening administration...",
+   "success"
+  );
+
+
+  setTimeout(()=>{
+
+   window.location.replace(
+    "admin.html"
+   );
+
+  },500);
+
+
+ }catch(error){
+
+  console.error(error);
+
+  showMessage(
+   error.message||"Login failed",
+   "error"
+  );
+
+  button.disabled=false;
+  button.textContent="Login";
+
+ }
 
 });
 
