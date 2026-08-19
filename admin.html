@@ -4,1132 +4,468 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0b376d">
-
-<title>GOH Ministries | Administration</title>
+<title>GOH Ministries | Admin</title>
 
 <style>
-*{
-box-sizing:border-box;
-margin:0;
-padding:0
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f4f7fb;color:#172033}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+
+header{background:#0b376d;color:#fff;position:sticky;top:0;z-index:10}
+.head{max-width:1200px;margin:auto;padding:11px 15px;display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{width:40px;height:40px;border-radius:50%;background:#fff;color:#0b376d;display:grid;place-items:center;font-weight:bold}
+.brand h1{font-size:18px}.brand p{font-size:11px;opacity:.8}
+.logout{border:0;border-radius:7px;padding:9px 12px;color:#0b376d;font-weight:bold}
+
+.layout{max-width:1200px;margin:auto;display:flex;min-height:calc(100vh - 62px)}
+aside{width:210px;background:#fff;padding:10px;border-right:1px solid #e5e7eb;flex-shrink:0}
+.title{font-size:10px;color:#98a2b3;font-weight:bold;margin:13px 7px 5px;text-transform:uppercase}
+.nav{width:100%;border:0;background:none;text-align:left;padding:9px;border-radius:7px;margin:1px 0;color:#344054;font-size:13px;font-weight:bold}
+.nav.active,.nav:hover{background:#eaf1fb;color:#0b376d}
+
+main{flex:1;padding:16px;min-width:0}
+.page{display:none}.page.active{display:block}
+.box,.card,.stat{background:#fff;border-radius:11px;padding:16px;box-shadow:0 2px 12px #0000000d;margin-bottom:13px}
+h2{color:#0b376d;font-size:20px;margin-bottom:13px}
+h3{font-size:15px;margin-bottom:6px}
+p{font-size:13px;color:#667085;line-height:1.5}
+.role{display:inline-block;margin-top:8px;background:#eaf1fb;color:#0b376d;padding:4px 8px;border-radius:15px;font-size:11px;font-weight:bold}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.stat small{color:#667085}.stat strong{display:block;color:#0b376d;font-size:23px;margin-top:4px}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.btn{border:0;border-radius:7px;padding:9px 12px;margin:9px 5px 0 0;font-size:12px;font-weight:bold}
+.primary{background:#0b376d;color:#fff}.secondary{background:#edf2f7;color:#344054}
+
+.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+label{display:block;font-size:12px;font-weight:bold;margin-bottom:4px}
+input,select,textarea{width:100%;padding:9px;border:1px solid #d0d5dd;border-radius:7px;background:#fff}
+textarea{min-height:90px;resize:vertical}.full{grid-column:1/-1}
+
+.msg{display:none;padding:10px;border-radius:7px;margin-bottom:12px;font-size:13px}
+.msg.ok{display:block;background:#dcfce7;color:#166534}
+.msg.err{display:block;background:#fee2e2;color:#991b1b}
+
+table{width:100%;border-collapse:collapse;min-width:550px}
+th,td{padding:8px;border-bottom:1px solid #eee;text-align:left;font-size:12px}
+th{background:#f8fafc;color:#0b376d}
+.scroll{overflow:auto}
+
+footer{text-align:center;padding:18px;color:#98a2b3;font-size:11px}
+
+@media(max-width:800px){
+aside{width:185px}.stats{grid-template-columns:repeat(2,1fr)}
+.grid{grid-template-columns:repeat(2,1fr)}
 }
-
-body{
-font-family:Arial,sans-serif;
-background:#f4f7fb;
-color:#172033;
-min-height:100vh
-}
-
-.header{
-background:#0b376d;
-color:#fff;
-padding:15px 18px;
-position:sticky;
-top:0;
-z-index:10;
-box-shadow:0 3px 12px rgba(0,0,0,.15)
-}
-
-.header-inner{
-max-width:1200px;
-margin:auto;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:12px
-}
-
-.brand{
-display:flex;
-align-items:center;
-gap:12px
-}
-
-.logo{
-width:46px;
-height:46px;
-border-radius:50%;
-background:#fff;
-color:#0b376d;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:800
-}
-
-.brand h1{
-font-size:19px
-}
-
-.brand p{
-font-size:12px;
-opacity:.8;
-margin-top:3px
-}
-
-.logout{
-border:1px solid rgba(255,255,255,.5);
-background:transparent;
-color:#fff;
-padding:9px 14px;
-border-radius:8px;
-font-weight:700;
-cursor:pointer
-}
-
-.container{
-max-width:1200px;
-margin:auto;
-padding:20px 15px 40px
-}
-
-.welcome{
-background:#fff;
-padding:20px;
-border-radius:14px;
-box-shadow:0 3px 15px rgba(0,0,0,.06);
-margin-bottom:18px
-}
-
-.welcome h2{
-color:#0b376d;
-font-size:22px
-}
-
-.welcome p{
-color:#667085;
-margin-top:6px
-}
-
-.role{
-display:inline-block;
-margin-top:10px;
-padding:5px 10px;
-border-radius:20px;
-background:#e8f0fb;
-color:#0b376d;
-font-size:12px;
-font-weight:700
-}
-
-.stats{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:14px
-}
-
-.stat{
-background:#fff;
-padding:18px;
-border-radius:14px;
-box-shadow:0 3px 15px rgba(0,0,0,.06)
-}
-
-.stat-icon{
-font-size:25px
-}
-
-.stat-title{
-font-size:13px;
-color:#667085;
-margin-top:8px
-}
-
-.stat-number{
-font-size:27px;
-font-weight:800;
-color:#0b376d;
-margin-top:4px
-}
-
-.title{
-color:#0b376d;
-font-size:19px;
-margin:25px 0 13px
-}
-
-.modules{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:14px
-}
-
-.module{
-background:#fff;
-padding:18px;
-border-radius:14px;
-box-shadow:0 3px 15px rgba(0,0,0,.06)
-}
-
-.module-icon{
-font-size:28px
-}
-
-.module h3{
-margin-top:8px
-}
-
-.module p{
-color:#667085;
-font-size:13px;
-line-height:1.5;
-margin-top:5px
-}
-
-.actions{
-display:flex;
-gap:7px;
-margin-top:14px;
-flex-wrap:wrap
-}
-
-.btn{
-border:0;
-padding:9px 11px;
-border-radius:8px;
-cursor:pointer;
-font-size:12px;
-font-weight:700
-}
-
-.primary{
-background:#0b376d;
-color:#fff
-}
-
-.secondary{
-background:#edf2f7;
-color:#172033
-}
-
-.audit{
-background:#fff;
-padding:18px;
-border-radius:14px;
-overflow:auto;
-box-shadow:0 3px 15px rgba(0,0,0,.06)
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-min-width:600px
-}
-
-th,td{
-padding:10px;
-border-bottom:1px solid #eee;
-text-align:left;
-font-size:13px
-}
-
-th{
-color:#0b376d;
-background:#f7f9fc
-}
-
-.error{
-display:none;
-background:#fee2e2;
-color:#991b1b;
-padding:13px;
-border-radius:9px;
-margin-bottom:15px
-}
-
-.footer{
-text-align:center;
-color:#8993a4;
-font-size:12px;
-margin-top:30px
-}
-
-@media(max-width:850px){
-
-.stats{
-grid-template-columns:repeat(2,1fr)
-}
-
-.modules{
-grid-template-columns:repeat(2,1fr)
-}
-
-}
-
 @media(max-width:600px){
-
-.brand h1{
-font-size:17px
+.layout{display:block}aside{width:100%;border:0;border-bottom:1px solid #ddd}
+main{padding:11px}.grid,.formgrid{grid-template-columns:1fr}
+.full{grid-column:auto}.stats{grid-template-columns:repeat(2,1fr)}
 }
-
-.brand p{
-font-size:11px
-}
-
-.logo{
-width:42px;
-height:42px
-}
-
-.logout{
-padding:8px 10px;
-font-size:12px
-}
-
-.stats{
-gap:10px
-}
-
-.stat{
-padding:14px
-}
-
-.stat-number{
-font-size:23px
-}
-
-.modules{
-grid-template-columns:1fr
-}
-
-}
+@media(max-width:380px){.stats{grid-template-columns:1fr}}
 </style>
 </head>
 
 <body>
 
-<header class="header">
-
-<div class="header-inner">
-
+<header>
+<div class="head">
 <div class="brand">
-
 <div class="logo">GOH</div>
-
-<div>
-<h1>GOH Ministries</h1>
-<p>Church Administration</p>
+<div><h1>GOH Ministries</h1><p>Church Administration</p></div>
 </div>
-
+<button class="logout" id="logout">Logout</button>
 </div>
-
-<button
-id="logoutBtn"
-class="logout">
-Logout
-</button>
-
-</div>
-
 </header>
 
+<div class="layout">
 
-<main class="container">
+<aside>
+<div class="title">Main</div>
+<button class="nav active" data-page="dashboard">🏠 Dashboard</button>
+<button class="nav" data-page="finance">💰 Finance</button>
+<button class="nav" data-page="reports">📊 Reports</button>
 
-<div
-id="errorBox"
-class="error">
+<div class="title">Ministry</div>
+<button class="nav" data-page="history">📜 History</button>
+<button class="nav" data-page="activities">⛪ Activities</button>
+<button class="nav" data-page="members">👥 Members</button>
+<button class="nav" data-page="meetings">📋 Meetings</button>
+
+<div class="title">Documents</div>
+<button class="nav" data-page="documents">📁 Documents</button>
+<button class="nav" data-page="property">🏗️ Property</button>
+<button class="nav" data-page="media">📸 Media</button>
+
+<div class="title">Security</div>
+<button class="nav" data-page="users">🔐 Users</button>
+<button class="nav" data-page="audit">🛡️ Audit Logs</button>
+</aside>
+
+<main>
+
+<div id="msg" class="msg"></div>
+
+<!-- DASHBOARD -->
+<section class="page active" id="dashboard">
+
+<div class="box">
+<h2>Welcome, <span id="adminName">Administrator</span></h2>
+<p>GOH Ministries Church Administration</p>
+<span class="role" id="adminRole">Administrator</span>
 </div>
 
-
-<section class="welcome">
-
-<h2>
-Welcome,
-<span id="adminName">
-Administrator
-</span>
-</h2>
-
-<p>
-GOH Ministries Church Administration Dashboard
-</p>
-
-<span
-id="adminRole"
-class="role">
-Administrator
-</span>
-
-</section>
-
-
-<section class="stats">
-
-<div class="stat">
-
-<div class="stat-icon">👥</div>
-
-<div class="stat-title">
-Members
+<div class="stats">
+<div class="stat"><small>Members</small><strong id="members">0</strong></div>
+<div class="stat"><small>Ministries</small><strong id="ministries">0</strong></div>
+<div class="stat"><small>Activities</small><strong id="activitiesCount">0</strong></div>
+<div class="stat"><small>Documents</small><strong id="documentsCount">0</strong></div>
 </div>
 
-<div
-id="members"
-class="stat-number">
-0
-</div>
+<h2 style="margin-top:20px">Administration</h2>
 
-</div>
-
-
-<div class="stat">
-
-<div class="stat-icon">⛪</div>
-
-<div class="stat-title">
-Ministries
-</div>
-
-<div
-id="ministries"
-class="stat-number">
-0
-</div>
-
-</div>
-
-
-<div class="stat">
-
-<div class="stat-icon">📅</div>
-
-<div class="stat-title">
-Events
-</div>
-
-<div
-id="events"
-class="stat-number">
-0
-</div>
-
-</div>
-
-
-<div class="stat">
-
-<div class="stat-icon">📄</div>
-
-<div class="stat-title">
-Documents
-</div>
-
-<div
-id="documents"
-class="stat-number">
-0
-</div>
-
+<div class="grid">
+<div class="card"><h3>💰 Finance</h3><p>Income, expenses and financial records.</p><button class="btn primary" onclick="show('finance')">Open</button></div>
+<div class="card"><h3>📊 Reports</h3><p>Monthly and annual reports.</p><button class="btn primary" onclick="show('reports')">Open</button></div>
+<div class="card"><h3>📜 History</h3><p>Ministry history and milestones.</p><button class="btn primary" onclick="show('history')">Open</button></div>
+<div class="card"><h3>⛪ Activities</h3><p>Church and ministry activities.</p><button class="btn primary" onclick="show('activities')">Open</button></div>
+<div class="card"><h3>📁 Documents</h3><p>Important ministry documents.</p><button class="btn primary" onclick="show('documents')">Open</button></div>
+<div class="card"><h3>🛡️ Audit</h3><p>Administrative security records.</p><button class="btn primary" onclick="show('audit')">Open</button></div>
 </div>
 
 </section>
 
-
-<h2 class="title">
-Administration
-</h2>
-
-
-<section class="modules">
-
-
-<div class="module">
-
-<div class="module-icon">👥</div>
-
-<h3>Members</h3>
-
-<p>
-Manage church member records.
-</p>
-
-<div class="actions">
-
-<button
-class="btn primary"
-onclick="openModule('Members')">
-Open
-</button>
-
-<button
-class="btn secondary"
-onclick="upload('Members')">
-Upload
-</button>
-
-<button
-class="btn secondary"
-onclick="downloadFiles('Members')">
-Download
-</button>
-
+<!-- FINANCE -->
+<section class="page" id="finance">
+<h2>💰 Finance</h2>
+<div class="box">
+<div class="formgrid">
+<div><label>Date</label><input type="date"></div>
+<div><label>Type</label><select><option>Income</option><option>Expense</option></select></div>
+<div><label>Category</label><select>
+<option>Donation</option><option>Offering</option><option>Tithe</option>
+<option>Grant</option><option>Construction</option><option>Utilities</option>
+<option>Transport</option><option>Ministry Activity</option>
+<option>Community Assistance</option><option>Equipment</option><option>Other</option>
+</select></div>
+<div><label>Amount (LKR)</label><input type="number" min="0" step=".01"></div>
+<div><label>Payment Method</label><select><option>Cash</option><option>Bank Transfer</option><option>Bank Deposit</option><option>Cheque</option><option>Other</option></select></div>
+<div><label>Reference</label><input placeholder="Receipt / bank reference"></div>
+<div><label>Person / Organization</label><input placeholder="Donor or payee"></div>
+<div><label>Transaction No.</label><input placeholder="Transaction ID"></div>
+<div class="full"><label>Description</label><textarea></textarea></div>
+<div class="full"><label>Receipt / Slip</label><input type="file" accept=".pdf,.jpg,.jpeg,.png"></div>
 </div>
-
+<button class="btn primary" onclick="notice('Finance saving')">Save Record</button>
+<button class="btn secondary" onclick="notice('Receipt upload')">Upload Receipt</button>
 </div>
-
-
-<div class="module">
-
-<div class="module-icon">⛪</div>
-
-<h3>Ministries</h3>
-
-<p>
-Manage church ministries.
-</p>
-
-<div class="actions">
-
-<button
-class="btn primary"
-onclick="openModule('Ministries')">
-Open
-</button>
-
-<button
-class="btn secondary"
-onclick="upload('Ministries')">
-Upload
-</button>
-
-<button
-class="btn secondary"
-onclick="downloadFiles('Ministries')">
-Download
-</button>
-
-</div>
-
-</div>
-
-
-<div class="module">
-
-<div class="module-icon">📅</div>
-
-<h3>Events</h3>
-
-<p>
-Manage church events and files.
-</p>
-
-<div class="actions">
-
-<button
-class="btn primary"
-onclick="openModule('Events')">
-Open
-</button>
-
-<button
-class="btn secondary"
-onclick="upload('Events')">
-Upload
-</button>
-
-<button
-class="btn secondary"
-onclick="downloadFiles('Events')">
-Download
-</button>
-
-</div>
-
-</div>
-
-
-<div class="module">
-
-<div class="module-icon">💳</div>
-
-<h3>Payment Slips</h3>
-
-<p>
-Manage payment slips and payment records.
-</p>
-
-<div class="actions">
-
-<button
-class="btn primary"
-onclick="openModule('Payment Slips')">
-Open
-</button>
-
-<button
-class="btn secondary"
-onclick="upload('Payment Slips')">
-Upload Slip
-</button>
-
-<button
-class="btn secondary"
-onclick="downloadFiles('Payment Slips')">
-Download
-</button>
-
-</div>
-
-</div>
-
-
-<div class="module">
-
-<div class="module-icon">📄</div>
-
-<h3>Documents</h3>
-
-<p>
-Manage church documents.
-</p>
-
-<div class="actions">
-
-<button
-class="btn primary"
-onclick="openModule('Documents')">
-Open
-</button>
-
-<button
-class="btn secondary"
-onclick="upload('Documents')">
-Upload
-</button>
-
-<button
-class="btn secondary"
-onclick="downloadFiles('Documents')">
-Download
-</button>
-
-</div>
-
-</div>
-
-
-<div class="module">
-
-<div class="module-icon">🧾</div>
-
-<h3>Certificates</h3>
-
-<p>
-Manage church certificates.
-</p>
-
-<div class="actions">
-
-<button
-class="btn primary"
-onclick="openModule('Certificates')">
-Open
-</button>
-
-<button
-class="btn secondary"
-onclick="upload('Certificates')">
-Upload
-</button>
-
-<button
-class="btn secondary"
-onclick="downloadFiles('Certificates')">
-Download
-</button>
-
-</div>
-
-</div>
-
-
-<div class="module">
-
-<div class="module-icon">📊</div>
-
-<h3>Reports</h3>
-
-<p>
-Manage administration reports.
-</p>
-
-<div class="actions">
-
-<button
-class="btn primary"
-onclick="openModule('Reports')">
-Open
-</button>
-
-<button
-class="btn secondary"
-onclick="upload('Reports')">
-Upload
-</button>
-
-<button
-class="btn secondary"
-onclick="downloadFiles('Reports')">
-Download
-</button>
-
-</div>
-
-</div>
-
-
-<div class="module">
-
-<div class="module-icon">🗂️</div>
-
-<h3>Church Records</h3>
-
-<p>
-Manage important church records.
-</p>
-
-<div class="actions">
-
-<button
-class="btn primary"
-onclick="openModule('Church Records')">
-Open
-</button>
-
-<button
-class="btn secondary"
-onclick="upload('Church Records')">
-Upload
-</button>
-
-<button
-class="btn secondary"
-onclick="downloadFiles('Church Records')">
-Download
-</button>
-
-</div>
-
-</div>
-
-
-<div
-class="module"
-id="auditModule">
-
-<div class="module-icon">📋</div>
-
-<h3>Audit Logs</h3>
-
-<p>
-View administrator security activity.
-</p>
-
-<div class="actions">
-
-<button
-class="btn primary"
-onclick="loadAuditLogs()">
-View Logs
-</button>
-
-</div>
-
-</div>
-
 </section>
 
-
-<div
-id="auditArea"
-style="display:none">
-
-<h2 class="title">
-Recent Audit Logs
-</h2>
-
-<section class="audit">
-
-<div id="auditContent">
-Loading...
+<!-- REPORTS -->
+<section class="page" id="reports">
+<h2>📊 Reports</h2>
+<div class="box">
+<div class="formgrid">
+<div><label>Report</label><select><option>Monthly</option><option>Annual</option><option>Custom</option></select></div>
+<div><label>Year</label><input type="number" id="reportYear"></div>
+<div><label>From</label><input type="date"></div>
+<div><label>To</label><input type="date"></div>
 </div>
+<button class="btn primary" onclick="notice('Report generation')">Generate</button>
+<button class="btn secondary" onclick="notice('PDF download')">PDF</button>
+<button class="btn secondary" onclick="notice('CSV download')">CSV</button>
 
+<div class="stats" style="margin-top:15px">
+<div class="stat"><small>Total Income</small><strong>LKR 0</strong></div>
+<div class="stat"><small>Expenses</small><strong>LKR 0</strong></div>
+<div class="stat"><small>Balance</small><strong>LKR 0</strong></div>
+</div>
+</div>
 </section>
 
+<!-- HISTORY -->
+<section class="page" id="history">
+<h2>📜 Ministry History</h2>
+<div class="box">
+<div class="formgrid">
+<div><label>Date</label><input type="date"></div>
+<div><label>Milestone</label><input placeholder="Important milestone"></div>
+<div class="full"><label>Description</label><textarea></textarea></div>
+<div class="full"><label>Document</label><input type="file"></div>
 </div>
-
-
-<div class="footer">
-GOH Ministries • Authorized Administrators Only
+<button class="btn primary" onclick="notice('History saving')">Save History</button>
 </div>
-
-</main>
-
-
-<script>
-
-const API =
-"https://admin-workerjs.createlk.workers.dev";
-
-const LOGIN =
-"login.html";
-
-const token =
-sessionStorage.getItem(
-"goh_admin_token"
-);
-
-
-if(!token){
-
-window.location.replace(
-LOGIN
-);
-
-}else{
-
-verifySession();
-
-}
-
-
-async function api(path,options={}){
-
-return fetch(
-API+path,
-{
-...options,
-headers:{
-...(options.headers||{}),
-"Authorization":
-"Bearer "+token
-}
-}
-);
-
-}
-
-
-async function verifySession(){
-
-try{
-
-const response =
-await api("/me");
-
-const data =
-await response.json();
-
-if(
-!response.ok ||
-!data.success
-){
-
-throw new Error(
-"Session expired."
-);
-
-}
-
-
-const admin =
-data.admin;
-
-if(admin){
-
-document.getElementById(
-"adminName"
-).textContent =
-admin.name ||
-"Administrator";
-
-document.getElementById(
-"adminRole"
-).textContent =
-admin.role ||
-"Administrator";
-
-
-if(
-admin.role !==
-"super_admin"
-){
-
-document.getElementById(
-"auditModule"
-).style.display =
-"none";
-
-}
-
-}
-
-await loadDashboard();
-
-}catch(error){
-
-sessionStorage.removeItem(
-"goh_admin_token"
-);
-
-sessionStorage.removeItem(
-"goh_admin"
-);
-
-window.location.replace(
-LOGIN
-);
-
-}
-
-}
-
-
-async function loadDashboard(){
-
-try{
-
-const response =
-await api("/dashboard");
-
-const data =
-await response.json();
-
-if(
-!response.ok ||
-!data.success
-){
-
-throw new Error(
-data.error ||
-"Dashboard unavailable."
-);
-
-}
-
-const totals =
-data.totals || {};
-
-document.getElementById(
-"members"
-).textContent =
-Number(totals.members||0);
-
-document.getElementById(
-"ministries"
-).textContent =
-Number(totals.ministries||0);
-
-document.getElementById(
-"events"
-).textContent =
-Number(totals.events||0);
-
-document.getElementById(
-"documents"
-).textContent =
-Number(totals.documents||0);
-
-}catch(error){
-
-showError(
-error.message
-);
-
-}
-
-}
-
-
-async function loadAuditLogs(){
-
-document.getElementById(
-"auditArea"
-).style.display =
-"block";
-
-const content =
-document.getElementById(
-"auditContent"
-);
-
-content.textContent =
-"Loading...";
-
-try{
-
-const response =
-await api("/audit-logs");
-
-const data =
-await response.json();
-
-if(
-!response.ok ||
-!data.success
-){
-
-throw new Error(
-data.error ||
-"Unable to load audit logs."
-);
-
-}
-
-const logs =
-data.logs || [];
-
-if(!logs.length){
-
-content.textContent =
-"No audit logs found.";
-
-return;
-
-}
-
-let html = `
+</section>
+
+<!-- ACTIVITIES -->
+<section class="page" id="activities">
+<h2>⛪ Ministry Activities</h2>
+<div class="box">
+<div class="formgrid">
+<div><label>Date</label><input type="date"></div>
+<div><label>Activity</label><select>
+<option>Worship Service</option><option>Prayer Meeting</option>
+<option>Bible Study</option><option>Evangelism</option>
+<option>Outreach</option><option>Youth Ministry</option>
+<option>Children's Ministry</option><option>Community Assistance</option>
+<option>Special Event</option><option>Other</option>
+</select></div>
+<div><label>Location</label><input></div>
+<div><label>Participants</label><input type="number" min="0"></div>
+<div class="full"><label>Description</label><textarea></textarea></div>
+<div class="full"><label>Photos / Files</label><input type="file" multiple></div>
+</div>
+<button class="btn primary" onclick="notice('Activity saving')">Save Activity</button>
+</div>
+</section>
+
+<!-- MEMBERS -->
+<section class="page" id="members">
+<h2>👥 Members</h2>
+<div class="box">
+<div class="formgrid">
+<div><label>Name</label><input placeholder="Full name"></div>
+<div><label>Phone</label><input></div>
+<div><label>Date Joined</label><input type="date"></div>
+<div><label>Status</label><select><option>Active</option><option>Inactive</option></select></div>
+</div>
+<button class="btn primary" onclick="notice('Member saving')">Save Member</button>
+</div>
+</section>
+
+<!-- MEETINGS -->
+<section class="page" id="meetings">
+<h2>📋 Meetings & Decisions</h2>
+<div class="box">
+<div class="formgrid">
+<div><label>Date</label><input type="date"></div>
+<div><label>Type</label><select><option>Leadership Meeting</option><option>Church Meeting</option><option>Special Meeting</option><option>Other</option></select></div>
+<div class="full"><label>Decision / Resolution</label><textarea></textarea></div>
+<div class="full"><label>Minutes</label><input type="file"></div>
+</div>
+<button class="btn primary" onclick="notice('Meeting saving')">Save Meeting</button>
+</div>
+</section>
+
+<!-- DOCUMENTS -->
+<section class="page" id="documents">
+<h2>📁 Important Documents</h2>
+<div class="box">
+<div class="formgrid">
+<div><label>Date</label><input type="date"></div>
+<div><label>Type</label><select>
+<option>Ministry Document</option><option>Financial Record</option>
+<option>Bank Document</option><option>Property Document</option>
+<option>Construction Document</option><option>Meeting Minutes</option>
+<option>Correspondence</option><option>Other</option>
+</select></div>
+<div class="full"><label>Description</label><textarea></textarea></div>
+<div class="full"><label>File</label><input type="file"></div>
+</div>
+<button class="btn primary" onclick="notice('Document upload')">Upload</button>
+</div>
+</section>
+
+<!-- PROPERTY -->
+<section class="page" id="property">
+<h2>🏗️ Property & Building</h2>
+<div class="box">
+<div class="formgrid">
+<div><label>Date</label><input type="date"></div>
+<div><label>Type</label><select><option>Land</option><option>Building</option><option>Construction</option><option>Equipment</option><option>Other</option></select></div>
+<div class="full"><label>Description</label><textarea></textarea></div>
+<div class="full"><label>Document</label><input type="file"></div>
+</div>
+<button class="btn primary" onclick="notice('Property saving')">Save Record</button>
+</div>
+</section>
+
+<!-- MEDIA -->
+<section class="page" id="media">
+<h2>📸 Media Archive</h2>
+<div class="box">
+<div class="formgrid">
+<div><label>Date</label><input type="date"></div>
+<div><label>Category</label><select><option>Church Service</option><option>Construction</option><option>Outreach</option><option>Community Assistance</option><option>Event</option><option>Other</option></select></div>
+<div class="full"><label>Photos / Videos</label><input type="file" multiple accept="image/*,video/*"></div>
+</div>
+<button class="btn primary" onclick="notice('Media upload')">Upload Media</button>
+</div>
+</section>
+
+<!-- USERS -->
+<section class="page" id="users">
+<h2>🔐 Users & Permissions</h2>
+<div class="box">
+<div class="scroll">
+<table>
+<thead><tr><th>Name</th><th>Username</th><th>Role</th><th>Status</th></tr></thead>
+<tbody><tr><td id="userName">-</td><td id="userUsername">-</td><td id="userRole">-</td><td>Active</td></tr></tbody>
+</table>
+</div>
+<p style="margin-top:10px">Permissions are controlled by the GOH Admin Worker.</p>
+</div>
+</section>
+
+<!-- AUDIT -->
+<section class="page" id="audit">
+<h2>🛡️ Audit Logs</h2>
+<div class="box">
+<button class="btn primary" onclick="loadAudit()">Refresh</button>
+<div class="scroll" style="margin-top:12px">
 <table>
 <thead>
-<tr>
-<th>Date</th>
-<th>Action</th>
-<th>Module</th>
-<th>Details</th>
-</tr>
+<tr><th>ID</th><th>Admin</th><th>Action</th><th>Module</th><th>Details</th><th>Date</th></tr>
 </thead>
-<tbody>
-`;
+<tbody id="auditBody"><tr><td colspan="6">Loading...</td></tr></tbody>
+</table>
+</div>
+</div>
+</section>
 
-logs.forEach(log=>{
+<footer>GOH Ministries • Administrative Records</footer>
 
-html+=`
-<tr>
-<td>${safe(log.created_at)}</td>
-<td>${safe(log.action)}</td>
-<td>${safe(log.module)}</td>
-<td>${safe(log.details)}</td>
-</tr>
-`;
+</main>
+</div>
 
+<script>
+const API="https://admin-workerjs.createlk.workers.dev";
+const token=sessionStorage.getItem("goh_admin_token");
+
+if(!token) location.replace("login.html");
+
+const $=id=>document.getElementById(id);
+
+function show(page){
+document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
+document.querySelectorAll(".nav").forEach(x=>x.classList.remove("active"));
+
+$(page)?.classList.add("active");
+document.querySelector(`[data-page="${page}"]`)?.classList.add("active");
+scrollTo(0,0);
+
+if(page==="audit") loadAudit();
+}
+
+document.querySelectorAll(".nav").forEach(x=>{
+x.onclick=()=>show(x.dataset.page);
 });
 
-html+=`
-</tbody>
-</table>
-`;
-
-content.innerHTML =
-html;
-
-}catch(error){
-
-content.textContent =
-error.message;
-
+function notice(text){
+const m=$("msg");
+m.textContent=text+" is ready in the interface, but the server/database API is not connected yet.";
+m.className="msg err";
+setTimeout(()=>m.className="msg",3500);
 }
 
+function message(text,type="ok"){
+const m=$("msg");
+m.textContent=text;
+m.className="msg "+type;
+setTimeout(()=>m.className="msg",3500);
 }
 
+async function api(path,opt={}){
+opt.headers={
+...(opt.headers||{}),
+Authorization:"Bearer "+token
+};
 
-function openModule(name){
+const r=await fetch(API+path,opt);
+let d={};
 
-alert(
-name+
-" module will be connected next."
-);
+try{d=await r.json()}catch{}
 
+if(r.status===401){
+sessionStorage.removeItem("goh_admin_token");
+sessionStorage.removeItem("goh_admin");
+location.replace("login.html");
+return null;
 }
 
-
-function upload(name){
-
-alert(
-name+
-" upload will be connected to private Cloudflare R2 storage next."
-);
-
+if(!r.ok) throw Error(d.error||"Request failed");
+return d;
 }
 
+async function loadAdmin(){
+try{
+const d=await api("/me");
+if(!d)return;
 
-function downloadFiles(name){
-
-alert(
-name+
-" download will be connected to private Cloudflare R2 storage next."
-);
-
+$("adminName").textContent=d.admin.name||"Administrator";
+$("adminRole").textContent=d.admin.role||"Administrator";
+$("userName").textContent=d.admin.name||"-";
+$("userUsername").textContent=d.admin.username||"-";
+$("userRole").textContent=d.admin.role||"-";
+}catch(e){message(e.message,"err")}
 }
 
+async function loadDashboard(){
+try{
+const d=await api("/dashboard");
+if(!d?.totals)return;
 
-document.getElementById(
-"logoutBtn"
-).addEventListener(
-"click",
-async function(){
+$("members").textContent=d.totals.members??0;
+$("ministries").textContent=d.totals.ministries??0;
+$("activitiesCount").textContent=d.totals.events??0;
+$("documentsCount").textContent=d.totals.documents??0;
+}catch(e){
+message("Dashboard data could not be loaded.","err");
+}
+}
 
-this.disabled=true;
-this.textContent=
-"Logging out...";
+async function loadAudit(){
+const b=$("auditBody");
+b.innerHTML="<tr><td colspan='6'>Loading...</td></tr>";
 
 try{
+const d=await api("/audit-logs");
+if(!d)return;
 
-await api(
-"/logout",
-{
-method:"POST"
-}
-);
-
-}catch(error){
-
-console.error(error);
-
+if(!d.logs?.length){
+b.innerHTML="<tr><td colspan='6'>No audit records found.</td></tr>";
+return;
 }
 
-sessionStorage.removeItem(
-"goh_admin_token"
-);
+b.innerHTML=d.logs.map(x=>`
+<tr>
+<td>${esc(x.id)}</td>
+<td>${esc(x.admin_id||"-")}</td>
+<td>${esc(x.action||"-")}</td>
+<td>${esc(x.module||"-")}</td>
+<td>${esc(x.details||"-")}</td>
+<td>${esc(x.created_at||"-")}</td>
+</tr>`).join("");
 
-sessionStorage.removeItem(
-"goh_admin"
-);
-
-window.location.replace(
-LOGIN
-);
-
-});
-
-
-function showError(text){
-
-const box =
-document.getElementById(
-"errorBox"
-);
-
-box.textContent=text;
-box.style.display="block";
-
+}catch(e){
+b.innerHTML="<tr><td colspan='6'>Unable to load audit logs.</td></tr>";
+message(e.message,"err");
+}
 }
 
-
-function safe(value){
-
-return String(
-value || ""
-)
+function esc(v){
+return String(v)
 .replaceAll("&","&amp;")
 .replaceAll("<","&lt;")
 .replaceAll(">","&gt;")
 .replaceAll('"',"&quot;")
 .replaceAll("'","&#039;");
-
 }
 
+$("logout").onclick=async()=>{
+try{await api("/logout",{method:"POST"})}catch{}
+sessionStorage.removeItem("goh_admin_token");
+sessionStorage.removeItem("goh_admin");
+location.replace("login.html");
+};
+
+$("reportYear").value=new Date().getFullYear();
+
+loadAdmin();
+loadDashboard();
 </script>
 
 </body>
