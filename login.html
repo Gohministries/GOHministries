@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0b376d">
-<title>GOH Ministries | Admin Login</title>
+<title>GOH Ministries | Administration Login</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -25,7 +25,7 @@ max-width:390px;
 background:#fff;
 padding:25px;
 border-radius:16px;
-box-shadow:0 5px 25px rgba(0,0,0,.08)
+box-shadow:0 5px 25px #00000014
 }
 
 .logo{
@@ -86,7 +86,9 @@ margin-top:18px;
 cursor:pointer
 }
 
-button:disabled{opacity:.6}
+button:disabled{
+opacity:.6
+}
 
 .message{
 display:none;
@@ -96,14 +98,16 @@ font-size:12px;
 margin-bottom:12px
 }
 
-.message.error{
-display:block;
+.message.show{
+display:block
+}
+
+.error{
 background:#fee2e2;
 color:#991b1b
 }
 
-.message.success{
-display:block;
+.success{
 background:#dcfce7;
 color:#166534
 }
@@ -182,7 +186,7 @@ const AUTH_API =
 const form =
 document.getElementById("loginForm");
 
-const loginType =
+const type =
 document.getElementById("loginType");
 
 const username =
@@ -191,31 +195,36 @@ document.getElementById("username");
 const password =
 document.getElementById("password");
 
-const loginBtn =
+const button =
 document.getElementById("loginBtn");
 
 const message =
 document.getElementById("message");
 
 
-function showMessage(text,type){
+function showMessage(text, kind){
 
-message.textContent=text;
-message.className="message "+type;
+message.textContent = text;
+message.className =
+"message show " + kind;
 
 }
 
 
-loginType.addEventListener("change",()=>{
+type.addEventListener("change",()=>{
 
-if(loginType.value==="admin")
+username.value="";
+password.value="";
+message.className="message";
+
+if(type.value==="admin")
 username.placeholder="Administrator username";
 
-if(loginType.value==="auditor")
-username.placeholder="Auditor username";
+if(type.value==="auditor")
+username.placeholder="GOHAudit";
 
-if(loginType.value==="finance")
-username.placeholder="Finance username";
+if(type.value==="finance")
+username.placeholder="GOHFinance";
 
 });
 
@@ -224,11 +233,16 @@ form.addEventListener("submit",async e=>{
 
 e.preventDefault();
 
-const user=username.value.trim();
-const pass=password.value;
-const role=loginType.value;
+const user =
+username.value.trim();
 
-if(!user||!pass){
+const pass =
+password.value;
+
+const role =
+type.value;
+
+if(!user || !pass){
 
 showMessage(
 "Enter username and password.",
@@ -238,26 +252,27 @@ showMessage(
 return;
 }
 
-loginBtn.disabled=true;
-loginBtn.textContent="Signing in...";
+button.disabled=true;
+button.textContent="Signing in...";
 message.className="message";
 
 try{
 
 let response;
-let data={};
 
 
-/* ADMINISTRATOR */
+/* EXISTING FULL ADMIN LOGIN */
 
 if(role==="admin"){
 
-response=await fetch(
-ADMIN_API+"/login",
+response =
+await fetch(
+ADMIN_API + "/login",
 {
 method:"POST",
 headers:{
-"Content-Type":"application/json"
+"Content-Type":
+"application/json"
 },
 body:JSON.stringify({
 username:user,
@@ -269,17 +284,18 @@ password:pass
 }
 
 
-/* AUDITOR / FINANCE */
+/* AUDITOR / FINANCE LOGIN */
 
 else{
 
-response=await fetch(
-AUTH_API+"/login",
+response =
+await fetch(
+AUTH_API + "/login",
 {
 method:"POST",
-credentials:"include",
 headers:{
-"Content-Type":"application/json"
+"Content-Type":
+"application/json"
 },
 body:JSON.stringify({
 username:user,
@@ -292,27 +308,33 @@ role:role
 }
 
 
+let data={};
+
 try{
 data=await response.json();
-}catch{
-data={};
-}
+}catch{}
 
+
+/* SERVER ERROR */
 
 if(!response.ok){
 
 throw new Error(
-data.error||"Invalid login"
+data.error ||
+"Login failed"
 );
 
 }
 
 
-/* ADMIN */
+/* ADMINISTRATOR */
 
 if(role==="admin"){
 
-if(!data.token||!data.admin){
+if(
+!data.token ||
+!data.admin
+){
 
 throw new Error(
 "Invalid administrator response"
@@ -327,7 +349,9 @@ data.token
 
 sessionStorage.setItem(
 "goh_admin",
-JSON.stringify(data.admin)
+JSON.stringify(
+data.admin
+)
 );
 
 }
@@ -337,7 +361,10 @@ JSON.stringify(data.admin)
 
 else{
 
-if(!data.success||!data.user){
+if(
+!data.success ||
+!data.user
+){
 
 throw new Error(
 "Invalid authentication response"
@@ -347,31 +374,29 @@ throw new Error(
 
 sessionStorage.setItem(
 "goh_admin",
-JSON.stringify(data.user)
+JSON.stringify(
+data.user
+)
 );
 
 }
 
 
-/* Save login type */
+/* COMMON LOGIN DATA */
 
 sessionStorage.setItem(
 "goh_login_type",
 role
 );
 
-
 showMessage(
 "Login successful. Opening administration...",
 "success"
 );
 
-
 setTimeout(()=>{
 
-window.location.replace(
-"admin.html"
-);
+location.href="admin.html";
 
 },500);
 
@@ -380,13 +405,25 @@ window.location.replace(
 
 console.error(error);
 
+let text =
+error.message ||
+"Login failed";
+
+if(
+text==="Failed to fetch"
+){
+
+text =
+"Unable to connect to authentication server.";
+}
+
 showMessage(
-error.message||"Login failed",
+text,
 "error"
 );
 
-loginBtn.disabled=false;
-loginBtn.textContent="Login";
+button.disabled=false;
+button.textContent="Login";
 
 }
 
