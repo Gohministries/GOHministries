@@ -1,0 +1,912 @@
+const SESSION_DAYS = 1;
+const PBKDF2_MIN_ITERATIONS = 100000;
+
+const encoder = new TextEncoder();
+
+const CORS_HEADERS = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization"
+};
+
+const JSON_HEADERS = {
+  ...CORS_HEADERS,
+  "Content-Type": "application/json; charset=UTF-8"
+};
+
+
+// ===============================
+// RESPONSE
+// ===============================
+
+function json(data, status = 200) {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: JSON_HEADERS
+  });
+}
+
+
+// ===============================
+// HEX
+// ===============================
+
+function hexToBytes(hex) {
+  if (!hex || hex.length % 2 !== 0) {
+    throw new Error("Invalid salt");
+  }
+
+  const bytes = new Uint8Array(hex.length / 2);
+
+  for (let i = 0; i < bytes.length; i++) {
+    bytes[i] = parseInt(
+      hex.slice(i * 2, i * 2 + 2),
+      16
+    );
+  }
+
+  return bytes;
+}
+
+function bytesToHex(bytes) {
+  return Array.from(bytes)
+    .map(b => b.toString(16).padStart(2, "0"))
+    .join("");
+}
+
+
+// ===============================
+// PBKDF2
+// ===============================
+
+async function pbkdf2(password, saltHex, iterations) {
+
+  const key = await crypto.subtle.importKey(
+    "raw",
+    encoder.encode(password),
+    {
+      name: "PBKDF2"
+    },
+    false,
+    ["deriveBits"]
+  );
+
+  const bits = await crypto.subtle.deriveBits(
+    {
+      name: "PBKDF2",
+      salt: hexToBytes(saltHex),
+      iterations,
+      hash: "SHA-256"
+    },
+    key,
+    256
+  );
+
+  return bytesToHex(
+    new Uint8Array(bits)
+  );
+}
+
+
+function safeEqual(a, b) {
+
+  if (
+    typeof a !== "string" ||
+    typeof b !== "string" ||
+    a.length !== b.length
+  ) {
+    return false;
+  }
+
+  let result = 0;
+
+  for (let i = 0; i < a.length; i++) {
+    result |=
+      a.charCodeAt(i) ^
+      b.charCodeAt(i);
+  }
+
+  return result === 0;
+}
+
+
+async function verifyPassword(password, storedHash) {
+
+  try {
+
+    const parts =
+      String(storedHash || "").split("$");
+
+    if (parts.length !== 4) {
+      return false;
+    }
+
+    if (parts[0] !== "pbkdf2") {
+      return false;
+    }
+
+    const iterations =
+      Number(parts[1]);
+
+    const salt =
+      parts[2];
+
+    const expected =
+      parts[3];
+
+    if (
+      !Number.isInteger(iterations) ||
+      iterations < PBKDF2_MIN_ITERATIONS ||
+      !salt ||
+      !expected
+    ) {
+      return false;
+    }
+
+    const actual =
+      await pbkdf2(
+        password,
+        salt,
+        iterations
+      );
+
+    return safeEqual(
+      actual,
+      expected
+    );
+
+  } catch {
+    return false;
+  }
+}
+
+
+// ===============================
+// ROLE
+// ===============================
+
+function normalizeRole(role) {
+
+  const value =
+    String(role || "")
+      .trim()
+      .toLowerCase();
+
+  if (value === "admin") {
+    return "admin";
+  }
+
+  if (value === "finance") {
+    return "finance";
+  }
+
+  if (value === "auditor") {
+    return "auditor";
+  }
+
+  return null;
+}
+
+
+// ===============================
+// PERMISSIONS
+// ===============================
+
+function getPermissions(
+  role,
+  storedPermissions
+) {
+
+  if (role === "admin") {
+
+    return {
+      view: true,
+
+      administration: true,
+      finance: true,
+      donations: true,
+      documents: true,
+      property: true,
+      media: true,
+      members: true,
+      meetings: true,
+      reports: true,
+      audit: true,
+
+      create: true,
+      edit: true,
+      delete: true,
+      approve: true,
+
+      users: true,
+      settings: true
+    };
+  }
+
+
+  if (role === "finance") {
+
+    return {
+      view: true,
+
+      administration: false,
+      finance: true,
+      donations: true,
+      documents: true,
+      property: false,
+      media: false,
+      members: false,
+      meetings: false,
+      reports: true,
+      audit: false,
+
+      create: true,
+      edit: false,
+      delete: false,
+      approve: false,
+
+      users: false,
+      settings: false
+    };
+  }
+
+
+  if (role === "auditor") {
+
+    return {
+      view: true,
+
+      administration: true,
+      finance: true,
+      donations: true,
+      documents: true,
+      property: true,
+      media: true,
+      members: true,
+      meetings: true,
+      reports: true,
+      audit: true,
+
+      create: false,
+      edit: false,
+      delete: false,
+      approve: false,
+
+      users: false,
+      settings: false
+    };
+  }
+
+
+  return {};
+}
+
+
+// ===============================
+// SESSION TOKEN
+// ===============================
+
+function createToken() {
+
+  return [
+    crypto.randomUUID(),
+    crypto.randomUUID(),
+    crypto.randomUUID()
+  ].join(".");
+}
+
+
+// ===============================
+// AUTHORIZATION TOKEN
+// ===============================
+
+function getToken(request) {
+
+  const header =
+    request.headers.get(
+      "Authorization"
+    );
+
+  if (!header) {
+    return null;
+  }
+
+  if (
+    !header.startsWith("Bearer ")
+  ) {
+    return null;
+  }
+
+  const token =
+    header.slice(7).trim();
+
+  return token || null;
+}
+
+
+// ===============================
+// CREATE SESSION
+// ===============================
+
+async function createSession(
+  env,
+  adminId
+) {
+
+  const token =
+    createToken();
+
+  const expiresAt =
+    new Date(
+      Date.now() +
+      SESSION_DAYS *
+      24 *
+      60 *
+      60 *
+      1000
+    ).toISOString();
+
+
+  await env.DB.prepare(`
+    INSERT INTO admin_sessions
+    (
+      admin_id,
+      token,
+      expires_at
+    )
+    VALUES (?, ?, ?)
+  `)
+    .bind(
+      adminId,
+      token,
+      expiresAt
+    )
+    .run();
+
+
+  return {
+    token,
+    expires_at: expiresAt
+  };
+}
+
+
+// ===============================
+// GET SESSION
+// ===============================
+
+async function getSession(
+  env,
+  token
+) {
+
+  if (!token) {
+    return null;
+  }
+
+
+  const session =
+    await env.DB.prepare(`
+      SELECT
+        s.id AS session_id,
+        s.admin_id,
+        s.token,
+        s.expires_at,
+
+        a.username,
+        a.name,
+        a.role,
+        a.permissions,
+        a.active,
+        a.status
+
+      FROM admin_sessions s
+
+      INNER JOIN admins a
+        ON a.id = s.admin_id
+
+      WHERE s.token = ?
+
+      LIMIT 1
+    `)
+      .bind(token)
+      .first();
+
+
+  if (!session) {
+    return null;
+  }
+
+
+  if (
+    Number(session.active) !== 1
+  ) {
+    return null;
+  }
+
+
+  if (
+    String(session.status)
+      .toLowerCase() !== "active"
+  ) {
+    return null;
+  }
+
+
+  const role =
+    normalizeRole(
+      session.role
+    );
+
+
+  if (!role) {
+    return null;
+  }
+
+
+  const expiry =
+    new Date(
+      session.expires_at
+    ).getTime();
+
+
+  if (
+    !Number.isFinite(expiry) ||
+    expiry <= Date.now()
+  ) {
+
+    await env.DB.prepare(`
+      DELETE FROM admin_sessions
+      WHERE id = ?
+    `)
+      .bind(
+        session.session_id
+      )
+      .run();
+
+    return null;
+  }
+
+
+  return {
+    ...session,
+    role
+  };
+}
+
+
+// ===============================
+// DELETE SESSION
+// ===============================
+
+async function deleteSession(
+  env,
+  token
+) {
+
+  if (!token) {
+    return;
+  }
+
+
+  await env.DB.prepare(`
+    DELETE FROM admin_sessions
+    WHERE token = ?
+  `)
+    .bind(token)
+    .run();
+}
+
+
+// ===============================
+// CLEAN OLD SESSIONS
+// ===============================
+
+async function cleanExpiredSessions(
+  env
+) {
+
+  await env.DB.prepare(`
+    DELETE FROM admin_sessions
+    WHERE expires_at <= ?
+  `)
+    .bind(
+      new Date().toISOString()
+    )
+    .run();
+}
+
+
+// ===============================
+// LOGIN
+// ===============================
+
+async function login(
+  request,
+  env
+) {
+
+  let body;
+
+  try {
+
+    body =
+      await request.json();
+
+  } catch {
+
+    return json({
+      error: "Invalid JSON"
+    }, 400);
+  }
+
+
+  const username =
+    String(
+      body.username || ""
+    ).trim();
+
+  const password =
+    String(
+      body.password || ""
+    );
+
+
+  if (!username || !password) {
+
+    return json({
+      error:
+        "Username and password are required"
+    }, 400);
+  }
+
+
+  const admin =
+    await env.DB.prepare(`
+      SELECT
+        id,
+        username,
+        password_hash,
+        name,
+        role,
+        active,
+        status,
+        permissions
+
+      FROM admins
+
+      WHERE username = ?
+
+      LIMIT 1
+    `)
+      .bind(username)
+      .first();
+
+
+  if (!admin) {
+
+    return json({
+      error:
+        "Invalid username or password"
+    }, 401);
+  }
+
+
+  if (
+    Number(admin.active) !== 1
+  ) {
+
+    return json({
+      error:
+        "Account is disabled"
+    }, 403);
+  }
+
+
+  if (
+    String(admin.status)
+      .toLowerCase() !== "active"
+  ) {
+
+    return json({
+      error:
+        "Account is not active"
+    }, 403);
+  }
+
+
+  const role =
+    normalizeRole(
+      admin.role
+    );
+
+
+  if (!role) {
+
+    return json({
+      error:
+        "Invalid account role"
+    }, 403);
+  }
+
+
+  const valid =
+    await verifyPassword(
+      password,
+      admin.password_hash
+    );
+
+
+  if (!valid) {
+
+    return json({
+      error:
+        "Invalid username or password"
+    }, 401);
+  }
+
+
+  await cleanExpiredSessions(
+    env
+  );
+
+
+  const session =
+    await createSession(
+      env,
+      admin.id
+    );
+
+
+  return json({
+
+    success: true,
+
+    message:
+      "Login successful",
+
+    token:
+      session.token,
+
+    expires_at:
+      session.expires_at,
+
+    user: {
+
+      id: admin.id,
+
+      username:
+        admin.username,
+
+      name:
+        admin.name,
+
+      role,
+
+      permissions:
+        getPermissions(
+          role,
+          admin.permissions
+        )
+    }
+  });
+}
+
+
+// ===============================
+// CURRENT USER
+// GET /me
+// ===============================
+
+async function me(
+  request,
+  env
+) {
+
+  const token =
+    getToken(request);
+
+
+  const session =
+    await getSession(
+      env,
+      token
+    );
+
+
+  if (!session) {
+
+    return json({
+      error:
+        "Invalid or expired session"
+    }, 401);
+  }
+
+
+  return json({
+
+    success: true,
+
+    user: {
+
+      id:
+        session.admin_id,
+
+      username:
+        session.username,
+
+      name:
+        session.name,
+
+      role:
+        session.role,
+
+      permissions:
+        getPermissions(
+          session.role,
+          session.permissions
+        )
+    },
+
+    expires_at:
+      session.expires_at
+  });
+}
+
+
+// ===============================
+// LOGOUT
+// POST /logout
+// ===============================
+
+async function logout(
+  request,
+  env
+) {
+
+  const token =
+    getToken(request);
+
+
+  await deleteSession(
+    env,
+    token
+  );
+
+
+  return json({
+    success: true,
+    message:
+      "Logged out"
+  });
+}
+
+
+// ===============================
+// ROUTER
+// ===============================
+
+async function router(
+  request,
+  env
+) {
+
+  const url =
+    new URL(request.url);
+
+  const path =
+    url.pathname.replace(
+      /\/+$/,
+      ""
+    ) || "/";
+
+
+  if (
+    request.method === "OPTIONS"
+  ) {
+
+    return new Response(
+      null,
+      {
+        status: 204,
+        headers:
+          CORS_HEADERS
+      }
+    );
+  }
+
+
+  if (
+    request.method === "GET" &&
+    path === "/"
+  ) {
+
+    return json({
+
+      service:
+        "GOH Admin Authentication",
+
+      status:
+        "online",
+
+      version:
+        "1.0"
+    });
+  }
+
+
+  if (
+    request.method === "POST" &&
+    path === "/login"
+  ) {
+
+    return login(
+      request,
+      env
+    );
+  }
+
+
+  if (
+    request.method === "GET" &&
+    path === "/me"
+  ) {
+
+    return me(
+      request,
+      env
+    );
+  }
+
+
+  if (
+    request.method === "POST" &&
+    path === "/logout"
+  ) {
+
+    return logout(
+      request,
+      env
+    );
+  }
+
+
+  return json({
+    error:
+      "Route not found"
+  }, 404);
+}
+
+
+// ===============================
+// WORKER
+// ===============================
+
+export default {
+
+  async fetch(
+    request,
+    env
+  ) {
+
+    try {
+
+      return await router(
+        request,
+        env
+      );
+
+    } catch (error) {
+
+      console.error(
+        "Authentication error:",
+        error
+      );
+
+      return json({
+        error:
+          "Internal server error"
+      }, 500);
+    }
+  }
+};
