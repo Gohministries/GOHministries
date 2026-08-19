@@ -7,53 +7,50 @@
 <title>GOH Ministries | Administration</title>
 
 <style>
-:root{--p:#0b376d;--bg:#f6f8fb;--c:#fff;--t:#172033;--m:#667085;--b:#e2e8f0;--red:#b42318}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,Arial;background:var(--bg);color:var(--t)}
+:root{--p:#0b376d;--bg:#f6f8fb;--b:#e2e8f0;--t:#172033;--m:#64748b}
+body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--t)}
 button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-header{height:56px;background:var(--p);color:#fff;position:sticky;top:0;z-index:20}
+header{height:56px;background:var(--p);color:white;position:sticky;top:0;z-index:10}
 .head{height:100%;max-width:1200px;margin:auto;padding:8px 14px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:9px}
-.logo{width:38px;height:38px;border-radius:50%;background:#fff;color:var(--p);display:grid;place-items:center;font-weight:800;font-size:11px}
+.brand{display:flex;align-items:center;gap:9px}.logo{width:38px;height:38px;border-radius:50%;background:#fff;color:var(--p);display:grid;place-items:center;font-weight:800;font-size:11px}
 .brand h1{font-size:15px}.brand p{font-size:10px;opacity:.7}
-.menuBtn{border:0;background:#ffffff18;color:#fff;border-radius:7px;padding:8px 12px;font-size:18px}
-.menu{display:none;position:absolute;right:14px;top:53px;width:225px;background:#fff;border:1px solid var(--b);border-radius:10px;padding:6px;box-shadow:0 10px 30px #0002}
-.menu.show{display:block}
-.menu button{width:100%;border:0;background:none;text-align:left;padding:9px;border-radius:6px;font-size:13px;color:var(--t)}
-.menu button:hover,.menu button.active{background:#e8f1fa;color:var(--p)}
-.menu .logout{color:var(--red);border-top:1px solid var(--b);margin-top:5px}
+.menuBtn{border:0;background:#ffffff20;color:#fff;padding:8px 12px;border-radius:7px;font-size:18px}
+.menu{display:none;position:absolute;right:14px;top:53px;width:225px;background:#fff;padding:6px;border:1px solid var(--b);border-radius:10px;box-shadow:0 10px 30px #0002}
+.menu.show{display:block}.menu button{width:100%;border:0;background:none;text-align:left;padding:10px;border-radius:7px;color:var(--t);font-size:13px}
+.menu button:hover,.menu button.active{background:#e8f1fb;color:var(--p)}
+.logout{color:#b91c1c!important;border-top:1px solid var(--b)!important;margin-top:4px}
 main{max-width:1200px;margin:auto;padding:18px}
 .page{display:none}.page.active{display:block}
-.title{font-size:19px;color:var(--p);margin:5px 0 14px}
-.box,.card,.stat{background:var(--c);border:1px solid var(--b);border-radius:10px;padding:16px;margin-bottom:14px}
-.welcome h2{font-size:20px;color:var(--p)}
-.welcome p,.card p{font-size:12px;color:var(--m);margin-top:4px}
-.badge{display:inline-block;margin-top:8px;padding:4px 9px;border-radius:20px;background:#e8f1fa;color:var(--p);font-size:11px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.stat small{font-size:11px;color:var(--m)}
-.stat strong{display:block;font-size:19px;color:var(--p);margin-top:4px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.card{margin:0;cursor:pointer}.card h3{font-size:14px}
+h2{font-size:19px;color:var(--p);margin-bottom:15px}
+.card,.form,.table,.stat{background:#fff;border:1px solid var(--b);border-radius:10px;padding:16px;margin-bottom:15px}
+.welcome h2{margin-bottom:4px}.welcome p{font-size:13px;color:var(--m)}
+.role{display:inline-block;margin-top:8px;padding:4px 9px;border-radius:20px;background:#e8f1fb;color:var(--p);font-size:11px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
+.stat small{font-size:11px;color:var(--m)}.stat strong{display:block;color:var(--p);font-size:18px;margin-top:4px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.module{cursor:pointer}.module h3{font-size:14px}.module p{font-size:12px;color:var(--m);margin-top:4px}
 .formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 label{display:block;font-size:11px;font-weight:700;margin-bottom:5px}
-input,select,textarea{width:100%;border:1px solid var(--b);border-radius:7px;padding:9px;font-size:13px;background:#fff}
-textarea{min-height:90px;resize:vertical}
-.full{grid-column:1/-1}
-button.btn{border:0;border-radius:7px;padding:9px 14px;margin-top:12px;font-size:12px;font-weight:700}
-.primary{background:var(--p);color:#fff}
-.secondary{background:#f1f5f9;border:1px solid var(--b)!important}
-.danger{background:#fee4e2;color:var(--red);border:0;border-radius:6px;padding:6px 9px;font-size:11px}
-.tablewrap{overflow:auto;border:1px solid var(--b);border-radius:7px}
-table{width:100%;border-collapse:collapse;min-width:600px}
-th,td{padding:9px 11px;border-bottom:1px solid var(--b);font-size:12px;text-align:left}
+input,select,textarea{width:100%;padding:10px;border:1px solid var(--b);border-radius:7px;background:#fff}
+textarea{min-height:80px;resize:vertical}.full{grid-column:1/-1}
+.btn{border:0;border-radius:7px;padding:10px 14px;margin-top:12px;font-size:12px;font-weight:700}
+.primary{background:var(--p);color:#fff}.secondary{background:#f1f5f9;border:1px solid var(--b)}
+.danger{background:#dc2626;color:#fff}.approve{background:#15803d;color:#fff}
+.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:700px}
+th,td{padding:9px;border-bottom:1px solid var(--b);font-size:12px;text-align:left}
 th{background:#f8fafc;color:var(--p)}
-.msg{display:none;padding:10px;border-radius:7px;margin-bottom:14px;font-size:12px}
-.msg.show{display:block}.ok{background:#dcfce7;color:#166534}.err{background:#fee2e2;color:#991b1b}
-.readonly{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;padding:10px;border-radius:7px;font-size:12px;margin-bottom:12px}
-footer{text-align:center;color:var(--m);font-size:10px;padding:20px}
-@media(max-width:800px){.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){main{padding:13px}.stats,.grid,.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.brand p{display:none}}
+.message{display:none;padding:10px;border-radius:7px;margin-bottom:14px;font-size:12px}
+.message.show{display:block}.error{background:#fee2e2;color:#991b1b}.success{background:#dcfce7;color:#166534}
+.status{font-size:10px;padding:4px 7px;border-radius:10px;background:#f1f5f9}
+.access{padding:15px;background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;border-radius:9px}
+footer{text-align:center;padding:20px;color:var(--m);font-size:10px}
+
+@media(max-width:800px){
+.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+main{padding:12px}.stats,.grid,.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.brand p{display:none}
+}
 </style>
 </head>
 
@@ -65,22 +62,21 @@ footer{text-align:center;color:var(--m);font-size:10px;padding:20px}
 <div class="logo">GOH</div>
 <div><h1>GOH Ministries</h1><p>Church Administration</p></div>
 </div>
-
 <button class="menuBtn" id="menuBtn">☰</button>
 
 <div class="menu" id="menu">
 <button data-page="dashboard">🏠 Dashboard</button>
 <button data-page="finance" data-finance>💰 Finance</button>
-<button data-page="reports">📊 Reports</button>
+<button data-page="reports" data-finance>📊 Reports</button>
 <button data-page="history" data-admin>📜 History</button>
 <button data-page="activities" data-admin>⛪ Activities</button>
 <button data-page="members" data-admin>👥 Members</button>
 <button data-page="meetings" data-admin>📋 Meetings</button>
-<button data-page="documents">📁 Documents</button>
-<button data-page="property">🏗️ Property</button>
-<button data-page="media">📸 Media</button>
+<button data-page="documents" data-admin>📁 Documents</button>
+<button data-page="property" data-admin>🏗️ Property</button>
+<button data-page="media" data-admin>📸 Media</button>
 <button data-page="users" data-admin>🔐 Users</button>
-<button data-page="audit">🛡️ Audit</button>
+<button data-page="audit" data-audit>🛡️ Audit</button>
 <button class="logout" id="logout">Logout</button>
 </div>
 </div>
@@ -88,14 +84,14 @@ footer{text-align:center;color:var(--m);font-size:10px;padding:20px}
 
 <main>
 
-<div id="msg" class="msg"></div>
+<div id="msg" class="message"></div>
 
 <section class="page active" id="dashboard">
 
-<div class="box welcome">
+<div class="card welcome">
 <h2>Welcome, <span id="name">Administrator</span></h2>
 <p>GOH Ministries Church Administration Portal</p>
-<span class="badge" id="role">Administrator</span>
+<span class="role" id="role">Administrator</span>
 </div>
 
 <div class="stats">
@@ -105,27 +101,24 @@ footer{text-align:center;color:var(--m);font-size:10px;padding:20px}
 <div class="stat"><small>Balance</small><strong id="balance">LKR 0</strong></div>
 </div>
 
-<h2 class="title" style="margin-top:22px">Administration Modules</h2>
-
 <div class="grid">
-<div class="card" data-open="finance"><h3>💰 Finance</h3><p>Income, expenses and donations.</p></div>
-<div class="card" data-open="reports"><h3>📊 Reports</h3><p>Financial reports and summaries.</p></div>
-<div class="card" data-open="history" data-admin><h3>📜 History</h3><p>Ministry history and milestones.</p></div>
-<div class="card" data-open="activities" data-admin><h3>⛪ Activities</h3><p>Church activities and events.</p></div>
-<div class="card" data-open="documents"><h3>📁 Documents</h3><p>Official documents and records.</p></div>
-<div class="card" data-open="audit"><h3>🛡️ Audit</h3><p>Complete read-only records.</p></div>
+<div class="card module" onclick="openPage('finance')"><h3>💰 Finance</h3><p>Financial records and slips.</p></div>
+<div class="card module" onclick="openPage('reports')"><h3>📊 Reports</h3><p>Financial reports.</p></div>
+<div class="card module" data-admin><h3>📜 History</h3><p>Ministry history.</p></div>
+<div class="card module" data-admin><h3>⛪ Activities</h3><p>Church activities.</p></div>
+<div class="card module" data-admin><h3>📁 Documents</h3><p>Official documents.</p></div>
+<div class="card module" data-audit><h3>🛡️ Audit</h3><p>Official audit records.</p></div>
 </div>
 
 </section>
 
 <section class="page" id="finance">
-<h2 class="title">💰 Finance</h2>
 
-<div id="financeReadOnly" class="readonly" style="display:none">
-Auditor access: financial records and supporting slips are view-only.
-</div>
+<h2>💰 Finance</h2>
 
-<form class="box" id="financeForm">
+<div id="financeAccess"></div>
+
+<form class="form" id="financeForm">
 
 <div class="formgrid">
 
@@ -212,173 +205,112 @@ Auditor access: financial records and supporting slips are view-only.
 <div class="full">
 <label>Supporting Slip / Receipt *</label>
 <input id="fSlip" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp" required>
+<small style="font-size:10px;color:#64748b">Maximum 10 MB</small>
 </div>
 
 </div>
 
-<button class="btn primary" id="saveFinance">Save Financial Record</button>
+<button class="btn primary" id="saveBtn">Save Financial Record</button>
+
 </form>
 
-<div class="box">
+<div class="table">
+
 <h3 style="font-size:14px;margin-bottom:10px">Financial Records</h3>
+
 <div class="tablewrap">
+
 <table>
 <thead>
-<tr><th>Date</th><th>Type</th><th>Category</th><th>Amount</th><th>Status</th><th>Slip</th><th>Action</th></tr>
+<tr>
+<th>Date</th>
+<th>Type</th>
+<th>Category</th>
+<th>Amount</th>
+<th>Status</th>
+<th>Slip</th>
+<th>Action</th>
+</tr>
 </thead>
+
 <tbody id="financeBody">
-<tr><td colspan="7">No records available.</td></tr>
+<tr><td colspan="7">Loading...</td></tr>
 </tbody>
+
 </table>
+
 </div>
 </div>
+
 </section>
 
 <section class="page" id="reports">
-<h2 class="title">📊 Reports</h2>
-<div class="box">
-<div class="formgrid">
-<div><label>Report</label><select id="reportType">
-<option>Monthly Finance</option>
-<option>Annual Finance</option>
-<option>Income</option>
-<option>Expenses</option>
-<option>Donations</option>
-<option>Minister Support</option>
-</select></div>
-<div><label>Year</label><select id="year"></select></div>
-<div><label>From</label><input type="date"></div>
-<div><label>To</label><input type="date"></div>
-</div>
-<button class="btn primary" onclick="msg('Report generation will use approved financial records.','ok')">Generate Report</button>
+<h2>📊 Reports</h2>
+<div class="card">
+<p style="font-size:13px;color:#64748b">
+Financial reports will use approved finance records.
+</p>
+<button class="btn primary" onclick="loadFinance()">Refresh Records</button>
 </div>
 </section>
 
 <section class="page" id="history">
-<h2 class="title">📜 History</h2>
-<div class="box">
+<h2>📜 History</h2>
+<div class="form">
 <div class="formgrid">
 <div><label>Date</label><input type="date"></div>
 <div><label>Milestone</label><input></div>
 <div class="full"><label>Description</label><textarea></textarea></div>
 </div>
-<button class="btn primary adminOnly">Save</button>
+<button class="btn primary" onclick="note('History module ready for API connection.')">Save</button>
 </div>
 </section>
 
 <section class="page" id="activities">
-<h2 class="title">⛪ Activities</h2>
-<div class="box">
-<div class="formgrid">
-<div><label>Date</label><input type="date"></div>
-<div><label>Activity</label><select><option>Worship Service</option><option>Prayer Meeting</option><option>Bible Study</option><option>Evangelism</option><option>Outreach</option><option>Community Assistance</option></select></div>
-<div><label>Location</label><input></div>
-<div><label>Participants</label><input type="number"></div>
-<div class="full"><label>Description</label><textarea></textarea></div>
-</div>
-<button class="btn primary adminOnly">Save</button>
-</div>
+<h2>⛪ Activities</h2>
+<div class="card">Activities management module.</div>
 </section>
 
 <section class="page" id="members">
-<h2 class="title">👥 Members</h2>
-<div class="box">
-<div class="formgrid">
-<div><label>Name</label><input></div>
-<div><label>Phone</label><input></div>
-<div><label>Date Joined</label><input type="date"></div>
-<div><label>Status</label><select><option>Active</option><option>Inactive</option></select></div>
-</div>
-<button class="btn primary adminOnly">Save</button>
-</div>
+<h2>👥 Members</h2>
+<div class="card">Members management module.</div>
 </section>
 
 <section class="page" id="meetings">
-<h2 class="title">📋 Meetings</h2>
-<div class="box">
-<div class="formgrid">
-<div><label>Date</label><input type="date"></div>
-<div><label>Type</label><select><option>Leadership Meeting</option><option>Church Meeting</option><option>Finance Meeting</option><option>Special Meeting</option></select></div>
-<div class="full"><label>Resolution</label><textarea></textarea></div>
-</div>
-<button class="btn primary adminOnly">Save</button>
-</div>
+<h2>📋 Meetings</h2>
+<div class="card">Meetings management module.</div>
 </section>
 
 <section class="page" id="documents">
-<h2 class="title">📁 Documents</h2>
-<div class="box">
-<div class="formgrid">
-<div><label>Date</label><input type="date"></div>
-<div><label>Type</label><select><option>Ministry Document</option><option>Financial Record</option><option>Bank Document</option><option>Property Document</option><option>Construction Document</option><option>Meeting Minutes</option><option>Registration Document</option><option>Audit Report</option></select></div>
-<div class="full"><label>Description</label><textarea></textarea></div>
-<div class="full"><label>File</label><input type="file"></div>
-</div>
-<button class="btn primary adminOnly">Upload</button>
-</div>
+<h2>📁 Documents</h2>
+<div class="card">Official documents module.</div>
 </section>
 
 <section class="page" id="property">
-<h2 class="title">🏗️ Property</h2>
-<div class="box">
-<div class="formgrid">
-<div><label>Date</label><input type="date"></div>
-<div><label>Type</label><select><option>Land</option><option>Building</option><option>Construction</option><option>Equipment</option><option>Maintenance</option></select></div>
-<div class="full"><label>Description</label><textarea></textarea></div>
-</div>
-<button class="btn primary adminOnly">Save</button>
-</div>
+<h2>🏗️ Property</h2>
+<div class="card">Property management module.</div>
 </section>
 
 <section class="page" id="media">
-<h2 class="title">📸 Media</h2>
-<div class="box">
-<div class="formgrid">
-<div><label>Date</label><input type="date"></div>
-<div><label>Category</label><select><option>Church Service</option><option>Construction</option><option>Outreach</option><option>Community Assistance</option><option>Event</option></select></div>
-<div class="full"><label>Photos / Videos</label><input type="file" multiple accept="image/*,video/*"></div>
-</div>
-<button class="btn primary adminOnly">Upload</button>
-</div>
+<h2>📸 Media</h2>
+<div class="card">Media management module.</div>
 </section>
 
 <section class="page" id="users">
-<h2 class="title">🔐 Users</h2>
-<div class="box">
-<div class="tablewrap">
-<table>
-<thead><tr><th>Name</th><th>Username</th><th>Role</th><th>Status</th></tr></thead>
-<tbody>
-<tr>
-<td id="userName">-</td>
-<td id="userUsername">-</td>
-<td id="userRole">-</td>
-<td>Active</td>
-</tr>
-</tbody>
-</table>
-</div>
+<h2>🔐 Users</h2>
+<div class="card">
+Name: <b id="userName">-</b><br><br>
+Username: <b id="userUsername">-</b><br><br>
+Role: <b id="userRole">-</b>
 </div>
 </section>
 
 <section class="page" id="audit">
-<h2 class="title">🛡️ Audit Logs</h2>
-
-<div class="readonly">
-Audit records are protected. This section is read-only.
-</div>
-
-<div class="box">
-<div class="tablewrap">
-<table>
-<thead>
-<tr><th>Date</th><th>User</th><th>Action</th><th>Module</th><th>Status</th></tr>
-</thead>
-<tbody id="auditBody">
-<tr><td colspan="5">No audit records available.</td></tr>
-</tbody>
-</table>
-</div>
+<h2>🛡️ Audit Logs</h2>
+<div class="card">
+<p style="font-size:13px;color:#64748b">
+Auditor can view official administration and financial activity.
+</p>
 </div>
 </section>
 
@@ -387,184 +319,451 @@ Audit records are protected. This section is read-only.
 </main>
 
 <script>
-const API={
-auth:"https://goh-admin-auth.createlk.workers.dev",
-dashboard:"https://goh-dashboard.createlk.workers.dev",
-finance:"https://goh-finance.createlk.workers.dev",
-audit:"https://goh-audit.createlk.workers.dev"
-};
+const FINANCE_API="https://goh-finance.createlk.workers.dev";
 
-const user=JSON.parse(sessionStorage.getItem("goh_admin")||"null");
-const loginType=sessionStorage.getItem("goh_login_type");
+const user=JSON.parse(
+sessionStorage.getItem("goh_admin")||"null"
+);
 
 if(!user){
 location.href="login.html";
 }
 
-const role=String(user?.role||loginType||"").toLowerCase();
+const loginType=
+sessionStorage.getItem("goh_login_type")||"";
 
-const isAdmin=role==="admin"||role==="super_admin";
-const isFinance=role==="finance";
-const isAuditor=role==="auditor";
+const userRole=
+String(user?.role||loginType).toLowerCase();
 
-const menu=document.getElementById("menu");
-const pages=document.querySelectorAll(".page");
+let perms=user?.permissions||{};
 
-function msg(text,type="err"){
-const x=document.getElementById("msg");
-x.textContent=text;
-x.className="msg show "+type;
-setTimeout(()=>x.className="msg",3500);
+if(typeof perms==="string"){
+try{perms=JSON.parse(perms)}
+catch{perms={}}
 }
 
-document.getElementById("name").textContent=user.name||user.username;
-document.getElementById("userName").textContent=user.name||"-";
-document.getElementById("userUsername").textContent=user.username||"-";
-document.getElementById("userRole").textContent=role;
+const admin=
+userRole==="admin"||
+userRole==="super_admin"||
+perms==="full";
+
+const finance=
+admin||
+userRole==="finance"||
+perms.finance===true||
+perms.donations===true;
+
+const auditor=
+admin||
+userRole==="auditor";
+
+document.getElementById("name").textContent=
+user.name||user.username||"Administrator";
+
+document.getElementById("userName").textContent=
+user.name||"-";
+
+document.getElementById("userUsername").textContent=
+user.username||"-";
+
+document.getElementById("userRole").textContent=
+userRole||"-";
 
 document.getElementById("role").textContent=
-isAdmin?"Administrator":
-isFinance?"Finance Officer":
-isAuditor?"Auditor":"Administrator";
+admin?"Administrator":
+userRole==="finance"?"Finance Officer":
+userRole==="auditor"?"Auditor":"User";
 
-/* Menu permissions */
+/* MENU */
+
 document.querySelectorAll("[data-finance]").forEach(x=>{
-if(isAuditor===false) return;
-if(isAuditor)x.style.display="block";
+if(!finance&&!auditor)x.remove();
 });
 
 document.querySelectorAll("[data-admin]").forEach(x=>{
-if(!isAdmin)x.remove();
+if(!admin)x.remove();
 });
 
-/* Auditor can see every section */
-if(isAuditor){
-document.querySelectorAll(".page").forEach(x=>x.dataset.readonly="1");
+document.querySelectorAll("[data-audit]").forEach(x=>{
+if(!auditor)x.remove();
+});
+
+/* FINANCE FORM */
+
+if(!finance){
 document.getElementById("financeForm").style.display="none";
-document.getElementById("financeReadOnly").style.display="block";
+
+document.getElementById("financeAccess").innerHTML=
+`<div class="access">
+<b>Read-only access</b><br>
+You can view financial records and supporting slips.
+</div>`;
 }
 
-/* Finance sees finance/reports/audit/dashboard */
-if(isFinance){
-document.querySelectorAll("[data-page]").forEach(x=>{
-const p=x.dataset.page;
-if(["dashboard","finance","reports","audit"].includes(p))return;
-x.remove();
-});
+if(userRole==="auditor"){
+document.getElementById("financeForm").style.display="none";
+
+document.getElementById("financeAccess").innerHTML=
+`<div class="access">
+<b>Auditor — Read Only</b><br>
+You can view all financial records and slips.
+You cannot add, edit, delete or approve records.
+</div>`;
 }
 
-/* Menu */
-document.getElementById("menuBtn").onclick=()=>menu.classList.toggle("show");
+/* MENU */
+
+const menu=document.getElementById("menu");
+
+document.getElementById("menuBtn").onclick=()=>{
+menu.classList.toggle("show");
+};
 
 document.addEventListener("click",e=>{
-if(!e.target.closest(".menu")&&!e.target.closest("#menuBtn"))
+if(!e.target.closest("#menu")&&!e.target.closest("#menuBtn"))
 menu.classList.remove("show");
 });
 
 function openPage(id){
-const p=document.getElementById(id);
-if(!p)return;
 
-if(isFinance&&!["dashboard","finance","reports","audit"].includes(id)){
-msg("Access denied.");
+const page=document.getElementById(id);
+
+if(!page)return;
+
+const btn=document.querySelector(`[data-page="${id}"]`);
+
+if(!btn){
+note("You do not have permission.");
 return;
 }
 
-pages.forEach(x=>x.classList.toggle("active",x.id===id));
-menu.classList.remove("show");
-scrollTo(0,0);
-}
+document.querySelectorAll(".page").forEach(x=>{
+x.classList.toggle("active",x.id===id);
+});
 
 document.querySelectorAll("[data-page]").forEach(x=>{
-x.onclick=()=>openPage(x.dataset.page);
+x.classList.toggle("active",x.dataset.page===id);
 });
 
-document.querySelectorAll("[data-open]").forEach(x=>{
-x.onclick=()=>openPage(x.dataset.open);
-});
+menu.classList.remove("show");
+scrollTo(0,0);
 
-/* Years */
-const year=document.getElementById("year");
-for(let y=new Date().getFullYear();y>=new Date().getFullYear()-10;y--)
-year.innerHTML+=`<option>${y}</option>`;
-
-/* Finance */
-document.getElementById("financeForm").onsubmit=async e=>{
-e.preventDefault();
-
-if(!isAdmin&&!isFinance){
-msg("Auditor access is read-only.");
-return;
+if(id==="finance")loadFinance();
 }
 
-const file=document.getElementById("fSlip").files[0];
-
-if(!file)return msg("Supporting slip is required.");
-if(file.size>10*1024*1024)return msg("Slip must be under 10 MB.");
-
-const fd=new FormData();
-
-fd.append("date",fDate.value);
-fd.append("type",fType.value);
-fd.append("category",fCategory.value);
-fd.append("amount",fAmount.value);
-fd.append("payment_method",fMethod.value);
-fd.append("reference",fRef.value);
-fd.append("description",fDesc.value);
-fd.append("slip",file);
-
-try{
-const r=await fetch(API.finance+"/transactions",{
-method:"POST",
-body:fd,
-credentials:"include"
+document.querySelectorAll("[data-page]").forEach(btn=>{
+btn.onclick=()=>openPage(btn.dataset.page);
 });
 
-const d=await r.json().catch(()=>({}));
+/* MESSAGE */
 
-if(!r.ok)throw Error(d.error||"Finance request failed");
-
-msg("Financial record saved successfully.","ok");
-e.target.reset();
-loadDashboard();
-
-}catch(err){
-msg(err.message);
+function note(text,type="error"){
+const m=document.getElementById("msg");
+m.textContent=text;
+m.className="message show "+type;
+setTimeout(()=>m.className="message",4000);
 }
+
+/* AUTH HEADER */
+
+function headers(){
+return {
+"X-Admin-Key":user.username
 };
+}
 
-/* Dashboard */
-async function loadDashboard(){
+/* LOAD FINANCE */
+
+async function loadFinance(){
+
+const body=document.getElementById("financeBody");
+
+body.innerHTML=
+`<tr><td colspan="7">Loading...</td></tr>`;
+
 try{
-const r=await fetch(API.dashboard+"/summary",{credentials:"include"});
-if(!r.ok)return;
+
+const r=await fetch(
+FINANCE_API+"/transactions",
+{
+method:"GET",
+headers:headers()
+}
+);
 
 const d=await r.json();
 
-income.textContent="LKR "+Number(d.income||0).toLocaleString();
-expense.textContent="LKR "+Number(d.expenses||0).toLocaleString();
-support.textContent="LKR "+Number(d.minister_support||0).toLocaleString();
-balance.textContent="LKR "+Number(d.balance||0).toLocaleString();
-}catch(e){}
+if(!r.ok)
+throw Error(d.error||"Unable to load records");
+
+const records=d.records||[];
+
+if(!records.length){
+body.innerHTML=
+`<tr><td colspan="7">No records available.</td></tr>`;
+return;
 }
 
-/* Logout */
-document.getElementById("logout").onclick=async()=>{
-if(!confirm("Logout?"))return;
+body.innerHTML="";
+
+records.forEach(x=>{
+
+const tr=document.createElement("tr");
+
+const amount=
+Number(x.amount||0).toLocaleString(
+"en-LK",
+{minimumFractionDigits:2}
+);
+
+let actions="";
+
+if(x.slip_key){
+actions+=
+`<button class="btn secondary" onclick="viewSlip('${x.id}')">Slip</button>`;
+}
+
+if(admin){
+
+actions+=
+` <button class="btn approve" onclick="approveRecord('${x.id}')">Approve</button>`;
+
+actions+=
+` <button class="btn danger" onclick="deleteRecord('${x.id}')">Delete</button>`;
+}
+
+tr.innerHTML=`
+<td>${safe(x.date)}</td>
+<td>${safe(x.type)}</td>
+<td>${safe(x.category)}</td>
+<td>LKR ${amount}</td>
+<td><span class="status">${safe(x.status||"Pending")}</span></td>
+<td>
+${x.slip_key?
+`<button class="btn secondary" onclick="viewSlip('${x.id}')">View</button>`:
+"-"}
+</td>
+<td>${actions||"View only"}</td>
+`;
+
+body.appendChild(tr);
+
+});
+
+}catch(e){
+
+body.innerHTML=
+`<tr><td colspan="7">Unable to load records.</td></tr>`;
+
+note(e.message);
+}
+}
+
+/* SAVE */
+
+document.getElementById("financeForm").onsubmit=
+async function(e){
+
+e.preventDefault();
+
+const file=document.getElementById("fSlip").files[0];
+
+if(!file){
+note("Supporting slip is required.");
+return;
+}
+
+if(file.size>10*1024*1024){
+note("Slip must be smaller than 10 MB.");
+return;
+}
+
+const btn=document.getElementById("saveBtn");
+
+btn.disabled=true;
+btn.textContent="Saving...";
+
+const fd=new FormData();
+
+fd.append("date",document.getElementById("fDate").value);
+fd.append("type",document.getElementById("fType").value);
+fd.append("category",document.getElementById("fCategory").value);
+fd.append("amount",document.getElementById("fAmount").value);
+fd.append("payment_method",document.getElementById("fMethod").value);
+fd.append("reference",document.getElementById("fRef").value);
+fd.append("description",document.getElementById("fDesc").value);
+fd.append("slip",file);
 
 try{
-await fetch(API.auth+"/logout",{
-method:"POST",
-credentials:"include"
-});
-}catch(e){}
 
-sessionStorage.clear();
+const r=await fetch(
+FINANCE_API+"/transactions",
+{
+method:"POST",
+headers:headers(),
+body:fd
+}
+);
+
+const d=await r.json();
+
+if(!r.ok)
+throw Error(d.error||"Save failed");
+
+note(
+d.status==="Approved"
+?"Financial record approved."
+:"Financial record submitted for approval.",
+"success"
+);
+
+this.reset();
+
+loadFinance();
+
+}catch(e){
+
+note(e.message);
+
+}finally{
+
+btn.disabled=false;
+btn.textContent="Save Financial Record";
+
+}
+};
+
+/* VIEW SLIP */
+
+async function viewSlip(id){
+
+try{
+
+const r=await fetch(
+FINANCE_API+"/transactions/"+id+"/slip",
+{
+headers:headers()
+}
+);
+
+if(!r.ok){
+
+const d=await r.json().catch(()=>({}));
+
+throw Error(d.error||"Unable to open slip");
+}
+
+const blob=await r.blob();
+
+const url=URL.createObjectURL(blob);
+
+window.open(url,"_blank");
+
+}catch(e){
+
+note(e.message);
+}
+}
+
+/* APPROVE */
+
+async function approveRecord(id){
+
+if(!admin){
+note("Only Administrator can approve.");
+return;
+}
+
+if(!confirm("Approve this financial record?"))
+return;
+
+try{
+
+const r=await fetch(
+FINANCE_API+"/transactions/"+id+"/approve",
+{
+method:"POST",
+headers:headers()
+}
+);
+
+const d=await r.json();
+
+if(!r.ok)
+throw Error(d.error||"Approval failed");
+
+note("Financial record approved.","success");
+
+loadFinance();
+
+}catch(e){
+note(e.message);
+}
+}
+
+/* DELETE */
+
+async function deleteRecord(id){
+
+if(!admin){
+note("Only Administrator can delete.");
+return;
+}
+
+if(!confirm(
+"Delete this financial record permanently?"
+))
+return;
+
+try{
+
+const r=await fetch(
+FINANCE_API+"/transactions/"+id,
+{
+method:"DELETE",
+headers:headers()
+}
+);
+
+const d=await r.json();
+
+if(!r.ok)
+throw Error(d.error||"Delete failed");
+
+note("Financial record deleted.","success");
+
+loadFinance();
+
+}catch(e){
+note(e.message);
+}
+}
+
+/* ESCAPE */
+
+function safe(v){
+
+return String(v??"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+}
+
+/* LOGOUT */
+
+document.getElementById("logout").onclick=()=>{
+
+if(!confirm("Logout?"))return;
+
+sessionStorage.removeItem("goh_admin");
+sessionStorage.removeItem("goh_login_type");
+
 location.href="login.html";
 };
 
 openPage("dashboard");
-loadDashboard();
 </script>
 
 </body>
