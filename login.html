@@ -3,160 +3,124 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Login | GOH Bible Academy</title>
-
-<meta name="description"
-content="Student login for GOH Bible Academy.">
+<meta name="theme-color" content="#0b376d">
+<title>GOH Ministries | Church Administration</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
-  font-family:Arial,sans-serif;
   min-height:100vh;
-  background:#f4f7fb;
-  color:#172033;
   display:flex;
   align-items:center;
   justify-content:center;
   padding:20px;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#071b35,#0b376d)
 }
 
 .card{
   width:100%;
-  max-width:430px;
+  max-width:420px;
   background:#fff;
-  padding:30px;
   border-radius:18px;
-  box-shadow:0 10px 35px rgba(0,0,0,.08);
+  padding:32px 25px;
+  box-shadow:0 20px 50px rgba(0,0,0,.25)
 }
 
 .logo{
+  width:68px;
+  height:68px;
+  margin:0 auto 15px;
+  border-radius:50%;
+  background:#0b376d;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:23px;
+  font-weight:700
+}
+
+h1{
   text-align:center;
-  font-size:28px;
-  font-weight:800;
   color:#0b376d;
+  font-size:23px
 }
 
 .subtitle{
   text-align:center;
-  color:#667085;
-  margin-top:8px;
-  margin-bottom:28px;
+  color:#666;
+  margin:7px 0 26px;
+  font-size:14px
 }
 
 label{
   display:block;
-  font-weight:600;
-  margin:16px 0 7px;
+  margin:15px 0 7px;
+  color:#333;
+  font-size:14px;
+  font-weight:700
 }
 
 input{
   width:100%;
-  padding:14px;
-  border:1px solid #d0d5dd;
+  padding:13px 14px;
+  border:1px solid #ccc;
   border-radius:10px;
   font-size:16px;
-  outline:none;
+  outline:none
 }
 
 input:focus{
   border-color:#0b376d;
+  box-shadow:0 0 0 3px rgba(11,55,109,.1)
 }
 
-.password-box{
-  position:relative;
-}
-
-.password-box input{
-  padding-right:70px;
-}
-
-.show{
-  position:absolute;
-  right:12px;
-  top:50%;
-  transform:translateY(-50%);
-  border:0;
-  background:none;
-  color:#0b376d;
-  font-weight:600;
-  cursor:pointer;
-}
-
-.forgot{
-  text-align:right;
-  margin-top:10px;
-}
-
-.forgot a{
-  color:#0b376d;
-  text-decoration:none;
-  font-size:14px;
-}
-
-button.login{
+button{
   width:100%;
   margin-top:22px;
-  padding:15px;
+  padding:14px;
   border:0;
   border-radius:10px;
   background:#0b376d;
   color:#fff;
-  font-size:17px;
+  font-size:16px;
   font-weight:700;
-  cursor:pointer;
+  cursor:pointer
 }
 
-button.login:disabled{
-  opacity:.6;
-  cursor:not-allowed;
+button:disabled{
+  opacity:.65;
+  cursor:not-allowed
 }
 
 .message{
   display:none;
-  margin-top:16px;
-  padding:13px;
-  border-radius:10px;
-  font-size:14px;
-  line-height:1.5;
-}
-
-.message.success{
-  display:block;
-  background:#ecfdf3;
-  color:#027a48;
-}
-
-.message.error{
-  display:block;
-  background:#fef3f2;
-  color:#b42318;
-}
-
-.register{
+  margin-top:15px;
+  padding:12px;
+  border-radius:9px;
   text-align:center;
+  font-size:14px
+}
+
+.error{
+  display:block;
+  background:#fee2e2;
+  color:#b91c1c
+}
+
+.success{
+  display:block;
+  background:#dcfce7;
+  color:#166534
+}
+
+.footer{
   margin-top:22px;
-  color:#667085;
-}
-
-.register a{
-  color:#0b376d;
-  font-weight:700;
-  text-decoration:none;
-}
-
-.back{
-  display:block;
   text-align:center;
-  margin-top:18px;
-  color:#667085;
-  text-decoration:none;
-  font-size:14px;
+  color:#777;
+  font-size:12px
 }
 </style>
 </head>
@@ -165,274 +129,202 @@ button.login:disabled{
 
 <div class="card">
 
-  <div class="logo">
-    GOH Bible Academy
-  </div>
+<div class="logo">GOH</div>
 
-  <div class="subtitle">
-    Student Login
-  </div>
+<h1>GOH Ministries</h1>
 
-  <form id="loginForm">
+<div class="subtitle">
+Church Administration
+</div>
 
-    <label for="email">
-      Email Address
-    </label>
+<form id="loginForm">
 
-    <input
-      id="email"
-      type="email"
-      autocomplete="email"
-      placeholder="Enter your email"
-      required
-    >
+<label>Username</label>
 
-    <label for="password">
-      Password
-    </label>
+<input
+id="username"
+type="text"
+placeholder="Enter username"
+autocomplete="username"
+required
+>
 
-    <div class="password-box">
+<label>Password</label>
 
-      <input
-        id="password"
-        type="password"
-        autocomplete="current-password"
-        placeholder="Enter your password"
-        required
-      >
+<input
+id="password"
+type="password"
+placeholder="Enter password"
+autocomplete="current-password"
+required
+>
 
-      <button
-        type="button"
-        class="show"
-        onclick="togglePassword()"
-      >
-        Show
-      </button>
+<button id="loginBtn" type="submit">
+Login
+</button>
 
-    </div>
+<div id="message" class="message"></div>
 
-    <div class="forgot">
-      <a href="reset-password.html">
-        Forgot password?
-      </a>
-    </div>
+</form>
 
-    <button
-      id="loginBtn"
-      class="login"
-      type="submit"
-    >
-      Login
-    </button>
-
-  </form>
-
-  <div
-    id="message"
-    class="message"
-  ></div>
-
-  <div class="register">
-    Don't have an account?
-    <a href="register.html">
-      Register
-    </a>
-  </div>
-
-  <a
-    class="back"
-    href="index.html"
-  >
-    ← Back to GOH Bible Academy
-  </a>
+<div class="footer">
+Authorized administrators only
+</div>
 
 </div>
 
 <script>
 
-/* GOH AUTH API */
-
 const API =
-  "https://goh-auth-api.createlk.workers.dev";
+"https://admin-workerjs.createlk.workers.dev";
 
+const form =
+document.getElementById("loginForm");
 
-/* PASSWORD SHOW/HIDE */
+const btn =
+document.getElementById("loginBtn");
 
-function togglePassword(){
+const message =
+document.getElementById("message");
 
-  const input =
-    document.getElementById("password");
+function showMessage(text,type){
 
-  const button =
-    document.querySelector(".show");
-
-  if(input.type === "password"){
-
-    input.type = "text";
-    button.textContent = "Hide";
-
-  }else{
-
-    input.type = "password";
-    button.textContent = "Show";
-
-  }
+message.textContent=text;
+message.className="message "+type;
 
 }
 
+form.addEventListener("submit",async e=>{
 
-/* MESSAGE */
+e.preventDefault();
 
-function showMessage(
-  text,
-  type
+const username =
+document.getElementById("username")
+.value.trim();
+
+const password =
+document.getElementById("password")
+.value;
+
+if(!username || !password){
+
+showMessage(
+"Please enter your username and password.",
+"error"
+);
+
+return;
+
+}
+
+btn.disabled=true;
+btn.textContent="Logging in...";
+message.className="message";
+
+try{
+
+const response =
+await fetch(API+"/login",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+username,
+password
+})
+
+});
+
+const data =
+await response.json();
+
+if(
+!response.ok ||
+!data.success ||
+!data.token
 ){
 
-  const box =
-    document.getElementById("message");
-
-  box.className =
-    "message " + type;
-
-  box.textContent = text;
+throw new Error(
+data.error ||
+"Invalid username or password."
+);
 
 }
 
+sessionStorage.setItem(
+"goh_admin_token",
+data.token
+);
 
-/* LOGIN */
+if(data.admin){
 
-document
-  .getElementById("loginForm")
-  .addEventListener(
-    "submit",
-    async function(e){
+sessionStorage.setItem(
+"goh_admin",
+JSON.stringify(data.admin)
+);
 
-      e.preventDefault();
+}
 
-      const email =
-        document
-        .getElementById("email")
-        .value
-        .trim()
-        .toLowerCase();
+const check =
+await fetch(API+"/me",{
 
-      const password =
-        document
-        .getElementById("password")
-        .value;
+headers:{
+"Authorization":
+"Bearer "+data.token
+}
 
-      const button =
-        document
-        .getElementById("loginBtn");
+});
 
+const verified =
+await check.json();
 
-      if(!email || !password){
+if(!check.ok || !verified.success){
 
-        showMessage(
-          "Please enter your email and password.",
-          "error"
-        );
+sessionStorage.removeItem(
+"goh_admin_token"
+);
 
-        return;
-      }
+sessionStorage.removeItem(
+"goh_admin"
+);
 
+throw new Error(
+"Administrator session could not be verified."
+);
 
-      button.disabled = true;
-      button.textContent =
-        "Logging in...";
+}
 
+showMessage(
+"Login successful. Opening administration...",
+"success"
+);
 
-      try{
+setTimeout(()=>{
 
-        const response =
-          await fetch(
-            API + "/login",
-            {
-              method:"POST",
+window.location.replace(
+"admin.html"
+);
 
-              headers:{
-                "Content-Type":
-                  "application/json"
-              },
+},500);
 
-              body:JSON.stringify({
-                email:email,
-                password:password
-              })
-            }
-          );
+}catch(error){
 
+showMessage(
+error.message ||
+"Login failed.",
+"error"
+);
 
-        const data =
-          await response.json();
+btn.disabled=false;
+btn.textContent="Login";
 
+}
 
-        if(!data.success){
-
-          showMessage(
-            data.error ||
-            "Login failed.",
-            "error"
-          );
-
-          return;
-        }
-
-
-        /* SAVE AUTH TOKEN */
-
-        localStorage.setItem(
-          "goh_token",
-          data.token
-        );
-
-
-        /* SAVE STUDENT */
-
-        localStorage.setItem(
-          "goh_student",
-          JSON.stringify(
-            data.student
-          )
-        );
-
-
-        showMessage(
-          "Login successful. Opening your dashboard...",
-          "success"
-        );
-
-
-        setTimeout(
-          function(){
-
-            window.location.href =
-              "dashboard.html";
-
-          },
-          800
-        );
-
-
-      }catch(error){
-
-        console.error(error);
-
-        showMessage(
-          "Unable to connect to GOH Bible Academy. Please try again.",
-          "error"
-        );
-
-      }finally{
-
-        button.disabled = false;
-        button.textContent =
-          "Login";
-
-      }
-
-    }
-  );
+});
 
 </script>
 
