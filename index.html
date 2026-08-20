@@ -3,1485 +3,277 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0b376d">
-<title>GOH Ministries | Administration</title>
+<meta name="theme-color" content="#102a72">
+<meta name="description" content="GOH Bible School - One-Year Christian Discipleship Training in English, Tamil and Sinhala.">
+<title>GOH Bible School | Discipleship Training</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:#f7f9ff;color:#172033;line-height:1.6}
+a{text-decoration:none;color:inherit}
+header{position:sticky;top:0;z-index:10;background:#102a72;color:#fff;box-shadow:0 3px 15px #0003}
+.head{max-width:1150px;margin:auto;padding:10px 15px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:9px}
+.logo{width:42px;height:42px;border-radius:12px;background:#fff;color:#102a72;display:grid;place-items:center;font-weight:900;font-size:11px}
+.brand h1{font-size:16px;line-height:1.1}.brand p{font-size:9px;opacity:.75}
+nav{display:flex;gap:3px}nav a{font-size:11px;padding:7px 9px;border-radius:7px}nav a:hover{background:#fff2}
+.lang{display:flex;gap:3px}.lang button{border:1px solid #fff5;background:#fff1;color:#fff;padding:6px 7px;border-radius:6px;font-size:9px;cursor:pointer}.lang .active{background:#fff;color:#102a72}
 
-:root{
---blue:#0b376d;
---blue2:#1558a6;
---navy:#082952;
---bg:#f4f7fb;
---white:#fff;
---text:#172033;
---muted:#64748b;
---border:#e2e8f0;
+.hero{color:#fff;text-align:center;padding:70px 18px;background:radial-gradient(circle at 90% 10%,#f59e0b66,transparent 25%),radial-gradient(circle at 5% 90%,#38bdf855,transparent 25%),linear-gradient(135deg,#102a72,#6d28d9)}
+.hero>div{max-width:800px;margin:auto}.badge{display:inline-block;border:1px solid #fff5;background:#fff2;padding:6px 13px;border-radius:30px;font-size:10px;margin-bottom:15px}
+.hero h2{font-size:40px;line-height:1.15;margin-bottom:14px}.hero p{max-width:680px;margin:auto;font-size:14px;opacity:.9}
+.buttons{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-block;padding:11px 18px;border-radius:9px;font-size:12px;font-weight:bold}
+.primary{background:#fff;color:#102a72}.outline{border:1px solid #fff7;color:#fff;background:#fff1}
 
---green:#16834a;
---green-bg:#eaf8f0;
+.section{padding:52px 16px}.container{max-width:1100px;margin:auto}
+.title{text-align:center;color:#102a72;font-size:25px;margin-bottom:8px}.title:after{content:"";display:block;width:40px;height:3px;background:linear-gradient(90deg,#2563eb,#f59e0b);margin:8px auto}
+.sub{text-align:center;color:#667085;font-size:12px;max-width:650px;margin:0 auto 25px}
 
---orange:#d97706;
---orange-bg:#fff5e5;
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card,.info,.month,.step,details{background:#fff;border:1px solid #e4e8ef;border-radius:12px;box-shadow:0 4px 16px #00000008}
+.card{padding:19px;border-top:4px solid #6d28d9}.card:nth-child(2){border-top-color:#2563eb}.card:nth-child(3){border-top-color:#f59e0b}
+.icon{font-size:25px}.card h3,.info h3{color:#102a72;font-size:15px;margin:5px 0}.card p,.info p,.month span,.step p,details p{font-size:12px;color:#667085}
 
---purple:#6d42b8;
---purple-bg:#f3edff;
+.price{max-width:530px;margin:auto;text-align:center;padding:28px 18px;background:linear-gradient(135deg,#fff,#f3efff);border:1px solid #ddd6fe;border-radius:16px;box-shadow:0 8px 25px #4c1d9515}
+.price label{font-size:12px;color:#667085}.price strong{display:block;color:#102a72;font-size:38px}.price small{font-size:13px;color:#667085;font-weight:normal}.price p{font-size:11px;color:#667085;margin-bottom:12px}.price .btn{background:#102a72;color:#fff}
 
---red:#c43d4b;
---red-bg:#fff0f1;
+.months{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.month{padding:14px;border-top:3px solid #2563eb}.month:nth-child(3n+2){border-top-color:#9333ea}.month:nth-child(3n){border-top-color:#f59e0b}.month b{display:block;color:#102a72;font-size:12px}
 
---cyan:#087f91;
---cyan-bg:#e8f8fb;
-}
+.steps{max-width:750px;margin:auto}.step{display:flex;gap:12px;padding:14px;margin-bottom:10px}.num{min-width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#2563eb,#9333ea);color:#fff;display:grid;place-items:center;font-weight:bold;font-size:12px}.step h3{font-size:13px;color:#102a72}
 
-body{
-font-family:Arial,Helvetica,sans-serif;
-background:var(--bg);
-color:var(--text);
-min-height:100vh;
-}
+.require{max-width:750px;margin:auto;text-align:center;padding:24px;border-radius:15px;background:linear-gradient(135deg,#eff6ff,#f5f3ff);border:1px solid #c7d2fe}.require strong{display:block;font-size:24px;color:#6d28d9}.require p{font-size:12px;color:#475467}
 
-/* HEADER */
+.info{padding:20px;border-top:4px solid #2563eb}.info:nth-child(2){border-top-color:#9333ea}.info:nth-child(3){border-top-color:#f59e0b}
 
-.header{
-height:66px;
-background:linear-gradient(110deg,var(--navy),var(--blue),#1260a8);
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 24px;
-position:fixed;
-top:0;
-left:0;
-right:0;
-z-index:100;
-box-shadow:0 2px 12px rgba(8,41,82,.18);
-}
+.faq{max-width:800px;margin:auto}details{padding:13px;margin-bottom:7px}summary{cursor:pointer;font-weight:bold;font-size:12px;color:#102a72}
 
-.brand{
-display:flex;
-align-items:center;
-gap:12px;
-}
+.contact{padding:35px 18px;text-align:center;color:#fff;border-radius:16px;background:linear-gradient(135deg,#102a72,#6d28d9)}.contact h2{font-size:24px}.contact p{font-size:12px;opacity:.85}.contact .btn{background:#fff;color:#102a72;margin:15px 3px 0}
 
-.logo{
-width:40px;
-height:40px;
-border-radius:9px;
-background:#fff;
-color:var(--blue);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:13px;
-font-weight:bold;
-box-shadow:0 2px 8px rgba(0,0,0,.12);
-}
+footer{background:#071b4c;color:#fff;padding:30px 16px}.foot{max-width:1100px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:20px}.foot h3{font-size:13px;margin-bottom:6px}.foot p,.foot a{display:block;color:#cbd5e1;font-size:10px;margin-bottom:4px}.copy{text-align:center;border-top:1px solid #fff2;margin:20px auto 0;padding-top:12px;color:#94a3b8;font-size:9px}
 
-.brand-name{
-font-size:16px;
-font-weight:bold;
-}
-
-.brand-sub{
-font-size:11px;
-opacity:.78;
-margin-top:2px;
-}
-
-.header-right{
-display:flex;
-align-items:center;
-gap:18px;
-}
-
-.account{
-text-align:right;
-}
-
-.account-name{
-font-size:13px;
-font-weight:bold;
-}
-
-.account-role{
-font-size:11px;
-opacity:.72;
-margin-top:2px;
-}
-
-.logout{
-border:1px solid rgba(255,255,255,.35);
-background:rgba(255,255,255,.10);
-color:#fff;
-border-radius:7px;
-padding:8px 13px;
-cursor:pointer;
-font-size:13px;
-}
-
-.logout:hover{
-background:rgba(255,255,255,.2);
-}
-
-/* MOBILE MENU */
-
-.menu-toggle{
-display:none;
-border:0;
-background:transparent;
-color:#fff;
-font-size:23px;
-cursor:pointer;
-}
-
-/* SIDEBAR */
-
-.sidebar{
-position:fixed;
-top:66px;
-left:0;
-bottom:0;
-width:240px;
-background:#fff;
-border-right:1px solid var(--border);
-padding:17px 12px;
-overflow-y:auto;
-z-index:90;
-}
-
-.nav-title{
-padding:10px 10px 6px;
-color:#94a3b8;
-font-size:10px;
-font-weight:bold;
-text-transform:uppercase;
-letter-spacing:.7px;
-}
-
-.nav-item{
-width:100%;
-border:0;
-background:transparent;
-color:#475569;
-text-align:left;
-padding:10px 11px;
-margin:2px 0;
-border-radius:7px;
-font-size:13px;
-cursor:pointer;
-transition:.15s;
-}
-
-.nav-item:hover{
-background:#edf4fb;
-color:var(--blue);
-}
-
-.nav-item.active{
-background:linear-gradient(90deg,#e6f0fa,#f1f7fc);
-color:var(--blue);
-font-weight:bold;
-border-left:3px solid var(--blue2);
-padding-left:8px;
-}
-
-/* MAIN */
-
-.main{
-margin-left:240px;
-padding:92px 30px 45px;
-max-width:1500px;
-}
-
-.breadcrumb{
-font-size:12px;
-color:var(--muted);
-margin-bottom:8px;
-}
-
-.page-header{
-display:flex;
-align-items:flex-end;
-justify-content:space-between;
-margin-bottom:25px;
-}
-
-.page-header h1{
-font-size:27px;
-color:var(--blue);
-font-weight:600;
-}
-
-.page-header p{
-font-size:13px;
-color:var(--muted);
-margin-top:6px;
-}
-
-/* SUMMARY CARDS */
-
-.summary{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:16px;
-margin-bottom:24px;
-}
-
-.summary-box{
-background:#fff;
-border:1px solid var(--border);
-border-radius:12px;
-padding:18px;
-position:relative;
-overflow:hidden;
-box-shadow:0 2px 8px rgba(15,23,42,.035);
-}
-
-.summary-box:after{
-content:"";
-position:absolute;
-right:-25px;
-top:-25px;
-width:80px;
-height:80px;
-border-radius:50%;
-opacity:.12;
-}
-
-.summary-box.blue:after{
-background:var(--blue2);
-}
-
-.summary-box.green:after{
-background:var(--green);
-}
-
-.summary-box.orange:after{
-background:var(--orange);
-}
-
-.summary-box.purple:after{
-background:var(--purple);
-}
-
-.summary-top{
-display:flex;
-align-items:center;
-justify-content:space-between;
-}
-
-.summary-icon{
-width:36px;
-height:36px;
-border-radius:9px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold;
-font-size:14px;
-}
-
-.icon-blue{
-background:#eaf2fb;
-color:var(--blue2);
-}
-
-.icon-green{
-background:var(--green-bg);
-color:var(--green);
-}
-
-.icon-orange{
-background:var(--orange-bg);
-color:var(--orange);
-}
-
-.icon-purple{
-background:var(--purple-bg);
-color:var(--purple);
-}
-
-.summary-label{
-font-size:12px;
-color:var(--muted);
-}
-
-.summary-value{
-font-size:23px;
-font-weight:bold;
-margin-top:10px;
-color:var(--text);
-}
-
-.summary-status{
-font-size:11px;
-margin-top:5px;
-color:var(--muted);
-}
-
-/* MAIN CARDS */
-
-.columns{
-display:grid;
-grid-template-columns:2fr 1fr;
-gap:20px;
-}
-
-.panel{
-background:#fff;
-border:1px solid var(--border);
-border-radius:12px;
-overflow:hidden;
-box-shadow:0 2px 8px rgba(15,23,42,.035);
-}
-
-.panel-header{
-padding:16px 18px;
-border-bottom:1px solid var(--border);
-display:flex;
-align-items:center;
-justify-content:space-between;
-}
-
-.panel-title{
-font-size:15px;
-font-weight:bold;
-color:var(--blue);
-}
-
-.panel-link{
-border:0;
-background:transparent;
-color:var(--blue2);
-font-size:12px;
-cursor:pointer;
-}
-
-.panel-link:hover{
-text-decoration:underline;
-}
-
-.panel-body{
-padding:18px;
-}
-
-/* TABLE */
-
-.table-wrap{
-overflow-x:auto;
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-font-size:13px;
-}
-
-th{
-padding:11px 12px;
-text-align:left;
-background:#f8fafc;
-border-bottom:1px solid var(--border);
-font-size:11px;
-color:#64748b;
-}
-
-td{
-padding:13px 12px;
-border-bottom:1px solid #edf1f5;
-}
-
-tr:last-child td{
-border-bottom:0;
-}
-
-tr:hover td{
-background:#fbfdff;
-}
-
-.status{
-display:inline-block;
-padding:4px 9px;
-border-radius:20px;
-font-size:10px;
-font-weight:bold;
-}
-
-.status.active{
-background:var(--green-bg);
-color:var(--green);
-}
-
-.status.ready{
-background:var(--cyan-bg);
-color:var(--cyan);
-}
-
-/* QUICK ACCESS */
-
-.quick{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:9px;
-}
-
-.quick button{
-border:1px solid var(--border);
-background:#fff;
-border-radius:9px;
-padding:13px 12px;
-text-align:left;
-font-size:12px;
-color:#334155;
-cursor:pointer;
-transition:.15s;
-}
-
-.quick button:hover{
-border-color:#b7cbe0;
-background:#f7fbff;
-transform:translateY(-1px);
-}
-
-.quick button:nth-child(1){
-border-left:3px solid var(--blue2);
-}
-
-.quick button:nth-child(2){
-border-left:3px solid var(--purple);
-}
-
-.quick button:nth-child(3){
-border-left:3px solid var(--green);
-}
-
-.quick button:nth-child(4){
-border-left:3px solid var(--orange);
-}
-
-.quick button:nth-child(5){
-border-left:3px solid var(--cyan);
-}
-
-.quick button:nth-child(6){
-border-left:3px solid var(--red);
-}
-
-.quick button:nth-child(7){
-border-left:3px solid var(--blue);
-}
-
-/* LOWER SECTION */
-
-.modules{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:16px;
-margin-top:20px;
-}
-
-.module{
-background:#fff;
-border:1px solid var(--border);
-border-radius:12px;
-padding:18px;
-box-shadow:0 2px 8px rgba(15,23,42,.035);
-}
-
-.module-head{
-display:flex;
-align-items:center;
-gap:10px;
-margin-bottom:10px;
-}
-
-.module-icon{
-width:38px;
-height:38px;
-border-radius:9px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:14px;
-font-weight:bold;
-}
-
-.module h3{
-font-size:14px;
-color:var(--text);
-}
-
-.module p{
-font-size:12px;
-line-height:1.5;
-color:var(--muted);
-}
-
-.module button{
-margin-top:14px;
-border:0;
-background:#f1f5f9;
-color:var(--blue);
-padding:8px 11px;
-border-radius:7px;
-font-size:11px;
-cursor:pointer;
-}
-
-.module button:hover{
-background:#e6eef7;
-}
-
-/* NOTICE */
-
-.notice{
-margin-top:20px;
-background:#fff;
-border:1px solid #dbe7f2;
-border-left:4px solid var(--blue2);
-border-radius:9px;
-padding:14px 16px;
-font-size:12px;
-line-height:1.5;
-color:var(--muted);
-}
-
-/* MOBILE */
-
-@media(max-width:1050px){
-
-.summary{
-grid-template-columns:repeat(2,1fr);
-}
-
-.columns{
-grid-template-columns:1fr;
-}
-
-.modules{
-grid-template-columns:repeat(2,1fr);
-}
-
-}
-
-@media(max-width:700px){
-
-.header{
-padding:0 15px;
-}
-
-.menu-toggle{
-display:block;
-}
-
-.brand-sub{
-display:none;
-}
-
-.account{
-display:none;
-}
-
-.sidebar{
-left:-250px;
-width:240px;
-transition:left .2s ease;
-box-shadow:5px 0 20px rgba(0,0,0,.10);
-}
-
-.sidebar.open{
-left:0;
-}
-
-.main{
-margin-left:0;
-padding:86px 15px 35px;
-}
-
-.page-header{
-display:block;
-}
-
-.page-header h1{
-font-size:23px;
-}
-
-.summary{
-grid-template-columns:1fr 1fr;
-}
-
-.modules{
-grid-template-columns:1fr;
-}
-
-}
-
-@media(max-width:430px){
-
-.summary{
-grid-template-columns:1fr;
-}
-
-.quick{
-grid-template-columns:1fr;
-}
-
-.brand-name{
-font-size:14px;
-}
-
-}
+@media(max-width:800px){nav{display:none}.grid,.months{grid-template-columns:repeat(2,1fr)}.foot{grid-template-columns:1fr 1fr}}
+@media(max-width:550px){.hero{padding:55px 15px}.hero h2{font-size:29px}.grid,.months,.foot{grid-template-columns:1fr}.section{padding:42px 13px}.price strong{font-size:34px}}
 </style>
 </head>
 
 <body>
 
-<header class="header">
-
-<div class="brand">
-
-<button
-class="menu-toggle"
-id="menuToggle"
-type="button"
-aria-label="Open menu">
-☰
-</button>
-
+<header>
+<div class="head">
+<a class="brand" href="index.html">
 <div class="logo">GOH</div>
-
-<div>
-<div class="brand-name">
-GOH Ministries
+<div><h1>GOH Bible School</h1><p>Discipleship Training</p></div>
+</a>
+<nav>
+<a href="#programme">Programme</a>
+<a href="#curriculum">Curriculum</a>
+<a href="#how">How It Works</a>
+<a href="#faq">FAQ</a>
+<a href="#contact">Contact</a>
+</nav>
+<div class="lang">
+<button class="active" onclick="lang('en',this)">EN</button>
+<button onclick="lang('ta',this)">தமிழ்</button>
+<button onclick="lang('si',this)">සිංහල</button>
 </div>
-
-<div class="brand-sub">
-Church Administration
 </div>
-</div>
-
-</div>
-
-
-<div class="header-right">
-
-<div class="account">
-
-<div
-class="account-name"
-id="userName">
-GOH Administrator
-</div>
-
-<div class="account-role">
-Administration
-</div>
-
-</div>
-
-<button
-class="logout"
-id="logout"
-type="button">
-Logout
-</button>
-
-</div>
-
 </header>
 
-
-<aside
-class="sidebar"
-id="sidebar">
-
-<div class="nav-title">
-Main
-</div>
-
-<button
-class="nav-item active"
-onclick="go('admin-dashboard.html')">
-Dashboard
-</button>
-
-
-<div class="nav-title">
-Organization
-</div>
-
-<button
-class="nav-item"
-onclick="go('organization.html')">
-Organization
-</button>
-
-<button
-class="nav-item"
-onclick="go('history.html')">
-Ministry History
-</button>
-
-<button
-class="nav-item"
-onclick="go('activities.html')">
-Activities
-</button>
-
-<button
-class="nav-item"
-onclick="go('members.html')">
-Members
-</button>
-
-<button
-class="nav-item"
-onclick="go('meetings.html')">
-Meetings
-</button>
-
-
-<div class="nav-title">
-Finance
-</div>
-
-<button
-class="nav-item"
-onclick="go('finance.html')">
-Finance
-</button>
-
-<button
-class="nav-item"
-onclick="go('donations.html')">
-Donations
-</button>
-
-<button
-class="nav-item"
-onclick="go('reports.html')">
-Reports
-</button>
-
-
-<div class="nav-title">
-Documents
-</div>
-
-<button
-class="nav-item"
-onclick="go('documents.html')">
-Documents
-</button>
-
-<button
-class="nav-item"
-onclick="go('property.html')">
-Property
-</button>
-
-<button
-class="nav-item"
-onclick="go('media.html')">
-Media
-</button>
-
-
-<div class="nav-title">
-Security
-</div>
-
-<button
-class="nav-item"
-onclick="go('users.html')">
-Users & Permissions
-</button>
-
-<button
-class="nav-item"
-onclick="go('audit.html')">
-Audit Logs
-</button>
-
-</aside>
-
-
-<main class="main">
-
-<div class="breadcrumb">
-GOH Ministries / Administration
-</div>
-
-
-<div class="page-header">
-
+<section class="hero">
 <div>
-
-<h1>
-Administration Dashboard
-</h1>
-
-<p>
-Central administration and ministry records.
-</p>
-
+<span class="badge" id="badge">12-Month Christian Discipleship Programme</span>
+<h2 id="heroTitle">One-Year Bible & Discipleship Training</h2>
+<p id="heroText">A structured Christian training programme designed to help believers grow in biblical knowledge, spiritual character, ministry and disciple-making.</p>
+<div class="buttons">
+<a href="register.html" class="btn primary" id="registerBtn">Register Now</a>
+<a href="login.html" class="btn outline" id="loginBtn">Student Login</a>
 </div>
-
 </div>
-
-
-<!-- SUMMARY -->
-
-<section class="summary">
-
-
-<div class="summary-box blue">
-
-<div class="summary-top">
-
-<div class="summary-label">
-Members
-</div>
-
-<div class="summary-icon icon-blue">
-MEM
-</div>
-
-</div>
-
-<div class="summary-value">
-—
-</div>
-
-<div class="summary-status">
-Membership records
-</div>
-
-</div>
-
-
-<div class="summary-box green">
-
-<div class="summary-top">
-
-<div class="summary-label">
-Activities
-</div>
-
-<div class="summary-icon icon-green">
-ACT
-</div>
-
-</div>
-
-<div class="summary-value">
-—
-</div>
-
-<div class="summary-status">
-Ministry activities
-</div>
-
-</div>
-
-
-<div class="summary-box orange">
-
-<div class="summary-top">
-
-<div class="summary-label">
-Documents
-</div>
-
-<div class="summary-icon icon-orange">
-DOC
-</div>
-
-</div>
-
-<div class="summary-value">
-—
-</div>
-
-<div class="summary-status">
-Official records
-</div>
-
-</div>
-
-
-<div class="summary-box purple">
-
-<div class="summary-top">
-
-<div class="summary-label">
-System
-</div>
-
-<div class="summary-icon icon-purple">
-OK
-</div>
-
-</div>
-
-<div class="summary-value">
-Active
-</div>
-
-<div class="summary-status">
-Authentication online
-</div>
-
-</div>
-
 </section>
 
-
-<!-- MAIN -->
-
-<section class="columns">
-
-
-<div class="panel">
-
-<div class="panel-header">
-
-<div class="panel-title">
-Administration Overview
+<section class="section" id="programme">
+<div class="container">
+<h2 class="title" id="programmeTitle">About the Programme</h2>
+<p class="sub" id="programmeSub">A structured one-year learning journey for believers who desire to grow in Christ and serve effectively.</p>
+<div class="grid">
+<div class="card"><div class="icon">📖</div><h3 id="c1t">Biblical Foundation</h3><p id="c1p">Study essential Christian teachings and develop a strong foundation in God's Word.</p></div>
+<div class="card"><div class="icon">🙏</div><h3 id="c2t">Spiritual Growth</h3><p id="c2p">Develop prayer, Bible study, obedience, character and a consistent Christian life.</p></div>
+<div class="card"><div class="icon">🤝</div><h3 id="c3t">Disciple-Making</h3><p id="c3p">Learn to evangelize, teach, serve and help other believers grow in Christ.</p></div>
 </div>
-
-<button
-class="panel-link"
-onclick="go('organization.html')">
-View organization
-</button>
-
 </div>
-
-
-<div class="table-wrap">
-
-<table>
-
-<thead>
-
-<tr>
-<th>Section</th>
-<th>Description</th>
-<th>Status</th>
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-
-<td>
-Organization
-</td>
-
-<td>
-Ministry information and records
-</td>
-
-<td>
-<span class="status active">
-Active
-</span>
-</td>
-
-</tr>
-
-
-<tr>
-
-<td>
-Ministry History
-</td>
-
-<td>
-Historical ministry records
-</td>
-
-<td>
-<span class="status active">
-Active
-</span>
-</td>
-
-</tr>
-
-
-<tr>
-
-<td>
-Members
-</td>
-
-<td>
-Membership administration
-</td>
-
-<td>
-<span class="status ready">
-Ready
-</span>
-</td>
-
-</tr>
-
-
-<tr>
-
-<td>
-Meetings
-</td>
-
-<td>
-Meeting records and minutes
-</td>
-
-<td>
-<span class="status ready">
-Ready
-</span>
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
-
-
-<div class="panel">
-
-<div class="panel-header">
-
-<div class="panel-title">
-Quick Access
-</div>
-
-</div>
-
-
-<div class="panel-body">
-
-<div class="quick">
-
-<button onclick="go('organization.html')">
-Organization Information
-</button>
-
-<button onclick="go('history.html')">
-Ministry History
-</button>
-
-<button onclick="go('activities.html')">
-Ministry Activities
-</button>
-
-<button onclick="go('members.html')">
-Members
-</button>
-
-<button onclick="go('meetings.html')">
-Meetings
-</button>
-
-<button onclick="go('documents.html')">
-Documents
-</button>
-
-<button onclick="go('audit.html')">
-Audit Logs
-</button>
-
-</div>
-
-</div>
-
-</div>
-
 </section>
 
-
-<!-- MODULE CARDS -->
-
-<section class="modules">
-
-
-<div class="module">
-
-<div class="module-head">
-
-<div class="module-icon icon-blue">
-ORG
+<section class="section">
+<div class="price">
+<label id="feeLabel">Programme Fee</label>
+<strong>LKR 1,500 <small>/ month</small></strong>
+<p id="feeNote">Monthly training access · 12-month programme</p>
+<a href="register.html" class="btn">Start Registration</a>
 </div>
-
-<h3>
-Organization
-</h3>
-
-</div>
-
-<p>
-Manage official ministry information,
-history and organizational records.
-</p>
-
-<button onclick="go('organization.html')">
-Open Organization
-</button>
-
-</div>
-
-
-<div class="module">
-
-<div class="module-head">
-
-<div class="module-icon icon-green">
-FIN
-</div>
-
-<h3>
-Finance
-</h3>
-
-</div>
-
-<p>
-Income, expenses, approvals,
-supporting records and financial reports.
-</p>
-
-<button onclick="go('finance.html')">
-Open Finance
-</button>
-
-</div>
-
-
-<div class="module">
-
-<div class="module-head">
-
-<div class="module-icon icon-orange">
-DOC
-</div>
-
-<h3>
-Documents
-</h3>
-
-</div>
-
-<p>
-Official documents, receipts,
-statements and supporting files.
-</p>
-
-<button onclick="go('documents.html')">
-Open Documents
-</button>
-
-</div>
-
-
-<div class="module">
-
-<div class="module-head">
-
-<div class="module-icon icon-purple">
-MEM
-</div>
-
-<h3>
-Members
-</h3>
-
-</div>
-
-<p>
-Maintain church membership and
-related ministry records.
-</p>
-
-<button onclick="go('members.html')">
-Open Members
-</button>
-
-</div>
-
-
-<div class="module">
-
-<div class="module-head">
-
-<div class="module-icon icon-blue">
-REP
-</div>
-
-<h3>
-Reports
-</h3>
-
-</div>
-
-<p>
-Daily, monthly, quarterly and
-annual administration reports.
-</p>
-
-<button onclick="go('reports.html')">
-Open Reports
-</button>
-
-</div>
-
-
-<div class="module">
-
-<div class="module-head">
-
-<div class="module-icon icon-orange">
-AUD
-</div>
-
-<h3>
-Audit Logs
-</h3>
-
-</div>
-
-<p>
-Review important system actions,
-approvals and administrative history.
-</p>
-
-<button onclick="go('audit.html')">
-Open Audit
-</button>
-
-</div>
-
 </section>
 
-
-<div class="notice">
-Administration access is controlled by the GOH
-authentication system. Finance, documents,
-reports, users and audit functions will be
-connected to their respective Workers and D1
-records as each module is completed.
+<section class="section" id="curriculum">
+<div class="container">
+<h2 class="title" id="curriculumTitle">12-Month Curriculum</h2>
+<p class="sub" id="curriculumSub">Each month focuses on a specific area of Christian growth and ministry development.</p>
+<div class="months">
+<div class="month"><b>Month 1</b><span>Foundations of Christian Faith</span></div>
+<div class="month"><b>Month 2</b><span>Jesus Christ and His Teachings</span></div>
+<div class="month"><b>Month 3</b><span>Holy Spirit and Spiritual Life</span></div>
+<div class="month"><b>Month 4</b><span>Prayer and Bible Study</span></div>
+<div class="month"><b>Month 5</b><span>Christian Character and Holiness</span></div>
+<div class="month"><b>Month 6</b><span>The Church and Christian Fellowship</span></div>
+<div class="month"><b>Month 7</b><span>Evangelism and Gospel Ministry</span></div>
+<div class="month"><b>Month 8</b><span>Discipleship and Spiritual Multiplication</span></div>
+<div class="month"><b>Month 9</b><span>Christian Leadership</span></div>
+<div class="month"><b>Month 10</b><span>Bible Interpretation and Teaching</span></div>
+<div class="month"><b>Month 11</b><span>Christian Ministry and Service</span></div>
+<div class="month"><b>Month 12</b><span>Mission and Disciple Multiplication</span></div>
 </div>
+</div>
+</section>
 
-</main>
+<section class="section" id="how">
+<div class="container">
+<h2 class="title" id="howTitle">How the Programme Works</h2>
+<div class="steps">
+<div class="step"><div class="num">1</div><div><h3>Register</h3><p>Create your student account and select your preferred language.</p></div></div>
+<div class="step"><div class="num">2</div><div><h3>Enroll</h3><p>Choose the monthly training programme and complete payment.</p></div></div>
+<div class="step"><div class="num">3</div><div><h3>Study</h3><p>Access lessons, Bible references and monthly learning materials.</p></div></div>
+<div class="step"><div class="num">4</div><div><h3>Complete Assignment</h3><p>Complete the required monthly learning or ministry assignment.</p></div></div>
+<div class="step"><div class="num">5</div><div><h3>Take Monthly Exam</h3><p>Complete the examination after finishing the month's requirements.</p></div></div>
+<div class="step"><div class="num">6</div><div><h3>Pass & Continue</h3><p>Achieve at least 80% to unlock the next month's programme.</p></div></div>
+</div>
+</div>
+</section>
 
+<section class="section">
+<div class="require">
+<strong>80% Pass Requirement</strong>
+<p>Students must achieve a minimum score of 80% in each monthly examination to progress to the next month.</p>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<h2 class="title">Who Is This Programme For?</h2>
+<div class="grid">
+<div class="info"><h3>Believers</h3><p>Christians who want a stronger biblical and spiritual foundation.</p></div>
+<div class="info"><h3>Growing Disciples</h3><p>Believers who want structured training for continued spiritual growth.</p></div>
+<div class="info"><h3>Ministry Workers</h3><p>Those preparing to serve, teach, evangelize and help make disciples.</p></div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<h2 class="title">Three Languages</h2>
+<p class="sub">Learning access is provided in three languages.</p>
+<div class="grid">
+<div class="card" style="text-align:center"><div class="icon">🇬🇧</div><h3>English</h3><p>English learning materials and assessments.</p></div>
+<div class="card" style="text-align:center"><div class="icon">தமிழ்</div><h3>Tamil</h3><p>Tamil learning materials and assessments.</p></div>
+<div class="card" style="text-align:center"><div class="icon">සි</div><h3>Sinhala</h3><p>Sinhala learning materials and assessments.</p></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="faq">
+<div class="container">
+<h2 class="title">Frequently Asked Questions</h2>
+<div class="faq">
+<details><summary>How long is the programme?</summary><p>The programme is designed as a 12-month discipleship training journey.</p></details>
+<details><summary>How much does the programme cost?</summary><p>The programme fee is LKR 1,500 per month.</p></details>
+<details><summary>What happens if I do not achieve 80%?</summary><p>The student does not progress to the next month until the required examination requirement is successfully completed.</p></details>
+<details><summary>Can I study in my preferred language?</summary><p>Yes. The programme is planned for English, Tamil and Sinhala learners.</p></details>
+<details><summary>Is this a university degree?</summary><p>No. This is a Christian discipleship and Bible training programme offered by GOH Ministries. It should not be represented as a government or university-accredited academic degree unless separately accredited.</p></details>
+<details><summary>How do I start?</summary><p>Create a student account, review the programme information and complete the enrollment process.</p></details>
+</div>
+</div>
+</section>
+
+<section class="section" id="contact">
+<div class="container">
+<div class="contact">
+<h2>Ready to Begin?</h2>
+<p>Start your one-year journey of Bible learning, spiritual growth and discipleship.</p>
+<a href="register.html" class="btn">Register</a>
+<a href="login.html" class="btn">Student Login</a>
+<a href="contact.html" class="btn">Contact Us</a>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="foot">
+<div><h3>GOH Bible School</h3><p>One-Year Christian Discipleship Training</p><p>A ministry training programme of GOH Ministries.</p></div>
+<div><h3>Programme</h3><a href="#programme">About</a><a href="#curriculum">Curriculum</a><a href="#how">How It Works</a><a href="#faq">FAQ</a></div>
+<div><h3>Important</h3><a href="terms.html">Terms & Conditions</a><a href="privacy.html">Privacy Policy</a><a href="refund.html">Refund Policy</a><a href="cancellation.html">Cancellation Policy</a><a href="contact.html">Contact</a></div>
+</div>
+<div class="copy">© 2026 GOH Ministries · GOH Bible School · All Rights Reserved</div>
+</footer>
 
 <script>
+const T={
+en:{
+badge:"12-Month Christian Discipleship Programme",
+heroTitle:"One-Year Bible & Discipleship Training",
+heroText:"A structured Christian training programme designed to help believers grow in biblical knowledge, spiritual character, ministry and disciple-making.",
+registerBtn:"Register Now",loginBtn:"Student Login",
+programmeTitle:"About the Programme",
+programmeSub:"A structured one-year learning journey for believers who desire to grow in Christ and serve effectively.",
+c1t:"Biblical Foundation",c1p:"Study essential Christian teachings and develop a strong foundation in God's Word.",
+c2t:"Spiritual Growth",c2p:"Develop prayer, Bible study, obedience, character and a consistent Christian life.",
+c3t:"Disciple-Making",c3p:"Learn to evangelize, teach, serve and help other believers grow in Christ.",
+feeLabel:"Programme Fee",feeNote:"Monthly training access · 12-month programme",
+curriculumTitle:"12-Month Curriculum",curriculumSub:"Each month focuses on a specific area of Christian growth and ministry development.",
+howTitle:"How the Programme Works"
+},
+ta:{
+badge:"12 மாத கிறிஸ்தவ சீஷத்துவப் பயிற்சி",
+heroTitle:"ஒரு வருட வேதாகமம் மற்றும் சீஷத்துவப் பயிற்சி",
+heroText:"விசுவாசிகள் வேதாகம அறிவு, ஆவிக்குரிய குணம், ஊழியம் மற்றும் சீஷர்களை உருவாக்குவதில் வளர உதவும் கட்டமைக்கப்பட்ட கிறிஸ்தவ பயிற்சி.",
+registerBtn:"பதிவு செய்யுங்கள்",loginBtn:"மாணவர் உள்நுழைவு",
+programmeTitle:"பயிற்சி திட்டம் பற்றி",
+programmeSub:"கிறிஸ்துவில் வளர்ந்து திறம்பட ஊழியம் செய்ய விரும்பும் விசுவாசிகளுக்கான ஒரு வருட கட்டமைக்கப்பட்ட பயிற்சி.",
+c1t:"வேதாகம அடித்தளம்",c1p:"அடிப்படை கிறிஸ்தவ போதனைகளை கற்று தேவனுடைய வார்த்தையில் உறுதியான அடித்தளத்தை உருவாக்குங்கள்.",
+c2t:"ஆவிக்குரிய வளர்ச்சி",c2p:"ஜெபம், வேதாகமப் படிப்பு, கீழ்ப்படிதல் மற்றும் கிறிஸ்தவ குணத்தில் வளருங்கள்.",
+c3t:"சீஷர்களை உருவாக்குதல்",c3p:"சுவிசேஷம், போதனை, ஊழியம் மற்றும் மற்ற விசுவாசிகளுக்கு உதவுதல் ஆகியவற்றைக் கற்றுக்கொள்ளுங்கள்.",
+feeLabel:"பயிற்சி கட்டணம்",feeNote:"மாதாந்திர பயிற்சி அணுகல் · 12 மாத திட்டம்",
+curriculumTitle:"12 மாத பாடத்திட்டம்",curriculumSub:"ஒவ்வொரு மாதமும் கிறிஸ்தவ வளர்ச்சி மற்றும் ஊழியத்தின் ஒரு முக்கிய பகுதியை மையமாகக் கொண்டுள்ளது.",
+howTitle:"பயிற்சி எவ்வாறு நடைபெறும்"
+},
+si:{
+badge:"මාස 12ක ක්‍රිස්තියානි ගෝලත්ව පුහුණුව",
+heroTitle:"වසරක බයිබල් හා ගෝලත්ව පුහුණුව",
+heroText:"විශ්වාසවන්තයින්ට බයිබල් දැනුම, ආත්මික චරිතය, සේවය සහ ගෝලයන් සෑදීම තුළ වර්ධනය වීමට උපකාර කරන ක්‍රිස්තියානි පුහුණු වැඩසටහනකි.",
+registerBtn:"දැන් ලියාපදිංචි වන්න",loginBtn:"ශිෂ්‍ය පිවිසුම",
+programmeTitle:"වැඩසටහන ගැන",
+programmeSub:"ක්‍රිස්තුස් වහන්සේ තුළ වර්ධනය වී ඵලදායී ලෙස සේවය කිරීමට කැමති විශ්වාසවන්තයින් සඳහා වසරක පුහුණු ගමනකි.",
+c1t:"බයිබල් පදනම",c1p:"මූලික ක්‍රිස්තියානි ඉගැන්වීම් ඉගෙනගෙන දෙවියන් වහන්සේගේ වචනය තුළ ශක්තිමත් පදනමක් ගොඩනඟන්න.",
+c2t:"ආත්මික වර්ධනය",c2p:"යාච්ඤාව, බයිබල් අධ්‍යයනය, කීකරුකම සහ ක්‍රිස්තියානි චරිතය වර්ධනය කරගන්න.",
+c3t:"ගෝලයන් සෑදීම",c3p:"ශුභාරංචිය ප්‍රකාශ කිරීම, ඉගැන්වීම සහ අනෙකුත් විශ්වාසවන්තයින්ට සේවය කිරීම ඉගෙන ගන්න.",
+feeLabel:"වැඩසටහන් ගාස්තුව",feeNote:"මාසික පුහුණු ප්‍රවේශය · මාස 12ක වැඩසටහන",
+curriculumTitle:"මාස 12ක පාඨමාලාව",curriculumSub:"සෑම මාසයකම ක්‍රිස්තියානි වර්ධනයේ සහ සේවයේ විශේෂ අංශයක් කෙරෙහි අවධානය යොමු කරයි.",
+howTitle:"වැඩසටහන ක්‍රියාත්මක වන ආකාරය"
+}};
 
-const API =
-"https://goh-admin-auth.createlk.workers.dev";
-
-const TOKEN =
-"goh_admin_token";
-
-const USER =
-"goh_admin_user";
-
-
-function go(page){
-
-location.href=page;
-
+function lang(x,b){
+Object.entries(T[x]).forEach(([id,v])=>{
+let e=document.getElementById(id);if(e)e.textContent=v
+});
+document.querySelectorAll(".lang button").forEach(e=>e.classList.remove("active"));
+b.classList.add("active");
+localStorage.gohLanguage=x;
+document.documentElement.lang=x
 }
 
-
-async function checkSession(){
-
-const token =
-sessionStorage.getItem(TOKEN);
-
-if(!token){
-
-location.href="goh-login.html";
-return;
-
+let x=localStorage.gohLanguage;
+if(T[x]){
+let b=document.querySelectorAll(".lang button");
+lang(x,b[x==="en"?0:x==="ta"?1:2])
 }
-
-try{
-
-const response =
-await fetch(
-API + "/me",
-{
-headers:{
-"Authorization":
-"Bearer " + token
-}
-}
-);
-
-
-if(!response.ok){
-
-throw new Error(
-"Session expired"
-);
-
-}
-
-
-const data =
-await response.json();
-
-
-if(
-!data.success ||
-!data.user
-){
-
-throw new Error(
-"Invalid session"
-);
-
-}
-
-
-/*
-Administration dashboard
-is for the admin role.
-*/
-
-if(data.user.role !== "admin"){
-
-if(data.user.role === "finance"){
-
-location.href =
-"finance-dashboard.html";
-
-return;
-
-}
-
-if(data.user.role === "auditor"){
-
-location.href =
-"audit-dashboard.html";
-
-return;
-
-}
-
-throw new Error(
-"Unauthorized"
-);
-
-}
-
-
-document.getElementById(
-"userName"
-).textContent =
-data.user.name ||
-"GOH Administrator";
-
-
-sessionStorage.setItem(
-USER,
-JSON.stringify(data.user)
-);
-
-
-}catch(error){
-
-console.error(error);
-
-sessionStorage.removeItem(TOKEN);
-sessionStorage.removeItem(USER);
-
-location.href =
-"goh-login.html";
-
-}
-
-}
-
-
-/* LOGOUT */
-
-document
-.getElementById("logout")
-.addEventListener(
-"click",
-async function(){
-
-const token =
-sessionStorage.getItem(TOKEN);
-
-try{
-
-if(token){
-
-await fetch(
-API + "/logout",
-{
-method:"POST",
-headers:{
-"Authorization":
-"Bearer " + token
-}
-}
-);
-
-}
-
-}catch(error){
-
-console.error(error);
-
-}
-
-
-sessionStorage.removeItem(TOKEN);
-sessionStorage.removeItem(USER);
-
-location.href =
-"goh-login.html";
-
-}
-);
-
-
-/* MOBILE MENU */
-
-document
-.getElementById("menuToggle")
-.addEventListener(
-"click",
-function(){
-
-document
-.getElementById("sidebar")
-.classList.toggle("open");
-
-}
-);
-
-
-checkSession();
-
 </script>
-
 </body>
 </html>
