@@ -10,633 +10,1073 @@
 *{box-sizing:border-box;margin:0;padding:0}
 
 :root{
---blue:#0b376d;
---dark:#082952;
---bg:#f4f7fb;
---card:#fff;
---text:#172033;
---muted:#64748b;
---border:#e2e8f0
+  --blue:#0b376d;
+  --blue-dark:#082952;
+  --bg:#f5f7fa;
+  --white:#fff;
+  --text:#172033;
+  --muted:#64748b;
+  --border:#e2e8f0;
+  --hover:#eef4fa;
 }
 
 body{
-font-family:Arial,sans-serif;
-background:var(--bg);
-color:var(--text);
-min-height:100vh
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
 }
 
+/* HEADER */
+
 .header{
-height:68px;
-background:var(--blue);
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 24px;
-position:sticky;
-top:0;
-z-index:20
+  height:64px;
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 24px;
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:100;
 }
 
 .brand{
-display:flex;
-align-items:center;
-gap:12px
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
 .logo{
-width:42px;
-height:42px;
-border-radius:10px;
-background:#fff;
-color:var(--blue);
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold
+  width:38px;
+  height:38px;
+  background:var(--blue);
+  color:#fff;
+  border-radius:7px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:13px;
+  font-weight:bold;
 }
 
-.brand-title{font-size:17px;font-weight:bold}
-.brand-sub{font-size:11px;opacity:.8;margin-top:2px}
-
-.user-area{
-display:flex;
-align-items:center;
-gap:12px
+.brand-name{
+  color:var(--blue);
+  font-size:16px;
+  font-weight:bold;
 }
 
-.user-name{text-align:right;font-size:13px}
-.user-role{font-size:11px;opacity:.75}
+.brand-sub{
+  color:var(--muted);
+  font-size:11px;
+  margin-top:2px;
+}
+
+.header-right{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.account{
+  text-align:right;
+}
+
+.account-name{
+  font-size:13px;
+  font-weight:bold;
+}
+
+.account-role{
+  color:var(--muted);
+  font-size:11px;
+  margin-top:2px;
+}
 
 .logout{
-border:1px solid rgba(255,255,255,.35);
-background:transparent;
-color:#fff;
-padding:9px 14px;
-border-radius:8px;
-cursor:pointer
+  border:1px solid var(--border);
+  background:#fff;
+  color:var(--text);
+  border-radius:7px;
+  padding:8px 13px;
+  cursor:pointer;
+  font-size:13px;
 }
 
-.logout:hover{background:rgba(255,255,255,.1)}
-
-.layout{
-display:flex;
-min-height:calc(100vh - 68px)
+.logout:hover{
+  background:var(--hover);
 }
+
+/* MOBILE BUTTON */
+
+.menu-toggle{
+  display:none;
+  border:0;
+  background:none;
+  font-size:22px;
+  color:var(--blue);
+  cursor:pointer;
+}
+
+/* SIDEBAR */
 
 .sidebar{
-width:245px;
-background:#fff;
-border-right:1px solid var(--border);
-padding:18px 12px;
-flex-shrink:0
+  position:fixed;
+  top:64px;
+  left:0;
+  bottom:0;
+  width:235px;
+  background:var(--white);
+  border-right:1px solid var(--border);
+  padding:18px 12px;
+  overflow-y:auto;
+  z-index:90;
 }
 
-.menu-title{
-padding:10px 12px 7px;
-font-size:11px;
-text-transform:uppercase;
-color:#94a3b8;
-font-weight:bold
+.nav-title{
+  padding:10px 10px 6px;
+  color:#94a3b8;
+  font-size:10px;
+  font-weight:bold;
+  text-transform:uppercase;
+  letter-spacing:.7px;
 }
 
-.menu{
-display:block;
-width:100%;
-padding:11px 12px;
-margin:2px 0;
-border:0;
-border-radius:8px;
-background:transparent;
-color:#334155;
-text-align:left;
-font-size:14px;
-cursor:pointer
+.nav-item{
+  width:100%;
+  border:0;
+  background:none;
+  color:#475569;
+  text-align:left;
+  padding:10px 11px;
+  margin:1px 0;
+  border-radius:6px;
+  font-size:13px;
+  cursor:pointer;
 }
 
-.menu:hover,
-.menu.active{
-background:#eaf1f8;
-color:var(--blue);
-font-weight:bold
+.nav-item:hover{
+  background:var(--hover);
+  color:var(--blue);
 }
 
-main{
-flex:1;
-padding:28px;
-min-width:0
+.nav-item.active{
+  background:#eaf1f8;
+  color:var(--blue);
+  font-weight:bold;
+  border-left:3px solid var(--blue);
+  padding-left:8px;
 }
 
-.page-title{margin-bottom:24px}
+/* MAIN */
 
-.page-title h1{
-font-size:27px;
-color:var(--blue)
+.main{
+  margin-left:235px;
+  padding:92px 30px 40px;
+  max-width:1500px;
 }
 
-.page-title p{
-margin-top:5px;
-color:var(--muted);
-font-size:14px
+.breadcrumb{
+  color:var(--muted);
+  font-size:12px;
+  margin-bottom:9px;
 }
 
-.stats{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:16px;
-margin-bottom:24px
+.page-header{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:20px;
+  margin-bottom:26px;
 }
 
-.card{
-background:var(--card);
-border:1px solid var(--border);
-border-radius:13px;
-padding:20px
+.page-header h1{
+  color:var(--blue);
+  font-size:26px;
+  font-weight:600;
 }
 
-.stat-label{
-color:var(--muted);
-font-size:13px
+.page-header p{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:6px;
 }
 
-.stat-value{
-margin-top:8px;
-font-size:25px;
-font-weight:bold;
-color:var(--blue)
+/* SUMMARY */
+
+.summary{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-bottom:25px;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:18px
+.summary-box{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:9px;
+  padding:17px 18px;
 }
 
-.section-title{
-font-size:17px;
-margin-bottom:14px;
-color:var(--blue)
+.summary-label{
+  color:var(--muted);
+  font-size:12px;
 }
 
-.list{display:grid;gap:9px}
+.summary-value{
+  color:var(--blue);
+  font-size:22px;
+  font-weight:bold;
+  margin-top:7px;
+}
 
-.list-item{
-padding:12px;
-border:1px solid var(--border);
-border-radius:9px;
-background:#f8fafc;
-font-size:14px
+.summary-status{
+  color:#15803d;
+  font-size:12px;
+  margin-top:6px;
+}
+
+/* CONTENT */
+
+.columns{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:20px;
+}
+
+.panel{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:9px;
+  overflow:hidden;
+}
+
+.panel-header{
+  padding:16px 18px;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.panel-title{
+  color:var(--blue);
+  font-size:15px;
+  font-weight:bold;
+}
+
+.panel-link{
+  border:0;
+  background:none;
+  color:var(--blue);
+  font-size:12px;
+  cursor:pointer;
+}
+
+.panel-body{
+  padding:18px;
+}
+
+/* RECORD TABLE */
+
+.table-wrap{
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+}
+
+th{
+  text-align:left;
+  padding:11px 12px;
+  background:#f8fafc;
+  color:#64748b;
+  font-size:11px;
+  font-weight:bold;
+  border-bottom:1px solid var(--border);
+}
+
+td{
+  padding:12px;
+  border-bottom:1px solid #edf1f5;
+}
+
+tr:last-child td{
+  border-bottom:0;
 }
 
 .status{
-display:inline-block;
-margin-top:8px;
-padding:4px 8px;
-border-radius:20px;
-background:#dcfce7;
-color:#166534;
-font-size:11px;
-font-weight:bold
+  display:inline-block;
+  padding:4px 8px;
+  border-radius:20px;
+  background:#ecfdf3;
+  color:#15803d;
+  font-size:10px;
+  font-weight:bold;
 }
 
-.mobile-menu{
-display:none;
-border:0;
-background:transparent;
-color:#fff;
-font-size:22px;
-cursor:pointer
+/* QUICK LINKS */
+
+.quick{
+  display:grid;
+  gap:7px;
 }
 
-@media(max-width:900px){
-.stats{grid-template-columns:repeat(2,1fr)}
-.sidebar{width:210px}
+.quick button{
+  width:100%;
+  text-align:left;
+  border:1px solid var(--border);
+  background:#fff;
+  color:#334155;
+  padding:11px 12px;
+  border-radius:7px;
+  cursor:pointer;
+  font-size:13px;
+}
+
+.quick button:hover{
+  background:var(--hover);
+  color:var(--blue);
+}
+
+/* NOTICE */
+
+.notice{
+  margin-top:20px;
+  padding:14px 16px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  background:#fff;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.5;
+}
+
+/* MOBILE */
+
+@media(max-width:950px){
+
+  .summary{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .columns{
+    grid-template-columns:1fr;
+  }
 }
 
 @media(max-width:700px){
 
-.header{padding:0 15px}
+  .header{
+    padding:0 15px;
+  }
 
-.mobile-menu{display:block}
+  .menu-toggle{
+    display:block;
+  }
 
-.brand-sub{display:none}
-.user-name{display:none}
+  .brand-sub{
+    display:none;
+  }
 
-.sidebar{
-position:fixed;
-left:-260px;
-top:68px;
-bottom:0;
-z-index:15;
-width:245px;
-transition:left .2s ease;
-box-shadow:5px 0 20px rgba(0,0,0,.08)
-}
+  .account{
+    display:none;
+  }
 
-.sidebar.open{left:0}
+  .sidebar{
+    left:-245px;
+    width:235px;
+    transition:left .2s ease;
+    box-shadow:5px 0 20px rgba(0,0,0,.08);
+  }
 
-main{padding:20px 15px}
+  .sidebar.open{
+    left:0;
+  }
 
-.stats{grid-template-columns:1fr 1fr}
+  .main{
+    margin-left:0;
+    padding:84px 15px 30px;
+  }
 
-.grid{grid-template-columns:1fr}
+  .page-header{
+    display:block;
+  }
+
+  .page-header h1{
+    font-size:23px;
+  }
+
+  .summary{
+    grid-template-columns:1fr 1fr;
+  }
 }
 
 @media(max-width:430px){
-.stats{grid-template-columns:1fr}
-.page-title h1{font-size:23px}
-.logout{padding:8px 10px}
+
+  .summary{
+    grid-template-columns:1fr;
+  }
+
+  .brand-name{
+    font-size:14px;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
+
 <header class="header">
 
-<div class="brand">
+  <div class="brand">
 
-<button class="mobile-menu" id="mobileMenu">☰</button>
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      type="button"
+      aria-label="Open menu"
+    >☰</button>
 
-<div class="logo">GOH</div>
+    <div class="logo">GOH</div>
 
-<div>
-<div class="brand-title">GOH Ministries</div>
-<div class="brand-sub">Church Administration</div>
-</div>
+    <div>
+      <div class="brand-name">
+        GOH Ministries
+      </div>
 
-</div>
+      <div class="brand-sub">
+        Church Administration
+      </div>
+    </div>
 
-<div class="user-area">
+  </div>
 
-<div class="user-name">
-<div id="userName">GOH Administrator</div>
-<div class="user-role">Administration</div>
-</div>
 
-<button class="logout" id="logout">Logout</button>
+  <div class="header-right">
 
-</div>
+    <div class="account">
+      <div
+        class="account-name"
+        id="userName"
+      >
+        GOH Administrator
+      </div>
+
+      <div class="account-role">
+        Administration
+      </div>
+    </div>
+
+    <button
+      class="logout"
+      id="logout"
+      type="button"
+    >
+      Logout
+    </button>
+
+  </div>
 
 </header>
 
 
-<div class="layout">
+<!-- SIDEBAR -->
 
-<aside class="sidebar" id="sidebar">
+<aside
+  class="sidebar"
+  id="sidebar"
+>
 
-<div class="menu-title">Main</div>
+  <div class="nav-title">
+    Main
+  </div>
 
-<button class="menu active"
-onclick="openPage('admin-dashboard.html')">
-🏠 Dashboard
-</button>
-
-
-<div class="menu-title">Organization</div>
-
-<button class="menu"
-onclick="openPage('organization.html')">
-🏛️ Organization
-</button>
-
-<button class="menu"
-onclick="openPage('history.html')">
-📜 Ministry History
-</button>
-
-<button class="menu"
-onclick="openPage('activities.html')">
-⛪ Activities
-</button>
-
-<button class="menu"
-onclick="openPage('members.html')">
-👥 Members
-</button>
-
-<button class="menu"
-onclick="openPage('meetings.html')">
-📋 Meetings
-</button>
+  <button
+    class="nav-item active"
+    onclick="go('admin-dashboard.html')"
+  >
+    Dashboard
+  </button>
 
 
-<div class="menu-title">Finance</div>
+  <div class="nav-title">
+    Organization
+  </div>
 
-<button class="menu">
-💰 Finance
-</button>
+  <button
+    class="nav-item"
+    onclick="go('organization.html')"
+  >
+    Organization
+  </button>
 
-<button class="menu">
-🎁 Donations
-</button>
+  <button
+    class="nav-item"
+    onclick="go('history.html')"
+  >
+    Ministry History
+  </button>
 
-<button class="menu">
-📊 Reports
-</button>
+  <button
+    class="nav-item"
+    onclick="go('activities.html')"
+  >
+    Activities
+  </button>
+
+  <button
+    class="nav-item"
+    onclick="go('members.html')"
+  >
+    Members
+  </button>
+
+  <button
+    class="nav-item"
+    onclick="go('meetings.html')"
+  >
+    Meetings
+  </button>
 
 
-<div class="menu-title">Documents</div>
+  <div class="nav-title">
+    Finance
+  </div>
 
-<button class="menu">
-📁 Documents
-</button>
+  <button
+    class="nav-item"
+    onclick="go('finance.html')"
+  >
+    Finance
+  </button>
 
-<button class="menu">
-🏗️ Property
-</button>
+  <button
+    class="nav-item"
+    onclick="go('donations.html')"
+  >
+    Donations
+  </button>
 
-<button class="menu">
-📸 Media
-</button>
+  <button
+    class="nav-item"
+    onclick="go('reports.html')"
+  >
+    Reports
+  </button>
 
 
-<div class="menu-title">Security</div>
+  <div class="nav-title">
+    Documents
+  </div>
 
-<button class="menu">
-👤 Users & Permissions
-</button>
+  <button
+    class="nav-item"
+    onclick="go('documents.html')"
+  >
+    Documents
+  </button>
 
-<button class="menu">
-🛡️ Audit Logs
-</button>
+  <button
+    class="nav-item"
+    onclick="go('property.html')"
+  >
+    Property
+  </button>
+
+  <button
+    class="nav-item"
+    onclick="go('media.html')"
+  >
+    Media
+  </button>
+
+
+  <div class="nav-title">
+    Security
+  </div>
+
+  <button
+    class="nav-item"
+    onclick="go('users.html')"
+  >
+    Users & Permissions
+  </button>
+
+  <button
+    class="nav-item"
+    onclick="go('audit.html')"
+  >
+    Audit Logs
+  </button>
 
 </aside>
 
 
-<main>
+<!-- MAIN -->
 
-<div class="page-title">
+<main class="main">
 
-<h1>Administration Dashboard</h1>
-
-<p>
-Manage GOH Ministries organization,
-ministry and administration.
-</p>
-
-</div>
+  <div class="breadcrumb">
+    GOH Ministries / Administration
+  </div>
 
 
-<section class="stats">
+  <div class="page-header">
 
-<div class="card">
-<div class="stat-label">Members</div>
-<div class="stat-value">—</div>
-</div>
+    <div>
+      <h1>Administration Dashboard</h1>
 
-<div class="card">
-<div class="stat-label">Activities</div>
-<div class="stat-value">—</div>
-</div>
+      <p>
+        Central administration and ministry records.
+      </p>
+    </div>
 
-<div class="card">
-<div class="stat-label">Documents</div>
-<div class="stat-value">—</div>
-</div>
-
-<div class="card">
-<div class="stat-label">System Status</div>
-<div class="stat-value">✓</div>
-<span class="status">Active</span>
-</div>
-
-</section>
+  </div>
 
 
-<section class="grid">
+  <!-- SUMMARY -->
 
-<div class="card">
-<h2 class="section-title">Organization</h2>
+  <section class="summary">
 
-<div class="list">
+    <div class="summary-box">
 
-<div class="list-item">
-Organization Information
-</div>
+      <div class="summary-label">
+        Members
+      </div>
 
-<div class="list-item">
-Ministry History
-</div>
+      <div class="summary-value">
+        —
+      </div>
 
-<div class="list-item">
-Activities & Meetings
-</div>
+      <div class="summary-status">
+        Records
+      </div>
 
-<div class="list-item">
-Members
-</div>
-
-</div>
-</div>
+    </div>
 
 
-<div class="card">
-<h2 class="section-title">Finance</h2>
+    <div class="summary-box">
 
-<div class="list">
+      <div class="summary-label">
+        Activities
+      </div>
 
-<div class="list-item">
-Income & Expenses
-</div>
+      <div class="summary-value">
+        —
+      </div>
 
-<div class="list-item">
-Donations
-</div>
+      <div class="summary-status">
+        Records
+      </div>
 
-<div class="list-item">
-Financial Reports
-</div>
-
-<div class="list-item">
-Approval Records
-</div>
-
-</div>
-</div>
+    </div>
 
 
-<div class="card">
-<h2 class="section-title">Documents</h2>
+    <div class="summary-box">
 
-<div class="list">
+      <div class="summary-label">
+        Documents
+      </div>
 
-<div class="list-item">
-Official Documents
-</div>
+      <div class="summary-value">
+        —
+      </div>
 
-<div class="list-item">
-Receipts & Invoices
-</div>
+      <div class="summary-status">
+        Records
+      </div>
 
-<div class="list-item">
-Bank Statements
-</div>
-
-<div class="list-item">
-Property & Media
-</div>
-
-</div>
-</div>
+    </div>
 
 
-<div class="card">
-<h2 class="section-title">Security</h2>
+    <div class="summary-box">
 
-<div class="list">
+      <div class="summary-label">
+        System
+      </div>
 
-<div class="list-item">
-Users & Permissions
-</div>
+      <div class="summary-value">
+        Active
+      </div>
 
-<div class="list-item">
-Audit Logs
-</div>
+      <div class="summary-status">
+        Authentication online
+      </div>
 
-<div class="list-item">
-Authentication
-</div>
+    </div>
 
-<div class="list-item">
-System Security
-</div>
+  </section>
 
-</div>
-</div>
 
-</section>
+  <!-- CONTENT -->
+
+  <section class="columns">
+
+    <!-- RECENT RECORDS -->
+
+    <div class="panel">
+
+      <div class="panel-header">
+
+        <div class="panel-title">
+          Administration Overview
+        </div>
+
+        <button
+          class="panel-link"
+          onclick="go('organization.html')"
+        >
+          View organization
+        </button>
+
+      </div>
+
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+
+            <tr>
+              <th>Section</th>
+              <th>Description</th>
+              <th>Status</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>Organization</td>
+              <td>Ministry information and records</td>
+              <td>
+                <span class="status">
+                  Active
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Ministry History</td>
+              <td>Historical ministry records</td>
+              <td>
+                <span class="status">
+                  Active
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Members</td>
+              <td>Membership administration</td>
+              <td>
+                <span class="status">
+                  Ready
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Meetings</td>
+              <td>Meeting records and minutes</td>
+              <td>
+                <span class="status">
+                  Ready
+                </span>
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+
+    <!-- QUICK ACCESS -->
+
+    <div class="panel">
+
+      <div class="panel-header">
+
+        <div class="panel-title">
+          Quick Access
+        </div>
+
+      </div>
+
+
+      <div class="panel-body">
+
+        <div class="quick">
+
+          <button onclick="go('organization.html')">
+            Organization Information
+          </button>
+
+          <button onclick="go('history.html')">
+            Ministry History
+          </button>
+
+          <button onclick="go('activities.html')">
+            Ministry Activities
+          </button>
+
+          <button onclick="go('members.html')">
+            Members
+          </button>
+
+          <button onclick="go('meetings.html')">
+            Meetings
+          </button>
+
+          <button onclick="go('documents.html')">
+            Documents
+          </button>
+
+          <button onclick="go('audit.html')">
+            Audit Logs
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <div class="notice">
+    Administration access is controlled by the
+    GOH authentication system. Financial,
+    document and audit functions will be connected
+    as their individual modules are completed.
+  </div>
 
 </main>
-
-</div>
 
 
 <script>
 
-const API="https://goh-admin-auth.createlk.workers.dev";
-const TOKEN="goh_admin_token";
-const USER="goh_admin_user";
+const API =
+"https://goh-admin-auth.createlk.workers.dev";
+
+const TOKEN =
+"goh_admin_token";
+
+const USER =
+"goh_admin_user";
 
 
-function openPage(page){
+/* NAVIGATION */
 
-location.href=page;
+function go(page){
+
+  location.href = page;
 
 }
 
+
+/* SESSION */
 
 async function checkSession(){
 
-const token=sessionStorage.getItem(TOKEN);
+  const token =
+    sessionStorage.getItem(TOKEN);
 
-if(!token){
+  if(!token){
 
-location.href="goh-login.html";
-return;
+    location.href =
+      "goh-login.html";
+
+    return;
+  }
+
+
+  try{
+
+    const response =
+      await fetch(
+        API + "/me",
+        {
+          headers:{
+            "Authorization":
+              "Bearer " + token
+          }
+        }
+      );
+
+
+    if(!response.ok){
+
+      throw new Error(
+        "Session expired"
+      );
+    }
+
+
+    const data =
+      await response.json();
+
+
+    if(
+      !data.success ||
+      !data.user
+    ){
+
+      throw new Error(
+        "Invalid session"
+      );
+    }
+
+
+    /*
+      This dashboard is
+      Administration only.
+    */
+
+    if(
+      data.user.role !== "admin"
+    ){
+
+      if(
+        data.user.role === "finance"
+      ){
+
+        location.href =
+          "finance-dashboard.html";
+
+        return;
+      }
+
+
+      if(
+        data.user.role === "auditor"
+      ){
+
+        location.href =
+          "audit-dashboard.html";
+
+        return;
+      }
+
+
+      throw new Error(
+        "Unauthorized"
+      );
+    }
+
+
+    document.getElementById(
+      "userName"
+    ).textContent =
+      data.user.name ||
+      "GOH Administrator";
+
+
+    sessionStorage.setItem(
+      USER,
+      JSON.stringify(
+        data.user
+      )
+    );
+
+
+  }catch(error){
+
+    console.error(error);
+
+    sessionStorage.removeItem(TOKEN);
+    sessionStorage.removeItem(USER);
+
+    location.href =
+      "goh-login.html";
+  }
+
 }
 
-try{
 
-const response=await fetch(API+"/me",{
-
-headers:{
-"Authorization":"Bearer "+token
-}
-
-});
-
-if(!response.ok){
-
-sessionStorage.removeItem(TOKEN);
-sessionStorage.removeItem(USER);
-
-location.href="goh-login.html";
-return;
-}
-
-const data=await response.json();
-
-if(!data.success || !data.user){
-
-throw new Error("Invalid session");
-}
-
-if(data.user.role!=="admin"){
-
-if(data.user.role==="finance"){
-location.href="finance-dashboard.html";
-return;
-}
-
-if(data.user.role==="auditor"){
-location.href="audit-dashboard.html";
-return;
-}
-
-throw new Error("Unauthorized");
-}
-
-document.getElementById("userName").textContent=
-data.user.name || "GOH Administrator";
-
-sessionStorage.setItem(
-USER,
-JSON.stringify(data.user)
-);
-
-}catch(error){
-
-console.error(error);
-
-sessionStorage.removeItem(TOKEN);
-sessionStorage.removeItem(USER);
-
-location.href="goh-login.html";
-
-}
-
-}
-
-
-document.getElementById("logout").onclick=async()=>{
-
-const token=sessionStorage.getItem(TOKEN);
-
-try{
-
-if(token){
-
-await fetch(API+"/logout",{
-
-method:"POST",
-
-headers:{
-"Authorization":"Bearer "+token
-}
-
-});
-
-}
-
-}catch{}
-
-sessionStorage.removeItem(TOKEN);
-sessionStorage.removeItem(USER);
-
-location.href="goh-login.html";
-
-};
-
-
-document.getElementById("mobileMenu").onclick=()=>{
+/* LOGOUT */
 
 document
-.getElementById("sidebar")
-.classList.toggle("open");
+.getElementById("logout")
+.addEventListener(
+  "click",
+  async function(){
 
-};
+    const token =
+      sessionStorage.getItem(TOKEN);
+
+
+    try{
+
+      if(token){
+
+        await fetch(
+          API + "/logout",
+          {
+            method:"POST",
+
+            headers:{
+              "Authorization":
+                "Bearer " + token
+            }
+          }
+        );
+
+      }
+
+    }catch(error){
+
+      console.error(error);
+
+    }
+
+
+    sessionStorage.removeItem(
+      TOKEN
+    );
+
+    sessionStorage.removeItem(
+      USER
+    );
+
+
+    location.href =
+      "goh-login.html";
+
+  }
+);
+
+
+/* MOBILE MENU */
+
+document
+.getElementById("menuToggle")
+.addEventListener(
+  "click",
+  function(){
+
+    document
+      .getElementById("sidebar")
+      .classList.toggle("open");
+
+  }
+);
 
 
 checkSession();
