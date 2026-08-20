@@ -4,217 +4,344 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#102a72">
-<meta name="description" content="GOH Bible School - One-Year Christian Discipleship Training in English, Tamil and Sinhala.">
-<title>GOH Bible School | One-Year Discipleship Training</title>
+<meta name="description" content="GOH Bible School - One-Year Christian Discipleship Training">
+<title>GOH Bible School | Discipleship Training</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:Arial,sans-serif;background:#f7f9ff;color:#172033;line-height:1.6}
+body{font-family:Arial,sans-serif;background:#f7f9ff;color:#172033;line-height:1.5}
 a{text-decoration:none;color:inherit}
 
 header{
-position:sticky;top:0;z-index:100;
+position:sticky;top:0;z-index:20;
 background:#102a72;color:#fff;
 box-shadow:0 3px 15px #0003
 }
 .head{
-max-width:1150px;margin:auto;padding:10px 15px;
-display:flex;align-items:center;justify-content:space-between;gap:12px
+max-width:1100px;margin:auto;padding:9px 14px;
+display:flex;align-items:center;gap:10px
 }
-.brand{display:flex;align-items:center;gap:9px}
+.brand{
+display:flex;align-items:center;gap:8px;
+margin-right:auto
+}
 .logo{
-width:42px;height:42px;border-radius:12px;
+width:40px;height:40px;border-radius:11px;
 background:#fff;color:#102a72;
-display:grid;place-items:center;font-weight:900;font-size:11px
+display:grid;place-items:center;
+font-size:11px;font-weight:900
 }
-.brand h1{font-size:16px;line-height:1.1}
-.brand p{font-size:9px;opacity:.75}
-nav{display:flex;gap:3px}
-nav a{font-size:11px;padding:7px 9px;border-radius:7px}
+.brand h1{font-size:15px;line-height:1.1}
+.brand small{font-size:9px;opacity:.7}
+
+nav{display:flex;gap:2px}
+nav a{
+font-size:10px;padding:7px 8px;
+border-radius:6px
+}
 nav a:hover{background:#fff2}
 
-.lang{display:flex;gap:3px}
-.lang button{
-border:1px solid #fff5;background:#fff1;color:#fff;
-padding:6px 7px;border-radius:6px;font-size:9px;cursor:pointer
+.lang{
+display:flex;gap:2px;padding:2px;
+border:1px solid #fff4;
+background:#fff1;border-radius:8px
 }
-.lang .active{background:#fff;color:#102a72}
+.lang button{
+border:0;background:transparent;color:#fff;
+padding:5px 7px;border-radius:6px;
+font-size:9px;font-weight:bold;cursor:pointer
+}
+.lang .on{background:#fff;color:#102a72}
 
 .hero{
-color:#fff;text-align:center;padding:70px 18px;
+color:#fff;text-align:center;padding:65px 15px;
 background:
 radial-gradient(circle at 90% 10%,#f59e0b66,transparent 25%),
 radial-gradient(circle at 5% 90%,#38bdf855,transparent 25%),
 linear-gradient(135deg,#102a72,#6d28d9)
 }
-.hero>div{max-width:800px;margin:auto}
+.hero div{max-width:760px;margin:auto}
 .badge{
-display:inline-block;border:1px solid #fff5;background:#fff2;
-padding:6px 13px;border-radius:30px;font-size:10px;margin-bottom:15px
+display:inline-block;background:#fff2;
+border:1px solid #fff4;border-radius:30px;
+padding:5px 12px;font-size:10px;margin-bottom:14px
 }
-.hero h2{font-size:40px;line-height:1.15;margin-bottom:14px}
-.hero p{max-width:680px;margin:auto;font-size:14px;opacity:.9}
-
-.buttons{
-display:flex;justify-content:center;gap:9px;
-flex-wrap:wrap;margin-top:24px
+.hero h2{
+font-size:38px;line-height:1.15;
+margin-bottom:12px
 }
+.hero p{
+font-size:13px;opacity:.9;
+max-width:650px;margin:auto
+}
+.buttons{margin-top:22px}
 .btn{
-display:inline-block;padding:11px 18px;
-border-radius:9px;font-size:12px;font-weight:bold
+display:inline-block;padding:10px 17px;
+border-radius:9px;font-size:12px;
+font-weight:bold;background:#fff;
+color:#102a72;margin:3px
 }
-.primary{background:#fff;color:#102a72}
-.outline{border:1px solid #fff7;color:#fff;background:#fff1}
 
-.section{padding:52px 16px}
-.container{max-width:1100px;margin:auto}
+.section{padding:45px 14px}
+.container{max-width:1050px;margin:auto}
 .title{
-text-align:center;color:#102a72;font-size:25px;margin-bottom:8px
+text-align:center;color:#102a72;
+font-size:23px;margin-bottom:8px
 }
 .title:after{
-content:"";display:block;width:40px;height:3px;
+content:"";display:block;width:38px;height:3px;
 background:linear-gradient(90deg,#2563eb,#f59e0b);
 margin:8px auto
 }
 .sub{
-text-align:center;color:#667085;font-size:12px;
-max-width:650px;margin:0 auto 25px
+text-align:center;color:#667085;
+font-size:12px;max-width:650px;
+margin:0 auto 22px
 }
 
 .grid{
-display:grid;grid-template-columns:repeat(3,1fr);gap:14px
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px
 }
-.card,.info,.month,.step,details{
-background:#fff;border:1px solid #e4e8ef;
-border-radius:12px;box-shadow:0 4px 16px #00000008
+.card,.month,.step,details,.info{
+background:#fff;
+border:1px solid #e4e8ef;
+border-radius:12px;
+box-shadow:0 4px 15px #00000008
 }
 .card{
-padding:19px;border-top:4px solid #6d28d9
+padding:17px;
+border-top:4px solid #6d28d9
 }
-.card:nth-child(2){border-top-color:#2563eb}
-.card:nth-child(3){border-top-color:#f59e0b}
-.icon{font-size:25px}
+.card:nth-child(2),.info:nth-child(2){
+border-top-color:#2563eb
+}
+.card:nth-child(3),.info:nth-child(3){
+border-top-color:#f59e0b
+}
+.icon{font-size:24px}
 .card h3,.info h3{
-color:#102a72;font-size:15px;margin:5px 0
+font-size:14px;color:#102a72;margin:4px 0
 }
 .card p,.info p,.month span,.step p,details p{
-font-size:12px;color:#667085
+font-size:11px;color:#667085
 }
 
 .price{
-max-width:530px;margin:auto;text-align:center;
-padding:28px 18px;
+max-width:500px;margin:auto;
+text-align:center;padding:25px 18px;
 background:linear-gradient(135deg,#fff,#f3efff);
-border:1px solid #ddd6fe;border-radius:16px;
-box-shadow:0 8px 25px #4c1d9515
+border:1px solid #ddd6fe;
+border-radius:16px
 }
-.price label{font-size:12px;color:#667085}
+.price label{
+font-size:11px;color:#667085
+}
 .price strong{
-display:block;color:#102a72;font-size:38px
+display:block;color:#102a72;font-size:36px
 }
 .price small{
-font-size:13px;color:#667085;font-weight:normal
+font-size:12px;color:#667085;
+font-weight:normal
 }
-.price p{font-size:11px;color:#667085;margin-bottom:12px}
-.price .btn{background:#102a72;color:#fff}
+.price p{
+font-size:11px;color:#667085;
+margin-bottom:10px
+}
+.price .btn{
+background:#102a72;color:#fff
+}
 
 .months{
-display:grid;grid-template-columns:repeat(3,1fr);gap:10px
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px
 }
 .month{
-padding:14px;border-top:3px solid #2563eb
+padding:12px;
+border-top:3px solid #2563eb
 }
-.month:nth-child(3n+2){border-top-color:#9333ea}
-.month:nth-child(3n){border-top-color:#f59e0b}
+.month:nth-child(3n+2){
+border-top-color:#9333ea
+}
+.month:nth-child(3n){
+border-top-color:#f59e0b
+}
 .month b{
-display:block;color:#102a72;font-size:12px
+display:block;
+color:#102a72;
+font-size:11px
 }
 
-.steps{max-width:750px;margin:auto}
+.steps{
+max-width:720px;
+margin:auto
+}
 .step{
-display:flex;gap:12px;padding:14px;margin-bottom:10px
+display:flex;
+gap:10px;
+padding:12px;
+margin-bottom:8px
 }
 .num{
-min-width:32px;height:32px;border-radius:9px;
+min-width:30px;height:30px;
+border-radius:8px;
 background:linear-gradient(135deg,#2563eb,#9333ea);
-color:#fff;display:grid;place-items:center;
-font-weight:bold;font-size:12px
+color:#fff;
+display:grid;place-items:center;
+font-size:11px;font-weight:bold
 }
-.step h3{font-size:13px;color:#102a72}
+.step h3{
+font-size:12px;
+color:#102a72
+}
 
 .require{
-max-width:750px;margin:auto;text-align:center;
-padding:24px;border-radius:15px;
+max-width:720px;
+margin:auto;
+text-align:center;
+padding:22px;
+border-radius:15px;
 background:linear-gradient(135deg,#eff6ff,#f5f3ff);
 border:1px solid #c7d2fe
 }
 .require strong{
-display:block;font-size:24px;color:#6d28d9
+display:block;
+font-size:23px;
+color:#6d28d9
 }
-.require p{font-size:12px;color:#475467}
-
-.info{
-padding:20px;border-top:4px solid #2563eb
+.require p{
+font-size:11px;
+color:#475467
 }
-.info:nth-child(2){border-top-color:#9333ea}
-.info:nth-child(3){border-top-color:#f59e0b}
 
-.faq{max-width:800px;margin:auto}
-details{padding:13px;margin-bottom:7px}
+.info{padding:17px}
+
+.faq{
+max-width:780px;
+margin:auto
+}
+details{
+padding:11px;
+margin-bottom:7px
+}
 summary{
-cursor:pointer;font-weight:bold;
-font-size:12px;color:#102a72
+cursor:pointer;
+font-size:11px;
+font-weight:bold;
+color:#102a72
 }
 
 .contact{
-padding:35px 18px;text-align:center;color:#fff;
+text-align:center;
+color:#fff;
+padding:32px 15px;
 border-radius:16px;
 background:linear-gradient(135deg,#102a72,#6d28d9)
 }
-.contact h2{font-size:24px}
-.contact p{font-size:12px;opacity:.85}
+.contact h2{font-size:23px}
+.contact p{
+font-size:11px;
+opacity:.85;
+margin:5px 0 10px
+}
 .contact .btn{
-background:#fff;color:#102a72;margin:15px 3px 0
+background:#fff;
+color:#102a72
 }
 
 footer{
-background:#071b4c;color:#fff;padding:30px 16px
+background:#071b4c;
+color:#fff;
+padding:27px 14px
 }
 .foot{
-max-width:1100px;margin:auto;
-display:grid;grid-template-columns:2fr 1fr 1fr;gap:20px
+max-width:1050px;
+margin:auto;
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+gap:20px
 }
-.foot h3{font-size:13px;margin-bottom:6px}
+.foot h3{
+font-size:12px;
+margin-bottom:6px
+}
 .foot p,.foot a{
-display:block;color:#cbd5e1;
-font-size:10px;margin-bottom:4px
+display:block;
+color:#cbd5e1;
+font-size:9px;
+margin-bottom:4px
 }
 .copy{
-text-align:center;border-top:1px solid #fff2;
-margin:20px auto 0;padding-top:12px;
-color:#94a3b8;font-size:9px
+text-align:center;
+border-top:1px solid #fff2;
+margin-top:17px;
+padding-top:10px;
+color:#94a3b8;
+font-size:9px
+}
+
+/* WhatsApp */
+.whatsapp{
+position:fixed;
+right:16px;
+bottom:16px;
+z-index:999;
+background:#25d366;
+color:#fff;
+padding:11px 16px;
+border-radius:30px;
+font-size:12px;
+font-weight:bold;
+box-shadow:0 5px 18px #0004;
+display:flex;
+align-items:center;
+gap:7px
+}
+.whatsapp span{
+font-size:17px;
+line-height:1
+}
+.whatsapp:hover{
+transform:translateY(-2px)
 }
 
 @media(max-width:800px){
 nav{display:none}
-.grid,.months{grid-template-columns:repeat(2,1fr)}
-.foot{grid-template-columns:1fr 1fr}
+.grid,.months{
+grid-template-columns:repeat(2,1fr)
+}
 }
 
 @media(max-width:550px){
-.hero{padding:55px 15px}
+.head{padding:8px 10px}
+.brand h1{font-size:13px}
+.brand small{font-size:8px}
+.logo{width:37px;height:37px}
+.lang button{
+padding:5px 6px;
+font-size:8px
+}
+.hero{padding:52px 14px}
 .hero h2{font-size:29px}
-.grid,.months,.foot{grid-template-columns:1fr}
-.section{padding:42px 13px}
-.price strong{font-size:34px}
+.section{padding:40px 12px}
+.grid,.months,.foot{
+grid-template-columns:1fr
+}
+.price strong{font-size:33px}
+.whatsapp{
+right:12px;
+bottom:12px;
+padding:10px 14px
+}
 }
 </style>
 </head>
 
 <body>
 
-<!-- PUBLIC HEADER -->
 <header>
 <div class="head">
 
@@ -222,7 +349,7 @@ nav{display:none}
 <div class="logo">GOH</div>
 <div>
 <h1>GOH Bible School</h1>
-<p>Discipleship Training</p>
+<small>Discipleship Training</small>
 </div>
 </a>
 
@@ -235,53 +362,45 @@ nav{display:none}
 </nav>
 
 <div class="lang">
-<button class="active" onclick="setLang('en',this)">EN</button>
+<button class="on" onclick="setLang('en',this)">EN</button>
 <button onclick="setLang('ta',this)">தமிழ்</button>
-<button onclick="setLang('si',this)">සිංහල</button>
+<button onclick="setLang('si',this)">සිං</button>
 </div>
 
 </div>
 </header>
 
-
-<!-- PUBLIC HERO -->
 <section class="hero">
 <div>
 
-<span class="badge" id="badge">
+<span class="badge">
 12-Month Christian Discipleship Programme
 </span>
 
-<h2 id="heroTitle">
+<h2>
 One-Year Bible & Discipleship Training
 </h2>
 
-<p id="heroText">
+<p>
 A structured Christian training programme designed to help believers grow
 in biblical knowledge, spiritual character, ministry and disciple-making.
 </p>
 
 <div class="buttons">
-
-<!-- ONLY REGISTRATION AS MAIN ACTION -->
-<a href="register.html" class="btn primary" id="registerBtn">
+<a href="register.html" class="btn">
 Register Now
 </a>
-
 </div>
 
 </div>
 </section>
 
-
 <section class="section" id="programme">
 <div class="container">
 
-<h2 class="title" id="programmeTitle">
-About the Programme
-</h2>
+<h2 class="title">About the Programme</h2>
 
-<p class="sub" id="programmeSub">
+<p class="sub">
 A structured one-year learning journey for believers who desire to grow
 in Christ and serve effectively.
 </p>
@@ -290,8 +409,8 @@ in Christ and serve effectively.
 
 <div class="card">
 <div class="icon">📖</div>
-<h3 id="c1t">Biblical Foundation</h3>
-<p id="c1p">
+<h3>Biblical Foundation</h3>
+<p>
 Study essential Christian teachings and develop a strong foundation
 in God's Word.
 </p>
@@ -299,8 +418,8 @@ in God's Word.
 
 <div class="card">
 <div class="icon">🙏</div>
-<h3 id="c2t">Spiritual Growth</h3>
-<p id="c2p">
+<h3>Spiritual Growth</h3>
+<p>
 Develop prayer, Bible study, obedience, character and a consistent
 Christian life.
 </p>
@@ -308,8 +427,8 @@ Christian life.
 
 <div class="card">
 <div class="icon">🤝</div>
-<h3 id="c3t">Disciple-Making</h3>
-<p id="c3p">
+<h3>Disciple-Making</h3>
+<p>
 Learn to evangelize, teach, serve and help other believers grow in Christ.
 </p>
 </div>
@@ -318,17 +437,16 @@ Learn to evangelize, teach, serve and help other believers grow in Christ.
 </div>
 </section>
 
-
 <section class="section">
 <div class="price">
 
-<label id="feeLabel">Programme Fee</label>
+<label>Programme Fee</label>
 
 <strong>
 LKR 1,500 <small>/ month</small>
 </strong>
 
-<p id="feeNote">
+<p>
 Monthly training access · 12-month programme
 </p>
 
@@ -339,15 +457,14 @@ Start Registration
 </div>
 </section>
 
-
 <section class="section" id="curriculum">
 <div class="container">
 
-<h2 class="title" id="curriculumTitle">
+<h2 class="title">
 12-Month Curriculum
 </h2>
 
-<p class="sub" id="curriculumSub">
+<p class="sub">
 Each month focuses on a specific area of Christian growth and ministry development.
 </p>
 
@@ -358,9 +475,9 @@ Each month focuses on a specific area of Christian growth and ministry developme
 <div class="month"><b>Month 3</b><span>Holy Spirit and Spiritual Life</span></div>
 <div class="month"><b>Month 4</b><span>Prayer and Bible Study</span></div>
 <div class="month"><b>Month 5</b><span>Christian Character and Holiness</span></div>
-<div class="month"><b>Month 6</b><span>The Church and Christian Fellowship</span></div>
+<div class="month"><b>Month 6</b><span>Church and Christian Fellowship</span></div>
 <div class="month"><b>Month 7</b><span>Evangelism and Gospel Ministry</span></div>
-<div class="month"><b>Month 8</b><span>Discipleship and Spiritual Multiplication</span></div>
+<div class="month"><b>Month 8</b><span>Discipleship and Multiplication</span></div>
 <div class="month"><b>Month 9</b><span>Christian Leadership</span></div>
 <div class="month"><b>Month 10</b><span>Bible Interpretation and Teaching</span></div>
 <div class="month"><b>Month 11</b><span>Christian Ministry and Service</span></div>
@@ -370,11 +487,10 @@ Each month focuses on a specific area of Christian growth and ministry developme
 </div>
 </section>
 
-
 <section class="section" id="how">
 <div class="container">
 
-<h2 class="title" id="howTitle">
+<h2 class="title">
 How the Programme Works
 </h2>
 
@@ -392,7 +508,7 @@ How the Programme Works
 <div class="num">2</div>
 <div>
 <h3>Enroll</h3>
-<p>Choose the monthly training programme and complete payment.</p>
+<p>Choose the monthly programme and complete payment.</p>
 </div>
 </div>
 
@@ -400,14 +516,14 @@ How the Programme Works
 <div class="num">3</div>
 <div>
 <h3>Study</h3>
-<p>Access lessons, Bible references and monthly learning materials.</p>
+<p>Access lessons, Bible references and learning materials.</p>
 </div>
 </div>
 
 <div class="step">
 <div class="num">4</div>
 <div>
-<h3>Complete Assignment</h3>
+<h3>Assignment</h3>
 <p>Complete the required monthly learning or ministry assignment.</p>
 </div>
 </div>
@@ -415,7 +531,7 @@ How the Programme Works
 <div class="step">
 <div class="num">5</div>
 <div>
-<h3>Take Monthly Exam</h3>
+<h3>Monthly Exam</h3>
 <p>Complete the examination after finishing the month's requirements.</p>
 </div>
 </div>
@@ -424,14 +540,13 @@ How the Programme Works
 <div class="num">6</div>
 <div>
 <h3>Pass & Continue</h3>
-<p>Achieve at least 80% to unlock the next month's programme.</p>
+<p>Achieve at least 80% to unlock the next month.</p>
 </div>
 </div>
 
 </div>
 </div>
 </section>
-
 
 <section class="section">
 <div class="require">
@@ -446,38 +561,46 @@ to progress to the next month.
 </div>
 </section>
 
-
 <section class="section">
 <div class="container">
 
-<h2 class="title">Who Is This Programme For?</h2>
+<h2 class="title">
+Who Is This Programme For?
+</h2>
 
 <div class="grid">
 
 <div class="info">
 <h3>Believers</h3>
-<p>Christians who want a stronger biblical and spiritual foundation.</p>
+<p>
+Christians who want a stronger biblical and spiritual foundation.
+</p>
 </div>
 
 <div class="info">
 <h3>Growing Disciples</h3>
-<p>Believers who want structured training for continued spiritual growth.</p>
+<p>
+Believers who want structured training for continued spiritual growth.
+</p>
 </div>
 
 <div class="info">
 <h3>Ministry Workers</h3>
-<p>Those preparing to serve, teach, evangelize and help make disciples.</p>
+<p>
+Those preparing to serve, teach, evangelize and help make disciples.
+</p>
 </div>
 
 </div>
 </div>
 </section>
 
-
 <section class="section">
 <div class="container">
 
-<h2 class="title">Three Languages</h2>
+<h2 class="title">
+Three Languages
+</h2>
 
 <p class="sub">
 Learning access is provided in three languages.
@@ -507,52 +630,62 @@ Learning access is provided in three languages.
 </div>
 </section>
 
-
 <section class="section" id="faq">
 <div class="container">
 
-<h2 class="title">Frequently Asked Questions</h2>
+<h2 class="title">
+Frequently Asked Questions
+</h2>
 
 <div class="faq">
 
 <details>
 <summary>How long is the programme?</summary>
-<p>The programme is designed as a 12-month discipleship training journey.</p>
+<p>
+The programme is designed as a 12-month discipleship training journey.
+</p>
 </details>
 
 <details>
 <summary>How much does the programme cost?</summary>
-<p>The programme fee is LKR 1,500 per month.</p>
+<p>
+The programme fee is LKR 1,500 per month.
+</p>
 </details>
 
 <details>
 <summary>What happens if I do not achieve 80%?</summary>
-<p>The student does not progress to the next month until the required examination requirement is successfully completed.</p>
+<p>
+The student does not progress to the next month until the required
+examination requirement is successfully completed.
+</p>
 </details>
 
 <details>
 <summary>Can I study in my preferred language?</summary>
-<p>Yes. The programme is planned for English, Tamil and Sinhala learners.</p>
+<p>
+Yes. The programme is planned for English, Tamil and Sinhala learners.
+</p>
 </details>
 
 <details>
 <summary>Is this a university degree?</summary>
 <p>
-No. This is a Christian discipleship and Bible training programme offered
-by GOH Ministries. It should not be represented as a government or
-university-accredited academic degree unless separately accredited.
+No. This is a Christian discipleship and Bible training programme
+offered by GOH Ministries.
 </p>
 </details>
 
 <details>
 <summary>How do I start?</summary>
-<p>Create a student account and complete the registration process.</p>
+<p>
+Create a student account and complete the registration process.
+</p>
 </details>
 
 </div>
 </div>
 </section>
-
 
 <section class="section" id="contact">
 <div class="container">
@@ -570,15 +703,16 @@ spiritual growth and discipleship.
 Register Now
 </a>
 
-<a href="contact.html" class="btn">
-Contact Us
+<a href="https://wa.me/94771190395"
+target="_blank"
+class="btn">
+WhatsApp
 </a>
 
 </div>
 
 </div>
 </section>
-
 
 <footer>
 
@@ -615,93 +749,40 @@ Contact Us
 
 </footer>
 
+<!-- FIXED WHATSAPP -->
+<a
+class="whatsapp"
+href="https://wa.me/94771190395"
+target="_blank"
+aria-label="WhatsApp GOH Bible School">
+<span>☘</span> WhatsApp
+</a>
 
 <script>
-const translations={
-en:{
-badge:"12-Month Christian Discipleship Programme",
-heroTitle:"One-Year Bible & Discipleship Training",
-heroText:"A structured Christian training programme designed to help believers grow in biblical knowledge, spiritual character, ministry and disciple-making.",
-registerBtn:"Register Now",
-programmeTitle:"About the Programme",
-programmeSub:"A structured one-year learning journey for believers who desire to grow in Christ and serve effectively.",
-c1t:"Biblical Foundation",
-c1p:"Study essential Christian teachings and develop a strong foundation in God's Word.",
-c2t:"Spiritual Growth",
-c2p:"Develop prayer, Bible study, obedience, character and a consistent Christian life.",
-c3t:"Disciple-Making",
-c3p:"Learn to evangelize, teach, serve and help other believers grow in Christ.",
-feeLabel:"Programme Fee",
-feeNote:"Monthly training access · 12-month programme",
-curriculumTitle:"12-Month Curriculum",
-curriculumSub:"Each month focuses on a specific area of Christian growth and ministry development.",
-howTitle:"How the Programme Works"
-},
-
-ta:{
-badge:"12 மாத கிறிஸ்தவ சீஷத்துவப் பயிற்சி",
-heroTitle:"ஒரு வருட வேதாகமம் மற்றும் சீஷத்துவப் பயிற்சி",
-heroText:"விசுவாசிகள் வேதாகம அறிவு, ஆவிக்குரிய குணம், ஊழியம் மற்றும் சீஷர்களை உருவாக்குவதில் வளர உதவும் கட்டமைக்கப்பட்ட கிறிஸ்தவ பயிற்சி.",
-registerBtn:"பதிவு செய்யுங்கள்",
-programmeTitle:"பயிற்சி திட்டம் பற்றி",
-programmeSub:"கிறிஸ்துவில் வளர்ந்து திறம்பட ஊழியம் செய்ய விரும்பும் விசுவாசிகளுக்கான ஒரு வருட கட்டமைக்கப்பட்ட பயிற்சி.",
-c1t:"வேதாகம அடித்தளம்",
-c1p:"அடிப்படை கிறிஸ்தவ போதனைகளை கற்று தேவனுடைய வார்த்தையில் உறுதியான அடித்தளத்தை உருவாக்குங்கள்.",
-c2t:"ஆவிக்குரிய வளர்ச்சி",
-c2p:"ஜெபம், வேதாகமப் படிப்பு, கீழ்ப்படிதல் மற்றும் கிறிஸ்தவ குணத்தில் வளருங்கள்.",
-c3t:"சீஷர்களை உருவாக்குதல்",
-c3p:"சுவிசேஷம், போதனை, ஊழியம் மற்றும் மற்ற விசுவாசிகளுக்கு உதவுதல் ஆகியவற்றைக் கற்றுக்கொள்ளுங்கள்.",
-feeLabel:"பயிற்சி கட்டணம்",
-feeNote:"மாதாந்திர பயிற்சி அணுகல் · 12 மாத திட்டம்",
-curriculumTitle:"12 மாத பாடத்திட்டம்",
-curriculumSub:"ஒவ்வொரு மாதமும் கிறிஸ்தவ வளர்ச்சி மற்றும் ஊழியத்தின் ஒரு முக்கிய பகுதியை மையமாகக் கொண்டுள்ளது.",
-howTitle:"பயிற்சி எவ்வாறு நடைபெறும்"
-},
-
-si:{
-badge:"මාස 12ක ක්‍රිස්තියානි ගෝලත්ව පුහුණුව",
-heroTitle:"වසරක බයිබල් හා ගෝලත්ව පුහුණුව",
-heroText:"විශ්වාසවන්තයින්ට බයිබල් දැනුම, ආත්මික චරිතය, සේවය සහ ගෝලයන් සෑදීම තුළ වර්ධනය වීමට උපකාර කරන ක්‍රිස්තියානි පුහුණු වැඩසටහනකි.",
-registerBtn:"දැන් ලියාපදිංචි වන්න",
-programmeTitle:"වැඩසටහන ගැන",
-programmeSub:"ක්‍රිස්තුස් වහන්සේ තුළ වර්ධනය වී ඵලදායී ලෙස සේවය කිරීමට කැමති විශ්වාසවන්තයින් සඳහා වසරක පුහුණු ගමනකි.",
-c1t:"බයිබල් පදනම",
-c1p:"මූලික ක්‍රිස්තියානි ඉගැන්වීම් ඉගෙනගෙන දෙවියන් වහන්සේගේ වචනය තුළ ශක්තිමත් පදනමක් ගොඩනඟන්න.",
-c2t:"ආත්මික වර්ධනය",
-c2p:"යාච්ඤාව, බයිබල් අධ්‍යයනය, කීකරුකම සහ ක්‍රිස්තියානි චරිතය වර්ධනය කරගන්න.",
-c3t:"ගෝලයන් සෑදීම",
-c3p:"ශුභාරංචිය ප්‍රකාශ කිරීම, ඉගැන්වීම සහ අනෙකුත් විශ්වාසවන්තයින්ට සේවය කිරීම ඉගෙන ගන්න.",
-feeLabel:"වැඩසටහන් ගාස්තුව",
-feeNote:"මාසික පුහුණු ප්‍රවේශය · මාස 12ක වැඩසටහන",
-curriculumTitle:"මාස 12ක පාඨමාලාව",
-curriculumSub:"සෑම මාසයකම ක්‍රිස්තියානි වර්ධනයේ සහ සේවයේ විශේෂ අංශයක් කෙරෙහි අවධානය යොමු කරයි.",
-howTitle:"වැඩසටහන ක්‍රියාත්මක වන ආකාරය"
-}
+const t={
+en:["12-Month Christian Discipleship Programme","One-Year Bible & Discipleship Training","Register Now"],
+ta:["12 மாத கிறிஸ்தவ சீஷத்துவப் பயிற்சி","ஒரு வருட வேதாகமம் மற்றும் சீஷத்துவப் பயிற்சி","பதிவு செய்யுங்கள்"],
+si:["මාස 12ක ක්‍රිස්තියානි ගෝලත්ව පුහුණුව","වසරක බයිබල් හා ගෝලත්ව පුහුණුව","දැන් ලියාපදිංචි වන්න"]
 };
 
-function setLang(language,button){
-const t=translations[language];
-if(!t)return;
-
-Object.keys(t).forEach(id=>{
-const el=document.getElementById(id);
-if(el)el.textContent=t[id];
-});
+function setLang(l,b){
+document.getElementById("badge").textContent=t[l][0];
+document.getElementById("hero").textContent=t[l][1];
+document.getElementById("register").textContent=t[l][2];
 
 document.querySelectorAll(".lang button")
-.forEach(b=>b.classList.remove("active"));
+.forEach(x=>x.classList.remove("on"));
 
-button.classList.add("active");
-document.documentElement.lang=language;
-localStorage.setItem("goh_bible_language",language);
+b.classList.add("on");
+document.documentElement.lang=l;
+localStorage.setItem("gohLang",l);
 }
 
-const saved=localStorage.getItem("goh_bible_language");
+const saved=localStorage.getItem("gohLang");
 
-if(saved&&translations[saved]){
-const buttons=document.querySelectorAll(".lang button");
-const i=saved==="en"?0:saved==="ta"?1:2;
-setLang(saved,buttons[i]);
+if(saved){
+const b=document.querySelector(`[onclick*="'${saved}'"]`);
+if(b)setLang(saved,b);
 }
 </script>
 
