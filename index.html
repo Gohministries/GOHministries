@@ -12,300 +12,690 @@ content="Gate of Heaven Ministries — Building believers, making disciples and 
 <meta name="theme-color" content="#111827">
 
 <link rel="manifest" href="/manifest.json">
+
 <link rel="icon"
 href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 type="image/png">
+
 <link rel="apple-touch-icon"
 href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+*{
+box-sizing:border-box;
+margin:0;
+padding:0
+}
+
+html{
+scroll-behavior:smooth
+}
+
 body{
 font-family:Arial,Helvetica,sans-serif;
-background:#f8fafc;color:#172033;line-height:1.5
+background:#f8fafc;
+color:#172033;
+line-height:1.5
 }
-a{text-decoration:none;color:inherit}
-button{font:inherit}
-.container{width:min(1050px,92%);margin:auto}
+
+a{
+text-decoration:none;
+color:inherit
+}
+
+button{
+font:inherit
+}
+
+.container{
+width:min(1050px,92%);
+margin:auto
+}
 
 /* HEADER */
+
 header{
-position:sticky;top:0;z-index:1000;
-background:#fff;border-bottom:1px solid #e5e7eb
+position:sticky;
+top:0;
+z-index:1000;
+background:#fff;
+border-bottom:1px solid #e5e7eb
 }
+
 .nav{
-min-height:64px;display:flex;align-items:center;
-justify-content:space-between;gap:10px
+min-height:64px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px
 }
-.logo{display:flex;align-items:center;gap:9px}
-.logo img{width:42px;height:42px;object-fit:contain;border-radius:8px}
-.logo-title{font-size:14px;font-weight:900}
-.logo-sub{font-size:9px;color:#6b7280}
-.nav-right{display:flex;align-items:center;gap:6px}
-.nav-links{display:flex;gap:2px}
+
+.logo{
+display:flex;
+align-items:center;
+gap:9px
+}
+
+.logo img{
+width:42px;
+height:42px;
+object-fit:contain;
+border-radius:8px
+}
+
+.logo-title{
+font-size:14px;
+font-weight:900
+}
+
+.logo-sub{
+font-size:9px;
+color:#6b7280
+}
+
+.nav-right{
+display:flex;
+align-items:center;
+gap:6px
+}
+
+.nav-links{
+display:flex;
+gap:2px
+}
+
 .nav-links a{
-padding:8px;border-radius:8px;font-size:10px;
-font-weight:800;color:#374151
+padding:8px;
+border-radius:8px;
+font-size:10px;
+font-weight:800;
+color:#374151
 }
-.nav-links a:hover{background:#f3f4f6}
+
+.nav-links a:hover{
+background:#f3f4f6
+}
+
 .install{
-border:0;background:#111827;color:#fff;
-border-radius:8px;padding:8px 11px;
-font-size:10px;font-weight:900;cursor:pointer
+border:0;
+background:#111827;
+color:#fff;
+border-radius:8px;
+padding:8px 11px;
+font-size:10px;
+font-weight:900;
+cursor:pointer
 }
+
 .menu{
-display:none;width:40px;height:40px;
-border:1px solid #e5e7eb;background:#fff;
-border-radius:8px;font-size:18px;cursor:pointer
+display:none;
+width:40px;
+height:40px;
+border:1px solid #e5e7eb;
+background:#fff;
+border-radius:8px;
+font-size:18px;
+cursor:pointer
 }
-.mobile-menu{display:none}
+
+.mobile-menu{
+display:none
+}
 
 /* BUTTONS */
+
 .btn{
-display:inline-flex;align-items:center;justify-content:center;
-padding:11px 16px;border-radius:9px;
-font-size:12px;font-weight:900;
-border:1px solid transparent;cursor:pointer
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:11px 16px;
+border-radius:9px;
+font-size:12px;
+font-weight:900;
+border:1px solid transparent;
+cursor:pointer
 }
-.primary{background:#fbbf24;color:#111827}
-.light{background:#fff;color:#111827}
-.dark{background:#111827;color:#fff}
-.green{background:#25D366;color:#fff}
-.buttons{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+
+.primary{
+background:#fbbf24;
+color:#111827
+}
+
+.light{
+background:#fff;
+color:#111827
+}
+
+.dark{
+background:#111827;
+color:#fff
+}
 
 /* HERO */
+
 .hero{
 background:
-radial-gradient(circle at 85% 15%,rgba(99,102,241,.2),transparent 30%),
-linear-gradient(135deg,#111827,#253044);
-color:#fff;padding:70px 0
+radial-gradient(
+circle at 85% 15%,
+rgba(99,102,241,.2),
+transparent 30%
+),
+linear-gradient(
+135deg,
+#111827,
+#253044
+);
+color:#fff;
+padding:70px 0
 }
+
 .hero-grid{
-display:grid;grid-template-columns:1.2fr .8fr;
-gap:30px;align-items:center
+display:grid;
+grid-template-columns:1.2fr .8fr;
+gap:30px;
+align-items:center
 }
+
 .badge{
-font-size:9px;font-weight:900;
-letter-spacing:1px;color:#fbbf24
+font-size:9px;
+font-weight:900;
+letter-spacing:1px;
+color:#fbbf24
 }
+
 .hero h1{
 font-size:clamp(38px,6vw,62px);
-line-height:1.05;letter-spacing:-2px;margin:10px 0 16px
+line-height:1.05;
+letter-spacing:-2px;
+margin:10px 0 16px
 }
-.hero h1 span{color:#fbbf24}
+
+.hero h1 span{
+color:#fbbf24
+}
+
 .hero-text{
-max-width:570px;font-size:14px;
-color:#d1d5db;margin-bottom:20px
+max-width:570px;
+font-size:14px;
+color:#d1d5db;
+margin-bottom:20px
 }
-.hero-actions{justify-content:flex-start}
+
+.buttons{
+display:flex;
+gap:8px;
+flex-wrap:wrap
+}
 
 /* FEATURE */
+
 .feature{
 background:rgba(255,255,255,.07);
 border:1px solid rgba(255,255,255,.13);
-border-radius:18px;padding:24px
+border-radius:18px;
+padding:24px
 }
+
 .feature-logo{
-width:64px;height:64px;object-fit:contain;
-background:#fff;border-radius:12px;
-padding:5px;margin-bottom:12px
+width:64px;
+height:64px;
+object-fit:contain;
+background:#fff;
+border-radius:12px;
+padding:5px;
+margin-bottom:12px
 }
+
 .feature small{
-color:#fbbf24;font-size:9px;
-font-weight:900;letter-spacing:1px
+color:#fbbf24;
+font-size:9px;
+font-weight:900;
+letter-spacing:1px
 }
-.feature h2{font-size:25px;line-height:1.15;margin:5px 0 8px}
-.feature p{font-size:11px;color:#d1d5db;margin-bottom:16px}
+
+.feature h2{
+font-size:25px;
+line-height:1.15;
+margin:5px 0 8px
+}
+
+.feature p{
+font-size:11px;
+color:#d1d5db;
+margin-bottom:16px
+}
 
 /* QUICK */
+
 .quick{
-background:#fff;padding:14px 0;
+background:#fff;
+padding:14px 0;
 border-bottom:1px solid #e5e7eb
 }
+
 .quick-grid{
-display:grid;grid-template-columns:repeat(4,1fr);gap:7px
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:7px
 }
+
 .quick a{
-text-align:center;padding:10px 5px;
-border:1px solid #e5e7eb;border-radius:9px;
-font-size:10px;font-weight:900
+text-align:center;
+padding:10px 5px;
+border:1px solid #e5e7eb;
+border-radius:9px;
+font-size:10px;
+font-weight:900
 }
 
 /* SECTIONS */
-section{padding:55px 0}
-.head{text-align:center;margin-bottom:25px}
-.head small{
-font-size:9px;font-weight:900;
-color:#6366f1;letter-spacing:1px
+
+section{
+padding:55px 0
 }
-.head h2{font-size:28px;line-height:1.15;margin:5px 0}
-.head p{font-size:12px;color:#6b7280}
+
+.head{
+text-align:center;
+margin-bottom:25px
+}
+
+.head small{
+font-size:9px;
+font-weight:900;
+color:#6366f1;
+letter-spacing:1px
+}
+
+.head h2{
+font-size:28px;
+line-height:1.15;
+margin:5px 0
+}
+
+.head p{
+font-size:12px;
+color:#6b7280
+}
 
 /* CARDS */
+
 .grid{
-display:grid;grid-template-columns:repeat(3,1fr);gap:10px
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px
 }
+
 .card{
-background:#fff;border:1px solid #e5e7eb;
-border-radius:14px;padding:20px
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:14px;
+padding:20px
 }
-.card-icon{font-size:22px;margin-bottom:6px}
-.card h3{font-size:15px;margin-bottom:5px}
-.card p{font-size:11px;color:#6b7280}
+
+.card-icon{
+font-size:22px;
+margin-bottom:6px
+}
+
+.card h3{
+font-size:15px;
+margin-bottom:5px
+}
+
+.card p{
+font-size:11px;
+color:#6b7280
+}
 
 /* FOUNDER */
-.founders{background:#f8fafc}
-.founder-card{
-max-width:850px;margin:auto;background:#fff;
-border:1px solid #e5e7eb;border-radius:18px;
-overflow:hidden;display:grid;
-grid-template-columns:1fr 1fr;align-items:center
-}
-.founder-card img{
-width:100%;height:330px;object-fit:cover
-}
-.founder-info{padding:28px}
-.founder-info small{
-color:#6366f1;font-size:9px;
-font-weight:900;letter-spacing:1px
-}
-.founder-info h3{font-size:24px;margin:6px 0 10px}
-.founder-info p{font-size:12px;color:#6b7280;margin-bottom:18px}
 
-/* BIBLE SCHOOL */
-.school-section{background:#fff}
-.school-card{
-background:#111827;color:#fff;
-border-radius:20px;padding:30px
+.founders{
+background:#f8fafc
 }
-.school-card small{
-color:#fbbf24;font-size:9px;
-font-weight:900;letter-spacing:1px
+
+.founder-card{
+max-width:850px;
+margin:auto;
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:18px;
+overflow:hidden;
+display:grid;
+grid-template-columns:1fr 1fr;
+align-items:center
 }
-.school-card h2{font-size:30px;margin:6px 0 9px}
-.school-card p{
-font-size:12px;color:#cbd5e1;
+
+.founder-card img{
+width:100%;
+height:330px;
+object-fit:cover
+}
+
+.founder-info{
+padding:28px
+}
+
+.founder-info small{
+color:#6366f1;
+font-size:9px;
+font-weight:900;
+letter-spacing:1px
+}
+
+.founder-info h3{
+font-size:24px;
+margin:6px 0 10px
+}
+
+.founder-info p{
+font-size:12px;
+color:#6b7280;
 margin-bottom:18px
 }
-.points{
-display:grid;grid-template-columns:1fr 1fr;
-gap:6px;margin-bottom:20px
+
+/* BIBLE SCHOOL */
+
+.school-section{
+background:#fff
 }
+
+.school-card{
+background:#111827;
+color:#fff;
+border-radius:20px;
+padding:30px
+}
+
+.school-card small{
+color:#fbbf24;
+font-size:9px;
+font-weight:900;
+letter-spacing:1px
+}
+
+.school-card h2{
+font-size:30px;
+margin:6px 0 9px
+}
+
+.school-card p{
+font-size:12px;
+color:#cbd5e1;
+margin-bottom:16px
+}
+
+.points{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:6px;
+margin-bottom:18px
+}
+
 .points span{
 background:rgba(255,255,255,.07);
-padding:8px;border-radius:7px;font-size:9px
+padding:8px;
+border-radius:7px;
+font-size:9px
 }
 
 /* CERTIFICATE */
-.certificate-section{background:#f8fafc}
+
+.certificate-section{
+background:#f8fafc
+}
+
 .certificate-card{
-max-width:850px;margin:auto;background:#fff;
-border:1px solid #e5e7eb;border-radius:18px;
-padding:25px;display:grid;
-grid-template-columns:1fr 1fr;gap:20px;align-items:center
+max-width:850px;
+margin:auto;
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:18px;
+padding:25px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+align-items:center
 }
-.certificate-info h3{font-size:21px;margin:5px 0 8px}
-.certificate-info p{font-size:11px;color:#6b7280;margin-bottom:15px}
+
+.certificate-info h3{
+font-size:21px;
+margin:5px 0 8px
+}
+
+.certificate-info p{
+font-size:11px;
+color:#6b7280;
+margin-bottom:15px
+}
+
 .progress-box{
-border:1px solid #e5e7eb;border-radius:12px;padding:16px
+border:1px solid #e5e7eb;
+border-radius:12px;
+padding:16px
 }
+
 .progress-top{
-display:flex;justify-content:space-between;
-font-size:10px;font-weight:900;margin-bottom:8px
+display:flex;
+justify-content:space-between;
+font-size:10px;
+font-weight:900;
+margin-bottom:8px
 }
+
 .progress{
-height:9px;background:#e5e7eb;
-border-radius:20px;overflow:hidden;margin-bottom:9px
+height:9px;
+background:#e5e7eb;
+border-radius:20px;
+overflow:hidden;
+margin-bottom:9px
 }
+
 .progress-bar{
-height:100%;width:0;background:#6366f1
+height:100%;
+width:0;
+background:#6366f1
 }
-.progress-note{font-size:9px;color:#6b7280}
+
+.progress-note{
+font-size:9px;
+color:#6b7280
+}
 
 /* MEDIA */
-.media-card{
-background:#111827;color:#fff;
-border-radius:18px;padding:25px;
-display:flex;align-items:center;
-justify-content:space-between;gap:15px
-}
-.media-card h2{font-size:23px}
-.media-card p{font-size:11px;color:#cbd5e1}
 
-/* CONTACT */
-.contact{text-align:center}
-.contact p{font-size:12px;color:#6b7280;margin-bottom:15px}
+.media-card{
+background:#111827;
+color:#fff;
+border-radius:18px;
+padding:25px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px
+}
+
+.media-card h2{
+font-size:23px
+}
+
+.media-card p{
+font-size:11px;
+color:#cbd5e1
+}
 
 /* FOOTER */
-footer{background:#0b1120;color:#fff;padding:30px 0 16px}
+
+footer{
+background:#0b1120;
+color:#fff;
+padding:30px 0 16px
+}
+
 .footer-main{
-display:flex;align-items:center;
-justify-content:space-between;gap:20px
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:25px
 }
-.footer-brand{display:flex;align-items:center;gap:10px}
+
+.footer-brand{
+display:flex;
+align-items:center;
+gap:10px
+}
+
 .footer-brand img{
-width:42px;height:42px;object-fit:contain;
-background:#fff;border-radius:9px;padding:3px
+width:42px;
+height:42px;
+object-fit:contain;
+background:#fff;
+border-radius:9px;
+padding:3px
 }
-.footer-brand strong{font-size:14px}
-.footer-brand p{font-size:9px;color:#94a3b8}
-.footer-links{display:flex;gap:16px;flex-wrap:wrap}
-.footer-links a{font-size:10px;color:#cbd5e1}
+
+.footer-brand strong{
+display:block;
+font-size:14px
+}
+
+.footer-brand p{
+font-size:9px;
+color:#94a3b8
+}
+
+.footer-links{
+display:flex;
+gap:18px
+}
+
+.footer-links a{
+font-size:10px;
+color:#cbd5e1
+}
+
 .footer-bottom{
 border-top:1px solid rgba(255,255,255,.1);
-padding-top:14px;margin-top:20px;
-display:flex;justify-content:space-between;
-font-size:9px;color:#64748b
+padding-top:14px;
+margin-top:18px;
+font-size:9px;
+color:#64748b
 }
 
 /* WHATSAPP */
+
 .whatsapp{
-position:fixed;right:15px;bottom:15px;
-width:53px;height:53px;display:grid;
-place-items:center;border-radius:50%;
-background:#25D366;color:#fff;font-size:24px;
-z-index:2000;box-shadow:0 7px 20px rgba(0,0,0,.2)
+position:fixed;
+right:15px;
+bottom:15px;
+width:53px;
+height:53px;
+display:grid;
+place-items:center;
+border-radius:50%;
+background:#25D366;
+color:#fff;
+font-size:24px;
+z-index:2000;
+box-shadow:0 7px 20px rgba(0,0,0,.2)
 }
 
 /* MOBILE */
+
 @media(max-width:900px){
-.nav-links{display:none}
-.menu{display:block}
+
+.nav-links{
+display:none
+}
+
+.menu{
+display:block
+}
+
 .mobile-menu{
-position:fixed;top:64px;left:0;right:0;
-z-index:999;background:#fff;
+position:fixed;
+top:64px;
+left:0;
+right:0;
+z-index:999;
+background:#fff;
 border-top:1px solid #e5e7eb;
 border-bottom:1px solid #e5e7eb;
 box-shadow:0 12px 25px rgba(0,0,0,.12);
 padding:8px 4%
 }
-.mobile-menu.show{display:block}
-.mobile-menu a{
-display:block;padding:12px;
-border-radius:8px;font-size:12px;font-weight:800
-}
-.hero-grid{grid-template-columns:1fr}
-.founder-card{grid-template-columns:1fr}
-.certificate-card{grid-template-columns:1fr}
+
+.mobile-menu.show{
+display:block
 }
 
+.hero-grid{
+grid-template-columns:1fr
+}
+
+.founder-card{
+grid-template-columns:1fr
+}
+
+.certificate-card{
+grid-template-columns:1fr
+}
+
+}
+
+/* SMALL MOBILE */
+
 @media(max-width:600px){
-.container{width:91%}
-.hero{padding:55px 0}
-.hero h1{letter-spacing:-1px}
-.hero-actions{justify-content:center}
-.buttons{flex-direction:column}
-.buttons .btn{width:100%}
-.quick-grid{grid-template-columns:1fr 1fr}
-.grid{grid-template-columns:1fr}
-.points{grid-template-columns:1fr}
-.footer-main{display:block}
-.footer-links{margin-top:15px}
-.footer-bottom{display:block;line-height:1.8}
-.footer-bottom span{display:block}
-.founder-card img{height:300px}
-.school-card{padding:22px}
+
+.container{
+width:91%
+}
+
+.hero{
+padding:55px 0
+}
+
+.hero h1{
+letter-spacing:-1px
+}
+
+.buttons{
+flex-direction:column
+}
+
+.buttons .btn{
+width:100%
+}
+
+.quick-grid{
+grid-template-columns:1fr 1fr
+}
+
+.grid{
+grid-template-columns:1fr
+}
+
+.points{
+grid-template-columns:1fr
+}
+
+.footer-main{
+display:block
+}
+
+.footer-links{
+margin-top:16px;
+flex-wrap:wrap;
+gap:10px 16px
+}
+
+.founder-card img{
+height:300px
+}
+
+.school-card{
+padding:22px
+}
+
 }
 </style>
 </head>
@@ -313,21 +703,27 @@ border-radius:8px;font-size:12px;font-weight:800
 <body>
 
 <!-- HEADER -->
+
 <header>
 <div class="container nav">
 
 <a href="index.html" class="logo">
-<img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
+
+<img
+src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 alt="GOH Ministries Logo">
+
 <div>
 <div class="logo-title">GOH Ministries</div>
 <div class="logo-sub">Gate of Heaven Ministries</div>
 </div>
+
 </a>
 
 <div class="nav-right">
 
 <nav class="nav-links">
+
 <a href="index.html">🏠 Home</a>
 <a href="about.html">About</a>
 <a href="ministries.html">Ministries</a>
@@ -337,17 +733,25 @@ alt="GOH Ministries Logo">
 <a href="events.html">Events</a>
 <a href="prayer.html">🙏 Prayer</a>
 <a href="contact.html">Contact</a>
+
 </nav>
 
-<button class="install" id="installBtn">⇩ Install</button>
-<button class="menu" id="menuBtn" aria-label="Open menu">☰</button>
+<button class="install" id="installBtn">
+⇩ Install
+</button>
+
+<button class="menu" id="menuBtn">
+☰
+</button>
 
 </div>
 </div>
 </header>
 
 <!-- MOBILE MENU -->
+
 <nav class="mobile-menu" id="mobileMenu">
+
 <a href="index.html">🏠 Home</a>
 <a href="about.html">About</a>
 <a href="ministries.html">Ministries</a>
@@ -355,16 +759,22 @@ alt="GOH Ministries Logo">
 <a href="media.html">🎥 Media</a>
 <a href="sermons.html">Sermons</a>
 <a href="events.html">Events</a>
-<a href="prayer.html">🙏 Prayer</a>
+<a href="prayer.html">🙏 Prayer Request</a>
 <a href="contact.html">Contact</a>
+
 </nav>
 
 <!-- HERO -->
+
 <section class="hero">
+
 <div class="container hero-grid">
 
 <div>
-<div class="badge">GATE OF HEAVEN MINISTRIES</div>
+
+<div class="badge">
+GATE OF HEAVEN MINISTRIES
+</div>
 
 <h1>
 Building Believers.<br>
@@ -377,21 +787,32 @@ strengthening believers and helping people
 grow as faithful disciples of Jesus Christ.
 </p>
 
-<div class="buttons hero-actions">
-<a href="about.html" class="btn light">About GOH</a>
-<a href="bible-school.html" class="btn primary">📖 Bible School</a>
+<div class="buttons">
+
+<a href="about.html" class="btn light">
+About GOH
+</a>
+
+<a href="bible-school.html" class="btn primary">
+📖 Bible School
+</a>
+
 </div>
+
 </div>
 
 <div class="feature">
 
-<img class="feature-logo"
+<img
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
-alt="GOH Ministries Logo">
+alt="GOH Ministries Logo"
+class="feature-logo">
 
 <small>GOH ONLINE BIBLE SCHOOL</small>
 
-<h2>From Believer to Disciple</h2>
+<h2>
+From Believer to Disciple
+</h2>
 
 <p>
 A 365-day Bible learning journey designed
@@ -399,8 +820,13 @@ to help believers grow in God's Word,
 Christian character and discipleship.
 </p>
 
-<a href="bible-school.html" class="btn primary" style="width:100%">
+<a
+href="bible-school.html"
+class="btn primary"
+style="width:100%">
+
 Explore Bible School
+
 </a>
 
 </div>
@@ -409,65 +835,112 @@ Explore Bible School
 </section>
 
 <!-- QUICK LINKS -->
+
 <div class="quick">
+
 <div class="container quick-grid">
+
 <a href="bible-school.html">📖 Bible School</a>
 <a href="media.html">🎥 GOH Media</a>
 <a href="prayer.html">🙏 Prayer</a>
 <a href="contact.html">💬 Contact</a>
+
 </div>
 </div>
 
 <!-- ABOUT -->
+
 <section>
+
 <div class="container">
 
 <div class="head">
+
 <small>ABOUT GOH</small>
-<h2>Serving Christ. Serving People.</h2>
-<p>Growing in God's Word and helping others follow Christ.</p>
+
+<h2>
+Serving Christ. Serving People.
+</h2>
+
+<p>
+Growing in God's Word and helping others follow Christ.
+</p>
+
 </div>
 
 <div class="grid">
 
 <div class="card">
+
 <div class="card-icon">🎯</div>
+
 <h3>Our Mission</h3>
-<p>Proclaim the Gospel, teach God's Word and make disciples.</p>
+
+<p>
+Proclaim the Gospel, teach God's Word
+and make disciples.
+</p>
+
 </div>
 
 <div class="card">
+
 <div class="card-icon">❤️</div>
+
 <h3>Our Vision</h3>
-<p>See lives transformed and believers equipped to serve Christ.</p>
+
+<p>
+See lives transformed and believers
+equipped to serve Christ.
+</p>
+
 </div>
 
 <div class="card">
+
 <div class="card-icon">🙏</div>
+
 <h3>Our Heart</h3>
-<p>Prayer, worship, discipleship, evangelism and outreach.</p>
+
+<p>
+Prayer, worship, discipleship,
+evangelism and outreach.
+</p>
+
 </div>
 
 </div>
 
 <div style="text-align:center;margin-top:20px">
-<a href="about.html" class="btn dark">Learn More →</a>
+
+<a href="about.html" class="btn dark">
+Learn More →
+</a>
+
 </div>
 
 </div>
 </section>
 
 <!-- FOUNDER -->
+
 <section class="founders">
+
 <div class="container">
 
 <div class="head">
+
 <small>FOUNDER & PASTOR</small>
-<h2>Pastor Saththiyanadan</h2>
+
+<h2>
+Pastor Saththiyanadan
+</h2>
+
 <p>
 Serving Christ through prayer, Bible teaching,
 evangelism and discipleship.
 </p>
+
 </div>
 
 <div class="founder-card">
@@ -481,7 +954,9 @@ loading="lazy">
 
 <small>FOUNDER & PASTOR</small>
 
-<h3>Pastor Saththiyanadan</h3>
+<h3>
+Pastor Saththiyanadan
+</h3>
 
 <p>
 Founder and Pastor of Gate of Heaven Ministries,
@@ -494,73 +969,122 @@ About the Ministry →
 </a>
 
 </div>
+
 </div>
 
 </div>
 </section>
 
 <!-- MINISTRIES -->
+
 <section>
+
 <div class="container">
 
 <div class="head">
+
 <small>OUR MINISTRIES</small>
-<h2>Growing Together in Christ</h2>
-<p>Serving people and helping believers grow in faith.</p>
+
+<h2>
+Growing Together in Christ
+</h2>
+
+<p>
+Serving people and helping believers grow in faith.
+</p>
+
 </div>
 
 <div class="grid">
 
 <div class="card">
+
 <div class="card-icon">🙏</div>
+
 <h3>Prayer</h3>
-<p>Seeking God together through prayer and intercession.</p>
+
+<p>
+Seeking God together through prayer
+and intercession.
+</p>
+
 </div>
 
 <div class="card">
+
 <div class="card-icon">📖</div>
+
 <h3>Bible Teaching</h3>
-<p>Building strong biblical foundations through God's Word.</p>
+
+<p>
+Building strong biblical foundations
+through God's Word.
+</p>
+
 </div>
 
 <div class="card">
+
 <div class="card-icon">🌍</div>
+
 <h3>Evangelism</h3>
-<p>Sharing the Gospel and reaching people with Christ's message.</p>
+
+<p>
+Sharing the Gospel and reaching people
+with the message of Christ.
+</p>
+
 </div>
 
 </div>
 
 <div style="text-align:center;margin-top:20px">
-<a href="ministries.html" class="btn dark">View Ministries →</a>
+
+<a href="ministries.html" class="btn dark">
+View Ministries →
+</a>
+
 </div>
 
 </div>
 </section>
 
 <!-- BIBLE SCHOOL -->
+
 <section class="school-section">
+
 <div class="container">
 
 <div class="head">
+
 <small>GOH 365-DAY ONLINE BIBLE SCHOOL</small>
-<h2>From Believer to Disciple</h2>
-<p>A structured one-year journey through God's Word.</p>
+
+<h2>
+From Believer to Disciple
+</h2>
+
+<p>
+A structured one-year journey through God's Word.
+</p>
+
 </div>
 
 <div class="school-card">
 
 <small>📖 365-DAY DISCIPLESHIP JOURNEY</small>
 
-<h2>Grow in God's Word</h2>
+<h2>
+Grow in God's Word
+</h2>
 
 <p>
-Study God's Word day by day through Scripture,
-explanation, application and assessments.
+Study God's Word day by day through Bible lessons,
+explanations, applications and assessments.
 Learn in English KJV, Sinhala and Tamil.
 </p>
 
 <div class="points">
+
 <span>✓ 365 Daily Bible Lessons</span>
 <span>✓ KJV English</span>
 <span>✓ Sinhala & Tamil</span>
@@ -568,30 +1092,47 @@ Learn in English KJV, Sinhala and Tamil.
 <span>✓ Daily Questions</span>
 <span>✓ AI Bible Study Assistant</span>
 <span>✓ Progress Tracking</span>
-<span>✓ Assessments</span>
 <span>✓ Final Assessment</span>
 <span>✓ Certificate Pathway</span>
+<span>✓ Online Learning</span>
+
 </div>
 
 <div class="buttons">
-<a href="bible-school.html" class="btn light">View Program</a>
-<a href="register.html" class="btn primary">Start Learning</a>
+
+<a href="bible-school.html" class="btn light">
+View Bible School
+</a>
+
+<a href="register.html" class="btn primary">
+Start Learning
+</a>
+
 </div>
 
 </div>
+
 </div>
 </section>
 
 <!-- CERTIFICATE -->
+
 <section class="certificate-section">
+
 <div class="container">
 
 <div class="head">
+
 <small>BIBLE SCHOOL CERTIFICATE</small>
-<h2>Complete the Journey</h2>
+
+<h2>
+Complete the Journey
+</h2>
+
 <p>
-Grow, learn, complete the assessments and work toward your certificate.
+Grow in God's Word, complete the lessons and meet the assessment requirements.
 </p>
+
 </div>
 
 <div class="certificate-card">
@@ -600,12 +1141,13 @@ Grow, learn, complete the assessments and work toward your certificate.
 
 <div style="font-size:32px">🎓</div>
 
-<h3>Certificate Progress</h3>
+<h3>
+Certificate Progress
+</h3>
 
 <p>
 Students can work toward certificate eligibility
-by completing the 365-day program and meeting
-the required assessment standards.
+by completing the 365-day program and required assessments.
 </p>
 
 <a href="bible-school.html" class="btn dark">
@@ -617,82 +1159,61 @@ See Requirements →
 <div class="progress-box">
 
 <div class="progress-top">
-<span>365-Day Program</span>
+
+<span>365-Day Journey</span>
+
 <strong>0%</strong>
+
 </div>
 
 <div class="progress">
+
 <div class="progress-bar"></div>
+
 </div>
 
 <div class="progress-note">
-365 days • 80%+ assessment target • Final assessment required
+365 days • 80%+ assessment target • Final assessment
 </div>
 
 </div>
 
-</div>
-</div>
-</section>
-
-<!-- EVENTS -->
-<section>
-<div class="container">
-
-<div class="head">
-<small>EVENTS</small>
-<h2>Join Us</h2>
-<p>Prayer, worship, fellowship and outreach.</p>
-</div>
-
-<div style="text-align:center">
-<a href="events.html" class="btn dark">View Events →</a>
 </div>
 
 </div>
 </section>
 
 <!-- MEDIA -->
+
 <section>
+
 <div class="container">
 
 <div class="media-card">
 
 <div>
+
 <h2>🎥 GOH Media</h2>
-<p>Sermons, Bible teachings and ministry content.</p>
-</div>
 
-<a href="media.html" class="btn primary">Explore Media</a>
-
-</div>
+<p>
+Sermons, Bible teachings and ministry content.
+</p>
 
 </div>
-</section>
 
-<!-- CONTACT -->
-<section>
-<div class="container contact">
-
-<div class="head">
-<small>CONTACT</small>
-<h2>Connect With Us</h2>
-<p>For ministry, prayer and Bible School information.</p>
-</div>
-
-<a
-href="https://wa.me/94771190395?text=Hello%20GOH%20Ministries"
-target="_blank"
-rel="noopener"
-class="btn green">
-💬 WhatsApp 0771190395
+<a href="media.html" class="btn primary">
+Explore Media
 </a>
+
+</div>
 
 </div>
 </section>
 
 <!-- FOOTER -->
+
 <footer>
+
 <div class="container">
 
 <div class="footer-main">
@@ -704,72 +1225,109 @@ src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 alt="GOH Ministries Logo">
 
 <div>
+
 <strong>GOH Ministries</strong>
+
 <p>Gate of Heaven Ministries</p>
+
 </div>
 
 </div>
 
 <div class="footer-links">
+
 <a href="privacy.html">Privacy Policy</a>
-<a href="terms.html">Terms & Conditions</a>
-<a href="refund.html">Refund Policy</a>
+<a href="terms.html">Terms</a>
+<a href="refund.html">Refund</a>
+
 </div>
 
 </div>
 
 <div class="footer-bottom">
-<span>© 2026 GOH Ministries. All rights reserved.</span>
-<span>Serving Christ • Building Believers • Making Disciples</span>
+
+© 2026 GOH Ministries. All rights reserved.
+
 </div>
 
 </div>
+
 </footer>
 
 <!-- WHATSAPP -->
+
 <a
 href="https://wa.me/94771190395?text=Hello%20GOH%20Ministries"
 target="_blank"
 rel="noopener"
 class="whatsapp"
 aria-label="WhatsApp GOH Ministries">
+
 💬
+
 </a>
 
 <script>
+
+/* MOBILE MENU */
+
 const menuBtn=document.getElementById("menuBtn");
 const mobileMenu=document.getElementById("mobileMenu");
 
-menuBtn.onclick=()=>{
-const open=mobileMenu.classList.toggle("show");
-menuBtn.textContent=open?"✕":"☰";
-};
+menuBtn.addEventListener("click",()=>{
 
-mobileMenu.querySelectorAll("a").forEach(a=>{
-a.onclick=()=>{
+const opened=mobileMenu.classList.toggle("show");
+
+menuBtn.textContent=opened?"✕":"☰";
+
+});
+
+mobileMenu.querySelectorAll("a").forEach(link=>{
+
+link.addEventListener("click",()=>{
+
 mobileMenu.classList.remove("show");
 menuBtn.textContent="☰";
-};
+
 });
+
+});
+
 
 /* PWA INSTALL */
+
 let deferredPrompt=null;
+
 const installBtn=document.getElementById("installBtn");
 
-window.addEventListener("beforeinstallprompt",e=>{
-e.preventDefault();
-deferredPrompt=e;
+window.addEventListener("beforeinstallprompt",event=>{
+
+event.preventDefault();
+
+deferredPrompt=event;
+
 });
 
-installBtn.onclick=async()=>{
+installBtn.addEventListener("click",async()=>{
+
 if(deferredPrompt){
+
 deferredPrompt.prompt();
+
 await deferredPrompt.userChoice;
+
 deferredPrompt=null;
-}else{
-alert("Open your browser menu and choose Install app or Add to Home screen.");
+
+return;
+
 }
-};
+
+alert(
+"To install GOH Ministries, open your browser menu and choose Install app or Add to Home screen."
+);
+
+});
+
 </script>
 
 </body>
