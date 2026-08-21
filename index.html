@@ -26,6 +26,7 @@ href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 <meta name="apple-mobile-web-app-title" content="GOH Ministries">
 
 <style>
+
 *{
 box-sizing:border-box;
 margin:0;
@@ -50,6 +51,10 @@ color:inherit
 
 button{
 font:inherit
+}
+
+img{
+max-width:100%
 }
 
 .container{
@@ -87,7 +92,9 @@ min-width:0
 width:42px;
 height:42px;
 object-fit:contain;
-border-radius:8px
+border-radius:8px;
+display:block;
+background:#fff
 }
 
 .logo-title{
@@ -109,7 +116,7 @@ gap:6px
 }
 
 
-/* DESKTOP NAV */
+/* NAVIGATION */
 
 .nav-links{
 display:flex;
@@ -172,6 +179,23 @@ cursor:pointer
 
 .mobile-menu{
 display:none
+}
+
+.mobile-menu.show{
+display:block
+}
+
+.mobile-menu a{
+display:block;
+padding:12px;
+border-radius:8px;
+font-size:12px;
+font-weight:800;
+color:#172033
+}
+
+.mobile-menu a:hover{
+background:#f3f4f6
 }
 
 
@@ -283,7 +307,8 @@ object-fit:contain;
 background:#fff;
 border-radius:12px;
 padding:5px;
-margin-bottom:12px
+margin-bottom:12px;
+display:block
 }
 
 .feature small{
@@ -306,7 +331,7 @@ margin-bottom:16px
 }
 
 
-/* QUICK */
+/* QUICK LINKS */
 
 .quick{
 background:#fff;
@@ -419,7 +444,8 @@ align-items:center
 width:100%;
 height:330px;
 object-fit:cover;
-display:block
+display:block;
+background:#e5e7eb
 }
 
 .founder-info{
@@ -558,7 +584,8 @@ height:42px;
 object-fit:contain;
 background:#fff;
 border-radius:9px;
-padding:3px
+padding:3px;
+display:block
 }
 
 .footer-brand strong{
@@ -654,23 +681,6 @@ border-top:1px solid #e5e7eb;
 border-bottom:1px solid #e5e7eb;
 box-shadow:0 12px 25px rgba(0,0,0,.12);
 padding:8px 4%
-}
-
-.mobile-menu.show{
-display:block
-}
-
-.mobile-menu a{
-display:block;
-padding:12px;
-border-radius:8px;
-font-size:12px;
-font-weight:800;
-color:#172033
-}
-
-.mobile-menu a:hover{
-background:#f3f4f6
 }
 
 .hero-grid{
@@ -809,7 +819,11 @@ height:36px
 
 <img
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
-alt="GOH Ministries Logo">
+alt="GOH Ministries Logo"
+width="42"
+height="42"
+decoding="async"
+onerror="this.style.display='none'">
 
 <div>
 
@@ -827,7 +841,6 @@ Gate of Heaven Ministries
 
 
 <div class="nav-right">
-
 
 <nav class="nav-links">
 
@@ -874,9 +887,7 @@ aria-expanded="false">
 
 <!-- MOBILE MENU -->
 
-<nav
-class="mobile-menu"
-id="mobileMenu">
+<nav class="mobile-menu" id="mobileMenu">
 
 <a href="index.html">🏠 Home</a>
 <a href="about.html">About</a>
@@ -933,7 +944,10 @@ About GOH
 <img
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 alt="GOH Ministries Logo"
-class="feature-logo">
+class="feature-logo"
+width="64"
+height="64"
+decoding="async">
 
 <small>
 FEATURED PROGRAM
@@ -1097,7 +1111,10 @@ Bible teaching and discipleship.
 <img
 src="https://files.gohministries.org/FB_IMG_1786927484042.jpg"
 alt="Founder of GOH Ministries"
-loading="lazy">
+loading="lazy"
+decoding="async"
+width="800"
+height="800">
 
 <div class="founder-info">
 
@@ -1387,12 +1404,15 @@ class="btn whatsapp-btn">
 
 <div class="footer-main">
 
-
 <div class="footer-brand">
 
 <img
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
-alt="GOH Ministries Logo">
+alt="GOH Ministries Logo"
+width="42"
+height="42"
+loading="lazy"
+decoding="async">
 
 <div>
 
@@ -1485,7 +1505,7 @@ opened ? "✕" : "☰";
 });
 
 
-/* CLOSE MOBILE MENU */
+/* CLOSE MENU AFTER CLICK */
 
 mobileMenu
 .querySelectorAll("a")
@@ -1578,10 +1598,12 @@ window.addEventListener("load",()=>{
 navigator.serviceWorker
 .register("/sw.js")
 .catch(error=>{
+
 console.error(
 "Service Worker error:",
 error
 );
+
 });
 
 });
