@@ -1,229 +1,700 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>GOH Bible School</title>
+
 <style>
-body{font-family:Arial;margin:0;background:#f4f7fb;color:#172033}
-header{background:#173b73;color:white;text-align:center;padding:18px}
-main{max-width:700px;margin:20px auto;padding:10px}
-.card{background:white;padding:20px;margin:15px 0;border-radius:12px;box-shadow:0 2px 10px #ddd}
-input,textarea,button{width:100%;padding:12px;margin:6px 0;box-sizing:border-box}
-button{background:#173b73;color:white;border:0;border-radius:7px}
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ font-family:Inter,Arial,sans-serif;
+ background:#f5f7fb;
+ color:#172033;
+}
+
+header{
+ background:linear-gradient(135deg,#12356b,#2458a6);
+ color:#fff;
+ padding:28px 20px;
+}
+
+.header{
+ max-width:1000px;
+ margin:auto;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:15px;
+}
+
+.logo{
+ font-size:24px;
+ font-weight:800;
+}
+
+.subtitle{
+ opacity:.85;
+ font-size:13px;
+ margin-top:4px;
+}
+
+.container{
+ max-width:1000px;
+ margin:25px auto;
+ padding:0 15px;
+}
+
+.card{
+ background:#fff;
+ border-radius:18px;
+ padding:24px;
+ margin-bottom:18px;
+ box-shadow:0 8px 30px rgba(20,40,80,.07);
+ border:1px solid #e9edf5;
+}
+
+h2{margin:0 0 18px}
+h3{margin:10px 0}
+p{line-height:1.65}
+
+input,textarea,button{
+ width:100%;
+ padding:13px 15px;
+ margin:7px 0;
+ border-radius:10px;
+ font-size:15px;
+}
+
+input,textarea{
+ border:1px solid #d8deea;
+ outline:none;
+}
+
+input:focus,textarea:focus{
+ border-color:#2458a6;
+}
+
+textarea{
+ min-height:100px;
+ resize:vertical;
+}
+
+button{
+ border:0;
+ background:#2458a6;
+ color:white;
+ font-weight:700;
+ cursor:pointer;
+ transition:.2s;
+}
+
+button:hover{
+ transform:translateY(-1px);
+ opacity:.92;
+}
+
+.secondary{
+ background:#edf2fa;
+ color:#173b73;
+}
+
+.grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:12px;
+}
+
+.stat{
+ background:#f4f7fc;
+ padding:18px;
+ border-radius:14px;
+ text-align:center;
+}
+
+.stat b{
+ display:block;
+ font-size:27px;
+ color:#173b73;
+ margin-bottom:5px;
+}
+
+.progress{
+ height:10px;
+ background:#e5eaf2;
+ border-radius:20px;
+ overflow:hidden;
+ margin-top:15px;
+}
+
+.progressBar{
+ height:100%;
+ width:0%;
+ background:#2458a6;
+ transition:.4s;
+}
+
+.verse{
+ background:#f0f5ff;
+ border-left:4px solid #2458a6;
+ padding:16px;
+ border-radius:8px;
+ margin:15px 0;
+}
+
+.badge{
+ display:inline-block;
+ background:#e9f0ff;
+ color:#2458a6;
+ padding:6px 10px;
+ border-radius:20px;
+ font-size:12px;
+ font-weight:700;
+}
+
 .hidden{display:none}
-.success{color:green}
-.error{color:red}
+
+.success{color:#168044;font-weight:700}
+.error{color:#c62828;font-weight:700}
+
+.ai{
+ background:linear-gradient(135deg,#f8f5ff,#eef4ff);
+}
+
+.certificate{
+ text-align:center;
+ background:linear-gradient(135deg,#fffdf5,#f7f4e8);
+}
+
+footer{
+ text-align:center;
+ color:#7b8494;
+ padding:20px;
+ font-size:13px;
+}
+
+@media(max-width:650px){
+ .header{align-items:flex-start}
+ .grid{grid-template-columns:1fr}
+ .card{padding:19px}
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>GOH Bible School</h1>
+<div class="header">
+<div>
+<div class="logo">GOH Bible School</div>
+<div class="subtitle">Grow in God's Word • Learn • Apply • Serve</div>
+</div>
+</div>
 </header>
 
-<main>
+<div class="container">
 
-<div id="login" class="card">
-<h2>Login</h2>
-<input id="email" placeholder="Email">
-<input id="password" type="password" placeholder="Password">
-<button onclick="login()">Login</button>
+<!-- AUTH -->
+
+<div id="auth" class="card">
+
+<h2>Welcome 👋</h2>
+<p>Sign in to continue your Bible School journey.</p>
+
+<input id="loginEmail" type="email" placeholder="Email">
+<input id="loginPassword" type="password" placeholder="Password">
+
+<button onclick="login()">Sign In</button>
 
 <hr>
 
-<h3>Register</h3>
-<input id="name" placeholder="Name">
-<input id="regEmail" placeholder="Email">
+<h3>Create an Account</h3>
+
+<input id="regName" placeholder="Full name">
+<input id="regEmail" type="email" placeholder="Email">
 <input id="regPassword" type="password" placeholder="Password">
-<button onclick="register()">Register</button>
-<p id="msg"></p>
+
+<button onclick="register()">Create Account</button>
+
+<p id="authMessage"></p>
+
 </div>
+
+
+<!-- APP -->
 
 <div id="app" class="hidden">
 
 <div class="card">
-<h2>Welcome <span id="student"></span></h2>
-<button onclick="logout()">Logout</button>
+
+<div style="display:flex;justify-content:space-between;gap:10px;align-items:center">
+
+<div>
+<span class="badge">Student Dashboard</span>
+<h2>Welcome, <span id="studentName"></span></h2>
 </div>
 
-<div class="card">
-<h2>Progress</h2>
-<p>
-Completed: <b id="completed">0</b>
-</p>
-<p>
-Correct: <b id="correct">0</b>
-</p>
-<p>
-Score: <b id="score">0%</b>
-</p>
+<button class="secondary" style="width:auto" onclick="logout()">
+Sign Out
+</button>
+
 </div>
 
+</div>
+
+
+<!-- PROGRESS -->
+
 <div class="card">
-<h2>Today's Lesson</h2>
-<div id="lesson">Loading...</div>
+
+<h2>Your Progress</h2>
+
+<div class="grid">
+
+<div class="stat">
+<b id="completed">0</b>
+Lessons
+</div>
+
+<div class="stat">
+<b id="correct">0</b>
+Correct
+</div>
+
+<div class="stat">
+<b id="score">0%</b>
+Score
+</div>
+
+</div>
+
+<div class="progress">
+<div id="progressBar" class="progressBar"></div>
+</div>
+
+</div>
+
+
+<!-- LESSON -->
+
+<div class="card">
+
+<span class="badge" id="dayBadge">Today's Lesson</span>
+
+<div id="lesson">
+Loading lesson...
+</div>
 
 <div id="questionBox" class="hidden">
-<h3>Question</h3>
+
+<hr>
+
+<h3>Daily Question</h3>
+
 <p id="question"></p>
-<input id="answer" placeholder="Your answer">
-<button onclick="submitAnswer()">Submit</button>
-<p id="answerMsg"></p>
-</div>
+
+<input id="answer" placeholder="Write your answer">
+
+<button onclick="submitAnswer()">
+Submit Answer
+</button>
+
+<p id="answerMessage"></p>
+
 </div>
 
-<div class="card">
-<h2>AI Teacher</h2>
-<textarea id="aiQuestion" placeholder="Ask about this lesson"></textarea>
-<button onclick="askAI()">Ask AI</button>
-<p id="aiAnswer"></p>
 </div>
 
-<div class="card">
+
+<!-- AI -->
+
+<div class="card ai">
+
+<span class="badge">AI Bible Teacher</span>
+
+<h2>Ask About Your Lesson</h2>
+
+<textarea id="aiQuestion"
+placeholder="Ask a question about today's Bible lesson..."></textarea>
+
+<button onclick="askAI()">
+Ask AI Teacher
+</button>
+
+<div id="aiAnswer"></div>
+
+</div>
+
+
+<!-- CERTIFICATE -->
+
+<div class="card certificate">
+
+<span class="badge">Course Completion</span>
+
 <h2>Certificate</h2>
-<button onclick="certificate()">Check Certificate</button>
-<p id="certificate"></p>
+
+<p>
+Complete the required lessons and achieve the required score
+to qualify.
+</p>
+
+<button onclick="checkCertificate()">
+Check Certificate
+</button>
+
+<div id="certificate"></div>
+
 </div>
 
 </div>
-</main>
+
+</div>
+
+<footer>
+GOH Bible School © 2026
+</footer>
+
 
 <script>
 
-const API="https://goh-bible-school-api.createlk.workers.dev";
-let token=localStorage.getItem("goh_token");
-let lesson=null;
+const API =
+"https://goh-bible-school-api.createlk.workers.dev";
+
+let token =
+localStorage.getItem("goh_token");
+
+let currentLesson = null;
+
+
+// API
 
 async function api(path,options={}){
+
  options.headers={
   "Content-Type":"application/json",
   ...(options.headers||{})
  };
- if(token) options.headers.Authorization="Bearer "+token;
- return fetch(API+path,options).then(r=>r.json());
+
+ if(token)
+  options.headers.Authorization=
+  "Bearer "+token;
+
+ const r=await fetch(API+path,options);
+
+ return r.json();
 }
 
+
+// REGISTER
+
 async function register(){
+
  const r=await api("/api/register",{
   method:"POST",
   body:JSON.stringify({
-   name:name.value,
-   email:regEmail.value,
+   name:regName.value.trim(),
+   email:regEmail.value.trim(),
    password:regPassword.value
   })
  });
- if(!r.ok)return msg.textContent=r.error;
+
+ if(!r.ok){
+  authMessage.className="error";
+  authMessage.textContent=r.error;
+  return;
+ }
+
  token=r.token;
- localStorage.setItem("goh_token",token);
- start(r.user);
+
+ localStorage.setItem(
+  "goh_token",
+  token
+ );
+
+ showApp(r.user);
 }
 
+
+// LOGIN
+
 async function login(){
+
  const r=await api("/api/login",{
   method:"POST",
   body:JSON.stringify({
-   email:email.value,
-   password:password.value
+   email:loginEmail.value.trim(),
+   password:loginPassword.value
   })
  });
- if(!r.ok)return msg.textContent=r.error;
+
+ if(!r.ok){
+  authMessage.className="error";
+  authMessage.textContent=r.error;
+  return;
+ }
+
  token=r.token;
- localStorage.setItem("goh_token",token);
- start(r.user);
+
+ localStorage.setItem(
+  "goh_token",
+  token
+ );
+
+ showApp(r.user);
 }
 
-function start(user){
- document.getElementById("login").classList.add("hidden");
- document.getElementById("app").classList.remove("hidden");
- student.textContent=user.name;
- load();
+
+// SHOW APP
+
+function showApp(user){
+
+ auth.classList.add("hidden");
+ app.classList.remove("hidden");
+
+ studentName.textContent=user.name;
+
+ loadDashboard();
 }
+
+
+// LOGOUT
 
 function logout(){
+
  localStorage.removeItem("goh_token");
+
+ token=null;
+
  location.reload();
 }
 
-async function load(){
+
+// DASHBOARD
+
+async function loadDashboard(){
+
  await loadProgress();
  await loadLesson();
- await certificate();
+ await checkCertificate();
 }
+
+
+// LESSON
 
 async function loadLesson(){
+
  const r=await api("/api/today");
- if(!r.ok)return lesson.textContent=r.error;
 
- lesson=r.lesson;
+ if(!r.ok){
+  lesson.innerHTML=
+  `<p class="error">${safe(r.error)}</p>`;
+  return;
+ }
 
- document.getElementById("lesson").innerHTML=`
- <h3>Day ${r.day_number}: ${lesson.topic}</h3>
- <p><b>${lesson.bible_reference}</b></p>
- <p>${lesson.verse}</p>
- <p>${lesson.lesson}</p>
- <p><b>Application:</b> ${lesson.application||""}</p>
+ currentLesson=r.lesson;
+
+ dayBadge.textContent=
+ "Day "+r.day_number;
+
+ lesson.innerHTML=`
+
+ <h2>${safe(r.lesson.topic)}</h2>
+
+ <p>
+ <b>Bible Reference:</b>
+ ${safe(r.lesson.bible_reference)}
+ </p>
+
+ <div class="verse">
+ ${safe(r.lesson.verse)}
+ </div>
+
+ <h3>Lesson</h3>
+
+ <p>${safe(r.lesson.lesson)}</p>
+
+ ${
+ r.lesson.application
+ ?
+ `<h3>Application</h3>
+ <p>${safe(r.lesson.application)}</p>`
+ : ""
+ }
  `;
 
- question.textContent=lesson.question;
- document.getElementById("questionBox").classList.remove("hidden");
+ question.textContent=
+ r.lesson.question;
+
+ questionBox.classList.remove("hidden");
 }
 
+
+// ANSWER
+
 async function submitAnswer(){
+
+ if(!currentLesson)return;
+
+ const value=
+ answer.value.trim();
+
+ if(!value){
+  answerMessage.className="error";
+  answerMessage.textContent=
+  "Please enter your answer.";
+  return;
+ }
+
  const r=await api("/api/answer",{
   method:"POST",
   body:JSON.stringify({
-   lesson_id:lesson.id,
-   answer:answer.value
+   lesson_id:currentLesson.id,
+   answer:value
   })
  });
 
- answerMsg.textContent=
- r.ok ? (r.correct?"Correct!":"Incorrect.") : r.error;
+ if(!r.ok){
+  answerMessage.className="error";
+  answerMessage.textContent=r.error;
+  return;
+ }
 
- await loadProgress();
- await certificate();
+ answerMessage.className=
+ r.correct?"success":"error";
+
+ answerMessage.textContent=
+ r.correct
+ ?"Correct! Well done."
+ :"Incorrect. Your answer was recorded.";
+
+ loadProgress();
+ checkCertificate();
 }
+
+
+// PROGRESS
 
 async function loadProgress(){
+
  const r=await api("/api/progress");
+
  if(!r.ok)return;
- completed.textContent=r.progress.completed;
- correct.textContent=r.progress.correct;
- score.textContent=r.progress.percentage+"%";
+
+ const p=r.progress;
+
+ completed.textContent=p.completed;
+ correct.textContent=p.correct;
+ score.textContent=p.percentage+"%";
+
+ progressBar.style.width=
+ Math.min(
+  100,
+  (p.completed/365)*100
+ )+"%";
 }
 
-async function askAI(){
- if(!lesson)return;
 
- aiAnswer.textContent="Thinking...";
+// AI
+
+async function askAI(){
+
+ const q=aiQuestion.value.trim();
+
+ if(!q)return;
+
+ aiAnswer.innerHTML=
+ "<p>AI Teacher is thinking...</p>";
 
  const r=await api("/api/ai",{
   method:"POST",
   body:JSON.stringify({
-   lesson_id:lesson.id,
-   question:aiQuestion.value
+   lesson_id:currentLesson?.id,
+   question:q
   })
  });
 
- aiAnswer.textContent=r.ok?r.answer:r.error;
+ if(!r.ok){
+  aiAnswer.innerHTML=
+  `<p class="error">${safe(r.error)}</p>`;
+  return;
+ }
+
+ aiAnswer.innerHTML=`
+ <div class="verse">
+ <b>AI Teacher</b>
+ <p>${safe(r.answer)}</p>
+ </div>
+ `;
 }
 
-async function certificate(){
+
+// CERTIFICATE
+
+async function checkCertificate(){
+
  const r=await api("/api/certificate");
+
  if(!r.ok)return;
 
- certificate.textContent=
- r.eligible
- ? `Eligible! Score: ${r.score}%`
- : `Not yet eligible. ${r.completed}/365 lessons, ${r.score}%`;
+ if(r.eligible){
+
+  certificate.innerHTML=`
+  <p class="success">
+  🎓 Congratulations! You are eligible
+  for your certificate.
+  </p>
+  <p><b>Final Score:</b> ${r.score}%</p>
+  `;
+
+ }else{
+
+  certificate.innerHTML=`
+  <p>
+  ${r.completed}/365 lessons completed
+  </p>
+  <p>
+  Current score: <b>${r.score}%</b>
+  </p>
+  <p>
+  Certificate requires 365 completed lessons,
+  80% or higher, and premium access.
+  </p>
+  `;
+ }
 }
 
+
+// ESCAPE HTML
+
+function safe(value){
+
+ return String(value||"")
+ .replaceAll("&","&amp;")
+ .replaceAll("<","&lt;")
+ .replaceAll(">","&gt;")
+ .replaceAll('"',"&quot;")
+ .replaceAll("'","&#039;");
+}
+
+
+// AUTO LOGIN
+
 if(token){
+
  api("/api/me").then(r=>{
-  if(r.ok)start(r.user);
+
+  if(r.ok){
+   showApp(r.user);
+  }else{
+   localStorage.removeItem("goh_token");
+   token=null;
+  }
+
  });
+
 }
 
 </script>
