@@ -14,6 +14,7 @@ content="Gate of Heaven Ministries — Building believers and making disciples."
 
 <!-- PWA -->
 <link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/logo.png">
 <link rel="apple-touch-icon" href="/icon-192.png">
 
 <meta name="mobile-web-app-capable" content="yes">
@@ -55,7 +56,7 @@ margin:auto
 }
 
 
-/* ================= HEADER ================= */
+/* HEADER */
 
 header{
 position:sticky;
@@ -76,18 +77,14 @@ gap:10px
 .logo{
 display:flex;
 align-items:center;
-gap:8px
+gap:9px
 }
 
-.logo-icon{
-width:38px;
-height:38px;
-display:grid;
-place-items:center;
-border-radius:10px;
-background:#111827;
-color:#fff;
-font-size:19px
+.logo img{
+width:40px;
+height:40px;
+object-fit:contain;
+border-radius:8px
 }
 
 .logo-title{
@@ -137,7 +134,7 @@ color:#fff!important
 }
 
 
-/* MORE MENU */
+/* MORE */
 
 .more-box{
 position:relative
@@ -188,7 +185,7 @@ cursor:pointer
 }
 
 
-/* MOBILE BUTTON */
+/* MOBILE MENU */
 
 .menu{
 display:none;
@@ -202,7 +199,7 @@ cursor:pointer
 }
 
 
-/* ================= BUTTONS ================= */
+/* BUTTONS */
 
 .btn{
 display:inline-flex;
@@ -237,7 +234,7 @@ color:#fff
 }
 
 
-/* ================= HERO ================= */
+/* HERO */
 
 .hero{
 background:
@@ -251,7 +248,6 @@ linear-gradient(
 #111827,
 #253044
 );
-
 color:#fff;
 padding:70px 0
 }
@@ -295,7 +291,7 @@ flex-wrap:wrap
 }
 
 
-/* HERO FEATURE */
+/* FEATURE */
 
 .feature{
 background:rgba(255,255,255,.07);
@@ -304,15 +300,13 @@ border-radius:18px;
 padding:24px
 }
 
-.feature-icon{
-width:46px;
-height:46px;
-display:grid;
-place-items:center;
-background:#fbbf24;
-color:#111827;
+.feature-logo{
+width:60px;
+height:60px;
+object-fit:contain;
+background:#fff;
 border-radius:12px;
-font-size:21px;
+padding:5px;
 margin-bottom:12px
 }
 
@@ -336,7 +330,7 @@ margin-bottom:16px
 }
 
 
-/* ================= QUICK NAV ================= */
+/* QUICK NAV */
 
 .quick{
 background:#fff;
@@ -365,7 +359,7 @@ background:#f9fafb
 }
 
 
-/* ================= SECTIONS ================= */
+/* SECTIONS */
 
 section{
 padding:55px 0
@@ -396,7 +390,7 @@ color:#6b7280
 }
 
 
-/* ================= CARDS ================= */
+/* CARDS */
 
 .grid{
 display:grid;
@@ -427,7 +421,7 @@ color:#6b7280
 }
 
 
-/* ================= BIBLE SCHOOL ================= */
+/* BIBLE SCHOOL */
 
 .school-section{
 background:#fff
@@ -478,7 +472,7 @@ font-size:9px
 }
 
 
-/* ================= MEDIA ================= */
+/* MEDIA */
 
 .media-card{
 background:#111827;
@@ -502,7 +496,7 @@ margin-top:3px
 }
 
 
-/* ================= CONTACT ================= */
+/* CONTACT */
 
 .contact-box{
 text-align:center
@@ -515,7 +509,7 @@ margin-bottom:15px
 }
 
 
-/* ================= FOOTER ================= */
+/* FOOTER */
 
 footer{
 background:#0b1120;
@@ -560,7 +554,7 @@ color:#64748b
 }
 
 
-/* ================= WHATSAPP ================= */
+/* WHATSAPP */
 
 .whatsapp{
 position:fixed;
@@ -579,7 +573,7 @@ box-shadow:0 7px 20px rgba(0,0,0,.2)
 }
 
 
-/* ================= MOBILE ================= */
+/* MOBILE */
 
 @media(max-width:900px){
 
@@ -681,17 +675,6 @@ margin-bottom:5px
 
 }
 
-
-/* MOBILE INSTALL BUTTON IS SHOWN ONLY WHEN PWA IS AVAILABLE */
-
-@media(min-width:901px){
-
-.install{
-display:none
-}
-
-}
-
 </style>
 
 </head>
@@ -699,7 +682,7 @@ display:none
 <body>
 
 
-<!-- ================= HEADER ================= -->
+<!-- HEADER -->
 
 <header>
 
@@ -707,7 +690,7 @@ display:none
 
 <a href="index.html" class="logo">
 
-<div class="logo-icon">✝</div>
+<img src="/logo.png" alt="GOH Ministries Logo">
 
 <div>
 
@@ -728,25 +711,17 @@ Gate of Heaven Ministries
 
 <nav class="nav-links" id="nav">
 
-<a href="index.html">
-Home
-</a>
+<a href="index.html">Home</a>
 
-<a href="about.html">
-About
-</a>
+<a href="about.html">About</a>
 
-<a href="ministries.html">
-Ministries
-</a>
+<a href="ministries.html">Ministries</a>
 
 <a href="bible-school.html" class="school">
 📖 Bible School
 </a>
 
-<a href="events.html">
-Events
-</a>
+<a href="events.html">Events</a>
 
 
 <div class="more-box">
@@ -757,21 +732,13 @@ More ▾
 
 <div class="more-menu">
 
-<a href="media.html">
-🎥 Media
-</a>
+<a href="media.html">🎥 Media</a>
 
-<a href="sermons.html">
-📖 Sermons
-</a>
+<a href="sermons.html">📖 Sermons</a>
 
-<a href="prayer.html">
-🙏 Prayer Request
-</a>
+<a href="prayer.html">🙏 Prayer Request</a>
 
-<a href="contact.html">
-📞 Contact
-</a>
+<a href="contact.html">📞 Contact</a>
 
 </div>
 
@@ -801,7 +768,7 @@ aria-label="Menu">
 </header>
 
 
-<!-- ================= HERO ================= -->
+<!-- HERO -->
 
 <section class="hero">
 
@@ -826,13 +793,11 @@ strengthening believers and making disciples.
 
 <div class="buttons">
 
-<a href="about.html"
-class="btn light">
+<a href="about.html" class="btn light">
 About GOH
 </a>
 
-<a href="bible-school.html"
-class="btn primary">
+<a href="bible-school.html" class="btn primary">
 📖 Bible School
 </a>
 
@@ -843,9 +808,10 @@ class="btn primary">
 
 <div class="feature">
 
-<div class="feature-icon">
-📖
-</div>
+<img
+src="/logo.png"
+alt="GOH Ministries"
+class="feature-logo">
 
 <small>
 FEATURED PROGRAM
@@ -874,7 +840,7 @@ Explore Bible School
 </section>
 
 
-<!-- ================= QUICK NAVIGATION ================= -->
+<!-- QUICK NAVIGATION -->
 
 <div class="quick">
 
@@ -901,7 +867,7 @@ Explore Bible School
 </div>
 
 
-<!-- ================= ABOUT ================= -->
+<!-- ABOUT -->
 
 <section>
 
@@ -909,9 +875,7 @@ Explore Bible School
 
 <div class="head">
 
-<small>
-About GOH
-</small>
+<small>About GOH</small>
 
 <h2>
 Serving Christ. Serving People.
@@ -926,16 +890,11 @@ Growing in God's Word and helping others follow Christ.
 
 <div class="grid">
 
-
 <div class="card">
 
-<div class="card-icon">
-🎯
-</div>
+<div class="card-icon">🎯</div>
 
-<h3>
-Our Mission
-</h3>
+<h3>Our Mission</h3>
 
 <p>
 Proclaim the Gospel, teach God's Word
@@ -947,13 +906,9 @@ and make disciples.
 
 <div class="card">
 
-<div class="card-icon">
-❤️
-</div>
+<div class="card-icon">❤️</div>
 
-<h3>
-Our Vision
-</h3>
+<h3>Our Vision</h3>
 
 <p>
 See lives transformed and believers
@@ -965,13 +920,9 @@ equipped to serve Christ.
 
 <div class="card">
 
-<div class="card-icon">
-🙏
-</div>
+<div class="card-icon">🙏</div>
 
-<h3>
-Our Heart
-</h3>
+<h3>Our Heart</h3>
 
 <p>
 Prayer, worship, discipleship,
@@ -980,14 +931,12 @@ evangelism and outreach.
 
 </div>
 
-
 </div>
 
 
 <div style="text-align:center;margin-top:20px">
 
-<a href="about.html"
-class="btn dark">
+<a href="about.html" class="btn dark">
 Learn More →
 </a>
 
@@ -998,7 +947,7 @@ Learn More →
 </section>
 
 
-<!-- ================= MINISTRIES ================= -->
+<!-- MINISTRIES -->
 
 <section style="background:#f8fafc">
 
@@ -1006,9 +955,7 @@ Learn More →
 
 <div class="head">
 
-<small>
-Our Ministries
-</small>
+<small>Our Ministries</small>
 
 <h2>
 Growing Together in Christ
@@ -1019,16 +966,11 @@ Growing Together in Christ
 
 <div class="grid">
 
-
 <div class="card">
 
-<div class="card-icon">
-🙏
-</div>
+<div class="card-icon">🙏</div>
 
-<h3>
-Prayer
-</h3>
+<h3>Prayer</h3>
 
 <p>
 Seeking God together.
@@ -1039,13 +981,9 @@ Seeking God together.
 
 <div class="card">
 
-<div class="card-icon">
-📖
-</div>
+<div class="card-icon">📖</div>
 
-<h3>
-Bible Teaching
-</h3>
+<h3>Bible Teaching</h3>
 
 <p>
 Building biblical foundations.
@@ -1056,20 +994,15 @@ Building biblical foundations.
 
 <div class="card">
 
-<div class="card-icon">
-🌍
-</div>
+<div class="card-icon">🌍</div>
 
-<h3>
-Evangelism
-</h3>
+<h3>Evangelism</h3>
 
 <p>
 Sharing the Gospel.
 </p>
 
 </div>
-
 
 </div>
 
@@ -1089,7 +1022,7 @@ View Ministries →
 </section>
 
 
-<!-- ================= BIBLE SCHOOL ================= -->
+<!-- BIBLE SCHOOL -->
 
 <section class="school-section">
 
@@ -1132,21 +1065,13 @@ assessments and discipleship training.
 
 <div class="points">
 
-<span>
-✓ 12 Modules
-</span>
+<span>✓ 12 Modules</span>
 
-<span>
-✓ Online Learning
-</span>
+<span>✓ Online Learning</span>
 
-<span>
-✓ Assignments
-</span>
+<span>✓ Assignments</span>
 
-<span>
-✓ Certificate
-</span>
+<span>✓ Certificate</span>
 
 </div>
 
@@ -1174,7 +1099,7 @@ Enroll Now
 </section>
 
 
-<!-- ================= EVENTS ================= -->
+<!-- EVENTS -->
 
 <section style="background:#f8fafc">
 
@@ -1182,13 +1107,9 @@ Enroll Now
 
 <div class="head">
 
-<small>
-Events
-</small>
+<small>Events</small>
 
-<h2>
-Join Us
-</h2>
+<h2>Join Us</h2>
 
 <p>
 Prayer, worship, fellowship and outreach.
@@ -1211,7 +1132,7 @@ View Events →
 </section>
 
 
-<!-- ================= MEDIA ================= -->
+<!-- MEDIA -->
 
 <section>
 
@@ -1221,9 +1142,7 @@ View Events →
 
 <div>
 
-<h2>
-🎥 GOH Media
-</h2>
+<h2>🎥 GOH Media</h2>
 
 <p>
 Sermons, Bible teachings and ministry content.
@@ -1244,7 +1163,7 @@ Explore Media
 </section>
 
 
-<!-- ================= CONTACT ================= -->
+<!-- CONTACT -->
 
 <section style="background:#fff">
 
@@ -1252,9 +1171,7 @@ Explore Media
 
 <div class="head">
 
-<small>
-Contact
-</small>
+<small>Contact</small>
 
 <h2>
 Connect With Us
@@ -1282,7 +1199,7 @@ class="btn whatsapp-btn">
 </section>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- FOOTER -->
 
 <footer>
 
@@ -1293,9 +1210,7 @@ class="btn whatsapp-btn">
 
 <div>
 
-<h3>
-GOH Ministries
-</h3>
+<h3>GOH Ministries</h3>
 
 <p>
 Building believers, making disciples
@@ -1307,50 +1222,30 @@ and advancing the Kingdom of God.
 
 <div>
 
-<h3>
-Ministry
-</h3>
+<h3>Ministry</h3>
 
-<a href="about.html">
-About
-</a>
+<a href="about.html">About</a>
 
-<a href="ministries.html">
-Ministries
-</a>
+<a href="ministries.html">Ministries</a>
 
-<a href="events.html">
-Events
-</a>
+<a href="events.html">Events</a>
 
-<a href="prayer.html">
-Prayer
-</a>
+<a href="prayer.html">Prayer</a>
 
 </div>
 
 
 <div>
 
-<h3>
-Resources
-</h3>
+<h3>Resources</h3>
 
-<a href="media.html">
-Media
-</a>
+<a href="media.html">Media</a>
 
-<a href="sermons.html">
-Sermons
-</a>
+<a href="sermons.html">Sermons</a>
 
-<a href="bible-school.html">
-Bible School
-</a>
+<a href="bible-school.html">Bible School</a>
 
-<a href="enroll.html">
-Enroll
-</a>
+<a href="enroll.html">Enroll</a>
 
 </div>
 
@@ -1365,21 +1260,11 @@ Enroll
 
 <span>
 
-<a href="privacy.html">
-Privacy
-</a>
-
+<a href="privacy.html">Privacy</a>
 &nbsp;·&nbsp;
-
-<a href="terms.html">
-Terms
-</a>
-
+<a href="terms.html">Terms</a>
 &nbsp;·&nbsp;
-
-<a href="refund.html">
-Refund
-</a>
+<a href="refund.html">Refund</a>
 
 </span>
 
@@ -1390,7 +1275,7 @@ Refund
 </footer>
 
 
-<!-- ================= WHATSAPP ================= -->
+<!-- WHATSAPP -->
 
 <a
 href="https://wa.me/94771190395?text=Hello%20GOH%20Ministries"
@@ -1432,7 +1317,7 @@ nav.classList.contains("show")
 });
 
 
-/* CLOSE MENU */
+/* CLOSE MOBILE MENU */
 
 document.querySelectorAll("#nav a")
 .forEach(link=>{
@@ -1464,8 +1349,7 @@ event.preventDefault();
 
 deferredPrompt = event;
 
-installBtn.style.display =
-"inline-flex";
+installBtn.style.display="inline-flex";
 
 });
 
@@ -1486,11 +1370,14 @@ return;
 
 deferredPrompt.prompt();
 
+const result =
 await deferredPrompt.userChoice;
 
-deferredPrompt = null;
+deferredPrompt=null;
 
-installBtn.style.display = "none";
+if(result.outcome==="accepted"){
+installBtn.style.display="none";
+}
 
 });
 
@@ -1501,7 +1388,7 @@ window.addEventListener(
 "appinstalled",
 ()=>{
 
-installBtn.style.display = "none";
+installBtn.style.display="none";
 
 });
 
