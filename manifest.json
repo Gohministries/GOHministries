@@ -1,13 +1,13 @@
 {
   "name": "GOH Ministries",
   "short_name": "GOH Ministries",
-  "description": "Gate of Heaven Ministries — Building believers and making disciples.",
-  "start_url": "/index.html",
+  "description": "Gate of Heaven Ministries — Building Believers and Making Disciples.",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#ffffff",
+  "background_color": "#f8fafc",
   "theme_color": "#111827",
+  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png",
