@@ -1,27 +1,22 @@
 {
-  "name": "GOH Ministries - Gate of Heaven Ministries",
+  "name": "GOH Ministries",
   "short_name": "GOH Ministries",
   "description": "Gate of Heaven Ministries — Building believers and making disciples.",
-  "lang": "en",
-  "start_url": "/",
+  "start_url": "/index.html",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#f8fafc",
+  "background_color": "#ffffff",
   "theme_color": "#111827",
-  "categories": [
-    "education",
-    "lifestyle"
-  ],
   "icons": [
     {
-      "src": "/icon-192.png",
+      "src": "https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/icon-512.png",
+      "src": "https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
