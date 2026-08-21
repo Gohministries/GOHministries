@@ -1,1168 +1,230 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GOH Bible School | GOH Ministries</title>
-
-<meta name="description"
-content="GOH Ministries Online Bible School — weekday Bible lessons, Scripture and discipleship.">
-
-<link rel="icon"
-href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
-
+<title>GOH Bible School</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-
-body{
-font-family:Arial,sans-serif;
-background:#f8fafc;
-color:#172033;
-line-height:1.5
-}
-
-a{text-decoration:none;color:inherit}
-button{font:inherit;cursor:pointer}
-.container{width:min(900px,92%);margin:auto}
-
-header{
-position:sticky;
-top:0;
-z-index:10;
-background:#fff;
-border-bottom:1px solid #e5e7eb
-}
-
-.nav{
-height:60px;
-display:flex;
-align-items:center;
-justify-content:space-between
-}
-
-.logo{
-display:flex;
-align-items:center;
-gap:8px
-}
-
-.logo img{
-width:38px;
-height:38px;
-object-fit:contain
-}
-
-.logo b{font-size:13px}
-.logo small{
-display:block;
-font-size:8px;
-color:#777
-}
-
-nav{
-display:flex;
-gap:5px
-}
-
-nav a{
-font-size:10px;
-font-weight:bold;
-padding:7px
-}
-
-.menu{
-display:none;
-background:#fff;
-border:1px solid #ddd;
-border-radius:7px;
-padding:8px
-}
-
-.hero{
-background:linear-gradient(135deg,#111827,#293548);
-color:#fff;
-padding:45px 0;
-text-align:center
-}
-
-.hero small{
-color:#fbbf24;
-font-size:9px;
-font-weight:bold
-}
-
-.hero h1{
-font-size:clamp(32px,7vw,52px);
-line-height:1.05;
-margin:8px 0
-}
-
-.hero span{color:#fbbf24}
-
-.hero p{
-max-width:600px;
-margin:auto;
-font-size:11px;
-color:#d1d5db
-}
-
-section{padding:35px 0}
-
-.title{
-text-align:center;
-margin-bottom:18px
-}
-
-.title small{
-color:#6366f1;
-font-size:9px;
-font-weight:bold
-}
-
-.title h2{
-font-size:25px;
-margin:4px 0
-}
-
-.title p{
-font-size:10px;
-color:#777
-}
-
-.dashboard{background:#fff}
-
-.stats{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:8px
-}
-
-.stat{
-background:#f8fafc;
-border:1px solid #e5e7eb;
-border-radius:10px;
-padding:12px;
-text-align:center
-}
-
-.stat b{
-display:block;
-font-size:18px
-}
-
-.stat small{
-font-size:9px;
-color:#777
-}
-
-.status{
-margin-top:12px;
-padding:10px;
-border-radius:9px;
-text-align:center;
-font-size:10px;
-font-weight:bold
-}
-
-.free{
-background:#eff6ff;
-color:#1d4ed8
-}
-
-.premium{
-background:#fffbeb;
-color:#92400e
-}
-
-.expired{
-background:#fef2f2;
-color:#b91c1c
-}
-
-.lesson{
-background:#f8fafc
-}
-
-.card{
-background:#fff;
-border:1px solid #e5e7eb;
-border-radius:15px;
-padding:20px
-}
-
-.top{
-display:flex;
-justify-content:space-between;
-font-size:9px;
-font-weight:bold;
-color:#6366f1
-}
-
-.card h3{
-font-size:21px;
-margin:10px 0
-}
-
-.verse{
-background:#111827;
-color:#fff;
-border-radius:10px;
-padding:15px;
-margin-bottom:14px
-}
-
-.verse b{
-font-size:8px;
-color:#fbbf24
-}
-
-.verse p{
-font-size:14px;
-font-weight:bold;
-margin:5px 0
-}
-
-.verse small{
-font-size:8px;
-color:#cbd5e1
-}
-
-.info{
-font-size:11px;
-color:#555;
-margin:12px 0
-}
-
-.application{
-background:#f8fafc;
-border-left:3px solid #6366f1;
-padding:11px;
-font-size:10px;
-margin-bottom:15px
-}
-
-.question{
-border:1px solid #ddd;
-border-radius:10px;
-padding:15px
-}
-
-.question h4{
-font-size:13px;
-margin:5px 0 10px
-}
-
-.option{
-display:block;
-border:1px solid #ddd;
-border-radius:7px;
-padding:9px;
-margin:6px 0;
-font-size:10px
-}
-
-.btn{
-border:0;
-border-radius:8px;
-padding:10px 15px;
-font-size:10px;
-font-weight:bold
-}
-
-.dark{
-background:#111827;
-color:#fff
-}
-
-.primary{
-background:#fbbf24;
-color:#111827
-}
-
-.result{
-display:none;
-padding:9px;
-margin-top:10px;
-border-radius:7px;
-font-size:10px;
-font-weight:bold
-}
-
-.correct{
-background:#ecfdf5;
-color:#047857
-}
-
-.wrong{
-background:#fef2f2;
-color:#b91c1c
-}
-
-.lock{
-text-align:center;
-padding:30px 10px
-}
-
-.lock-icon{
-font-size:35px
-}
-
-.lock h3{
-margin:5px 0
-}
-
-.lock p{
-font-size:10px;
-color:#777;
-max-width:500px;
-margin:0 auto 15px
-}
-
-.premium-box{
-background:#111827;
-color:#fff;
-border-radius:15px;
-padding:22px;
-text-align:center
-}
-
-.premium-box h3{
-font-size:21px;
-margin:5px
-}
-
-.premium-box p{
-font-size:10px;
-color:#cbd5e1;
-margin-bottom:15px
-}
-
-.premium-box ul{
-list-style:none;
-text-align:left;
-max-width:400px;
-margin:0 auto 15px
-}
-
-.premium-box li{
-font-size:10px;
-padding:5px 0;
-border-bottom:1px solid #263044
-}
-
-.progress{
-background:#fff;
-border:1px solid #ddd;
-border-radius:12px;
-padding:15px
-}
-
-.progress-head{
-display:flex;
-justify-content:space-between;
-font-size:10px;
-font-weight:bold
-}
-
-.bar{
-height:8px;
-background:#e5e7eb;
-border-radius:20px;
-overflow:hidden;
-margin-top:7px
-}
-
-.fill{
-height:100%;
-width:0;
-background:#6366f1
-}
-
-footer{
-background:#0b1120;
-color:#fff;
-text-align:center;
-padding:20px;
-font-size:9px
-}
-
-.whatsapp{
-position:fixed;
-right:15px;
-bottom:15px;
-width:52px;
-height:52px;
-display:grid;
-place-items:center;
-border-radius:50%;
-background:#25D366;
-color:#fff;
-font-size:23px;
-box-shadow:0 5px 18px #0004;
-z-index:100
-}
-
-@media(max-width:750px){
-nav{display:none}
-.menu{display:block}
-.stats{grid-template-columns:1fr 1fr}
-}
-
-@media(max-width:500px){
-.stats{grid-template-columns:1fr 1fr}
-}
+body{font-family:Arial;margin:0;background:#f4f7fb;color:#172033}
+header{background:#173b73;color:white;text-align:center;padding:18px}
+main{max-width:700px;margin:20px auto;padding:10px}
+.card{background:white;padding:20px;margin:15px 0;border-radius:12px;box-shadow:0 2px 10px #ddd}
+input,textarea,button{width:100%;padding:12px;margin:6px 0;box-sizing:border-box}
+button{background:#173b73;color:white;border:0;border-radius:7px}
+.hidden{display:none}
+.success{color:green}
+.error{color:red}
 </style>
 </head>
 
 <body>
 
 <header>
-<div class="container nav">
-
-<a href="index.html" class="logo">
-<img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
-<div>
-<b>GOH Ministries</b>
-<small>Gate of Heaven Ministries</small>
-</div>
-</a>
-
-<nav>
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="ministries.html">Ministries</a>
-<a href="bible-school.html">Bible School</a>
-<a href="media.html">Media</a>
-<a href="sermons.html">Sermons</a>
-<a href="events.html">Events</a>
-<a href="prayer.html">Prayer</a>
-<a href="contact.html">Contact</a>
-</nav>
-
-<button class="menu" onclick="toggleMenu()">☰</button>
-
-</div>
+<h1>GOH Bible School</h1>
 </header>
 
-<div id="mobileMenu"
-style="display:none;background:#fff;border-bottom:1px solid #ddd;padding:8px">
+<main>
 
-<div class="container">
-<a href="index.html">Home</a><br>
-<a href="bible-school.html">Bible School</a><br>
-<a href="contact.html">Contact</a>
+<div id="login" class="card">
+<h2>Login</h2>
+<input id="email" placeholder="Email">
+<input id="password" type="password" placeholder="Password">
+<button onclick="login()">Login</button>
+
+<hr>
+
+<h3>Register</h3>
+<input id="name" placeholder="Name">
+<input id="regEmail" placeholder="Email">
+<input id="regPassword" type="password" placeholder="Password">
+<button onclick="register()">Register</button>
+<p id="msg"></p>
 </div>
 
+<div id="app" class="hidden">
+
+<div class="card">
+<h2>Welcome <span id="student"></span></h2>
+<button onclick="logout()">Logout</button>
 </div>
 
-
-<section class="hero">
-
-<div class="container">
-
-<small>GOH ONLINE BIBLE SCHOOL</small>
-
-<h1>
-From Believer to <span>Disciple</span>
-</h1>
-
+<div class="card">
+<h2>Progress</h2>
 <p>
-A daily Bible learning journey following the monthly syllabus.
-Monday to Friday lessons. Saturday and Sunday are rest days.
+Completed: <b id="completed">0</b>
 </p>
-
-</div>
-
-</section>
-
-
-<section class="dashboard">
-
-<div class="container">
-
-<div class="title">
-
-<small>MY BIBLE SCHOOL</small>
-
-<h2>Your Progress</h2>
-
 <p>
-Study one lesson each weekday.
+Correct: <b id="correct">0</b>
 </p>
-
-</div>
-
-<div class="stats">
-
-<div class="stat">
-<b id="dayNumber">1</b>
-<small>Lesson Day</small>
-</div>
-
-<div class="stat">
-<b id="completed">0</b>
-<small>Completed</small>
-</div>
-
-<div class="stat">
-<b id="score">0%</b>
-<small>Score</small>
-</div>
-
-</div>
-
-<div id="status" class="status free">
-Free Member • Today's lesson available
-</div>
-
-</div>
-
-</section>
-
-
-<section class="lesson" id="lesson">
-
-<div class="container">
-
-<div class="title">
-
-<small>DAILY LESSON</small>
-
-<h2 id="dayTitle">Day 1</h2>
-
-<p id="date"></p>
-
-</div>
-
-<div id="lessonBox" class="card">
-
-<div class="top">
-
-<span id="dayLabel">DAY 1</span>
-
-<span>MONDAY–FRIDAY</span>
-
-</div>
-
-<h3 id="topic">What Is the Gospel?</h3>
-
-<div class="verse">
-
-<b>BIBLE VERSE — KJV</b>
-
-<p id="verse">
-For I am not ashamed of the gospel of Christ:
-for it is the power of God unto salvation to every one that believeth.
-</p>
-
-<small id="reference">
-Romans 1:16 — KJV
-</small>
-
-</div>
-
-<div class="info">
-
-<strong>Lesson</strong>
-
-<p id="lessonText">
-The Gospel is the good news of Jesus Christ and salvation through Him.
-</p>
-
-</div>
-
-<div class="application">
-
-<strong>Today's Application</strong>
-
-<p id="application">
-Think about how the Gospel changes the life of a believer.
-</p>
-
-</div>
-
-<div class="question">
-
-<small style="color:#6366f1;font-weight:bold">
-DAILY BIBLE QUESTION
-</small>
-
-<h4 id="question">
-According to Romans 1:16, what is the Gospel?
-</h4>
-
-<div id="answers"></div>
-
-<button class="btn dark" onclick="checkAnswer()">
-Submit Answer
-</button>
-
-<div id="result" class="result"></div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<section>
-
-<div class="container">
-
-<div class="title">
-
-<small>PREMIUM</small>
-
-<h2>Continue Bible School</h2>
-
 <p>
-Premium opens automatically when your free daily lesson limit is reached.
+Score: <b id="score">0%</b>
 </p>
-
 </div>
 
-<div id="premiumBox" class="premium-box">
+<div class="card">
+<h2>Today's Lesson</h2>
+<div id="lesson">Loading...</div>
 
-<div style="font-size:32px">🔒</div>
+<div id="questionBox" class="hidden">
+<h3>Question</h3>
+<p id="question"></p>
+<input id="answer" placeholder="Your answer">
+<button onclick="submitAnswer()">Submit</button>
+<p id="answerMsg"></p>
+</div>
+</div>
 
-<h3>Premium Bible School</h3>
+<div class="card">
+<h2>AI Teacher</h2>
+<textarea id="aiQuestion" placeholder="Ask about this lesson"></textarea>
+<button onclick="askAI()">Ask AI</button>
+<p id="aiAnswer"></p>
+</div>
 
-<p>
-Continue with the complete weekday syllabus,
-daily lessons, questions and progress tracking.
-</p>
-
-<ul>
-<li>✓ Complete weekday syllabus</li>
-<li>✓ Daily Bible lessons</li>
-<li>✓ Bible questions</li>
-<li>✓ Sinhala and Tamil support</li>
-<li>✓ Progress tracking</li>
-<li>✓ Assessment pathway</li>
-<li>✓ Certificate pathway</li>
-</ul>
-
-<a
-href="YOUR_PAYHERE_LINK"
-class="btn primary"
-id="premiumButton"
-target="_blank"
-rel="noopener">
-
-Open Premium
-
-</a>
-
+<div class="card">
+<h2>Certificate</h2>
+<button onclick="certificate()">Check Certificate</button>
+<p id="certificate"></p>
 </div>
 
 </div>
-
-</section>
-
-
-<section>
-
-<div class="container">
-
-<div class="title">
-
-<small>COURSE PROGRESS</small>
-
-<h2>365-Day Program</h2>
-
-<p>
-Saturday and Sunday are automatically skipped.
-</p>
-
-</div>
-
-<div class="progress">
-
-<div class="progress-head">
-
-<span>Progress</span>
-
-<span id="progressText">0 / 365</span>
-
-</div>
-
-<div class="bar">
-<div id="progressBar" class="fill"></div>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<footer>
-
-GOH Ministries — Gate of Heaven Ministries
-
-<br><br>
-
-© 2026 GOH Ministries
-
-</footer>
-
-
-<a
-class="whatsapp"
-href="https://wa.me/94771190395?text=Hello%20GOH%20Ministries"
-target="_blank"
-rel="noopener"
-aria-label="WhatsApp">
-
-💬
-
-</a>
-
+</main>
 
 <script>
 
-/* MOBILE MENU */
+const API="https://goh-bible-school-api.createlk.workers.dev";
+let token=localStorage.getItem("goh_token");
+let lesson=null;
 
-function toggleMenu(){
-
-const menu=document.getElementById("mobileMenu");
-
-menu.style.display=
-menu.style.display==="block"
-?"none"
-:"block";
-
+async function api(path,options={}){
+ options.headers={
+  "Content-Type":"application/json",
+  ...(options.headers||{})
+ };
+ if(token) options.headers.Authorization="Bearer "+token;
+ return fetch(API+path,options).then(r=>r.json());
 }
 
-
-/* USER STATE
-   Replace with your backend later.
-*/
-
-let user={
-premium:false,
-
-/*
-Set a future date for an active subscription.
-Example:
-premiumExpiry:"2026-09-30"
-*/
-premiumExpiry:null,
-
-completed:0,
-correct:0,
-answered:false
-};
-
-
-/* SYLLABUS */
-
-const lessons=[
-
-{
-topic:"What Is the Gospel?",
-
-verse:"For I am not ashamed of the gospel of Christ: for it is the power of God unto salvation to every one that believeth.",
-
-ref:"Romans 1:16 — KJV",
-
-lesson:"The Gospel is the good news of Jesus Christ and salvation through Him.",
-
-application:"Think about how the Gospel changes the life of a believer.",
-
-question:"According to Romans 1:16, what is the Gospel?",
-
-answers:[
-"The power of God unto salvation",
-"A political message",
-"A human tradition",
-"A philosophy"
-],
-
-correct:0
-},
-
-{
-topic:"The Word of God",
-
-verse:"Thy word is a lamp unto my feet, and a light unto my path.",
-
-ref:"Psalm 119:105 — KJV",
-
-lesson:"God's Word gives believers direction and helps them walk faithfully.",
-
-application:"Read a passage of Scripture today and think about how it applies to your life.",
-
-question:"What is God's Word compared to?",
-
-answers:[
-"A lamp and a light",
-"A kingdom",
-"A building",
-"A crown"
-],
-
-correct:0
-},
-
-{
-topic:"Faith",
-
-verse:"Now faith is the substance of things hoped for, the evidence of things not seen.",
-
-ref:"Hebrews 11:1 — KJV",
-
-lesson:"Biblical faith means trusting God and His promises even when we cannot see the outcome.",
-
-application:"Bring one concern to God and choose to trust Him.",
-
-question:"Faith is the evidence of things that are:",
-
-answers:[
-"Seen",
-"Not seen",
-"Written by people",
-"Unimportant"
-],
-
-correct:1
-},
-
-{
-topic:"Prayer",
-
-verse:"Pray without ceasing.",
-
-ref:"1 Thessalonians 5:17 — KJV",
-
-lesson:"Prayer should become part of the believer's daily relationship with God.",
-
-application:"Spend a few quiet minutes in intentional prayer today.",
-
-question:"What does 1 Thessalonians 5:17 tell believers to do?",
-
-answers:[
-"Pray without ceasing",
-"Pray once a year",
-"Never pray",
-"Only pray publicly"
-],
-
-correct:0
-},
-
-{
-topic:"Following Jesus",
-
-verse:"If any man will come after me, let him deny himself, and take up his cross, and follow me.",
-
-ref:"Matthew 16:24 — KJV",
-
-lesson:"Discipleship means following Jesus with faith, obedience and commitment.",
-
-application:"Identify one area where you can follow Christ more faithfully.",
-
-question:"What did Jesus tell His followers to do?",
-
-answers:[
-"Follow Him",
-"Follow the world",
-"Avoid Scripture",
-"Ignore obedience"
-],
-
-correct:0
+async function register(){
+ const r=await api("/api/register",{
+  method:"POST",
+  body:JSON.stringify({
+   name:name.value,
+   email:regEmail.value,
+   password:regPassword.value
+  })
+ });
+ if(!r.ok)return msg.textContent=r.error;
+ token=r.token;
+ localStorage.setItem("goh_token",token);
+ start(r.user);
 }
 
-];
-
-
-/*
-ADD MORE SYLLABUS LESSONS HERE.
-
-The system automatically cycles through the
-lesson list. Your backend can later provide
-all 365 lessons from the monthly syllabus.
-*/
-
-
-/* WEEKEND CHECK */
-
-function weekend(){
-
-const day=new Date().getDay();
-
-return day===0 || day===6;
-
+async function login(){
+ const r=await api("/api/login",{
+  method:"POST",
+  body:JSON.stringify({
+   email:email.value,
+   password:password.value
+  })
+ });
+ if(!r.ok)return msg.textContent=r.error;
+ token=r.token;
+ localStorage.setItem("goh_token",token);
+ start(r.user);
 }
 
-
-/* WEEKDAY NUMBER */
-
-function weekdayNumber(){
-
-const today=new Date();
-
-let start=new Date(today.getFullYear(),0,1);
-
-let count=0;
-
-for(
-let d=new Date(start);
-d<=today;
-d.setDate(d.getDate()+1)
-){
-
-if(d.getDay()!==0 && d.getDay()!==6){
-count++;
+function start(user){
+ document.getElementById("login").classList.add("hidden");
+ document.getElementById("app").classList.remove("hidden");
+ student.textContent=user.name;
+ load();
 }
 
+function logout(){
+ localStorage.removeItem("goh_token");
+ location.reload();
 }
 
-return Math.min(count,365);
-
+async function load(){
+ await loadProgress();
+ await loadLesson();
+ await certificate();
 }
 
+async function loadLesson(){
+ const r=await api("/api/today");
+ if(!r.ok)return lesson.textContent=r.error;
 
-/* PREMIUM CHECK */
+ lesson=r.lesson;
 
-function premiumActive(){
+ document.getElementById("lesson").innerHTML=`
+ <h3>Day ${r.day_number}: ${lesson.topic}</h3>
+ <p><b>${lesson.bible_reference}</b></p>
+ <p>${lesson.verse}</p>
+ <p>${lesson.lesson}</p>
+ <p><b>Application:</b> ${lesson.application||""}</p>
+ `;
 
-if(!user.premium)return false;
-
-if(!user.premiumExpiry)return true;
-
-return new Date(user.premiumExpiry)>new Date();
-
+ question.textContent=lesson.question;
+ document.getElementById("questionBox").classList.remove("hidden");
 }
 
+async function submitAnswer(){
+ const r=await api("/api/answer",{
+  method:"POST",
+  body:JSON.stringify({
+   lesson_id:lesson.id,
+   answer:answer.value
+  })
+ });
 
-/* LOAD LESSON */
+ answerMsg.textContent=
+ r.ok ? (r.correct?"Correct!":"Incorrect.") : r.error;
 
-function loadLesson(){
-
-const day=weekdayNumber();
-
-document.getElementById("dayNumber").textContent=day;
-
-document.getElementById("progressText").textContent=
-user.completed+" / 365";
-
-document.getElementById("progressBar").style.width=
-Math.min(user.completed/365*100,100)+"%";
-
-
-if(weekend()){
-
-document.getElementById("lessonBox").innerHTML=`
-
-<div class="lock">
-
-<div class="lock-icon">🌿</div>
-
-<h3>Weekend Rest Day</h3>
-
-<p>
-Saturday and Sunday are rest days.
-Your next Bible lesson will open automatically on Monday.
-</p>
-
-</div>`;
-
-return;
-
+ await loadProgress();
+ await certificate();
 }
 
-
-/* DAILY FREE LIMIT */
-
-if(user.completed>=1 && !premiumActive()){
-
-document.getElementById("lessonBox").innerHTML=`
-
-<div class="lock">
-
-<div class="lock-icon">🔒</div>
-
-<h3>Today's Free Lesson Is Complete</h3>
-
-<p>
-Your daily free lesson has been completed.
-Open Premium to continue the Bible School program.
-</p>
-
-<a href="#premium" class="btn primary">
-Continue with Premium
-</a>
-
-</div>`;
-
-document.getElementById("status").className="status expired";
-
-document.getElementById("status").textContent=
-"Daily limit reached • Premium required";
-
-return;
-
+async function loadProgress(){
+ const r=await api("/api/progress");
+ if(!r.ok)return;
+ completed.textContent=r.progress.completed;
+ correct.textContent=r.progress.correct;
+ score.textContent=r.progress.percentage+"%";
 }
 
+async function askAI(){
+ if(!lesson)return;
 
-const lesson=
-lessons[(day-1)%lessons.length];
+ aiAnswer.textContent="Thinking...";
 
-document.getElementById("dayTitle").textContent=
-"Day "+day+" — "+lesson.topic;
+ const r=await api("/api/ai",{
+  method:"POST",
+  body:JSON.stringify({
+   lesson_id:lesson.id,
+   question:aiQuestion.value
+  })
+ });
 
-document.getElementById("dayLabel").textContent=
-"DAY "+day;
-
-document.getElementById("date").textContent=
-new Date().toLocaleDateString();
-
-document.getElementById("topic").textContent=
-lesson.topic;
-
-document.getElementById("verse").textContent=
-lesson.verse;
-
-document.getElementById("reference").textContent=
-lesson.ref;
-
-document.getElementById("lessonText").textContent=
-lesson.lesson;
-
-document.getElementById("application").textContent=
-lesson.application;
-
-document.getElementById("question").textContent=
-lesson.question;
-
-const answers=document.getElementById("answers");
-
-answers.innerHTML="";
-
-lesson.answers.forEach((answer,index)=>{
-
-answers.innerHTML+=`
-
-<label class="option">
-
-<input
-type="radio"
-name="answer"
-value="${index}">
-
-${answer}
-
-</label>`;
-
-});
-
+ aiAnswer.textContent=r.ok?r.answer:r.error;
 }
 
+async function certificate(){
+ const r=await api("/api/certificate");
+ if(!r.ok)return;
 
-/* ANSWER */
-
-function checkAnswer(){
-
-if(user.answered)return;
-
-const selected=
-document.querySelector(
-'input[name="answer"]:checked'
-);
-
-const result=
-document.getElementById("result");
-
-if(!selected){
-
-result.style.display="block";
-result.className="result wrong";
-result.textContent="Please select an answer.";
-
-return;
-
+ certificate.textContent=
+ r.eligible
+ ? `Eligible! Score: ${r.score}%`
+ : `Not yet eligible. ${r.completed}/365 lessons, ${r.score}%`;
 }
 
-const day=weekdayNumber();
-
-const lesson=
-lessons[(day-1)%lessons.length];
-
-user.answered=true;
-user.completed++;
-
-if(Number(selected.value)===lesson.correct){
-
-user.correct++;
-
-result.className="result correct";
-result.textContent="Correct! Well done.";
-
-}else{
-
-result.className="result wrong";
-result.textContent=
-"Not quite. Read today's verse again and try to learn from it.";
-
+if(token){
+ api("/api/me").then(r=>{
+  if(r.ok)start(r.user);
+ });
 }
-
-result.style.display="block";
-
-document.getElementById("completed").textContent=
-user.completed;
-
-document.getElementById("score").textContent=
-Math.round(
-user.correct/user.completed*100
-)+"%";
-
-document.getElementById("progressText").textContent=
-user.completed+" / 365";
-
-document.getElementById("progressBar").style.width=
-Math.min(user.completed/365*100,100)+"%";
-
-setTimeout(loadLesson,1200);
-
-}
-
-
-/* STATUS */
-
-function updateStatus(){
-
-const status=
-document.getElementById("status");
-
-if(premiumActive()){
-
-status.className="status premium";
-
-status.textContent=
-"Premium Active • Full Bible School access";
-
-}else{
-
-status.className="status free";
-
-status.textContent=
-"Free Member • One daily lesson";
-
-}
-
-}
-
-
-/* START */
-
-updateStatus();
-loadLesson();
 
 </script>
 
