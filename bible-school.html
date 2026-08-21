@@ -7,179 +7,36 @@
 
 <style>
 *{box-sizing:border-box}
-
-body{
- margin:0;
- font-family:Inter,Arial,sans-serif;
- background:#f5f7fb;
- color:#172033;
-}
-
-header{
- background:linear-gradient(135deg,#12356b,#2458a6);
- color:#fff;
- padding:28px 20px;
-}
-
-.header{
- max-width:1000px;
- margin:auto;
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:15px;
-}
-
-.logo{
- font-size:24px;
- font-weight:800;
-}
-
-.subtitle{
- opacity:.85;
- font-size:13px;
- margin-top:4px;
-}
-
-.container{
- max-width:1000px;
- margin:25px auto;
- padding:0 15px;
-}
-
-.card{
- background:#fff;
- border-radius:18px;
- padding:24px;
- margin-bottom:18px;
- box-shadow:0 8px 30px rgba(20,40,80,.07);
- border:1px solid #e9edf5;
-}
-
-h2{margin:0 0 18px}
-h3{margin:10px 0}
-p{line-height:1.65}
-
-input,textarea,button{
- width:100%;
- padding:13px 15px;
- margin:7px 0;
- border-radius:10px;
- font-size:15px;
-}
-
-input,textarea{
- border:1px solid #d8deea;
- outline:none;
-}
-
-input:focus,textarea:focus{
- border-color:#2458a6;
-}
-
-textarea{
- min-height:100px;
- resize:vertical;
-}
-
-button{
- border:0;
- background:#2458a6;
- color:white;
- font-weight:700;
- cursor:pointer;
- transition:.2s;
-}
-
-button:hover{
- transform:translateY(-1px);
- opacity:.92;
-}
-
-.secondary{
- background:#edf2fa;
- color:#173b73;
-}
-
-.grid{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:12px;
-}
-
-.stat{
- background:#f4f7fc;
- padding:18px;
- border-radius:14px;
- text-align:center;
-}
-
-.stat b{
- display:block;
- font-size:27px;
- color:#173b73;
- margin-bottom:5px;
-}
-
-.progress{
- height:10px;
- background:#e5eaf2;
- border-radius:20px;
- overflow:hidden;
- margin-top:15px;
-}
-
-.progressBar{
- height:100%;
- width:0%;
- background:#2458a6;
- transition:.4s;
-}
-
-.verse{
- background:#f0f5ff;
- border-left:4px solid #2458a6;
- padding:16px;
- border-radius:8px;
- margin:15px 0;
-}
-
-.badge{
- display:inline-block;
- background:#e9f0ff;
- color:#2458a6;
- padding:6px 10px;
- border-radius:20px;
- font-size:12px;
- font-weight:700;
-}
-
+body{margin:0;font-family:Inter,Arial,sans-serif;background:#f4f7fb;color:#172033}
+header{background:linear-gradient(135deg,#102f61,#2860ad);color:white;padding:24px}
+.header{max-width:1050px;margin:auto}
+.logo{font-size:25px;font-weight:800}
+.tag{opacity:.8;margin-top:5px;font-size:13px}
+main{max-width:1050px;margin:30px auto;padding:0 16px}
+.card{background:white;border:1px solid #e7ebf2;border-radius:18px;padding:25px;margin-bottom:18px;box-shadow:0 8px 30px #173b7310}
+.auth{max-width:430px;margin:55px auto}
+.auth h1{margin-bottom:8px}
+.muted{color:#6c7585}
+input,textarea,button{width:100%;padding:14px;margin:7px 0;border-radius:10px;font-size:15px}
+input,textarea{border:1px solid #d6dce7;outline:0}
+input:focus,textarea:focus{border-color:#2860ad}
+button{border:0;background:#2860ad;color:white;font-weight:700;cursor:pointer}
+button:hover{opacity:.9}
+.link{background:none;color:#2860ad;padding:5px;font-weight:700}
 .hidden{display:none}
-
-.success{color:#168044;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stat{text-align:center;background:#f5f8fd;border-radius:14px;padding:18px}
+.stat b{display:block;font-size:27px;color:#173b73}
+.bar{height:9px;background:#e5eaf2;border-radius:20px;margin-top:15px;overflow:hidden}
+.fill{height:100%;background:#2860ad;width:0}
+.verse{background:#f1f6ff;border-left:4px solid #2860ad;padding:16px;border-radius:8px}
+.badge{display:inline-block;background:#eaf1ff;color:#2860ad;padding:6px 10px;border-radius:20px;font-size:12px;font-weight:700}
+.ai{background:linear-gradient(135deg,#faf8ff,#f1f6ff)}
+.certificate{text-align:center;background:#fffdf4}
+.success{color:#148043;font-weight:700}
 .error{color:#c62828;font-weight:700}
-
-.ai{
- background:linear-gradient(135deg,#f8f5ff,#eef4ff);
-}
-
-.certificate{
- text-align:center;
- background:linear-gradient(135deg,#fffdf5,#f7f4e8);
-}
-
-footer{
- text-align:center;
- color:#7b8494;
- padding:20px;
- font-size:13px;
-}
-
-@media(max-width:650px){
- .header{align-items:flex-start}
- .grid{grid-template-columns:1fr}
- .card{padding:19px}
-}
+footer{text-align:center;color:#7a8494;padding:25px;font-size:13px}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.auth{margin:25px auto}}
 </style>
 </head>
 
@@ -187,30 +44,38 @@ footer{
 
 <header>
 <div class="header">
-<div>
 <div class="logo">GOH Bible School</div>
-<div class="subtitle">Grow in God's Word • Learn • Apply • Serve</div>
-</div>
+<div class="tag">Grow in God's Word • Learn • Apply • Serve</div>
 </div>
 </header>
 
-<div class="container">
+<main>
 
-<!-- AUTH -->
+<!-- LOGIN -->
 
-<div id="auth" class="card">
-
-<h2>Welcome 👋</h2>
-<p>Sign in to continue your Bible School journey.</p>
+<section id="loginPage" class="card auth">
+<h1>Welcome back</h1>
+<p class="muted">Sign in to continue your Bible School journey.</p>
 
 <input id="loginEmail" type="email" placeholder="Email">
 <input id="loginPassword" type="password" placeholder="Password">
 
 <button onclick="login()">Sign In</button>
 
-<hr>
+<p class="muted">
+New student?
+<button class="link" onclick="showRegister()">Create an account</button>
+</p>
 
-<h3>Create an Account</h3>
+<p id="loginMsg"></p>
+</section>
+
+
+<!-- REGISTER -->
+
+<section id="registerPage" class="card auth hidden">
+<h1>Create your account</h1>
+<p class="muted">Start your GOH Bible School journey.</p>
 
 <input id="regName" placeholder="Full name">
 <input id="regEmail" type="email" placeholder="Email">
@@ -218,180 +83,123 @@ footer{
 
 <button onclick="register()">Create Account</button>
 
-<p id="authMessage"></p>
+<p class="muted">
+Already registered?
+<button class="link" onclick="showLogin()">Sign in</button>
+</p>
 
-</div>
+<p id="regMsg"></p>
+</section>
 
 
-<!-- APP -->
+<!-- DASHBOARD -->
 
-<div id="app" class="hidden">
+<section id="app" class="hidden">
 
 <div class="card">
-
-<div style="display:flex;justify-content:space-between;gap:10px;align-items:center">
-
-<div>
 <span class="badge">Student Dashboard</span>
 <h2>Welcome, <span id="studentName"></span></h2>
+<button style="max-width:130px" onclick="logout()">Sign Out</button>
 </div>
 
-<button class="secondary" style="width:auto" onclick="logout()">
-Sign Out
-</button>
-
-</div>
-
-</div>
-
-
-<!-- PROGRESS -->
 
 <div class="card">
-
 <h2>Your Progress</h2>
 
 <div class="grid">
-
-<div class="stat">
-<b id="completed">0</b>
-Lessons
+<div class="stat"><b id="completed">0</b>Lessons</div>
+<div class="stat"><b id="correct">0</b>Correct</div>
+<div class="stat"><b id="score">0%</b>Score</div>
 </div>
 
-<div class="stat">
-<b id="correct">0</b>
-Correct
+<div class="bar">
+<div id="fill" class="fill"></div>
+</div>
 </div>
 
-<div class="stat">
-<b id="score">0%</b>
-Score
-</div>
-
-</div>
-
-<div class="progress">
-<div id="progressBar" class="progressBar"></div>
-</div>
-
-</div>
-
-
-<!-- LESSON -->
 
 <div class="card">
-
-<span class="badge" id="dayBadge">Today's Lesson</span>
-
-<div id="lesson">
-Loading lesson...
-</div>
+<span class="badge" id="day">Today's Lesson</span>
+<div id="lesson">Loading...</div>
 
 <div id="questionBox" class="hidden">
-
 <hr>
-
 <h3>Daily Question</h3>
-
 <p id="question"></p>
-
-<input id="answer" placeholder="Write your answer">
-
-<button onclick="submitAnswer()">
-Submit Answer
-</button>
-
-<p id="answerMessage"></p>
-
+<input id="answer" placeholder="Your answer">
+<button onclick="submitAnswer()">Submit Answer</button>
+<p id="answerMsg"></p>
+</div>
 </div>
 
-</div>
-
-
-<!-- AI -->
 
 <div class="card ai">
-
 <span class="badge">AI Bible Teacher</span>
-
-<h2>Ask About Your Lesson</h2>
-
-<textarea id="aiQuestion"
-placeholder="Ask a question about today's Bible lesson..."></textarea>
-
-<button onclick="askAI()">
-Ask AI Teacher
-</button>
-
+<h2>Ask a Question</h2>
+<textarea id="aiQuestion" placeholder="Ask about today's lesson..."></textarea>
+<button onclick="askAI()">Ask AI Teacher</button>
 <div id="aiAnswer"></div>
-
 </div>
 
-
-<!-- CERTIFICATE -->
 
 <div class="card certificate">
-
 <span class="badge">Course Completion</span>
-
 <h2>Certificate</h2>
-
-<p>
-Complete the required lessons and achieve the required score
-to qualify.
-</p>
-
-<button onclick="checkCertificate()">
-Check Certificate
-</button>
-
-<div id="certificate"></div>
-
+<p id="certificate">Checking...</p>
 </div>
 
-</div>
+</section>
 
-</div>
+</main>
 
-<footer>
-GOH Bible School © 2026
-</footer>
-
+<footer>GOH Bible School © 2026</footer>
 
 <script>
 
-const API =
-"https://goh-bible-school-api.createlk.workers.dev";
+const API="https://goh-bible-school-api.createlk.workers.dev";
+let token=localStorage.getItem("goh_token");
+let currentLesson=null;
 
-let token =
-localStorage.getItem("goh_token");
-
-let currentLesson = null;
-
-
-// API
-
-async function api(path,options={}){
-
- options.headers={
+async function api(path,opt={}){
+ opt.headers={
   "Content-Type":"application/json",
-  ...(options.headers||{})
+  ...(opt.headers||{})
  };
-
- if(token)
-  options.headers.Authorization=
-  "Bearer "+token;
-
- const r=await fetch(API+path,options);
-
- return r.json();
+ if(token)opt.headers.Authorization="Bearer "+token;
+ return fetch(API+path,opt).then(r=>r.json());
 }
 
+function showRegister(){
+ loginPage.classList.add("hidden");
+ registerPage.classList.remove("hidden");
+}
 
-// REGISTER
+function showLogin(){
+ registerPage.classList.add("hidden");
+ loginPage.classList.remove("hidden");
+}
+
+async function login(){
+ const r=await api("/api/login",{
+  method:"POST",
+  body:JSON.stringify({
+   email:loginEmail.value.trim(),
+   password:loginPassword.value
+  })
+ });
+
+ if(!r.ok){
+  loginMsg.className="error";
+  loginMsg.textContent=r.error;
+  return;
+ }
+
+ token=r.token;
+ localStorage.setItem("goh_token",token);
+ start(r.user);
+}
 
 async function register(){
-
  const r=await api("/api/register",{
   method:"POST",
   body:JSON.stringify({
@@ -402,276 +210,121 @@ async function register(){
  });
 
  if(!r.ok){
-  authMessage.className="error";
-  authMessage.textContent=r.error;
+  regMsg.className="error";
+  regMsg.textContent=r.error;
   return;
  }
 
  token=r.token;
-
- localStorage.setItem(
-  "goh_token",
-  token
- );
-
- showApp(r.user);
+ localStorage.setItem("goh_token",token);
+ start(r.user);
 }
 
-
-// LOGIN
-
-async function login(){
-
- const r=await api("/api/login",{
-  method:"POST",
-  body:JSON.stringify({
-   email:loginEmail.value.trim(),
-   password:loginPassword.value
-  })
- });
-
- if(!r.ok){
-  authMessage.className="error";
-  authMessage.textContent=r.error;
-  return;
- }
-
- token=r.token;
-
- localStorage.setItem(
-  "goh_token",
-  token
- );
-
- showApp(r.user);
-}
-
-
-// SHOW APP
-
-function showApp(user){
-
- auth.classList.add("hidden");
+function start(user){
+ loginPage.classList.add("hidden");
+ registerPage.classList.add("hidden");
  app.classList.remove("hidden");
-
  studentName.textContent=user.name;
-
- loadDashboard();
+ load();
 }
-
-
-// LOGOUT
 
 function logout(){
-
  localStorage.removeItem("goh_token");
-
- token=null;
-
  location.reload();
 }
 
-
-// DASHBOARD
-
-async function loadDashboard(){
-
- await loadProgress();
- await loadLesson();
- await checkCertificate();
+async function load(){
+ await progress();
+ await lessonLoad();
+ await certificateCheck();
 }
 
-
-// LESSON
-
-async function loadLesson(){
-
+async function lessonLoad(){
  const r=await api("/api/today");
 
  if(!r.ok){
-  lesson.innerHTML=
-  `<p class="error">${safe(r.error)}</p>`;
+  lesson.innerHTML=`<p class="error">${safe(r.error)}</p>`;
   return;
  }
 
  currentLesson=r.lesson;
-
- dayBadge.textContent=
- "Day "+r.day_number;
+ day.textContent="Day "+r.day_number;
 
  lesson.innerHTML=`
-
  <h2>${safe(r.lesson.topic)}</h2>
-
- <p>
- <b>Bible Reference:</b>
- ${safe(r.lesson.bible_reference)}
- </p>
-
- <div class="verse">
- ${safe(r.lesson.verse)}
- </div>
-
+ <p><b>${safe(r.lesson.bible_reference)}</b></p>
+ <div class="verse">${safe(r.lesson.verse)}</div>
  <h3>Lesson</h3>
-
  <p>${safe(r.lesson.lesson)}</p>
-
- ${
- r.lesson.application
- ?
- `<h3>Application</h3>
- <p>${safe(r.lesson.application)}</p>`
- : ""
- }
+ ${r.lesson.application?`<h3>Application</h3><p>${safe(r.lesson.application)}</p>`:""}
  `;
 
- question.textContent=
- r.lesson.question;
-
+ question.textContent=r.lesson.question;
  questionBox.classList.remove("hidden");
 }
 
-
-// ANSWER
-
 async function submitAnswer(){
-
- if(!currentLesson)return;
-
- const value=
- answer.value.trim();
-
- if(!value){
-  answerMessage.className="error";
-  answerMessage.textContent=
-  "Please enter your answer.";
-  return;
- }
-
  const r=await api("/api/answer",{
   method:"POST",
   body:JSON.stringify({
    lesson_id:currentLesson.id,
-   answer:value
+   answer:answer.value.trim()
   })
  });
 
  if(!r.ok){
-  answerMessage.className="error";
-  answerMessage.textContent=r.error;
+  answerMsg.className="error";
+  answerMsg.textContent=r.error;
   return;
  }
 
- answerMessage.className=
- r.correct?"success":"error";
+ answerMsg.className=r.correct?"success":"error";
+ answerMsg.textContent=r.correct?"Correct!":"Incorrect. Answer recorded.";
 
- answerMessage.textContent=
- r.correct
- ?"Correct! Well done."
- :"Incorrect. Your answer was recorded.";
-
- loadProgress();
- checkCertificate();
+ await progress();
+ await certificateCheck();
 }
 
-
-// PROGRESS
-
-async function loadProgress(){
-
+async function progress(){
  const r=await api("/api/progress");
-
  if(!r.ok)return;
 
- const p=r.progress;
-
- completed.textContent=p.completed;
- correct.textContent=p.correct;
- score.textContent=p.percentage+"%";
-
- progressBar.style.width=
- Math.min(
-  100,
-  (p.completed/365)*100
- )+"%";
+ completed.textContent=r.progress.completed;
+ correct.textContent=r.progress.correct;
+ score.textContent=r.progress.percentage+"%";
+ fill.style.width=Math.min(100,r.progress.completed/365*100)+"%";
 }
 
-
-// AI
-
 async function askAI(){
-
  const q=aiQuestion.value.trim();
-
  if(!q)return;
 
- aiAnswer.innerHTML=
- "<p>AI Teacher is thinking...</p>";
+ aiAnswer.textContent="AI Teacher is thinking...";
 
  const r=await api("/api/ai",{
   method:"POST",
   body:JSON.stringify({
-   lesson_id:currentLesson?.id,
+   lesson_id:currentLesson.id,
    question:q
   })
  });
 
- if(!r.ok){
-  aiAnswer.innerHTML=
-  `<p class="error">${safe(r.error)}</p>`;
-  return;
- }
-
- aiAnswer.innerHTML=`
- <div class="verse">
- <b>AI Teacher</b>
- <p>${safe(r.answer)}</p>
- </div>
- `;
+ aiAnswer.innerHTML=r.ok
+ ?`<div class="verse"><b>AI Teacher</b><p>${safe(r.answer)}</p></div>`
+ :`<p class="error">${safe(r.error)}</p>`;
 }
 
-
-// CERTIFICATE
-
-async function checkCertificate(){
-
+async function certificateCheck(){
  const r=await api("/api/certificate");
-
  if(!r.ok)return;
 
- if(r.eligible){
-
-  certificate.innerHTML=`
-  <p class="success">
-  🎓 Congratulations! You are eligible
-  for your certificate.
-  </p>
-  <p><b>Final Score:</b> ${r.score}%</p>
-  `;
-
- }else{
-
-  certificate.innerHTML=`
-  <p>
-  ${r.completed}/365 lessons completed
-  </p>
-  <p>
-  Current score: <b>${r.score}%</b>
-  </p>
-  <p>
-  Certificate requires 365 completed lessons,
-  80% or higher, and premium access.
-  </p>
-  `;
- }
+ certificate.innerHTML=r.eligible
+ ?`<span class="success">🎓 You are eligible for your certificate.</span><br>Final score: ${r.score}%`
+ :`${r.completed}/365 lessons completed<br>Current score: ${r.score}%`;
 }
 
-
-// ESCAPE HTML
-
-function safe(value){
-
- return String(value||"")
+function safe(x){
+ return String(x||"")
  .replaceAll("&","&amp;")
  .replaceAll("<","&lt;")
  .replaceAll(">","&gt;")
@@ -679,22 +332,14 @@ function safe(value){
  .replaceAll("'","&#039;");
 }
 
-
-// AUTO LOGIN
-
 if(token){
-
  api("/api/me").then(r=>{
-
-  if(r.ok){
-   showApp(r.user);
-  }else{
+  if(r.ok)start(r.user);
+  else{
    localStorage.removeItem("goh_token");
    token=null;
   }
-
  });
-
 }
 
 </script>
