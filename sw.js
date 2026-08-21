@@ -1,6 +1,6 @@
-const CACHE = "goh-v1";
+const CACHE_NAME = "goh-ministries-v1";
 
-const FILES = [
+const APP_FILES = [
   "/",
   "/index.html",
   "/about.html",
@@ -20,8 +20,10 @@ const FILES = [
 
 self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(CACHE).then(cache => cache.addAll(FILES))
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(APP_FILES))
   );
+
   self.skipWaiting();
 });
 
@@ -30,37 +32,54 @@ self.addEventListener("activate", event => {
     caches.keys().then(keys =>
       Promise.all(
         keys
-          .filter(key => key !== CACHE)
+          .filter(key => key !== CACHE_NAME)
           .map(key => caches.delete(key))
       )
     )
   );
+
   self.clients.claim();
 });
 
 self.addEventListener("fetch", event => {
+
   if (event.request.method !== "GET") return;
 
   event.respondWith(
-    fetch(event.request)
-      .then(response => {
 
-        if (
-          !response ||
-          response.status !== 200 ||
-          response.type !== "basic"
-        ) {
-          return response;
+    caches.match(event.request)
+      .then(cached => {
+
+        if (cached) {
+          return cached;
         }
 
-        const copy = response.clone();
+        return fetch(event.request)
+          .then(response => {
 
-        caches.open(CACHE).then(cache => {
-          cache.put(event.request, copy);
-        });
+            if (
+              !response ||
+              response.status !== 200 ||
+              response.type !== "basic"
+            ) {
+              return response;
+            }
 
-        return response;
+            const copy = response.clone();
+
+            caches.open(CACHE_NAME)
+              .then(cache => {
+                cache.put(event.request, copy);
+              });
+
+            return response;
+
+          })
+          .catch(() =>
+            caches.match("/index.html")
+          );
+
       })
-      .catch(() => caches.match(event.request))
+
   );
 });
