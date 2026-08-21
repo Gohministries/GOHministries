@@ -7,75 +7,175 @@
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Inter,Arial,sans-serif;background:#f4f7fb;color:#172033}
-header{background:linear-gradient(135deg,#102f61,#2860ad);color:white;padding:24px}
-.header{max-width:1050px;margin:auto}
-.logo{font-size:25px;font-weight:800}
-.tag{opacity:.8;margin-top:5px;font-size:13px}
-main{max-width:1050px;margin:30px auto;padding:0 16px}
-.card{background:white;border:1px solid #e7ebf2;border-radius:18px;padding:25px;margin-bottom:18px;box-shadow:0 8px 30px #173b7310}
-.auth{max-width:430px;margin:55px auto}
-.auth h1{margin-bottom:8px}
-.muted{color:#6c7585}
-input,textarea,button{width:100%;padding:14px;margin:7px 0;border-radius:10px;font-size:15px}
-input,textarea{border:1px solid #d6dce7;outline:0}
-input:focus,textarea:focus{border-color:#2860ad}
-button{border:0;background:#2860ad;color:white;font-weight:700;cursor:pointer}
-button:hover{opacity:.9}
-.link{background:none;color:#2860ad;padding:5px;font-weight:700}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:linear-gradient(135deg,#eef5ff,#fff8ed);
+ color:#172033
+}
+header{
+ background:linear-gradient(135deg,#173b73,#3974d8);
+ color:white;
+ padding:25px 18px;
+ text-align:center
+}
+.logo{font-size:27px;font-weight:800}
+.tag{opacity:.85;margin-top:5px}
+main{max-width:850px;margin:22px auto;padding:0 14px}
+.card{
+ background:white;
+ border-radius:22px;
+ padding:22px;
+ margin-bottom:18px;
+ box-shadow:0 10px 30px #173b7320;
+ border:1px solid #e8edf5
+}
+.auth{max-width:430px;margin:50px auto}
+input,button{
+ width:100%;
+ padding:14px;
+ margin:7px 0;
+ border-radius:12px;
+ font-size:15px
+}
+input{border:1px solid #d6ddea}
+button{
+ border:0;
+ background:#2860ad;
+ color:white;
+ font-weight:bold;
+ cursor:pointer
+}
+button:hover{transform:translateY(-1px)}
 .hidden{display:none}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.stat{text-align:center;background:#f5f8fd;border-radius:14px;padding:18px}
-.stat b{display:block;font-size:27px;color:#173b73}
-.bar{height:9px;background:#e5eaf2;border-radius:20px;margin-top:15px;overflow:hidden}
-.fill{height:100%;background:#2860ad;width:0}
-.verse{background:#f1f6ff;border-left:4px solid #2860ad;padding:16px;border-radius:8px}
-.badge{display:inline-block;background:#eaf1ff;color:#2860ad;padding:6px 10px;border-radius:20px;font-size:12px;font-weight:700}
-.ai{background:linear-gradient(135deg,#faf8ff,#f1f6ff)}
-.certificate{text-align:center;background:#fffdf4}
-.success{color:#148043;font-weight:700}
-.error{color:#c62828;font-weight:700}
-footer{text-align:center;color:#7a8494;padding:25px;font-size:13px}
-@media(max-width:650px){.grid{grid-template-columns:1fr}.auth{margin:25px auto}}
+.langs{display:flex;gap:8px;margin:15px 0}
+.langs button{margin:0;background:#edf2fb;color:#173b73}
+.langs button.active{background:#2860ad;color:white}
+.badge{
+ display:inline-block;
+ padding:7px 12px;
+ border-radius:20px;
+ background:#eaf1ff;
+ color:#2860ad;
+ font-size:12px;
+ font-weight:bold
+}
+.verse{
+ background:#fff8df;
+ border-left:5px solid #f2b632;
+ padding:16px;
+ border-radius:12px;
+ margin:15px 0;
+ line-height:1.6
+}
+.question{
+ background:linear-gradient(135deg,#fff1f7,#f2f5ff);
+ border-radius:18px;
+ padding:20px;
+ margin-top:20px
+}
+.answers{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px;
+ margin-top:15px
+}
+.answer{
+ color:white;
+ min-height:70px;
+ border-radius:16px;
+ border:0;
+ font-size:16px;
+ padding:15px;
+ text-align:left
+}
+.a1{background:#3974d8}
+.a2{background:#e05b7d}
+.a3{background:#e89b32}
+.a4{background:#36a477}
+.answer.correct{outline:5px solid #22a45a}
+.answer.wrong{opacity:.55}
+.result{
+ text-align:center;
+ font-size:18px;
+ font-weight:bold;
+ margin-top:15px
+}
+.stats{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:10px
+}
+.stat{
+ text-align:center;
+ background:#f4f7fc;
+ border-radius:15px;
+ padding:16px
+}
+.stat b{
+ display:block;
+ font-size:25px;
+ color:#173b73
+}
+.bar{
+ height:10px;
+ background:#e4e9f1;
+ border-radius:20px;
+ margin-top:15px;
+ overflow:hidden
+}
+.fill{
+ height:100%;
+ width:0;
+ background:linear-gradient(90deg,#3974d8,#36a477)
+}
+.ai{background:linear-gradient(135deg,#f2edff,#eef6ff)}
+.certificate{text-align:center;background:#fffbea}
+.error{color:#c62828;font-weight:bold}
+.success{color:#168044;font-weight:bold}
+footer{text-align:center;color:#777;padding:25px}
+
+@media(max-width:600px){
+ .answers{grid-template-columns:1fr}
+ .stats{grid-template-columns:1fr}
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<div class="header">
 <div class="logo">GOH Bible School</div>
 <div class="tag">Grow in God's Word • Learn • Apply • Serve</div>
-</div>
 </header>
 
 <main>
 
 <!-- LOGIN -->
 
-<section id="loginPage" class="card auth">
-<h1>Welcome back</h1>
-<p class="muted">Sign in to continue your Bible School journey.</p>
+<div id="loginPage" class="card auth">
+<h2>Welcome Back</h2>
+<p>Continue your Bible School journey.</p>
 
 <input id="loginEmail" type="email" placeholder="Email">
 <input id="loginPassword" type="password" placeholder="Password">
 
 <button onclick="login()">Sign In</button>
 
-<p class="muted">
-New student?
-<button class="link" onclick="showRegister()">Create an account</button>
+<p>New student?
+<button onclick="showRegister()" style="background:none;color:#2860ad">
+Create Account
+</button>
 </p>
 
 <p id="loginMsg"></p>
-</section>
+</div>
 
 
 <!-- REGISTER -->
 
-<section id="registerPage" class="card auth hidden">
-<h1>Create your account</h1>
-<p class="muted">Start your GOH Bible School journey.</p>
+<div id="registerPage" class="card auth hidden">
+<h2>Create Account</h2>
 
 <input id="regName" placeholder="Full name">
 <input id="regEmail" type="email" placeholder="Email">
@@ -83,33 +183,68 @@ New student?
 
 <button onclick="register()">Create Account</button>
 
-<p class="muted">
-Already registered?
-<button class="link" onclick="showLogin()">Sign in</button>
+<p>Already registered?
+<button onclick="showLogin()" style="background:none;color:#2860ad">
+Sign In
+</button>
 </p>
 
 <p id="regMsg"></p>
-</section>
-
-
-<!-- DASHBOARD -->
-
-<section id="app" class="hidden">
-
-<div class="card">
-<span class="badge">Student Dashboard</span>
-<h2>Welcome, <span id="studentName"></span></h2>
-<button style="max-width:130px" onclick="logout()">Sign Out</button>
 </div>
 
 
-<div class="card">
-<h2>Your Progress</h2>
+<!-- APP -->
 
-<div class="grid">
-<div class="stat"><b id="completed">0</b>Lessons</div>
-<div class="stat"><b id="correct">0</b>Correct</div>
-<div class="stat"><b id="score">0%</b>Score</div>
+<div id="app" class="hidden">
+
+<div class="card">
+<span class="badge">STUDENT DASHBOARD</span>
+<h2>Welcome, <span id="studentName"></span> 👋</h2>
+<button onclick="logout()">Sign Out</button>
+</div>
+
+
+<!-- LANGUAGE -->
+
+<div class="card">
+<h3>Language</h3>
+
+<div class="langs">
+<button id="enBtn" class="active" onclick="setLanguage('en')">
+English
+</button>
+
+<button id="siBtn" onclick="setLanguage('si')">
+සිංහල
+</button>
+
+<button id="taBtn" onclick="setLanguage('ta')">
+தமிழ்
+</button>
+</div>
+</div>
+
+
+<!-- PROGRESS -->
+
+<div class="card">
+<h3>📊 Your Progress</h3>
+
+<div class="stats">
+<div class="stat">
+<b id="completed">0</b>
+Lessons
+</div>
+
+<div class="stat">
+<b id="correct">0</b>
+Correct
+</div>
+
+<div class="stat">
+<b id="score">0%</b>
+Score
+</div>
 </div>
 
 <div class="bar">
@@ -118,56 +253,106 @@ Already registered?
 </div>
 
 
+<!-- DAILY LESSON -->
+
 <div class="card">
-<span class="badge" id="day">Today's Lesson</span>
-<div id="lesson">Loading...</div>
 
-<div id="questionBox" class="hidden">
-<hr>
-<h3>Daily Question</h3>
+<span class="badge" id="day">DAILY LESSON</span>
+
+<div id="lesson">
+Loading lesson...
+</div>
+
+<div id="questionBox" class="question hidden">
+
+<h3 id="questionTitle">Question</h3>
+
 <p id="question"></p>
-<input id="answer" placeholder="Your answer">
-<button onclick="submitAnswer()">Submit Answer</button>
-<p id="answerMsg"></p>
-</div>
+
+<div class="answers">
+
+<button class="answer a1" onclick="choose(0)" id="choice0"></button>
+<button class="answer a2" onclick="choose(1)" id="choice1"></button>
+<button class="answer a3" onclick="choose(2)" id="choice2"></button>
+<button class="answer a4" onclick="choose(3)" id="choice3"></button>
+
 </div>
 
+<div id="result" class="result"></div>
+
+</div>
+
+</div>
+
+
+<!-- AI -->
 
 <div class="card ai">
-<span class="badge">AI Bible Teacher</span>
-<h2>Ask a Question</h2>
-<textarea id="aiQuestion" placeholder="Ask about today's lesson..."></textarea>
+
+<span class="badge">🤖 AI BIBLE TEACHER</span>
+
+<h2>Ask About Today's Lesson</h2>
+
+<input id="aiQuestion"
+placeholder="Ask a question...">
+
 <button onclick="askAI()">Ask AI Teacher</button>
+
 <div id="aiAnswer"></div>
+
 </div>
 
+
+<!-- CERTIFICATE -->
 
 <div class="card certificate">
-<span class="badge">Course Completion</span>
-<h2>Certificate</h2>
-<p id="certificate">Checking...</p>
+
+<span class="badge">🎓 CERTIFICATE</span>
+
+<h2>Course Completion</h2>
+
+<div id="certificate">
+Checking...
 </div>
 
-</section>
+</div>
+
+</div>
 
 </main>
 
-<footer>GOH Bible School © 2026</footer>
+<footer>
+GOH Bible School © 2026
+</footer>
+
 
 <script>
 
-const API="https://goh-bible-school-api.createlk.workers.dev";
+const API=
+"https://goh-bible-school-api.createlk.workers.dev";
+
 let token=localStorage.getItem("goh_token");
 let currentLesson=null;
+let language="en";
+let answered=false;
+
+
+// API
 
 async function api(path,opt={}){
  opt.headers={
   "Content-Type":"application/json",
   ...(opt.headers||{})
  };
- if(token)opt.headers.Authorization="Bearer "+token;
+
+ if(token)
+  opt.headers.Authorization="Bearer "+token;
+
  return fetch(API+path,opt).then(r=>r.json());
 }
+
+
+// AUTH
 
 function showRegister(){
  loginPage.classList.add("hidden");
@@ -180,6 +365,7 @@ function showLogin(){
 }
 
 async function login(){
+
  const r=await api("/api/login",{
   method:"POST",
   body:JSON.stringify({
@@ -199,7 +385,9 @@ async function login(){
  start(r.user);
 }
 
+
 async function register(){
+
  const r=await api("/api/register",{
   method:"POST",
   body:JSON.stringify({
@@ -220,86 +408,207 @@ async function register(){
  start(r.user);
 }
 
+
 function start(user){
+
  loginPage.classList.add("hidden");
  registerPage.classList.add("hidden");
  app.classList.remove("hidden");
+
  studentName.textContent=user.name;
+
  load();
 }
 
+
 function logout(){
+
  localStorage.removeItem("goh_token");
  location.reload();
 }
 
-async function load(){
- await progress();
- await lessonLoad();
- await certificateCheck();
+
+// LANGUAGE
+
+function setLanguage(lang){
+
+ language=lang;
+
+ enBtn.classList.toggle("active",lang==="en");
+ siBtn.classList.toggle("active",lang==="si");
+ taBtn.classList.toggle("active",lang==="ta");
+
+ renderLesson();
 }
 
-async function lessonLoad(){
+
+// LESSON
+
+async function loadLesson(){
+
  const r=await api("/api/today");
 
  if(!r.ok){
-  lesson.innerHTML=`<p class="error">${safe(r.error)}</p>`;
+  lesson.innerHTML=
+  `<p class="error">No daily lesson available.</p>`;
   return;
  }
 
  currentLesson=r.lesson;
- day.textContent="Day "+r.day_number;
+ answered=false;
+
+ day.textContent=
+ "DAY "+(r.lesson.day_number||"");
+
+ renderLesson();
+}
+
+
+function renderLesson(){
+
+ if(!currentLesson)return;
+
+ const l=currentLesson;
+
+ const topic=
+ l["topic_"+language]||l.topic||"";
+
+ const reference=
+ l["bible_reference_"+language]||
+ l.bible_reference||"";
+
+ const verse=
+ l["verse_"+language]||
+ l.verse||"";
+
+ const text=
+ l["lesson_"+language]||
+ l.lesson||"";
+
+ const application=
+ l["application_"+language]||
+ l.application||"";
+
+ const q=
+ l["question_"+language]||
+ l.question||"";
 
  lesson.innerHTML=`
- <h2>${safe(r.lesson.topic)}</h2>
- <p><b>${safe(r.lesson.bible_reference)}</b></p>
- <div class="verse">${safe(r.lesson.verse)}</div>
+
+ <h2>${safe(topic)}</h2>
+
+ <p>
+ <b>${safe(reference)}</b>
+ </p>
+
+ <div class="verse">
+ ${safe(verse)}
+ </div>
+
  <h3>Lesson</h3>
- <p>${safe(r.lesson.lesson)}</p>
- ${r.lesson.application?`<h3>Application</h3><p>${safe(r.lesson.application)}</p>`:""}
+ <p>${safe(text)}</p>
+
+ ${application?
+ `<h3>Application</h3>
+ <p>${safe(application)}</p>`:""}
  `;
 
- question.textContent=r.lesson.question;
+ question.textContent=q;
+
+ for(let i=0;i<4;i++){
+
+  const c=
+   l["choice_"+(i+1)+"_"+language]||
+   l["choice_"+(i+1)]||
+   "";
+
+  document.getElementById(
+   "choice"+i
+  ).textContent=c;
+ }
+
  questionBox.classList.remove("hidden");
 }
 
-async function submitAnswer(){
+
+// ANSWER
+
+async function choose(index){
+
+ if(answered)return;
+
+ answered=true;
+
+ const buttons=[
+  choice0,choice1,choice2,choice3
+ ];
+
+ const selected=
+  buttons[index].textContent;
+
  const r=await api("/api/answer",{
   method:"POST",
   body:JSON.stringify({
    lesson_id:currentLesson.id,
-   answer:answer.value.trim()
+   answer:selected
   })
  });
 
  if(!r.ok){
-  answerMsg.className="error";
-  answerMsg.textContent=r.error;
+
+  result.className="result error";
+  result.textContent=r.error;
+  answered=false;
   return;
  }
 
- answerMsg.className=r.correct?"success":"error";
- answerMsg.textContent=r.correct?"Correct!":"Incorrect. Answer recorded.";
+ buttons[index].classList.add(
+  r.correct?"correct":"wrong"
+ );
+
+ result.className=
+ "result "+(r.correct?"success":"error");
+
+ result.textContent=
+ r.correct
+ ? "✓ Correct! Well done."
+ : "✕ Incorrect. Keep learning!";
 
  await progress();
  await certificateCheck();
 }
 
+
+// PROGRESS
+
 async function progress(){
+
  const r=await api("/api/progress");
+
  if(!r.ok)return;
 
  completed.textContent=r.progress.completed;
  correct.textContent=r.progress.correct;
  score.textContent=r.progress.percentage+"%";
- fill.style.width=Math.min(100,r.progress.completed/365*100)+"%";
+
+ fill.style.width=
+ Math.min(
+  100,
+  r.progress.completed/365*100
+ )+"%";
 }
 
-async function askAI(){
- const q=aiQuestion.value.trim();
- if(!q)return;
 
- aiAnswer.textContent="AI Teacher is thinking...";
+// AI
+
+async function askAI(){
+
+ const q=aiQuestion.value.trim();
+
+ if(!q||!currentLesson)return;
+
+ aiAnswer.innerHTML=
+ "<p>Thinking...</p>";
 
  const r=await api("/api/ai",{
   method:"POST",
@@ -309,21 +618,52 @@ async function askAI(){
   })
  });
 
- aiAnswer.innerHTML=r.ok
- ?`<div class="verse"><b>AI Teacher</b><p>${safe(r.answer)}</p></div>`
+ aiAnswer.innerHTML=
+ r.ok
+ ?`<div class="verse">
+ <b>AI Teacher</b>
+ <p>${safe(r.answer)}</p>
+ </div>`
  :`<p class="error">${safe(r.error)}</p>`;
 }
 
+
+// CERTIFICATE
+
 async function certificateCheck(){
+
  const r=await api("/api/certificate");
+
  if(!r.ok)return;
 
- certificate.innerHTML=r.eligible
- ?`<span class="success">🎓 You are eligible for your certificate.</span><br>Final score: ${r.score}%`
- :`${r.completed}/365 lessons completed<br>Current score: ${r.score}%`;
+ certificate.innerHTML=
+ r.eligible
+ ?`<p class="success">
+ 🎓 Congratulations! You are eligible
+ for your certificate.
+ </p>
+ <b>Score: ${r.score}%</b>`
+ :`
+ <p>${r.completed}/365 lessons completed</p>
+ <p>Current score: <b>${r.score}%</b></p>
+ `;
 }
 
+
+// LOAD
+
+async function load(){
+
+ await progress();
+ await loadLesson();
+ await certificateCheck();
+}
+
+
+// SECURITY
+
 function safe(x){
+
  return String(x||"")
  .replaceAll("&","&amp;")
  .replaceAll("<","&lt;")
@@ -332,14 +672,22 @@ function safe(x){
  .replaceAll("'","&#039;");
 }
 
+
+// STAY LOGGED IN
+
 if(token){
+
  api("/api/me").then(r=>{
-  if(r.ok)start(r.user);
+
+  if(r.ok)
+   start(r.user);
   else{
    localStorage.removeItem("goh_token");
    token=null;
   }
+
  });
+
 }
 
 </script>
