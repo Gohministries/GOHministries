@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>GOH Bible School | GOH Ministries</title>
+
+<meta name="description"
+content="GOH 365-Day Online Bible School — Grow in God's Word and become a faithful disciple of Jesus Christ.">
+
+<meta name="theme-color" content="#111827">
+
+<link rel="manifest" href="/manifest.json">
+
+<link rel="icon"
+href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#f8fafc;
+color:#172033;
+line-height:1.5
+}
+
+a{text-decoration:none;color:inherit}
+
+button,input{font:inherit}
+
+.container{
+width:min(1000px,92%);
+margin:auto
+}
+
+/* HEADER */
+
+header{
+position:sticky;
+top:0;
+z-index:1000;
+background:#fff;
+border-bottom:1px solid #e5e7eb
+}
+
+.nav{
+height:64px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:8px
+}
+
+.logo img{
+width:40px;
+height:40px;
+object-fit:contain;
+border-radius:8px
+}
+
+.logo-title{
+font-size:13px;
+font-weight:900
+}
+
+.logo-sub{
+font-size:8px;
+color:#6b7280
+}
+
+.nav-links{
+display:flex;
+gap:3px
+}
+
+.nav-links a{
+font-size:9px;
+font-weight:800;
+padding:7px;
+border-radius:7px
+}
+
+.nav-links a:hover{
+background:#f3f4f6
+}
+
+.install,
+.menu{
+border:0;
+border-radius:8px;
+cursor:pointer
+}
+
+.install{
+background:#111827;
+color:#fff;
+padding:8px 10px;
+font-size:9px;
+font-weight:900
+}
+
+.menu{
+display:none;
+width:38px;
+height:38px;
+background:#fff;
+border:1px solid #ddd;
+font-size:18px
+}
+
+.mobile-menu{
+display:none
+}
+
+/* HERO */
+
+.hero{
+background:
+radial-gradient(circle at 85% 15%,rgba(99,102,241,.2),transparent 30%),
+linear-gradient(135deg,#111827,#253044);
+color:#fff;
+padding:60px 0;
+text-align:center
+}
+
+.badge{
+font-size:9px;
+font-weight:900;
+letter-spacing:1px;
+color:#fbbf24
+}
+
+.hero h1{
+font-size:clamp(36px,6vw,58px);
+line-height:1.05;
+margin:10px 0
+}
+
+.hero h1 span{
+color:#fbbf24
+}
+
+.hero p{
+max-width:620px;
+margin:0 auto 18px;
+font-size:12px;
+color:#d1d5db
+}
+
+.buttons{
+display:flex;
+justify-content:center;
+gap:8px;
+flex-wrap:wrap
+}
+
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:10px 15px;
+border-radius:8px;
+font-size:11px;
+font-weight:900;
+border:0;
+cursor:pointer
+}
+
+.primary{
+background:#fbbf24;
+color:#111827
+}
+
+.dark{
+background:#111827;
+color:#fff
+}
+
+.light{
+background:#fff;
+color:#111827
+}
+
+.green{
+background:#25D366;
+color:#fff
+}
+
+/* SECTION */
+
+section{
+padding:45px 0
+}
+
+.head{
+text-align:center;
+margin-bottom:22px
+}
+
+.head small{
+font-size:8px;
+font-weight:900;
+letter-spacing:1px;
+color:#6366f1
+}
+
+.head h2{
+font-size:27px;
+margin:4px 0
+}
+
+.head p{
+font-size:11px;
+color:#6b7280
+}
+
+/* PROGRAM */
+
+.program-card{
+background:#111827;
+color:#fff;
+border-radius:18px;
+padding:25px
+}
+
+.program-card small{
+font-size:8px;
+font-weight:900;
+letter-spacing:1px;
+color:#fbbf24
+}
+
+.program-card h2{
+font-size:26px;
+margin:5px 0
+}
+
+.program-card p{
+font-size:11px;
+color:#cbd5e1;
+margin-bottom:16px
+}
+
+.points{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:6px;
+margin-bottom:18px
+}
+
+.points span{
+background:rgba(255,255,255,.07);
+border-radius:7px;
+padding:7px;
+font-size:9px
+}
+
+.price{
+font-size:25px;
+font-weight:900;
+color:#fbbf24;
+margin-bottom:14px
+}
+
+.price span{
+font-size:9px;
+color:#cbd5e1
+}
+
+/* MEMBERSHIP */
+
+.membership{
+background:#fff
+}
+
+.members{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px
+}
+
+.member{
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:14px;
+padding:20px
+}
+
+.member.premium{
+border:2px solid #fbbf24
+}
+
+.member h3{
+font-size:17px;
+margin:5px 0
+}
+
+.member p{
+font-size:10px;
+color:#6b7280;
+margin-bottom:10px
+}
+
+.member ul{
+list-style:none;
+margin-bottom:15px
+}
+
+.member li{
+font-size:10px;
+padding:5px 0;
+border-bottom:1px solid #f1f5f9
+}
+
+/* PAYMENT */
+
+.payment{
+background:#f8fafc
+}
+
+.payment-card{
+max-width:600px;
+margin:auto;
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:16px;
+padding:24px;
+text-align:center
+}
+
+.payment-card h3{
+font-size:21px
+}
+
+.payment-card p{
+font-size:10px;
+color:#6b7280;
+margin:6px 0 14px
+}
+
+.payment-price{
+font-size:27px;
+font-weight:900;
+color:#6366f1;
+margin-bottom:14px
+}
+
+.payment-price span{
+font-size:9px;
+color:#6b7280
+}
+
+.note{
+margin-top:12px;
+background:#fffbeb;
+color:#92400e;
+padding:10px;
+border-radius:8px;
+font-size:9px
+}
+
+/* DAILY */
+
+.daily{
+background:#fff
+}
+
+.lesson{
+max-width:700px;
+margin:auto;
+background:#111827;
+color:#fff;
+border-radius:16px;
+padding:22px
+}
+
+.day{
+font-size:8px;
+font-weight:900;
+color:#fbbf24;
+letter-spacing:1px
+}
+
+.lesson h3{
+font-size:20px;
+margin:5px 0 10px
+}
+
+.verse{
+font-size:15px;
+font-weight:700;
+margin-bottom:5px
+}
+
+.reference{
+font-size:9px;
+color:#cbd5e1
+}
+
+.explanation{
+margin-top:15px;
+padding:12px;
+background:rgba(255,255,255,.07);
+border-radius:9px;
+font-size:10px;
+color:#d1d5db
+}
+
+.question{
+margin-top:15px;
+background:#fff;
+color:#172033;
+border-radius:10px;
+padding:15px
+}
+
+.question h4{
+font-size:13px;
+margin-bottom:8px
+}
+
+.option{
+display:block;
+border:1px solid #e5e7eb;
+padding:8px;
+border-radius:7px;
+margin:5px 0;
+font-size:10px
+}
+
+/* CERTIFICATE */
+
+.certificate{
+background:#f8fafc
+}
+
+.certificate-card{
+max-width:700px;
+margin:auto;
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:16px;
+padding:22px;
+text-align:center
+}
+
+.certificate-icon{
+font-size:35px
+}
+
+.certificate-card h3{
+font-size:20px;
+margin:5px 0
+}
+
+.certificate-card p{
+font-size:10px;
+color:#6b7280;
+margin-bottom:14px
+}
+
+.requirements{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:6px;
+margin-bottom:16px
+}
+
+.requirement{
+background:#f8fafc;
+padding:9px;
+border-radius:7px;
+font-size:9px;
+font-weight:800
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1120;
+color:#fff;
+padding:25px 0 15px
+}
+
+.footer{
+display:flex;
+justify-content:space-between;
+gap:15px
+}
+
+.footer strong{
+font-size:13px
+}
+
+.footer small{
+display:block;
+color:#94a3b8;
+font-size:8px
+}
+
+.footer-links{
+display:flex;
+gap:12px
+}
+
+.footer-links a{
+font-size:9px;
+color:#cbd5e1
+}
+
+.copy{
+border-top:1px solid #263044;
+margin-top:15px;
+padding-top:10px;
+font-size:8px;
+color:#64748b
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+position:fixed;
+right:15px;
+bottom:15px;
+width:50px;
+height:50px;
+border-radius:50%;
+display:grid;
+place-items:center;
+background:#25D366;
+color:#fff;
+font-size:22px;
+z-index:2000
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.nav-links{display:none}
+
+.menu{display:block}
+
+.mobile-menu{
+position:fixed;
+top:64px;
+left:0;
+right:0;
+z-index:999;
+background:#fff;
+border-bottom:1px solid #ddd;
+padding:8px 4%;
+box-shadow:0 10px 20px rgba(0,0,0,.1)
+}
+
+.mobile-menu.show{
+display:block
+}
+
+.mobile-menu a{
+display:block;
+padding:10px;
+font-size:11px;
+font-weight:800;
+border-radius:7px
+}
+
+.mobile-menu a:hover{
+background:#f3f4f6
+}
+
+}
+
+@media(max-width:600px){
+
+.container{
+width:91%
+}
+
+.hero{
+padding:50px 0
+}
+
+.buttons{
+flex-direction:column
+}
+
+.buttons .btn{
+width:100%
+}
+
+.members{
+grid-template-columns:1fr
+}
+
+.points{
+grid-template-columns:1fr
+}
+
+.requirements{
+grid-template-columns:1fr 1fr
+}
+
+.footer{
+display:block
+}
+
+.footer-links{
+margin-top:12px;
+flex-wrap:wrap
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="container nav">
+
+<a href="index.html" class="logo">
+
+<img
+src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
+alt="GOH Ministries">
+
+<div>
+<div class="logo-title">GOH Ministries</div>
+<div class="logo-sub">Gate of Heaven Ministries</div>
+</div>
+
+</a>
+
+<div style="display:flex;align-items:center;gap:6px">
+
+<nav class="nav-links">
+
+<a href="index.html">🏠 Home</a>
+<a href="about.html">About</a>
+<a href="ministries.html">Ministries</a>
+<a href="bible-school.html">📖 Bible School</a>
+<a href="media.html">Media</a>
+<a href="sermons.html">Sermons</a>
+<a href="events.html">Events</a>
+<a href="prayer.html">Prayer</a>
+<a href="contact.html">Contact</a>
+
+</nav>
+
+<button class="install" id="installBtn">
+⇩ Install
+</button>
+
+<button class="menu" id="menuBtn">
+☰
+</button>
+
+</div>
+
+</div>
+
+</header>
+
+<nav class="mobile-menu" id="mobileMenu">
+
+<a href="index.html">🏠 Home</a>
+<a href="about.html">About</a>
+<a href="ministries.html">Ministries</a>
+<a href="bible-school.html">📖 Bible School</a>
+<a href="media.html">Media</a>
+<a href="sermons.html">Sermons</a>
+<a href="events.html">Events</a>
+<a href="prayer.html">🙏 Prayer</a>
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="container">
+
+<div class="badge">
+GOH ONLINE BIBLE SCHOOL
+</div>
+
+<h1>
+From Believer to <span>Disciple</span>
+</h1>
+
+<p>
+A 365-day journey through God's Word,
+designed to help believers grow in faith,
+knowledge and Christian character.
+</p>
+
+<div class="buttons">
+
+<a href="register.html" class="btn primary">
+Start Free
+</a>
+
+<a href="#premium" class="btn light">
+View Premium
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PROGRAM -->
+
+<section>
+
+<div class="container">
+
+<div class="head">
+
+<small>365-DAY PROGRAM</small>
+
+<h2>
+Grow in God's Word
+</h2>
+
+<p>
+One Bible lesson and one question each day.
+</p>
+
+</div>
+
+<div class="program-card">
+
+<small>📖 BIBLE DISCIPLESHIP JOURNEY</small>
+
+<h2>
+365 Days • 3 Languages • One Journey
+</h2>
+
+<p>
+Study the Bible in English KJV, Sinhala and Tamil.
+Each lesson includes Scripture, explanation,
+application and assessment.
+</p>
+
+<div class="points">
+
+<span>✓ 365 Bible Lessons</span>
+<span>✓ KJV English</span>
+<span>✓ Sinhala</span>
+<span>✓ Tamil</span>
+<span>✓ Daily Explanation</span>
+<span>✓ Daily Question</span>
+<span>✓ AI Bible Assistant</span>
+<span>✓ Progress Tracking</span>
+<span>✓ Final Assessment</span>
+<span>✓ Certificate Pathway</span>
+
+</div>
+
+<div class="price">
+LKR 1,500 <span>/ month</span>
+</div>
+
+<a href="#payment" class="btn primary">
+Get Premium
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MEMBERSHIP -->
+
+<section class="membership" id="premium">
+
+<div class="container">
+
+<div class="head">
+
+<small>MEMBERSHIP</small>
+
+<h2>
+Start Free. Grow More with Premium.
+</h2>
+
+<p>
+One daily lesson is available free after login.
+</p>
+
+</div>
+
+<div class="members">
+
+<div class="member">
+
+<div style="font-size:24px">🆓</div>
+
+<h3>Free Member</h3>
+
+<p>Begin your Bible learning journey.</p>
+
+<ul>
+
+<li>✓ Login required</li>
+<li>✓ 1 daily Bible lesson</li>
+<li>✓ 1 daily question</li>
+<li>✓ Basic progress</li>
+
+</ul>
+
+<a href="register.html" class="btn dark">
+Register Free
+</a>
+
+</div>
+
+
+<div class="member premium">
+
+<div style="font-size:24px">⭐</div>
+
+<h3>Premium Member</h3>
+
+<p>Continue through the complete program.</p>
+
+<ul>
+
+<li>✓ All 365 lessons</li>
+<li>✓ English, Sinhala & Tamil</li>
+<li>✓ Bible-based AI assistance</li>
+<li>✓ Full assessments</li>
+<li>✓ Progress tracking</li>
+<li>✓ Final assessment</li>
+<li>✓ Certificate pathway</li>
+
+</ul>
+
+<a href="#payment" class="btn primary">
+Get Premium
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PAYMENT -->
+
+<section class="payment" id="payment">
+
+<div class="container">
+
+<div class="head">
+
+<small>PREMIUM ACCESS</small>
+
+<h2>
+LKR 1,500 / Month
+</h2>
+
+<p>
+Pay securely through PayHere.
+</p>
+
+</div>
+
+<div class="payment-card">
+
+<h3>⭐ GOH Bible School Premium</h3>
+
+<p>
+Register or login first, then complete your payment.
+</p>
+
+<div class="payment-price">
+LKR 1,500 <span>/ month</span>
+</div>
+
+<a
+href="YOUR_PAYHERE_SANDBOX_LINK"
+target="_blank"
+rel="noopener"
+class="btn primary">
+
+💳 Pay with PayHere
+
+</a>
+
+<div class="note">
+
+<strong>Sandbox:</strong>
+This is currently a PayHere test link.
+After payment, membership remains
+<strong>Pending</strong> until approved by the administrator.
+
+</div>
+
+<br>
+
+<a href="login.html" class="btn dark">
+Login
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- DAILY LESSON -->
+
+<section class="daily">
+
+<div class="container">
+
+<div class="head">
+
+<small>DAILY BIBLE STUDY</small>
+
+<h2>
+Today's Bible Lesson
+</h2>
+
+<p>
+Free members can access one daily lesson after login.
+</p>
+
+</div>
+
+<div class="lesson">
+
+<div class="day">
+DAY 1 • GENESIS 1:1
+</div>
+
+<h3>
+God Is the Creator
+</h3>
+
+<div class="verse">
+“In the beginning God created the heaven and the earth.”
+</div>
+
+<div class="reference">
+Genesis 1:1 — KJV
+</div>
+
+<div class="explanation">
+
+<strong>Bible Explanation:</strong><br>
+
+The Bible begins by declaring that God is the
+Creator of heaven and earth. Everything exists
+because of Him and is under His authority.
+
+</div>
+
+<div class="question">
+
+<h4>
+Daily Question
+</h4>
+
+<p style="font-size:10px;margin-bottom:8px">
+Who created the heaven and the earth?
+</p>
+
+<label class="option">
+<input type="radio" name="q"> A. Moses
+</label>
+
+<label class="option">
+<input type="radio" name="q"> B. God
+</label>
+
+<label class="option">
+<input type="radio" name="q"> C. David
+</label>
+
+<label class="option">
+<input type="radio" name="q"> D. Paul
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CERTIFICATE -->
+
+<section class="certificate">
+
+<div class="container">
+
+<div class="head">
+
+<small>CERTIFICATE</small>
+
+<h2>
+365-Day Bible School Certificate
+</h2>
+
+<p>
+Premium students can work toward certificate eligibility.
+</p>
+
+</div>
+
+<div class="certificate-card">
+
+<div class="certificate-icon">🎓</div>
+
+<h3>
+Certificate Progress
+</h3>
+
+<p>
+To qualify, students should complete the required
+365-day program and achieve at least 80% in the
+required assessments, including the final assessment.
+</p>
+
+<div class="requirements">
+
+<div class="requirement">✓ 365 Days</div>
+<div class="requirement">✓ Lessons</div>
+<div class="requirement">✓ 80%+</div>
+<div class="requirement">✓ Final Exam</div>
+
+</div>
+
+<a href="login.html" class="btn dark">
+Check My Progress
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="container">
+
+<div class="footer">
+
+<div>
+
+<strong>GOH Ministries</strong>
+
+<small>
+Gate of Heaven Ministries
+</small>
+
+</div>
+
+<div class="footer-links">
+
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+<a href="refund.html">Refund</a>
+<a href="contact.html">Contact</a>
+
+</div>
+
+</div>
+
+<div class="copy">
+© 2026 GOH Ministries. All rights reserved.
+</div>
+
+</div>
+
+</footer>
+
+
+<a
+href="https://wa.me/94771190395?text=Hello%20GOH%20Ministries"
+target="_blank"
+rel="noopener"
+class="whatsapp">
+
+💬
+
+</a>
+
+
+<script>
+
+/* MOBILE MENU */
+
+const menuBtn=document.getElementById("menuBtn");
+const mobileMenu=document.getElementById("mobileMenu");
+
+menuBtn.onclick=()=>{
+
+const open=mobileMenu.classList.toggle("show");
+
+menuBtn.textContent=open?"✕":"☰";
+
+};
+
+mobileMenu.querySelectorAll("a").forEach(a=>{
+
+a.onclick=()=>{
+
+mobileMenu.classList.remove("show");
+
+menuBtn.textContent="☰";
+
+};
+
+});
+
+
+/* PWA INSTALL */
+
+let deferredPrompt=null;
+
+const installBtn=document.getElementById("installBtn");
+
+window.addEventListener("beforeinstallprompt",e=>{
+
+e.preventDefault();
+
+deferredPrompt=e;
+
+});
+
+installBtn.onclick=async()=>{
+
+if(deferredPrompt){
+
+deferredPrompt.prompt();
+
+await deferredPrompt.userChoice;
+
+deferredPrompt=null;
+
+}else{
+
+alert(
+"Open your browser menu and choose Install app or Add to Home screen."
+);
+
+}
+
+};
+
+</script>
+
+</body>
+</html>
