@@ -1,310 +1,859 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>GOH Ministries | Gate of Heaven Ministries</title>
 
-<meta name="description" content="Gate of Heaven Ministries — Building believers and making disciples.">
+<meta name="description"
+content="Gate of Heaven Ministries — Building believers and making disciples.">
+
 <meta name="theme-color" content="#111827">
 
+<!-- PWA -->
 <link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-192.png">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GOH Ministries">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#f8fafc;color:#172033;line-height:1.5}
-a{text-decoration:none;color:inherit}
-.container{width:min(1050px,92%);margin:auto}
 
-/* HEADER */
+*{
+box-sizing:border-box;
+margin:0;
+padding:0
+}
+
+html{
+scroll-behavior:smooth
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#f8fafc;
+color:#172033;
+line-height:1.5
+}
+
+a{
+text-decoration:none;
+color:inherit
+}
+
+button{
+font:inherit
+}
+
+.container{
+width:min(1050px,92%);
+margin:auto
+}
+
+
+/* ================= HEADER ================= */
+
 header{
-position:sticky;top:0;z-index:1000;
-background:#fff;border-bottom:1px solid #e5e7eb
+position:sticky;
+top:0;
+z-index:1000;
+background:#fff;
+border-bottom:1px solid #e5e7eb
 }
+
 .nav{
-height:64px;display:flex;align-items:center;
-justify-content:space-between;gap:10px
+height:64px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px
 }
-.logo{display:flex;align-items:center;gap:8px}
+
+.logo{
+display:flex;
+align-items:center;
+gap:8px
+}
+
 .logo-icon{
-width:38px;height:38px;border-radius:10px;
-display:grid;place-items:center;
-background:#111827;color:#fff
+width:38px;
+height:38px;
+display:grid;
+place-items:center;
+border-radius:10px;
+background:#111827;
+color:#fff;
+font-size:19px
 }
-.logo-title{font-size:14px;font-weight:900}
-.logo-sub{font-size:9px;color:#6b7280}
+
+.logo-title{
+font-size:14px;
+font-weight:900;
+line-height:1.1
+}
+
+.logo-sub{
+font-size:9px;
+color:#6b7280;
+margin-top:2px
+}
+
+.nav-right{
+display:flex;
+align-items:center;
+gap:6px
+}
 
 .nav-links{
-display:flex;align-items:center;gap:4px
+display:flex;
+align-items:center;
+gap:3px
 }
-.nav-links a,.more{
-font-size:11px;font-weight:800;
-padding:8px;border-radius:8px;
-border:0;background:none;cursor:pointer
-}
-.nav-links a:hover,.more:hover{background:#f3f4f6}
-.school{background:#111827!important;color:#fff!important}
 
-.more-box{position:relative}
-.more-menu{
-display:none;position:absolute;right:0;top:38px;
-width:170px;background:#fff;
-border:1px solid #e5e7eb;border-radius:10px;
-padding:5px;box-shadow:0 12px 30px #0001
+.nav-links>a,
+.more{
+border:0;
+background:none;
+padding:8px 9px;
+border-radius:8px;
+font-size:11px;
+font-weight:800;
+color:#374151;
+cursor:pointer
 }
-.more-box:hover .more-menu{display:block}
-.more-menu a{display:block}
+
+.nav-links>a:hover,
+.more:hover{
+background:#f3f4f6
+}
+
+.school{
+background:#111827!important;
+color:#fff!important
+}
+
+
+/* MORE MENU */
+
+.more-box{
+position:relative
+}
+
+.more-menu{
+display:none;
+position:absolute;
+right:0;
+top:38px;
+width:175px;
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:10px;
+padding:5px;
+box-shadow:0 12px 30px rgba(0,0,0,.1)
+}
+
+.more-box:hover .more-menu{
+display:block
+}
+
+.more-menu a{
+display:block;
+padding:9px 10px;
+font-size:11px;
+font-weight:700;
+border-radius:7px
+}
+
+.more-menu a:hover{
+background:#f3f4f6
+}
+
+
+/* INSTALL */
 
 .install{
-display:none;border:0;background:#eef2ff;
-color:#4338ca;border-radius:8px;
-padding:8px 10px;font-size:10px;font-weight:900
+display:none;
+border:0;
+background:#eef2ff;
+color:#4338ca;
+border-radius:8px;
+padding:8px 10px;
+font-size:10px;
+font-weight:900;
+cursor:pointer
+}
+
+
+/* MOBILE BUTTON */
+
+.menu{
+display:none;
+border:1px solid #ddd;
+background:#fff;
+border-radius:8px;
+width:38px;
+height:38px;
+font-size:18px;
+cursor:pointer
+}
+
+
+/* ================= BUTTONS ================= */
+
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:11px 16px;
+border-radius:9px;
+font-size:12px;
+font-weight:900;
+border:1px solid transparent;
+cursor:pointer
+}
+
+.primary{
+background:#fbbf24;
+color:#111827
+}
+
+.light{
+background:#fff;
+color:#111827
+}
+
+.dark{
+background:#111827;
+color:#fff
+}
+
+.whatsapp-btn{
+background:#25D366;
+color:#fff
+}
+
+
+/* ================= HERO ================= */
+
+.hero{
+background:
+radial-gradient(
+circle at 85% 15%,
+rgba(99,102,241,.2),
+transparent 30%
+),
+linear-gradient(
+135deg,
+#111827,
+#253044
+);
+
+color:#fff;
+padding:70px 0
+}
+
+.hero-grid{
+display:grid;
+grid-template-columns:1.2fr .8fr;
+gap:30px;
+align-items:center
+}
+
+.badge{
+font-size:9px;
+font-weight:900;
+letter-spacing:1px;
+color:#fbbf24
+}
+
+.hero h1{
+font-size:clamp(38px,6vw,62px);
+line-height:1.05;
+letter-spacing:-2px;
+margin:10px 0 16px
+}
+
+.hero h1 span{
+color:#fbbf24
+}
+
+.hero-text{
+max-width:570px;
+font-size:14px;
+color:#d1d5db;
+margin-bottom:20px
+}
+
+.buttons{
+display:flex;
+gap:8px;
+flex-wrap:wrap
+}
+
+
+/* HERO FEATURE */
+
+.feature{
+background:rgba(255,255,255,.07);
+border:1px solid rgba(255,255,255,.13);
+border-radius:18px;
+padding:24px
+}
+
+.feature-icon{
+width:46px;
+height:46px;
+display:grid;
+place-items:center;
+background:#fbbf24;
+color:#111827;
+border-radius:12px;
+font-size:21px;
+margin-bottom:12px
+}
+
+.feature small{
+color:#fbbf24;
+font-size:9px;
+font-weight:900;
+letter-spacing:1px
+}
+
+.feature h2{
+font-size:25px;
+line-height:1.15;
+margin:5px 0 8px
+}
+
+.feature p{
+font-size:11px;
+color:#d1d5db;
+margin-bottom:16px
+}
+
+
+/* ================= QUICK NAV ================= */
+
+.quick{
+background:#fff;
+padding:14px 0;
+border-bottom:1px solid #e5e7eb
+}
+
+.quick-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:7px
+}
+
+.quick a{
+text-align:center;
+padding:10px 5px;
+border:1px solid #e5e7eb;
+border-radius:9px;
+font-size:10px;
+font-weight:900;
+background:#fff
+}
+
+.quick a:hover{
+background:#f9fafb
+}
+
+
+/* ================= SECTIONS ================= */
+
+section{
+padding:55px 0
+}
+
+.head{
+text-align:center;
+margin-bottom:25px
+}
+
+.head small{
+font-size:9px;
+font-weight:900;
+color:#6366f1;
+text-transform:uppercase;
+letter-spacing:1px
+}
+
+.head h2{
+font-size:28px;
+line-height:1.15;
+margin:5px 0
+}
+
+.head p{
+font-size:12px;
+color:#6b7280
+}
+
+
+/* ================= CARDS ================= */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px
+}
+
+.card{
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:14px;
+padding:20px
+}
+
+.card-icon{
+font-size:22px;
+margin-bottom:6px
+}
+
+.card h3{
+font-size:15px;
+margin-bottom:5px
+}
+
+.card p{
+font-size:11px;
+color:#6b7280
+}
+
+
+/* ================= BIBLE SCHOOL ================= */
+
+.school-section{
+background:#fff
+}
+
+.school-card{
+background:#111827;
+color:#fff;
+border-radius:20px;
+padding:28px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:25px
+}
+
+.school-card small{
+color:#fbbf24;
+font-size:9px;
+font-weight:900;
+letter-spacing:1px
+}
+
+.school-card h2{
+font-size:30px;
+line-height:1.1;
+margin:6px 0 9px
+}
+
+.school-card p{
+font-size:12px;
+color:#cbd5e1;
+margin-bottom:16px
+}
+
+.points{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:5px;
+margin-bottom:17px
+}
+
+.points span{
+background:rgba(255,255,255,.07);
+padding:7px;
+border-radius:6px;
+font-size:9px
+}
+
+
+/* ================= MEDIA ================= */
+
+.media-card{
+background:#111827;
+color:#fff;
+border-radius:18px;
+padding:25px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px
+}
+
+.media-card h2{
+font-size:23px
+}
+
+.media-card p{
+font-size:11px;
+color:#cbd5e1;
+margin-top:3px
+}
+
+
+/* ================= CONTACT ================= */
+
+.contact-box{
+text-align:center
+}
+
+.contact-box p{
+font-size:12px;
+color:#6b7280;
+margin-bottom:15px
+}
+
+
+/* ================= FOOTER ================= */
+
+footer{
+background:#0b1120;
+color:#fff;
+padding:30px 0 15px
+}
+
+.footer-grid{
+display:grid;
+grid-template-columns:1.5fr 1fr 1fr;
+gap:25px
+}
+
+footer h3{
+font-size:14px;
+margin-bottom:7px
+}
+
+footer p,
+footer a{
+font-size:10px;
+color:#94a3b8
+}
+
+footer a{
+display:block;
+margin:4px 0
+}
+
+footer a:hover{
+color:#fff
+}
+
+.bottom{
+border-top:1px solid rgba(255,255,255,.08);
+margin-top:20px;
+padding-top:12px;
+display:flex;
+justify-content:space-between;
+font-size:9px;
+color:#64748b
+}
+
+
+/* ================= WHATSAPP ================= */
+
+.whatsapp{
+position:fixed;
+right:15px;
+bottom:15px;
+width:53px;
+height:53px;
+display:grid;
+place-items:center;
+border-radius:50%;
+background:#25D366;
+color:#fff;
+font-size:24px;
+z-index:2000;
+box-shadow:0 7px 20px rgba(0,0,0,.2)
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+.nav-links{
+display:none;
+position:absolute;
+top:64px;
+left:0;
+right:0;
+background:#fff;
+padding:8px 4%;
+flex-direction:column;
+align-items:stretch;
+border-bottom:1px solid #ddd;
+box-shadow:0 10px 25px rgba(0,0,0,.06)
+}
+
+.nav-links.show{
+display:flex
+}
+
+.nav-links>a,
+.more{
+width:100%;
+text-align:left;
+padding:11px
+}
+
+.more-box{
+position:static
+}
+
+.more-menu{
+display:block;
+position:static;
+width:100%;
+box-shadow:none;
+border:0;
+padding-left:10px
 }
 
 .menu{
-display:none;border:1px solid #ddd;
-background:#fff;border-radius:8px;
-width:38px;height:38px
+display:block
 }
 
-/* HERO */
-.hero{
-background:linear-gradient(135deg,#111827,#253044);
-color:#fff;padding:70px 0
-}
 .hero-grid{
-display:grid;grid-template-columns:1.2fr .8fr;
-gap:30px;align-items:center
-}
-.badge{
-font-size:9px;font-weight:900;
-letter-spacing:1px;color:#fbbf24
-}
-h1{
-font-size:clamp(38px,6vw,62px);
-line-height:1.05;margin:10px 0 16px
-}
-h1 span{color:#fbbf24}
-.hero p{color:#d1d5db;font-size:14px;margin-bottom:20px}
-.buttons{display:flex;gap:8px;flex-wrap:wrap}
-.btn{
-display:inline-flex;align-items:center;justify-content:center;
-padding:11px 16px;border-radius:9px;
-font-size:12px;font-weight:900
-}
-.primary{background:#fbbf24;color:#111827}
-.light{background:#fff;color:#111827}
-
-.feature{
-background:#ffffff12;border:1px solid #ffffff20;
-border-radius:18px;padding:24px
-}
-.feature small{color:#fbbf24;font-weight:900;font-size:9px}
-.feature h2{font-size:25px;margin:5px 0 8px}
-.feature p{font-size:11px}
-
-/* QUICK */
-.quick{background:#fff;padding:14px 0}
-.quick-grid{
-display:grid;grid-template-columns:repeat(4,1fr);gap:7px
-}
-.quick a{
-text-align:center;padding:10px;
-border:1px solid #e5e7eb;border-radius:9px;
-font-size:10px;font-weight:900
+grid-template-columns:1fr
 }
 
-/* SECTIONS */
-section{padding:55px 0}
-.head{text-align:center;margin-bottom:25px}
-.head small{
-color:#6366f1;font-weight:900;
-font-size:9px;text-transform:uppercase
-}
-.head h2{font-size:28px;margin:5px 0}
-.head p{font-size:12px;color:#6b7280}
-
-/* CARDS */
-.grid{
-display:grid;grid-template-columns:repeat(3,1fr);gap:10px
-}
-.card{
-background:#fff;border:1px solid #e5e7eb;
-border-radius:14px;padding:20px
-}
-.card .icon{font-size:22px}
-.card h3{font-size:15px;margin:5px 0}
-.card p{font-size:11px;color:#6b7280}
-
-/* SCHOOL */
-.school-section{background:#fff}
 .school-card{
-background:#111827;color:#fff;
-border-radius:20px;padding:28px;
-display:flex;justify-content:space-between;
-gap:25px;align-items:center
-}
-.school-card h2{font-size:30px;margin:5px 0}
-.school-card p{font-size:12px;color:#cbd5e1;margin-bottom:16px}
-.school-points{
-display:grid;grid-template-columns:1fr 1fr;
-gap:5px;margin-bottom:17px
-}
-.school-points span{
-background:#ffffff0d;padding:7px;
-border-radius:6px;font-size:9px
+display:block
 }
 
-/* MEDIA */
-.media-card{
-background:#111827;color:#fff;
-border-radius:18px;padding:25px;
-display:flex;align-items:center;
-justify-content:space-between;gap:15px
-}
-.media-card h2{font-size:23px}
-.media-card p{font-size:11px;color:#cbd5e1}
-
-/* FOOTER */
-footer{
-background:#0b1120;color:#fff;padding:30px 0 15px
-}
-.footer-grid{
-display:grid;grid-template-columns:1.5fr 1fr 1fr;
-gap:25px
-}
-footer h3{font-size:14px;margin-bottom:7px}
-footer p,footer a{font-size:10px;color:#94a3b8}
-footer a{display:block;margin:4px 0}
-.bottom{
-border-top:1px solid #ffffff12;
-margin-top:20px;padding-top:12px;
-font-size:9px;color:#64748b;
-display:flex;justify-content:space-between
 }
 
-/* WHATSAPP */
-.whatsapp{
-position:fixed;right:15px;bottom:15px;
-width:53px;height:53px;border-radius:50%;
-display:grid;place-items:center;
-background:#25D366;color:#fff;
-font-size:24px;z-index:2000
-}
-
-/* MOBILE */
-@media(max-width:850px){
-.nav-links{
-display:none;position:absolute;
-top:64px;left:0;right:0;
-background:#fff;padding:8px 4%;
-flex-direction:column;align-items:stretch;
-border-bottom:1px solid #ddd
-}
-.nav-links.show{display:flex}
-.nav-links a,.more{text-align:left;padding:11px}
-.more-menu{
-display:block;position:static;
-width:100%;box-shadow:none;border:0;
-padding-left:10px
-}
-.menu{display:block}
-.install{display:none!important}
-.hero-grid{grid-template-columns:1fr}
-.school-card{display:block}
-}
 
 @media(max-width:600px){
-.hero{padding:55px 0}
-.buttons{flex-direction:column}
-.buttons .btn{width:100%}
-.quick-grid{grid-template-columns:1fr 1fr}
-.grid{grid-template-columns:1fr}
-.footer-grid{grid-template-columns:1fr 1fr}
-.bottom{display:block}
+
+.container{
+width:91%
 }
+
+.hero{
+padding:55px 0
+}
+
+.hero h1{
+letter-spacing:-1px
+}
+
+.buttons{
+flex-direction:column
+}
+
+.buttons .btn{
+width:100%
+}
+
+.quick-grid{
+grid-template-columns:1fr 1fr
+}
+
+.grid{
+grid-template-columns:1fr
+}
+
+.footer-grid{
+grid-template-columns:1fr 1fr
+}
+
+.bottom{
+display:block
+}
+
+.bottom span{
+display:block;
+margin-bottom:5px
+}
+
+}
+
+
+/* MOBILE INSTALL BUTTON IS SHOWN ONLY WHEN PWA IS AVAILABLE */
+
+@media(min-width:901px){
+
+.install{
+display:none
+}
+
+}
+
 </style>
+
 </head>
 
 <body>
 
+
+<!-- ================= HEADER ================= -->
+
 <header>
+
 <div class="container nav">
 
 <a href="index.html" class="logo">
+
 <div class="logo-icon">✝</div>
+
 <div>
-<div class="logo-title">GOH Ministries</div>
-<div class="logo-sub">Gate of Heaven Ministries</div>
+
+<div class="logo-title">
+GOH Ministries
 </div>
+
+<div class="logo-sub">
+Gate of Heaven Ministries
+</div>
+
+</div>
+
 </a>
 
-<div style="display:flex;align-items:center;gap:6px">
+
+<div class="nav-right">
 
 <nav class="nav-links" id="nav">
 
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="ministries.html">Ministries</a>
+<a href="index.html">
+Home
+</a>
+
+<a href="about.html">
+About
+</a>
+
+<a href="ministries.html">
+Ministries
+</a>
 
 <a href="bible-school.html" class="school">
 📖 Bible School
 </a>
 
-<a href="events.html">Events</a>
+<a href="events.html">
+Events
+</a>
+
 
 <div class="more-box">
-<button class="more">More ▾</button>
+
+<button class="more">
+More ▾
+</button>
 
 <div class="more-menu">
-<a href="media.html">🎥 Media</a>
-<a href="sermons.html">📖 Sermons</a>
-<a href="prayer.html">🙏 Prayer</a>
-<a href="contact.html">📞 Contact</a>
+
+<a href="media.html">
+🎥 Media
+</a>
+
+<a href="sermons.html">
+📖 Sermons
+</a>
+
+<a href="prayer.html">
+🙏 Prayer Request
+</a>
+
+<a href="contact.html">
+📞 Contact
+</a>
+
 </div>
+
 </div>
 
 </nav>
 
-<button class="install" id="installBtn">📲 Install</button>
 
-<button class="menu" id="menuBtn">☰</button>
+<button
+class="install"
+id="installBtn">
+📲 Install
+</button>
+
+
+<button
+class="menu"
+id="menuBtn"
+aria-label="Menu">
+☰
+</button>
 
 </div>
+
 </div>
+
 </header>
 
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 
 <section class="hero">
+
 <div class="container hero-grid">
 
+
 <div>
-<div class="badge">GATE OF HEAVEN MINISTRIES</div>
+
+<div class="badge">
+GATE OF HEAVEN MINISTRIES
+</div>
 
 <h1>
 Building Believers.<br>
 <span>Making Disciples.</span>
 </h1>
 
-<p>
+<p class="hero-text">
 Proclaiming Christ, teaching God's Word,
 strengthening believers and making disciples.
 </p>
 
 <div class="buttons">
-<a href="about.html" class="btn light">About GOH</a>
-<a href="bible-school.html" class="btn primary">
+
+<a href="about.html"
+class="btn light">
+About GOH
+</a>
+
+<a href="bible-school.html"
+class="btn primary">
 📖 Bible School
 </a>
-</div>
+
 </div>
 
+</div>
+
+
 <div class="feature">
-<small>FEATURED PROGRAM</small>
-<h2>From Believer to Disciple</h2>
+
+<div class="feature-icon">
+📖
+</div>
+
+<small>
+FEATURED PROGRAM
+</small>
+
+<h2>
+From Believer to Disciple
+</h2>
 
 <p>
 A one-year online Bible School designed
@@ -317,148 +866,301 @@ class="btn primary"
 style="width:100%">
 Explore Bible School
 </a>
+
 </div>
 
 </div>
+
 </section>
 
 
-<!-- QUICK NAVIGATION -->
+<!-- ================= QUICK NAVIGATION ================= -->
 
 <div class="quick">
+
 <div class="container quick-grid">
 
-<a href="bible-school.html">📖 Bible School</a>
-<a href="media.html">🎥 Media</a>
-<a href="prayer.html">🙏 Prayer</a>
-<a href="contact.html">💬 Contact</a>
+<a href="bible-school.html">
+📖 Bible School
+</a>
+
+<a href="media.html">
+🎥 GOH Media
+</a>
+
+<a href="prayer.html">
+🙏 Prayer Request
+</a>
+
+<a href="contact.html">
+💬 Contact
+</a>
 
 </div>
+
 </div>
 
 
-<!-- ABOUT -->
+<!-- ================= ABOUT ================= -->
 
 <section>
+
 <div class="container">
 
 <div class="head">
-<small>About Us</small>
-<h2>Serving Christ. Serving People.</h2>
-<p>Growing in God's Word and helping others follow Christ.</p>
+
+<small>
+About GOH
+</small>
+
+<h2>
+Serving Christ. Serving People.
+</h2>
+
+<p>
+Growing in God's Word and helping others follow Christ.
+</p>
+
 </div>
+
 
 <div class="grid">
 
-<div class="card">
-<div class="icon">🎯</div>
-<h3>Our Mission</h3>
-<p>Proclaim the Gospel, teach God's Word and make disciples.</p>
-</div>
 
 <div class="card">
-<div class="icon">❤️</div>
-<h3>Our Vision</h3>
-<p>See lives transformed and believers equipped to serve Christ.</p>
+
+<div class="card-icon">
+🎯
 </div>
+
+<h3>
+Our Mission
+</h3>
+
+<p>
+Proclaim the Gospel, teach God's Word
+and make disciples.
+</p>
+
+</div>
+
 
 <div class="card">
-<div class="icon">🙏</div>
-<h3>Our Heart</h3>
-<p>Prayer, worship, discipleship, evangelism and outreach.</p>
+
+<div class="card-icon">
+❤️
 </div>
+
+<h3>
+Our Vision
+</h3>
+
+<p>
+See lives transformed and believers
+equipped to serve Christ.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+🙏
+</div>
+
+<h3>
+Our Heart
+</h3>
+
+<p>
+Prayer, worship, discipleship,
+evangelism and outreach.
+</p>
+
+</div>
+
+
+</div>
+
+
+<div style="text-align:center;margin-top:20px">
+
+<a href="about.html"
+class="btn dark">
+Learn More →
+</a>
 
 </div>
 
 </div>
+
 </section>
 
 
-<!-- MINISTRIES -->
+<!-- ================= MINISTRIES ================= -->
 
 <section style="background:#f8fafc">
+
 <div class="container">
 
 <div class="head">
-<small>Ministries</small>
-<h2>Growing Together in Christ</h2>
+
+<small>
+Our Ministries
+</small>
+
+<h2>
+Growing Together in Christ
+</h2>
+
 </div>
+
 
 <div class="grid">
 
-<div class="card">
-<div class="icon">🙏</div>
-<h3>Prayer</h3>
-<p>Seeking God together.</p>
-</div>
 
 <div class="card">
-<div class="icon">📖</div>
-<h3>Bible Teaching</h3>
-<p>Building biblical foundations.</p>
+
+<div class="card-icon">
+🙏
 </div>
+
+<h3>
+Prayer
+</h3>
+
+<p>
+Seeking God together.
+</p>
+
+</div>
+
 
 <div class="card">
-<div class="icon">🌍</div>
-<h3>Evangelism</h3>
-<p>Sharing the Gospel.</p>
+
+<div class="card-icon">
+📖
 </div>
 
+<h3>
+Bible Teaching
+</h3>
+
+<p>
+Building biblical foundations.
+</p>
+
 </div>
 
-<br>
 
-<div style="text-align:center">
-<a href="ministries.html" class="btn light"
+<div class="card">
+
+<div class="card-icon">
+🌍
+</div>
+
+<h3>
+Evangelism
+</h3>
+
+<p>
+Sharing the Gospel.
+</p>
+
+</div>
+
+
+</div>
+
+
+<div style="text-align:center;margin-top:20px">
+
+<a href="ministries.html"
+class="btn light"
 style="border:1px solid #ddd">
-View All Ministries →
+View Ministries →
 </a>
+
 </div>
 
 </div>
+
 </section>
 
 
-<!-- BIBLE SCHOOL -->
+<!-- ================= BIBLE SCHOOL ================= -->
 
 <section class="school-section">
+
 <div class="container">
 
 <div class="head">
-<small>GOH Online Bible School</small>
-<h2>From Believer to Disciple</h2>
-<p>One-year online discipleship program.</p>
+
+<small>
+GOH Online Bible School
+</small>
+
+<h2>
+From Believer to Disciple
+</h2>
+
+<p>
+One-year online discipleship program.
+</p>
+
 </div>
+
 
 <div class="school-card">
 
 <div>
-<small style="color:#fbbf24;font-weight:900">
+
+<small>
 1-YEAR PROGRAM
 </small>
 
-<h2>Become a Faithful Disciple</h2>
+<h2>
+Become a Faithful Disciple
+</h2>
 
 <p>
-Bible lessons, assignments, assessments
-and discipleship training.
+Bible lessons, assignments,
+assessments and discipleship training.
 </p>
 
-<div class="school-points">
-<span>✓ 12 Modules</span>
-<span>✓ Online Learning</span>
-<span>✓ Assignments</span>
-<span>✓ Certificate</span>
+
+<div class="points">
+
+<span>
+✓ 12 Modules
+</span>
+
+<span>
+✓ Online Learning
+</span>
+
+<span>
+✓ Assignments
+</span>
+
+<span>
+✓ Certificate
+</span>
+
 </div>
 
+
+<div class="buttons">
+
 <a href="bible-school.html"
-class="btn primary">
+class="btn light">
 View Program
 </a>
 
 <a href="enroll.html"
-class="btn light">
-Enroll
+class="btn primary">
+Enroll Now
 </a>
 
 </div>
@@ -466,71 +1168,110 @@ Enroll
 </div>
 
 </div>
+
+</div>
+
 </section>
 
 
-<!-- EVENTS -->
+<!-- ================= EVENTS ================= -->
 
 <section style="background:#f8fafc">
+
 <div class="container">
 
 <div class="head">
-<small>Events</small>
-<h2>Join Us</h2>
-<p>Prayer, worship, fellowship and outreach.</p>
+
+<small>
+Events
+</small>
+
+<h2>
+Join Us
+</h2>
+
+<p>
+Prayer, worship, fellowship and outreach.
+</p>
+
 </div>
+
 
 <div style="text-align:center">
-<a href="events.html" class="btn"
-style="background:#111827;color:#fff">
+
+<a href="events.html"
+class="btn dark">
 View Events →
 </a>
+
 </div>
 
 </div>
+
 </section>
 
 
-<!-- MEDIA -->
+<!-- ================= MEDIA ================= -->
 
 <section>
+
 <div class="container">
 
 <div class="media-card">
 
 <div>
-<h2>🎥 GOH Media</h2>
-<p>Sermons, Bible teachings and ministry content.</p>
+
+<h2>
+🎥 GOH Media
+</h2>
+
+<p>
+Sermons, Bible teachings and ministry content.
+</p>
+
 </div>
 
-<a href="media.html" class="btn primary">
+
+<a href="media.html"
+class="btn primary">
 Explore Media
 </a>
 
 </div>
 
 </div>
+
 </section>
 
 
-<!-- CONTACT -->
+<!-- ================= CONTACT ================= -->
 
 <section style="background:#fff">
-<div class="container">
+
+<div class="container contact-box">
 
 <div class="head">
-<small>Contact</small>
-<h2>Connect With Us</h2>
-<p>For ministry, prayer and Bible School information.</p>
+
+<small>
+Contact
+</small>
+
+<h2>
+Connect With Us
+</h2>
+
+<p>
+For ministry, prayer and Bible School information.
+</p>
+
 </div>
 
-<div style="text-align:center">
 
 <a
 href="https://wa.me/94771190395?text=Hello%20GOH%20Ministries"
 target="_blank"
-class="btn"
-style="background:#25D366;color:#fff">
+rel="noopener"
+class="btn whatsapp-btn">
 
 💬 WhatsApp 0771190395
 
@@ -538,124 +1279,255 @@ style="background:#25D366;color:#fff">
 
 </div>
 
-</div>
 </section>
 
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
+
 <div class="container">
 
 <div class="footer-grid">
 
+
 <div>
-<h3>GOH Ministries</h3>
+
+<h3>
+GOH Ministries
+</h3>
+
 <p>
 Building believers, making disciples
 and advancing the Kingdom of God.
 </p>
+
 </div>
+
 
 <div>
-<h3>Ministry</h3>
-<a href="about.html">About</a>
-<a href="ministries.html">Ministries</a>
-<a href="events.html">Events</a>
-<a href="prayer.html">Prayer</a>
+
+<h3>
+Ministry
+</h3>
+
+<a href="about.html">
+About
+</a>
+
+<a href="ministries.html">
+Ministries
+</a>
+
+<a href="events.html">
+Events
+</a>
+
+<a href="prayer.html">
+Prayer
+</a>
+
 </div>
+
 
 <div>
-<h3>Resources</h3>
-<a href="media.html">Media</a>
-<a href="sermons.html">Sermons</a>
-<a href="bible-school.html">Bible School</a>
-<a href="enroll.html">Enroll</a>
+
+<h3>
+Resources
+</h3>
+
+<a href="media.html">
+Media
+</a>
+
+<a href="sermons.html">
+Sermons
+</a>
+
+<a href="bible-school.html">
+Bible School
+</a>
+
+<a href="enroll.html">
+Enroll
+</a>
+
 </div>
 
 </div>
+
 
 <div class="bottom">
-<span>© <span id="year"></span> GOH Ministries</span>
 
 <span>
-<a href="privacy.html">Privacy</a> ·
-<a href="terms.html">Terms</a> ·
-<a href="refund.html">Refund</a>
+© <span id="year"></span> GOH Ministries
 </span>
+
+<span>
+
+<a href="privacy.html">
+Privacy
+</a>
+
+&nbsp;·&nbsp;
+
+<a href="terms.html">
+Terms
+</a>
+
+&nbsp;·&nbsp;
+
+<a href="refund.html">
+Refund
+</a>
+
+</span>
+
 </div>
 
 </div>
+
 </footer>
 
 
-<!-- WHATSAPP -->
+<!-- ================= WHATSAPP ================= -->
 
 <a
 href="https://wa.me/94771190395?text=Hello%20GOH%20Ministries"
 target="_blank"
+rel="noopener"
 class="whatsapp"
-aria-label="WhatsApp">
+aria-label="WhatsApp GOH Ministries">
+
 💬
+
 </a>
 
 
 <script>
 
 /* YEAR */
-document.getElementById("year").textContent=
+
+document.getElementById("year").textContent =
 new Date().getFullYear();
 
 
 /* MOBILE MENU */
-const menuBtn=document.getElementById("menuBtn");
-const nav=document.getElementById("nav");
 
-menuBtn.onclick=()=>{
+const menuBtn =
+document.getElementById("menuBtn");
+
+const nav =
+document.getElementById("nav");
+
+menuBtn.addEventListener("click",()=>{
+
 nav.classList.toggle("show");
-menuBtn.textContent=
-nav.classList.contains("show")?"✕":"☰";
-};
+
+menuBtn.textContent =
+nav.classList.contains("show")
+? "✕"
+: "☰";
+
+});
+
+
+/* CLOSE MENU */
+
+document.querySelectorAll("#nav a")
+.forEach(link=>{
+
+link.addEventListener("click",()=>{
+
+nav.classList.remove("show");
+
+menuBtn.textContent="☰";
+
+});
+
+});
 
 
 /* PWA INSTALL */
-let deferredPrompt=null;
-const installBtn=document.getElementById("installBtn");
+
+let deferredPrompt = null;
+
+const installBtn =
+document.getElementById("installBtn");
+
 
 window.addEventListener(
 "beforeinstallprompt",
-e=>{
-e.preventDefault();
-deferredPrompt=e;
-installBtn.style.display="block";
-}
+event=>{
+
+event.preventDefault();
+
+deferredPrompt = event;
+
+installBtn.style.display =
+"inline-flex";
+
+});
+
+
+installBtn.addEventListener(
+"click",
+async()=>{
+
+if(!deferredPrompt){
+
+alert(
+"Open your browser menu and choose Install app or Add to Home screen."
 );
 
-installBtn.onclick=async()=>{
-if(!deferredPrompt){
-alert("Open your browser menu and choose Install app or Add to Home screen.");
 return;
+
 }
 
 deferredPrompt.prompt();
+
 await deferredPrompt.userChoice;
-deferredPrompt=null;
-installBtn.style.display="none";
-};
+
+deferredPrompt = null;
+
+installBtn.style.display = "none";
+
+});
+
+
+/* APP INSTALLED */
 
 window.addEventListener(
 "appinstalled",
 ()=>{
-installBtn.style.display="none";
-}
-);
+
+installBtn.style.display = "none";
+
+});
 
 
 /* SERVICE WORKER */
+
 if("serviceWorker" in navigator){
-window.addEventListener("load",()=>{
-navigator.serviceWorker.register("/sw.js");
+
+window.addEventListener(
+"load",
+()=>{
+
+navigator.serviceWorker
+.register("/sw.js")
+.then(()=>{
+console.log("GOH Ministries PWA ready");
+})
+.catch(error=>{
+console.log(
+"PWA registration failed:",
+error
+);
 });
+
+});
+
 }
 
 </script>
