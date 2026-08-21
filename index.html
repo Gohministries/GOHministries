@@ -2,323 +2,548 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#102a72">
-<meta name="description" content="GOH Bible School - One-Year Christian Discipleship Training">
-<title>GOH Bible School | Discipleship Training</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+<title>GOH Ministries | Gate of Heaven Ministries</title>
+
+<meta name="description" content="Gate of Heaven Ministries — Building believers, making disciples and advancing the Kingdom of God.">
+<meta name="theme-color" content="#111827">
+
+<link rel="manifest" href="/manifest.json">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:Arial,sans-serif;background:#f7f9ff;color:#172033;line-height:1.5}
+body{
+font-family:Arial,sans-serif;
+background:#f8fafc;
+color:#172033;
+line-height:1.6
+}
 a{text-decoration:none;color:inherit}
+button{font:inherit}
+.container{width:min(1080px,92%);margin:auto}
 
+/* HEADER */
 header{
-position:sticky;top:0;z-index:20;
-background:#102a72;color:#fff;
-box-shadow:0 3px 15px #0003
+position:sticky;
+top:0;
+z-index:1000;
+background:rgba(255,255,255,.97);
+backdrop-filter:blur(12px);
+border-bottom:1px solid #e5e7eb
 }
-.head{
-max-width:1100px;margin:auto;padding:9px 14px;
-display:flex;align-items:center;gap:10px
-}
-.brand{
-display:flex;align-items:center;gap:8px;
-margin-right:auto
+.nav{
+height:68px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px
 }
 .logo{
-width:40px;height:40px;border-radius:11px;
-background:#fff;color:#102a72;
-display:grid;place-items:center;
-font-size:11px;font-weight:900
+display:flex;
+align-items:center;
+gap:9px
 }
-.brand h1{font-size:15px;line-height:1.1}
-.brand small{font-size:9px;opacity:.7}
+.logo-icon{
+width:40px;
+height:40px;
+display:grid;
+place-items:center;
+border-radius:11px;
+background:#111827;
+color:#fff;
+font-size:19px
+}
+.logo-title{
+font-size:15px;
+font-weight:900;
+line-height:1.1
+}
+.logo-sub{
+font-size:9px;
+color:#6b7280;
+margin-top:2px
+}
+.nav-links{
+display:flex;
+align-items:center;
+gap:3px
+}
+.nav-links a{
+font-size:12px;
+font-weight:700;
+padding:8px 9px;
+border-radius:8px
+}
+.nav-links a:hover{background:#f3f4f6}
+.school-link{
+background:#111827!important;
+color:#fff!important
+}
+.install-btn{
+display:none;
+align-items:center;
+gap:5px;
+border:0;
+background:#eef2ff;
+color:#4338ca;
+padding:8px 11px;
+border-radius:9px;
+font-size:11px;
+font-weight:800;
+cursor:pointer
+}
+.menu-btn{
+display:none;
+width:40px;
+height:40px;
+border:1px solid #e5e7eb;
+background:#fff;
+border-radius:9px;
+font-size:19px;
+cursor:pointer
+}
 
-nav{display:flex;gap:2px}
-nav a{
-font-size:10px;padding:7px 7px;
-border-radius:6px
-}
-nav a:hover{background:#fff2}
-
-.lang{
-display:flex;align-items:center;
-gap:5px;white-space:nowrap
-}
-.lang button{
-border:0;background:none;color:#fff;
-padding:3px 2px;font-size:10px;
-cursor:pointer;opacity:.75
-}
-.lang button.on{
-opacity:1;font-weight:bold;
-text-decoration:underline;
-text-underline-offset:4px
-}
-.lang i{font-style:normal;opacity:.4;font-size:9px}
-
-.hero{
-color:#fff;text-align:center;padding:65px 15px;
-background:
-radial-gradient(circle at 90% 10%,#f59e0b66,transparent 25%),
-radial-gradient(circle at 5% 90%,#38bdf855,transparent 25%),
-linear-gradient(135deg,#102a72,#6d28d9)
-}
-.hero div{max-width:760px;margin:auto}
-.badge{
-display:inline-block;background:#fff2;
-border:1px solid #fff4;border-radius:30px;
-padding:5px 12px;font-size:10px;
-margin-bottom:14px
-}
-.hero h2{
-font-size:38px;line-height:1.15;
-margin-bottom:12px
-}
-.hero p{
-font-size:13px;opacity:.9;
-max-width:650px;margin:auto
-}
-.buttons{margin-top:22px}
+/* BUTTONS */
 .btn{
-display:inline-block;padding:10px 17px;
-border-radius:9px;font-size:12px;
-font-weight:bold;background:#fff;
-color:#102a72;margin:3px
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:7px;
+min-height:45px;
+padding:0 18px;
+border-radius:10px;
+font-size:13px;
+font-weight:800;
+border:1px solid transparent;
+cursor:pointer
+}
+.btn-primary{background:#f59e0b;color:#111827}
+.btn-dark{background:#111827;color:#fff}
+.btn-light{background:#fff;color:#111827}
+.btn-outline{border-color:#d1d5db;background:#fff}
+
+/* HERO */
+.hero{
+background:
+radial-gradient(circle at 85% 15%,rgba(99,102,241,.2),transparent 30%),
+linear-gradient(135deg,#111827,#1f2937);
+color:#fff;
+padding:72px 0
+}
+.hero-grid{
+display:grid;
+grid-template-columns:1.15fr .85fr;
+gap:35px;
+align-items:center
+}
+.badge{
+display:inline-block;
+padding:7px 11px;
+border-radius:30px;
+background:rgba(255,255,255,.09);
+border:1px solid rgba(255,255,255,.15);
+font-size:10px;
+font-weight:800;
+letter-spacing:1px;
+margin-bottom:16px
+}
+.hero h1{
+font-size:clamp(38px,6vw,62px);
+line-height:1.04;
+letter-spacing:-2px;
+margin-bottom:17px
+}
+.hero h1 span{color:#fbbf24}
+.hero-text{
+max-width:600px;
+color:#d1d5db;
+font-size:16px;
+margin-bottom:23px
+}
+.hero-buttons{
+display:flex;
+flex-wrap:wrap;
+gap:9px
+}
+.hero-card{
+padding:25px;
+border-radius:21px;
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.15)
+}
+.hero-card-icon{
+width:48px;
+height:48px;
+display:grid;
+place-items:center;
+border-radius:13px;
+background:#fbbf24;
+font-size:23px;
+margin-bottom:15px
+}
+.hero-card small{
+color:#fbbf24;
+font-weight:800;
+font-size:10px;
+text-transform:uppercase
+}
+.hero-card h2{
+font-size:25px;
+line-height:1.15;
+margin:5px 0 9px
+}
+.hero-card p{
+font-size:12px;
+color:#d1d5db;
+margin-bottom:17px
+}
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:7px
+}
+.stat{
+background:rgba(255,255,255,.07);
+padding:10px;
+border-radius:8px;
+font-size:9px;
+color:#cbd5e1
+}
+.stat strong{
+display:block;
+font-size:13px;
+color:#fff
 }
 
-.section{padding:45px 14px}
-.container{max-width:1050px;margin:auto}
-.title{
-text-align:center;color:#102a72;
-font-size:23px;margin-bottom:8px
+/* SECTIONS */
+section{padding:65px 0}
+.section-head{
+text-align:center;
+max-width:650px;
+margin:0 auto 32px
 }
-.title:after{
-content:"";display:block;width:38px;height:3px;
-background:linear-gradient(90deg,#2563eb,#f59e0b);
-margin:8px auto
+.eyebrow{
+font-size:10px;
+font-weight:900;
+letter-spacing:1.4px;
+text-transform:uppercase;
+color:#6366f1;
+margin-bottom:6px
 }
-.sub{
-text-align:center;color:#667085;
-font-size:12px;max-width:650px;
-margin:0 auto 22px
+.section-head h2{
+font-size:32px;
+line-height:1.15;
+margin-bottom:8px
+}
+.section-head p{
+font-size:13px;
+color:#6b7280
 }
 
-.grid{
+/* ABOUT */
+.about{background:#fff}
+.about-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px
+}
+.card{
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:17px;
+padding:24px
+}
+.icon{
+font-size:23px;
+margin-bottom:9px
+}
+.card h3{
+font-size:17px;
+margin-bottom:5px
+}
+.card p{
+font-size:12px;
+color:#6b7280
+}
+
+/* MINISTRIES */
+.ministries{background:#f8fafc}
+.ministry-grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:12px
 }
-.card,.month,.step,details,.info,.gallery-card{
+.ministry{
 background:#fff;
-border:1px solid #e4e8ef;
-border-radius:12px;
-box-shadow:0 4px 15px #00000008
+border:1px solid #e5e7eb;
+border-radius:15px;
+padding:19px
 }
-.card{
-padding:17px;
-border-top:4px solid #6d28d9
+.ministry h3{
+font-size:15px;
+margin:5px 0
 }
-.card:nth-child(2),.info:nth-child(2){
-border-top-color:#2563eb
-}
-.card:nth-child(3),.info:nth-child(3){
-border-top-color:#f59e0b
-}
-.icon{font-size:24px}
-.card h3,.info h3,.gallery-card h3{
-font-size:14px;color:#102a72;margin:4px 0
-}
-.card p,.info p,.month span,.step p,
-details p,.gallery-card p{
-font-size:11px;color:#667085
+.ministry p{
+font-size:11px;
+color:#6b7280
 }
 
-/* FEE */
-.price{
-max-width:500px;margin:auto;text-align:center;
-padding:25px 18px;
-background:linear-gradient(135deg,#fff,#f3efff);
-border:1px solid #ddd6fe;
-border-radius:16px
-}
-.price label{font-size:11px;color:#667085}
-.price strong{
-display:block;color:#102a72;font-size:36px
-}
-.price small{
-font-size:12px;color:#667085;
-font-weight:normal
-}
-.price p{
-font-size:11px;color:#667085;
-margin-bottom:10px
-}
-.price .btn{
-background:#102a72;color:#fff
-}
-
-/* CURRICULUM */
-.months{
+/* BIBLE SCHOOL */
+.bible-school{background:#fff}
+.school{
 display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px
+grid-template-columns:1fr .8fr;
+gap:0;
+overflow:hidden;
+border-radius:22px;
+background:#111827;
+color:#fff
 }
-.month{
-padding:12px;
-border-top:3px solid #2563eb
+.school-main{padding:32px}
+.school-main h2{
+font-size:34px;
+line-height:1.1;
+margin:6px 0 11px
 }
-.month:nth-child(3n+2){
-border-top-color:#9333ea
+.school-main p{
+font-size:13px;
+color:#cbd5e1;
+margin-bottom:18px
 }
-.month:nth-child(3n){
-border-top-color:#f59e0b
+.school-tag{
+color:#fbbf24;
+font-size:10px;
+font-weight:900;
+text-transform:uppercase;
+letter-spacing:1px
 }
-.month b{
-display:block;color:#102a72;
+.price{
+font-size:28px;
+font-weight:900;
+margin-bottom:17px
+}
+.price span{
+font-size:10px;
+font-weight:400;
+color:#94a3b8
+}
+.features{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:6px;
+margin-bottom:20px
+}
+.feature{
+font-size:10px;
+padding:8px;
+background:rgba(255,255,255,.07);
+border-radius:7px
+}
+.curriculum{
+padding:28px;
+background:#1e293b
+}
+.curriculum h3{
+font-size:19px;
+margin-bottom:11px
+}
+.module{
+display:flex;
+align-items:center;
+gap:8px;
+padding:7px 0;
+border-bottom:1px solid rgba(255,255,255,.07);
 font-size:11px
 }
-
-/* STEPS */
-.steps{max-width:720px;margin:auto}
-.step{
-display:flex;gap:10px;
-padding:12px;margin-bottom:8px
-}
+.module:last-child{border:0}
 .num{
-min-width:30px;height:30px;
-border-radius:8px;
-background:linear-gradient(135deg,#2563eb,#9333ea);
-color:#fff;display:grid;
+width:24px;
+height:24px;
+display:grid;
 place-items:center;
-font-size:11px;font-weight:bold
+border-radius:7px;
+background:#fbbf24;
+color:#111827;
+font-size:8px;
+font-weight:900
 }
-.step h3{font-size:12px;color:#102a72}
 
-/* REQUIREMENT */
-.require{
-max-width:720px;margin:auto;
-text-align:center;padding:22px;
-border-radius:15px;
-background:linear-gradient(135deg,#eff6ff,#f5f3ff);
-border:1px solid #c7d2fe
-}
-.require strong{
-display:block;font-size:23px;color:#6d28d9
-}
-.require p{font-size:11px;color:#475467}
-
-/* GALLERY */
-.gallery{
+/* EVENTS */
+.events{background:#f8fafc}
+.event-grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:14px
+gap:12px
 }
-.gallery-card{
-overflow:hidden;
-border-top:4px solid #2563eb
-}
-.gallery-card:nth-child(2){border-top-color:#9333ea}
-.gallery-card:nth-child(3){border-top-color:#f59e0b}
-.gallery-card:nth-child(4){border-top-color:#16a34a}
-.gallery-card:nth-child(5){border-top-color:#db2777}
-.gallery-card:nth-child(6){border-top-color:#0891b2}
 
-.gallery-img{
-height:150px;
-display:grid;
-place-items:center;
-font-size:42px;
-background:linear-gradient(135deg,#eff6ff,#f5f3ff)
+/* MEDIA */
+.media{background:#fff}
+.media-box{
+background:#111827;
+border-radius:19px;
+padding:28px;
+color:#fff;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px
 }
-.gallery-card h3{padding:10px 12px 2px}
-.gallery-card p{padding:0 12px 13px}
-
-/* FAQ */
-.info{padding:17px}
-.faq{max-width:780px;margin:auto}
-details{padding:11px;margin-bottom:7px}
-summary{
-cursor:pointer;font-size:11px;
-font-weight:bold;color:#102a72
+.media-box h2{
+font-size:25px;
+margin-bottom:4px
+}
+.media-box p{
+font-size:12px;
+color:#cbd5e1
 }
 
 /* CONTACT */
-.contact{
-text-align:center;color:#fff;
-padding:32px 15px;
-border-radius:16px;
-background:linear-gradient(135deg,#102a72,#6d28d9)
+.contact{background:#fff}
+.contact-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px
 }
-.contact h2{font-size:23px}
-.contact p{
-font-size:11px;opacity:.85;
-margin:5px 0 10px
+.contact-item{
+display:flex;
+gap:10px;
+margin-bottom:16px
 }
-.contact .btn{
-background:#fff;color:#102a72
+.contact-item .icon{
+width:38px;
+height:38px;
+display:grid;
+place-items:center;
+background:#f3f4f6;
+border-radius:9px;
+font-size:17px;
+flex:none
+}
+.contact-item strong{
+display:block;
+font-size:13px
+}
+.contact-item span{
+font-size:11px;
+color:#6b7280
+}
+.whatsapp-btn{
+background:#25D366;
+color:#fff
 }
 
 /* FOOTER */
 footer{
-background:#071b4c;color:#fff;
-padding:27px 14px
+background:#0b1120;
+color:#fff;
+padding:35px 0 20px
 }
-.foot{
-max-width:1050px;margin:auto;
+.footer-grid{
 display:grid;
-grid-template-columns:2fr 1fr 1fr;
-gap:20px
+grid-template-columns:1.4fr .8fr .8fr;
+gap:30px;
+margin-bottom:25px
 }
-.foot h3{font-size:12px;margin-bottom:6px}
-.foot p,.foot a{
-display:block;color:#cbd5e1;
-font-size:9px;margin-bottom:4px
+footer h3{
+font-size:15px;
+margin-bottom:9px
 }
-.copy{
-text-align:center;
-border-top:1px solid #fff2;
-margin-top:17px;padding-top:10px;
-color:#94a3b8;font-size:9px
+footer p,footer a{
+font-size:11px;
+color:#94a3b8
+}
+footer a{
+display:block;
+margin-bottom:6px
+}
+.footer-bottom{
+border-top:1px solid rgba(255,255,255,.08);
+padding-top:16px;
+font-size:10px;
+color:#64748b;
+display:flex;
+justify-content:space-between
 }
 
 /* WHATSAPP */
 .whatsapp{
 position:fixed;
-right:16px;bottom:16px;
-z-index:999;
-background:#25d366;color:#fff;
-padding:11px 16px;
-border-radius:30px;
-font-size:12px;font-weight:bold;
-box-shadow:0 5px 18px #0004
+right:16px;
+bottom:16px;
+width:55px;
+height:55px;
+display:grid;
+place-items:center;
+border-radius:50%;
+background:#25D366;
+color:#fff;
+font-size:25px;
+z-index:2000;
+box-shadow:0 8px 25px rgba(0,0,0,.2)
 }
-.whatsapp:hover{transform:translateY(-2px)}
 
+/* MOBILE */
 @media(max-width:850px){
-nav{display:none}
-.grid,.months,.gallery{
-grid-template-columns:repeat(2,1fr)
+.nav-links{
+display:none;
+position:absolute;
+top:68px;
+left:0;
+right:0;
+background:#fff;
+border-bottom:1px solid #e5e7eb;
+padding:8px 4%;
+flex-direction:column;
+align-items:stretch
 }
-}
-
-@media(max-width:550px){
-.head{padding:8px 10px}
-.brand h1{font-size:13px}
-.brand small{font-size:8px}
-.logo{width:37px;height:37px}
-.lang button{font-size:9px}
-.hero{padding:52px 14px}
-.hero h2{font-size:29px}
-.section{padding:40px 12px}
-.grid,.months,.gallery,.foot{
+.nav-links.show{display:flex}
+.nav-links a{padding:12px}
+.menu-btn{display:block}
+.hero-grid,
+.school,
+.contact-grid{
 grid-template-columns:1fr
 }
-.price strong{font-size:33px}
-.whatsapp{
-right:12px;bottom:12px;
-padding:10px 14px
+.ministry-grid,
+.event-grid{
+grid-template-columns:1fr 1fr
+}
+.footer-grid{
+grid-template-columns:1fr 1fr
+}
+}
+
+@media(max-width:600px){
+.container{width:91%}
+section{padding:55px 0}
+.hero{padding:55px 0}
+.hero h1{letter-spacing:-1px}
+.hero-buttons{
+flex-direction:column
+}
+.hero-buttons .btn{
+width:100%
+}
+.about-grid,
+.ministry-grid,
+.event-grid,
+.footer-grid{
+grid-template-columns:1fr
+}
+.media-box{
+flex-direction:column;
+align-items:flex-start
+}
+.footer-bottom{
+flex-direction:column;
+gap:5px
+}
+.school-main{padding:25px}
+.curriculum{padding:24px}
+.install-btn{
+display:none!important
 }
 }
 </style>
@@ -326,458 +551,703 @@ padding:10px 14px
 
 <body>
 
-<!-- HEADER -->
 <header>
-<div class="head">
 
-<a class="brand" href="index.html">
-<div class="logo">GOH</div>
+<div class="container nav">
+
+<a href="#home" class="logo">
+
+<div class="logo-icon">✝</div>
+
 <div>
-<h1>GOH Bible School</h1>
-<small>Discipleship Training</small>
+<div class="logo-title">GOH Ministries</div>
+<div class="logo-sub">Gate of Heaven Ministries</div>
 </div>
+
 </a>
 
-<nav>
-<a href="#programme">Programme</a>
-<a href="#curriculum">Curriculum</a>
-<a href="#gallery">Gallery</a>
-<a href="#how">How It Works</a>
-<a href="#faq">FAQ</a>
+<nav class="nav-links" id="navLinks">
+
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#ministries">Ministries</a>
+<a href="#bible-school" class="school-link">Bible School</a>
+<a href="#events">Events</a>
+<a href="#media">Media</a>
 <a href="#contact">Contact</a>
+
 </nav>
 
-<div class="lang">
-<button class="on" onclick="setLang('en',this)">EN</button>
-<i>|</i>
-<button onclick="setLang('ta',this)">தமிழ்</button>
-<i>|</i>
-<button onclick="setLang('si',this)">සිං</button>
+<div style="display:flex;align-items:center;gap:6px">
+
+<button
+class="install-btn"
+id="installBtn">
+📲 Install
+</button>
+
+<button
+class="menu-btn"
+id="menuBtn"
+aria-label="Menu">
+☰
+</button>
+
 </div>
 
 </div>
+
 </header>
 
+
 <!-- HERO -->
-<section class="hero">
+
+<section class="hero" id="home">
+
+<div class="container hero-grid">
+
 <div>
 
-<span class="badge" id="badge">
-12-Month Christian Discipleship Programme
-</span>
+<div class="badge">
+✦ GATE OF HEAVEN MINISTRIES
+</div>
 
-<h2 id="heroTitle">
-One-Year Bible & Discipleship Training
-</h2>
+<h1>
+Building Believers.<br>
+<span>Making Disciples.</span>
+</h1>
+
+<p class="hero-text">
+Proclaiming Christ, teaching God's Word,
+strengthening believers and making disciples.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#about" class="btn btn-light">
+About GOH
+</a>
+
+<a href="#bible-school" class="btn btn-primary">
+📖 Bible School
+</a>
+
+</div>
+
+</div>
+
+
+<div class="hero-card">
+
+<div class="hero-card-icon">📖</div>
+
+<small>Featured Program</small>
+
+<h2>From Believer to Disciple</h2>
 
 <p>
-A structured Christian training programme designed to help believers grow
-in biblical knowledge, spiritual character, ministry and disciple-making.
+1-Year Online Bible School designed to help
+believers grow in God's Word and become
+faithful disciples.
 </p>
 
-<div class="buttons">
-<a href="register.html" class="btn" id="registerBtn">
-Register Now
-</a>
+<div class="stats">
+
+<div class="stat">
+<strong>1 Year</strong>
+Program
+</div>
+
+<div class="stat">
+<strong>12</strong>
+Modules
+</div>
+
+<div class="stat">
+<strong>Online</strong>
+Learning
 </div>
 
 </div>
+
+<br>
+
+<a href="#bible-school"
+class="btn btn-primary"
+style="width:100%">
+Explore School
+</a>
+
+</div>
+
+</div>
+
 </section>
 
-<!-- PROGRAMME -->
-<section class="section" id="programme">
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
 <div class="container">
 
-<h2 class="title">About the Programme</h2>
+<div class="section-head">
 
-<p class="sub">
-A structured one-year learning journey for believers who desire to grow
-in Christ and serve effectively.
+<div class="eyebrow">About GOH Ministries</div>
+
+<h2>Serving Christ. Serving People.</h2>
+
+<p>
+Helping people know Christ, grow in His Word
+and live as faithful disciples.
 </p>
 
-<div class="grid">
+</div>
+
+<div class="about-grid">
 
 <div class="card">
-<div class="icon">📖</div>
-<h3>Biblical Foundation</h3>
-<p>Study essential Christian teachings and develop a strong foundation in God's Word.</p>
+<div class="icon">🎯</div>
+<h3>Our Mission</h3>
+<p>
+To proclaim the Gospel, teach God's Word,
+make disciples and serve people through
+the love of Christ.
+</p>
 </div>
+
+<div class="card">
+<div class="icon">❤️</div>
+<h3>Our Vision</h3>
+<p>
+To see lives transformed by God's Word
+and believers equipped to serve Christ.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MINISTRIES -->
+
+<section class="ministries" id="ministries">
+
+<div class="container">
+
+<div class="section-head">
+
+<div class="eyebrow">Our Ministries</div>
+
+<h2>Growing Together in Christ</h2>
+
+</div>
+
+<div class="ministry-grid">
+
+<div class="ministry">
+<div class="icon">🙏</div>
+<h3>Prayer</h3>
+<p>Seeking God together through prayer.</p>
+</div>
+
+<div class="ministry">
+<div class="icon">📖</div>
+<h3>Bible Teaching</h3>
+<p>Building strong biblical foundations.</p>
+</div>
+
+<div class="ministry">
+<div class="icon">🔥</div>
+<h3>Discipleship</h3>
+<p>Helping believers grow in Christ.</p>
+</div>
+
+<div class="ministry">
+<div class="icon">🌍</div>
+<h3>Evangelism</h3>
+<p>Sharing the Gospel with others.</p>
+</div>
+
+<div class="ministry">
+<div class="icon">🤝</div>
+<h3>Outreach</h3>
+<p>Serving people with Christ's love.</p>
+</div>
+
+<div class="ministry">
+<div class="icon">🎓</div>
+<h3>Bible School</h3>
+<p>Equipping believers for discipleship.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- BIBLE SCHOOL -->
+
+<section class="bible-school" id="bible-school">
+
+<div class="container">
+
+<div class="section-head">
+
+<div class="eyebrow">GOH Online Bible School</div>
+
+<h2>From Believer to Disciple</h2>
+
+<p>
+A one-year journey from foundational faith
+to mature Christian discipleship.
+</p>
+
+</div>
+
+<div class="school">
+
+<div class="school-main">
+
+<div class="school-tag">
+1-Year Online Program
+</div>
+
+<h2>From Believer to Disciple</h2>
+
+<p>
+Learn God's Word, grow in Christ,
+develop Christian character, serve God
+and learn to make disciples.
+</p>
+
+<div class="price">
+LKR 12,000
+<span> / 1 year</span>
+</div>
+
+<div class="features">
+
+<div class="feature">✓ Bible Lessons</div>
+<div class="feature">✓ 12 Modules</div>
+<div class="feature">✓ Quizzes</div>
+<div class="feature">✓ Assignments</div>
+<div class="feature">✓ Final Assessment</div>
+<div class="feature">✓ Certificate</div>
+
+</div>
+
+<button
+class="btn btn-primary"
+style="width:100%"
+onclick="startEnrollment()">
+
+🎓 Enroll Now
+
+</button>
+
+</div>
+
+
+<div class="curriculum">
+
+<h3>Course Journey</h3>
+
+<div class="module">
+<div class="num">01</div>
+New Life in Christ
+</div>
+
+<div class="module">
+<div class="num">02</div>
+Knowing God's Word
+</div>
+
+<div class="module">
+<div class="num">03</div>
+Prayer & Fellowship
+</div>
+
+<div class="module">
+<div class="num">04</div>
+Faith & Grace
+</div>
+
+<div class="module">
+<div class="num">05</div>
+Holy Spirit
+</div>
+
+<div class="module">
+<div class="num">06</div>
+Christian Character
+</div>
+
+<div class="module">
+<div class="num">07</div>
+Spiritual Warfare
+</div>
+
+<div class="module">
+<div class="num">08</div>
+Evangelism
+</div>
+
+<div class="module">
+<div class="num">09</div>
+Serving God
+</div>
+
+<div class="module">
+<div class="num">10</div>
+Christian Leadership
+</div>
+
+<div class="module">
+<div class="num">11</div>
+Making Disciples
+</div>
+
+<div class="module">
+<div class="num">12</div>
+Final Assessment
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- EVENTS -->
+
+<section class="events" id="events">
+
+<div class="container">
+
+<div class="section-head">
+
+<div class="eyebrow">Events & Programs</div>
+
+<h2>Join Us</h2>
+
+</div>
+
+<div class="event-grid">
 
 <div class="card">
 <div class="icon">🙏</div>
-<h3>Spiritual Growth</h3>
-<p>Develop prayer, Bible study, obedience, character and a consistent Christian life.</p>
+<h3>Prayer Meetings</h3>
+<p>Seeking God together in prayer and fellowship.</p>
 </div>
 
 <div class="card">
-<div class="icon">🤝</div>
-<h3>Disciple-Making</h3>
-<p>Learn to evangelize, teach, serve and help other believers grow in Christ.</p>
+<div class="icon">⛪</div>
+<h3>Worship Services</h3>
+<p>Worship, fellowship and biblical teaching.</p>
+</div>
+
+<div class="card">
+<div class="icon">🌍</div>
+<h3>Outreach</h3>
+<p>Sharing the Gospel and serving communities.</p>
 </div>
 
 </div>
+
 </div>
+
 </section>
 
-<!-- FEE -->
-<section class="section">
-<div class="price">
 
-<label>Programme Fee</label>
+<!-- MEDIA -->
 
-<strong>
-LKR 1,500 <small>/ month</small>
-</strong>
+<section class="media" id="media">
 
-<p>Monthly training access · 12-month programme</p>
+<div class="container">
 
-<a href="register.html" class="btn">
-Start Registration
+<div class="media-box">
+
+<div>
+<div class="eyebrow" style="color:#fbbf24">
+GOH Media
+</div>
+
+<h2>Watch & Listen</h2>
+
+<p>
+Bible teachings, messages and ministry content.
+</p>
+</div>
+
+<a href="#contact" class="btn btn-primary">
+Contact Us
 </a>
 
 </div>
+
+</div>
+
 </section>
 
-<!-- CURRICULUM -->
-<section class="section" id="curriculum">
-<div class="container">
-
-<h2 class="title">12-Month Curriculum</h2>
-
-<p class="sub">
-Each month focuses on a specific area of Christian growth and ministry development.
-</p>
-
-<div class="months">
-
-<div class="month"><b>Month 1</b><span>Foundations of Christian Faith</span></div>
-<div class="month"><b>Month 2</b><span>Jesus Christ and His Teachings</span></div>
-<div class="month"><b>Month 3</b><span>Holy Spirit and Spiritual Life</span></div>
-<div class="month"><b>Month 4</b><span>Prayer and Bible Study</span></div>
-<div class="month"><b>Month 5</b><span>Christian Character and Holiness</span></div>
-<div class="month"><b>Month 6</b><span>Church and Christian Fellowship</span></div>
-<div class="month"><b>Month 7</b><span>Evangelism and Gospel Ministry</span></div>
-<div class="month"><b>Month 8</b><span>Discipleship and Multiplication</span></div>
-<div class="month"><b>Month 9</b><span>Christian Leadership</span></div>
-<div class="month"><b>Month 10</b><span>Bible Interpretation and Teaching</span></div>
-<div class="month"><b>Month 11</b><span>Christian Ministry and Service</span></div>
-<div class="month"><b>Month 12</b><span>Mission and Disciple Multiplication</span></div>
-
-</div>
-</div>
-</section>
-
-<!-- GALLERY -->
-<section class="section" id="gallery">
-<div class="container">
-
-<h2 class="title">GOH Media & Gallery</h2>
-
-<p class="sub">
-See Bible training, worship, fellowship and ministry activities.
-More photos can be added as the school grows.
-</p>
-
-<div class="gallery">
-
-<div class="gallery-card">
-<div class="gallery-img">📖</div>
-<h3>Bible Study</h3>
-<p>Growing together through God's Word.</p>
-</div>
-
-<div class="gallery-card">
-<div class="gallery-img">🙏</div>
-<h3>Prayer & Worship</h3>
-<p>Building a life of prayer and worship.</p>
-</div>
-
-<div class="gallery-card">
-<div class="gallery-img">🎓</div>
-<h3>Bible School Training</h3>
-<p>Learning and growing through structured training.</p>
-</div>
-
-<div class="gallery-card">
-<div class="gallery-img">🤝</div>
-<h3>Fellowship</h3>
-<p>Growing together as disciples of Christ.</p>
-</div>
-
-<div class="gallery-card">
-<div class="gallery-img">🌍</div>
-<h3>Evangelism & Mission</h3>
-<p>Taking the Gospel to others.</p>
-</div>
-
-<div class="gallery-card">
-<div class="gallery-img">⛪</div>
-<h3>Ministry Activities</h3>
-<p>Serving God and the community.</p>
-</div>
-
-</div>
-</div>
-</section>
-
-<!-- HOW -->
-<section class="section" id="how">
-<div class="container">
-
-<h2 class="title">How the Programme Works</h2>
-
-<div class="steps">
-
-<div class="step">
-<div class="num">1</div>
-<div><h3>Register</h3><p>Create your student account and select your preferred language.</p></div>
-</div>
-
-<div class="step">
-<div class="num">2</div>
-<div><h3>Enroll</h3><p>Choose the monthly programme and complete payment.</p></div>
-</div>
-
-<div class="step">
-<div class="num">3</div>
-<div><h3>Study</h3><p>Access lessons, Bible references and learning materials.</p></div>
-</div>
-
-<div class="step">
-<div class="num">4</div>
-<div><h3>Assignment</h3><p>Complete the required monthly learning or ministry assignment.</p></div>
-</div>
-
-<div class="step">
-<div class="num">5</div>
-<div><h3>Monthly Exam</h3><p>Complete the examination after finishing the month's requirements.</p></div>
-</div>
-
-<div class="step">
-<div class="num">6</div>
-<div><h3>Pass & Continue</h3><p>Achieve at least 80% to unlock the next month.</p></div>
-</div>
-
-</div>
-</div>
-</section>
-
-<!-- REQUIREMENT -->
-<section class="section">
-<div class="require">
-
-<strong>80% Pass Requirement</strong>
-
-<p>
-Students must achieve a minimum score of 80% in each monthly examination
-to progress to the next month.
-</p>
-
-</div>
-</section>
-
-<!-- WHO -->
-<section class="section">
-<div class="container">
-
-<h2 class="title">Who Is This Programme For?</h2>
-
-<div class="grid">
-
-<div class="info">
-<h3>Believers</h3>
-<p>Christians who want a stronger biblical and spiritual foundation.</p>
-</div>
-
-<div class="info">
-<h3>Growing Disciples</h3>
-<p>Believers who want structured training for continued spiritual growth.</p>
-</div>
-
-<div class="info">
-<h3>Ministry Workers</h3>
-<p>Those preparing to serve, teach, evangelize and help make disciples.</p>
-</div>
-
-</div>
-</div>
-</section>
-
-<!-- LANGUAGES -->
-<section class="section">
-<div class="container">
-
-<h2 class="title">Three Languages</h2>
-
-<p class="sub">
-Learning access is provided in three languages.
-</p>
-
-<div class="grid">
-
-<div class="card" style="text-align:center">
-<div class="icon">🇬🇧</div>
-<h3>English</h3>
-<p>English learning materials and assessments.</p>
-</div>
-
-<div class="card" style="text-align:center">
-<div class="icon">தமிழ்</div>
-<h3>Tamil</h3>
-<p>Tamil learning materials and assessments.</p>
-</div>
-
-<div class="card" style="text-align:center">
-<div class="icon">සි</div>
-<h3>Sinhala</h3>
-<p>Sinhala learning materials and assessments.</p>
-</div>
-
-</div>
-</div>
-</section>
-
-<!-- FAQ -->
-<section class="section" id="faq">
-<div class="container">
-
-<h2 class="title">Frequently Asked Questions</h2>
-
-<div class="faq">
-
-<details>
-<summary>How long is the programme?</summary>
-<p>The programme is designed as a 12-month discipleship training journey.</p>
-</details>
-
-<details>
-<summary>How much does the programme cost?</summary>
-<p>The programme fee is LKR 1,500 per month.</p>
-</details>
-
-<details>
-<summary>What happens if I do not achieve 80%?</summary>
-<p>The student does not progress to the next month until the required examination requirement is successfully completed.</p>
-</details>
-
-<details>
-<summary>Can I study in my preferred language?</summary>
-<p>Yes. The programme is planned for English, Tamil and Sinhala learners.</p>
-</details>
-
-<details>
-<summary>Is this a university degree?</summary>
-<p>No. This is a Christian discipleship and Bible training programme offered by GOH Ministries.</p>
-</details>
-
-<details>
-<summary>How do I start?</summary>
-<p>Create a student account and complete the registration process.</p>
-</details>
-
-</div>
-</div>
-</section>
 
 <!-- CONTACT -->
-<section class="section" id="contact">
+
+<section class="contact" id="contact">
+
 <div class="container">
 
-<div class="contact">
+<div class="section-head">
 
-<h2>Ready to Begin?</h2>
+<div class="eyebrow">Contact</div>
+
+<h2>Connect With GOH Ministries</h2>
 
 <p>
-Start your one-year journey of Bible learning,
-spiritual growth and discipleship.
+For ministry information, prayer or Bible School questions.
 </p>
 
-<a href="register.html" class="btn">
-Register Now
-</a>
+</div>
 
-<a href="https://wa.me/94771190395"
+<div class="contact-grid">
+
+<div class="card">
+
+<div class="contact-item">
+
+<div class="icon">💬</div>
+
+<div>
+<strong>WhatsApp</strong>
+<span>0771190395</span>
+</div>
+
+</div>
+
+<a
+href="https://wa.me/94771190395?text=Hello%20GOH%20Ministries"
 target="_blank"
-class="btn">
-WhatsApp
+rel="noopener"
+class="btn whatsapp-btn"
+style="width:100%">
+
+💬 WhatsApp Us
+
+</a>
+
+</div>
+
+
+<div class="card">
+
+<div class="contact-item">
+
+<div class="icon">📖</div>
+
+<div>
+<strong>Online Bible School</strong>
+<span>From Believer to Disciple</span>
+</div>
+
+</div>
+
+<a href="#bible-school"
+class="btn btn-dark"
+style="width:100%">
+
+📖 Explore Bible School
+
 </a>
 
 </div>
 
 </div>
+
+</div>
+
 </section>
 
+
 <!-- FOOTER -->
+
 <footer>
 
-<div class="foot">
+<div class="container">
+
+<div class="footer-grid">
 
 <div>
-<h3>GOH Bible School</h3>
-<p>One-Year Christian Discipleship Training</p>
-<p>A ministry training programme of GOH Ministries.</p>
+<h3>GOH Ministries</h3>
+<p>
+Gate of Heaven Ministries — Building believers,
+making disciples and advancing the Kingdom of God.
+</p>
 </div>
 
 <div>
-<h3>Programme</h3>
-<a href="#programme">About</a>
-<a href="#curriculum">Curriculum</a>
-<a href="#gallery">Gallery</a>
-<a href="#how">How It Works</a>
-<a href="#faq">FAQ</a>
+<h3>Navigate</h3>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#ministries">Ministries</a>
+<a href="#bible-school">Bible School</a>
+<a href="#contact">Contact</a>
 </div>
 
 <div>
-<h3>Important</h3>
-<a href="terms.html">Terms & Conditions</a>
+<h3>Policies</h3>
 <a href="privacy.html">Privacy Policy</a>
+<a href="terms.html">Terms & Conditions</a>
 <a href="refund.html">Refund Policy</a>
-<a href="cancellation.html">Cancellation Policy</a>
-<a href="contact.html">Contact</a>
 </div>
 
 </div>
 
-<div class="copy">
-© 2026 GOH Ministries · GOH Bible School · All Rights Reserved
+<div class="footer-bottom">
+
+<span>
+© <span id="year"></span> GOH Ministries
+</span>
+
+<span>
+All Rights Reserved
+</span>
+
+</div>
+
 </div>
 
 </footer>
 
-<!-- FLOATING WHATSAPP -->
-<a class="whatsapp"
-href="https://wa.me/94771190395"
+
+<!-- WHATSAPP -->
+
+<a
+class="whatsapp"
+href="https://wa.me/94771190395?text=Hello%20GOH%20Ministries"
 target="_blank"
-aria-label="WhatsApp GOH Bible School">
-☘ WhatsApp
+rel="noopener"
+aria-label="WhatsApp GOH Ministries">
+
+💬
+
 </a>
 
+
 <script>
-const t={
-en:["12-Month Christian Discipleship Programme","One-Year Bible & Discipleship Training","Register Now"],
-ta:["12 மாத கிறிஸ்தவ சீஷத்துவப் பயிற்சி","ஒரு வருட வேதாகமம் மற்றும் சீஷத்துவப் பயிற்சி","பதிவு செய்யுங்கள்"],
-si:["මාස 12ක ක්‍රිස්තියානි ගෝලත්ව පුහුණුව","වසරක බයිබල් හා ගෝලත්ව පුහුණුව","දැන් ලියාපදිංචි වන්න"]
+
+/* YEAR */
+
+document.getElementById("year").textContent =
+new Date().getFullYear();
+
+
+/* MOBILE MENU */
+
+const menuBtn =
+document.getElementById("menuBtn");
+
+const navLinks =
+document.getElementById("navLinks");
+
+menuBtn.onclick=function(){
+
+navLinks.classList.toggle("show");
+
+menuBtn.textContent =
+navLinks.classList.contains("show")
+? "✕"
+: "☰";
+
 };
 
-function setLang(l,b){
-let x=t[l];
-document.getElementById("badge").textContent=x[0];
-document.getElementById("heroTitle").textContent=x[1];
-document.getElementById("registerBtn").textContent=x[2];
 
-document.querySelectorAll(".lang button")
-.forEach(v=>v.classList.remove("on"));
+/* CLOSE MENU */
 
-b.classList.add("on");
-document.documentElement.lang=l;
-localStorage.setItem("gohLang",l);
+document.querySelectorAll(".nav-links a")
+.forEach(function(a){
+
+a.onclick=function(){
+
+navLinks.classList.remove("show");
+menuBtn.textContent="☰";
+
+};
+
+});
+
+
+/* PWA INSTALL */
+
+let deferredPrompt=null;
+
+const installBtn=
+document.getElementById("installBtn");
+
+
+window.addEventListener(
+"beforeinstallprompt",
+function(e){
+
+e.preventDefault();
+
+deferredPrompt=e;
+
+installBtn.style.display="inline-flex";
+
+});
+
+
+installBtn.addEventListener(
+"click",
+async function(){
+
+if(!deferredPrompt){
+
+alert(
+"To install GOH Ministries, open your browser menu and choose 'Add to Home screen' or 'Install app'."
+);
+
+return;
+
 }
 
-let saved=localStorage.getItem("gohLang");
-if(saved){
-let b=document.querySelector(`[onclick*="'${saved}'"]`);
-if(b)setLang(saved,b);
+deferredPrompt.prompt();
+
+const result=
+await deferredPrompt.userChoice;
+
+deferredPrompt=null;
+
+installBtn.style.display="none";
+
+});
+
+
+window.addEventListener(
+"appinstalled",
+function(){
+
+installBtn.style.display="none";
+
+});
+
+
+/* ENROLLMENT */
+
+function startEnrollment(){
+
+window.location.href="enroll.html";
+
 }
+
 </script>
 
 </body>
