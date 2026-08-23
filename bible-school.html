@@ -2,764 +2,869 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GOH Bible School | Discipleship Training</title>
-<meta name="description" content="GOH Bible School — One-year discipleship training with 12 subjects, 48 weekly lessons and monthly progress.">
-<meta name="theme-color" content="#111827">
-<link rel="manifest" href="/manifest.json">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>CreateLK | 365-Day Bible Ministry School</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Arial,Helvetica,sans-serif;background:#f8fafc;color:#172033;line-height:1.5}
-a{text-decoration:none;color:inherit}
-.container{width:min(1050px,92%);margin:auto}
-
+:root{
+ --blue:#155eef;
+ --purple:#6d3df5;
+ --green:#16a34a;
+ --gold:#e9a400;
+ --dark:#172033;
+ --muted:#687386;
+ --bg:#f4f7fb;
+}
+body{
+ font-family:Arial,sans-serif;
+ background:var(--bg);
+ color:var(--dark);
+}
 header{
-position:sticky;top:0;z-index:100;
-background:#fff;border-bottom:1px solid #e5e7eb
+ background:linear-gradient(135deg,var(--blue),var(--purple));
+ color:#fff;
+ padding:24px 16px;
+ text-align:center;
 }
-.nav{
-height:64px;display:flex;align-items:center;
-justify-content:space-between;gap:10px
-}
-.logo{display:flex;align-items:center;gap:9px}
-.logo img{width:42px;height:42px;object-fit:contain;border-radius:8px}
-.logo b{font-size:14px}
-.logo small{display:block;font-size:9px;color:#6b7280}
-.links{display:flex;align-items:center;gap:3px}
-.links a{
-padding:8px;font-size:10px;font-weight:800;
-border-radius:7px;color:#374151
-}
-.links a:hover{background:#f3f4f6}
-.menu{
-display:none;background:#fff;border:1px solid #ddd;
-border-radius:8px;padding:7px 10px;font-size:18px
+header h1{font-size:25px}
+header p{font-size:13px;opacity:.9;margin-top:6px}
+
+.wrap{max-width:950px;margin:auto;padding:15px}
+
+.card{
+ background:#fff;
+ border-radius:18px;
+ padding:17px;
+ margin-bottom:15px;
+ box-shadow:0 5px 18px #0000000c;
 }
 
-.hero{
-background:
-radial-gradient(circle at 85% 15%,rgba(99,102,241,.22),transparent 30%),
-linear-gradient(135deg,#111827,#293548);
-color:#fff;text-align:center;padding:58px 0
-}
-.hero small,.head small{
-font-size:9px;font-weight:900;letter-spacing:1px;color:#fbbf24
-}
-.hero h1{
-font-size:clamp(34px,6vw,54px);
-line-height:1.05;margin:8px 0 14px
-}
-.hero h1 span{color:#fbbf24}
-.hero p{
-max-width:650px;margin:0 auto 18px;
-font-size:13px;color:#d1d5db
-}
-
-.btn{
-display:inline-flex;align-items:center;justify-content:center;
-padding:11px 17px;border-radius:9px;
-font-size:11px;font-weight:900
-}
-.primary{background:#fbbf24;color:#111827}
-.dark{background:#111827;color:#fff}
-.blue{background:#4f46e5;color:#fff}
-
-section{padding:50px 0}
-.head{text-align:center;margin-bottom:23px}
-.head small{color:#4f46e5}
-.head h2{font-size:27px;line-height:1.15;margin:5px 0}
-.head p{font-size:11px;color:#6b7280}
-
-/* PROGRAM */
-
-.program{
-background:#eef2ff
-}
-.program-card{
-max-width:900px;margin:auto;background:#fff;
-border:1px solid #dfe5f5;border-radius:18px;
-padding:22px;box-shadow:0 10px 30px rgba(30,41,59,.06)
-}
-.program-top{
-display:flex;align-items:center;
-justify-content:space-between;gap:15px;margin-bottom:17px
-}
-.program-top h3{font-size:21px}
-.program-top p{font-size:10px;color:#64748b}
-
-.price{
-background:#111827;color:#fff;
-border-radius:12px;padding:11px 18px;
-text-align:center;white-space:nowrap
-}
-.price small{display:block;font-size:8px;color:#94a3b8}
-.price b{display:block;font-size:22px}
-
-.info-grid{
-display:grid;grid-template-columns:repeat(3,1fr);
-gap:8px;margin-bottom:17px
-}
-.info{
-background:#f8fafc;border:1px solid #e5e7eb;
-border-radius:9px;padding:9px;
-text-align:center;font-size:9px;font-weight:800
-}
-
-.payment{
-background:#111827;color:#fff;
-border-radius:14px;padding:18px;text-align:center
-}
-.payment h3{font-size:17px;margin-bottom:4px}
-.payment p{
-font-size:10px;color:#cbd5e1;
-max-width:550px;margin:0 auto 12px
-}
-.payment-buttons{
-display:flex;justify-content:center;gap:7px;flex-wrap:wrap
-}
-.payment-note{
-font-size:8px;color:#94a3b8;margin-top:9px
-}
-
-.progress{
-margin-top:16px;padding:13px;
-background:#f8fafc;border:1px solid #e5e7eb;border-radius:11px
-}
-.progress-head{
-display:flex;justify-content:space-between;
-font-size:9px;font-weight:900
+.progressTop{
+ display:flex;
+ justify-content:space-between;
+ font-weight:bold;
+ margin-bottom:9px;
 }
 .bar{
-height:7px;background:#e5e7eb;
-border-radius:20px;overflow:hidden;margin-top:7px
+ height:10px;
+ background:#e7ebf2;
+ border-radius:20px;
+ overflow:hidden;
 }
-.bar i{display:block;width:0;height:100%;background:#4f46e5}
+.bar span{
+ display:block;
+ height:100%;
+ width:0;
+ background:linear-gradient(90deg,var(--blue),var(--purple));
+ transition:.4s;
+}
 
-/* SUBJECTS */
+.stats{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:9px;
+ margin-top:13px;
+}
+.stat{
+ background:#f7f9fc;
+ padding:12px 5px;
+ border-radius:12px;
+ text-align:center;
+}
+.stat b{display:block;font-size:18px}
+.stat small{color:var(--muted)}
+
+.sectionTitle{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin:20px 2px 12px;
+}
+.sectionTitle h2{font-size:19px}
 
 .subjects{
-display:grid;grid-template-columns:repeat(3,1fr);gap:10px
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:11px;
 }
+
 .subject{
-background:#fff;border:1px solid #e5e7eb;
-border-radius:13px;padding:15px;
-position:relative
+ border:0;
+ background:#fff;
+ border-radius:16px;
+ padding:15px;
+ text-align:left;
+ box-shadow:0 4px 15px #0000000b;
+ cursor:pointer;
+ position:relative;
 }
-.subject.locked{
-background:#fafafa
-}
-.subject-top{
-display:flex;align-items:flex-start;
-justify-content:space-between;gap:8px
-}
-.subject-number{
-font-size:8px;font-weight:900;
-letter-spacing:.7px;color:#4f46e5
-}
-.subject h3{
-font-size:14px;line-height:1.25;margin:4px 0
-}
+.subject:active{transform:scale(.98)}
+.subject .icon{font-size:27px}
+.subject h3{font-size:14px;margin-top:8px}
 .subject p{
-font-size:9px;color:#6b7280;margin-bottom:10px
+ color:var(--muted);
+ font-size:11px;
+ margin-top:5px;
+ line-height:1.4;
+}
+.subject .lock{
+ position:absolute;
+ right:12px;
+ top:12px;
 }
 
-.lock{
-background:#111827;color:#fff;
-font-size:8px;font-weight:900;
-padding:5px 7px;border-radius:20px;
-white-space:nowrap
+.days{
+ display:none;
+}
+.back{
+ border:0;
+ background:#edf3ff;
+ color:var(--blue);
+ padding:9px 13px;
+ border-radius:10px;
+ font-weight:bold;
+ cursor:pointer;
+ margin-bottom:14px;
 }
 
-.weeks{display:grid;gap:5px}
-.week{
-background:#f8fafc;border-radius:7px;
-padding:7px 8px;font-size:9px;
-font-weight:800;color:#374151
+.dayGrid{
+ display:grid;
+ grid-template-columns:repeat(5,1fr);
+ gap:8px;
+}
+.day{
+ border:1px solid #e0e5ee;
+ background:#fff;
+ border-radius:10px;
+ padding:10px 3px;
+ cursor:pointer;
+ font-weight:bold;
+ font-size:12px;
+}
+.day.done{
+ background:#eaf8ef;
+ border-color:#9ad6ad;
+ color:var(--green);
+}
+.day.locked{
+ background:#f3f4f6;
+ color:#9ca3af;
 }
 
-.locked .weeks{
-opacity:.65
+.lesson{
+ display:none;
+}
+.lesson h2{font-size:21px}
+.meta{
+ color:var(--muted);
+ font-size:13px;
+ margin:6px 0 16px;
 }
 
-.unlock-note{
-margin-top:9px;
-font-size:8px;color:#9a3412;
-background:#fff7ed;
-border:1px solid #fed7aa;
-border-radius:7px;padding:6px;
-text-align:center
+.lang{
+ display:flex;
+ gap:7px;
+ margin-bottom:14px;
+}
+.lang button{
+ flex:1;
+ border:1px solid #dce2ec;
+ background:#fff;
+ padding:10px;
+ border-radius:10px;
+ cursor:pointer;
+ font-weight:bold;
+}
+.lang button.active{
+ background:var(--blue);
+ color:#fff;
+ border-color:var(--blue);
 }
 
-/* VERSES */
-
-.verses{background:#fff}
-.verse-grid{
-display:grid;grid-template-columns:repeat(2,1fr);gap:9px
-}
 .verse{
-border:1px solid #e5e7eb;
-border-radius:12px;padding:14px
+ background:#f7f9fc;
+ border-left:4px solid var(--blue);
+ padding:12px;
+ margin:8px 0;
+ border-radius:0 10px 10px 0;
 }
-.verse strong{font-size:11px;color:#4f46e5}
-.verse p{font-size:10px;margin:6px 0;color:#374151}
-.verse div{
-font-size:9px;color:#64748b;margin-top:5px
+.ref{
+ color:var(--blue);
+ font-weight:bold;
+ font-size:12px;
+ margin-bottom:5px;
 }
-
-/* FOOTER */
-
-footer{
-background:#0b1120;color:#fff;padding:28px 0 15px
-}
-.footer-main{
-display:flex;justify-content:space-between;
-align-items:center;gap:20px
-}
-.footer-brand{
-display:flex;align-items:center;gap:9px
-}
-.footer-brand img{
-width:40px;height:40px;object-fit:contain;
-background:#fff;border-radius:8px;padding:3px
-}
-.footer-brand b{font-size:13px}
-.footer-brand small{
-display:block;font-size:8px;color:#94a3b8
-}
-.footer-links{
-display:flex;gap:12px;flex-wrap:wrap
-}
-.footer-links a{
-font-size:9px;color:#cbd5e1
-}
-.footer-links a:hover{color:#fbbf24}
-.footer-bottom{
-border-top:1px solid #1e293b;
-margin-top:18px;padding-top:12px;
-font-size:8px;color:#64748b
+.text{
+ font-size:14px;
+ line-height:1.6;
 }
 
-/* MOBILE */
+.quiz{
+ margin-top:22px;
+ border-top:1px solid #e8ecf2;
+ padding-top:19px;
+}
+.quiz h3{margin-bottom:13px}
+.question{
+ background:#f8faff;
+ border-radius:13px;
+ padding:13px;
+ margin-bottom:13px;
+}
+.question p{
+ font-weight:bold;
+ font-size:14px;
+ line-height:1.45;
+ margin-bottom:9px;
+}
+.option{
+ display:block;
+ width:100%;
+ border:1px solid #dce2ec;
+ background:#fff;
+ padding:10px;
+ border-radius:9px;
+ margin:6px 0;
+ text-align:left;
+ cursor:pointer;
+}
+.option.correct{
+ background:#e9f8ee;
+ border-color:#4caf73;
+}
+.option.wrong{
+ background:#fff0f0;
+ border-color:#e35b5b;
+}
 
-@media(max-width:850px){
-.links{display:none}
-.menu{display:block}
-.subjects{grid-template-columns:repeat(2,1fr)}
+.complete{
+ width:100%;
+ border:0;
+ padding:13px;
+ border-radius:11px;
+ color:#fff;
+ font-weight:bold;
+ background:linear-gradient(135deg,var(--blue),var(--purple));
+ cursor:pointer;
+ margin-top:3px;
+}
+
+.notice{
+ background:#fff8e6;
+ border:1px solid #f5d37a;
+ padding:14px;
+ border-radius:12px;
+ margin-top:14px;
+ font-size:13px;
+ line-height:1.5;
+}
+
+.certificate{
+ border:1px solid #e6d39a;
+ background:linear-gradient(135deg,#fffdf4,#fff8df);
+}
+.certificate h3{color:#8b6500}
+.certBar{
+ height:9px;
+ background:#eee6ca;
+ border-radius:20px;
+ margin-top:10px;
+ overflow:hidden;
+}
+.certBar span{
+ display:block;
+ height:100%;
+ width:0;
+ background:var(--gold);
 }
 
 @media(max-width:600px){
-.container{width:91%}
-.hero{padding:48px 0}
-.program-top{display:block}
-.price{margin-top:12px}
-.info-grid{grid-template-columns:repeat(2,1fr)}
-.subjects,.verse-grid{grid-template-columns:1fr}
-.payment-buttons .btn{width:100%}
-.footer-main{display:block}
-.footer-links{margin-top:15px}
+ .dayGrid{grid-template-columns:repeat(5,1fr)}
+ .subjects{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-
 <header>
-<div class="container nav">
-
-<a href="index.html" class="logo">
-<img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png" alt="GOH Ministries">
-<div>
-<b>GOH Ministries</b>
-<small>Gate of Heaven Ministries</small>
-</div>
-</a>
-
-<nav class="links">
-<a href="index.html">Home</a>
-<a href="ministries.html">Ministries</a>
-<a href="bible-school.html">Bible School</a>
-<a href="media.html">Media</a>
-<a href="prayer.html">Prayer</a>
-<a href="contact.html">Contact</a>
-</nav>
-
-<button class="menu" onclick="toggleMenu()" aria-label="Menu">☰</button>
-
-</div>
+ <h1>📖 Bible Ministry School</h1>
+ <p>365-Day Bible Study & Ministry Training</p>
 </header>
 
-<!-- HERO -->
+<div class="wrap">
 
-<section class="hero">
-<div class="container">
+ <div id="home">
 
-<small>GOH BIBLE SCHOOL</small>
+  <div class="card">
 
-<h1>
-Grow Deeper.<br>
-<span>Live Stronger.</span>
-</h1>
+   <div class="progressTop">
+    <span>365-Day Progress</span>
+    <span id="progressText">0 / 365</span>
+   </div>
 
-<p>
-A structured one-year discipleship training program
-to help believers grow in God's Word, follow Jesus
-and serve faithfully.
-</p>
+   <div class="bar">
+    <span id="progressBar"></span>
+   </div>
 
-<a href="#membership" class="btn primary">
-Join Discipleship Training →
-</a>
+   <div class="stats">
+    <div class="stat">
+     <b id="completed">0</b>
+     <small>Completed</small>
+    </div>
 
-</div>
-</section>
-
-<!-- MEMBERSHIP -->
-
-<section class="program" id="membership">
-
-<div class="container">
-
-<div class="head">
-<small>DISCIPLESHIP TRAINING</small>
-<h2>12 Months • 48 Weekly Lessons</h2>
-<p>One main subject every month with four weekly lessons.</p>
-</div>
-
-<div class="program-card">
-
-<div class="program-top">
-
-<div>
-<h3>GOH Bible School</h3>
-<p>Learn • Practice • Grow • Serve</p>
-</div>
-
-<div class="price">
-<small>MONTHLY FEE</small>
-<b>LKR 1,500</b>
-<small>per month</small>
-</div>
-
-</div>
-
-<div class="info-grid">
-
-<div class="info">📖 Bible Teaching</div>
-<div class="info">🎥 Lessons</div>
-<div class="info">📝 Weekly Quizzes</div>
-<div class="info">📊 25-Day Progress</div>
-<div class="info">📜 Certificate</div>
-<div class="info">🌍 Discipleship</div>
-
-</div>
-
-<div class="payment">
-
-<h3>🔐 Membership Required</h3>
-
-<p>
-The 12 subjects are visible for preview, but the
-lessons remain locked until monthly payment is approved.
-</p>
-
-<div class="payment-buttons">
-
-<a href="payhere.html" class="btn primary">
-💳 PayHere
-</a>
-
-<a href="manual-payment.html" class="btn blue">
-🏦 Manual Payment
-</a>
-
-</div>
-
-<div class="payment-note">
-Manual payments require payment proof and admin approval.
-</div>
-
-</div>
-
-<div class="progress">
-
-<div class="progress-head">
-<span>Monthly Progress</span>
-<span>0 / 25 Days</span>
-</div>
-
-<div class="bar"><i></i></div>
-
-</div>
-
-</div>
-</div>
-</section>
-
-<!-- 12 SUBJECTS -->
-
-<section>
-
-<div class="container">
-
-<div class="head">
-<small>ONE-YEAR CURRICULUM</small>
-<h2>12 Discipleship Subjects</h2>
-<p>Each subject contains four weekly lessons.</p>
-</div>
-
-<div class="subjects">
-
-<div class="subject locked">
-<div class="subject-top">
-<div>
-<div class="subject-number">MONTH 01</div>
-<h3>New Life in Christ</h3>
-</div>
-<span class="lock">🔒 LOCKED</span>
-</div>
-<p>Building a strong foundation in Christ.</p>
-<div class="weeks">
-<div class="week">Week 1 • Salvation</div>
-<div class="week">Week 2 • Repentance</div>
-<div class="week">Week 3 • Faith</div>
-<div class="week">Week 4 • Assurance</div>
-</div>
-<div class="unlock-note">Unlock after payment approval</div>
-</div>
-
-<div class="subject locked">
-<div class="subject-top">
-<div>
-<div class="subject-number">MONTH 02</div>
-<h3>Knowing God's Word</h3>
-</div>
-<span class="lock">🔒 LOCKED</span>
-</div>
-<p>Understanding and applying Scripture.</p>
-<div class="weeks">
-<div class="week">Week 1 • The Bible</div>
-<div class="week">Week 2 • Bible Study</div>
-<div class="week">Week 3 • Understanding Scripture</div>
-<div class="week">Week 4 • Applying God's Word</div>
-</div>
-<div class="unlock-note">Unlock after payment approval</div>
-</div>
-
-<div class="subject locked">
-<div class="subject-top">
-<div>
-<div class="subject-number">MONTH 03</div>
-<h3>Prayer & Spiritual Growth</h3>
-</div>
-<span class="lock">🔒 LOCKED</span>
-</div>
-<p>Developing a strong prayer life.</p>
-<div class="weeks">
-<div class="week">Week 1 • Prayer</div>
-<div class="week">Week 2 • Faith in Prayer</div>
-<div class="week">Week 3 • Intercession</div>
-<div class="week">Week 4 • Spiritual Growth</div>
-</div>
-<div class="unlock-note">Unlock after payment approval</div>
-</div>
-
-<div class="subject locked">
-<div class="subject-top">
-<div>
-<div class="subject-number">MONTH 04</div>
-<h3>Faith & Obedience</h3>
-</div>
-<span class="lock">🔒 LOCKED</span>
-</div>
-<p>Trusting God and walking in obedience.</p>
-<div class="weeks">
-<div class="week">Week 1 • Trusting God</div>
-<div class="week">Week 2 • Walking by Faith</div>
-<div class="week">Week 3 • Obedience</div>
-<div class="week">Week 4 • Faithful Living</div>
-</div>
-<div class="unlock-note">Unlock after payment approval</div>
-</div>
-
-<div class="subject locked">
-<div class="subject-top">
-<div>
-<div class="subject-number">MONTH 05</div>
-<h3>The Holy Spirit</h3>
-</div>
-<span class="lock">🔒 LOCKED</span>
-</div>
-<p>Understanding the Spirit's work.</p>
-<div class="weeks">
-<div class="week">Week 1 • Holy Spirit</div>
-<div class="week">Week 2 • Walking in the Spirit</div>
-<div class="week">Week 3 • Spiritual Gifts</div>
-<div class="week">Week 4 • Spirit-Filled Life</div>
-</div>
-<div class="unlock-note">Unlock after payment approval</div>
-</div>
-
-<div class="subject locked">
-<div class="subject-top">
-<div>
-<div class="subject-number">MONTH 06</div>
-<h3>Christian Character</h3>
-</div>
-<span class="lock">🔒 LOCKED</span>
-</div>
-<p>Growing in Christlike character.</p>
-<div class="weeks">
-<div class="week">Week 1 • Love</div>
-<div class="week">Week 2 • Humility</div>
-<div class="week">Week 3 • Forgiveness</div>
-<div class="week">Week 4 • Integrity</div>
-</div>
-<div class="unlock-note">Unlock after payment approval</div>
-</div>
-
-<div class="subject locked">
-<div class="subject-top">
-<div>
-<div class="subject-number">MONTH 07</div>
-<h3>Following Jesus</h3>
-</div>
-<span class="lock">🔒 LOCKED</span>
-</div>
-<p>Learning what it means to be a disciple.</p>
-<div class="weeks">
-<div class="week">Week 1 • Following Christ</div>
-<div class="week">Week 2 • Counting the Cost</div>
-<div class="week">Week 3 • Taking the Cross</div>
-<div class="week">Week 4 • Christlikeness</div>
-</div>
-<div class="unlock-note">Unlock after payment approval</div>
-</div>
-
-<div class="subject locked">
-<div class="subject-top">
-<div>
-<div class="subject-number">MONTH 08</div>
-<h3>Evangelism</h3>
-</div>
-<span class="lock">🔒 LOCKED</span>
-</div>
-<p>Sharing the Gospel with others.</p>
-<div class="weeks">
-<div class="week">Week 1 • The Gospel</div>
-<div class="week">Week 2 • Great Commission</div>
-<div class="week">Week 3 • Personal Witness</div>
-<div class="week">Week 4 • Reaching Souls</div>
-</div>
-<div class="unlock-note">Unlock after payment approval</div>
-</div>
-
-<div class="subject locked">
-<div class="subject-top">
-<div>
-<div class="subject-number">MONTH 09</div>
-<h3>Serving the Church</h3>
-</div>
-<span class="lock">🔒 LOCKED</span>
-</div>
-<p>Using our gifts to serve others.</p>
-<div class="weeks">
-<div class="week">Week 1 • Christian Service</div>
-<div class="week">Week 2 • Spiritual Gifts</div>
-<div class="week">Week 3 • Serving Others</div>
-<div class="week">Week 4 • Ministry</div>
-</div>
-<div class="unlock-note">Unlock after payment approval</div>
-</div>
-
-<div class="subject locked">
-<div class="subject-top">
-<div>
-<div class="subject-number">MONTH 10</div>
-<h3>Christian Leadership</h3>
-</div>
-<span class="lock">🔒 LOCKED</span>
-</div>
-<p>Learning servant leadership.</p>
-<div class="weeks">
-<div class="week">Week 1 • Servant Leadership</div>
-<div class="week">Week 2 • Leadership Character</div>
-<div class="week">Week 3 • Leading People</div>
-<div class="week">Week 4 • Ministry Leadership</div>
-</div>
-<div class="unlock-note">Unlock after payment approval</div>
-</div>
+    <div class="stat">
+     <b id="remaining">365</b>
+     <small>Remaining</small>
+    </div>
 
-<div class="subject locked">
-<div class="subject-top">
-<div>
-<div class="subject-number">MONTH 11</div>
-<h3>Christian Living</h3>
-</div>
-<span class="lock">🔒 LOCKED</span>
-</div>
-<p>Living faithfully every day.</p>
-<div class="weeks">
-<div class="week">Week 1 • Holiness</div>
-<div class="week">Week 2 • Family</div>
-<div class="week">Week 3 • Work</div>
-<div class="week">Week 4 • Christian Witness</div>
-</div>
-<div class="unlock-note">Unlock after payment approval</div>
-</div>
-
-<div class="subject locked">
-<div class="subject-top">
-<div>
-<div class="subject-number">MONTH 12</div>
-<h3>Mission & Multiplication</h3>
-</div>
-<span class="lock">🔒 LOCKED</span>
-</div>
-<p>Making disciples who make disciples.</p>
-<div class="weeks">
-<div class="week">Week 1 • Making Disciples</div>
-<div class="week">Week 2 • Training Others</div>
-<div class="week">Week 3 • Multiplication</div>
-<div class="week">Week 4 • Mission</div>
-</div>
-<div class="unlock-note">Unlock after payment approval</div>
-</div>
-
-</div>
-</div>
-</section>
+    <div class="stat">
+     <b id="score">0%</b>
+     <small>Average</small>
+    </div>
+   </div>
 
-<!-- BIBLE VERSES -->
+  </div>
 
-<section class="verses">
+  <div class="card certificate">
 
-<div class="container">
+   <h3>🏆 Certificate Progress</h3>
+   <p style="font-size:13px;margin-top:5px">
+    Complete the 365-day course and pass the final assessment.
+   </p>
 
-<div class="head">
-<small>DAILY WORD</small>
-<h2>10 Bible Verses</h2>
-<p>English • தமிழ் • සිංහල</p>
-</div>
-
-<div class="verse-grid">
+   <div class="certBar">
+    <span id="certBar"></span>
+   </div>
 
-<div class="verse">
-<strong>1. John 3:16</strong>
-<p>For God so loved the world that He gave His only begotten Son.</p>
-<div>உலகத்தில் தேவன் அன்புகூர்ந்தார்; தம்முடைய ஒரேபேறான குமாரனைத் தந்தார்.</div>
-<div>දෙවියන් වහන්සේ ලෝකයට එතරම් ප්‍රේම කළ සේක, තම එකම පුත්‍රයා දුන් සේක.</div>
-</div>
+   <p id="certText" style="font-size:12px;margin-top:7px">
+    0% completed
+   </p>
 
-<div class="verse">
-<strong>2. Philippians 4:13</strong>
-<p>I can do all things through Christ who strengthens me.</p>
-<div>என்னைப் பலப்படுத்துகிற கிறிஸ்துவினாலே எல்லாவற்றையும் செய்ய எனக்குப் பெலனுண்டு.</div>
-<div>මා ශක්තිමත් කරන ක්‍රිස්තුස් වහන්සේ තුළින් සියල්ල කළ හැකිය.</div>
-</div>
+  </div>
 
-<div class="verse">
-<strong>3. Psalm 23:1</strong>
-<p>The Lord is my shepherd; I shall not want.</p>
-<div>கர்த்தர் என் மேய்ப்பராயிருக்கிறார்; எனக்குக் குறைவில்லை.</div>
-<div>ස්වාමීන් වහන්සේ මාගේ එඬේරාය; මට කිසි අඩුවක් නොවන්නේය.</div>
-</div>
+  <div class="sectionTitle">
+   <h2>📚 12 Ministry Subjects</h2>
+  </div>
 
-<div class="verse">
-<strong>4. Proverbs 3:5</strong>
-<p>Trust in the Lord with all your heart.</p>
-<div>உன் முழு இருதயத்தோடும் கர்த்தரில் நம்பிக்கையாயிரு.</div>
-<div>ඔබේ මුළු හදවතින්ම ස්වාමීන් වහන්සේ කෙරෙහි විශ්වාස කරන්න.</div>
-</div>
+  <div class="subjects" id="subjects"></div>
 
-<div class="verse">
-<strong>5. Jeremiah 29:11</strong>
-<p>I know the plans I have for you, says the Lord.</p>
-<div>உங்களுக்காக நான் நினைக்கும் நினைவுகளை அறிவேன் என்று கர்த்தர் சொல்லுகிறார்.</div>
-<div>ඔබ ගැන මා සිතන සිතුවිලි මම දනිමි කියා ස්වාමීන් වහන්සේ කියන සේක.</div>
-</div>
+ </div>
 
-<div class="verse">
-<strong>6. Psalm 119:105</strong>
-<p>Your word is a lamp to my feet and a light to my path.</p>
-<div>உமது வசனம் என் கால்களுக்கு விளக்கும், என் பாதைக்கு வெளிச்சமுமாயிருக்கிறது.</div>
-<div>ඔබගේ වචනය මාගේ පාදවලට පහනක්ද මාගේ මාර්ගයට ආලෝකයක්ද වේ.</div>
-</div>
+ <div class="days card" id="days">
 
-<div class="verse">
-<strong>7. Romans 8:28</strong>
-<p>All things work together for good to those who love God.</p>
-<div>தேவனை நேசிக்கிறவர்களுக்கு சகலமும் நன்மைக்கேதுவாக நடக்கிறது.</div>
-<div>දෙවියන් වහන්සේට ප්‍රේම කරන අයට සියල්ල යහපත සඳහා එකට ක්‍රියා කරයි.</div>
-</div>
+  <button class="back" onclick="showHome()">← Subjects</button>
 
-<div class="verse">
-<strong>8. Isaiah 41:10</strong>
-<p>Do not fear, for I am with you.</p>
-<div>பயப்படாதே, நான் உன்னோடே இருக்கிறேன்.</div>
-<div>බිය නොවන්න, මම ඔබ සමඟ සිටිමි.</div>
-</div>
+  <h2 id="subjectTitle"></h2>
+  <p class="meta" id="subjectDesc"></p>
 
-<div class="verse">
-<strong>9. Matthew 11:28</strong>
-<p>Come to Me, all who labor and are heavy laden.</p>
-<div>வருத்தப்பட்டுப் பாரஞ்சுமக்கிறவர்களே, எல்லாரும் என்னிடத்தில் வாருங்கள்.</div>
-<div>වෙහෙසට පත් වූ සියල්ලෙනි, මා වෙත එන්න.</div>
-</div>
+  <div class="dayGrid" id="dayGrid"></div>
 
-<div class="verse">
-<strong>10. Joshua 1:9</strong>
-<p>Be strong and courageous. Do not be afraid.</p>
-<div>பலங்கொண்டு திடமனதாயிரு; பயப்படாதே.</div>
-<div>ශක්තිමත් වී ධෛර්යවත් වන්න; බිය නොවන්න.</div>
-</div>
+  <div class="notice">
+   🔓 Days 1–7 are available in this demo.
+   Premium access can later unlock the complete 365-day course.
+  </div>
 
-</div>
-</div>
-</section>
+ </div>
 
-<!-- FOOTER -->
+ <div class="lesson card" id="lesson">
 
-<footer>
+  <button class="back" onclick="showDays()">← Days</button>
 
-<div class="container">
+  <h2 id="lessonTitle"></h2>
+  <div class="meta" id="lessonMeta"></div>
 
-<div class="footer-main">
+  <div class="lang">
+   <button class="active" onclick="setLang('en',this)">
+    English
+   </button>
+   <button onclick="setLang('ta',this)">
+    தமிழ்
+   </button>
+   <button onclick="setLang('si',this)">
+    සිංහල
+   </button>
+  </div>
 
-<div class="footer-brand">
-<img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
-<div>
-<b>GOH Ministries</b>
-<small>Gate of Heaven Ministries</small>
-</div>
-</div>
+  <div id="verses">
+   Loading Bible verses...
+  </div>
 
-<div class="footer-links">
-<a href="index.html">Home</a>
-<a href="ministries.html">Ministries</a>
-<a href="contact.html">Contact</a>
-<a href="privacy.html">Privacy</a>
-<a href="terms.html">Terms</a>
-<a href="refund.html">Refund Policy</a>
-</div>
+  <div class="quiz">
+   <h3>📝 Daily Assessment</h3>
+   <div id="questions"></div>
 
-</div>
+   <button class="complete" onclick="completeDay()">
+    ✅ Complete Day
+   </button>
+  </div>
 
-<div class="footer-bottom">
-© 2026 GOH Ministries. All rights reserved.
-</div>
+ </div>
 
 </div>
-
-</footer>
 
 <script>
-function toggleMenu(){
-alert("Mobile menu can be connected to the navigation pages later.");
+
+const API="https://bible.helloao.org/api";
+
+/* 12 subjects */
+
+const subjects=[
+ ["📖","Bible Foundations","Understanding God's Word"],
+ ["📜","Old Testament","History and covenant"],
+ ["✝️","Life of Jesus","Teachings and ministry of Christ"],
+ ["🔥","Holy Spirit","Power and spiritual life"],
+ ["🙏","Prayer","Developing a prayer life"],
+ ["❤️","Christian Character","Faith, love and holiness"],
+ ["🕊️","Salvation","Grace, faith and redemption"],
+ ["⛪","Church Ministry","Church life and service"],
+ ["📢","Evangelism","Sharing the Gospel"],
+ ["👥","Discipleship","Making and training disciples"],
+ ["⚔️","Spiritual Warfare","Standing firm in Christ"],
+ ["👑","Leadership","Biblical ministry leadership"]
+];
+
+/*
+ Each subject contains approximately
+ 30 days. The final subject contains
+ the remaining days to reach 365.
+*/
+
+const lessonTopics=[
+ "Knowing the Bible",
+ "God the Creator",
+ "Faith in God",
+ "The Call of Abraham",
+ "Moses and God's Calling",
+ "The Ten Commandments",
+ "Walking with God",
+ "The Life of David",
+ "Wisdom from Proverbs",
+ "The Prophets",
+ "The Birth of Jesus",
+ "The Teachings of Jesus",
+ "The Miracles of Jesus",
+ "The Cross",
+ "The Resurrection",
+ "Prayer",
+ "Faith",
+ "Love",
+ "Forgiveness",
+ "Holiness",
+ "The Holy Spirit",
+ "Spiritual Gifts",
+ "The Church",
+ "Serving Others",
+ "Evangelism",
+ "The Great Commission",
+ "Discipleship",
+ "Christian Leadership",
+ "Spiritual Warfare",
+ "The Armor of God",
+ "Perseverance",
+ "Biblical Wisdom"
+];
+
+let selectedSubject=0;
+let selectedDay=1;
+let language="en";
+
+function getCompleted(){
+ return Number(localStorage.getItem("bible365_completed")||0);
 }
+
+function saveCompleted(n){
+ localStorage.setItem("bible365_completed",n);
+}
+
+function renderSubjects(){
+
+ const box=document.getElementById("subjects");
+ box.innerHTML="";
+
+ subjects.forEach((s,i)=>{
+
+  const locked=i>0;
+
+  box.innerHTML+=`
+   <button class="subject" onclick="openSubject(${i})">
+
+    <span class="lock">
+     ${locked?"🔒":"🔓"}
+    </span>
+
+    <div class="icon">${s[0]}</div>
+
+    <h3>${s[1]}</h3>
+
+    <p>${s[2]}</p>
+
+   </button>
+  `;
+ });
+}
+
+function openSubject(index){
+
+ selectedSubject=index;
+
+ document.getElementById("home").style.display="none";
+ document.getElementById("lesson").style.display="none";
+ document.getElementById("days").style.display="block";
+
+ document.getElementById("subjectTitle").textContent=
+  subjects[index][0]+" "+subjects[index][1];
+
+ document.getElementById("subjectDesc").textContent=
+  subjects[index][2];
+
+ renderDays(index);
+}
+
+function renderDays(index){
+
+ const grid=document.getElementById("dayGrid");
+ grid.innerHTML="";
+
+ let start=index*30+1;
+ let end=index===11?365:Math.min(start+29,365);
+
+ const completed=getCompleted();
+
+ for(let d=start;d<=end;d++){
+
+  const done=d<=completed;
+  const locked=d>7;
+
+  grid.innerHTML+=`
+   <button
+    class="day ${done?"done":""} ${locked?"locked":""}"
+    onclick="openDay(${d},${locked})">
+
+    ${done?"✓ ":""}Day ${d}
+
+   </button>
+  `;
+ }
+}
+
+function openDay(day,locked){
+
+ if(locked){
+  alert("🔒 Premium lesson. Upgrade to unlock this day.");
+  return;
+ }
+
+ selectedDay=day;
+
+ document.getElementById("days").style.display="none";
+ document.getElementById("lesson").style.display="block";
+
+ const topic=
+  lessonTopics[(day-1)%lessonTopics.length];
+
+ document.getElementById("lessonTitle").textContent=
+  "Day "+day+" — "+topic;
+
+ document.getElementById("lessonMeta").textContent=
+  subjects[selectedSubject][1]+" • 365-Day Ministry Course";
+
+ loadBible(day);
+ loadQuestions(day);
+}
+
+async function loadBible(day){
+
+ const box=document.getElementById("verses");
+
+ box.innerHTML="<p>Loading Bible verses...</p>";
+
+ if(language!=="en"){
+
+  box.innerHTML=`
+   <div class="notice">
+    🌐 The interface is ready for ${language==="ta"?"Tamil":"Sinhala"}.
+    The next production version can connect licensed Tamil and Sinhala
+    Bible translations.
+   </div>
+  `;
+
+  return;
+ }
+
+ /*
+   Demo chapter mapping.
+   Production version should store the exact
+   Bible references for every lesson in D1.
+ */
+
+ const chapters=[
+  ["Genesis",1],
+  ["Genesis",2],
+  ["Genesis",3],
+  ["Genesis",12],
+  ["Exodus",3],
+  ["Exodus",20],
+  ["Joshua",1],
+  ["1 Samuel",17],
+  ["Psalm",23],
+  ["Proverbs",3],
+  ["Isaiah",53],
+  ["Matthew",5],
+  ["Matthew",6],
+  ["Matthew",7],
+  ["Matthew",28],
+  ["Mark",1],
+  ["Luke",2],
+  ["Luke",15],
+  ["John",3],
+  ["John",14],
+  ["Acts",2],
+  ["Romans",8],
+  ["1 Corinthians",13],
+  ["Galatians",5],
+  ["Ephesians",6],
+  ["Philippians",4],
+  ["Colossians",3],
+  ["1 Timothy",4],
+  ["2 Timothy",3],
+  ["Hebrews",11],
+  ["James",1],
+  ["1 Peter",5]
+ ];
+
+ const ref=chapters[(day-1)%chapters.length];
+
+ try{
+
+  const url=
+   `${API}/BSB/${encodeURIComponent(ref[0])}/${ref[1]}.json`;
+
+  const response=await fetch(url);
+
+  if(!response.ok)throw Error();
+
+  const data=await response.json();
+
+  const verses=(data.chapter?.content||[])
+   .filter(x=>x.type==="verse")
+   .slice(0,10);
+
+  if(!verses.length)throw Error();
+
+  box.innerHTML=verses.map(v=>`
+
+   <div class="verse">
+
+    <div class="ref">
+     ${ref[0]} ${ref[1]}:${v.number||""}
+    </div>
+
+    <div class="text">
+     ${escapeHTML(v.content||"")}
+    </div>
+
+   </div>
+
+  `).join("");
+
+ }catch(e){
+
+  box.innerHTML=`
+   <div class="notice">
+    <b>Unable to load Bible text.</b><br>
+    Please check your internet connection or the Bible API.
+   </div>
+  `;
+ }
+}
+
+function loadQuestions(day){
+
+ const topic=lessonTopics[(day-1)%lessonTopics.length];
+
+ const qs=[
+  {
+   q:`What should we learn from "${topic}"?`,
+   a:[
+    "God's Word and His will",
+    "Only worldly knowledge",
+    "Money is most important",
+    "Nothing"
+   ],
+   c:0
+  },
+  {
+   q:"What is the best foundation for Christian life?",
+   a:[
+    "God's Word",
+    "Popularity",
+    "Wealth",
+    "Human opinion"
+   ],
+   c:0
+  },
+  {
+   q:"How should we respond to God's Word?",
+   a:[
+    "Believe and obey it",
+    "Ignore it",
+    "Hide it",
+    "Reject it"
+   ],
+   c:0
+  },
+  {
+   q:"What is one purpose of Bible study?",
+   a:[
+    "Spiritual growth",
+    "Entertainment only",
+    "Fame",
+    "Competition"
+   ],
+   c:0
+  }
+ ];
+
+ document.getElementById("questions").innerHTML=
+ qs.map((q,i)=>`
+
+  <div class="question">
+
+   <p>${i+1}. ${q.q}</p>
+
+   ${q.a.map((a,j)=>`
+
+    <button
+     class="option"
+     onclick="answer(this,${j===q.c})">
+
+     ${String.fromCharCode(65+j)}. ${a}
+
+    </button>
+
+   `).join("")}
+
+  </div>
+
+ `).join("");
+}
+
+function answer(btn,correct){
+
+ const parent=btn.parentElement;
+
+ if(parent.dataset.done)return;
+
+ parent.dataset.done="1";
+
+ btn.classList.add(correct?"correct":"wrong");
+}
+
+function completeDay(){
+
+ let completed=getCompleted();
+
+ /*
+   Keep progress sequential.
+   A student cannot jump from Day 1 to Day 50.
+ */
+
+ if(selectedDay===completed+1){
+
+  completed++;
+
+  saveCompleted(completed);
+
+  updateProgress();
+
+ }else if(selectedDay<=completed){
+
+  alert("This day is already completed.");
+ }else{
+
+  alert("Please complete the previous day first.");
+  return;
+ }
+
+ alert(
+  "🙏 Day "+selectedDay+
+  " completed successfully!"
+ );
+
+ showDays();
+}
+
+function showDays(){
+
+ document.getElementById("lesson").style.display="none";
+ document.getElementById("days").style.display="block";
+
+ renderDays(selectedSubject);
+}
+
+function showHome(){
+
+ document.getElementById("days").style.display="none";
+ document.getElementById("lesson").style.display="none";
+ document.getElementById("home").style.display="block";
+
+ updateProgress();
+}
+
+function setLang(lang,btn){
+
+ language=lang;
+
+ document
+  .querySelectorAll(".lang button")
+  .forEach(x=>x.classList.remove("active"));
+
+ btn.classList.add("active");
+
+ loadBible(selectedDay);
+}
+
+function updateProgress(){
+
+ const n=getCompleted();
+
+ const percent=Math.round((n/365)*100);
+
+ document.getElementById("progressText").textContent=
+  n+" / 365";
+
+ document.getElementById("progressBar").style.width=
+  percent+"%";
+
+ document.getElementById("completed").textContent=n;
+
+ document.getElementById("remaining").textContent=
+  365-n;
+
+ document.getElementById("score").textContent="0%";
+
+ document.getElementById("certBar").style.width=
+  percent+"%";
+
+ document.getElementById("certText").textContent=
+  percent+"% completed";
+}
+
+function escapeHTML(str){
+
+ return String(str)
+  .replaceAll("&","&amp;")
+  .replaceAll("<","&lt;")
+  .replaceAll(">","&gt;")
+  .replaceAll('"',"&quot;")
+  .replaceAll("'","&#039;");
+}
+
+renderSubjects();
+updateProgress();
+
 </script>
 
 </body>
