@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reset Admin Password</title>
+<style>
+body{font-family:Arial;background:#f5f7fb;padding:20px}
+.box{max-width:400px;margin:50px auto;background:white;padding:20px;border-radius:14px}
+input,button{width:100%;padding:12px;margin:7px 0;box-sizing:border-box}
+button{background:#155eef;color:white;border:0;border-radius:8px;font-weight:bold}
+#msg{margin-top:10px;padding:10px}
+</style>
+</head>
+<body>
+
+<div class="box">
+
+<h2>GOH Finance</h2>
+<p>Reset Administrator Password</p>
+
+<input id="email"
+type="email"
+value="gateofheavensl1@gmail.com">
+
+<input id="password"
+type="password"
+placeholder="New password - 12+ characters">
+
+<input id="secret"
+type="password"
+placeholder="Cloudflare SETUP_SECRET">
+
+<button onclick="resetPassword()">
+Reset Password
+</button>
+
+<div id="msg"></div>
+
+</div>
+
+<script>
+
+const API=
+"https://goh-finance.createlk.workers.dev";
+
+async function resetPassword(){
+
+const msg=
+document.getElementById("msg");
+
+msg.textContent="Resetting...";
+
+try{
+
+const r=await fetch(
+API+"/api/reset-admin-password",
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json",
+"X-Setup-Secret":
+document.getElementById("secret").value
+},
+body:JSON.stringify({
+
+email:
+document.getElementById("email").value,
+
+password:
+document.getElementById("password").value
+
+})
+}
+);
+
+const d=await r.json();
+
+if(!r.ok||!d.success)
+throw new Error(
+d.error||"Reset failed"
+);
+
+msg.textContent=
+"Password reset successfully. You can now login.";
+
+}catch(e){
+
+msg.textContent=e.message;
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
