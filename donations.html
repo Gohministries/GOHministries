@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#155eef">
+<title>GOH Ministries Finance - Donations</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
+header{background:#155eef;color:#fff;padding:14px 18px}
+.head{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+.logout{background:#fff;color:#155eef;border:0;border-radius:8px;padding:9px 14px;font-weight:bold;cursor:pointer}
+nav{max-width:1050px;margin:10px auto 0;display:flex;gap:8px;overflow:auto}
+nav a{background:#fff;color:#155eef;padding:8px 11px;border-radius:8px;text-decoration:none;font-size:12px;white-space:nowrap}
+main{max-width:1050px;margin:auto;padding:18px}
+.card{background:#fff;padding:18px;border-radius:14px;margin-bottom:16px;box-shadow:0 2px 12px #0001}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stat strong{display:block;font-size:23px;margin-top:7px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:block;font-size:13px;font-weight:bold;margin:10px 0 6px}
+input,select,textarea{width:100%;padding:11px;border:1px solid #d5dbe5;border-radius:8px;font-size:14px;font-family:Arial}
+textarea{min-height:75px;resize:vertical}
+button{border:0;border-radius:8px;padding:11px 15px;background:#155eef;color:#fff;font-weight:bold;cursor:pointer}
+form button{width:100%;margin-top:15px}
+button:disabled{opacity:.6}
+.msg{display:none;padding:11px;border-radius:8px;margin-bottom:12px;font-size:13px}
+.ok{display:block;background:#dcfce7;color:#166534}
+.bad{display:block;background:#fee2e2;color:#991b1b}
+.table{overflow:auto}
+table{width:100%;min-width:850px;border-collapse:collapse}
+th,td{padding:10px;border-bottom:1px solid #edf0f4;text-align:left;font-size:13px}
+th{background:#f8fafc;color:#667085}
+.small{font-size:13px;color:#667085}
+@media(max-width:700px){.stats,.grid{grid-template-columns:1fr}main{padding:12px}}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="head">
+<b>GOH Ministries Finance</b>
+<button class="logout" onclick="logout()">Logout</button>
+</div>
+
+<nav>
+<a href="finance-dashboard.html">Dashboard</a>
+<a href="income.html">Income</a>
+<a href="donations.html">Donations</a>
+<a href="expenses.html">Expenses</a>
+<a href="receipts.html">Receipts</a>
+<a href="reports.html">Reports</a>
+<a href="admin.html">Administration</a>
+</nav>
+
+</header>
+
+<main>
+
+<div class="card">
+<h2>Donations</h2>
+<div class="small">
+Record and monitor ministry donations.
+</div>
+</div>
+
+<div class="stats">
+
+<div class="card stat">
+<div class="small">Total Donations</div>
+<strong id="total">LKR 0.00</strong>
+</div>
+
+<div class="card stat">
+<div class="small">This Month</div>
+<strong id="month">LKR 0.00</strong>
+</div>
+
+<div class="card stat">
+<div class="small">Donations</div>
+<strong id="count">0</strong>
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>Add Donation</h3>
+
+<div id="msg" class="msg"></div>
+
+<form id="form">
+
+<div class="grid">
+
+<div>
+<label>Donor Name</label>
+<input id="donor" required
+placeholder="Donor name">
+</div>
+
+<div>
+<label>Date</label>
+<input id="date" type="date" required>
+</div>
+
+<div>
+<label>Amount (LKR)</label>
+<input id="amount" type="number"
+min="0.01" step="0.01"
+required>
+</div>
+
+<div>
+<label>Purpose</label>
+<select id="category">
+<option>General</option>
+<option>Building</option>
+<option>Mission</option>
+<option>Church</option>
+<option>Children</option>
+<option>Evangelism</option>
+<option>Other</option>
+</select>
+</div>
+
+<div>
+<label>Payment Method</label>
+<select id="method">
+<option>Cash</option>
+<option>Bank Transfer</option>
+<option>Cheque</option>
+<option>PayHere</option>
+<option>Other</option>
+</select>
+</div>
+
+<div>
+<label>Reference</label>
+<input id="reference"
+placeholder="Optional">
+</div>
+
+</div>
+
+<label>Notes</label>
+<textarea id="notes"
+placeholder="Optional notes"></textarea>
+
+<button id="save" type="submit">
+Save Donation
+</button>
+
+</form>
+
+</div>
+
+<div class="card">
+
+<h3>Donation Records</h3>
+
+<div class="table">
+
+<table>
+
+<thead>
+<tr>
+<th>Date</th>
+<th>Donor</th>
+<th>Purpose</th>
+<th>Method</th>
+<th>Reference</th>
+<th>Amount</th>
+</tr>
+</thead>
+
+<tbody id="rows">
+<tr>
+<td colspan="6">Loading...</td>
+</tr>
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</main>
+
+<script>
+
+const API=
+"https://goh-finance.createlk.workers.dev";
+
+const KEY=
+"goh_finance_token";
+
+function headers(){
+return{
+"Content-Type":"application/json",
+"Authorization":
+"Bearer "+localStorage.getItem(KEY)
+};
+}
+
+function esc(v){
+return String(v??"")
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+}
+
+function money(v){
+return "LKR "+
+Number(v||0).toLocaleString(
+"en-LK",
+{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+});
+}
+
+function today(){
+const d=new Date();
+return d.getFullYear()+"-"+
+String(d.getMonth()+1).padStart(2,"0")+"-"+
+String(d.getDate()).padStart(2,"0");
+}
+
+document.getElementById("date").value=today();
+
+function message(text,ok=false){
+const el=document.getElementById("msg");
+el.textContent=text;
+el.className="msg "+(ok?"ok":"bad");
+}
+
+async function checkLogin(){
+
+const token=localStorage.getItem(KEY);
+
+if(!token){
+location.href="admin-login.html";
+return false;
+}
+
+try{
+
+const r=await fetch(
+API+"/api/me",
+{headers:headers()}
+);
+
+const d=await r.json();
+
+if(!r.ok||!d.success)
+throw Error();
+
+return true;
+
+}catch(e){
+
+localStorage.removeItem(KEY);
+location.href="admin-login.html";
+return false;
+
+}
+
+}
+
+async function load(){
+
+try{
+
+const r=await fetch(
+API+"/api/finance/donations",
+{headers:headers()}
+);
+
+const d=await r.json();
+
+if(!r.ok||!d.success)
+throw Error(
+d.error||"Unable to load donations"
+);
+
+const rows=d.donations||[];
+
+let total=0;
+let month=0;
+
+const prefix=
+new Date().getFullYear()+"-"+
+String(new Date().getMonth()+1)
+.padStart(2,"0");
+
+rows.forEach(x=>{
+
+const a=Number(x.amount)||0;
+
+total+=a;
+
+if(String(x.date||"")
+.startsWith(prefix)){
+month+=a;
+}
+
+});
+
+document.getElementById("total")
+.textContent=money(total);
+
+document.getElementById("month")
+.textContent=money(month);
+
+document.getElementById("count")
+.textContent=rows.length;
+
+document.getElementById("rows")
+.innerHTML=
+
+rows.map(x=>`
+
+<tr>
+<td>${esc(x.date)}</td>
+<td>${esc(x.donor||x.source)}</td>
+<td>${esc(x.category)}</td>
+<td>${esc(x.payment_method)}</td>
+<td>${esc(x.reference)}</td>
+<td>${money(x.amount)}</td>
+</tr>
+
+`).join("")||
+
+`<tr>
+<td colspan="6">No donations found.</td>
+</tr>`;
+
+}catch(e){
+
+document.getElementById("rows")
+.innerHTML=
+`<tr>
+<td colspan="6">${esc(e.message)}</td>
+</tr>`;
+
+}
+
+}
+
+document.getElementById("form")
+.addEventListener("submit",async e=>{
+
+e.preventDefault();
+
+const btn=document.getElementById("save");
+
+const body={
+donor:
+document.getElementById("donor").value.trim(),
+
+date:
+document.getElementById("date").value,
+
+amount:
+Number(document.getElementById("amount").value),
+
+category:
+document.getElementById("category").value,
+
+payment_method:
+document.getElementById("method").value,
+
+reference:
+document.getElementById("reference").value.trim(),
+
+notes:
+document.getElementById("notes").value.trim()
+};
+
+if(!body.donor||
+!body.date||
+!body.amount||
+body.amount<=0){
+
+message(
+"Please enter donor, date and a valid amount."
+);
+
+return;
+}
+
+btn.disabled=true;
+btn.textContent="Saving...";
+
+try{
+
+const r=await fetch(
+API+"/api/finance/donations",
+{
+method:"POST",
+headers:headers(),
+body:JSON.stringify(body)
+}
+);
+
+const d=await r.json();
+
+if(!r.ok||!d.success)
+throw Error(
+d.error||"Unable to save donation"
+);
+
+message(
+"Donation saved successfully.",
+true
+);
+
+e.target.reset();
+document.getElementById("date").value=today();
+
+load();
+
+}catch(err){
+
+message(err.message);
+
+}finally{
+
+btn.disabled=false;
+btn.textContent="Save Donation";
+
+}
+
+});
+
+async function logout(){
+
+try{
+
+await fetch(
+API+"/api/logout",
+{
+method:"POST",
+headers:headers()
+}
+);
+
+}catch(e){}
+
+localStorage.removeItem(KEY);
+location.href="admin-login.html";
+
+}
+
+checkLogin().then(ok=>{
+if(ok)load();
+});
+
+</script>
+
+</body>
+</html>
