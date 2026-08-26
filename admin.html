@@ -4,428 +4,778 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#155eef">
-<title>GOH Ministries Finance - Admin</title>
+<title>GOH Ministries Finance</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 
 body{
-  font-family:Arial,sans-serif;
-  background:#f5f7fb;
-  color:#172033;
+font-family:Arial,sans-serif;
+background:#f5f7fb;
+color:#172033;
 }
 
+.hidden{display:none!important}
+
 header{
-  background:#155eef;
-  color:#fff;
-  padding:18px;
+background:#155eef;
+color:white;
+padding:18px;
 }
 
 header h1{font-size:21px}
 header p{font-size:13px;margin-top:5px;opacity:.85}
 
 .container{
-  max-width:1000px;
-  margin:auto;
-  padding:16px;
+max-width:1050px;
+margin:auto;
+padding:16px;
+}
+
+.login{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:18px;
+}
+
+.login-box{
+width:100%;
+max-width:420px;
+background:white;
+padding:25px;
+border-radius:16px;
+box-shadow:0 5px 25px rgba(0,0,0,.08);
+}
+
+.logo{
+width:60px;
+height:60px;
+border-radius:15px;
+background:#155eef;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:25px;
+font-weight:bold;
+margin-bottom:18px;
+}
+
+.login-box h1{
+font-size:23px;
+margin-bottom:6px;
+}
+
+.muted{
+font-size:13px;
+color:#667085;
+margin-bottom:20px;
+}
+
+label{
+display:block;
+font-size:13px;
+font-weight:bold;
+margin-bottom:5px;
+}
+
+input,select{
+width:100%;
+padding:12px;
+border:1px solid #d7dce5;
+border-radius:9px;
+font-size:14px;
+margin-bottom:14px;
+outline:none;
+}
+
+input:focus,select:focus{
+border-color:#155eef;
+}
+
+button{
+cursor:pointer;
+font-family:inherit;
+}
+
+.primary{
+width:100%;
+border:0;
+background:#155eef;
+color:white;
+padding:12px;
+border-radius:9px;
+font-weight:bold;
+font-size:14px;
+}
+
+.primary:hover{
+opacity:.92;
+}
+
+.error{
+background:#fee2e2;
+color:#b91c1c;
+padding:11px;
+border-radius:9px;
+font-size:13px;
+margin-bottom:15px;
+}
+
+.success{
+background:#dcfce7;
+color:#15803d;
+padding:11px;
+border-radius:9px;
+font-size:13px;
+margin-bottom:15px;
+}
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+}
+
+.logout{
+background:white;
+color:#155eef;
+border:0;
+padding:9px 13px;
+border-radius:8px;
+font-weight:bold;
 }
 
 .tabs{
-  display:flex;
-  gap:8px;
-  overflow:auto;
-  margin-bottom:16px;
+display:flex;
+gap:8px;
+overflow-x:auto;
+margin-bottom:16px;
 }
 
 .tab{
-  border:0;
-  padding:11px 17px;
-  border-radius:10px;
-  background:#e8edf7;
-  font-weight:bold;
-  white-space:nowrap;
-  cursor:pointer;
+border:0;
+padding:11px 17px;
+border-radius:10px;
+background:#e8edf7;
+font-weight:bold;
+white-space:nowrap;
 }
 
 .tab.active{
-  background:#155eef;
-  color:white;
+background:#155eef;
+color:white;
 }
 
 .section{display:none}
 .section.active{display:block}
 
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+margin-bottom:16px;
+}
+
+.stat{
+background:white;
+padding:17px;
+border-radius:13px;
+box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.stat small{
+display:block;
+color:#667085;
+font-size:12px;
+margin-bottom:7px;
+}
+
+.stat strong{
+font-size:24px;
+}
+
 .card{
-  background:#fff;
-  padding:18px;
-  border-radius:14px;
-  margin-bottom:16px;
-  box-shadow:0 2px 10px rgba(0,0,0,.06);
+background:white;
+padding:18px;
+border-radius:14px;
+margin-bottom:16px;
+box-shadow:0 2px 10px rgba(0,0,0,.05);
 }
 
 .card h2{
-  font-size:18px;
-  margin-bottom:15px;
+font-size:18px;
+margin-bottom:15px;
 }
 
 .grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
 }
 
-label{
-  display:block;
-  font-size:13px;
-  font-weight:bold;
-}
-
-input,select{
-  width:100%;
-  padding:12px;
-  margin-top:6px;
-  border:1px solid #d7dce5;
-  border-radius:9px;
-  font-size:14px;
-}
-
-button{
-  cursor:pointer;
-}
-
-.primary{
-  border:0;
-  background:#155eef;
-  color:#fff;
-  padding:12px 18px;
-  border-radius:9px;
-  font-weight:bold;
-}
-
-.secondary{
-  border:0;
-  background:#eef2f7;
-  padding:9px 12px;
-  border-radius:8px;
+.grid input,
+.grid select{
+margin-bottom:0;
 }
 
 .table-wrap{
-  overflow-x:auto;
+overflow-x:auto;
 }
 
 table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:650px;
+width:100%;
+border-collapse:collapse;
+min-width:650px;
 }
 
 th,td{
-  text-align:left;
-  padding:12px 10px;
-  border-bottom:1px solid #edf0f4;
-  font-size:13px;
+text-align:left;
+padding:12px 10px;
+border-bottom:1px solid #edf0f4;
+font-size:13px;
 }
 
 th{
-  background:#f8fafc;
+background:#f8fafc;
 }
 
 .badge{
-  display:inline-block;
-  padding:5px 9px;
-  border-radius:20px;
-  font-size:11px;
-  font-weight:bold;
+display:inline-block;
+padding:5px 9px;
+border-radius:20px;
+font-size:11px;
+font-weight:bold;
 }
 
 .admin{
-  background:#dbeafe;
-  color:#1d4ed8;
+background:#dbeafe;
+color:#1d4ed8;
 }
 
 .finance{
-  background:#dcfce7;
-  color:#15803d;
+background:#dcfce7;
+color:#15803d;
 }
 
 .viewer{
-  background:#f1f5f9;
-  color:#475569;
+background:#f1f5f9;
+color:#475569;
 }
 
-.active{
-  background:#dcfce7;
-  color:#15803d;
+.active-badge{
+background:#dcfce7;
+color:#15803d;
 }
 
 .inactive{
-  background:#fee2e2;
-  color:#b91c1c;
+background:#fee2e2;
+color:#b91c1c;
+}
+
+.secondary{
+border:0;
+background:#eef2f7;
+padding:8px 12px;
+border-radius:8px;
+}
+
+.danger{
+border:0;
+background:#fee2e2;
+color:#b91c1c;
+padding:8px 12px;
+border-radius:8px;
 }
 
 .notice{
-  background:#fff7ed;
-  border:1px solid #fed7aa;
-  padding:12px;
-  border-radius:10px;
-  font-size:13px;
-  margin-bottom:15px;
+background:#fff7ed;
+border:1px solid #fed7aa;
+padding:12px;
+border-radius:10px;
+font-size:13px;
+margin-bottom:15px;
 }
 
-@media(max-width:600px){
-  .grid{
-    grid-template-columns:1fr;
-  }
+.user-info{
+font-size:13px;
+margin-bottom:15px;
+color:#667085;
+}
+
+@media(max-width:700px){
+
+.stats{
+grid-template-columns:repeat(2,1fr);
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:420px){
+
+.container{
+padding:12px;
+}
+
+.stats{
+gap:8px;
+}
+
+.stat{
+padding:13px;
+}
+
+.stat strong{
+font-size:20px;
+}
+
 }
 </style>
 </head>
 
 <body>
 
+
+<!-- LOGIN -->
+
+<div id="loginPage" class="login">
+
+<div class="login-box">
+
+<div class="logo">G</div>
+
+<h1>GOH Ministries</h1>
+
+<p class="muted">
+Finance Administration
+</p>
+
+<div id="loginError" class="error hidden"></div>
+
+<form id="loginForm">
+
+<label>Email</label>
+
+<input
+id="loginEmail"
+type="email"
+autocomplete="username"
+placeholder="Admin email"
+required
+>
+
+<label>Password</label>
+
+<input
+id="loginPassword"
+type="password"
+autocomplete="current-password"
+placeholder="Password"
+required
+>
+
+<button
+id="loginButton"
+class="primary"
+type="submit">
+
+Login
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+
+<!-- APP -->
+
+<div id="app" class="hidden">
+
 <header>
-  <h1>GOH Ministries Finance</h1>
-  <p>Administration Panel</p>
+
+<div class="topbar">
+
+<div>
+<h1>GOH Ministries Finance</h1>
+<p>Administration Panel</p>
+</div>
+
+<button
+class="logout"
+onclick="logout()">
+
+Logout
+
+</button>
+
+</div>
+
 </header>
+
 
 <div class="container">
 
-  <div class="tabs">
+<div id="globalMessage"></div>
 
-    <button class="tab active"
-      onclick="showTab('users',this)">
-      Users
-    </button>
 
-    <button class="tab"
-      onclick="showTab('audit',this)">
-      Audit Log
-    </button>
+<div class="user-info">
+Logged in as:
+<strong id="currentUser"></strong>
+</div>
 
-  </div>
 
+<!-- TABS -->
 
-  <!-- USERS -->
+<div class="tabs">
 
-  <section id="users" class="section active">
+<button
+class="tab active"
+onclick="showTab('dashboard',this)">
 
-    <div class="card">
+Dashboard
 
-      <h2>Create User</h2>
+</button>
 
-      <div class="notice">
-        Only authorized administrators can manage finance users.
-      </div>
+<button
+class="tab"
+onclick="showTab('users',this)">
 
-      <form id="userForm">
+Users
 
-        <div class="grid">
+</button>
 
-          <div>
-            <label>Name</label>
-            <input id="name" required>
-          </div>
+<button
+class="tab"
+onclick="showTab('audit',this)">
 
-          <div>
-            <label>Email</label>
-            <input id="email"
-              type="email"
-              required>
-          </div>
+Audit Log
 
-          <div>
-            <label>Role</label>
+</button>
 
-            <select id="role">
+</div>
 
-              <option value="finance">
-                Finance
-              </option>
 
-              <option value="viewer">
-                Viewer
-              </option>
+<!-- DASHBOARD -->
 
-              <option value="admin">
-                Administrator
-              </option>
+<section
+id="dashboard"
+class="section active">
 
-            </select>
+<div class="stats">
 
-          </div>
+<div class="stat">
+<small>Total Users</small>
+<strong id="statUsers">-</strong>
+</div>
 
-          <div>
-            <label>Status</label>
+<div class="stat">
+<small>Active Users</small>
+<strong id="statActive">-</strong>
+</div>
 
-            <select id="active">
+<div class="stat">
+<small>Finance Users</small>
+<strong id="statFinance">-</strong>
+</div>
 
-              <option value="1">
-                Active
-              </option>
+<div class="stat">
+<small>Administrators</small>
+<strong id="statAdmins">-</strong>
+</div>
 
-              <option value="0">
-                Inactive
-              </option>
+</div>
 
-            </select>
 
-          </div>
+<div class="card">
 
-        </div>
+<h2>Administration</h2>
 
-        <br>
+<p>
+Manage authorized GOH Ministries Finance users
+and review system activity.
+</p>
 
-        <button class="primary">
-          Create User
-        </button>
+</div>
 
-      </form>
+</section>
 
-    </div>
 
+<!-- USERS -->
 
-    <div class="card">
+<section
+id="users"
+class="section">
 
-      <h2>Users</h2>
 
-      <div class="table-wrap">
+<div class="card">
 
-        <table>
+<h2>Create Finance User</h2>
 
-          <thead>
+<div class="notice">
 
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Status</th>
-              <th>Created</th>
-            </tr>
+Only authorized administrators can create
+and manage finance users.
 
-          </thead>
+</div>
 
-          <tbody id="usersTable">
 
-            <tr>
-              <td colspan="5">
-                Loading...
-              </td>
-            </tr>
+<form id="userForm">
 
-          </tbody>
+<div class="grid">
 
-        </table>
+<div>
 
-      </div>
+<label>Name</label>
 
-    </div>
+<input
+id="userName"
+required
+placeholder="Full name"
+>
 
-  </section>
+</div>
 
 
-  <!-- AUDIT -->
+<div>
 
-  <section id="audit" class="section">
+<label>Email</label>
 
-    <div class="card">
+<input
+id="userEmail"
+type="email"
+required
+placeholder="Email address"
+>
 
-      <h2>Audit Log</h2>
+</div>
 
-      <div class="grid">
 
-        <div>
+<div>
 
-          <label>Action</label>
+<label>Role</label>
 
-          <select id="action">
+<select id="userRole">
 
-            <option value="">
-              All Actions
-            </option>
+<option value="finance">
+Finance
+</option>
 
-            <option value="CREATE">
-              Create
-            </option>
+<option value="viewer">
+Viewer
+</option>
 
-            <option value="UPDATE">
-              Update
-            </option>
+<option value="admin">
+Administrator
+</option>
 
-            <option value="DELETE">
-              Delete
-            </option>
+</select>
 
-            <option value="LOGIN">
-              Login
-            </option>
+</div>
 
-            <option value="LOGOUT">
-              Logout
-            </option>
 
-          </select>
+<div>
 
-        </div>
+<label>Status</label>
 
-        <div>
+<select id="userStatus">
 
-          <label>Date</label>
+<option value="1">
+Active
+</option>
 
-          <input id="date"
-            type="date">
+<option value="0">
+Inactive
+</option>
 
-        </div>
+</select>
 
-      </div>
+</div>
 
-      <br>
+</div>
 
-      <button
-        class="primary"
-        onclick="loadAudit()">
+<br>
 
-        Search
+<button
+class="primary"
+type="submit">
 
-      </button>
+Create User
 
-    </div>
+</button>
 
+</form>
 
-    <div class="card">
+</div>
 
-      <div class="table-wrap">
 
-        <table>
+<div class="card">
 
-          <thead>
+<h2>System Users</h2>
 
-            <tr>
-              <th>Date</th>
-              <th>User</th>
-              <th>Action</th>
-              <th>Table</th>
-              <th>Record</th>
-              <th>Details</th>
-            </tr>
+<div class="table-wrap">
 
-          </thead>
+<table>
 
-          <tbody id="auditTable">
+<thead>
 
-            <tr>
-              <td colspan="6">
-                Loading...
-              </td>
-            </tr>
+<tr>
 
-          </tbody>
+<th>Name</th>
+<th>Email</th>
+<th>Role</th>
+<th>Status</th>
+<th>Created</th>
+<th>Action</th>
 
-        </table>
+</tr>
 
-      </div>
+</thead>
 
-    </div>
+<tbody id="usersTable">
 
-  </section>
+<tr>
+<td colspan="6">
+Loading...
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- AUDIT -->
+
+<section
+id="audit"
+class="section">
+
+
+<div class="card">
+
+<h2>Financial Audit Log</h2>
+
+<div class="grid">
+
+<div>
+
+<label>Action</label>
+
+<select id="auditAction">
+
+<option value="">
+All Actions
+</option>
+
+<option value="CREATE">
+Create
+</option>
+
+<option value="UPDATE">
+Update
+</option>
+
+<option value="DELETE">
+Delete
+</option>
+
+<option value="LOGIN">
+Login
+</option>
+
+<option value="LOGOUT">
+Logout
+</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>Date</label>
+
+<input
+id="auditDate"
+type="date"
+>
+
+</div>
+
+</div>
+
+<br>
+
+<button
+class="primary"
+onclick="loadAudit()">
+
+Search Audit Log
+
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Date</th>
+<th>User</th>
+<th>Action</th>
+<th>Table</th>
+<th>Record</th>
+<th>Details</th>
+
+</tr>
+
+</thead>
+
+<tbody id="auditTable">
+
+<tr>
+
+<td colspan="6">
+Loading...
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
 
 </div>
 
@@ -435,32 +785,300 @@ th{
 const API =
 "https://goh-finance.createlk.workers.dev";
 
+const TOKEN_KEY =
+"goh_finance_token";
 
-function showTab(id,btn){
+let usersCache = [];
 
-  document
-    .querySelectorAll(".section")
-    .forEach(x =>
-      x.classList.remove("active")
-    );
 
-  document
-    .getElementById(id)
-    .classList.add("active");
+/* HELPERS */
 
-  document
-    .querySelectorAll(".tab")
-    .forEach(x =>
-      x.classList.remove("active")
-    );
+function escapeHTML(value){
 
-  btn.classList.add("active");
+return String(value ?? "")
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
-  if(id === "users")
-    loadUsers();
+}
 
-  if(id === "audit")
-    loadAudit();
+
+function authHeaders(){
+
+const token =
+localStorage.getItem(TOKEN_KEY);
+
+return {
+
+"Content-Type":
+"application/json",
+
+"Authorization":
+"Bearer " + token
+
+};
+
+}
+
+
+function showMessage(message,type="success"){
+
+const box =
+document.getElementById("globalMessage");
+
+box.innerHTML = `
+<div class="${type}">
+${escapeHTML(message)}
+</div>
+`;
+
+setTimeout(()=>{
+box.innerHTML="";
+},4000);
+
+}
+
+
+/* LOGIN */
+
+document
+.getElementById("loginForm")
+.addEventListener(
+"submit",
+async function(e){
+
+e.preventDefault();
+
+const error =
+document.getElementById("loginError");
+
+const button =
+document.getElementById("loginButton");
+
+error.classList.add("hidden");
+
+button.disabled = true;
+button.textContent = "Signing in...";
+
+try{
+
+const response =
+await fetch(
+API + "/api/login",
+{
+method:"POST",
+
+headers:{
+"Content-Type":
+"application/json"
+},
+
+body:JSON.stringify({
+
+email:
+document
+.getElementById("loginEmail")
+.value
+.trim(),
+
+password:
+document
+.getElementById("loginPassword")
+.value
+
+})
+}
+);
+
+const data =
+await response.json();
+
+if(!response.ok ||
+!data.success){
+
+throw new Error(
+data.error ||
+"Login failed"
+);
+
+}
+
+localStorage.setItem(
+TOKEN_KEY,
+data.token
+);
+
+document
+.getElementById("loginPassword")
+.value = "";
+
+await startApp();
+
+}catch(error){
+
+document
+.getElementById("loginError")
+.textContent =
+error.message;
+
+document
+.getElementById("loginError")
+.classList.remove("hidden");
+
+}finally{
+
+button.disabled = false;
+button.textContent = "Login";
+
+}
+
+});
+
+
+/* START APP */
+
+async function startApp(){
+
+const token =
+localStorage.getItem(TOKEN_KEY);
+
+if(!token){
+
+showLogin();
+return;
+
+}
+
+try{
+
+const response =
+await fetch(
+API + "/api/me",
+{
+headers:authHeaders()
+}
+);
+
+const data =
+await response.json();
+
+if(!response.ok ||
+!data.success){
+
+throw new Error(
+"Session expired"
+);
+
+}
+
+if(data.user.role !== "admin"){
+
+throw new Error(
+"Administrator access required"
+);
+
+}
+
+document
+.getElementById("currentUser")
+.textContent =
+data.user.name +
+" (" +
+data.user.email +
+")";
+
+document
+.getElementById("loginPage")
+.classList.add("hidden");
+
+document
+.getElementById("app")
+.classList.remove("hidden");
+
+await loadUsers();
+
+}catch(error){
+
+localStorage.removeItem(TOKEN_KEY);
+
+showLogin();
+
+}
+
+}
+
+
+function showLogin(){
+
+document
+.getElementById("app")
+.classList.add("hidden");
+
+document
+.getElementById("loginPage")
+.classList.remove("hidden");
+
+}
+
+
+/* LOGOUT */
+
+async function logout(){
+
+try{
+
+await fetch(
+API + "/api/logout",
+{
+method:"POST",
+headers:authHeaders()
+}
+);
+
+}catch(error){}
+
+localStorage.removeItem(
+TOKEN_KEY
+);
+
+showLogin();
+
+}
+
+
+/* TABS */
+
+function showTab(id,button){
+
+document
+.querySelectorAll(".section")
+.forEach(
+x=>x.classList.remove("active")
+);
+
+document
+.getElementById(id)
+.classList.add("active");
+
+document
+.querySelectorAll(".tab")
+.forEach(
+x=>x.classList.remove("active")
+);
+
+button.classList.add("active");
+
+if(id === "dashboard")
+loadUsers();
+
+if(id === "users")
+loadUsers();
+
+if(id === "audit")
+loadAudit();
+
 }
 
 
@@ -468,81 +1086,192 @@ function showTab(id,btn){
 
 async function loadUsers(){
 
-  const table =
-    document.getElementById("usersTable");
+const table =
+document.getElementById("usersTable");
 
-  try{
+try{
 
-    const response =
-      await fetch(API + "/api/admin/users");
+const response =
+await fetch(
+API + "/api/admin/users",
+{
+headers:authHeaders()
+}
+);
 
-    const data =
-      await response.json();
+const data =
+await response.json();
 
-    if(!data.success)
-      throw new Error(data.error);
+if(response.status === 401){
 
-    table.innerHTML = "";
+logout();
+return;
 
-    data.users.forEach(user => {
+}
 
-      let roleClass =
-        user.role === "admin"
-        ? "admin"
-        : user.role === "finance"
-        ? "finance"
-        : "viewer";
+if(!response.ok ||
+!data.success){
 
-      let statusClass =
-        user.active
-        ? "active"
-        : "inactive";
+throw new Error(
+data.error ||
+"Unable to load users"
+);
 
-      table.innerHTML += `
+}
 
-        <tr>
+usersCache =
+data.users || [];
 
-          <td>
-            ${escapeHTML(user.name)}
-          </td>
+table.innerHTML = "";
 
-          <td>
-            ${escapeHTML(user.email)}
-          </td>
+if(!usersCache.length){
 
-          <td>
-            <span class="badge ${roleClass}">
-              ${escapeHTML(user.role)}
-            </span>
-          </td>
+table.innerHTML = `
+<tr>
+<td colspan="6">
+No users found.
+</td>
+</tr>
+`;
 
-          <td>
-            <span class="badge ${statusClass}">
-              ${user.active ? "Active" : "Inactive"}
-            </span>
-          </td>
+}else{
 
-          <td>
-            ${escapeHTML(user.created_at || "")}
-          </td>
+usersCache.forEach(user=>{
 
-        </tr>
+const roleClass =
+user.role === "admin"
+? "admin"
+: user.role === "finance"
+? "finance"
+: "viewer";
 
-      `;
+const statusClass =
+Number(user.active)
+? "active-badge"
+: "inactive";
 
-    });
+const action =
+Number(user.active)
+? "Disable"
+: "Enable";
 
-  }catch(error){
+table.innerHTML += `
 
-    table.innerHTML = `
-      <tr>
-        <td colspan="5">
-          User API is not connected yet.
-        </td>
-      </tr>
-    `;
+<tr>
 
-  }
+<td>
+${escapeHTML(user.name)}
+</td>
+
+<td>
+${escapeHTML(user.email)}
+</td>
+
+<td>
+
+<span class="badge ${roleClass}">
+${escapeHTML(user.role)}
+</span>
+
+</td>
+
+<td>
+
+<span class="badge ${statusClass}">
+${Number(user.active)
+? "Active"
+: "Inactive"}
+</span>
+
+</td>
+
+<td>
+${escapeHTML(user.created_at)}
+</td>
+
+<td>
+
+<button
+class="secondary"
+onclick="toggleUser(
+${Number(user.id)},
+${Number(user.active)
+? 0
+: 1}
+)">
+
+${action}
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+}
+
+updateStats();
+
+}catch(error){
+
+table.innerHTML = `
+
+<tr>
+
+<td colspan="6">
+
+${escapeHTML(error.message)}
+
+</td>
+
+</tr>
+
+`;
+
+}
+
+}
+
+
+function updateStats(){
+
+const total =
+usersCache.length;
+
+const active =
+usersCache.filter(
+x=>Number(x.active)
+).length;
+
+const finance =
+usersCache.filter(
+x=>x.role === "finance"
+).length;
+
+const admins =
+usersCache.filter(
+x=>x.role === "admin"
+).length;
+
+document
+.getElementById("statUsers")
+.textContent = total;
+
+document
+.getElementById("statActive")
+.textContent = active;
+
+document
+.getElementById("statFinance")
+.textContent = finance;
+
+document
+.getElementById("statAdmins")
+.textContent = admins;
 
 }
 
@@ -550,190 +1279,325 @@ async function loadUsers(){
 /* CREATE USER */
 
 document
-  .getElementById("userForm")
-  .addEventListener("submit",
-  async function(e){
+.getElementById("userForm")
+.addEventListener(
+"submit",
+async function(e){
 
-    e.preventDefault();
+e.preventDefault();
 
-    const body = {
+const button =
+this.querySelector("button");
 
-      name:
-        document.getElementById("name")
-        .value.trim(),
+button.disabled = true;
+button.textContent =
+"Creating...";
 
-      email:
-        document.getElementById("email")
-        .value.trim(),
+try{
 
-      role:
-        document.getElementById("role")
-        .value,
+const response =
+await fetch(
+API + "/api/admin/users",
+{
+method:"POST",
+headers:authHeaders(),
 
-      active:
-        Number(
-          document.getElementById("active")
-          .value
-        )
+body:JSON.stringify({
 
-    };
+name:
+document
+.getElementById("userName")
+.value
+.trim(),
 
-    try{
+email:
+document
+.getElementById("userEmail")
+.value
+.trim(),
 
-      const response =
-        await fetch(
-          API + "/api/admin/users",
-          {
-            method:"POST",
+role:
+document
+.getElementById("userRole")
+.value,
 
-            headers:{
-              "Content-Type":
-                "application/json"
-            },
+active:
+Number(
+document
+.getElementById("userStatus")
+.value
+)
 
-            body:
-              JSON.stringify(body)
-          }
-        );
+})
+}
+);
 
-      const data =
-        await response.json();
+const data =
+await response.json();
 
-      if(!data.success)
-        throw new Error(data.error);
+if(response.status === 401){
 
-      alert("User created.");
+logout();
+return;
 
-      this.reset();
+}
 
-      loadUsers();
+if(!response.ok ||
+!data.success){
 
-    }catch(error){
+throw new Error(
+data.error ||
+"Unable to create user"
+);
 
-      alert(
-        "User API is not connected yet."
-      );
+}
 
-    }
+showMessage(
+"User created successfully."
+);
 
-  });
+this.reset();
+
+await loadUsers();
+
+}catch(error){
+
+showMessage(
+error.message,
+"error"
+);
+
+}finally{
+
+button.disabled = false;
+button.textContent =
+"Create User";
+
+}
+
+});
+
+
+/* ENABLE / DISABLE */
+
+async function toggleUser(id,active){
+
+const message =
+active
+? "Enable this user?"
+: "Disable this user?";
+
+if(!confirm(message))
+return;
+
+try{
+
+const response =
+await fetch(
+API +
+"/api/admin/users/" +
+id,
+{
+method:"PATCH",
+headers:authHeaders(),
+
+body:JSON.stringify({
+active
+})
+}
+);
+
+const data =
+await response.json();
+
+if(!response.ok ||
+!data.success){
+
+throw new Error(
+data.error ||
+"Unable to update user"
+);
+
+}
+
+showMessage(
+active
+? "User enabled."
+: "User disabled."
+);
+
+await loadUsers();
+
+}catch(error){
+
+showMessage(
+error.message,
+"error"
+);
+
+}
+
+}
 
 
 /* AUDIT */
 
 async function loadAudit(){
 
-  const table =
-    document.getElementById("auditTable");
+const table =
+document.getElementById("auditTable");
 
-  try{
+table.innerHTML = `
 
-    const params =
-      new URLSearchParams();
+<tr>
+<td colspan="6">
+Loading audit records...
+</td>
+</tr>
 
-    const action =
-      document.getElementById("action")
-      .value;
+`;
 
-    const date =
-      document.getElementById("date")
-      .value;
+try{
 
-    if(action)
-      params.set("action",action);
+const params =
+new URLSearchParams();
 
-    if(date)
-      params.set("date",date);
+const action =
+document
+.getElementById("auditAction")
+.value;
 
-    const response =
-      await fetch(
-        API +
-        "/api/admin/audit?" +
-        params.toString()
-      );
+const date =
+document
+.getElementById("auditDate")
+.value;
 
-    const data =
-      await response.json();
+if(action)
+params.set(
+"action",
+action
+);
 
-    if(!data.success)
-      throw new Error(data.error);
+if(date)
+params.set(
+"date",
+date
+);
 
-    table.innerHTML = "";
+const response =
+await fetch(
+API +
+"/api/admin/audit?" +
+params.toString(),
+{
+headers:authHeaders()
+}
+);
 
-    data.logs.forEach(log => {
+const data =
+await response.json();
 
-      table.innerHTML += `
+if(response.status === 401){
 
-        <tr>
+logout();
+return;
 
-          <td>
-            ${escapeHTML(log.created_at || "")}
-          </td>
+}
 
-          <td>
-            ${escapeHTML(
-              log.user_name || "System"
-            )}
-          </td>
+if(!response.ok ||
+!data.success){
 
-          <td>
-            ${escapeHTML(log.action)}
-          </td>
+throw new Error(
+data.error ||
+"Unable to load audit log"
+);
 
-          <td>
-            ${escapeHTML(
-              log.table_name || ""
-            )}
-          </td>
+}
 
-          <td>
-            ${escapeHTML(
-              String(log.record_id || "")
-            )}
-          </td>
+table.innerHTML = "";
 
-          <td>
-            ${escapeHTML(
-              log.details || ""
-            )}
-          </td>
+if(!data.logs.length){
 
-        </tr>
+table.innerHTML = `
+<tr>
+<td colspan="6">
+No audit records found.
+</td>
+</tr>
+`;
 
-      `;
+return;
 
-    });
+}
 
-  }catch(error){
+data.logs.forEach(log=>{
 
-    table.innerHTML = `
-      <tr>
-        <td colspan="6">
-          Audit API is not connected yet.
-        </td>
-      </tr>
-    `;
+table.innerHTML += `
 
-  }
+<tr>
+
+<td>
+${escapeHTML(log.created_at)}
+</td>
+
+<td>
+${escapeHTML(
+log.user_name || "System"
+)}
+</td>
+
+<td>
+${escapeHTML(log.action)}
+</td>
+
+<td>
+${escapeHTML(
+log.table_name || ""
+)}
+</td>
+
+<td>
+${escapeHTML(
+String(log.record_id || "")
+)}
+</td>
+
+<td>
+${escapeHTML(
+log.details || ""
+)}
+</td>
+
+</tr>
+
+`;
+
+});
+
+}catch(error){
+
+table.innerHTML = `
+
+<tr>
+
+<td colspan="6">
+
+${escapeHTML(error.message)}
+
+</td>
+
+</tr>
+
+`;
+
+}
 
 }
 
 
-/* SECURITY */
+/* START */
 
-function escapeHTML(value){
-
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-
-}
-
-
-loadUsers();
+startApp();
 
 </script>
 
