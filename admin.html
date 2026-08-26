@@ -3,1943 +3,448 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#155eef">
-<title>GOH Ministries Finance - Admin</title>
+<title>GOH Ministries Finance</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-
-body{
-font-family:Arial,sans-serif;
-background:#f5f7fb;
-color:#172033
-}
-
-.hidden{display:none!important}
-
-.login{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:20px
-}
-
-.login-box{
-width:100%;
-max-width:400px;
-background:#fff;
-padding:28px;
-border-radius:16px;
-box-shadow:0 5px 25px rgba(0,0,0,.08)
-}
-
-.logo{
-width:58px;
-height:58px;
-background:#155eef;
-color:#fff;
-border-radius:15px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:25px;
-font-weight:bold;
-margin-bottom:18px
-}
-
-h1{font-size:22px}
-h2{font-size:18px;margin-bottom:16px}
-
-.muted{
-font-size:13px;
-color:#667085;
-margin:6px 0 20px
-}
-
-label{
-display:block;
-font-size:13px;
-font-weight:bold;
-margin:12px 0 6px
-}
-
-input,select{
-width:100%;
-padding:12px;
-border:1px solid #d7dce5;
-border-radius:9px;
-font-size:14px;
-outline:none
-}
-
-input:focus,select:focus{
-border-color:#155eef
-}
-
-button{
-font-family:inherit;
-cursor:pointer
-}
-
-.primary{
-border:0;
-background:#155eef;
-color:#fff;
-padding:12px 16px;
-border-radius:9px;
-font-weight:bold
-}
-
-.full{
-width:100%
-}
-
-.primary:disabled{
-opacity:.6;
-cursor:not-allowed
-}
-
-.error{
-background:#fee2e2;
-color:#991b1b;
-padding:11px;
-border-radius:9px;
-font-size:13px;
-margin-bottom:14px
-}
-
-.success{
-background:#dcfce7;
-color:#166534;
-padding:11px;
-border-radius:9px;
-font-size:13px;
-margin-bottom:14px
-}
-
-header{
-background:#155eef;
-color:#fff;
-padding:17px
-}
-
-.topbar{
-max-width:1100px;
-margin:auto;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px
-}
-
-header h1{
-font-size:20px
-}
-
-header p{
-font-size:12px;
-opacity:.85;
-margin-top:4px
-}
-
-.logout{
-border:0;
-background:#fff;
-color:#155eef;
-padding:9px 13px;
-border-radius:8px;
-font-weight:bold
-}
-
-.container{
-max-width:1100px;
-margin:auto;
-padding:16px
-}
-
-.userbar{
-font-size:13px;
-color:#667085;
-margin-bottom:14px
-}
-
-.tabs{
-display:flex;
-gap:8px;
-overflow-x:auto;
-margin-bottom:16px
-}
-
-.tab{
-border:0;
-background:#e8edf7;
-padding:11px 17px;
-border-radius:9px;
-font-weight:bold;
-white-space:nowrap
-}
-
-.tab.active{
-background:#155eef;
-color:#fff
-}
-
-.section{display:none}
-.section.active{display:block}
-
-.stats{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:12px;
-margin-bottom:16px
-}
-
-.stat{
-background:#fff;
-padding:17px;
-border-radius:13px;
-box-shadow:0 2px 10px rgba(0,0,0,.05)
-}
-
-.stat small{
-display:block;
-color:#667085;
-font-size:12px;
-margin-bottom:7px
-}
-
-.stat strong{
-font-size:25px
-}
-
-.card{
-background:#fff;
-padding:18px;
-border-radius:14px;
-margin-bottom:16px;
-box-shadow:0 2px 10px rgba(0,0,0,.05)
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px
-}
-
-.table-wrap{
-overflow-x:auto
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-min-width:700px
-}
-
-th,td{
-padding:12px 10px;
-border-bottom:1px solid #edf0f4;
-font-size:13px;
-text-align:left
-}
-
-th{
-background:#f8fafc
-}
-
-.badge{
-display:inline-block;
-padding:5px 9px;
-border-radius:20px;
-font-size:11px;
-font-weight:bold
-}
-
-.admin{
-background:#dbeafe;
-color:#1d4ed8
-}
-
-.finance{
-background:#dcfce7;
-color:#15803d
-}
-
-.viewer{
-background:#f1f5f9;
-color:#475569
-}
-
-.active-badge{
-background:#dcfce7;
-color:#15803d
-}
-
-.inactive{
-background:#fee2e2;
-color:#b91c1c
-}
-
-.secondary{
-border:0;
-background:#eef2f7;
-padding:8px 12px;
-border-radius:8px
-}
-
-.notice{
-background:#fff7ed;
-border:1px solid #fed7aa;
-color:#9a3412;
-padding:12px;
-border-radius:10px;
-font-size:13px;
-margin-bottom:15px
-}
-
-.status{
-font-size:12px;
-margin-top:10px;
-color:#667085
-}
-
-@media(max-width:700px){
-
-.stats{
-grid-template-columns:repeat(2,1fr)
-}
-
-.grid{
-grid-template-columns:1fr
-}
-
-}
-
-@media(max-width:420px){
-
-.container{padding:12px}
-
-.stat{padding:13px}
-
-.stat strong{font-size:20px}
-
-}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f5f7fb;color:#172033}
+header{background:#155eef;color:#fff;padding:16px}
+main{max-width:1000px;margin:auto;padding:16px}
+.box{background:#fff;padding:20px;border-radius:14px;margin-bottom:16px;box-shadow:0 2px 10px #0001}
+input,select,button{width:100%;padding:11px;margin:6px 0;border-radius:8px;font:inherit}
+input,select{border:1px solid #d5d9e2}
+button{border:0;background:#155eef;color:white;font-weight:bold;cursor:pointer}
+.logout{width:auto;background:white;color:#155eef}
+.hidden{display:none}
+.tabs{display:flex;gap:8px;margin-bottom:16px}
+.tabs button{width:auto;background:#e8edf7;color:#172033}
+.tabs button.active{background:#155eef;color:white}
+.page{display:none}
+.page.active{display:block}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.msg{padding:10px;border-radius:8px;margin-bottom:10px;background:#fee2e2;color:#991b1b}
+table{width:100%;border-collapse:collapse}
+th,td{padding:10px;border-bottom:1px solid #eee;text-align:left;font-size:13px}
+.table{overflow:auto}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
 </style>
 </head>
 
 <body>
 
 <!-- LOGIN -->
+<div id="login">
 
-<div id="loginPage" class="login">
+<main>
+<div class="box" style="max-width:400px;margin:60px auto">
 
-<div class="login-box">
+<h2>GOH Ministries Finance</h2>
+<p>Administration</p>
 
-<div class="logo">G</div>
-
-<h1>GOH Ministries Finance</h1>
-
-<p class="muted">
-Administration Panel
-</p>
-
-<div id="loginError" class="error hidden"></div>
+<div id="loginMsg" class="msg hidden"></div>
 
 <form id="loginForm">
 
-<label>Email</label>
-
-<input
-id="loginEmail"
+<input id="email"
 type="email"
-autocomplete="username"
 placeholder="Email"
-required
->
+required>
 
-<label>Password</label>
-
-<input
-id="loginPassword"
+<input id="password"
 type="password"
-autocomplete="current-password"
 placeholder="Password"
-required
->
+required>
 
-<button
-id="loginButton"
-class="primary full"
-type="submit">
-
-Login
-
-</button>
+<button id="loginBtn">Login</button>
 
 </form>
 
-<div
-id="loginStatus"
-class="status">
 </div>
+</main>
 
-</div>
 </div>
 
 
-<!-- APP -->
-
-<div id="app" class="hidden">
+<!-- ADMIN -->
+<div id="admin" class="hidden">
 
 <header>
-
-<div class="topbar">
-
-<div>
-<h1>GOH Ministries Finance</h1>
-<p>Administration Panel</p>
-</div>
-
-<button
-class="logout"
-onclick="logout()">
-Logout
-</button>
-
-</div>
-
+<strong>GOH Ministries Finance</strong>
+<button class="logout" onclick="logout()">Logout</button>
 </header>
 
+<main>
 
-<div class="container">
-
-<div id="globalMessage"></div>
-
-<div class="userbar">
-Logged in as
-<strong id="currentUser"></strong>
-</div>
-
-
-<!-- TABS -->
+<p>Logged in as <b id="who"></b></p>
 
 <div class="tabs">
-
-<button
-class="tab active"
-data-tab="dashboard"
-onclick="showTab('dashboard',this)">
-Dashboard
-</button>
-
-<button
-class="tab"
-data-tab="users"
-onclick="showTab('users',this)">
-Users
-</button>
-
-<button
-class="tab"
-data-tab="audit"
-onclick="showTab('audit',this)">
-Audit Log
-</button>
-
+<button class="active" onclick="tab('users',this)">Users</button>
+<button onclick="tab('audit',this)">Audit Log</button>
 </div>
-
-
-<!-- DASHBOARD -->
-
-<section
-id="dashboard"
-class="section active">
-
-<div class="stats">
-
-<div class="stat">
-<small>Total Users</small>
-<strong id="statUsers">0</strong>
-</div>
-
-<div class="stat">
-<small>Active Users</small>
-<strong id="statActive">0</strong>
-</div>
-
-<div class="stat">
-<small>Finance Users</small>
-<strong id="statFinance">0</strong>
-</div>
-
-<div class="stat">
-<small>Administrators</small>
-<strong id="statAdmins">0</strong>
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>Finance Administration</h2>
-
-<p>
-Manage authorized finance users and monitor
-important administrative activity.
-</p>
-
-</div>
-
-</section>
 
 
 <!-- USERS -->
+<div id="users" class="page active">
 
-<section
-id="users"
-class="section">
+<div class="box">
 
-<div class="card">
+<h3>Create User</h3>
 
-<h2>Create User</h2>
-
-<div class="notice">
-Only administrators can create or disable
-finance system users.
-</div>
+<div id="userMsg" class="msg hidden"></div>
 
 <form id="userForm">
 
 <div class="grid">
 
-<div>
+<input id="name"
+placeholder="Name"
+required>
 
-<label>Name</label>
-
-<input
-id="userName"
-type="text"
-placeholder="Full name"
-required
->
-
-</div>
-
-<div>
-
-<label>Email</label>
-
-<input
-id="userEmail"
+<input id="newEmail"
 type="email"
-placeholder="Email address"
-required
->
+placeholder="Email"
+required>
 
-</div>
+<input id="newPassword"
+type="password"
+placeholder="Password - minimum 12 characters"
+minlength="12"
+required>
 
-<div>
-
-<label>Role</label>
-
-<select id="userRole">
-
-<option value="finance">
-Finance
-</option>
-
-<option value="viewer">
-Viewer
-</option>
-
-<option value="admin">
-Administrator
-</option>
-
+<select id="role">
+<option value="finance">Finance</option>
+<option value="viewer">Viewer</option>
+<option value="admin">Administrator</option>
 </select>
 
 </div>
 
-<div>
-
-<label>Status</label>
-
-<select id="userStatus">
-
-<option value="1">
-Active
-</option>
-
-<option value="0">
-Inactive
-</option>
-
-</select>
-
-</div>
-
-</div>
-
-<br>
-
-<button
-id="createUserButton"
-class="primary"
-type="submit">
-
-Create User
-
-</button>
+<button>Create User</button>
 
 </form>
-
 </div>
 
 
-<div class="card">
+<div class="box">
 
-<h2>Users</h2>
+<h3>Users</h3>
 
-<div class="table-wrap">
+<div class="table">
 
 <table>
-
 <thead>
-
 <tr>
 <th>Name</th>
 <th>Email</th>
 <th>Role</th>
 <th>Status</th>
-<th>Created</th>
-<th>Action</th>
 </tr>
-
 </thead>
 
-<tbody id="usersTable">
-
-<tr>
-<td colspan="6">
-Loading...
-</td>
-</tr>
-
+<tbody id="userList">
+<tr><td colspan="4">Loading...</td></tr>
 </tbody>
 
 </table>
 
 </div>
-
 </div>
 
-</section>
+</div>
 
 
 <!-- AUDIT -->
+<div id="audit" class="page">
 
-<section
-id="audit"
-class="section">
+<div class="box">
 
-<div class="card">
+<h3>Audit Log</h3>
 
-<h2>Audit Log</h2>
+<button onclick="loadAudit()">Refresh</button>
 
-<div class="grid">
-
-<div>
-
-<label>Action</label>
-
-<select id="auditAction">
-
-<option value="">
-All Actions
-</option>
-
-<option value="LOGIN">
-Login
-</option>
-
-<option value="LOGOUT">
-Logout
-</option>
-
-<option value="CREATE">
-Create
-</option>
-
-<option value="UPDATE">
-Update
-</option>
-
-<option value="DELETE">
-Delete
-</option>
-
-</select>
-
-</div>
-
-<div>
-
-<label>Date</label>
-
-<input
-id="auditDate"
-type="date"
->
-
-</div>
-
-</div>
-
-<br>
-
-<button
-class="primary"
-onclick="loadAudit()">
-
-Search Audit Log
-
-</button>
-
-</div>
-
-
-<div class="card">
-
-<div class="table-wrap">
+<div class="table">
 
 <table>
 
 <thead>
-
 <tr>
 <th>Date</th>
 <th>User</th>
 <th>Action</th>
-<th>Table</th>
-<th>Record</th>
 <th>Details</th>
 </tr>
-
 </thead>
 
-<tbody id="auditTable">
-
-<tr>
-<td colspan="6">
-Loading...
-</td>
-</tr>
-
+<tbody id="auditList">
+<tr><td colspan="4">Loading...</td></tr>
 </tbody>
 
 </table>
 
 </div>
+</div>
 
 </div>
 
-</section>
-
-</div>
+</main>
 </div>
 
 
 <script>
 
-const API =
-"https://goh-finance.createlk.workers.dev";
+const API="https://goh-finance.createlk.workers.dev";
+const KEY="goh_token";
 
-const TOKEN_KEY =
-"goh_finance_token";
+const $=id=>document.getElementById(id);
 
-let usersCache = [];
+function auth(){
+return{
+"Content-Type":"application/json",
+"Authorization":"Bearer "+localStorage.getItem(KEY)
+};
+}
 
+function showError(el,text){
+el.textContent=text;
+el.classList.remove("hidden");
+}
 
-/* =========================
-   SECURITY / HELPERS
-========================= */
-
-function escapeHTML(value){
-
-return String(value ?? "")
+function esc(x){
+return String(x??"")
 .replaceAll("&","&amp;")
 .replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
-
+.replaceAll(">","&gt;");
 }
 
 
-function getToken(){
+/* LOGIN */
 
-return localStorage.getItem(
-TOKEN_KEY
-);
-
-}
-
-
-function authHeaders(){
-
-const token =
-getToken();
-
-return {
-"Content-Type":"application/json",
-"Authorization":
-"Bearer " + token
-};
-
-}
-
-
-function showMessage(
-message,
-type="success"
-){
-
-const box =
-document.getElementById(
-"globalMessage"
-);
-
-box.innerHTML =
-`<div class="${type}">
-${escapeHTML(message)}
-</div>`;
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-setTimeout(()=>{
-box.innerHTML="";
-},5000);
-
-}
-
-
-/* =========================
-   LOGIN
-========================= */
-
-document
-.getElementById("loginForm")
-.addEventListener(
-"submit",
-async function(e){
-
+$("loginForm").onsubmit=async e=>{
 e.preventDefault();
 
-const errorBox =
-document.getElementById(
-"loginError"
-);
-
-const status =
-document.getElementById(
-"loginStatus"
-);
-
-const button =
-document.getElementById(
-"loginButton"
-);
-
-errorBox.classList.add(
-"hidden"
-);
-
-status.textContent =
-"Connecting...";
-
-button.disabled=true;
-button.textContent=
-"Signing in...";
+$("loginBtn").disabled=true;
+$("loginBtn").textContent="Logging in...";
 
 try{
 
-const response =
-await fetch(
-API + "/api/login",
-{
+const r=await fetch(API+"/api/login",{
 method:"POST",
-
 headers:{
-"Content-Type":
-"application/json"
+"Content-Type":"application/json"
 },
-
 body:JSON.stringify({
-
-email:
-document
-.getElementById(
-"loginEmail"
-)
-.value
-.trim(),
-
-password:
-document
-.getElementById(
-"loginPassword"
-)
-.value
-
+email:$("email").value.trim(),
+password:$("password").value
 })
-}
-);
+});
 
-const text =
-await response.text();
+const d=await r.json();
 
-let data;
+if(!r.ok||!d.success)
+throw Error(d.error||"Invalid email or password");
 
-try{
-data=JSON.parse(text);
-}catch{
-throw new Error(
-"Server returned an invalid response."
-);
-}
+localStorage.setItem(KEY,d.token);
 
-if(
-!response.ok ||
-!data.success
-){
+await start();
 
-throw new Error(
-data.error ||
-"Invalid email or password"
-);
+}catch(e){
 
-}
-
-if(!data.token){
-
-throw new Error(
-"Login succeeded but no session token was returned."
-);
-
-}
-
-localStorage.setItem(
-TOKEN_KEY,
-data.token
-);
-
-document
-.getElementById(
-"loginPassword"
-)
-.value="";
-
-status.textContent="";
-
-await startApp();
-
-}catch(error){
-
-errorBox.textContent =
-error.message;
-
-errorBox.classList.remove(
-"hidden"
-);
-
-status.textContent="";
+showError($("loginMsg"),e.message);
 
 }finally{
 
-button.disabled=false;
-button.textContent=
-"Login";
+$("loginBtn").disabled=false;
+$("loginBtn").textContent="Login";
 
 }
+};
 
+
+/* START */
+
+async function start(){
+
+const r=await fetch(API+"/api/me",{
+headers:auth()
 });
 
+const d=await r.json();
 
-/* =========================
-   START APP
-========================= */
+if(!r.ok||!d.success)
+throw Error("Session expired");
 
-async function startApp(){
+if(d.user.role!=="admin")
+throw Error("Administrator access required");
 
-const token =
-getToken();
+$("who").textContent=d.user.name;
 
-if(!token){
+$("login").classList.add("hidden");
+$("admin").classList.remove("hidden");
 
-showLogin();
-return;
-
-}
-
-try{
-
-const response =
-await fetch(
-API + "/api/me",
-{
-method:"GET",
-headers:authHeaders()
-}
-);
-
-const text =
-await response.text();
-
-let data;
-
-try{
-data=JSON.parse(text);
-}catch{
-throw new Error(
-"Invalid server response."
-);
-}
-
-if(
-response.status===401
-){
-
-throw new Error(
-"Session expired."
-);
-
-}
-
-if(
-!response.ok ||
-!data.success
-){
-
-throw new Error(
-data.error ||
-"Unable to verify session."
-);
-
-}
-
-if(
-data.user.role !== "admin"
-){
-
-throw new Error(
-"Administrator access required."
-);
-
-}
-
-document
-.getElementById(
-"currentUser"
-)
-.textContent =
-data.user.name +
-" (" +
-data.user.email +
-")";
-
-document
-.getElementById(
-"loginPage"
-)
-.classList.add(
-"hidden"
-);
-
-document
-.getElementById(
-"app"
-)
-.classList.remove(
-"hidden"
-);
-
-await loadUsers();
-
-}catch(error){
-
-localStorage.removeItem(
-TOKEN_KEY
-);
-
-showLogin();
-
-if(
-error.message !==
-"Session expired."
-){
-
-console.error(error);
-
-}
-
-}
-
-}
-
-
-function showLogin(){
-
-document
-.getElementById(
-"app"
-)
-.classList.add(
-"hidden"
-);
-
-document
-.getElementById(
-"loginPage"
-)
-.classList.remove(
-"hidden"
-);
-
-}
-
-
-/* =========================
-   LOGOUT
-========================= */
-
-async function logout(){
-
-const token =
-getToken();
-
-if(token){
-
-try{
-
-await fetch(
-API + "/api/logout",
-{
-method:"POST",
-headers:authHeaders()
-}
-);
-
-}catch(error){
-
-console.error(error);
-
-}
-
-}
-
-localStorage.removeItem(
-TOKEN_KEY
-);
-
-showLogin();
-
-}
-
-
-/* =========================
-   TABS
-========================= */
-
-function showTab(
-id,
-button
-){
-
-document
-.querySelectorAll(
-".section"
-)
-.forEach(
-section =>
-section.classList.remove(
-"active"
-)
-);
-
-document
-.getElementById(id)
-.classList.add(
-"active"
-);
-
-document
-.querySelectorAll(
-".tab"
-)
-.forEach(
-tab =>
-tab.classList.remove(
-"active"
-)
-);
-
-button.classList.add(
-"active"
-);
-
-if(id==="users"){
 loadUsers();
 }
 
-if(id==="audit"){
-loadAudit();
-}
+
+/* TABS */
+
+function tab(id,btn){
+
+document.querySelectorAll(".page")
+.forEach(x=>x.classList.remove("active"));
+
+$(id).classList.add("active");
+
+document.querySelectorAll(".tabs button")
+.forEach(x=>x.classList.remove("active"));
+
+btn.classList.add("active");
+
+if(id==="users")loadUsers();
+if(id==="audit")loadAudit();
 
 }
 
 
-/* =========================
-   LOAD USERS
-========================= */
+/* USERS */
 
 async function loadUsers(){
 
-const table =
-document.getElementById(
-"usersTable"
-);
-
-table.innerHTML=`
-<tr>
-<td colspan="6">
-Loading users...
-</td>
-</tr>
-`;
-
 try{
 
-const token =
-getToken();
+const r=await fetch(API+"/api/admin/users",{
+headers:auth()
+});
 
-if(!token){
+const d=await r.json();
 
-throw new Error(
-"Not logged in."
-);
+if(!r.ok||!d.success)
+throw Error(d.error||"Users API not connected");
 
-}
+const users=d.users||[];
 
-const response =
-await fetch(
-API + "/api/admin/users",
-{
-method:"GET",
-headers:authHeaders()
-}
-);
-
-const text =
-await response.text();
-
-let data;
-
-try{
-data=JSON.parse(text);
-}catch{
-throw new Error(
-"API returned an invalid response."
-);
-}
-
-if(
-response.status===401
-){
-
-localStorage.removeItem(
-TOKEN_KEY
-);
-
-showLogin();
-
-throw new Error(
-"Your session expired. Please login again."
-);
-
-}
-
-if(
-response.status===403
-){
-
-throw new Error(
-"Administrator permission required."
-);
-
-}
-
-if(
-!response.ok ||
-!data.success
-){
-
-throw new Error(
-data.error ||
-"Unable to load users."
-);
-
-}
-
-usersCache =
-Array.isArray(data.users)
-? data.users
-: [];
-
-if(!usersCache.length){
-
-table.innerHTML=`
+$("userList").innerHTML=users.map(u=>`
 <tr>
-<td colspan="6">
-No users found.
-</td>
+<td>${esc(u.name)}</td>
+<td>${esc(u.email)}</td>
+<td>${esc(u.role)}</td>
+<td>${Number(u.active)?"Active":"Inactive"}</td>
 </tr>
+`).join("")||`
+<tr><td colspan="4">No users</td></tr>
 `;
 
-}else{
+}catch(e){
 
-table.innerHTML =
-usersCache.map(
-user=>{
-
-const roleClass =
-user.role==="admin"
-? "admin"
-: user.role==="finance"
-? "finance"
-: "viewer";
-
-const statusClass =
-Number(user.active)
-? "active-badge"
-: "inactive";
-
-return `
-
-<tr>
-
-<td>
-${escapeHTML(user.name)}
-</td>
-
-<td>
-${escapeHTML(user.email)}
-</td>
-
-<td>
-<span class="badge ${roleClass}">
-${escapeHTML(user.role)}
-</span>
-</td>
-
-<td>
-<span class="badge ${statusClass}">
-${Number(user.active)
-? "Active"
-: "Inactive"}
-</span>
-</td>
-
-<td>
-${escapeHTML(user.created_at)}
-</td>
-
-<td>
-
-<button
-class="secondary"
-onclick="toggleUser(
-${Number(user.id)},
-${Number(user.active)
-? 0
-: 1}
-)">
-
-${Number(user.active)
-? "Disable"
-: "Enable"}
-
-</button>
-
-</td>
-
-</tr>
-
-`;
+$("userList").innerHTML=
+`<tr><td colspan="4">${esc(e.message)}</td></tr>`;
 
 }
-).join("");
-
-}
-
-updateStats();
-
-}catch(error){
-
-table.innerHTML=`
-<tr>
-<td colspan="6">
-${escapeHTML(error.message)}
-</td>
-</tr>
-`;
-
-console.error(
-"LOAD USERS ERROR:",
-error
-);
-
-}
-
 }
 
 
-/* =========================
-   STATS
-========================= */
+/* CREATE USER */
 
-function updateStats(){
-
-document
-.getElementById(
-"statUsers"
-)
-.textContent =
-usersCache.length;
-
-document
-.getElementById(
-"statActive"
-)
-.textContent =
-usersCache.filter(
-u=>Number(u.active)
-).length;
-
-document
-.getElementById(
-"statFinance"
-)
-.textContent =
-usersCache.filter(
-u=>u.role==="finance"
-).length;
-
-document
-.getElementById(
-"statAdmins"
-)
-.textContent =
-usersCache.filter(
-u=>u.role==="admin"
-).length;
-
-}
-
-
-/* =========================
-   CREATE USER
-========================= */
-
-document
-.getElementById(
-"userForm"
-)
-.addEventListener(
-"submit",
-async function(e){
+$("userForm").onsubmit=async e=>{
 
 e.preventDefault();
 
-const button =
-document.getElementById(
-"createUserButton"
-);
-
-button.disabled=true;
-button.textContent=
-"Creating...";
-
 try{
 
-const token =
-getToken();
-
-if(!token){
-
-throw new Error(
-"Your session has expired. Please login again."
-);
-
-}
-
-const name =
-document
-.getElementById(
-"userName"
-)
-.value
-.trim();
-
-const email =
-document
-.getElementById(
-"userEmail"
-)
-.value
-.trim();
-
-const role =
-document
-.getElementById(
-"userRole"
-)
-.value;
-
-const active =
-Number(
-document
-.getElementById(
-"userStatus"
-)
-.value
-);
-
-if(!name){
-
-throw new Error(
-"Please enter the user's name."
-);
-
-}
-
-if(!email){
-
-throw new Error(
-"Please enter the user's email."
-);
-
-}
-
-const response =
-await fetch(
-API + "/api/admin/users",
-{
+const r=await fetch(API+"/api/admin/users",{
 method:"POST",
-
-headers:authHeaders(),
-
+headers:auth(),
 body:JSON.stringify({
-name,
-email,
-role,
-active
+name:$("name").value.trim(),
+email:$("newEmail").value.trim(),
+password:$("newPassword").value,
+role:$("role").value,
+active:1
 })
-}
-);
-
-const text =
-await response.text();
-
-let data;
-
-try{
-data=JSON.parse(text);
-}catch{
-throw new Error(
-"Worker returned an invalid response."
-);
-}
-
-if(
-response.status===401
-){
-
-localStorage.removeItem(
-TOKEN_KEY
-);
-
-showLogin();
-
-throw new Error(
-"Your session expired. Please login again."
-);
-
-}
-
-if(
-response.status===403
-){
-
-throw new Error(
-"Administrator permission required."
-);
-
-}
-
-if(
-response.status===409
-){
-
-throw new Error(
-data.error ||
-"That email already exists."
-);
-
-}
-
-if(
-!response.ok ||
-!data.success
-){
-
-throw new Error(
-data.error ||
-"Create User failed."
-);
-
-}
-
-showMessage(
-"User created successfully."
-);
-
-this.reset();
-
-await loadUsers();
-
-}catch(error){
-
-showMessage(
-error.message,
-"error"
-);
-
-console.error(
-"CREATE USER ERROR:",
-error
-);
-
-}finally{
-
-button.disabled=false;
-button.textContent=
-"Create User";
-
-}
-
 });
 
+const d=await r.json();
 
-/* =========================
-   ENABLE / DISABLE
-========================= */
+if(!r.ok||!d.success)
+throw Error(d.error||"Unable to create user");
 
-async function toggleUser(
-id,
-active
-){
+$("userMsg").className="msg";
+$("userMsg").textContent="User created successfully.";
 
-if(
-!confirm(
-active
-? "Enable this user?"
-: "Disable this user?"
-)
-){
+$("userForm").reset();
 
-return;
+loadUsers();
+
+}catch(e){
+
+showError($("userMsg"),e.message);
 
 }
-
-try{
-
-const response =
-await fetch(
-API +
-"/api/admin/users/" +
-id,
-{
-method:"PATCH",
-headers:authHeaders(),
-
-body:JSON.stringify({
-active
-})
-}
-);
-
-const text =
-await response.text();
-
-let data;
-
-try{
-data=JSON.parse(text);
-}catch{
-throw new Error(
-"Invalid Worker response."
-);
-}
-
-if(
-response.status===401
-){
-
-localStorage.removeItem(
-TOKEN_KEY
-);
-
-showLogin();
-
-throw new Error(
-"Session expired."
-);
-
-}
-
-if(
-!response.ok ||
-!data.success
-){
-
-throw new Error(
-data.error ||
-"Unable to update user."
-);
-
-}
-
-showMessage(
-active
-? "User enabled."
-: "User disabled."
-);
-
-await loadUsers();
-
-}catch(error){
-
-showMessage(
-error.message,
-"error"
-);
-
-}
-
-}
+};
 
 
-/* =========================
-   AUDIT LOG
-========================= */
+/* AUDIT */
 
 async function loadAudit(){
 
-const table =
-document.getElementById(
-"auditTable"
-);
-
-table.innerHTML=`
-<tr>
-<td colspan="6">
-Loading audit records...
-</td>
-</tr>
-`;
-
 try{
 
-const params =
-new URLSearchParams();
+const r=await fetch(API+"/api/admin/audit",{
+headers:auth()
+});
 
-const action =
-document
-.getElementById(
-"auditAction"
-)
-.value;
+const d=await r.json();
 
-const date =
-document
-.getElementById(
-"auditDate"
-)
-.value;
+if(!r.ok||!d.success)
+throw Error(d.error||"Audit API not connected");
 
-if(action){
-params.set(
-"action",
-action
-);
+$("auditList").innerHTML=
+(d.logs||[]).map(x=>`
+<tr>
+<td>${esc(x.created_at)}</td>
+<td>${esc(x.user_name||"System")}</td>
+<td>${esc(x.action)}</td>
+<td>${esc(x.details)}</td>
+</tr>
+`).join("")||
+`<tr><td colspan="4">No records</td></tr>`;
+
+}catch(e){
+
+$("auditList").innerHTML=
+`<tr><td colspan="4">${esc(e.message)}</td></tr>`;
+
+}
 }
 
-if(date){
-params.set(
-"date",
-date
-);
-}
 
-const query =
-params.toString();
+/* LOGOUT */
 
-const url =
-API +
-"/api/admin/audit" +
-(query ? "?" + query : "");
-
-const response =
-await fetch(
-url,
-{
-method:"GET",
-headers:authHeaders()
-}
-);
-
-const text =
-await response.text();
-
-let data;
+async function logout(){
 
 try{
-data=JSON.parse(text);
-}catch{
-throw new Error(
-"Invalid Worker response."
-);
-}
+await fetch(API+"/api/logout",{
+method:"POST",
+headers:auth()
+});
+}catch(e){}
 
-if(
-response.status===401
-){
-
-localStorage.removeItem(
-TOKEN_KEY
-);
-
-showLogin();
-
-throw new Error(
-"Session expired."
-);
-
-}
-
-if(
-!response.ok ||
-!data.success
-){
-
-throw new Error(
-data.error ||
-"Unable to load audit log."
-);
-
-}
-
-const logs =
-Array.isArray(data.logs)
-? data.logs
-: [];
-
-if(!logs.length){
-
-table.innerHTML=`
-<tr>
-<td colspan="6">
-No audit records found.
-</td>
-</tr>
-`;
-
-return;
-
-}
-
-table.innerHTML =
-logs.map(
-log=>`
-
-<tr>
-
-<td>
-${escapeHTML(log.created_at)}
-</td>
-
-<td>
-${escapeHTML(
-log.user_name || "System"
-)}
-</td>
-
-<td>
-${escapeHTML(log.action)}
-</td>
-
-<td>
-${escapeHTML(
-log.table_name || ""
-)}
-</td>
-
-<td>
-${escapeHTML(
-log.record_id || ""
-)}
-</td>
-
-<td>
-${escapeHTML(
-log.details || ""
-)}
-</td>
-
-</tr>
-
-`
-).join("");
-
-}catch(error){
-
-table.innerHTML=`
-<tr>
-<td colspan="6">
-${escapeHTML(error.message)}
-</td>
-</tr>
-`;
-
-console.error(
-"AUDIT ERROR:",
-error
-);
-
-}
+localStorage.removeItem(KEY);
+location.reload();
 
 }
 
 
-/* =========================
-   START
-========================= */
+/* AUTO LOGIN */
 
-startApp();
+(async()=>{
+if(localStorage.getItem(KEY)){
+try{
+await start();
+}catch(e){
+localStorage.removeItem(KEY);
+}
+}
+})();
 
 </script>
 
