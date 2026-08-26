@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#155eef">
+<title>GOH Ministries Finance - Expenses</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
+header{background:#155eef;color:#fff;padding:14px 18px}
+.head{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+.logout{background:#fff;color:#155eef;border:0;border-radius:8px;padding:9px 14px;font-weight:bold;cursor:pointer}
+main{max-width:1050px;margin:auto;padding:18px}
+.card{background:#fff;padding:18px;border-radius:14px;margin-bottom:16px;box-shadow:0 2px 12px #0000000d}
+h2,h3{margin-top:0}.sub{color:#667085;font-size:13px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stat strong{display:block;font-size:24px;margin-top:7px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:block;font-size:13px;font-weight:bold;margin:10px 0 6px}
+input,select,textarea{width:100%;padding:11px;border:1px solid #d5dbe5;border-radius:8px;font-size:14px;font-family:inherit}
+textarea{min-height:80px;resize:vertical}
+.primary{width:100%;padding:12px;margin-top:15px;border:0;border-radius:8px;background:#155eef;color:#fff;font-weight:bold;cursor:pointer}
+.primary:disabled{opacity:.6}
+.msg{display:none;padding:11px;border-radius:8px;font-size:13px;margin-bottom:12px}
+.ok{display:block;background:#dcfce7;color:#166534}
+.bad{display:block;background:#fee2e2;color:#991b1b}
+.table{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:800px}
+th,td{padding:10px;border-bottom:1px solid #edf0f4;font-size:13px;text-align:left}
+th{background:#f8fafc;color:#667085}
+.delete{border:0;border-radius:7px;padding:7px 10px;background:#fee2e2;color:#991b1b;font-weight:bold;cursor:pointer}
+@media(max-width:700px){.stats,.grid{grid-template-columns:1fr}main{padding:12px}}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="head">
+<b>GOH Ministries Finance</b>
+<button class="logout" onclick="logout()">Logout</button>
+</div>
+</header>
+
+<main>
+
+<div class="card">
+<h2>Expenses</h2>
+<div class="sub">Record and monitor ministry expenses.</div>
+</div>
+
+<div class="stats">
+
+<div class="card stat">
+<div class="sub">Total Expenses</div>
+<strong id="total">LKR 0.00</strong>
+</div>
+
+<div class="card stat">
+<div class="sub">This Month</div>
+<strong id="month">LKR 0.00</strong>
+</div>
+
+<div class="card stat">
+<div class="sub">Transactions</div>
+<strong id="count">0</strong>
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>Add Expense</h3>
+
+<div id="msg" class="msg"></div>
+
+<form id="expenseForm">
+
+<div class="grid">
+
+<div>
+<label>Description</label>
+<input id="description"
+placeholder="What was purchased or paid?"
+required>
+</div>
+
+<div>
+<label>Date</label>
+<input id="date" type="date" required>
+</div>
+
+<div>
+<label>Amount (LKR)</label>
+<input id="amount"
+type="number"
+min="0.01"
+step="0.01"
+placeholder="0.00"
+required>
+</div>
+
+<div>
+<label>Category</label>
+<select id="category">
+<option value="Construction">Construction</option>
+<option value="Utilities">Utilities</option>
+<option value="Transport">Transport</option>
+<option value="Food">Food</option>
+<option value="Equipment">Equipment</option>
+<option value="Salary">Salary</option>
+<option value="Mission">Mission</option>
+<option value="Office">Office</option>
+<option value="Other">Other</option>
+</select>
+</div>
+
+<div>
+<label>Payment Method</label>
+<select id="method">
+<option>Cash</option>
+<option>Bank Transfer</option>
+<option>Cheque</option>
+<option>Other</option>
+</select>
+</div>
+
+<div>
+<label>Reference Number</label>
+<input id="reference" placeholder="Optional">
+</div>
+
+</div>
+
+<label>Notes</label>
+<textarea id="notes"
+placeholder="Optional notes"></textarea>
+
+<button id="saveBtn"
+class="primary"
+type="submit">
+Save Expense
+</button>
+
+</form>
+
+</div>
+
+<div class="card">
+
+<h3>Expense Records</h3>
+
+<div class="table">
+
+<table>
+
+<thead>
+<tr>
+<th>Date</th>
+<th>Description</th>
+<th>Category</th>
+<th>Method</th>
+<th>Reference</th>
+<th>Amount</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody id="records">
+<tr>
+<td colspan="7">Loading...</td>
+</tr>
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</main>
+
+<script>
+
+const API=
+"https://goh-finance.createlk.workers.dev";
+
+const TOKEN_KEY=
+"goh_finance_token";
+
+function headers(){
+return{
+"Content-Type":"application/json",
+"Authorization":
+"Bearer "+
+localStorage.getItem(TOKEN_KEY)
+};
+}
+
+function esc(v){
+return String(v??"")
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+}
+
+function money(v){
+return "LKR "+
+Number(v||0).toLocaleString(
+"en-LK",
+{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+});
+}
+
+function today(){
+const d=new Date();
+return d.getFullYear()+"-"+
+String(d.getMonth()+1).padStart(2,"0")+"-"+
+String(d.getDate()).padStart(2,"0");
+}
+
+function msg(text,ok=false){
+const el=document.getElementById("msg");
+el.textContent=text;
+el.className="msg "+(ok?"ok":"bad");
+}
+
+document.getElementById("date").value=today();
+
+
+async function checkLogin(){
+
+const token=
+localStorage.getItem(TOKEN_KEY);
+
+if(!token){
+location.href="admin-login.html";
+return false;
+}
+
+try{
+
+const r=await fetch(
+API+"/api/me",
+{headers:headers()}
+);
+
+const d=await r.json();
+
+if(!r.ok||!d.success)
+throw Error();
+
+return true;
+
+}catch(e){
+
+localStorage.removeItem(TOKEN_KEY);
+location.href="admin-login.html";
+return false;
+
+}
+}
+
+
+async function loadExpenses(){
+
+try{
+
+const r=await fetch(
+API+"/api/finance/expenses",
+{headers:headers()}
+);
+
+const d=await r.json();
+
+if(!r.ok||!d.success)
+throw Error(
+d.error||"Unable to load expenses"
+);
+
+const rows=d.expenses||[];
+
+let total=0;
+let month=0;
+
+const prefix=
+new Date().getFullYear()+"-"+
+String(new Date().getMonth()+1).padStart(2,"0");
+
+rows.forEach(x=>{
+
+const a=Number(x.amount)||0;
+
+total+=a;
+
+if(String(x.date||"").startsWith(prefix))
+month+=a;
+
+});
+
+document.getElementById("total")
+.textContent=money(total);
+
+document.getElementById("month")
+.textContent=money(month);
+
+document.getElementById("count")
+.textContent=rows.length;
+
+document.getElementById("records")
+.innerHTML=
+
+rows.map(x=>`
+
+<tr>
+<td>${esc(x.date)}</td>
+<td>${esc(x.description)}</td>
+<td>${esc(x.category)}</td>
+<td>${esc(x.payment_method)}</td>
+<td>${esc(x.reference)}</td>
+<td>${money(x.amount)}</td>
+<td>
+${
+x.id
+?
+`<button class="delete"
+onclick="deleteExpense(${Number(x.id)})">
+Delete
+</button>`
+:""
+}
+</td>
+</tr>
+
+`).join("")||
+
+`<tr>
+<td colspan="7">No expense records</td>
+</tr>`;
+
+}catch(e){
+
+document.getElementById("records")
+.innerHTML=
+`<tr>
+<td colspan="7">${esc(e.message)}</td>
+</tr>`;
+
+}
+
+}
+
+
+document.getElementById("expenseForm")
+.addEventListener("submit",async e=>{
+
+e.preventDefault();
+
+const btn=
+document.getElementById("saveBtn");
+
+const body={
+
+description:
+document.getElementById("description").value.trim(),
+
+date:
+document.getElementById("date").value,
+
+amount:
+Number(document.getElementById("amount").value),
+
+category:
+document.getElementById("category").value,
+
+payment_method:
+document.getElementById("method").value,
+
+reference:
+document.getElementById("reference").value.trim(),
+
+notes:
+document.getElementById("notes").value.trim()
+
+};
+
+if(!body.description||
+!body.date||
+!body.amount||
+body.amount<=0){
+
+msg("Please enter description, date and a valid amount.");
+return;
+
+}
+
+btn.disabled=true;
+btn.textContent="Saving...";
+
+try{
+
+const r=await fetch(
+API+"/api/finance/expenses",
+{
+method:"POST",
+headers:headers(),
+body:JSON.stringify(body)
+}
+);
+
+const d=await r.json();
+
+if(!r.ok||!d.success)
+throw Error(
+d.error||"Unable to save expense"
+);
+
+msg(
+"Expense saved successfully.",
+true
+);
+
+e.target.reset();
+
+document.getElementById("date").value=today();
+
+loadExpenses();
+
+}catch(err){
+
+msg(err.message);
+
+}finally{
+
+btn.disabled=false;
+btn.textContent="Save Expense";
+
+}
+
+});
+
+
+async function deleteExpense(id){
+
+if(!confirm(
+"Delete this expense record?"
+))return;
+
+try{
+
+const r=await fetch(
+API+"/api/finance/expenses/"+id,
+{
+method:"DELETE",
+headers:headers()
+}
+);
+
+const d=await r.json();
+
+if(!r.ok||!d.success)
+throw Error(
+d.error||"Unable to delete"
+);
+
+loadExpenses();
+
+}catch(e){
+
+alert(e.message);
+
+}
+
+}
+
+
+async function logout(){
+
+try{
+await fetch(
+API+"/api/logout",
+{
+method:"POST",
+headers:headers()
+}
+);
+}catch(e){}
+
+localStorage.removeItem(TOKEN_KEY);
+
+location.href="admin-login.html";
+
+}
+
+
+checkLogin().then(ok=>{
+if(ok)loadExpenses();
+});
+
+</script>
+
+</body>
+</html>
