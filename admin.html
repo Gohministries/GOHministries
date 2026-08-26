@@ -3,164 +3,169 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GOH Ministries Finance</title>
+<meta name="theme-color" content="#155eef">
+<title>GOH Ministries Finance - Administration</title>
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial;background:#f5f7fb;color:#172033}
-header{background:#155eef;color:#fff;padding:16px}
-main{max-width:1000px;margin:auto;padding:16px}
-.box{background:#fff;padding:20px;border-radius:14px;margin-bottom:16px;box-shadow:0 2px 10px #0001}
-input,select,button{width:100%;padding:11px;margin:6px 0;border-radius:8px;font:inherit}
-input,select{border:1px solid #d5d9e2}
-button{border:0;background:#155eef;color:white;font-weight:bold;cursor:pointer}
-.logout{width:auto;background:white;color:#155eef}
-.hidden{display:none}
-.tabs{display:flex;gap:8px;margin-bottom:16px}
-.tabs button{width:auto;background:#e8edf7;color:#172033}
-.tabs button.active{background:#155eef;color:white}
-.page{display:none}
-.page.active{display:block}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.msg{padding:10px;border-radius:8px;margin-bottom:10px;background:#fee2e2;color:#991b1b}
-table{width:100%;border-collapse:collapse}
-th,td{padding:10px;border-bottom:1px solid #eee;text-align:left;font-size:13px}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
+header{background:#155eef;color:#fff;padding:14px 18px}
+.head{max-width:1050px;margin:auto}
+nav{display:flex;gap:8px;margin-top:12px;overflow:auto}
+nav a{background:#fff;color:#155eef;padding:9px 12px;border-radius:8px;text-decoration:none;font-size:13px;white-space:nowrap}
+main{max-width:1050px;margin:auto;padding:18px}
+.card{background:#fff;padding:18px;border-radius:14px;margin-bottom:16px;box-shadow:0 2px 12px #0001}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stat strong{display:block;font-size:24px;margin-top:6px}
+.small{font-size:13px;color:#667085}
+label{display:block;font-size:13px;font-weight:bold;margin:9px 0 6px}
+input,select{width:100%;padding:11px;border:1px solid #d5dbe5;border-radius:8px;font-size:14px}
+button{border:0;border-radius:8px;padding:10px 14px;background:#155eef;color:#fff;font-weight:bold;cursor:pointer}
+form button{width:100%;margin-top:15px;padding:12px}
+button:disabled{opacity:.6}
+.danger{background:#dc2626}
+.success{background:#16a34a}
+.msg{display:none;margin-bottom:12px;padding:11px;border-radius:8px;font-size:13px}
+.ok{display:block;background:#dcfce7;color:#166534}
+.bad{display:block;background:#fee2e2;color:#991b1b}
 .table{overflow:auto}
-@media(max-width:600px){.grid{grid-template-columns:1fr}}
+table{width:100%;border-collapse:collapse;min-width:750px}
+th,td{padding:10px;border-bottom:1px solid #edf0f4;text-align:left;font-size:13px}
+th{background:#f8fafc;color:#667085}
+@media(max-width:700px){.grid,.stats{grid-template-columns:1fr}main{padding:12px}}
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
-<div id="login">
-
-<main>
-<div class="box" style="max-width:400px;margin:60px auto">
-
-<h2>GOH Ministries Finance</h2>
-<p>Administration</p>
-
-<div id="loginMsg" class="msg hidden"></div>
-
-<form id="loginForm">
-
-<input id="email"
-type="email"
-placeholder="Email"
-required>
-
-<input id="password"
-type="password"
-placeholder="Password"
-required>
-
-<button id="loginBtn">Login</button>
-
-</form>
-
-</div>
-</main>
-
-</div>
-
-
-<!-- ADMIN -->
-<div id="admin" class="hidden">
-
 <header>
-<strong>GOH Ministries Finance</strong>
-<button class="logout" onclick="logout()">Logout</button>
+<div class="head">
+<b>GOH Ministries Finance</b>
+
+<nav>
+<a href="finance-dashboard.html">Dashboard</a>
+<a href="income.html">Income</a>
+<a href="expenses.html">Expenses</a>
+<a href="reports.html">Reports</a>
+<a href="receipts.html">Receipts</a>
+<a href="admin.html">Administration</a>
+</nav>
+</div>
 </header>
 
 <main>
 
-<p>Logged in as <b id="who"></b></p>
-
-<div class="tabs">
-<button class="active" onclick="tab('users',this)">Users</button>
-<button onclick="tab('audit',this)">Audit Log</button>
+<div class="card">
+<h2>Administration</h2>
+<p class="small">
+Manage authorized finance system users and monitor administrative activity.
+</p>
 </div>
 
+<div class="stats">
 
-<!-- USERS -->
-<div id="users" class="page active">
+<div class="card stat">
+<div class="small">Total Users</div>
+<strong id="total">0</strong>
+</div>
 
-<div class="box">
+<div class="card stat">
+<div class="small">Active Users</div>
+<strong id="active">0</strong>
+</div>
+
+<div class="card stat">
+<div class="small">Administrators</div>
+<strong id="admins">0</strong>
+</div>
+
+</div>
+
+<div class="card">
 
 <h3>Create User</h3>
 
-<div id="userMsg" class="msg hidden"></div>
+<div id="msg" class="msg"></div>
 
 <form id="userForm">
 
 <div class="grid">
 
-<input id="name"
-placeholder="Name"
-required>
+<div>
+<label>Name</label>
+<input id="name" required>
+</div>
 
-<input id="newEmail"
-type="email"
-placeholder="Email"
-required>
+<div>
+<label>Email</label>
+<input id="email" type="email" required>
+</div>
 
-<input id="newPassword"
+<div>
+<label>Password</label>
+<input id="password"
 type="password"
-placeholder="Password - minimum 12 characters"
 minlength="12"
+placeholder="Minimum 12 characters"
 required>
+</div>
 
+<div>
+<label>Role</label>
 <select id="role">
-<option value="finance">Finance</option>
 <option value="viewer">Viewer</option>
+<option value="finance">Finance</option>
 <option value="admin">Administrator</option>
 </select>
+</div>
 
 </div>
 
-<button>Create User</button>
+<button id="createBtn" type="submit">
+Create User
+</button>
 
 </form>
+
 </div>
 
 
-<div class="box">
+<div class="card">
 
 <h3>Users</h3>
 
 <div class="table">
 
 <table>
+
 <thead>
 <tr>
 <th>Name</th>
 <th>Email</th>
 <th>Role</th>
 <th>Status</th>
+<th>Created</th>
+<th>Action</th>
 </tr>
 </thead>
 
-<tbody id="userList">
-<tr><td colspan="4">Loading...</td></tr>
+<tbody id="users">
+<tr>
+<td colspan="6">Loading...</td>
+</tr>
 </tbody>
 
 </table>
 
 </div>
-</div>
 
 </div>
 
 
-<!-- AUDIT -->
-<div id="audit" class="page">
-
-<div class="box">
+<div class="card">
 
 <h3>Audit Log</h3>
-
-<button onclick="loadAudit()">Refresh</button>
 
 <div class="table">
 
@@ -171,280 +176,329 @@ required>
 <th>Date</th>
 <th>User</th>
 <th>Action</th>
+<th>Table</th>
 <th>Details</th>
 </tr>
 </thead>
 
-<tbody id="auditList">
-<tr><td colspan="4">Loading...</td></tr>
+<tbody id="audit">
+<tr>
+<td colspan="5">Loading...</td>
+</tr>
 </tbody>
 
 </table>
 
 </div>
-</div>
 
 </div>
 
 </main>
-</div>
-
 
 <script>
 
-const API="https://goh-finance.createlk.workers.dev";
-const KEY="goh_token";
+const API=
+"https://goh-finance.createlk.workers.dev";
 
-const $=id=>document.getElementById(id);
+const KEY="goh_finance_token";
 
-function auth(){
+function headers(){
 return{
 "Content-Type":"application/json",
-"Authorization":"Bearer "+localStorage.getItem(KEY)
+"Authorization":
+"Bearer "+localStorage.getItem(KEY)
 };
 }
 
-function showError(el,text){
-el.textContent=text;
-el.classList.remove("hidden");
-}
-
-function esc(x){
-return String(x??"")
+function esc(v){
+return String(v??"")
 .replaceAll("&","&amp;")
 .replaceAll("<","&lt;")
-.replaceAll(">","&gt;");
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+}
+
+function show(text,ok=false){
+const el=document.getElementById("msg");
+el.textContent=text;
+el.className="msg "+(ok?"ok":"bad");
 }
 
 
-/* LOGIN */
+async function check(){
 
-$("loginForm").onsubmit=async e=>{
-e.preventDefault();
+const token=localStorage.getItem(KEY);
 
-$("loginBtn").disabled=true;
-$("loginBtn").textContent="Logging in...";
+if(!token){
+location.href="admin-login.html";
+return false;
+}
 
 try{
 
-const r=await fetch(API+"/api/login",{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify({
-email:$("email").value.trim(),
-password:$("password").value
-})
-});
+const r=await fetch(
+API+"/api/me",
+{headers:headers()}
+);
 
 const d=await r.json();
 
 if(!r.ok||!d.success)
-throw Error(d.error||"Invalid email or password");
+throw Error();
 
-localStorage.setItem(KEY,d.token);
+if(d.user.role!=="admin"){
+alert("Administrator access required.");
+location.href="finance-dashboard.html";
+return false;
+}
 
-await start();
+return true;
 
 }catch(e){
 
-showError($("loginMsg"),e.message);
-
-}finally{
-
-$("loginBtn").disabled=false;
-$("loginBtn").textContent="Login";
-
-}
-};
-
-
-/* START */
-
-async function start(){
-
-const r=await fetch(API+"/api/me",{
-headers:auth()
-});
-
-const d=await r.json();
-
-if(!r.ok||!d.success)
-throw Error("Session expired");
-
-if(d.user.role!=="admin")
-throw Error("Administrator access required");
-
-$("who").textContent=d.user.name;
-
-$("login").classList.add("hidden");
-$("admin").classList.remove("hidden");
-
-loadUsers();
-}
-
-
-/* TABS */
-
-function tab(id,btn){
-
-document.querySelectorAll(".page")
-.forEach(x=>x.classList.remove("active"));
-
-$(id).classList.add("active");
-
-document.querySelectorAll(".tabs button")
-.forEach(x=>x.classList.remove("active"));
-
-btn.classList.add("active");
-
-if(id==="users")loadUsers();
-if(id==="audit")loadAudit();
+localStorage.removeItem(KEY);
+location.href="admin-login.html";
+return false;
 
 }
 
+}
 
-/* USERS */
 
 async function loadUsers(){
 
 try{
 
-const r=await fetch(API+"/api/admin/users",{
-headers:auth()
-});
+const r=await fetch(
+API+"/api/admin/users",
+{headers:headers()}
+);
 
 const d=await r.json();
 
 if(!r.ok||!d.success)
-throw Error(d.error||"Users API not connected");
+throw Error(d.error||"Unable to load users");
 
-const users=d.users||[];
+const rows=d.users||[];
 
-$("userList").innerHTML=users.map(u=>`
+document.getElementById("total")
+.textContent=rows.length;
+
+document.getElementById("active")
+.textContent=
+rows.filter(x=>Number(x.active)===1).length;
+
+document.getElementById("admins")
+.textContent=
+rows.filter(x=>x.role==="admin").length;
+
+document.getElementById("users")
+.innerHTML=
+
+rows.map(x=>`
+
 <tr>
-<td>${esc(u.name)}</td>
-<td>${esc(u.email)}</td>
-<td>${esc(u.role)}</td>
-<td>${Number(u.active)?"Active":"Inactive"}</td>
+<td>${esc(x.name)}</td>
+<td>${esc(x.email)}</td>
+<td>${esc(x.role)}</td>
+<td>${Number(x.active)===1?"Active":"Disabled"}</td>
+<td>${esc(x.created_at)}</td>
+<td>
+<button
+class="${Number(x.active)===1?"danger":"success"}"
+onclick="toggleUser(${Number(x.id)},${Number(x.active)})">
+${Number(x.active)===1?"Disable":"Enable"}
+</button>
+</td>
 </tr>
-`).join("")||`
-<tr><td colspan="4">No users</td></tr>
-`;
+
+`).join("")||
+
+`<tr>
+<td colspan="6">No users found.</td>
+</tr>`;
 
 }catch(e){
 
-$("userList").innerHTML=
-`<tr><td colspan="4">${esc(e.message)}</td></tr>`;
+document.getElementById("users")
+.innerHTML=
+`<tr><td colspan="6">${esc(e.message)}</td></tr>`;
 
 }
+
 }
 
 
-/* CREATE USER */
-
-$("userForm").onsubmit=async e=>{
+document.getElementById("userForm")
+.addEventListener("submit",async e=>{
 
 e.preventDefault();
 
+const btn=
+document.getElementById("createBtn");
+
+const name=
+document.getElementById("name").value.trim();
+
+const email=
+document.getElementById("email").value.trim();
+
+const password=
+document.getElementById("password").value;
+
+const role=
+document.getElementById("role").value;
+
+if(!name||!email||!password){
+show("Name, email and password are required.");
+return;
+}
+
+if(password.length<12){
+show("Password must contain at least 12 characters.");
+return;
+}
+
+btn.disabled=true;
+btn.textContent="Creating...";
+
 try{
 
-const r=await fetch(API+"/api/admin/users",{
+const r=await fetch(
+API+"/api/admin/users",
+{
 method:"POST",
-headers:auth(),
+headers:headers(),
 body:JSON.stringify({
-name:$("name").value.trim(),
-email:$("newEmail").value.trim(),
-password:$("newPassword").value,
-role:$("role").value,
-active:1
+name,
+email,
+password,
+role
 })
-});
+}
+);
 
 const d=await r.json();
 
 if(!r.ok||!d.success)
 throw Error(d.error||"Unable to create user");
 
-$("userMsg").className="msg";
-$("userMsg").textContent="User created successfully.";
+show(
+"User created successfully.",
+true
+);
 
-$("userForm").reset();
+e.target.reset();
 
 loadUsers();
+loadAudit();
+
+}catch(err){
+
+show(err.message);
+
+}finally{
+
+btn.disabled=false;
+btn.textContent="Create User";
+
+}
+
+});
+
+
+async function toggleUser(id,current){
+
+const action=
+current===1?"disable":"enable";
+
+if(!confirm(
+"Are you sure you want to "+action+" this user?"
+))return;
+
+try{
+
+const r=await fetch(
+API+"/api/admin/users/"+id,
+{
+method:"PATCH",
+headers:headers(),
+body:JSON.stringify({
+active:current===1?0:1
+})
+}
+);
+
+const d=await r.json();
+
+if(!r.ok||!d.success)
+throw Error(d.error||"Unable to update user");
+
+loadUsers();
+loadAudit();
 
 }catch(e){
 
-showError($("userMsg"),e.message);
+alert(e.message);
 
 }
-};
 
+}
 
-/* AUDIT */
 
 async function loadAudit(){
 
 try{
 
-const r=await fetch(API+"/api/admin/audit",{
-headers:auth()
-});
+const r=await fetch(
+API+"/api/admin/audit",
+{headers:headers()}
+);
 
 const d=await r.json();
 
 if(!r.ok||!d.success)
-throw Error(d.error||"Audit API not connected");
+throw Error(d.error||"Unable to load audit log");
 
-$("auditList").innerHTML=
-(d.logs||[]).map(x=>`
+const rows=d.logs||[];
+
+document.getElementById("audit")
+.innerHTML=
+
+rows.map(x=>`
+
 <tr>
 <td>${esc(x.created_at)}</td>
-<td>${esc(x.user_name||"System")}</td>
+<td>${esc(x.user_name||x.user_email||"")}</td>
 <td>${esc(x.action)}</td>
-<td>${esc(x.details)}</td>
+<td>${esc(x.table_name||"")}</td>
+<td>${esc(x.details||"")}</td>
 </tr>
+
 `).join("")||
-`<tr><td colspan="4">No records</td></tr>`;
+
+`<tr>
+<td colspan="5">No audit records.</td>
+</tr>`;
 
 }catch(e){
 
-$("auditList").innerHTML=
-`<tr><td colspan="4">${esc(e.message)}</td></tr>`;
+document.getElementById("audit")
+.innerHTML=
+`<tr><td colspan="5">${esc(e.message)}</td></tr>`;
 
 }
+
 }
 
 
-/* LOGOUT */
-
-async function logout(){
-
-try{
-await fetch(API+"/api/logout",{
-method:"POST",
-headers:auth()
+check().then(ok=>{
+if(ok){
+loadUsers();
+loadAudit();
+}
 });
-}catch(e){}
-
-localStorage.removeItem(KEY);
-location.reload();
-
-}
-
-
-/* AUTO LOGIN */
-
-(async()=>{
-if(localStorage.getItem(KEY)){
-try{
-await start();
-}catch(e){
-localStorage.removeItem(KEY);
-}
-}
-})();
 
 </script>
 
