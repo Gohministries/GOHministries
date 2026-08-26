@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#155eef">
+<title>GOH Ministries Finance</title>
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f5f7fb;
+color:#172033;
+display:flex;
+min-height:100vh;
+align-items:center;
+justify-content:center;
+padding:20px
+}
+.box{
+width:100%;
+max-width:400px;
+background:#fff;
+padding:28px;
+border-radius:18px;
+text-align:center;
+box-shadow:0 5px 25px #0001
+}
+.logo{
+width:55px;
+height:55px;
+margin:0 auto 15px;
+border-radius:14px;
+background:#155eef;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+font-weight:bold
+}
+h1{
+font-size:22px;
+margin:0 0 7px
+}
+p{
+font-size:13px;
+color:#667085
+}
+button{
+width:100%;
+padding:13px;
+margin-top:15px;
+border:0;
+border-radius:9px;
+background:#155eef;
+color:#fff;
+font-weight:bold;
+cursor:pointer
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<div class="logo">G</div>
+
+<h1>GOH Ministries Finance</h1>
+
+<p>Finance Administration System</p>
+
+<button onclick="openSystem()">
+Open Finance Administration
+</button>
+
+</div>
+
+<script>
+
+const API=
+"https://goh-finance.createlk.workers.dev";
+
+const KEY=
+"goh_finance_token";
+
+async function openSystem(){
+
+const token=
+localStorage.getItem(KEY);
+
+if(!token){
+location.href="admin-login.html";
+return;
+}
+
+try{
+
+const r=await fetch(
+API+"/api/me",
+{
+headers:{
+"Authorization":
+"Bearer "+token
+}
+}
+);
+
+const d=await r.json();
+
+if(!r.ok||!d.success)
+throw Error();
+
+location.href="finance-dashboard.html";
+
+}catch(e){
+
+localStorage.removeItem(KEY);
+
+location.href="admin-login.html";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
