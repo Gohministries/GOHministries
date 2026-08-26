@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#155eef">
+<title>GOH Ministries Finance - Receipts</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#f5f7fb;
+ color:#172033
+}
+header{
+ background:#155eef;
+ color:#fff;
+ padding:14px 18px
+}
+.head{
+ max-width:1050px;
+ margin:auto
+}
+nav{
+ display:flex;
+ gap:8px;
+ margin-top:12px;
+ overflow:auto
+}
+nav a{
+ background:#fff;
+ color:#155eef;
+ padding:9px 12px;
+ border-radius:8px;
+ text-decoration:none;
+ font-size:13px;
+ white-space:nowrap
+}
+main{
+ max-width:1050px;
+ margin:auto;
+ padding:18px
+}
+.card{
+ background:#fff;
+ padding:18px;
+ border-radius:14px;
+ margin-bottom:16px;
+ box-shadow:0 2px 12px #0001
+}
+.grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px
+}
+label{
+ display:block;
+ font-size:13px;
+ font-weight:bold;
+ margin:9px 0 6px
+}
+input,select,textarea{
+ width:100%;
+ padding:11px;
+ border:1px solid #d5dbe5;
+ border-radius:8px;
+ font-size:14px;
+ font-family:Arial
+}
+textarea{
+ min-height:80px;
+ resize:vertical
+}
+button{
+ border:0;
+ border-radius:8px;
+ padding:11px 15px;
+ background:#155eef;
+ color:#fff;
+ font-weight:bold;
+ cursor:pointer;
+ margin-top:14px
+}
+button:disabled{opacity:.6}
+.secondary{background:#475467}
+.msg{
+ display:none;
+ padding:11px;
+ border-radius:8px;
+ margin-bottom:12px;
+ font-size:13px
+}
+.ok{
+ display:block;
+ background:#dcfce7;
+ color:#166534
+}
+.bad{
+ display:block;
+ background:#fee2e2;
+ color:#991b1b
+}
+.table{
+ overflow:auto
+}
+table{
+ width:100%;
+ min-width:800px;
+ border-collapse:collapse
+}
+th,td{
+ padding:10px;
+ border-bottom:1px solid #edf0f4;
+ text-align:left;
+ font-size:13px
+}
+th{
+ background:#f8fafc;
+ color:#667085
+}
+@media(max-width:650px){
+ .grid{grid-template-columns:1fr}
+ main{padding:12px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="head">
+
+<b>GOH Ministries Finance</b>
+
+<nav>
+<a href="finance-dashboard.html">Dashboard</a>
+<a href="income.html">Income</a>
+<a href="expenses.html">Expenses</a>
+<a href="reports.html">Reports</a>
+<a href="receipts.html">Receipts</a>
+<a href="admin.html">Administration</a>
+</nav>
+
+</div>
+</header>
+
+<main>
+
+<div class="card">
+<h2>Receipts</h2>
+<p style="color:#667085;font-size:13px">
+Create and manage finance receipt records.
+</p>
+</div>
+
+<div class="card">
+
+<h3>Create Receipt</h3>
+
+<div id="msg" class="msg"></div>
+
+<form id="receiptForm">
+
+<div class="grid">
+
+<div>
+<label>Receipt Number</label>
+<input id="receipt_no"
+placeholder="Example: GOH-2026-001"
+required>
+</div>
+
+<div>
+<label>Date</label>
+<input id="date" type="date" required>
+</div>
+
+<div>
+<label>Received From</label>
+<input id="received_from"
+placeholder="Donor / person / organization"
+required>
+</div>
+
+<div>
+<label>Amount (LKR)</label>
+<input id="amount"
+type="number"
+min="0.01"
+step="0.01"
+required>
+</div>
+
+<div>
+<label>Category</label>
+<select id="category">
+<option>Donation</option>
+<option>Tithe</option>
+<option>Offering</option>
+<option>Building</option>
+<option>Mission</option>
+<option>General</option>
+<option>Other</option>
+</select>
+</div>
+
+<div>
+<label>Payment Method</label>
+<select id="method">
+<option>Cash</option>
+<option>Bank Transfer</option>
+<option>Cheque</option>
+<option>PayHere</option>
+<option>Other</option>
+</select>
+</div>
+
+</div>
+
+<label>Notes</label>
+<textarea id="notes"
+placeholder="Optional notes"></textarea>
+
+<button id="saveBtn" type="submit">
+Create Receipt
+</button>
+
+</form>
+
+</div>
+
+
+<div class="card">
+
+<h3>Receipt Records</h3>
+
+<div class="table">
+
+<table>
+
+<thead>
+<tr>
+<th>Receipt No.</th>
+<th>Date</th>
+<th>Received From</th>
+<th>Category</th>
+<th>Method</th>
+<th>Amount</th>
+</tr>
+</thead>
+
+<tbody id="records">
+<tr>
+<td colspan="6">Loading...</td>
+</tr>
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</main>
+
+<script>
+
+const API=
+"https://goh-finance.createlk.workers.dev";
+
+const KEY=
+"goh_finance_token";
+
+
+function headers(){
+ return{
+  "Content-Type":"application/json",
+  "Authorization":
+   "Bearer "+
+   localStorage.getItem(KEY)
+ };
+}
+
+
+function esc(v){
+ return String(v??"")
+ .replaceAll("&","&amp;")
+ .replaceAll("<","&lt;")
+ .replaceAll(">","&gt;")
+ .replaceAll('"',"&quot;")
+ .replaceAll("'","&#039;");
+}
+
+
+function money(v){
+ return "LKR "+
+ Number(v||0).toLocaleString(
+  "en-LK",
+  {
+   minimumFractionDigits:2,
+   maximumFractionDigits:2
+  }
+ );
+}
+
+
+function today(){
+
+ const d=new Date();
+
+ return d.getFullYear()+"-"+
+ String(d.getMonth()+1).padStart(2,"0")+"-"+
+ String(d.getDate()).padStart(2,"0");
+
+}
+
+
+function showMsg(text,ok=false){
+
+ const el=
+  document.getElementById("msg");
+
+ el.textContent=text;
+
+ el.className=
+  "msg "+(ok?"ok":"bad");
+
+}
+
+
+document.getElementById("date")
+.value=today();
+
+
+/* LOGIN CHECK */
+
+async function checkLogin(){
+
+ const token=
+  localStorage.getItem(KEY);
+
+ if(!token){
+
+  location.href="admin-login.html";
+
+  return false;
+ }
+
+ try{
+
+  const r=
+   await fetch(
+    API+"/api/me",
+    {headers:headers()}
+   );
+
+  const d=await r.json();
+
+  if(!r.ok||!d.success)
+   throw Error();
+
+  return true;
+
+ }catch(e){
+
+  localStorage.removeItem(KEY);
+
+  location.href="admin-login.html";
+
+  return false;
+
+ }
+
+}
+
+
+/* LOAD RECEIPTS */
+
+async function loadReceipts(){
+
+ try{
+
+  const r=
+   await fetch(
+    API+"/api/finance/receipts",
+    {headers:headers()}
+   );
+
+  const d=await r.json();
+
+  if(!r.ok||!d.success){
+
+   throw Error(
+    d.error||"Unable to load receipts"
+   );
+
+  }
+
+  const rows=
+   d.receipts||[];
+
+  document.getElementById("records")
+  .innerHTML=
+
+  rows.map(x=>`
+
+   <tr>
+
+    <td>${esc(x.receipt_no)}</td>
+
+    <td>${esc(x.date)}</td>
+
+    <td>${esc(x.received_from)}</td>
+
+    <td>${esc(x.category)}</td>
+
+    <td>${esc(x.payment_method)}</td>
+
+    <td>${money(x.amount)}</td>
+
+   </tr>
+
+  `).join("")||
+
+  `<tr>
+   <td colspan="6">
+    No receipts found.
+   </td>
+  </tr>`;
+
+ }catch(e){
+
+  document.getElementById("records")
+  .innerHTML=
+
+  `<tr>
+   <td colspan="6">
+    ${esc(e.message)}
+   </td>
+  </tr>`;
+
+ }
+
+}
+
+
+/* CREATE RECEIPT */
+
+document.getElementById(
+ "receiptForm"
+).addEventListener(
+ "submit",
+ async function(e){
+
+  e.preventDefault();
+
+  const btn=
+   document.getElementById("saveBtn");
+
+  const body={
+
+   receipt_no:
+    document.getElementById(
+     "receipt_no"
+    ).value.trim(),
+
+   date:
+    document.getElementById(
+     "date"
+    ).value,
+
+   received_from:
+    document.getElementById(
+     "received_from"
+    ).value.trim(),
+
+   amount:
+    Number(
+     document.getElementById(
+      "amount"
+     ).value
+    ),
+
+   category:
+    document.getElementById(
+     "category"
+    ).value,
+
+   payment_method:
+    document.getElementById(
+     "method"
+    ).value,
+
+   notes:
+    document.getElementById(
+     "notes"
+    ).value.trim()
+
+  };
+
+
+  if(
+   !body.receipt_no||
+   !body.date||
+   !body.received_from||
+   !body.amount||
+   body.amount<=0
+  ){
+
+   showMsg(
+    "Please complete all required fields."
+   );
+
+   return;
+  }
+
+
+  btn.disabled=true;
+  btn.textContent="Creating...";
+
+
+  try{
+
+   const r=
+    await fetch(
+     API+"/api/finance/receipts",
+     {
+      method:"POST",
+      headers:headers(),
+      body:JSON.stringify(body)
+     }
+    );
+
+   const d=await r.json();
+
+   if(!r.ok||!d.success){
+
+    throw Error(
+     d.error||"Unable to create receipt"
+    );
+
+   }
+
+
+   showMsg(
+    "Receipt created successfully.",
+    true
+   );
+
+
+   e.target.reset();
+
+   document.getElementById(
+    "date"
+   ).value=today();
+
+
+   loadReceipts();
+
+
+  }catch(err){
+
+   showMsg(err.message);
+
+  }finally{
+
+   btn.disabled=false;
+   btn.textContent="Create Receipt";
+
+  }
+
+ });
+
+
+/* LOGOUT */
+
+async function logout(){
+
+ try{
+
+  await fetch(
+   API+"/api/logout",
+   {
+    method:"POST",
+    headers:headers()
+   }
+  );
+
+ }catch(e){}
+
+ localStorage.removeItem(KEY);
+
+ location.href="admin-login.html";
+
+}
+
+
+/* START */
+
+checkLogin().then(ok=>{
+ if(ok)loadReceipts();
+});
+
+</script>
+
+</body>
+</html>
