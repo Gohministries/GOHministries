@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#155eef">
+<title>GOH Ministries Finance - Income</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#f5f7fb;
+ color:#172033
+}
+header{
+ background:#155eef;
+ color:#fff;
+ padding:14px 18px
+}
+.head{
+ max-width:1050px;
+ margin:auto;
+ display:flex;
+ justify-content:space-between;
+ align-items:center
+}
+.logout{
+ background:#fff;
+ color:#155eef;
+ border:0;
+ border-radius:8px;
+ padding:9px 14px;
+ font-weight:bold;
+ cursor:pointer
+}
+main{
+ max-width:1050px;
+ margin:auto;
+ padding:18px
+}
+.card{
+ background:#fff;
+ padding:18px;
+ border-radius:14px;
+ margin-bottom:16px;
+ box-shadow:0 2px 12px #0000000d
+}
+h2,h3{margin-top:0}
+.sub{
+ color:#667085;
+ font-size:13px
+}
+.stats{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:12px
+}
+.stat strong{
+ display:block;
+ font-size:24px;
+ margin-top:7px
+}
+.grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px
+}
+label{
+ display:block;
+ font-size:13px;
+ font-weight:bold;
+ margin:10px 0 6px
+}
+input,select,textarea{
+ width:100%;
+ padding:11px;
+ border:1px solid #d5dbe5;
+ border-radius:8px;
+ font-size:14px;
+ font-family:inherit
+}
+textarea{
+ min-height:80px;
+ resize:vertical
+}
+.primary{
+ width:100%;
+ padding:12px;
+ margin-top:15px;
+ border:0;
+ border-radius:8px;
+ background:#155eef;
+ color:#fff;
+ font-weight:bold;
+ cursor:pointer
+}
+.primary:disabled{opacity:.6}
+.msg{
+ display:none;
+ padding:11px;
+ border-radius:8px;
+ font-size:13px;
+ margin-bottom:12px
+}
+.ok{
+ display:block;
+ background:#dcfce7;
+ color:#166534
+}
+.bad{
+ display:block;
+ background:#fee2e2;
+ color:#991b1b
+}
+.table{
+ overflow-x:auto
+}
+table{
+ width:100%;
+ border-collapse:collapse;
+ min-width:800px
+}
+th,td{
+ padding:10px;
+ border-bottom:1px solid #edf0f4;
+ font-size:13px;
+ text-align:left
+}
+th{
+ background:#f8fafc;
+ color:#667085
+}
+@media(max-width:700px){
+ .stats,.grid{grid-template-columns:1fr}
+ main{padding:12px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="head">
+<b>GOH Ministries Finance</b>
+<button class="logout" onclick="logout()">Logout</button>
+</div>
+</header>
+
+<main>
+
+<div class="card">
+<h2>Income & Donations</h2>
+<div class="sub">
+Record ministry income and donations.
+</div>
+</div>
+
+<div class="stats">
+
+<div class="card stat">
+<div class="sub">Total Income</div>
+<strong id="totalIncome">LKR 0.00</strong>
+</div>
+
+<div class="card stat">
+<div class="sub">This Month</div>
+<strong id="monthIncome">LKR 0.00</strong>
+</div>
+
+<div class="card stat">
+<div class="sub">Transactions</div>
+<strong id="transactionCount">0</strong>
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>Add Income / Donation</h3>
+
+<div id="msg" class="msg"></div>
+
+<form id="incomeForm">
+
+<div class="grid">
+
+<div>
+<label>Donor / Source</label>
+<input id="source" type="text"
+placeholder="Name or organization" required>
+</div>
+
+<div>
+<label>Date</label>
+<input id="date" type="date" required>
+</div>
+
+<div>
+<label>Amount (LKR)</label>
+<input id="amount" type="number"
+min="0.01" step="0.01"
+placeholder="0.00" required>
+</div>
+
+<div>
+<label>Payment Method</label>
+<select id="method">
+<option value="Cash">Cash</option>
+<option value="Bank Transfer">Bank Transfer</option>
+<option value="PayHere">PayHere</option>
+<option value="Cheque">Cheque</option>
+<option value="Other">Other</option>
+</select>
+</div>
+
+<div>
+<label>Fund / Category</label>
+<select id="category">
+<option value="General">General</option>
+<option value="Tithe">Tithe</option>
+<option value="Offering">Offering</option>
+<option value="Donation">Donation</option>
+<option value="Mission">Mission</option>
+<option value="Building">Building</option>
+<option value="Other">Other</option>
+</select>
+</div>
+
+<div>
+<label>Reference Number</label>
+<input id="reference" type="text"
+placeholder="Optional">
+</div>
+
+</div>
+
+<label>Notes</label>
+
+<textarea id="notes"
+placeholder="Optional notes"></textarea>
+
+<button id="saveBtn"
+class="primary"
+type="submit">
+Save Income
+</button>
+
+</form>
+
+</div>
+
+
+<div class="card">
+
+<h3>Income Records</h3>
+
+<div class="table">
+
+<table>
+
+<thead>
+<tr>
+<th>Date</th>
+<th>Source</th>
+<th>Category</th>
+<th>Method</th>
+<th>Reference</th>
+<th>Amount</th>
+</tr>
+</thead>
+
+<tbody id="records">
+
+<tr>
+<td colspan="6">Loading...</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</main>
+
+<script>
+
+const API=
+"https://goh-finance.createlk.workers.dev";
+
+const TOKEN_KEY=
+"goh_finance_token";
+
+function headers(){
+ return {
+  "Content-Type":"application/json",
+  "Authorization":
+  "Bearer "+
+  localStorage.getItem(TOKEN_KEY)
+ };
+}
+
+function esc(v){
+ return String(v??"")
+ .replaceAll("&","&amp;")
+ .replaceAll("<","&lt;")
+ .replaceAll(">","&gt;")
+ .replaceAll('"',"&quot;")
+ .replaceAll("'","&#039;");
+}
+
+function money(v){
+ return "LKR "+
+ Number(v||0).toLocaleString(
+  "en-LK",
+  {
+   minimumFractionDigits:2,
+   maximumFractionDigits:2
+  }
+ );
+}
+
+function showMsg(text,ok=false){
+ const el=document.getElementById("msg");
+ el.textContent=text;
+ el.className=
+ "msg "+(ok?"ok":"bad");
+}
+
+function today(){
+ const d=new Date();
+ const m=String(d.getMonth()+1).padStart(2,"0");
+ const day=String(d.getDate()).padStart(2,"0");
+ return d.getFullYear()+"-"+m+"-"+day;
+}
+
+document.getElementById("date").value=today();
+
+
+/* CHECK LOGIN */
+
+async function checkLogin(){
+
+ const token=
+ localStorage.getItem(TOKEN_KEY);
+
+ if(!token){
+  location.href="admin-login.html";
+  return;
+ }
+
+ try{
+
+  const r=await fetch(
+   API+"/api/me",
+   {headers:headers()}
+  );
+
+  const d=await r.json();
+
+  if(!r.ok||!d.success){
+   throw new Error();
+  }
+
+ }catch(e){
+
+  localStorage.removeItem(TOKEN_KEY);
+  location.href="admin-login.html";
+
+ }
+
+}
+
+
+/* LOAD INCOME */
+
+async function loadIncome(){
+
+ try{
+
+  const r=await fetch(
+   API+"/api/finance/income",
+   {headers:headers()}
+  );
+
+  const d=await r.json();
+
+  if(!r.ok||!d.success){
+   throw new Error(
+    d.error||"Unable to load income"
+   );
+  }
+
+  const rows=d.income||[];
+
+  let total=0;
+  let month=0;
+
+  const now=new Date();
+  const ym=
+   now.getFullYear()+"-"+
+   String(now.getMonth()+1).padStart(2,"0");
+
+  rows.forEach(x=>{
+
+   const amount=
+    Number(x.amount)||0;
+
+   total+=amount;
+
+   if(
+    String(x.date||"").startsWith(ym)
+   ){
+    month+=amount;
+   }
+
+  });
+
+  document.getElementById(
+   "totalIncome"
+  ).textContent=money(total);
+
+  document.getElementById(
+   "monthIncome"
+  ).textContent=money(month);
+
+  document.getElementById(
+   "transactionCount"
+  ).textContent=rows.length;
+
+  document.getElementById(
+   "records"
+  ).innerHTML=
+
+  rows.map(x=>`
+
+   <tr>
+    <td>${esc(x.date)}</td>
+    <td>${esc(x.source)}</td>
+    <td>${esc(x.category)}</td>
+    <td>${esc(x.payment_method)}</td>
+    <td>${esc(x.reference)}</td>
+    <td>${money(x.amount)}</td>
+   </tr>
+
+  `).join("")||
+
+  `<tr>
+   <td colspan="6">
+    No income records
+   </td>
+  </tr>`;
+
+ }catch(e){
+
+  document.getElementById(
+   "records"
+  ).innerHTML=
+
+  `<tr>
+   <td colspan="6">
+    ${esc(e.message)}
+   </td>
+  </tr>`;
+
+ }
+
+}
+
+
+/* SAVE */
+
+document.getElementById(
+ "incomeForm"
+).addEventListener(
+ "submit",
+ async function(e){
+
+  e.preventDefault();
+
+  const btn=
+   document.getElementById("saveBtn");
+
+  const source=
+   document.getElementById("source")
+   .value.trim();
+
+  const date=
+   document.getElementById("date").value;
+
+  const amount=
+   Number(
+    document.getElementById("amount").value
+   );
+
+  if(!source||!date||!amount||amount<=0){
+
+   showMsg(
+    "Please enter source, date and a valid amount."
+   );
+
+   return;
+  }
+
+  btn.disabled=true;
+  btn.textContent="Saving...";
+
+  try{
+
+   const r=await fetch(
+    API+"/api/finance/income",
+    {
+     method:"POST",
+     headers:headers(),
+     body:JSON.stringify({
+
+      source:source,
+
+      date:date,
+
+      amount:amount,
+
+      payment_method:
+       document.getElementById(
+        "method"
+       ).value,
+
+      category:
+       document.getElementById(
+        "category"
+       ).value,
+
+      reference:
+       document.getElementById(
+        "reference"
+       ).value.trim(),
+
+      notes:
+       document.getElementById(
+        "notes"
+       ).value.trim()
+
+     })
+    }
+   );
+
+   const d=await r.json();
+
+   if(!r.ok||!d.success){
+
+    throw new Error(
+     d.error||"Unable to save income"
+    );
+
+   }
+
+   showMsg(
+    "Income saved successfully.",
+    true
+   );
+
+   document.getElementById(
+    "incomeForm"
+   ).reset();
+
+   document.getElementById(
+    "date"
+   ).value=today();
+
+   loadIncome();
+
+  }catch(e){
+
+   showMsg(e.message);
+
+  }finally{
+
+   btn.disabled=false;
+   btn.textContent="Save Income";
+
+  }
+
+ }
+);
+
+
+/* LOGOUT */
+
+async function logout(){
+
+ try{
+
+  await fetch(
+   API+"/api/logout",
+   {
+    method:"POST",
+    headers:headers()
+   }
+  );
+
+ }catch(e){}
+
+ localStorage.removeItem(TOKEN_KEY);
+
+ location.href="admin-login.html";
+
+}
+
+
+/* START */
+
+checkLogin().then(loadIncome);
+
+</script>
+
+</body>
+</html>
