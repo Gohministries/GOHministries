@@ -5,35 +5,39 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#155eef">
 <title>GOH Ministries Finance - Administration</title>
-
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
-header{background:#155eef;color:#fff;padding:14px 18px}
-.head{max-width:1050px;margin:auto}
-nav{display:flex;gap:8px;margin-top:12px;overflow:auto}
-nav a{background:#fff;color:#155eef;padding:9px 12px;border-radius:8px;text-decoration:none;font-size:13px;white-space:nowrap}
+header{background:#155eef;color:#fff;padding:15px 18px}
+.head{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+.logout{background:#fff;color:#155eef;border:0;border-radius:8px;padding:9px 13px;font-weight:bold;cursor:pointer}
+nav{max-width:1050px;margin:10px auto 0;display:flex;gap:8px;overflow:auto}
+nav a{background:#fff;color:#155eef;padding:8px 11px;border-radius:8px;text-decoration:none;font-size:12px;white-space:nowrap}
 main{max-width:1050px;margin:auto;padding:18px}
 .card{background:#fff;padding:18px;border-radius:14px;margin-bottom:16px;box-shadow:0 2px 12px #0001}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .stat strong{display:block;font-size:24px;margin-top:6px}
-.small{font-size:13px;color:#667085}
 label{display:block;font-size:13px;font-weight:bold;margin:9px 0 6px}
-input,select{width:100%;padding:11px;border:1px solid #d5dbe5;border-radius:8px;font-size:14px}
-button{border:0;border-radius:8px;padding:10px 14px;background:#155eef;color:#fff;font-weight:bold;cursor:pointer}
-form button{width:100%;margin-top:15px;padding:12px}
+input,select{width:100%;padding:12px;border:1px solid #d5dbe5;border-radius:8px;font-size:14px;background:#fff}
+button{border:0;border-radius:8px;padding:11px 15px;background:#155eef;color:#fff;font-weight:bold;cursor:pointer}
+form button{width:100%;margin-top:15px}
 button:disabled{opacity:.6}
 .danger{background:#dc2626}
 .success{background:#16a34a}
-.msg{display:none;margin-bottom:12px;padding:11px;border-radius:8px;font-size:13px}
+.msg{display:none;padding:11px;border-radius:8px;margin-bottom:12px;font-size:13px}
 .ok{display:block;background:#dcfce7;color:#166534}
 .bad{display:block;background:#fee2e2;color:#991b1b}
 .table{overflow:auto}
-table{width:100%;border-collapse:collapse;min-width:750px}
+table{width:100%;min-width:750px;border-collapse:collapse}
 th,td{padding:10px;border-bottom:1px solid #edf0f4;text-align:left;font-size:13px}
 th{background:#f8fafc;color:#667085}
-@media(max-width:700px){.grid,.stats{grid-template-columns:1fr}main{padding:12px}}
+.small{font-size:13px;color:#667085}
+.hint{font-size:11px;color:#667085;margin-top:5px}
+@media(max-width:700px){
+.grid,.stats{grid-template-columns:1fr}
+main{padding:12px}
+}
 </style>
 </head>
 
@@ -42,25 +46,27 @@ th{background:#f8fafc;color:#667085}
 <header>
 <div class="head">
 <b>GOH Ministries Finance</b>
+<button class="logout" onclick="logout()">Logout</button>
+</div>
 
 <nav>
 <a href="finance-dashboard.html">Dashboard</a>
 <a href="income.html">Income</a>
 <a href="expenses.html">Expenses</a>
-<a href="reports.html">Reports</a>
+<a href="donations.html">Donations</a>
 <a href="receipts.html">Receipts</a>
+<a href="reports.html">Reports</a>
 <a href="admin.html">Administration</a>
 </nav>
-</div>
 </header>
 
 <main>
 
 <div class="card">
-<h2>Administration</h2>
-<p class="small">
-Manage authorized finance system users and monitor administrative activity.
-</p>
+<h2>Administration Panel</h2>
+<div class="small">
+Logged in as <b id="currentUser">Loading...</b>
+</div>
 </div>
 
 <div class="stats">
@@ -86,6 +92,10 @@ Manage authorized finance system users and monitor administrative activity.
 
 <h3>Create User</h3>
 
+<div class="small" style="margin-bottom:15px">
+Only administrators can create or disable finance system users.
+</div>
+
 <div id="msg" class="msg"></div>
 
 <form id="userForm">
@@ -94,21 +104,36 @@ Manage authorized finance system users and monitor administrative activity.
 
 <div>
 <label>Name</label>
-<input id="name" required>
+<input
+id="name"
+type="text"
+placeholder="Full name"
+autocomplete="name"
+required>
 </div>
 
 <div>
 <label>Email</label>
-<input id="email" type="email" required>
+<input
+id="email"
+type="email"
+placeholder="user@example.com"
+autocomplete="email"
+required>
 </div>
 
 <div>
 <label>Password</label>
-<input id="password"
+<input
+id="password"
 type="password"
-minlength="12"
 placeholder="Minimum 12 characters"
+autocomplete="new-password"
+minlength="12"
 required>
+<div class="hint">
+Password must contain at least 12 characters.
+</div>
 </div>
 
 <div>
@@ -197,16 +222,13 @@ Create User
 
 <script>
 
-const API=
-"https://goh-finance.createlk.workers.dev";
-
+const API="https://goh-finance.createlk.workers.dev";
 const KEY="goh_finance_token";
 
 function headers(){
 return{
 "Content-Type":"application/json",
-"Authorization":
-"Bearer "+localStorage.getItem(KEY)
+"Authorization":"Bearer "+localStorage.getItem(KEY)
 };
 }
 
@@ -224,7 +246,6 @@ const el=document.getElementById("msg");
 el.textContent=text;
 el.className="msg "+(ok?"ok":"bad");
 }
-
 
 async function check(){
 
@@ -253,6 +274,10 @@ location.href="finance-dashboard.html";
 return false;
 }
 
+document.getElementById("currentUser")
+.textContent=
+d.user.name+" ("+d.user.email+")";
+
 return true;
 
 }catch(e){
@@ -264,7 +289,6 @@ return false;
 }
 
 }
-
 
 async function loadUsers(){
 
@@ -323,7 +347,9 @@ ${Number(x.active)===1?"Disable":"Enable"}
 
 document.getElementById("users")
 .innerHTML=
-`<tr><td colspan="6">${esc(e.message)}</td></tr>`;
+`<tr>
+<td colspan="6">${esc(e.message)}</td>
+</tr>`;
 
 }
 
@@ -339,25 +365,34 @@ const btn=
 document.getElementById("createBtn");
 
 const name=
-document.getElementById("name").value.trim();
+document.getElementById("name")
+.value.trim();
 
 const email=
-document.getElementById("email").value.trim();
+document.getElementById("email")
+.value.trim()
+.toLowerCase();
 
 const password=
-document.getElementById("password").value;
+document.getElementById("password")
+.value;
 
 const role=
-document.getElementById("role").value;
+document.getElementById("role")
+.value;
 
 if(!name||!email||!password){
+
 show("Name, email and password are required.");
 return;
+
 }
 
 if(password.length<12){
+
 show("Password must contain at least 12 characters.");
 return;
+
 }
 
 btn.disabled=true;
@@ -371,18 +406,23 @@ API+"/api/admin/users",
 method:"POST",
 headers:headers(),
 body:JSON.stringify({
-name,
-email,
-password,
-role
+name:name,
+email:email,
+password:password,
+role:role
 })
 }
 );
 
 const d=await r.json();
 
-if(!r.ok||!d.success)
-throw Error(d.error||"Unable to create user");
+if(!r.ok||!d.success){
+
+throw Error(
+d.error||"Unable to create user"
+);
+
+}
 
 show(
 "User created successfully.",
@@ -391,8 +431,11 @@ true
 
 e.target.reset();
 
-loadUsers();
-loadAudit();
+document.getElementById("role")
+.value="viewer";
+
+await loadUsers();
+await loadAudit();
 
 }catch(err){
 
@@ -433,10 +476,12 @@ active:current===1?0:1
 const d=await r.json();
 
 if(!r.ok||!d.success)
-throw Error(d.error||"Unable to update user");
+throw Error(
+d.error||"Unable to update user"
+);
 
-loadUsers();
-loadAudit();
+await loadUsers();
+await loadAudit();
 
 }catch(e){
 
@@ -459,7 +504,9 @@ API+"/api/admin/audit",
 const d=await r.json();
 
 if(!r.ok||!d.success)
-throw Error(d.error||"Unable to load audit log");
+throw Error(
+d.error||"Unable to load audit log"
+);
 
 const rows=d.logs||[];
 
@@ -486,18 +533,45 @@ rows.map(x=>`
 
 document.getElementById("audit")
 .innerHTML=
-`<tr><td colspan="5">${esc(e.message)}</td></tr>`;
+`<tr>
+<td colspan="5">${esc(e.message)}</td>
+</tr>`;
 
 }
+
+}
+
+
+async function logout(){
+
+try{
+
+await fetch(
+API+"/api/logout",
+{
+method:"POST",
+headers:headers()
+}
+);
+
+}catch(e){}
+
+localStorage.removeItem(KEY);
+
+location.href="admin-login.html";
 
 }
 
 
 check().then(ok=>{
+
 if(ok){
+
 loadUsers();
 loadAudit();
+
 }
+
 });
 
 </script>
