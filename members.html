@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#155eef">
+<title>GOH Ministries - Members</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f5f7fb;color:#172033}
+header{background:#155eef;color:#fff;padding:15px 18px}
+.head{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+.logout{background:#fff;color:#155eef;border:0;border-radius:8px;padding:9px 13px;font-weight:bold}
+nav{max-width:1050px;margin:10px auto 0;display:flex;gap:8px;overflow:auto}
+nav a{background:#fff;color:#155eef;padding:8px 11px;border-radius:8px;text-decoration:none;font-size:12px;white-space:nowrap}
+main{max-width:1050px;margin:auto;padding:18px}
+.card{background:#fff;padding:18px;border-radius:14px;margin-bottom:16px;box-shadow:0 2px 12px #0001}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stat strong{display:block;font-size:24px;margin-top:6px}
+label{display:block;font-size:13px;font-weight:bold;margin:9px 0 6px}
+input,select,textarea{width:100%;padding:11px;border:1px solid #d5dbe5;border-radius:8px;font-size:14px;font-family:Arial}
+textarea{min-height:70px}
+button{border:0;border-radius:8px;padding:11px 15px;background:#155eef;color:#fff;font-weight:bold;cursor:pointer}
+form button{width:100%;margin-top:15px}
+button:disabled{opacity:.6}
+.danger{background:#dc2626}
+.success{background:#16a34a}
+.msg{display:none;padding:11px;border-radius:8px;margin-bottom:12px;font-size:13px}
+.ok{display:block;background:#dcfce7;color:#166534}
+.bad{display:block;background:#fee2e2;color:#991b1b}
+.table{overflow:auto}
+table{width:100%;min-width:800px;border-collapse:collapse}
+th,td{padding:10px;border-bottom:1px solid #edf0f4;text-align:left;font-size:13px}
+th{background:#f8fafc;color:#667085}
+.small{font-size:13px;color:#667085}
+@media(max-width:700px){.grid,.stats{grid-template-columns:1fr}main{padding:12px}}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="head">
+<b>GOH Ministries</b>
+<button class="logout" onclick="logout()">Logout</button>
+</div>
+
+<nav>
+<a href="finance-dashboard.html">Finance</a>
+<a href="members.html">Members</a>
+<a href="attendance.html">Attendance</a>
+<a href="income.html">Income</a>
+<a href="expenses.html">Expenses</a>
+<a href="reports.html">Reports</a>
+<a href="admin.html">Administration</a>
+</nav>
+</header>
+
+<main>
+
+<div class="card">
+<h2>Members</h2>
+<div class="small">Manage church and ministry member records.</div>
+</div>
+
+<div class="stats">
+
+<div class="card stat">
+<div class="small">Total Members</div>
+<strong id="total">0</strong>
+</div>
+
+<div class="card stat">
+<div class="small">Active</div>
+<strong id="active">0</strong>
+</div>
+
+<div class="card stat">
+<div class="small">Inactive</div>
+<strong id="inactive">0</strong>
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>Add Member</h3>
+
+<div id="msg" class="msg"></div>
+
+<form id="form">
+
+<div class="grid">
+
+<div>
+<label>First Name</label>
+<input id="first_name" required>
+</div>
+
+<div>
+<label>Last Name</label>
+<input id="last_name">
+</div>
+
+<div>
+<label>Phone</label>
+<input id="phone" type="tel">
+</div>
+
+<div>
+<label>Email</label>
+<input id="email" type="email">
+</div>
+
+<div>
+<label>Gender</label>
+<select id="gender">
+<option value="">Select</option>
+<option>Male</option>
+<option>Female</option>
+</select>
+</div>
+
+<div>
+<label>Status</label>
+<select id="status">
+<option value="active">Active</option>
+<option value="inactive">Inactive</option>
+</select>
+</div>
+
+</div>
+
+<label>Address</label>
+<input id="address">
+
+<label>Notes</label>
+<textarea id="notes"></textarea>
+
+<button id="save" type="submit">Add Member</button>
+
+</form>
+</div>
+
+<div class="card">
+
+<h3>Member List</h3>
+
+<div class="table">
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Phone</th>
+<th>Email</th>
+<th>Gender</th>
+<th>Status</th>
+<th>Joined</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody id="rows">
+<tr><td colspan="7">Loading...</td></tr>
+</tbody>
+</table>
+
+</div>
+</div>
+
+</main>
+
+<script>
+
+const API="https://goh-finance.createlk.workers.dev";
+const KEY="goh_finance_token";
+
+function headers(){
+return{
+"Content-Type":"application/json",
+"Authorization":"Bearer "+localStorage.getItem(KEY)
+};
+}
+
+function esc(v){
+return String(v??"")
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+}
+
+function msg(text,ok=false){
+const e=document.getElementById("msg");
+e.textContent=text;
+e.className="msg "+(ok?"ok":"bad");
+}
+
+async function check(){
+
+const token=localStorage.getItem(KEY);
+
+if(!token){
+location.href="admin-login.html";
+return false;
+}
+
+try{
+const r=await fetch(API+"/api/me",{headers:headers()});
+const d=await r.json();
+
+if(!r.ok||!d.success)throw Error();
+
+return true;
+
+}catch(e){
+
+localStorage.removeItem(KEY);
+location.href="admin-login.html";
+return false;
+
+}
+}
+
+async function load(){
+
+try{
+
+const r=await fetch(
+API+"/api/members",
+{headers:headers()}
+);
+
+const d=await r.json();
+
+if(!r.ok||!d.success)
+throw Error(d.error||"Unable to load members");
+
+const rows=d.members||[];
+
+document.getElementById("total").textContent=rows.length;
+
+document.getElementById("active").textContent=
+rows.filter(x=>String(x.status).toLowerCase()==="active").length;
+
+document.getElementById("inactive").textContent=
+rows.filter(x=>String(x.status).toLowerCase()!=="active").length;
+
+document.getElementById("rows").innerHTML=
+
+rows.map(x=>`
+
+<tr>
+<td>${esc((x.first_name||"")+" "+(x.last_name||""))}</td>
+<td>${esc(x.phone)}</td>
+<td>${esc(x.email)}</td>
+<td>${esc(x.gender)}</td>
+<td>${esc(x.status)}</td>
+<td>${esc(x.created_at||x.joined_at)}</td>
+<td>
+<button
+class="${String(x.status).toLowerCase()==="active"?"danger":"success"}"
+onclick="toggle(${Number(x.id)},'${String(x.status).toLowerCase()}')">
+${String(x.status).toLowerCase()==="active"?"Disable":"Enable"}
+</button>
+</td>
+</tr>
+
+`).join("")||
+
+`<tr><td colspan="7">No members found.</td></tr>`;
+
+}catch(e){
+
+document.getElementById("rows").innerHTML=
+`<tr><td colspan="7">${esc(e.message)}</td></tr>`;
+
+}
+}
+
+document.getElementById("form")
+.addEventListener("submit",async e=>{
+
+e.preventDefault();
+
+const btn=document.getElementById("save");
+
+const body={
+first_name:document.getElementById("first_name").value.trim(),
+last_name:document.getElementById("last_name").value.trim(),
+phone:document.getElementById("phone").value.trim(),
+email:document.getElementById("email").value.trim(),
+gender:document.getElementById("gender").value,
+status:document.getElementById("status").value,
+address:document.getElementById("address").value.trim(),
+notes:document.getElementById("notes").value.trim()
+};
+
+if(!body.first_name){
+msg("First name is required.");
+return;
+}
+
+btn.disabled=true;
+btn.textContent="Saving...";
+
+try{
+
+const r=await fetch(
+API+"/api/members",
+{
+method:"POST",
+headers:headers(),
+body:JSON.stringify(body)
+}
+);
+
+const d=await r.json();
+
+if(!r.ok||!d.success)
+throw Error(d.error||"Unable to add member");
+
+msg("Member added successfully.",true);
+
+e.target.reset();
+
+load();
+
+}catch(err){
+
+msg(err.message);
+
+}finally{
+
+btn.disabled=false;
+btn.textContent="Add Member";
+
+}
+});
+
+async function toggle(id,status){
+
+const active=status==="active"?0:1;
+
+if(!confirm(active?"Enable this member?":"Disable this member?"))
+return;
+
+try{
+
+const r=await fetch(
+API+"/api/members/"+id,
+{
+method:"PATCH",
+headers:headers(),
+body:JSON.stringify({active})
+}
+);
+
+const d=await r.json();
+
+if(!r.ok||!d.success)
+throw Error(d.error||"Unable to update member");
+
+load();
+
+}catch(e){
+
+alert(e.message);
+
+}
+}
+
+async function logout(){
+
+try{
+await fetch(API+"/api/logout",{
+method:"POST",
+headers:headers()
+});
+}catch(e){}
+
+localStorage.removeItem(KEY);
+location.href="admin-login.html";
+}
+
+check().then(ok=>{
+if(ok)load();
+});
+
+</script>
+
+</body>
+</html>
