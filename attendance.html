@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#155eef">
+<title>GOH Ministries - Attendance</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
+header{background:#155eef;color:#fff;padding:15px 18px}
+.head{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+nav{max-width:1050px;margin:10px auto 0;display:flex;gap:8px;overflow:auto}
+nav a{background:#fff;color:#155eef;padding:8px 11px;border-radius:8px;text-decoration:none;font-size:12px;white-space:nowrap}
+.logout{background:#fff;color:#155eef;border:0;border-radius:8px;padding:9px 13px;font-weight:bold}
+main{max-width:1050px;margin:auto;padding:18px}
+.card{background:#fff;padding:18px;border-radius:14px;margin-bottom:16px;box-shadow:0 2px 12px #0001}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stat strong{display:block;font-size:24px;margin-top:6px}
+label{display:block;font-size:13px;font-weight:bold;margin:9px 0 6px}
+input,select,textarea{width:100%;padding:11px;border:1px solid #d5dbe5;border-radius:8px;font-size:14px;font-family:Arial}
+textarea{min-height:75px;resize:vertical}
+button{border:0;border-radius:8px;padding:11px 15px;background:#155eef;color:#fff;font-weight:bold;cursor:pointer}
+form button{width:100%;margin-top:15px}
+button:disabled{opacity:.6}
+.msg{display:none;padding:11px;border-radius:8px;margin-bottom:12px;font-size:13px}
+.ok{display:block;background:#dcfce7;color:#166534}
+.bad{display:block;background:#fee2e2;color:#991b1b}
+.table{overflow:auto}
+table{width:100%;min-width:750px;border-collapse:collapse}
+th,td{padding:10px;border-bottom:1px solid #edf0f4;text-align:left;font-size:13px}
+th{background:#f8fafc;color:#667085}
+.small{font-size:13px;color:#667085}
+@media(max-width:700px){.grid,.stats{grid-template-columns:1fr}main{padding:12px}}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="head">
+<b>GOH Ministries</b>
+<button class="logout" onclick="logout()">Logout</button>
+</div>
+
+<nav>
+<a href="finance-dashboard.html">Finance</a>
+<a href="attendance.html">Attendance</a>
+<a href="income.html">Income</a>
+<a href="expenses.html">Expenses</a>
+<a href="reports.html">Reports</a>
+<a href="admin.html">Administration</a>
+</nav>
+</header>
+
+<main>
+
+<div class="card">
+<h2>Church Attendance</h2>
+<div class="small">Record and monitor attendance for ministry services.</div>
+</div>
+
+<div class="stats">
+
+<div class="card stat">
+<div class="small">Total Records</div>
+<strong id="recordsCount">0</strong>
+</div>
+
+<div class="card stat">
+<div class="small">Total Attendance</div>
+<strong id="totalAttendance">0</strong>
+</div>
+
+<div class="card stat">
+<div class="small">Average Attendance</div>
+<strong id="average">0</strong>
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>Record Attendance</h3>
+
+<div id="msg" class="msg"></div>
+
+<form id="form">
+
+<div class="grid">
+
+<div>
+<label>Date</label>
+<input id="date" type="date" required>
+</div>
+
+<div>
+<label>Service</label>
+<select id="service">
+<option>Sunday Worship</option>
+<option>Prayer Meeting</option>
+<option>Bible Study</option>
+<option>Evangelism</option>
+<option>Youth Meeting</option>
+<option>Children's Ministry</option>
+<option>Special Service</option>
+<option>Other</option>
+</select>
+</div>
+
+<div>
+<label>Adults</label>
+<input id="adults" type="number" min="0" value="0" required>
+</div>
+
+<div>
+<label>Children</label>
+<input id="children" type="number" min="0" value="0" required>
+</div>
+
+<div>
+<label>Men</label>
+<input id="men" type="number" min="0" value="0">
+</div>
+
+<div>
+<label>Women</label>
+<input id="women" type="number" min="0" value="0">
+</div>
+
+</div>
+
+<label>Notes</label>
+<textarea id="notes" placeholder="Optional notes"></textarea>
+
+<button id="save" type="submit">Save Attendance</button>
+
+</form>
+</div>
+
+<div class="card">
+
+<h3>Attendance History</h3>
+
+<div class="table">
+
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Service</th>
+<th>Adults</th>
+<th>Children</th>
+<th>Men</th>
+<th>Women</th>
+<th>Total</th>
+</tr>
+</thead>
+
+<tbody id="rows">
+<tr><td colspan="7">Loading...</td></tr>
+</tbody>
+</table>
+
+</div>
+</div>
+
+</main>
+
+<script>
+
+const API="https://goh-finance.createlk.workers.dev";
+const KEY="goh_finance_token";
+
+function headers(){
+return{
+"Content-Type":"application/json",
+"Authorization":"Bearer "+localStorage.getItem(KEY)
+};
+}
+
+function esc(v){
+return String(v??"")
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+}
+
+function today(){
+const d=new Date();
+return d.getFullYear()+"-"+
+String(d.getMonth()+1).padStart(2,"0")+"-"+
+String(d.getDate()).padStart(2,"0");
+}
+
+document.getElementById("date").value=today();
+
+function message(text,ok=false){
+const el=document.getElementById("msg");
+el.textContent=text;
+el.className="msg "+(ok?"ok":"bad");
+}
+
+async function checkLogin(){
+
+const token=localStorage.getItem(KEY);
+
+if(!token){
+location.href="admin-login.html";
+return false;
+}
+
+try{
+const r=await fetch(API+"/api/me",{headers:headers()});
+const d=await r.json();
+
+if(!r.ok||!d.success)throw Error();
+
+return true;
+
+}catch(e){
+localStorage.removeItem(KEY);
+location.href="admin-login.html";
+return false;
+}
+
+}
+
+async function load(){
+
+try{
+
+const r=await fetch(
+API+"/api/attendance",
+{headers:headers()}
+);
+
+const d=await r.json();
+
+if(!r.ok||!d.success)
+throw Error(d.error||"Unable to load attendance");
+
+const rows=d.attendance||[];
+
+const total=rows.reduce(
+(s,x)=>s+(Number(x.total)||0),0
+);
+
+document.getElementById("recordsCount")
+.textContent=rows.length;
+
+document.getElementById("totalAttendance")
+.textContent=total;
+
+document.getElementById("average")
+.textContent=rows.length
+?Math.round(total/rows.length)
+:0;
+
+document.getElementById("rows").innerHTML=
+
+rows.map(x=>{
+
+const adults=Number(x.adults)||0;
+const children=Number(x.children)||0;
+const total=Number(x.total)||adults+children;
+
+return`
+<tr>
+<td>${esc(x.date)}</td>
+<td>${esc(x.service)}</td>
+<td>${adults}</td>
+<td>${children}</td>
+<td>${Number(x.men)||0}</td>
+<td>${Number(x.women)||0}</td>
+<td><b>${total}</b></td>
+</tr>
+`;
+
+}).join("")||
+
+`<tr>
+<td colspan="7">No attendance records.</td>
+</tr>`;
+
+}catch(e){
+
+document.getElementById("rows").innerHTML=
+`<tr><td colspan="7">${esc(e.message)}</td></tr>`;
+
+}
+
+}
+
+document.getElementById("form")
+.addEventListener("submit",async e=>{
+
+e.preventDefault();
+
+const btn=document.getElementById("save");
+
+const adults=Number(document.getElementById("adults").value)||0;
+const children=Number(document.getElementById("children").value)||0;
+const men=Number(document.getElementById("men").value)||0;
+const women=Number(document.getElementById("women").value)||0;
+
+const body={
+date:document.getElementById("date").value,
+service:document.getElementById("service").value,
+adults,
+children,
+men,
+women,
+total:adults+children,
+notes:document.getElementById("notes").value.trim()
+};
+
+if(!body.date){
+message("Please select a date.");
+return;
+}
+
+btn.disabled=true;
+btn.textContent="Saving...";
+
+try{
+
+const r=await fetch(
+API+"/api/attendance",
+{
+method:"POST",
+headers:headers(),
+body:JSON.stringify(body)
+}
+);
+
+const d=await r.json();
+
+if(!r.ok||!d.success)
+throw Error(d.error||"Unable to save attendance");
+
+message("Attendance saved successfully.",true);
+
+e.target.reset();
+document.getElementById("date").value=today();
+
+load();
+
+}catch(err){
+
+message(err.message);
+
+}finally{
+
+btn.disabled=false;
+btn.textContent="Save Attendance";
+
+}
+
+});
+
+async function logout(){
+
+try{
+await fetch(API+"/api/logout",{
+method:"POST",
+headers:headers()
+});
+}catch(e){}
+
+localStorage.removeItem(KEY);
+location.href="admin-login.html";
+
+}
+
+checkLogin().then(ok=>{
+if(ok)load();
+});
+
+</script>
+
+</body>
+</html>
