@@ -7,7 +7,7 @@
 <title>Register | GOH Bible Academy</title>
 
 <meta name="description"
-content="Create your student account at GOH Bible Academy.">
+content="Create a student account at GOH Bible Academy.">
 
 <meta name="theme-color" content="#111827">
 
@@ -24,7 +24,10 @@ color:#172033;
 line-height:1.5
 }
 
-a{text-decoration:none;color:inherit}
+a{
+text-decoration:none;
+color:inherit
+}
 
 .container{
 width:min(1000px,92%);
@@ -71,7 +74,8 @@ color:#6b7280
 
 .nav-links{
 display:flex;
-gap:5px
+gap:5px;
+align-items:center
 }
 
 .nav-links a{
@@ -91,7 +95,8 @@ color:#fff!important
 }
 
 .register{
-background:#fbbf24
+background:#fbbf24;
+color:#111827
 }
 
 /* MAIN */
@@ -166,7 +171,8 @@ margin-bottom:6px;
 color:#374151
 }
 
-input,select{
+input,
+select{
 width:100%;
 height:44px;
 padding:0 12px;
@@ -178,7 +184,8 @@ font-size:12px;
 outline:none
 }
 
-input:focus,select:focus{
+input:focus,
+select:focus{
 border-color:#6366f1;
 box-shadow:0 0 0 3px rgba(99,102,241,.1)
 }
@@ -361,6 +368,7 @@ src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 alt="GOH Bible Academy">
 
 <div>
+
 <div class="logo-title">
 GOH Bible Academy
 </div>
@@ -368,6 +376,7 @@ GOH Bible Academy
 <div class="logo-sub">
 Gate of Heaven Ministries
 </div>
+
 </div>
 
 </a>
@@ -404,7 +413,9 @@ alt="GOH Bible Academy">
 GOH BIBLE ACADEMY
 </div>
 
-<h1>Create Student Account</h1>
+<h1>
+Create Student Account
+</h1>
 
 <p>
 Register to begin your Biblical Studies journey.
@@ -412,7 +423,12 @@ Register to begin your Biblical Studies journey.
 
 </div>
 
-<div id="message" class="message"></div>
+
+<div
+id="message"
+class="message">
+</div>
+
 
 <form id="registerForm">
 
@@ -428,9 +444,11 @@ First Name
 id="firstName"
 type="text"
 placeholder="First name"
+autocomplete="given-name"
 required>
 
 </div>
+
 
 <div class="group">
 
@@ -442,6 +460,7 @@ Last Name
 id="lastName"
 type="text"
 placeholder="Last name"
+autocomplete="family-name"
 required>
 
 </div>
@@ -459,6 +478,7 @@ Email Address
 id="email"
 type="email"
 placeholder="Enter your email"
+autocomplete="email"
 required>
 
 </div>
@@ -473,7 +493,8 @@ Phone Number
 <input
 id="phone"
 type="tel"
-placeholder="Enter your phone number">
+placeholder="Enter your phone number"
+autocomplete="tel">
 
 </div>
 
@@ -486,9 +507,17 @@ Preferred Language
 
 <select id="language">
 
-<option value="English">English</option>
-<option value="Tamil">தமிழ்</option>
-<option value="Sinhala">සිංහල</option>
+<option value="English">
+English
+</option>
+
+<option value="Tamil">
+தமிழ்
+</option>
+
+<option value="Sinhala">
+සිංහල
+</option>
 
 </select>
 
@@ -508,6 +537,7 @@ id="password"
 type="password"
 placeholder="Minimum 6 characters"
 minlength="6"
+autocomplete="new-password"
 required>
 
 <button
@@ -532,6 +562,7 @@ Confirm Password
 id="confirmPassword"
 type="password"
 placeholder="Confirm password"
+autocomplete="new-password"
 required>
 
 </div>
@@ -569,7 +600,9 @@ id="registerBtn">
 
 <div class="login-box">
 
-<p>Already have an account?</p>
+<p>
+Already have an account?
+</p>
 
 <a
 href="login.html"
@@ -594,10 +627,21 @@ class="login-link">
 
 <div class="footer-links">
 
-<a href="privacy.html">Privacy Policy</a>
-<a href="terms.html">Terms of Use</a>
-<a href="refund.html">Refund Policy</a>
-<a href="contact.html">Contact</a>
+<a href="privacy.html">
+Privacy Policy
+</a>
+
+<a href="terms.html">
+Terms of Use
+</a>
+
+<a href="refund.html">
+Refund Policy
+</a>
+
+<a href="contact.html">
+Contact
+</a>
 
 </div>
 
@@ -612,10 +656,10 @@ class="login-link">
 
 <script>
 
-/* PUT YOUR CLOUDFLARE REGISTER WORKER URL HERE */
+/* YOUR CLOUDFLARE REGISTER WORKER */
 
 const REGISTER_API =
-"https://YOUR-REGISTER-WORKER.workers.dev";
+"https://register.createlk.workers.dev/";
 
 
 const form =
@@ -641,12 +685,17 @@ document.getElementById("showPassword");
 
 showPassword.onclick=function(){
 
-const hidden=password.type==="password";
+const hidden =
+password.type === "password";
 
-password.type=hidden?"text":"password";
-confirmPassword.type=hidden?"text":"password";
+password.type =
+hidden ? "text" : "password";
 
-showPassword.textContent=hidden?"Hide":"Show";
+confirmPassword.type =
+hidden ? "text" : "password";
+
+showPassword.textContent =
+hidden ? "Hide" : "Show";
 
 };
 
@@ -657,39 +706,50 @@ function showMessage(text,type){
 
 message.textContent=text;
 
-message.className=
-"message show "+type;
+message.className =
+"message show " + type;
 
 }
 
 
 /* REGISTER */
 
-form.addEventListener("submit",async function(e){
+form.addEventListener(
+"submit",
+async function(e){
 
 e.preventDefault();
 
-const first_name=
-document.getElementById("firstName").value.trim();
 
-const last_name=
-document.getElementById("lastName").value.trim();
+const first_name =
+document.getElementById("firstName")
+.value.trim();
 
-const email=
-document.getElementById("email").value.trim().toLowerCase();
+const last_name =
+document.getElementById("lastName")
+.value.trim();
 
-const phone=
-document.getElementById("phone").value.trim();
+const email =
+document.getElementById("email")
+.value.trim()
+.toLowerCase();
 
-const language=
-document.getElementById("language").value;
+const phone =
+document.getElementById("phone")
+.value.trim();
 
-const pass=password.value;
+const language =
+document.getElementById("language")
+.value;
 
-const confirm=confirmPassword.value;
+const pass =
+password.value;
+
+const confirm =
+confirmPassword.value;
 
 
-if(pass!==confirm){
+if(pass !== confirm){
 
 showMessage(
 "Passwords do not match.",
@@ -701,7 +761,7 @@ return;
 }
 
 
-if(pass.length<6){
+if(pass.length < 6){
 
 showMessage(
 "Password must be at least 6 characters.",
@@ -715,12 +775,14 @@ return;
 
 button.disabled=true;
 
-button.textContent="Creating Account...";
+button.textContent=
+"Creating Account...";
 
 
 try{
 
-const response=await fetch(
+const response =
+await fetch(
 REGISTER_API,
 {
 method:"POST",
@@ -732,10 +794,15 @@ headers:{
 body:JSON.stringify({
 
 first_name:first_name,
+
 last_name:last_name,
+
 email:email,
+
 phone:phone,
+
 language:language,
+
 password:pass
 
 })
@@ -744,7 +811,20 @@ password:pass
 );
 
 
-const data=await response.json();
+let data;
+
+try{
+
+data =
+await response.json();
+
+}catch{
+
+throw new Error(
+"Server returned an invalid response."
+);
+
+}
 
 
 if(!response.ok || !data.success){
@@ -758,7 +838,7 @@ data.message ||
 
 
 showMessage(
-"Account created successfully.",
+"Account created successfully. Redirecting to login...",
 "success"
 );
 
@@ -766,24 +846,34 @@ showMessage(
 form.reset();
 
 
-setTimeout(function(){
+setTimeout(
+function(){
 
-window.location.href="login.html";
+window.location.href=
+"login.html";
 
-},1200);
+},
+1200
+);
 
 
 }catch(error){
 
+console.error(
+"Registration error:",
+error
+);
+
 showMessage(
 error.message ||
-"Unable to create account. Please try again.",
+"Unable to connect to the registration server.",
 "error"
 );
 
 button.disabled=false;
 
-button.textContent="📝 Create Account";
+button.textContent=
+"📝 Create Account";
 
 }
 
