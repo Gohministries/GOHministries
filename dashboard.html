@@ -3,1350 +3,1355 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#155eef">
-<title>GOH Ministries Finance - Dashboard</title>
+
+<title>Student Dashboard | GOH Bible Academy</title>
+
+<meta name="description"
+content="GOH Bible Academy Student Dashboard">
+
+<meta name="theme-color" content="#111827">
+
+<link rel="icon"
+href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 
 <style>
-*{box-sizing:border-box}
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0
+}
+
 body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#f5f7fb;
- color:#172033
+font-family:Arial,Helvetica,sans-serif;
+background:#f3f6fb;
+color:#172033;
+line-height:1.5
 }
+
+a{
+text-decoration:none;
+color:inherit
+}
+
+.container{
+width:min(1000px,92%);
+margin:auto
+}
+
+/* HEADER */
+
 header{
- background:#155eef;
- color:#fff;
- padding:15px 18px
+position:sticky;
+top:0;
+z-index:1000;
+background:#fff;
+border-bottom:1px solid #e5e7eb
 }
-.head{
- max-width:1100px;
- margin:auto;
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:12px
+
+.nav{
+min-height:64px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px
 }
-.logout,.refresh{
- border:0;
- border-radius:8px;
- padding:9px 13px;
- font-weight:bold;
- cursor:pointer
+
+.logo{
+display:flex;
+align-items:center;
+gap:9px
 }
+
+.logo img{
+width:42px;
+height:42px;
+object-fit:contain;
+border-radius:10px
+}
+
+.logo-title{
+font-size:14px;
+font-weight:900
+}
+
+.logo-sub{
+font-size:8px;
+color:#6b7280
+}
+
+.nav-links{
+display:flex;
+align-items:center;
+gap:5px
+}
+
+.nav-links a,
 .logout{
- background:#fff;
- color:#155eef
+padding:8px 10px;
+border-radius:9px;
+font-size:10px;
+font-weight:800
 }
-.refresh{
- background:#eef4ff;
- color:#155eef
+
+.nav-links a:hover{
+background:#f1f5f9
 }
+
+.logout{
+border:0;
+background:#111827;
+color:#fff;
+cursor:pointer
+}
+
+.menu{
+display:none;
+width:40px;
+height:40px;
+border:1px solid #e5e7eb;
+background:#fff;
+border-radius:9px;
+font-size:18px;
+cursor:pointer
+}
+
+/* MOBILE MENU */
+
+.mobile-menu{
+display:none
+}
+
+.mobile-menu.show{
+display:block;
+position:fixed;
+top:64px;
+left:0;
+right:0;
+z-index:999;
+background:#fff;
+border-bottom:1px solid #e5e7eb;
+box-shadow:0 12px 25px rgba(0,0,0,.12);
+padding:8px 4%
+}
+
+.mobile-menu a,
+.mobile-menu button{
+display:block;
+width:100%;
+text-align:left;
+padding:12px 9px;
+border:0;
+background:none;
+border-radius:9px;
+font-size:12px;
+font-weight:800;
+cursor:pointer
+}
+
+.mobile-menu a:hover,
+.mobile-menu button:hover{
+background:#f3f4f6
+}
+
+/* MAIN */
+
 main{
- max-width:1100px;
- margin:auto;
- padding:18px
+padding:25px 0 40px
 }
+
+/* WELCOME */
+
+.welcome{
+background:
+radial-gradient(circle at 90% 10%,rgba(99,102,241,.22),transparent 30%),
+linear-gradient(135deg,#111827,#273449);
+color:#fff;
+border-radius:22px;
+padding:28px;
+box-shadow:0 15px 35px rgba(15,23,42,.12);
+margin-bottom:12px
+}
+
+.welcome-label{
+font-size:9px;
+font-weight:900;
+letter-spacing:1.2px;
+color:#fbbf24
+}
+
+.welcome h1{
+font-size:28px;
+margin:5px 0
+}
+
+.welcome p{
+font-size:11px;
+color:#cbd5e1
+}
+
+/* STATUS */
+
+.status-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-bottom:12px
+}
+
+.status-card{
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:15px;
+padding:18px;
+box-shadow:0 6px 20px rgba(15,23,42,.04)
+}
+
+.status-label{
+font-size:9px;
+font-weight:800;
+color:#6b7280;
+margin-bottom:5px
+}
+
+.status-value{
+font-size:17px;
+font-weight:900;
+color:#111827
+}
+
+.free{
+color:#16a34a
+}
+
+.premium{
+color:#2563eb
+}
+
+/* CARD */
+
 .card{
- background:#fff;
- padding:18px;
- border-radius:14px;
- margin-bottom:16px;
- box-shadow:0 2px 12px #0001
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:18px;
+padding:23px;
+margin-bottom:12px;
+box-shadow:0 6px 20px rgba(15,23,42,.04)
 }
-.small{
- font-size:13px;
- color:#667085
+
+.card-head{
+text-align:center;
+margin-bottom:20px
 }
-.stats{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:12px
+
+.card-head h2{
+font-size:23px
 }
-.stat strong{
- display:block;
- font-size:23px;
- margin-top:7px
+
+.card-head p{
+font-size:10px;
+color:#6b7280;
+margin-top:3px
 }
-.links{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:12px
+
+/* ACTIONS */
+
+.actions{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px
 }
-.link{
- display:block;
- background:#f8fafc;
- border:1px solid #e5e7eb;
- padding:17px;
- border-radius:12px;
- text-decoration:none;
- color:#172033
+
+.action{
+border:1px solid #e5e7eb;
+border-radius:14px;
+padding:20px 12px;
+text-align:center;
+background:#f8fafc;
+transition:.2s
 }
-.link b{
- display:block;
- margin-bottom:5px
+
+.action:hover{
+transform:translateY(-2px);
+box-shadow:0 8px 20px rgba(15,23,42,.07)
 }
-.link span{
- font-size:12px;
- color:#667085
+
+.action-icon{
+font-size:25px;
+margin-bottom:7px
 }
-.notice{
- background:#eef4ff;
- color:#155eef;
- padding:12px;
- border-radius:10px;
- margin-bottom:16px;
- font-size:14px
+
+.action h3{
+font-size:13px;
+margin-bottom:3px
 }
-.pending{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:12px
+
+.action p{
+font-size:9px;
+color:#6b7280;
+margin-bottom:10px
 }
-.pendingBox{
- border:1px solid #fed7aa;
- background:#fff7ed;
- padding:15px;
- border-radius:12px
+
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+border:0;
+border-radius:9px;
+padding:9px 13px;
+font-size:9px;
+font-weight:900;
+cursor:pointer
 }
-.pendingBox strong{
- display:block;
- font-size:25px;
- margin-top:5px
+
+.primary{
+background:#fbbf24;
+color:#111827
 }
-.graph{
- width:100%;
- overflow:hidden
+
+.dark{
+background:#111827;
+color:#fff
 }
-.graph canvas{
- width:100%;
- height:300px;
- display:block
+
+.outline{
+background:#fff;
+border:1px solid #d1d5db
 }
-.legend{
- display:flex;
- flex-wrap:wrap;
- gap:16px;
- margin-top:12px;
- font-size:13px;
- color:#667085
+
+/* PROGRESS */
+
+.progress-box{
+margin-top:10px
 }
-.dot{
- width:10px;
- height:10px;
- border-radius:50%;
- display:inline-block;
- margin-right:5px
+
+.progress-top{
+display:flex;
+justify-content:space-between;
+font-size:10px;
+font-weight:800;
+margin-bottom:7px
 }
-.incomeDot{background:#155eef}
-.expenseDot{background:#ef4444}
-.balanceDot{background:#16a34a}
-.loading{
- text-align:center;
- padding:30px
+
+.progress-bar{
+height:9px;
+background:#e5e7eb;
+border-radius:20px;
+overflow:hidden
 }
-.error{
- background:#fef3f2;
- color:#b42318;
- padding:12px;
- border-radius:9px;
- margin-bottom:16px;
- display:none
+
+.progress-fill{
+height:100%;
+width:0%;
+background:#fbbf24;
+border-radius:20px;
+transition:.4s
 }
-@media(max-width:700px){
- .stats,.links,.pending{
-  grid-template-columns:1fr
- }
- main{
-  padding:12px
- }
- .graph canvas{
-  height:260px
- }
+
+/* MODULES */
+
+.module-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:9px
 }
+
+.module{
+border:1px solid #e5e7eb;
+border-radius:13px;
+padding:16px;
+background:#f8fafc
+}
+
+.module-number{
+font-size:8px;
+font-weight:900;
+color:#6366f1;
+letter-spacing:1px
+}
+
+.module h3{
+font-size:13px;
+margin:4px 0
+}
+
+.module p{
+font-size:9px;
+color:#6b7280
+}
+
+.module a{
+display:inline-block;
+margin-top:9px;
+font-size:9px;
+font-weight:900;
+color:#4f46e5
+}
+
+/* PROFILE */
+
+.profile{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px
+}
+
+.profile-item{
+background:#f8fafc;
+border:1px solid #e5e7eb;
+border-radius:10px;
+padding:12px
+}
+
+.profile-item span{
+display:block;
+font-size:8px;
+color:#6b7280;
+margin-bottom:3px
+}
+
+.profile-item strong{
+font-size:11px;
+word-break:break-word
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1120;
+color:#fff;
+padding:23px 0 15px;
+text-align:center
+}
+
+.footer-links{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap
+}
+
+.footer-links a{
+font-size:9px;
+color:#a7b0c0
+}
+
+.footer-links a:hover{
+color:#fbbf24
+}
+
+.copy{
+font-size:8px;
+color:#64748b;
+margin-top:10px
+}
+
+/* MOBILE */
+
+@media(max-width:750px){
+
+.nav-links{
+display:none
+}
+
+.menu{
+display:block
+}
+
+.status-grid{
+grid-template-columns:1fr
+}
+
+.actions{
+grid-template-columns:1fr
+}
+
+.module-grid{
+grid-template-columns:1fr
+}
+
+.profile{
+grid-template-columns:1fr
+}
+
+.welcome{
+padding:23px 19px
+}
+
+.welcome h1{
+font-size:24px
+}
+
+.card{
+padding:19px 15px
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-<div class="head">
- <b>GOH Ministries Finance</b>
- <button class="logout" onclick="logout()">Logout</button>
+
+<div class="container nav">
+
+<a href="index.html" class="logo">
+
+<img
+src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
+alt="GOH Bible Academy">
+
+<div>
+
+<div class="logo-title">
+GOH Bible Academy
 </div>
+
+<div class="logo-sub">
+Gate of Heaven Ministries
+</div>
+
+</div>
+
+</a>
+
+<nav class="nav-links">
+
+<a href="lessons.html">
+📖 Lessons
+</a>
+
+<a href="profile.html">
+👤 Profile
+</a>
+
+<a href="contact.html">
+💬 Contact
+</a>
+
+<button class="logout" id="logoutBtn">
+Logout
+</button>
+
+</nav>
+
+<button
+class="menu"
+id="menuBtn"
+aria-label="Open menu"
+aria-expanded="false">
+
+☰
+
+</button>
+
+</div>
+
 </header>
+
+
+<nav class="mobile-menu" id="mobileMenu">
+
+<a href="dashboard.html">
+🏠 Dashboard
+</a>
+
+<a href="lessons.html">
+📖 Lessons
+</a>
+
+<a href="profile.html">
+👤 Profile
+</a>
+
+<a href="contact.html">
+💬 Contact
+</a>
+
+<button id="mobileLogout">
+🚪 Logout
+</button>
+
+</nav>
+
 
 <main>
 
-<div id="error" class="error"></div>
+<div class="container">
 
-<div class="notice">
- <b id="welcome">Finance Dashboard</b>
- <div class="small" id="user"></div>
+
+<!-- WELCOME -->
+
+<section class="welcome">
+
+<div class="welcome-label">
+GOH BIBLE ACADEMY
 </div>
 
-<div class="card">
- <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
-  <div>
-   <h2 style="margin:0 0 5px">Financial Overview</h2>
-   <div class="small">Approved income and expenses</div>
-  </div>
-  <button class="refresh" onclick="loadDashboard()">↻ Refresh</button>
- </div>
+<h1>
+Welcome, <span id="studentName">Student</span> 👋
+</h1>
+
+<p>
+Continue your Biblical Studies journey and grow in God's Word.
+</p>
+
+</section>
+
+
+<!-- STATUS -->
+
+<div class="status-grid">
+
+<div class="status-card">
+
+<div class="status-label">
+MEMBERSHIP
 </div>
 
-<div class="stats">
+<div
+class="status-value free"
+id="membershipStatus">
 
- <div class="card stat">
-  <div class="small">Total Income</div>
-  <strong id="income">LKR 0.00</strong>
- </div>
-
- <div class="card stat">
-  <div class="small">Total Expenses</div>
-  <strong id="expenses">LKR 0.00</strong>
- </div>
-
- <div class="card stat">
-  <div class="small">Current Balance</div>
-  <strong id="balance">LKR 0.00</strong>
- </div>
-
-</div>
-
-<div class="card">
-
- <h3>This Month</h3>
-
- <div class="stats">
-
-  <div>
-   <div class="small">Income</div>
-   <strong id="monthIncome">LKR 0.00</strong>
-  </div>
-
-  <div>
-   <div class="small">Expenses</div>
-   <strong id="monthExpenses">LKR 0.00</strong>
-  </div>
-
-  <div>
-   <div class="small">Balance</div>
-   <strong id="monthBalance">LKR 0.00</strong>
-  </div>
-
- </div>
+FREE
 
 </div>
 
-<div class="pending">
+</div>
 
- <div class="pendingBox">
-  <div class="small">Pending Income</div>
-  <strong id="pendingIncome">0</strong>
-  <div class="small">Awaiting review</div>
- </div>
 
- <div class="pendingBox">
-  <div class="small">Pending Expenses</div>
-  <strong id="pendingExpenses">0</strong>
-  <div class="small">Awaiting review</div>
- </div>
+<div class="status-card">
+
+<div class="status-label">
+LANGUAGE
+</div>
+
+<div
+class="status-value"
+id="studentLanguage">
+
+English
 
 </div>
 
-<div class="card">
+</div>
 
- <h3>Income vs Expenses</h3>
 
- <div class="graph">
-  <canvas id="barChart"></canvas>
- </div>
+<div class="status-card">
 
- <div class="legend">
-  <span>
-   <span class="dot incomeDot"></span>
-   Income
-  </span>
-  <span>
-   <span class="dot expenseDot"></span>
-   Expenses
-  </span>
- </div>
+<div class="status-label">
+STUDENT ID
+</div>
+
+<div
+class="status-value"
+id="studentId">
+
+—
 
 </div>
 
-<div class="card">
-
- <h3>Monthly Financial Trend</h3>
-
- <div class="graph">
-  <canvas id="lineChart"></canvas>
- </div>
-
- <div class="legend">
-  <span>
-   <span class="dot incomeDot"></span>
-   Income
-  </span>
-  <span>
-   <span class="dot expenseDot"></span>
-   Expenses
-  </span>
-  <span>
-   <span class="dot balanceDot"></span>
-   Balance
-  </span>
- </div>
+</div>
 
 </div>
 
-<div class="card">
 
-<h3>Finance</h3>
+<!-- QUICK ACTIONS -->
 
-<div class="links">
+<section class="card">
 
-<a class="link" href="income.html">
- <b>Income</b>
- <span>Record ministry income</span>
-</a>
+<div class="card-head">
 
-<a class="link" href="donations.html">
- <b>Donations</b>
- <span>Record ministry donations</span>
-</a>
+<h2>
+Continue Learning
+</h2>
 
-<a class="link" href="expenses.html">
- <b>Expenses</b>
- <span>Record ministry expenses</span>
-</a>
+<p>
+Access your Bible lessons and learning resources.
+</p>
 
-<a class="link" href="receipts.html">
- <b>Receipts</b>
- <span>Manage receipts</span>
-</a>
+</div>
 
-<a class="link" href="reports.html">
- <b>Reports</b>
- <span>View financial reports</span>
-</a>
 
-<a class="link" href="attendance.html">
- <b>Attendance</b>
- <span>Record church attendance</span>
-</a>
+<div class="actions">
 
-<a class="link" href="members.html">
- <b>Members</b>
- <span>Manage ministry members</span>
-</a>
 
-<a class="link" href="admin.html" id="adminLink">
- <b>Administration</b>
- <span>Manage finance users</span>
+<div class="action">
+
+<div class="action-icon">
+📖
+</div>
+
+<h3>
+180 Bible Lessons
+</h3>
+
+<p>
+Explore the complete course curriculum.
+</p>
+
+<a
+href="lessons.html"
+class="btn dark">
+
+View Lessons
+
 </a>
 
 </div>
+
+
+<div class="action">
+
+<div class="action-icon">
+🎁
+</div>
+
+<h3>
+Free Lesson
+</h3>
+
+<p>
+Start your first Bible lesson.
+</p>
+
+<a
+href="lesson-1.html"
+class="btn primary">
+
+Start Lesson 1
+
+</a>
+
+</div>
+
+
+<div class="action">
+
+<div class="action-icon">
+⭐
+</div>
+
+<h3>
+Premium
+</h3>
+
+<p>
+Continue with premium Biblical Studies.
+</p>
+
+<a
+href="premium.html"
+class="btn primary">
+
+View Premium
+
+</a>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- PROGRESS -->
+
+<section class="card">
+
+<div class="card-head">
+
+<h2>
+Learning Progress
+</h2>
+
+<p>
+Your progress through the 180-lesson program.
+</p>
+
+</div>
+
+
+<div class="progress-box">
+
+<div class="progress-top">
+
+<span>
+Course Progress
+</span>
+
+<strong id="progressText">
+0 / 180
+
+</strong>
+
+</div>
+
+<div class="progress-bar">
+
+<div
+class="progress-fill"
+id="progressFill">
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MODULES -->
+
+<section class="card">
+
+<div class="card-head">
+
+<h2>
+Course Modules
+</h2>
+
+<p>
+Six modules covering 180 Biblical Studies lessons.
+</p>
+
+</div>
+
+
+<div class="module-grid">
+
+
+<div class="module">
+
+<div class="module-number">
+MODULE 01
+</div>
+
+<h3>
+Introduction to the Bible
+</h3>
+
+<p>
+Foundations, inspiration, canon and interpretation.
+</p>
+
+<a href="lessons.html">
+View Module →
+</a>
+
+</div>
+
+
+<div class="module">
+
+<div class="module-number">
+MODULE 02
+</div>
+
+<h3>
+Old Testament Studies
+</h3>
+
+<p>
+History, books, themes and message of the Old Testament.
+</p>
+
+<a href="lessons.html">
+View Module →
+</a>
+
+</div>
+
+
+<div class="module">
+
+<div class="module-number">
+MODULE 03
+</div>
+
+<h3>
+New Testament Studies
+</h3>
+
+<p>
+Jesus, the Gospels, Acts and the New Testament.
+</p>
+
+<a href="lessons.html">
+View Module →
+</a>
+
+</div>
+
+
+<div class="module">
+
+<div class="module-number">
+MODULE 04
+</div>
+
+<h3>
+Christian Doctrine
+</h3>
+
+<p>
+Important biblical teachings and Christian beliefs.
+</p>
+
+<a href="lessons.html">
+View Module →
+</a>
+
+</div>
+
+
+<div class="module">
+
+<div class="module-number">
+MODULE 05
+</div>
+
+<h3>
+Christian Life & Discipleship
+</h3>
+
+<p>
+Prayer, faith, holiness and spiritual growth.
+</p>
+
+<a href="lessons.html">
+View Module →
+</a>
+
+</div>
+
+
+<div class="module">
+
+<div class="module-number">
+MODULE 06
+</div>
+
+<h3>
+Evangelism & Ministry
+</h3>
+
+<p>
+Gospel outreach, leadership and Christian service.
+</p>
+
+<a href="lessons.html">
+View Module →
+</a>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section class="card">
+
+<div class="card-head">
+
+<h2>
+Student Information
+</h2>
+
+</div>
+
+
+<div class="profile">
+
+<div class="profile-item">
+
+<span>
+First Name
+</span>
+
+<strong id="firstName">
+—
+
+</strong>
+
+</div>
+
+
+<div class="profile-item">
+
+<span>
+Last Name
+</span>
+
+<strong id="lastName">
+—
+
+</strong>
+
+</div>
+
+
+<div class="profile-item">
+
+<span>
+Email
+</span>
+
+<strong id="email">
+—
+
+</strong>
+
+</div>
+
+
+<div class="profile-item">
+
+<span>
+Phone
+</span>
+
+<strong id="phone">
+—
+
+</strong>
+
+</div>
+
+
+<div class="profile-item">
+
+<span>
+Language
+</span>
+
+<strong id="profileLanguage">
+—
+
+</strong>
+
+</div>
+
+
+<div class="profile-item">
+
+<span>
+Membership Expiry
+</span>
+
+<strong id="expiry">
+—
+
+</strong>
+
+</div>
+
+</div>
+
+</section>
+
 
 </div>
 
 </main>
 
+
+<footer>
+
+<div class="container">
+
+<div class="footer-links">
+
+<a href="lessons.html">
+Lessons
+</a>
+
+<a href="about.html">
+About
+</a>
+
+<a href="contact.html">
+Contact
+</a>
+
+<a href="privacy.html">
+Privacy Policy
+</a>
+
+<a href="terms.html">
+Terms of Use
+</a>
+
+</div>
+
+<div class="copy">
+© 2026 GOH Bible Academy. All rights reserved.
+</div>
+
+</div>
+
+</footer>
+
+
 <script>
 
-const API=
-"https://goh-finance-system.createlk.workers.dev";
+/* ================= SESSION ================= */
 
-const KEY=
-"goh_finance_token";
-
-let incomeRecords=[];
-let expenseRecords=[];
+let student = null;
 
 
-function headers(){
+/*
+Check localStorage first,
+then sessionStorage.
+*/
 
- return {
-  "Authorization":
-   "Bearer "+
-   localStorage.getItem(KEY)
- };
+const savedStudent =
+localStorage.getItem("goh_student") ||
+sessionStorage.getItem("goh_student");
+
+
+if(savedStudent){
+
+try{
+
+student =
+JSON.parse(savedStudent);
+
+}catch(error){
+
+student=null;
+
+}
 
 }
 
 
-function money(v){
+/*
+If there is no login session,
+return to login page.
+*/
 
- return "LKR "+
- Number(v||0).toLocaleString(
-  "en-LK",
-  {
-   minimumFractionDigits:2,
-   maximumFractionDigits:2
-  }
- );
+if(!student){
+
+window.location.href="login.html";
 
 }
 
 
-function showError(text){
+/* ================= STUDENT DATA ================= */
 
- const box=
-  document.getElementById("error");
+if(student){
 
- box.textContent=text;
- box.style.display="block";
+document.getElementById("studentName")
+.textContent =
+student.first_name || "Student";
+
+
+document.getElementById("studentId")
+.textContent =
+student.id || "—";
+
+
+document.getElementById("studentLanguage")
+.textContent =
+student.language || "English";
+
+
+document.getElementById("firstName")
+.textContent =
+student.first_name || "—";
+
+
+document.getElementById("lastName")
+.textContent =
+student.last_name || "—";
+
+
+document.getElementById("email")
+.textContent =
+student.email || "—";
+
+
+document.getElementById("phone")
+.textContent =
+student.phone || "—";
+
+
+document.getElementById("profileLanguage")
+.textContent =
+student.language || "English";
+
+
+document.getElementById("expiry")
+.textContent =
+student.membership_expiry || "Not applicable";
+
+
+const status =
+String(
+student.membership_status || "FREE"
+).toUpperCase();
+
+
+const statusElement =
+document.getElementById("membershipStatus");
+
+
+statusElement.textContent=status;
+
+
+if(status==="PREMIUM"){
+
+statusElement.classList.remove("free");
+
+statusElement.classList.add("premium");
+
+}
 
 }
 
 
-function hideError(){
-
- document.getElementById(
-  "error"
- ).style.display="none";
-
-}
-
-
-function set(id,value){
-
- document.getElementById(id)
-  .textContent=value;
-
-}
-
-
-async function loadUser(){
-
- const response=
-  await fetch(
-   API+"/api/me",
-   {
-    headers:headers()
-   }
-  );
-
- const data=
-  await response.json();
-
- if(
-  !response.ok||
-  !data.success
- ){
-
-  throw new Error(
-   "Your login session has expired."
-  );
-
- }
-
- set(
-  "welcome",
-  "Welcome, "+data.user.name
- );
-
- set(
-  "user",
-  "Logged in as "+
-  data.user.email+
-  " • "+
-  data.user.role
- );
-
- if(data.user.role!=="admin"){
-
-  document.getElementById(
-   "adminLink"
-  ).style.display="none";
-
- }
-
-}
-
-
-async function loadRecords(){
-
- const [
-  incomeResponse,
-  expenseResponse
- ]=
- await Promise.all([
-
-  fetch(
-   API+"/api/income",
-   {
-    headers:headers()
-   }
-  ),
-
-  fetch(
-   API+"/api/expenses",
-   {
-    headers:headers()
-   }
-  )
-
- ]);
-
-
- const incomeData=
-  await incomeResponse.json();
-
- const expenseData=
-  await expenseResponse.json();
-
-
- if(
-  incomeResponse.status===401||
-  expenseResponse.status===401
- ){
-
-  throw new Error(
-   "Your login session has expired."
-  );
-
- }
-
-
- incomeRecords=
-  incomeData.income||[];
-
- expenseRecords=
-  expenseData.expenses||[];
-
-}
-
-
-async function loadDashboard(){
-
- hideError();
-
- try{
-
-  if(
-   !localStorage.getItem(KEY)
-  ){
-
-   location.href=
-    "admin-login.html";
-
-   return;
-
-  }
-
-  await loadUser();
-
-  let data;
-
-  try{
-
-   const response=
-    await fetch(
-     API+"/api/dashboard",
-     {
-      headers:headers()
-     }
-    );
-
-   if(response.ok){
-
-    data=
-     await response.json();
-
-   }
-
-  }catch(e){}
-
-
-  await loadRecords();
-
-
-  let totalIncome=0;
-  let totalExpenses=0;
-
-  let pendingIncome=0;
-  let pendingExpenses=0;
-
-
-  incomeRecords.forEach(x=>{
-
-   const status=
-    String(
-     x.status||
-     "PENDING"
-    ).toUpperCase();
-
-   if(status==="APPROVED"){
-
-    totalIncome+=
-     Number(x.amount)||0;
-
-   }
-
-   if(status==="PENDING"){
-
-    pendingIncome++;
-
-   }
-
-  });
-
-
-  expenseRecords.forEach(x=>{
-
-   const status=
-    String(
-     x.status||
-     "PENDING"
-    ).toUpperCase();
-
-   if(status==="APPROVED"){
-
-    totalExpenses+=
-     Number(x.amount)||0;
-
-   }
-
-   if(status==="PENDING"){
-
-    pendingExpenses++;
-
-   }
-
-  });
-
-
-  const now=
-   new Date();
-
-  const year=
-   now.getFullYear();
-
-  const month=
-   String(
-    now.getMonth()+1
-   ).padStart(2,"0");
-
-  const prefix=
-   year+"-"+month;
-
-
-  let monthIncome=0;
-  let monthExpenses=0;
-
-
-  incomeRecords.forEach(x=>{
-
-   if(
-    String(x.status)
-     .toUpperCase()==="APPROVED" &&
-    String(x.date||"")
-     .startsWith(prefix)
-   ){
-
-    monthIncome+=
-     Number(x.amount)||0;
-
-   }
-
-  });
-
-
-  expenseRecords.forEach(x=>{
-
-   if(
-    String(x.status)
-     .toUpperCase()==="APPROVED" &&
-    String(x.date||"")
-     .startsWith(prefix)
-   ){
-
-    monthExpenses+=
-     Number(x.amount)||0;
-
-   }
-
-  });
-
-
-  set(
-   "income",
-   money(totalIncome)
-  );
-
-  set(
-   "expenses",
-   money(totalExpenses)
-  );
-
-  set(
-   "balance",
-   money(
-    totalIncome-
-    totalExpenses
-   )
-  );
-
-  set(
-   "monthIncome",
-   money(monthIncome)
-  );
-
-  set(
-   "monthExpenses",
-   money(monthExpenses)
-  );
-
-  set(
-   "monthBalance",
-   money(
-    monthIncome-
-    monthExpenses
-   )
-  );
-
-  set(
-   "pendingIncome",
-   pendingIncome
-  );
-
-  set(
-   "pendingExpenses",
-   pendingExpenses
-  );
-
-
-  drawBarChart(
-   totalIncome,
-   totalExpenses
-  );
-
-  drawLineChart(year);
-
-
- }catch(error){
-
-  showError(
-   error.message||
-   "Unable to load dashboard."
-  );
-
- }
-
-}
-
-
-function getMonthlyTotals(year){
-
- const income=
-  Array(12).fill(0);
-
- const expenses=
-  Array(12).fill(0);
-
-
- incomeRecords.forEach(x=>{
-
-  if(
-   String(x.status)
-    .toUpperCase()!=="APPROVED"
-  )return;
-
-  const d=
-   String(x.date||"");
-
-  if(
-   !d.startsWith(
-    year+"-"
-   )
-  )return;
-
-  const m=
-   Number(
-    d.substring(5,7)
-   )-1;
-
-  if(m>=0&&m<12){
-
-   income[m]+=
-    Number(x.amount)||0;
-
-  }
-
- });
-
-
- expenseRecords.forEach(x=>{
-
-  if(
-   String(x.status)
-    .toUpperCase()!=="APPROVED"
-  )return;
-
-  const d=
-   String(x.date||"");
-
-  if(
-   !d.startsWith(
-    year+"-"
-   )
-  )return;
-
-  const m=
-   Number(
-    d.substring(5,7)
-   )-1;
-
-  if(m>=0&&m<12){
-
-   expenses[m]+=
-    Number(x.amount)||0;
-
-  }
-
- });
-
- return {
-  income,
-  expenses
- };
-
-}
-
-
-function setupCanvas(id){
-
- const canvas=
-  document.getElementById(id);
-
- const ratio=
-  window.devicePixelRatio||1;
-
- const width=
-  canvas.clientWidth;
-
- const height=
-  canvas.clientHeight;
-
- canvas.width=
-  width*ratio;
-
- canvas.height=
-  height*ratio;
-
- const ctx=
-  canvas.getContext("2d");
-
- ctx.setTransform(
-  ratio,
-  0,
-  0,
-  ratio,
-  0,
-  0
- );
-
- return{
-  canvas,
-  ctx,
-  width,
-  height
- };
-
-}
-
-
-function drawBarChart(
- income,
- expenses
-){
-
- const {
-  ctx,
-  width,
-  height
- }=
- setupCanvas("barChart");
-
- ctx.clearRect(
-  0,
-  0,
-  width,
-  height
- );
-
-
- const max=
-  Math.max(
-   income,
-   expenses,
-   1
-  );
-
- const left=55;
- const right=20;
- const top=20;
- const bottom=45;
-
- const chartW=
-  width-left-right;
-
- const chartH=
-  height-top-bottom;
-
-
- ctx.strokeStyle="#d0d5dd";
- ctx.lineWidth=1;
-
- for(let i=0;i<=4;i++){
-
-  const y=
-   top+
-   chartH-
-   chartH*(i/4);
-
-  ctx.beginPath();
-  ctx.moveTo(left,y);
-  ctx.lineTo(
-   width-right,
-   y
-  );
-  ctx.stroke();
-
-  const value=
-   max*(i/4);
-
-  ctx.fillStyle="#667085";
-  ctx.font="11px Arial";
-  ctx.textAlign="right";
-
-  ctx.fillText(
-   shortMoney(value),
-   left-7,
-   y+4
-  );
-
- }
-
-
- const barW=
-  Math.min(
-   90,
-   chartW/5
-  );
-
- const gap=
-  35;
-
- const center=
-  left+
-  chartW/2;
-
- const x1=
-  center-
-  barW-
-  gap/2;
-
- const x2=
-  center+
-  gap/2;
-
-
- function bar(
-  x,
-  value,
-  label,
-  text
- ){
-
-  const h=
-   chartH*
-   (value/max);
-
-  const y=
-   top+
-   chartH-
-   h;
-
-  ctx.fillStyle=
-   text==="Income"
-   ?
-   "#155eef"
-   :
-   "#ef4444";
-
-  ctx.fillRect(
-   x,
-   y,
-   barW,
-   h
-  );
-
-  ctx.fillStyle="#172033";
-  ctx.font="bold 12px Arial";
-  ctx.textAlign="center";
-
-  ctx.fillText(
-   shortMoney(value),
-   x+barW/2,
-   Math.max(
-    y-8,
-    14
-   )
-  );
-
-  ctx.font="12px Arial";
-
-  ctx.fillText(
-   label,
-   x+barW/2,
-   height-20
-  );
-
- }
-
-
- bar(
-  x1,
-  income,
-  "Income",
-  "Income"
- );
-
- bar(
-  x2,
-  expenses,
-  "Expenses",
-  "Expenses"
- );
-
-}
-
-
-function drawLineChart(year){
-
- const {
-  ctx,
-  width,
-  height
- }=
- setupCanvas("lineChart");
-
- ctx.clearRect(
-  0,
-  0,
-  width,
-  height
- );
-
-
- const totals=
-  getMonthlyTotals(year);
-
- const balances=
-  totals.income.map(
-   (v,i)=>
-    v-totals.expenses[i]
-  );
-
-
- const all=[
-  ...totals.income,
-  ...totals.expenses,
-  ...balances
- ];
-
- const max=
-  Math.max(
-   ...all.map(Math.abs),
-   1
-  );
-
- const min=
-  Math.min(
-   0,
-   ...balances
-  );
-
- const range=
-  Math.max(
-   max-min,
-   1
-  );
-
-
- const left=50;
- const right=15;
- const top=20;
- const bottom=45;
-
- const chartW=
-  width-left-right;
-
- const chartH=
-  height-top-bottom;
-
-
- function y(value){
-
-  return top+
-   chartH-
-   (
-    (value-min)/
-    range
-   )*
-   chartH;
-
- }
-
-
- ctx.strokeStyle="#d0d5dd";
- ctx.lineWidth=1;
-
- for(let i=0;i<=4;i++){
-
-  const value=
-   min+
-   range*(i/4);
-
-  const yy=
-   y(value);
-
-  ctx.beginPath();
-  ctx.moveTo(left,yy);
-  ctx.lineTo(
-   width-right,
-   yy
-  );
-  ctx.stroke();
-
-  ctx.fillStyle="#667085";
-  ctx.font="10px Arial";
-  ctx.textAlign="right";
-
-  ctx.fillText(
-   shortMoney(value),
-   left-6,
-   yy+3
-  );
-
- }
-
-
- const labels=[
-  "Jan","Feb","Mar",
-  "Apr","May","Jun",
-  "Jul","Aug","Sep",
-  "Oct","Nov","Dec"
- ];
-
-
- function drawSeries(
-  values,
-  lineStyle
- ){
-
-  ctx.strokeStyle=
-   lineStyle;
-
-  ctx.lineWidth=3;
-
-  ctx.beginPath();
-
-  values.forEach(
-   (value,i)=>{
-
-    const x=
-     left+
-     chartW*
-     (i/11);
-
-    const yy=
-     y(value);
-
-    if(i===0)
-     ctx.moveTo(x,yy);
-    else
-     ctx.lineTo(x,yy);
-
-   }
-  );
-
-  ctx.stroke();
-
-
-  values.forEach(
-   (value,i)=>{
-
-    const x=
-     left+
-     chartW*
-     (i/11);
-
-    const yy=
-     y(value);
-
-    ctx.fillStyle=
-     lineStyle;
-
-    ctx.beginPath();
-
-    ctx.arc(
-     x,
-     yy,
-     3.5,
-     0,
-     Math.PI*2
-    );
-
-    ctx.fill();
-
-   }
-  );
-
- }
-
-
- drawSeries(
-  totals.income,
-  "#155eef"
- );
-
- drawSeries(
-  totals.expenses,
-  "#ef4444"
- );
-
- drawSeries(
-  balances,
-  "#16a34a"
- );
-
-
- ctx.fillStyle="#667085";
- ctx.font="10px Arial";
- ctx.textAlign="center";
-
- labels.forEach(
-  (label,i)=>{
-
-   const x=
-    left+
-    chartW*
-    (i/11);
-
-   ctx.fillText(
-    label,
-    x,
-    height-18
-   );
-
-  }
- );
-
-}
-
-
-function shortMoney(value){
-
- value=
-  Number(value)||0;
-
- if(
-  Math.abs(value)>=1000000
- ){
-
-  return "LKR "+
-   (value/1000000)
-    .toFixed(1)+"M";
-
- }
-
- if(
-  Math.abs(value)>=1000
- ){
-
-  return "LKR "+
-   (value/1000)
-    .toFixed(1)+"K";
-
- }
-
- return "LKR "+
-  Math.round(value);
-
-}
-
-
-async function logout(){
-
- try{
-
-  await fetch(
-   API+"/api/logout",
-   {
-    method:"POST",
-    headers:headers()
-   }
-  );
-
- }catch(e){}
-
- localStorage.removeItem(KEY);
-
- location.href=
-  "admin-login.html";
-
-}
-
-
-window.addEventListener(
- "resize",
- ()=>{
-  if(
-   incomeRecords||
-   expenseRecords
-  ){
-
-   const now=
-    new Date();
-
-   drawBarChart(
-    incomeRecords
-     .filter(x=>
-      String(x.status)
-       .toUpperCase()==="APPROVED"
-     )
-     .reduce(
-      (s,x)=>
-       s+(Number(x.amount)||0),
-      0
-     ),
-
-    expenseRecords
-     .filter(x=>
-      String(x.status)
-       .toUpperCase()==="APPROVED"
-     )
-     .reduce(
-      (s,x)=>
-       s+(Number(x.amount)||0),
-      0
-     )
-   );
-
-   drawLineChart(
-    now.getFullYear()
-   );
-
-  }
- }
+/* ================= PROGRESS ================= */
+
+/*
+Temporary local progress.
+
+Later this can be connected
+to your Cloudflare progress API.
+*/
+
+const progress =
+parseInt(
+localStorage.getItem(
+"goh_course_progress"
+) || "0"
 );
 
+const total=180;
 
-loadDashboard();
+const safeProgress =
+Math.max(
+0,
+Math.min(progress,total)
+);
+
+const percent =
+(total > 0)
+?
+(safeProgress / total) * 100
+:
+0;
+
+
+document.getElementById("progressText")
+.textContent =
+safeProgress + " / " + total;
+
+
+document.getElementById("progressFill")
+.style.width =
+percent + "%";
+
+
+/* ================= LOGOUT ================= */
+
+function logout(){
+
+localStorage.removeItem("goh_student");
+
+localStorage.removeItem("goh_logged_in");
+
+sessionStorage.removeItem("goh_student");
+
+sessionStorage.removeItem("goh_logged_in");
+
+window.location.href="login.html";
+
+}
+
+
+document.getElementById("logoutBtn")
+.onclick=logout;
+
+
+document.getElementById("mobileLogout")
+.onclick=logout;
+
+
+/* ================= MOBILE MENU ================= */
+
+const menuBtn =
+document.getElementById("menuBtn");
+
+const mobileMenu =
+document.getElementById("mobileMenu");
+
+
+menuBtn.onclick=function(){
+
+const open =
+mobileMenu.classList.toggle("show");
+
+menuBtn.textContent =
+open ? "✕" : "☰";
+
+menuBtn.setAttribute(
+"aria-expanded",
+open
+);
+
+};
+
+
+mobileMenu
+.querySelectorAll("a")
+.forEach(function(link){
+
+link.onclick=function(){
+
+mobileMenu.classList.remove("show");
+
+menuBtn.textContent="☰";
+
+menuBtn.setAttribute(
+"aria-expanded",
+"false"
+);
+
+};
+
+});
+
+
+document.addEventListener(
+"click",
+function(e){
+
+if(
+mobileMenu.classList.contains("show") &&
+!mobileMenu.contains(e.target) &&
+!menuBtn.contains(e.target)
+){
+
+mobileMenu.classList.remove("show");
+
+menuBtn.textContent="☰";
+
+menuBtn.setAttribute(
+"aria-expanded",
+"false"
+);
+
+}
+
+});
 
 </script>
 
