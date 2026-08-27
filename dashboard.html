@@ -157,15 +157,12 @@ Complete all 180 lessons and pass each 5-question assessment.
 </section>
 
 <section class="lessons-section" id="lessonsSection">
-
 <div class="lesson-header">
-<h2 id="moduleTitle">Module</h2>
+<h2 id="moduleTitle"></h2>
 <p id="moduleDescription"></p>
 <button class="back" id="back">← Back to Modules</button>
 </div>
-
 <div id="lessons"></div>
-
 </section>
 
 <div class="premium" id="premiumBox">
@@ -194,19 +191,19 @@ const student=JSON.parse(
  "null"
 );
 
-if(!student) location.href="login.html";
+if(!student)location.href="login.html";
 
 const names={en:"English",ta:"Tamil",si:"Sinhala"};
 
 function getLang(){
  const x=String(
   localStorage.getItem("goh_language") ||
-  student?.language ||
+  student.language ||
   "en"
  ).toLowerCase();
 
- if(x==="ta"||x==="tamil"||x==="தமிழ்")return"ta";
- if(x==="si"||x==="sinhala"||x==="සිංහල")return"si";
+ if(["ta","tamil","தமிழ்"].includes(x))return"ta";
+ if(["si","sinhala","සිංහල"].includes(x))return"si";
  return"en";
 }
 
@@ -216,6 +213,8 @@ $("languageSelect").value=language;
 $("language").textContent=names[language];
 $("welcome").textContent="Welcome, "+(student.first_name||"Student")+" 👋";
 $("studentId").textContent=student.id||"—";
+$("membership").textContent=
+ String(student.membership_status||"FREE").toUpperCase();
 
 function msg(text,type){
  $("message").textContent=text;
@@ -230,197 +229,385 @@ function esc(v){
 }
 
 /* =========================
-   MODULES
+   6 MODULES / 180 TITLES
 ========================= */
 
-async function loadModules(){
+const course=[
+
+{
+id:1,
+icon:"📖",
+en:"Introduction to the Bible",
+ta:"வேதாகம அறிமுகம்",
+si:"බයිබලයට හැඳින්වීම",
+desc:"Bible foundations, inspiration, canon and interpretation.",
+lessons:[
+"The Bible: God’s Word",
+"Why We Need the Bible",
+"How God Reveals Himself",
+"Divine Inspiration",
+"Human Authors and Divine Guidance",
+"The Unity of Scripture",
+"The Authority of Scripture",
+"The Truthfulness of God’s Word",
+"The Old Testament",
+"The New Testament",
+"Bible Covenants",
+"The Canon of Scripture",
+"How the Bible Was Preserved",
+"Bible Translations",
+"Reading the Bible Correctly",
+"Understanding Context",
+"Historical Context",
+"Cultural Context",
+"Literary Context",
+"Interpreting Scripture",
+"Observation and Interpretation",
+"Application of Scripture",
+"Prayerful Bible Study",
+"The Holy Spirit and Scripture",
+"Jesus and the Scriptures",
+"The Bible and Salvation",
+"The Bible and Christian Living",
+"The Bible and Wisdom",
+"The Bible and Spiritual Growth",
+"Living Under God’s Word"
+]
+},
+
+{
+id:2,
+icon:"✝️",
+en:"God, Creation and Humanity",
+ta:"தேவன், படைப்பு மற்றும் மனிதகுலம்",
+si:"දෙවියන්වහන්සේ, මැවීම සහ මනුෂ්‍යත්වය",
+desc:"Knowing God, creation, humanity and the purpose of life.",
+lessons:[
+"Knowing the Creator",
+"The One True God",
+"God’s Holiness",
+"God’s Love",
+"God’s Justice",
+"God’s Mercy",
+"God’s Faithfulness",
+"God’s Sovereignty",
+"God’s Wisdom",
+"God’s Omnipotence",
+"God’s Omniscience",
+"God’s Omnipresence",
+"The Trinity",
+"God the Father",
+"God the Son",
+"God the Holy Spirit",
+"Creation in Genesis",
+"Creation and God’s Purpose",
+"Humanity Created in God’s Image",
+"The Value of Human Life",
+"Human Dignity",
+"Work and Stewardship",
+"Marriage and Family",
+"God’s Design for Humanity",
+"The Fall of Humanity",
+"The Origin of Sin",
+"Consequences of Sin",
+"God’s Promise of Redemption",
+"Creation and Redemption",
+"Hope in God’s Creation"
+]
+},
+
+{
+id:3,
+icon:"🕊️",
+en:"Jesus Christ and Salvation",
+ta:"இயேசு கிறிஸ்து மற்றும் இரட்சிப்பு",
+si:"යේසුස් ක්‍රිස්තුස්වහන්සේ සහ ගැලවීම",
+desc:"The person, work, death, resurrection and salvation of Jesus Christ.",
+lessons:[
+"Who Is Jesus Christ?",
+"Jesus the Messiah",
+"Jesus the Son of God",
+"Jesus the Son of Man",
+"The Virgin Birth",
+"The Incarnation",
+"Jesus’ Sinless Life",
+"Jesus’ Teaching",
+"Jesus’ Miracles",
+"Jesus and Compassion",
+"Jesus and Prayer",
+"Jesus and the Kingdom",
+"Jesus Calls Disciples",
+"Following Jesus",
+"Jesus’ Suffering",
+"Jesus’ Death",
+"The Meaning of the Cross",
+"Jesus’ Resurrection",
+"Evidence for the Resurrection",
+"Jesus’ Ascension",
+"Jesus Our Savior",
+"Jesus Our Lord",
+"Repentance",
+"Faith in Christ",
+"Grace and Salvation",
+"Forgiveness of Sin",
+"Justification",
+"Adoption as God’s Children",
+"New Life in Christ",
+"Living for Christ"
+]
+},
+
+{
+id:4,
+icon:"🔥",
+en:"Holy Spirit and Christian Life",
+ta:"பரிசுத்த ஆவியும் கிறிஸ்தவ வாழ்க்கையும்",
+si:"ශුද්ධාත්මයාණන්වහන්සේ සහ කිතුනු ජීවිතය",
+desc:"The Holy Spirit, spiritual growth, holiness and daily discipleship.",
+lessons:[
+"Who Is the Holy Spirit?",
+"The Spirit in Creation",
+"The Spirit in the Old Testament",
+"The Spirit and Jesus",
+"The Promise of the Spirit",
+"Pentecost",
+"The Spirit and New Birth",
+"The Spirit Dwells in Believers",
+"Walking by the Spirit",
+"Life in the Spirit",
+"The Fruit of the Spirit",
+"Love",
+"Joy",
+"Peace",
+"Patience",
+"Kindness and Goodness",
+"Faithfulness",
+"Gentleness",
+"Self-Control",
+"Spiritual Gifts",
+"Prayer and the Spirit",
+"Spiritual Discernment",
+"Holiness",
+"Overcoming Temptation",
+"Renewing the Mind",
+"Christian Character",
+"Obedience",
+"Forgiving Others",
+"Serving Others",
+"Growing as a Disciple"
+]
+},
+
+{
+id:5,
+icon:"⛪",
+en:"Church and Christian Ministry",
+ta:"திருச்சபையும் கிறிஸ்தவ ஊழியமும்",
+si:"සභාව සහ කිතුනු සේවය",
+desc:"The church, fellowship, leadership, ministry and mission.",
+lessons:[
+"What Is the Church?",
+"The Body of Christ",
+"The People of God",
+"The Church’s Mission",
+"Worship",
+"Fellowship",
+"Christian Community",
+"Love in the Church",
+"Unity in the Church",
+"Serving One Another",
+"Spiritual Leadership",
+"Pastoral Ministry",
+"Teaching Ministry",
+"Evangelism",
+"Discipleship",
+"Prayer Ministry",
+"Children’s Ministry",
+"Youth Ministry",
+"Christian Service",
+"Using Spiritual Gifts",
+"Church Accountability",
+"Church Discipline",
+"Biblical Leadership",
+"Servant Leadership",
+"Church Ordinances",
+"Baptism",
+"The Lord’s Supper",
+"Mission and Evangelism",
+"Making Disciples",
+"Building a Healthy Church"
+]
+},
+
+{
+id:6,
+icon:"🌍",
+en:"Christian Discipleship and Mission",
+ta:"கிறிஸ்தவ சீஷத்துவமும் ஊழியப் பணியும்",
+si:"කිතුනු ගෝලත්වය සහ මෙහෙවර",
+desc:"Practical discipleship, mission, leadership and faithful Christian living.",
+lessons:[
+"What Is Discipleship?",
+"The Cost of Following Jesus",
+"Learning From Jesus",
+"Obeying Jesus",
+"Abiding in Christ",
+"Daily Prayer",
+"Daily Bible Study",
+"Faith and Trust",
+"Walking by Faith",
+"Christian Wisdom",
+"Making Godly Decisions",
+"Managing Time",
+"Stewardship",
+"Money and Christian Responsibility",
+"Work and Witness",
+"Family Discipleship",
+"Christian Relationships",
+"Serving the Community",
+"Sharing the Gospel",
+"Personal Evangelism",
+"Cross-Cultural Mission",
+"Compassion and Mission",
+"Christian Leadership",
+"Integrity in Leadership",
+"Handling Opposition",
+"Persevering in Faith",
+"Hope in Suffering",
+"Living as Salt and Light",
+"The Great Commission",
+"Finishing the Race"
+]
+}
+
+];
+
+/* =========================
+   MODULE TITLE
+========================= */
+
+function moduleTitle(m){
+ return language==="ta"?m.ta:
+        language==="si"?m.si:m.en;
+}
+
+/* =========================
+   SHOW MODULES
+========================= */
+
+function loadModules(){
 
  $("modules").innerHTML="";
 
- try{
+ course.forEach((m,i)=>{
 
-  const r=await fetch(API+"/modules");
-  const d=await r.json();
+  const el=document.createElement("div");
+  el.className="module";
 
-  if(!r.ok||!d.success)
-   throw new Error(d.message||"Unable to load modules.");
-
-  if(!Array.isArray(d.modules))
-   throw new Error("No modules available.");
-
-  d.modules.slice(0,6).forEach((m,i)=>{
-
-   const el=document.createElement("div");
-   el.className="module";
-
-   el.innerHTML=`
-    <div class="module-top">
-     <div class="icon">${esc(m.icon||"📖")}</div>
-     <div>
-      <div class="module-no">MODULE ${String(i+1).padStart(2,"0")}</div>
-      <div class="module-title">${esc(m.title)}</div>
-      <div class="module-desc">${esc(m.description)}</div>
+  el.innerHTML=`
+   <div class="module-top">
+    <div class="icon">${m.icon}</div>
+    <div>
+     <div class="module-no">
+      MODULE ${String(i+1).padStart(2,"0")}
+     </div>
+     <div class="module-title">
+      ${esc(moduleTitle(m))}
+     </div>
+     <div class="module-desc">
+      ${esc(m.desc)}
      </div>
     </div>
+   </div>
 
-    <div class="module-bottom">
-     <span class="count">30 Lessons</span>
-     <button class="view">View Lessons →</button>
-    </div>
-   `;
+   <div class="module-bottom">
+    <span class="count">30 Lessons</span>
+    <button class="view">View Lessons →</button>
+   </div>
+  `;
 
-   el.onclick=()=>loadLessons(m);
+  el.onclick=()=>showLessons(m);
 
-   $("modules").appendChild(el);
-  });
+  $("modules").appendChild(el);
 
- }catch(e){
-
-  console.error(e);
-  msg(e.message,"error");
-
- }
+ });
 
 }
 
 /* =========================
-   LESSONS
+   SHOW 30 LESSON TITLES
 ========================= */
 
-async function loadLessons(module){
+async function showLessons(module){
 
  $("modulesSection").style.display="none";
  $("premiumBox").style.display="none";
  $("lessonsSection").style.display="block";
 
- $("moduleTitle").textContent=module.title||"Module";
- $("moduleDescription").textContent=module.description||"";
+ $("moduleTitle").textContent=moduleTitle(module);
+ $("moduleDescription").textContent=module.desc;
  $("lessons").innerHTML="";
 
- msg("Loading 30 lessons...","loading");
+ /*
+  Titles are displayed immediately.
+  Actual lesson data is still loaded
+  from Cloudflare when opened.
+ */
 
- try{
+ module.lessons.forEach((title,index)=>{
 
-  /*
-   IMPORTANT:
-   Request the module using the REAL
-   module ID returned by Cloudflare.
-  */
+  const lessonNumber=
+   (module.id-1)*30+index+1;
 
-  const id=module.id;
+  const el=document.createElement("div");
+  el.className="lesson";
 
-  if(!id)
-   throw new Error("Invalid module ID.");
+  el.innerHTML=`
+   <div class="lesson-num">${lessonNumber}</div>
 
-  const url=
-   API+"/lessons?module_id="+
-   encodeURIComponent(id)+
-   "&student_id="+
-   encodeURIComponent(student.id)+
-   "&language="+
-   encodeURIComponent(language);
-
-  const r=await fetch(url);
-  const d=await r.json();
-
-  if(!r.ok||!d.success)
-   throw new Error(d.message||"Unable to load lessons.");
-
-  if(!Array.isArray(d.lessons))
-   throw new Error("Lessons unavailable.");
-
-  /*
-   Show ALL lessons returned by Cloudflare.
-   Do NOT use slice(0,1).
-  */
-
-  const lessons=d.lessons;
-
-  if(!lessons.length){
-   $("lessons").innerHTML=
-    `<div class="message show error">No lessons found.</div>`;
-   return;
-  }
-
-  $("message").className="message";
-
-  lessons.forEach(createLesson);
-
- }catch(e){
-
-  console.error(e);
-
-  $("lessons").innerHTML=
-   `<div class="message show error">${esc(e.message)}</div>`;
-
- }
-
-}
-
-/* =========================
-   CREATE LESSON
-========================= */
-
-function createLesson(lesson){
-
- const locked=lesson.locked===true;
- const completed=
-  lesson.completed===true||
-  lesson.completed===1||
-  lesson.completed==="1";
-
- let button="Start →";
- let cls="free";
-
- if(completed){
-  button="✓ Completed";
-  cls="done";
- }else if(locked){
-  button="🔒 Premium";
-  cls="locked";
- }
-
- const el=document.createElement("div");
- el.className="lesson";
-
- el.innerHTML=`
-  <div class="lesson-num">
-   ${esc(lesson.lesson_number)}
-  </div>
-
-  <div class="lesson-info">
-   <div class="lesson-title">
-    ${esc(lesson.title)}
+   <div class="lesson-info">
+    <div class="lesson-title">${esc(title)}</div>
+    <div class="lesson-desc">
+     Lesson ${lessonNumber}
+    </div>
    </div>
-   <div class="lesson-desc">
-    ${esc(lesson.description)}
-   </div>
-  </div>
 
-  <button class="lesson-btn ${cls}">
-   ${button}
-  </button>
- `;
+   <button class="lesson-btn ${lessonNumber===1?"free":"locked"}">
+    ${lessonNumber===1?"Start →":"🔒 Premium"}
+   </button>
+  `;
 
- el.querySelector("button").onclick=()=>{
+  el.querySelector("button").onclick=()=>{
 
-  if(locked){
-   location.href="premium.html";
-   return;
-  }
+   if(lessonNumber!==1 &&
+      String(student.membership_status||"").toUpperCase()!=="PREMIUM"){
 
-  const params=new URLSearchParams({
-   lesson_id:String(lesson.id),
-   module_id:String(lesson.module_id||lesson.moduleId||""),
-   student_id:String(student.id),
-   language:language
-  });
+    location.href="premium.html";
+    return;
+   }
 
-  location.href=LESSON_PAGE+"?"+params.toString();
+   /*
+    Cloudflare lesson ID.
+    Your lesson table uses lesson IDs.
+    Lesson 1 = ID 1, Lesson 2 = ID 2...
+   */
 
- };
+   const p=new URLSearchParams({
+    lesson_id:String(lessonNumber),
+    module_id:String(module.id),
+    student_id:String(student.id),
+    language:language
+   });
 
- $("lessons").appendChild(el);
+   location.href=LESSON_PAGE+"?"+p.toString();
+
+  };
+
+  $("lessons").appendChild(el);
+
+ });
+
+ window.scrollTo({top:0,behavior:"smooth"});
 }
 
 /* =========================
@@ -433,6 +620,8 @@ $("languageSelect").onchange=function(){
 
  localStorage.setItem("goh_language",language);
  $("language").textContent=names[language];
+
+ loadModules();
 
  if($("lessonsSection").style.display==="block"){
   $("lessonsSection").style.display="none";
@@ -447,11 +636,13 @@ $("languageSelect").onchange=function(){
 ========================= */
 
 $("back").onclick=()=>{
+
  $("lessonsSection").style.display="none";
  $("modulesSection").style.display="block";
  $("premiumBox").style.display="block";
- $("message").className="message";
+
  window.scrollTo({top:0,behavior:"smooth"});
+
 };
 
 /* =========================
@@ -474,14 +665,20 @@ async function loadProgress(){
   const p=d.progress;
 
   $("progressText").textContent=
-   p.completed+" / "+p.total+" lessons completed";
+   p.completed+" / "+p.total+
+   " lessons completed";
 
-  $("percent").textContent=p.percentage+"%";
-  $("fill").style.width=p.percentage+"%";
+  $("percent").textContent=
+   p.percentage+"%";
+
+  $("fill").style.width=
+   p.percentage+"%";
 
   if(p.certificate_eligible){
+
    $("certificate").textContent=
     "🎓 Congratulations! You completed all 180 lessons.";
+
   }
 
  }catch(e){
@@ -495,21 +692,23 @@ async function loadProgress(){
 ========================= */
 
 $("logout").onclick=()=>{
+
  localStorage.removeItem("goh_student");
  localStorage.removeItem("goh_logged_in");
+
  sessionStorage.removeItem("goh_student");
  sessionStorage.removeItem("goh_logged_in");
+
  location.href="login.html";
+
 };
 
 /* =========================
    START
 ========================= */
 
-if(student){
- loadModules();
- loadProgress();
-}
+loadModules();
+loadProgress();
 
 </script>
 
