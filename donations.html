@@ -9,38 +9,45 @@
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
-header{background:#155eef;color:#fff;padding:14px 18px}
+header{background:#155eef;color:#fff;padding:15px 18px}
 .head{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center}
-.logout{background:#fff;color:#155eef;border:0;border-radius:8px;padding:9px 14px;font-weight:bold;cursor:pointer}
+.logout{background:#fff;color:#155eef;border:0;border-radius:8px;padding:9px 13px;font-weight:bold;cursor:pointer}
 nav{max-width:1050px;margin:10px auto 0;display:flex;gap:8px;overflow:auto}
 nav a{background:#fff;color:#155eef;padding:8px 11px;border-radius:8px;text-decoration:none;font-size:12px;white-space:nowrap}
 main{max-width:1050px;margin:auto;padding:18px}
 .card{background:#fff;padding:18px;border-radius:14px;margin-bottom:16px;box-shadow:0 2px 12px #0001}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.stat strong{display:block;font-size:23px;margin-top:7px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-label{display:block;font-size:13px;font-weight:bold;margin:10px 0 6px}
-input,select,textarea{width:100%;padding:11px;border:1px solid #d5dbe5;border-radius:8px;font-size:14px;font-family:Arial}
-textarea{min-height:75px;resize:vertical}
+label{display:block;font-size:13px;font-weight:bold;margin:9px 0 6px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #d5dbe5;border-radius:8px;font-size:14px;background:#fff}
+textarea{min-height:90px;resize:vertical}
 button{border:0;border-radius:8px;padding:11px 15px;background:#155eef;color:#fff;font-weight:bold;cursor:pointer}
 form button{width:100%;margin-top:15px}
 button:disabled{opacity:.6}
+.danger{background:#dc2626}
+.success{background:#16a34a}
 .msg{display:none;padding:11px;border-radius:8px;margin-bottom:12px;font-size:13px}
 .ok{display:block;background:#dcfce7;color:#166534}
 .bad{display:block;background:#fee2e2;color:#991b1b}
+.small{font-size:13px;color:#667085}
+.hint{font-size:11px;color:#667085;margin-top:5px}
 .table{overflow:auto}
 table{width:100%;min-width:850px;border-collapse:collapse}
 th,td{padding:10px;border-bottom:1px solid #edf0f4;text-align:left;font-size:13px}
 th{background:#f8fafc;color:#667085}
-.small{font-size:13px;color:#667085}
-@media(max-width:700px){.stats,.grid{grid-template-columns:1fr}main{padding:12px}}
+.status{font-weight:bold}
+.pending{color:#b45309}
+.approved{color:#15803d}
+.rejected{color:#dc2626}
+@media(max-width:700px){
+.grid{grid-template-columns:1fr}
+main{padding:12px}
+}
 </style>
 </head>
 
 <body>
 
 <header>
-
 <div class="head">
 <b>GOH Ministries Finance</b>
 <button class="logout" onclick="logout()">Logout</button>
@@ -49,13 +56,12 @@ th{background:#f8fafc;color:#667085}
 <nav>
 <a href="finance-dashboard.html">Dashboard</a>
 <a href="income.html">Income</a>
-<a href="donations.html">Donations</a>
 <a href="expenses.html">Expenses</a>
+<a href="donations.html">Donations</a>
 <a href="receipts.html">Receipts</a>
 <a href="reports.html">Reports</a>
 <a href="admin.html">Administration</a>
 </nav>
-
 </header>
 
 <main>
@@ -63,27 +69,8 @@ th{background:#f8fafc;color:#667085}
 <div class="card">
 <h2>Donations</h2>
 <div class="small">
-Record and monitor ministry donations.
+Record donations with the supporting receipt or payment slip.
 </div>
-</div>
-
-<div class="stats">
-
-<div class="card stat">
-<div class="small">Total Donations</div>
-<strong id="total">LKR 0.00</strong>
-</div>
-
-<div class="card stat">
-<div class="small">This Month</div>
-<strong id="month">LKR 0.00</strong>
-</div>
-
-<div class="card stat">
-<div class="small">Donations</div>
-<strong id="count">0</strong>
-</div>
-
 </div>
 
 <div class="card">
@@ -98,8 +85,12 @@ Record and monitor ministry donations.
 
 <div>
 <label>Donor Name</label>
-<input id="donor" required
-placeholder="Donor name">
+<input id="donor_name" type="text" placeholder="Donor name">
+</div>
+
+<div>
+<label>Amount</label>
+<input id="amount" type="number" min="0.01" step="0.01" placeholder="0.00" required>
 </div>
 
 <div>
@@ -108,54 +99,43 @@ placeholder="Donor name">
 </div>
 
 <div>
-<label>Amount (LKR)</label>
-<input id="amount" type="number"
-min="0.01" step="0.01"
-required>
-</div>
-
-<div>
-<label>Purpose</label>
-<select id="category">
-<option>General</option>
-<option>Building</option>
-<option>Mission</option>
-<option>Church</option>
-<option>Children</option>
-<option>Evangelism</option>
-<option>Other</option>
-</select>
-</div>
-
-<div>
 <label>Payment Method</label>
-<select id="method">
+<select id="payment_method" required>
+<option value="">Select payment method</option>
 <option>Cash</option>
 <option>Bank Transfer</option>
+<option>Deposit</option>
 <option>Cheque</option>
-<option>PayHere</option>
+<option>Online</option>
 <option>Other</option>
 </select>
 </div>
 
 <div>
-<label>Reference</label>
-<input id="reference"
-placeholder="Optional">
+<label>Reference Number</label>
+<input id="reference_number" type="text" placeholder="Optional">
+</div>
+
+<div>
+<label>Receipt / Payment Slip</label>
+<input
+id="receipt"
+type="file"
+accept="image/jpeg,image/png,application/pdf"
+required>
+<div class="hint">JPG, PNG or PDF. Maximum 5MB.</div>
 </div>
 
 </div>
 
-<label>Notes</label>
-<textarea id="notes"
-placeholder="Optional notes"></textarea>
+<label>Description</label>
+<textarea id="description" placeholder="Optional details"></textarea>
 
-<button id="save" type="submit">
+<button id="saveBtn" type="submit">
 Save Donation
 </button>
 
 </form>
-
 </div>
 
 <div class="card">
@@ -165,45 +145,39 @@ Save Donation
 <div class="table">
 
 <table>
-
 <thead>
 <tr>
 <th>Date</th>
 <th>Donor</th>
-<th>Purpose</th>
-<th>Method</th>
-<th>Reference</th>
 <th>Amount</th>
+<th>Payment</th>
+<th>Reference</th>
+<th>Status</th>
+<th>Receipt</th>
 </tr>
 </thead>
 
-<tbody id="rows">
+<tbody id="records">
 <tr>
-<td colspan="6">Loading...</td>
+<td colspan="7">Loading...</td>
 </tr>
 </tbody>
 
 </table>
 
 </div>
-
 </div>
 
 </main>
 
 <script>
 
-const API=
-"https://goh-finance.createlk.workers.dev";
-
-const KEY=
-"goh_finance_token";
+const API="https://goh-finance.createlk.workers.dev";
+const KEY="goh_finance_token";
 
 function headers(){
 return{
-"Content-Type":"application/json",
-"Authorization":
-"Bearer "+localStorage.getItem(KEY)
+"Authorization":"Bearer "+localStorage.getItem(KEY)
 };
 }
 
@@ -216,32 +190,13 @@ return String(v??"")
 .replaceAll("'","&#039;");
 }
 
-function money(v){
-return "LKR "+
-Number(v||0).toLocaleString(
-"en-LK",
-{
-minimumFractionDigits:2,
-maximumFractionDigits:2
-});
+function show(text,ok=false){
+const x=document.getElementById("msg");
+x.textContent=text;
+x.className="msg "+(ok?"ok":"bad");
 }
 
-function today(){
-const d=new Date();
-return d.getFullYear()+"-"+
-String(d.getMonth()+1).padStart(2,"0")+"-"+
-String(d.getDate()).padStart(2,"0");
-}
-
-document.getElementById("date").value=today();
-
-function message(text,ok=false){
-const el=document.getElementById("msg");
-el.textContent=text;
-el.className="msg "+(ok?"ok":"bad");
-}
-
-async function checkLogin(){
+async function check(){
 
 const token=localStorage.getItem(KEY);
 
@@ -259,8 +214,7 @@ API+"/api/me",
 
 const d=await r.json();
 
-if(!r.ok||!d.success)
-throw Error();
+if(!r.ok||!d.success)throw Error();
 
 return true;
 
@@ -274,83 +228,96 @@ return false;
 
 }
 
+function money(v){
+return Number(v||0).toLocaleString(
+"en-LK",
+{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+}
+);
+}
+
+function receiptUrl(id){
+return API+"/api/donations/"+id+"/receipt";
+}
+
 async function load(){
 
 try{
 
 const r=await fetch(
-API+"/api/finance/donations",
+API+"/api/donations",
 {headers:headers()}
 );
 
 const d=await r.json();
 
 if(!r.ok||!d.success)
-throw Error(
-d.error||"Unable to load donations"
-);
+throw Error(d.error||"Unable to load donations");
 
 const rows=d.donations||[];
 
-let total=0;
-let month=0;
+document.getElementById("records").innerHTML=
 
-const prefix=
-new Date().getFullYear()+"-"+
-String(new Date().getMonth()+1)
-.padStart(2,"0");
+rows.map(x=>{
 
-rows.forEach(x=>{
+const s=String(x.status||"PENDING").toLowerCase();
 
-const a=Number(x.amount)||0;
-
-total+=a;
-
-if(String(x.date||"")
-.startsWith(prefix)){
-month+=a;
-}
-
-});
-
-document.getElementById("total")
-.textContent=money(total);
-
-document.getElementById("month")
-.textContent=money(month);
-
-document.getElementById("count")
-.textContent=rows.length;
-
-document.getElementById("rows")
-.innerHTML=
-
-rows.map(x=>`
-
+return `
 <tr>
-<td>${esc(x.date)}</td>
-<td>${esc(x.donor||x.source)}</td>
-<td>${esc(x.category)}</td>
-<td>${esc(x.payment_method)}</td>
-<td>${esc(x.reference)}</td>
-<td>${money(x.amount)}</td>
-</tr>
 
-`).join("")||
+<td>${esc(x.date)}</td>
+
+<td>${esc(x.donor_name||"-")}</td>
+
+<td>LKR ${money(x.amount)}</td>
+
+<td>${esc(x.payment_method)}</td>
+
+<td>${esc(x.reference_number||"-")}</td>
+
+<td>
+<span class="status ${s}">
+${esc(x.status)}
+</span>
+</td>
+
+<td>
+<button onclick="viewReceipt(${Number(x.id)})">
+View
+</button>
+</td>
+
+</tr>
+`;
+
+}).join("")||
 
 `<tr>
-<td colspan="6">No donations found.</td>
+<td colspan="7">No donation records found.</td>
 </tr>`;
 
 }catch(e){
 
-document.getElementById("rows")
-.innerHTML=
+document.getElementById("records").innerHTML=
 `<tr>
-<td colspan="6">${esc(e.message)}</td>
+<td colspan="7">${esc(e.message)}</td>
 </tr>`;
 
 }
+
+}
+
+function viewReceipt(id){
+
+const token=localStorage.getItem(KEY);
+
+const url=
+receiptUrl(id)+
+"?token="+encodeURIComponent(token);
+
+window.open(url,"_blank");
 
 }
 
@@ -359,42 +326,65 @@ document.getElementById("form")
 
 e.preventDefault();
 
-const btn=document.getElementById("save");
+const btn=document.getElementById("saveBtn");
 
-const body={
-donor:
-document.getElementById("donor").value.trim(),
+const file=
+document.getElementById("receipt").files[0];
 
-date:
-document.getElementById("date").value,
-
-amount:
-Number(document.getElementById("amount").value),
-
-category:
-document.getElementById("category").value,
-
-payment_method:
-document.getElementById("method").value,
-
-reference:
-document.getElementById("reference").value.trim(),
-
-notes:
-document.getElementById("notes").value.trim()
-};
-
-if(!body.donor||
-!body.date||
-!body.amount||
-body.amount<=0){
-
-message(
-"Please enter donor, date and a valid amount."
-);
-
+if(!file){
+show("Receipt / payment slip is required.");
 return;
 }
+
+if(file.size>5242880){
+show("Receipt must be 5MB or smaller.");
+return;
+}
+
+const allowed=[
+"image/jpeg",
+"image/png",
+"application/pdf"
+];
+
+if(!allowed.includes(file.type)){
+show("Only JPG, PNG or PDF files are allowed.");
+return;
+}
+
+const fd=new FormData();
+
+fd.append(
+"donor_name",
+document.getElementById("donor_name").value.trim()
+);
+
+fd.append(
+"amount",
+document.getElementById("amount").value
+);
+
+fd.append(
+"date",
+document.getElementById("date").value
+);
+
+fd.append(
+"payment_method",
+document.getElementById("payment_method").value
+);
+
+fd.append(
+"reference_number",
+document.getElementById("reference_number").value.trim()
+);
+
+fd.append(
+"description",
+document.getElementById("description").value.trim()
+);
+
+fd.append("receipt",file);
 
 btn.disabled=true;
 btn.textContent="Saving...";
@@ -402,34 +392,37 @@ btn.textContent="Saving...";
 try{
 
 const r=await fetch(
-API+"/api/finance/donations",
+API+"/api/donations",
 {
 method:"POST",
-headers:headers(),
-body:JSON.stringify(body)
+headers:{
+"Authorization":
+"Bearer "+localStorage.getItem(KEY)
+},
+body:fd
 }
 );
 
 const d=await r.json();
 
 if(!r.ok||!d.success)
-throw Error(
-d.error||"Unable to save donation"
-);
+throw Error(d.error||"Unable to save donation");
 
-message(
-"Donation saved successfully.",
+show(
+"Donation submitted successfully. Waiting for approval.",
 true
 );
 
 e.target.reset();
-document.getElementById("date").value=today();
 
-load();
+document.getElementById("date").value=
+new Date().toISOString().slice(0,10);
+
+await load();
 
 }catch(err){
 
-message(err.message);
+show(err.message);
 
 }finally{
 
@@ -459,7 +452,10 @@ location.href="admin-login.html";
 
 }
 
-checkLogin().then(ok=>{
+document.getElementById("date").value=
+new Date().toISOString().slice(0,10);
+
+check().then(ok=>{
 if(ok)load();
 });
 
