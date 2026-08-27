@@ -398,6 +398,7 @@ GOH Bible Academy • Gate of Heaven Ministries<br>
 <script>
 
 const API="https://lesson.createlk.workers.dev";
+
 const $=id=>document.getElementById(id);
 
 
@@ -420,7 +421,7 @@ const params=new URLSearchParams(location.search);
 
 const lessonId=Number(params.get("lesson_id"));
 
-const moduleId=Number(params.get("module_id"));
+const moduleId=Number(params.get("module_id") || 1);
 
 const studentId=Number(student?.id || 0);
 
@@ -430,24 +431,18 @@ const studentId=Number(student?.id || 0);
 function getLang(){
 
 const x=String(
-localStorage.getItem("goh_language") ||
 student?.language ||
+localStorage.getItem("goh_language") ||
 "en"
 ).toLowerCase();
 
-if(
-x==="ta" ||
-x==="tamil" ||
-x==="தமிழ்"
-)return"ta";
+if(x==="ta" || x==="tamil" || x==="தமிழ்")
+return "ta";
 
-if(
-x==="si" ||
-x==="sinhala" ||
-x==="සිංහල"
-)return"si";
+if(x==="si" || x==="sinhala" || x==="සිංහල")
+return "si";
 
-return"en";
+return "en";
 }
 
 const lang=getLang();
@@ -471,7 +466,8 @@ pass:"🎉 Congratulations! You passed.",
 fail:"You need at least 70% to pass.",
 saving:"Saving progress...",
 saved:"✓ Progress saved.",
-continue:"Continue →"
+continue:"Continue →",
+premium:"🔒 Premium membership is required for the next lesson."
 },
 
 ta:{
@@ -488,7 +484,8 @@ pass:"🎉 வாழ்த்துகள்! நீங்கள் தேர்
 fail:"தேர்ச்சி பெற குறைந்தது 70% தேவை.",
 saving:"முன்னேற்றம் சேமிக்கப்படுகிறது...",
 saved:"✓ முன்னேற்றம் சேமிக்கப்பட்டது.",
-continue:"தொடரவும் →"
+continue:"தொடரவும் →",
+premium:"🔒 அடுத்த பாடத்திற்கு Premium உறுப்பினர் தேவை."
 },
 
 si:{
@@ -505,7 +502,8 @@ pass:"🎉 සුභ පැතුම්! ඔබ සමත් වී ඇත.",
 fail:"සමත් වීමට අවම වශයෙන් 70% අවශ්‍යයි.",
 saving:"ප්‍රගතිය සුරැකෙමින් පවතී...",
 saved:"✓ ප්‍රගතිය සුරැකුණි.",
-continue:"ඉදිරියට →"
+continue:"ඉදිරියට →",
+premium:"🔒 ඊළඟ පාඩම සඳහා Premium සාමාජිකත්වය අවශ්‍යයි."
 }
 
 }[lang];
@@ -541,38 +539,37 @@ $("message").className="message";
 }
 
 
+/* CLEAR */
+
+function clearAssessment(){
+
+$("questions").innerHTML="";
+$("submit").style.display="none";
+
+}
+
+
 /* COMPLETED */
 
 function showCompleted(){
 
 lessonCompleted=true;
 
-/* Remove questions */
-$("questions").innerHTML="";
-$("questions").style.display="none";
+clearAssessment();
 
-/* Hide submit */
-$("submit").style.display="none";
-
-/* Hide 70% instruction */
-$("assessmentSub").style.display="none";
-
-/* Hide previous result */
-$("result").className="result";
-$("result").textContent="";
-
-/* Show ONE completed message */
 $("done").textContent=UI.completed;
 $("done").classList.add("show");
 
-/* Show next */
+$("result").className="result";
+$("result").textContent="";
+
 $("next").style.display="block";
 $("next").disabled=false;
 
 }
 
 
-/* BUILD QUESTIONS */
+/* QUESTIONS */
 
 function buildQuestions(){
 
@@ -582,8 +579,7 @@ const box=$("questions");
 
 box.innerHTML="";
 
-if(!Array.isArray(questions) ||
-questions.length!==5){
+if(!Array.isArray(questions) || questions.length!==5){
 
 box.innerHTML=`
 <div style="
@@ -598,6 +594,7 @@ ${UI.missing}
 </div>`;
 
 $("submit").style.display="none";
+
 return;
 }
 
@@ -638,7 +635,7 @@ options=[];
 
 }
 
-let questionText=q.question||"";
+let questionText=q.question || "";
 
 if(lang==="ta" && q.question_ta)
 questionText=q.question_ta;
@@ -655,8 +652,7 @@ div.innerHTML=`
 ${i+1}. ${questionText}
 </div>
 
-${
-options.map((o,n)=>`
+${options.map((o,n)=>`
 
 <label class="option">
 
@@ -669,8 +665,7 @@ value="${n}">
 
 </label>
 
-`).join("")
-}
+`).join("")}
 
 `;
 
@@ -684,9 +679,7 @@ box.querySelectorAll("input").forEach(input=>{
 input.addEventListener("change",()=>{
 
 document
-.querySelectorAll(
-`input[name="${input.name}"]`
-)
+.querySelectorAll(`input[name="${input.name}"]`)
 .forEach(x=>{
 
 const option=x.closest(".option");
@@ -722,18 +715,18 @@ throw new Error("Invalid lesson ID.");
 
 }
 
-if(!Number.isInteger(moduleId) || moduleId<1){
-
-throw new Error("Invalid module ID.");
-
-}
-
 if(!studentId){
 
 throw new Error("Invalid student ID.");
 
 }
 
+
+/*
+IMPORTANT:
+The lesson page receives the exact
+lesson ID from dashboard.
+*/
 
 const url=
 API+
@@ -750,72 +743,57 @@ const data=await response.json();
 if(!response.ok || !data.success){
 
 throw new Error(
-data.message ||
-"Unable to load lesson."
+data.message || "Unable to load lesson."
 );
 
 }
 
 
-/* LOCK */
+/* PREMIUM LOCK */
 
 if(data.lesson && data.lesson.locked){
 
 message(
 lang==="ta"
 ?"இந்தப் பாடத்திற்கு Premium உறுப்பினர் தேவை."
-:
-lang==="si"
+:lang==="si"
 ?"මෙම පාඩම සඳහා Premium සාමාජිකත්වය අවශ්‍ය වේ."
-:
-"Premium membership is required.",
+:"Premium membership is required.",
 "error"
 );
-
-setTimeout(()=>{
-location.href="premium.html";
-},1000);
 
 return;
 }
 
 
-const lesson=data.lesson||{};
+const lesson=data.lesson || {};
 
 
 /* CONTENT */
 
 $("number").textContent=
-"LESSON "+(
-lesson.lesson_number ||
-lessonId
-);
+"LESSON "+(lesson.lesson_number || lessonId);
 
-$("title").textContent=
-lesson.title||"";
+$("title").textContent=lesson.title || "";
 
 $("description").textContent=
-lesson.description||"";
+lesson.description || "";
 
 $("content").textContent=
-lesson.content||"";
+lesson.content || "";
 
 $("reference").textContent=
-lesson.bible_reference||"";
+lesson.bible_reference || "";
 
 $("verseText").textContent=
-lesson.bible_verse||"";
+lesson.bible_verse || "";
 
 $("lesson").style.display="block";
 
 hideMessage();
 
 
-/*
-IMPORTANT:
-Completed status is checked BEFORE
-questions are created.
-*/
+/* COMPLETED */
 
 if(
 lesson.completed===true ||
@@ -824,6 +802,7 @@ lesson.completed==="1"
 ){
 
 showCompleted();
+
 return;
 
 }
@@ -832,9 +811,6 @@ return;
 /* NOT COMPLETED */
 
 lessonCompleted=false;
-
-$("done").classList.remove("show");
-$("assessmentSub").style.display="block";
 
 questions=
 Array.isArray(data.questions)
@@ -854,8 +830,7 @@ message(UI.missing,"error");
 console.error(error);
 
 message(
-error.message ||
-"Unable to load lesson.",
+error.message || "Unable to load lesson.",
 "error"
 );
 
@@ -866,34 +841,30 @@ error.message ||
 
 /* SUBMIT */
 
-$("submit").addEventListener(
-"click",
-async function(){
+$("submit").addEventListener("click",async function(){
 
 if(lessonCompleted)return;
 
 const selected=[
-...document.querySelectorAll(
-"#questions input:checked"
-)
+...document.querySelectorAll("#questions input:checked")
 ];
 
 if(selected.length!==5){
 
 message(UI.all,"error");
-return;
 
+return;
 }
 
 let score=0;
 
 selected.forEach(input=>{
 
-const index=
-Number(input.name.replace("q",""));
+const index=Number(
+input.name.replace("q","")
+);
 
-const correct=
-Number(
+const correct=Number(
 questions[index].correct_answer
 );
 
@@ -905,12 +876,11 @@ score++;
 const percent=score*20;
 
 
-/* FAIL */
+/* FAILED */
 
 if(percent<70){
 
-$("result").className=
-"result show fail";
+$("result").className="result show fail";
 
 $("result").textContent=
 `${UI.fail} Score: ${percent}%`;
@@ -924,7 +894,7 @@ return;
 }
 
 
-/* PASS */
+/* PASSED */
 
 $("submit").disabled=true;
 $("submit").textContent=UI.saving;
@@ -939,11 +909,9 @@ headers:{
 "Content-Type":"application/json"
 },
 body:JSON.stringify({
-
 student_id:studentId,
 lesson_id:lessonId,
 module_id:moduleId
-
 })
 }
 );
@@ -953,34 +921,28 @@ const data=await response.json();
 if(!response.ok || !data.success){
 
 throw new Error(
-data.message ||
-"Unable to save progress."
+data.message || "Unable to save progress."
 );
 
 }
 
-
-/* COMPLETED */
-
 lessonCompleted=true;
 
 $("questions").innerHTML="";
-$("questions").style.display="none";
 
 $("submit").style.display="none";
 
-$("assessmentSub").style.display="none";
-
 $("done").textContent=UI.completed;
+
 $("done").classList.add("show");
 
-$("result").className=
-"result show pass";
+$("result").className="result show pass";
 
 $("result").textContent=
 `${UI.pass} Score: ${percent}%`;
 
 $("next").style.display="block";
+
 $("next").disabled=false;
 
 message(UI.saved,"success");
@@ -990,37 +952,56 @@ message(UI.saved,"success");
 console.error(error);
 
 $("submit").disabled=false;
+
 $("submit").textContent=UI.submit;
 
 message(
-error.message ||
-"Unable to save progress.",
+error.message || "Unable to save progress.",
 "error"
 );
 
 }
 
-}
-);
+});
 
 
-/* NEXT */
+/* NEXT LESSON */
 
-$("next").addEventListener(
-"click",
-function(){
+$("next").addEventListener("click",function(){
 
 const nextLesson=lessonId+1;
 
-location.href=
-"lesson.html"+
-"?lesson_id="+
-encodeURIComponent(nextLesson)+
-"&module_id="+
-encodeURIComponent(moduleId);
+
+/*
+Lesson 1 is FREE.
+Lessons 2–180 are Premium.
+
+Therefore a FREE student should NOT
+go to lesson.html for Lesson 2.
+*/
+
+if(nextLesson>=2 && nextLesson<=180){
+
+location.href="premium.html";
+
+return;
 
 }
-);
+
+
+/*
+Course finished.
+*/
+
+if(nextLesson>180){
+
+location.href="dashboard.html";
+
+return;
+
+}
+
+});
 
 
 /* START */
