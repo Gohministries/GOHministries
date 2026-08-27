@@ -8,7 +8,6 @@
 
 <style>
 *{box-sizing:border-box}
-
 body{
  margin:0;
  min-height:100vh;
@@ -20,7 +19,6 @@ body{
  background:#f5f7fb;
  color:#172033
 }
-
 .card{
  width:100%;
  max-width:400px;
@@ -29,91 +27,34 @@ body{
  border-radius:16px;
  box-shadow:0 4px 20px #0001
 }
-
 .logo{
- width:60px;
- height:60px;
- margin:0 auto 16px;
- border-radius:14px;
- background:#155eef;
- color:#fff;
- display:flex;
- align-items:center;
- justify-content:center;
- font-size:25px;
- font-weight:bold
+ width:60px;height:60px;margin:0 auto 16px;
+ border-radius:14px;background:#155eef;color:#fff;
+ display:flex;align-items:center;justify-content:center;
+ font-size:25px;font-weight:bold
 }
-
-h1{
- text-align:center;
- margin:0 0 6px;
- font-size:23px
-}
-
-.sub{
- text-align:center;
- color:#667085;
- font-size:13px;
- margin-bottom:24px
-}
-
-label{
- display:block;
- font-size:13px;
- font-weight:bold;
- margin:14px 0 6px
-}
-
+h1{text-align:center;margin:0 0 6px;font-size:23px}
+.sub{text-align:center;color:#667085;font-size:13px;margin-bottom:24px}
+label{display:block;font-size:13px;font-weight:bold;margin:14px 0 6px}
 input{
- width:100%;
- padding:13px;
- border:1px solid #d5dbe5;
- border-radius:9px;
- font-size:14px;
- outline:none
+ width:100%;padding:13px;border:1px solid #d5dbe5;
+ border-radius:9px;font-size:14px;outline:none
 }
-
-input:focus{
- border-color:#155eef
-}
-
+input:focus{border-color:#155eef}
 button{
- width:100%;
- border:0;
- border-radius:9px;
- padding:13px;
- margin-top:20px;
- background:#155eef;
- color:#fff;
- font-weight:bold;
- font-size:14px;
- cursor:pointer
+ width:100%;border:0;border-radius:9px;padding:13px;
+ margin-top:20px;background:#155eef;color:#fff;
+ font-weight:bold;font-size:14px;cursor:pointer
 }
-
-button:disabled{
- opacity:.6;
- cursor:not-allowed
-}
-
+button:disabled{opacity:.6;cursor:not-allowed}
 .msg{
- display:none;
- padding:11px;
- border-radius:8px;
- margin-top:15px;
- font-size:13px
+ display:none;padding:11px;border-radius:8px;
+ margin-top:15px;font-size:13px
 }
-
-.error{
- display:block;
- background:#fee2e2;
- color:#991b1b
-}
-
+.error{display:block;background:#fee2e2;color:#991b1b}
+.success{display:block;background:#dcfce7;color:#166534}
 .info{
- margin-top:20px;
- text-align:center;
- color:#667085;
- font-size:11px
+ margin-top:20px;text-align:center;color:#667085;font-size:11px
 }
 </style>
 </head>
@@ -126,9 +67,7 @@ button:disabled{
 
 <h1>GOH Ministries Finance</h1>
 
-<div class="sub">
-Administrator Login
-</div>
+<div class="sub">Finance Administration Login</div>
 
 <form id="loginForm">
 
@@ -150,9 +89,7 @@ Administrator Login
  required
 >
 
-<button id="loginBtn" type="submit">
-Login
-</button>
+<button id="loginBtn" type="submit">Login</button>
 
 <div id="msg" class="msg"></div>
 
@@ -169,28 +106,32 @@ Secure Finance Administration System
 const API="https://goh-finance.createlk.workers.dev";
 const KEY="goh_finance_token";
 
+/*
+ IMPORTANT:
+ These filenames must actually exist in your website.
+
+ Admin → admin.html
+ Finance/Viewer → finance-dashboard.html
+*/
+
+const ADMIN_PAGE="admin.html";
+const DASHBOARD_PAGE="finance-dashboard.html";
+
 const form=document.getElementById("loginForm");
 const btn=document.getElementById("loginBtn");
 const msg=document.getElementById("msg");
 
-function show(text){
+function show(text,type="error"){
  msg.textContent=text;
- msg.className="msg error";
+ msg.className="msg "+type;
 }
 
-form.addEventListener("submit",async e=>{
+form.addEventListener("submit",async function(e){
 
  e.preventDefault();
 
- const email=document
-  .getElementById("email")
-  .value
-  .trim()
-  .toLowerCase();
-
- const password=document
-  .getElementById("password")
-  .value;
+ const email=document.getElementById("email").value.trim().toLowerCase();
+ const password=document.getElementById("password").value;
 
  if(!email||!password){
   show("Email and password are required.");
@@ -203,44 +144,68 @@ form.addEventListener("submit",async e=>{
 
  try{
 
-  const r=await fetch(
-   API+"/api/login",
-   {
-    method:"POST",
-    headers:{
-     "Content-Type":"application/json"
-    },
-    body:JSON.stringify({
-     email,
-     password
-    })
-   }
-  );
+  const response=await fetch(API+"/api/login",{
+   method:"POST",
+   headers:{
+    "Content-Type":"application/json",
+    "Accept":"application/json"
+   },
+   body:JSON.stringify({
+    email:email,
+    password:password
+   })
+  });
 
-  const d=await r.json();
+  let data;
 
-  if(!r.ok||!d.success){
+  try{
+   data=await response.json();
+  }catch{
    throw new Error(
-    d.error||"Invalid login."
+    "Finance server returned an invalid response."
    );
   }
 
-  localStorage.setItem(
-   KEY,
-   d.token
-  );
-
-  if(d.user&&d.user.role==="admin"){
-   location.href="admin.html";
-  }else{
-   location.href="finance-dashboard.html";
+  if(!response.ok||!data.success){
+   throw new Error(
+    data.error||"Invalid email or password."
+   );
   }
+
+  if(!data.token){
+   throw new Error("Login succeeded but no session token was returned.");
+  }
+
+  localStorage.setItem(KEY,data.token);
+
+  if(data.user){
+   localStorage.setItem(
+    "goh_finance_user",
+    JSON.stringify(data.user)
+   );
+  }
+
+  show("Login successful. Opening dashboard...","success");
+
+  /*
+   Give the browser a moment to save localStorage,
+   then redirect.
+  */
+
+  setTimeout(function(){
+
+   if(data.user && data.user.role==="admin"){
+    window.location.replace(ADMIN_PAGE);
+   }else{
+    window.location.replace(DASHBOARD_PAGE);
+   }
+
+  },300);
 
  }catch(err){
 
-  show(err.message);
-
- }finally{
+  console.error(err);
+  show(err.message||"Unable to login.");
 
   btn.disabled=false;
   btn.textContent="Login";
