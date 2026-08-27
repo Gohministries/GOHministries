@@ -4,31 +4,38 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#155eef">
-<title>GOH Ministries Finance - Approvals</title>
+<title>GOH Ministries Finance - Payment Approvals</title>
+
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
 header{background:#155eef;color:#fff;padding:15px 18px}
-.head{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center}
-.logout{background:#fff;color:#155eef;border:0;border-radius:8px;padding:9px 13px;font-weight:bold}
-nav{max-width:1050px;margin:10px auto 0;display:flex;gap:8px;overflow:auto}
+.head{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:bold}
+.logout{background:#fff;color:#155eef;border:0;border-radius:8px;padding:9px 13px;font-weight:bold;cursor:pointer}
+nav{max-width:1100px;margin:10px auto 0;display:flex;gap:8px;overflow:auto}
 nav a{background:#fff;color:#155eef;padding:8px 11px;border-radius:8px;text-decoration:none;font-size:12px;white-space:nowrap}
-main{max-width:1050px;margin:auto;padding:18px}
+main{max-width:1100px;margin:auto;padding:18px}
 .card{background:#fff;padding:18px;border-radius:14px;margin-bottom:16px;box-shadow:0 2px 12px #0001}
-.table{overflow:auto}
-table{width:100%;min-width:850px;border-collapse:collapse}
-th,td{padding:10px;border-bottom:1px solid #edf0f4;text-align:left;font-size:13px}
-th{background:#f8fafc;color:#667085}
-button{border:0;border-radius:7px;padding:8px 11px;color:#fff;font-weight:bold;cursor:pointer;margin:2px}
-.approve{background:#16a34a}
-.reject{background:#dc2626}
-.slip{background:#155eef}
+h2,h3{margin-top:0}
 .small{font-size:13px;color:#667085}
-.badge{padding:4px 8px;border-radius:20px;background:#fef3c7;color:#92400e;font-size:11px;font-weight:bold}
-.msg{padding:10px;border-radius:8px;margin-bottom:15px;display:none}
+.msg{display:none;padding:11px;border-radius:8px;margin-bottom:15px;font-size:13px}
 .ok{display:block;background:#dcfce7;color:#166534}
 .bad{display:block;background:#fee2e2;color:#991b1b}
-@media(max-width:700px){main{padding:12px}}
+.table{overflow:auto}
+table{width:100%;min-width:900px;border-collapse:collapse}
+th,td{padding:10px;border-bottom:1px solid #edf0f4;text-align:left;font-size:13px;vertical-align:middle}
+th{background:#f8fafc;color:#667085}
+button{border:0;border-radius:7px;padding:8px 11px;color:#fff;font-weight:bold;cursor:pointer;margin:2px}
+.view{background:#475467}
+.approve{background:#16a34a}
+.reject{background:#dc2626}
+button:disabled{opacity:.55;cursor:not-allowed}
+.badge{display:inline-block;padding:5px 8px;border-radius:20px;font-size:11px;font-weight:bold;background:#fef3c7;color:#92400e}
+.empty{padding:20px;text-align:center;color:#667085}
+@media(max-width:700px){
+main{padding:12px}
+}
 </style>
 </head>
 
@@ -36,7 +43,7 @@ button{border:0;border-radius:7px;padding:8px 11px;color:#fff;font-weight:bold;c
 
 <header>
 <div class="head">
-<b>GOH Ministries Finance</b>
+<div class="logo">GOH Ministries Finance</div>
 <button class="logout" onclick="logout()">Logout</button>
 </div>
 
@@ -65,6 +72,7 @@ Review uploaded receipts/slips before approving financial records.
 
 <div class="card">
 <h3>Income</h3>
+
 <div class="table">
 <table>
 <thead>
@@ -79,15 +87,20 @@ Review uploaded receipts/slips before approving financial records.
 <th>Action</th>
 </tr>
 </thead>
+
 <tbody id="income">
-<tr><td colspan="8">Loading...</td></tr>
+<tr>
+<td colspan="8" class="empty">Loading...</td>
+</tr>
 </tbody>
 </table>
 </div>
 </div>
+
 
 <div class="card">
 <h3>Expenses</h3>
+
 <div class="table">
 <table>
 <thead>
@@ -102,15 +115,20 @@ Review uploaded receipts/slips before approving financial records.
 <th>Action</th>
 </tr>
 </thead>
+
 <tbody id="expenses">
-<tr><td colspan="8">Loading...</td></tr>
+<tr>
+<td colspan="8" class="empty">Loading...</td>
+</tr>
 </tbody>
 </table>
 </div>
 </div>
 
+
 <div class="card">
 <h3>Donations</h3>
+
 <div class="table">
 <table>
 <thead>
@@ -125,8 +143,11 @@ Review uploaded receipts/slips before approving financial records.
 <th>Action</th>
 </tr>
 </thead>
+
 <tbody id="donations">
-<tr><td colspan="8">Loading...</td></tr>
+<tr>
+<td colspan="8" class="empty">Loading...</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -139,8 +160,15 @@ Review uploaded receipts/slips before approving financial records.
 const API="https://goh-finance.createlk.workers.dev";
 const KEY="goh_finance_token";
 
-function headers(){
+function authHeaders(){
 return{
+"Authorization":"Bearer "+localStorage.getItem(KEY)
+};
+}
+
+function jsonHeaders(){
+return{
+"Content-Type":"application/json",
 "Authorization":"Bearer "+localStorage.getItem(KEY)
 };
 }
@@ -155,19 +183,19 @@ return String(v??"")
 }
 
 function money(v){
-return "LKR "+Number(v||0).toLocaleString("en-LK",{
+return Number(v||0).toLocaleString("en-LK",{
 minimumFractionDigits:2,
 maximumFractionDigits:2
 });
 }
 
 function show(text,ok=false){
-const x=document.getElementById("msg");
-x.textContent=text;
-x.className="msg "+(ok?"ok":"bad");
+const el=document.getElementById("msg");
+el.textContent=text;
+el.className="msg "+(ok?"ok":"bad");
 }
 
-async function check(){
+async function checkAdmin(){
 
 const token=localStorage.getItem(KEY);
 
@@ -180,12 +208,14 @@ try{
 
 const r=await fetch(
 API+"/api/me",
-{headers:headers()}
+{headers:authHeaders()}
 );
 
 const d=await r.json();
 
-if(!r.ok||!d.success)throw Error();
+if(!r.ok||!d.success){
+throw new Error();
+}
 
 if(d.user.role!=="admin"){
 alert("Administrator access required.");
@@ -205,25 +235,89 @@ return false;
 
 }
 
-function row(t,x){
 
-const person=t==="donations"
-?esc(x.donor_name||"-")
-:esc(x.category||"-");
+async function loadApprovals(){
 
-return `
+const income=document.getElementById("income");
+const expenses=document.getElementById("expenses");
+const donations=document.getElementById("donations");
+
+try{
+
+const r=await fetch(
+API+"/api/approvals",
+{
+method:"GET",
+headers:authHeaders()
+}
+);
+
+const d=await r.json();
+
+if(!r.ok||!d.success){
+
+throw new Error(
+d.error||"Unable to load approvals."
+);
+
+}
+
+renderIncome(d.income||[]);
+renderExpenses(d.expenses||[]);
+renderDonations(d.donations||[]);
+
+}catch(e){
+
+const text=esc(
+e.message||"Unable to load approvals."
+);
+
+income.innerHTML=
+`<tr><td colspan="8" class="empty">${text}</td></tr>`;
+
+expenses.innerHTML=
+`<tr><td colspan="8" class="empty">${text}</td></tr>`;
+
+donations.innerHTML=
+`<tr><td colspan="8" class="empty">${text}</td></tr>`;
+
+}
+
+}
+
+
+function renderIncome(rows){
+
+const el=document.getElementById("income");
+
+if(!rows.length){
+
+el.innerHTML=
+`<tr>
+<td colspan="8" class="empty">
+No pending income approvals.
+</td>
+</tr>`;
+
+return;
+}
+
+el.innerHTML=rows.map(x=>`
+
 <tr>
+
 <td>${esc(x.date)}</td>
-<td>${person}</td>
-<td>${money(x.amount)}</td>
+
+<td>${esc(x.category)}</td>
+
+<td><b>LKR ${money(x.amount)}</b></td>
+
 <td>${esc(x.payment_method)}</td>
+
 <td>${esc(x.reference_number||"-")}</td>
 
 <td>
-<button class="slip"
-onclick="viewSlip('${t}',${Number(x.id)})">
-View Slip
-</button>
+${receiptButton("income",x.id,x.receipt_name)}
 </td>
 
 <td>
@@ -231,108 +325,269 @@ View Slip
 </td>
 
 <td>
-<button class="approve"
-onclick="approve('${t}',${Number(x.id)})">
+<button
+class="approve"
+onclick="approveRecord('income',${x.id})">
 Approve
 </button>
 
-<button class="reject"
-onclick="rejectRecord('${t}',${Number(x.id)})">
+<button
+class="reject"
+onclick="rejectRecord('income',${x.id})">
 Reject
 </button>
 </td>
 
 </tr>
+
+`).join("");
+
+}
+
+
+function renderExpenses(rows){
+
+const el=document.getElementById("expenses");
+
+if(!rows.length){
+
+el.innerHTML=
+`<tr>
+<td colspan="8" class="empty">
+No pending expense approvals.
+</td>
+</tr>`;
+
+return;
+}
+
+el.innerHTML=rows.map(x=>`
+
+<tr>
+
+<td>${esc(x.date)}</td>
+
+<td>${esc(x.category)}</td>
+
+<td><b>LKR ${money(x.amount)}</b></td>
+
+<td>${esc(x.payment_method)}</td>
+
+<td>${esc(x.reference_number||"-")}</td>
+
+<td>
+${receiptButton("expenses",x.id,x.receipt_name)}
+</td>
+
+<td>
+<span class="badge">${esc(x.status)}</span>
+</td>
+
+<td>
+<button
+class="approve"
+onclick="approveRecord('expenses',${x.id})">
+Approve
+</button>
+
+<button
+class="reject"
+onclick="rejectRecord('expenses',${x.id})">
+Reject
+</button>
+</td>
+
+</tr>
+
+`).join("");
+
+}
+
+
+function renderDonations(rows){
+
+const el=document.getElementById("donations");
+
+if(!rows.length){
+
+el.innerHTML=
+`<tr>
+<td colspan="8" class="empty">
+No pending donation approvals.
+</td>
+</tr>`;
+
+return;
+}
+
+el.innerHTML=rows.map(x=>`
+
+<tr>
+
+<td>${esc(x.date)}</td>
+
+<td>${esc(x.donor_name||"-")}</td>
+
+<td><b>LKR ${money(x.amount)}</b></td>
+
+<td>${esc(x.payment_method)}</td>
+
+<td>${esc(x.reference_number||"-")}</td>
+
+<td>
+${receiptButton("donations",x.id,x.receipt_name)}
+</td>
+
+<td>
+<span class="badge">${esc(x.status)}</span>
+</td>
+
+<td>
+<button
+class="approve"
+onclick="approveRecord('donations',${x.id})">
+Approve
+</button>
+
+<button
+class="reject"
+onclick="rejectRecord('donations',${x.id})">
+Reject
+</button>
+</td>
+
+</tr>
+
+`).join("");
+
+}
+
+
+function receiptButton(t,id,name){
+
+if(!name){
+return `<span class="small">No receipt</span>`;
+}
+
+return`
+<button
+class="view"
+onclick="viewReceipt('${t}',${id})">
+View Slip
+</button>
 `;
 
 }
 
-async function load(){
+
+async function viewReceipt(t,id){
 
 try{
 
 const r=await fetch(
-API+"/api/approvals",
-{headers:headers()}
+API+"/api/"+t+"/"+id+"/receipt",
+{
+method:"GET",
+headers:authHeaders()
+}
 );
 
-const d=await r.json();
+if(!r.ok){
 
-if(!r.ok||!d.success)
-throw Error(d.error||"Unable to load approvals.");
+let d={};
 
-for(const t of ["income","expenses","donations"]){
+try{
+d=await r.json();
+}catch{}
 
-const rows=d[t]||[];
-
-document.getElementById(t).innerHTML=
-rows.map(x=>row(t,x)).join("")||
-
-`<tr>
-<td colspan="8">No pending approvals.</td>
-</tr>`;
+throw new Error(
+d.error||"Unable to open receipt."
+);
 
 }
+
+const blob=await r.blob();
+
+const url=URL.createObjectURL(blob);
+
+window.open(
+url,
+"_blank",
+"noopener,noreferrer"
+);
+
+setTimeout(()=>{
+URL.revokeObjectURL(url);
+},60000);
 
 }catch(e){
 
-show(e.message);
-
-for(const t of ["income","expenses","donations"]){
-document.getElementById(t).innerHTML=
-`<tr><td colspan="8">Unable to load records.</td></tr>`;
-}
+alert(e.message);
 
 }
 
 }
 
-function viewSlip(t,id){
 
-const url=
-API+"/api/"+t+"/"+id+"/receipt";
+async function approveRecord(t,id){
 
-window.open(url,"_blank");
-
-}
-
-async function approve(t,id){
-
-if(!confirm("Approve this record?"))return;
+if(!confirm(
+"Approve this financial record?"
+))return;
 
 try{
 
 const r=await fetch(
-API+"/api/"+t+"/"+id+"/approve",
+API+"/"+""+
+"api/"+t+"/"+id+"/approve",
 {
 method:"POST",
-headers:headers()
+headers:jsonHeaders()
 }
 );
 
 const d=await r.json();
 
-if(!r.ok||!d.success)
-throw Error(d.error||"Approval failed.");
+if(!r.ok||!d.success){
 
-show("Record approved successfully.",true);
+throw new Error(
+d.error||"Unable to approve record."
+);
 
-await load();
+}
+
+show(
+"Record approved successfully.",
+true
+);
+
+await loadApprovals();
 
 }catch(e){
 
-show(e.message);
+show(
+e.message||"Unable to approve record."
+);
 
 }
 
 }
+
 
 async function rejectRecord(t,id){
 
-const reason=
-prompt("Enter rejection reason:","Incorrect or invalid receipt");
+const reason=prompt(
+"Enter rejection reason:"
+);
 
 if(reason===null)return;
+
+const finalReason=
+reason.trim()||"Rejected";
+
+if(!confirm(
+"Reject this financial record?"
+))return;
 
 try{
 
@@ -340,32 +595,40 @@ const r=await fetch(
 API+"/api/"+t+"/"+id+"/reject",
 {
 method:"POST",
-headers:{
-...headers(),
-"Content-Type":"application/json"
-},
+headers:jsonHeaders(),
 body:JSON.stringify({
-reason:reason.trim()||"Rejected"
+reason:finalReason
 })
 }
 );
 
 const d=await r.json();
 
-if(!r.ok||!d.success)
-throw Error(d.error||"Rejection failed.");
+if(!r.ok||!d.success){
 
-show("Record rejected.",true);
+throw new Error(
+d.error||"Unable to reject record."
+);
 
-await load();
+}
+
+show(
+"Record rejected.",
+true
+);
+
+await loadApprovals();
 
 }catch(e){
 
-show(e.message);
+show(
+e.message||"Unable to reject record."
+);
 
 }
 
 }
+
 
 async function logout(){
 
@@ -375,19 +638,25 @@ await fetch(
 API+"/api/logout",
 {
 method:"POST",
-headers:headers()
+headers:authHeaders()
 }
 );
 
 }catch(e){}
 
 localStorage.removeItem(KEY);
+
 location.href="admin-login.html";
 
 }
 
-check().then(ok=>{
-if(ok)load();
+
+checkAdmin().then(ok=>{
+
+if(ok){
+loadApprovals();
+}
+
 });
 
 </script>
