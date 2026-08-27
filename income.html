@@ -4,149 +4,171 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#155eef">
-<title>GOH Finance - Income</title>
+<title>GOH Ministries Finance - Income</title>
 
 <style>
 *{box-sizing:border-box}
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#f5f7fb;
-color:#172033
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f5f7fb;
+  color:#172033
 }
 header{
-background:#155eef;
-color:#fff;
-padding:15px 18px
+  background:#155eef;
+  color:#fff;
+  padding:15px 18px
 }
 .head{
-max-width:900px;
-margin:auto;
-display:flex;
-justify-content:space-between;
-align-items:center
+  max-width:900px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px
 }
 .back{
-background:#fff;
-color:#155eef;
-border:0;
-border-radius:8px;
-padding:9px 13px;
-font-weight:bold;
-cursor:pointer
+  color:#fff;
+  text-decoration:none;
+  font-weight:bold
 }
 main{
-max-width:900px;
-margin:auto;
-padding:18px
+  max-width:900px;
+  margin:auto;
+  padding:18px
 }
 .card{
-background:#fff;
-padding:18px;
-border-radius:14px;
-margin-bottom:16px;
-box-shadow:0 2px 12px #0001
+  background:#fff;
+  padding:18px;
+  border-radius:14px;
+  margin-bottom:16px;
+  box-shadow:0 2px 12px #0001
 }
-h2,h3{margin-top:0}
+h2,h3{
+  margin-top:0
+}
 label{
-display:block;
-font-size:13px;
-font-weight:bold;
-margin:13px 0 6px
+  display:block;
+  font-weight:bold;
+  margin:14px 0 7px
 }
 input,select,textarea{
-width:100%;
-padding:12px;
-border:1px solid #d5dbe5;
-border-radius:9px;
-font-size:14px;
-background:#fff
+  width:100%;
+  padding:12px;
+  border:1px solid #d0d5dd;
+  border-radius:9px;
+  font-size:15px;
+  background:#fff
 }
 textarea{
-min-height:75px;
-resize:vertical
+  min-height:90px;
+  resize:vertical
 }
 button{
-padding:11px 15px;
-border:0;
-border-radius:9px;
-background:#155eef;
-color:#fff;
-font-weight:bold;
-cursor:pointer
-}
-button:disabled{
-opacity:.6;
-cursor:not-allowed
+  border:0;
+  border-radius:9px;
+  padding:12px 16px;
+  font-weight:bold;
+  cursor:pointer
 }
 .save{
-width:100%;
-margin-top:16px
+  width:100%;
+  margin-top:16px;
+  background:#155eef;
+  color:#fff
+}
+.save:disabled{
+  opacity:.6;
+  cursor:not-allowed
+}
+.small{
+  font-size:13px;
+  color:#667085
 }
 .total{
-font-size:26px;
-font-weight:bold;
-margin-top:6px
+  font-size:28px;
+  font-weight:bold;
+  margin-top:7px
 }
-.msg{
-display:none;
-padding:11px;
-border-radius:9px;
-margin-top:12px;
-font-size:13px
+.message{
+  display:none;
+  padding:12px;
+  border-radius:9px;
+  margin-bottom:14px;
+  font-size:14px
 }
-.ok{
-display:block;
-background:#dcfce7;
-color:#166534
+.success{
+  display:block;
+  background:#ecfdf3;
+  color:#027a48
 }
-.bad{
-display:block;
-background:#fee2e2;
-color:#991b1b
+.error{
+  display:block;
+  background:#fef3f2;
+  color:#b42318
 }
-.item{
-border:1px solid #e5e7eb;
-border-radius:10px;
-padding:14px;
-margin-top:10px
+.filebox{
+  border:1px dashed #98a2b3;
+  padding:14px;
+  border-radius:10px;
+  background:#f8fafc
 }
-.itemtop{
-display:flex;
-justify-content:space-between;
-gap:12px
+.record{
+  border:1px solid #e4e7ec;
+  border-radius:12px;
+  padding:15px;
+  margin-top:12px
+}
+.recordtop{
+  display:flex;
+  justify-content:space-between;
+  gap:10px
 }
 .amount{
-font-weight:bold;
-font-size:16px
+  font-weight:bold;
+  font-size:18px
 }
-.meta{
-font-size:12px;
-color:#667085;
-margin-top:5px
+.status{
+  display:inline-block;
+  margin-top:8px;
+  padding:5px 9px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:bold
+}
+.pending{
+  background:#fff7ed;
+  color:#c2410c
+}
+.approved{
+  background:#ecfdf3;
+  color:#027a48
+}
+.rejected{
+  background:#fef2f2;
+  color:#b42318
 }
 .receipt{
-display:inline-block;
-margin-top:10px;
-text-decoration:none;
-font-size:13px;
-font-weight:bold;
-color:#155eef
+  display:inline-block;
+  margin-top:10px;
+  color:#155eef;
+  font-weight:bold;
+  text-decoration:none
 }
 .delete{
-margin-top:10px;
-background:#dc2626
+  background:#fff;
+  color:#b42318;
+  border:1px solid #fecdca;
+  margin-top:10px
 }
-.required{
-color:#dc2626
+.empty{
+  text-align:center;
+  padding:25px;
+  color:#667085
 }
 @media(max-width:600px){
-.itemtop{
-display:block
-}
-.amount{
-margin-top:8px
-}
+  main{padding:12px}
+  .card{padding:15px}
 }
 </style>
 </head>
@@ -155,835 +177,688 @@ margin-top:8px
 
 <header>
 <div class="head">
-
-<b>GOH Ministries Finance</b>
-
-<button
-class="back"
-onclick="location.href='finance-dashboard.html'">
-Dashboard
-</button>
-
+  <a class="back" href="dashboard.html">← Dashboard</a>
+  <b>GOH Ministries Finance</b>
 </div>
 </header>
 
-
 <main>
 
+<div id="message" class="message"></div>
 
 <div class="card">
-
 <h2>Income</h2>
-
-<div class="meta">
-Total Income
+<div class="small">Total Approved Income</div>
+<div class="total" id="total">LKR 0.00</div>
 </div>
-
-<div
-class="total"
-id="total">
-LKR 0.00
-</div>
-
-</div>
-
 
 <div class="card">
 
 <h3>Record Income</h3>
 
-<form id="form">
-
+<form id="incomeForm">
 
 <label>Category</label>
 
-<select
-id="category"
-required>
-
-<option value="">
-Select category
-</option>
-
+<select id="category" name="category" required>
+<option value="">Select category</option>
 <option>Offering</option>
 <option>Tithe</option>
 <option>Donation</option>
+<option>Mission Support</option>
+<option>Building Fund</option>
 <option>Special Offering</option>
-<option>Other Income</option>
-
+<option>Other</option>
 </select>
-
 
 <label>Amount</label>
 
 <input
-id="amount"
-type="number"
-min="0.01"
-step="0.01"
-placeholder="0.00"
-required
+ id="amount"
+ name="amount"
+ type="number"
+ min="0.01"
+ step="0.01"
+ placeholder="0.00"
+ required
 >
-
 
 <label>Date</label>
 
 <input
-id="date"
-type="date"
-required
+ id="date"
+ name="date"
+ type="date"
+ required
 >
-
 
 <label>Payment Method</label>
 
 <select
-id="payment_method"
-required>
-
-<option value="">
-Select payment method
-</option>
-
+ id="payment_method"
+ name="payment_method"
+ required
+>
+<option value="">Select payment method</option>
 <option>Cash</option>
 <option>Bank Transfer</option>
 <option>Cheque</option>
-
+<option>Card</option>
+<option>Online Payment</option>
+<option>Other</option>
 </select>
-
 
 <label>Reference Number</label>
 
 <input
-id="reference_number"
-type="text"
-placeholder="Optional reference number"
+ id="reference_number"
+ name="reference_number"
+ type="text"
+ placeholder="Optional reference number"
 >
-
 
 <label>Description</label>
 
 <textarea
-id="description"
-placeholder="Optional description">
-</textarea>
+ id="description"
+ name="description"
+ placeholder="Optional description"
+></textarea>
 
+<label>Receipt / Slip *</label>
 
-<label>
-Receipt / Slip
-<span class="required">*</span>
-</label>
+<div class="filebox">
 
 <input
-id="receipt"
-type="file"
-accept="image/jpeg,image/png,application/pdf"
+ id="receipt"
+ name="receipt"
+ type="file"
+ accept="image/jpeg,image/png,application/pdf"
+ required
 >
 
-
-<div class="meta">
+<div class="small" style="margin-top:7px">
 JPG, PNG or PDF • Maximum 5MB
 </div>
 
+</div>
 
 <button
-class="save"
-id="save"
-type="submit">
-
+ class="save"
+ id="saveBtn"
+ type="submit"
+>
 Save Income
-
 </button>
-
-
-<div
-id="msg"
-class="msg">
-</div>
 
 </form>
 
 </div>
-
 
 <div class="card">
 
 <h3>Income Records</h3>
 
 <div id="records">
-Loading...
+<div class="empty">
+Loading income records...
+</div>
 </div>
 
 </div>
-
 
 </main>
 
-
 <script>
 
-const API =
-"https://goh-finance-data.createlk.workers.dev";
+const API=
+"https://goh-finance-system.createlk.workers.dev";
 
-const AUTH_KEY =
+const KEY=
 "goh_finance_token";
 
 
-function token(){
-return localStorage.getItem(AUTH_KEY);
-}
+function authHeaders(){
 
-
-function headers(){
-
-return {
-"Authorization":
-"Bearer "+token()
-};
-
+ return {
+  "Authorization":
+   "Bearer "+
+   localStorage.getItem(KEY)
+ };
 }
 
 
 function money(value){
 
-return "LKR "+
-Number(value||0).toLocaleString(
-"en-LK",
-{
-minimumFractionDigits:2,
-maximumFractionDigits:2
-}
-);
+ return "LKR "+
+ Number(value||0).toLocaleString(
+  "en-LK",
+  {
+   minimumFractionDigits:2,
+   maximumFractionDigits:2
+  }
+ );
 
 }
 
 
 function escapeHtml(value){
 
-return String(value||"")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
+ return String(value??"")
+ .replace(/&/g,"&amp;")
+ .replace(/</g,"&lt;")
+ .replace(/>/g,"&gt;")
+ .replace(/"/g,"&quot;")
+ .replace(/'/g,"&#039;");
 
 }
 
 
-function showMessage(text,ok=false){
+function message(text,type){
 
-const el =
-document.getElementById("msg");
+ const box=
+  document.getElementById(
+   "message"
+  );
 
-el.textContent=text;
+ box.textContent=text;
 
-el.className =
-"msg "+(ok?"ok":"bad");
+ box.className=
+  "message "+type;
 
 }
 
 
 function today(){
 
-document.getElementById("date")
-.value =
-new Date()
-.toISOString()
-.slice(0,10);
+ const d=new Date();
+
+ return d.getFullYear()+
+ "-"+
+ String(d.getMonth()+1)
+  .padStart(2,"0")+
+ "-"+
+ String(d.getDate())
+  .padStart(2,"0");
 
 }
 
 
-/* LOGIN CHECK */
+document.getElementById(
+ "date"
+).value=today();
+
 
 async function checkLogin(){
 
-const t=token();
+ const token=
+  localStorage.getItem(KEY);
 
-if(!t){
+ if(!token){
 
-location.href="admin-login.html";
-return false;
+  location.href=
+   "admin-login.html";
 
-}
+  return false;
+ }
 
-try{
+ try{
 
-const r =
-await fetch(
-"https://goh-finance.createlk.workers.dev/api/me",
-{
-headers:{
-"Authorization":
-"Bearer "+t
-}
-}
-);
+  const response=
+   await fetch(
+    API+"/api/me",
+    {
+     headers:
+      authHeaders()
+    }
+   );
 
-if(r.status===401){
+  const data=
+   await response.json();
 
-localStorage.removeItem(
-AUTH_KEY
-);
+  if(
+   !response.ok ||
+   !data.success
+  ){
 
-location.href=
-"admin-login.html";
+   throw new Error();
 
-return false;
+  }
 
-}
+  return true;
 
-const d =
-await r.json();
+ }catch(e){
 
-if(!d.success){
+  localStorage.removeItem(KEY);
 
-localStorage.removeItem(
-AUTH_KEY
-);
+  location.href=
+   "admin-login.html";
 
-location.href=
-"admin-login.html";
+  return false;
 
-return false;
+ }
 
 }
 
-return true;
-
-}catch(e){
-
-document.getElementById("records")
-.textContent=
-"Unable to verify login.";
-
-return false;
-
-}
-
-}
-
-
-/* LOAD */
 
 async function loadIncome(){
 
-try{
+ const box=
+  document.getElementById(
+   "records"
+  );
 
-const r =
-await fetch(
-API+"/api/income",
-{
-headers:headers()
-}
-);
+ box.innerHTML=
+  `<div class="empty">
+    Loading income records...
+   </div>`;
 
+ try{
 
-if(r.status===401){
+  const response=
+   await fetch(
+    API+"/api/income",
+    {
+     headers:
+      authHeaders()
+    }
+   );
 
-localStorage.removeItem(
-AUTH_KEY
-);
+  const data=
+   await response.json();
 
-location.href=
-"admin-login.html";
+  if(response.status===401){
 
-return;
+   localStorage.removeItem(KEY);
 
-}
+   location.href=
+    "admin-login.html";
 
+   return;
 
-const d =
-await r.json();
+  }
 
+  if(
+   !response.ok ||
+   !data.success
+  ){
 
-if(!r.ok||!d.success){
+   throw new Error(
+    data.error||
+    "Unable to load income"
+   );
 
-throw new Error(
-d.error||
-"Unable to load income"
-);
+  }
 
-}
+  const list=
+   data.income||[];
 
+  let approvedTotal=0;
 
-const rows =
-d.income||[];
+  list.forEach(item=>{
 
+   if(
+    String(
+     item.status||
+     "PENDING"
+    ).toUpperCase()===
+    "APPROVED"
+   ){
 
-let total=0;
+    approvedTotal+=
+     Number(item.amount)||0;
 
-rows.forEach(x=>{
-total += Number(x.amount)||0;
-});
+   }
 
+  });
 
-document.getElementById("total")
-.textContent=
-money(total);
+  document.getElementById(
+   "total"
+  ).textContent=
+   money(approvedTotal);
 
 
-const box =
-document.getElementById("records");
+  if(!list.length){
 
+   box.innerHTML=
+    `<div class="empty">
+      No income records yet.
+     </div>`;
 
-if(!rows.length){
+   return;
 
-box.innerHTML =
-'<div class="meta">No income records yet.</div>';
+  }
 
-return;
 
-}
-
-
-box.innerHTML =
-rows.map(x=>`
-
-<div class="item">
-
-<div class="itemtop">
-
-<div>
-
-<b>
-${escapeHtml(x.category)}
-</b>
-
-<div class="meta">
-Date: ${escapeHtml(x.date)}
-</div>
-
-<div class="meta">
-Payment: ${escapeHtml(x.payment_method)}
-</div>
-
-${
-x.reference_number
-?
-`<div class="meta">
-Reference: ${escapeHtml(x.reference_number)}
-</div>`
-:""
-}
-
-</div>
-
-<div class="amount">
-${money(x.amount)}
-</div>
-
-</div>
-
-
-${
-x.description
-?
-`<div class="meta">
-${escapeHtml(x.description)}
-</div>`
-:""
-}
-
-
-${
-x.receipt_name
-?
-`<div>
-<a
-class="receipt"
-href="#"
-onclick="return viewReceipt(${x.id})">
-📎 View Receipt
-</a>
-</div>`
-:""
-}
-
-
-<button
-class="delete"
-onclick="deleteIncome(${x.id})">
-Delete
-</button>
-
-</div>
-
-`).join("");
-
-
-}catch(e){
-
-document.getElementById("records")
-.innerHTML =
-'<div class="meta">'+
-escapeHtml(e.message)+
-'</div>';
-
-}
-
-}
-
-
-/* ADD */
-
-async function addIncome(e){
-
-e.preventDefault();
-
-
-const button =
-document.getElementById("save");
-
-button.disabled=true;
-button.textContent=
-"Saving...";
-
-
-try{
-
-
-const file =
-document.getElementById(
-"receipt"
-).files[0];
-
-
-const payment =
-document.getElementById(
-"payment_method"
-).value;
-
-
-/*
-Receipt is required for
-Bank Transfer.
-*/
-
-if(
-payment==="Bank Transfer" &&
-!file
-){
-
-throw new Error(
-"Receipt/slip is required for bank transfers."
-);
-
-}
-
-
-/*
-Optional for cash and cheque.
-*/
-
-if(file){
-
-if(
-file.size >
-5*1024*1024
-){
-
-throw new Error(
-"Receipt must be 5MB or smaller."
-);
-
-}
-
-const allowed=[
-"image/jpeg",
-"image/png",
-"application/pdf"
-];
-
-if(
-!allowed.includes(file.type)
-){
-
-throw new Error(
-"Only JPG, PNG or PDF files are allowed."
-);
-
-}
-
-}
-
-
-const form =
-new FormData();
-
-
-form.append(
-"category",
-document.getElementById(
-"category"
-).value
-);
-
-
-form.append(
-"amount",
-document.getElementById(
-"amount"
-).value
-);
-
-
-form.append(
-"date",
-document.getElementById(
-"date"
-).value
-);
-
-
-form.append(
-"payment_method",
-payment
-);
-
-
-form.append(
-"reference_number",
-document.getElementById(
-"reference_number"
-).value
-);
-
-
-form.append(
-"description",
-document.getElementById(
-"description"
-).value
-);
-
-
-if(file){
-
-form.append(
-"receipt",
-file
-);
+  box.innerHTML=
+   list.map(item=>{
+
+    const status=
+     String(
+      item.status||
+      "PENDING"
+     ).toUpperCase();
+
+    let cls="pending";
+
+    if(status==="APPROVED")
+     cls="approved";
+
+    if(status==="REJECTED")
+     cls="rejected";
+
+
+    const receipt=
+     item.receipt_name
+     ?
+     `<a
+       class="receipt"
+       href="${API}/api/income/${item.id}/receipt"
+       target="_blank"
+       rel="noopener"
+      >
+       📎 View Receipt
+      </a>`
+     :
+     "";
+
+
+    const reason=
+     status==="REJECTED" &&
+     item.rejection_reason
+     ?
+     `<div
+       class="small"
+       style="margin-top:8px;color:#b42318"
+      >
+       Reason:
+       ${escapeHtml(
+        item.rejection_reason
+       )}
+      </div>`
+     :
+     "";
+
+
+    return `
+    <div class="record">
+
+     <div class="recordtop">
+
+      <div>
+
+       <b>
+        ${escapeHtml(
+         item.category
+        )}
+       </b>
+
+       <div class="small">
+        Date:
+        ${escapeHtml(
+         item.date
+        )}
+       </div>
+
+       <div class="small">
+        Payment:
+        ${escapeHtml(
+         item.payment_method
+        )}
+       </div>
+
+      </div>
+
+      <div class="amount">
+       ${money(item.amount)}
+      </div>
+
+     </div>
+
+     <span class="status ${cls}">
+      ${status}
+     </span>
+
+     ${
+      item.description
+      ?
+      `<div
+        class="small"
+        style="margin-top:8px"
+       >
+        ${escapeHtml(
+         item.description
+        )}
+       </div>`
+      :
+      ""
+     }
+
+     ${
+      item.reference_number
+      ?
+      `<div
+        class="small"
+        style="margin-top:6px"
+       >
+        Reference:
+        ${escapeHtml(
+         item.reference_number
+        )}
+       </div>`
+      :
+      ""
+     }
+
+     ${reason}
+
+     ${receipt}
+
+     <br>
+
+     <button
+      class="delete"
+      onclick="deleteIncome(${item.id})"
+     >
+      Delete
+     </button>
+
+    </div>
+    `;
+
+   }).join("");
+
+ }catch(error){
+
+  box.innerHTML=
+   `<div class="empty">
+     ${escapeHtml(
+      error.message
+     )}
+    </div>`;
+
+ }
 
 }
-
-
-const r =
-await fetch(
-API+"/api/income",
-{
-method:"POST",
-headers:{
-"Authorization":
-"Bearer "+token()
-},
-body:form
-}
-);
-
-
-const d =
-await r.json();
-
-
-if(r.status===401){
-
-localStorage.removeItem(
-AUTH_KEY
-);
-
-location.href=
-"admin-login.html";
-
-return;
-
-}
-
-
-if(!r.ok||!d.success){
-
-throw new Error(
-d.error||
-"Unable to save income"
-);
-
-}
-
-
-showMessage(
-"Income recorded successfully.",
-true
-);
 
 
 document.getElementById(
-"form"
-).reset();
+ "incomeForm"
+).addEventListener(
+ "submit",
+ async function(e){
+
+  e.preventDefault();
+
+  const button=
+   document.getElementById(
+    "saveBtn"
+   );
+
+  button.disabled=true;
+  button.textContent=
+   "Saving...";
+
+  message(
+   "",
+   ""
+  );
+
+  try{
+
+   const form=
+    document.getElementById(
+     "incomeForm"
+    );
+
+   const data=
+    new FormData(form);
 
 
-today();
+   const response=
+    await fetch(
+     API+"/api/income",
+     {
+      method:"POST",
+      headers:
+       authHeaders(),
+      body:data
+     }
+    );
 
 
-await loadIncome();
+   const result=
+    await response.json();
 
 
-}catch(e){
+   if(response.status===401){
 
-showMessage(e.message);
+    localStorage.removeItem(KEY);
 
-}finally{
+    location.href=
+     "admin-login.html";
 
-button.disabled=false;
-button.textContent=
-"Save Income";
+    return;
 
-}
-
-}
+   }
 
 
-/* RECEIPT */
+   if(
+    !response.ok ||
+    !result.success
+   ){
 
-async function viewReceipt(id){
+    throw new Error(
+     result.error||
+     "Unable to save income"
+    );
 
-try{
+   }
 
-const r =
-await fetch(
-API+"/api/income/"+id+"/receipt",
-{
-headers:headers()
-}
+
+   message(
+    "Income submitted successfully. It is now pending approval.",
+    "success"
+   );
+
+
+   form.reset();
+
+   document.getElementById(
+    "date"
+   ).value=today();
+
+
+   await loadIncome();
+
+
+  }catch(error){
+
+   message(
+    error.message||
+    "Unable to save income",
+    "error"
+   );
+
+  }finally{
+
+   button.disabled=false;
+   button.textContent=
+    "Save Income";
+
+  }
+
+ }
 );
 
-
-if(!r.ok){
-
-const d =
-await r.json()
-.catch(()=>({}));
-
-throw new Error(
-d.error||
-"Unable to open receipt"
-);
-
-}
-
-
-const blob =
-await r.blob();
-
-
-const url =
-URL.createObjectURL(blob);
-
-
-window.open(
-url,
-"_blank"
-);
-
-
-}catch(e){
-
-alert(e.message);
-
-}
-
-
-return false;
-
-}
-
-
-/* DELETE */
 
 async function deleteIncome(id){
 
-if(
-!confirm(
-"Delete this income record?"
-)
-){
+ if(
+  !confirm(
+   "Delete this income record?"
+  )
+ ){
+  return;
+ }
 
-return;
+ try{
 
-}
+  const response=
+   await fetch(
+    API+"/api/income/"+id,
+    {
+     method:"DELETE",
+     headers:
+      authHeaders()
+    }
+   );
 
+  const data=
+   await response.json();
 
-try{
+  if(
+   !response.ok ||
+   !data.success
+  ){
 
-const r =
-await fetch(
-API+"/api/income/"+id,
-{
-method:"DELETE",
-headers:headers()
-}
-);
+   throw new Error(
+    data.error||
+    "Unable to delete record"
+   );
 
+  }
 
-const d =
-await r.json();
+  message(
+   "Income record deleted.",
+   "success"
+  );
 
+  await loadIncome();
 
-if(r.status===401){
+ }catch(error){
 
-localStorage.removeItem(
-AUTH_KEY
-);
+  message(
+   error.message||
+   "Unable to delete record",
+   "error"
+  );
 
-location.href=
-"admin-login.html";
-
-return;
-
-}
-
-
-if(!r.ok||!d.success){
-
-throw new Error(
-d.error||
-"Unable to delete income"
-);
-
-}
-
-
-await loadIncome();
-
-
-}catch(e){
-
-alert(e.message);
-
-}
+ }
 
 }
 
 
-/* FORM */
+(async function(){
 
-document.getElementById(
-"form"
-).addEventListener(
-"submit",
-addIncome
-);
+ const ok=
+  await checkLogin();
 
+ if(ok){
 
-today();
+  await loadIncome();
 
-
-(async()=>{
-
-if(await checkLogin()){
-
-await loadIncome();
-
-}
+ }
 
 })();
 
