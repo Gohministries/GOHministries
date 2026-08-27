@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1">
 
 <title>Student Dashboard | GOH Bible Academy</title>
 
-<meta name="description"
-content="GOH Bible Academy student dashboard.">
+<meta
+name="description"
+content="GOH Bible Academy Student Dashboard">
 
-<meta name="theme-color" content="#111827">
+<meta
+name="theme-color"
+content="#111827">
 
-<link rel="icon"
+<link
+rel="icon"
 href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 
 <style>
@@ -31,17 +40,19 @@ line-height:1.5
 
 button,
 a{
-font:inherit
+font-family:inherit
 }
 
 a{
-text-decoration:none
+text-decoration:none;
+color:inherit
 }
 
 .container{
-width:min(900px,92%);
+width:min(1000px,92%);
 margin:auto
 }
+
 
 /* HEADER */
 
@@ -50,7 +61,7 @@ background:#fff;
 border-bottom:1px solid #e5e7eb;
 position:sticky;
 top:0;
-z-index:100
+z-index:1000
 }
 
 .nav{
@@ -58,30 +69,28 @@ min-height:64px;
 display:flex;
 align-items:center;
 justify-content:space-between;
-gap:10px
+gap:12px
 }
 
-.brand{
+.logo{
 display:flex;
 align-items:center;
 gap:9px
 }
 
-.brand img{
+.logo img{
 width:42px;
 height:42px;
 object-fit:contain;
 border-radius:10px
 }
 
-.brand strong{
-display:block;
+.logo-title{
 font-size:14px;
 font-weight:900
 }
 
-.brand span{
-display:block;
+.logo-sub{
 font-size:8px;
 color:#6b7280
 }
@@ -97,90 +106,95 @@ font-weight:900;
 cursor:pointer
 }
 
+
 /* MAIN */
 
 main{
 padding:25px 0 45px
 }
 
+
 /* WELCOME */
 
 .welcome{
 background:
-radial-gradient(circle at 90% 10%,rgba(99,102,241,.25),transparent 32%),
-linear-gradient(135deg,#111827,#273449);
+radial-gradient(
+circle at 90% 10%,
+rgba(99,102,241,.22),
+transparent 32%
+),
+linear-gradient(
+135deg,
+#111827,
+#273449
+);
+
 color:#fff;
 border-radius:22px;
-padding:28px;
-box-shadow:0 15px 35px rgba(15,23,42,.12);
-margin-bottom:12px
+padding:30px 25px;
+box-shadow:0 15px 40px rgba(15,23,42,.12)
 }
 
-.welcome-label{
-font-size:8px;
+.label{
+font-size:9px;
 font-weight:900;
 letter-spacing:1.2px;
 color:#fbbf24
 }
 
 .welcome h1{
-font-size:29px;
-line-height:1.15;
-margin:5px 0 7px
+font-size:30px;
+margin:7px 0
 }
 
 .welcome p{
 font-size:11px;
-color:#cbd5e1
+color:#cbd5e1;
+max-width:650px
 }
 
-/* STATUS */
 
-.status{
+/* INFO */
+
+.info-grid{
 display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:9px;
-margin-bottom:12px
+grid-template-columns:
+repeat(3,1fr);
+gap:10px;
+margin:12px 0 20px
 }
 
-.status-card{
+.info-card{
 background:#fff;
 border:1px solid #e5e7eb;
-border-radius:14px;
-padding:15px;
+border-radius:15px;
+padding:17px;
 text-align:center;
-box-shadow:0 5px 18px rgba(15,23,42,.04)
+box-shadow:0 6px 20px rgba(15,23,42,.04)
 }
 
-.status-card small{
-display:block;
+.info-label{
 font-size:8px;
-font-weight:800;
+font-weight:900;
 color:#6b7280;
-margin-bottom:4px
+letter-spacing:.7px
 }
 
-.status-card strong{
-font-size:17px;
-font-weight:900
+.info-value{
+font-size:16px;
+font-weight:900;
+margin-top:4px
 }
 
-.free{
-color:#16a34a
-}
-
-.premium{
-color:#7c3aed
-}
 
 /* COURSE */
 
-.course{
+.course-card{
 background:#fff;
 border:1px solid #e5e7eb;
 border-radius:20px;
-padding:24px;
-box-shadow:0 5px 18px rgba(15,23,42,.04)
+padding:25px;
+box-shadow:0 7px 25px rgba(15,23,42,.04)
 }
 
 .course-head{
@@ -188,16 +202,9 @@ text-align:center;
 margin-bottom:22px
 }
 
-.course-head .label{
-font-size:8px;
-font-weight:900;
-letter-spacing:1.2px;
-color:#6366f1
-}
-
 .course-head h2{
-font-size:24px;
-margin:4px 0
+font-size:25px;
+margin:5px 0
 }
 
 .course-head p{
@@ -205,245 +212,325 @@ font-size:10px;
 color:#6b7280
 }
 
-/* MODULE GRID */
+
+/* MODULES */
 
 .module-grid{
 display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:11px
+grid-template-columns:
+repeat(2,1fr);
+gap:12px
 }
 
-.module-card{
-border:1px solid #e5e7eb;
+.module{
 background:#f8fafc;
+border:1px solid #e5e7eb;
 border-radius:16px;
-padding:20px;
+padding:18px;
 cursor:pointer;
-transition:.2s;
-position:relative
+transition:.2s
 }
 
-.module-card:hover{
+.module:hover{
 transform:translateY(-2px);
-background:#fff;
-box-shadow:0 9px 25px rgba(15,23,42,.07)
+box-shadow:
+0 8px 20px rgba(15,23,42,.08)
+}
+
+.module-top{
+display:flex;
+align-items:center;
+gap:12px
 }
 
 .module-icon{
-width:42px;
-height:42px;
-display:grid;
-place-items:center;
+width:44px;
+height:44px;
 border-radius:12px;
 background:#fff;
-font-size:21px;
-margin-bottom:11px;
-box-shadow:0 3px 10px rgba(0,0,0,.05)
+display:grid;
+place-items:center;
+font-size:22px;
+box-shadow:0 3px 10px rgba(0,0,0,.05);
+flex:none
 }
 
 .module-number{
 font-size:8px;
 font-weight:900;
-letter-spacing:1px;
-color:#6366f1
+color:#6366f1;
+letter-spacing:1px
 }
 
-.module-title{
-font-size:15px;
-font-weight:900;
-margin:4px 0
+.module h3{
+font-size:14px;
+margin:3px 0
 }
 
-.module-description{
+.module p{
 font-size:10px;
 color:#6b7280;
-min-height:30px
+margin-top:10px
 }
 
 .module-bottom{
 display:flex;
-align-items:center;
 justify-content:space-between;
-gap:8px;
+align-items:center;
 margin-top:14px
 }
 
 .lesson-count{
-font-size:9px;
-font-weight:800;
-color:#374151;
+font-size:8px;
+font-weight:900;
 background:#fff;
 border:1px solid #e5e7eb;
-padding:6px 8px;
+padding:5px 8px;
 border-radius:7px
 }
 
-.open-module{
+.open-text{
 font-size:9px;
 font-weight:900;
 color:#4f46e5
 }
 
-/* LESSON PANEL */
 
-.lessons-panel{
+/* LESSON AREA */
+
+.lessons-area{
 display:none;
-margin-top:20px;
-border-top:1px solid #e5e7eb;
-padding-top:20px
+margin-top:18px
 }
 
-.lessons-panel.show{
+.lessons-area.show{
 display:block
 }
 
-.lesson-head{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:10px;
-margin-bottom:12px
+.lesson-header{
+background:#111827;
+color:#fff;
+border-radius:18px 18px 0 0;
+padding:20px
 }
 
-.lesson-head h3{
-font-size:18px
+.lesson-header h2{
+font-size:20px;
+margin:5px 0
 }
 
-.close-btn{
-border:1px solid #d1d5db;
+.lesson-header p{
+font-size:10px;
+color:#cbd5e1
+}
+
+.back-btn{
+margin-top:12px;
 background:#fff;
+color:#111827;
+border:0;
+padding:8px 12px;
 border-radius:8px;
-padding:7px 10px;
 font-size:9px;
 font-weight:900;
 cursor:pointer
 }
 
+
+/* LESSON LIST */
+
 .lesson-list{
-display:grid;
-gap:8px
+background:#fff;
+border:1px solid #e5e7eb;
+border-top:0;
+border-radius:0 0 18px 18px;
+padding:12px
 }
 
 .lesson{
 display:flex;
 align-items:center;
-justify-content:space-between;
 gap:12px;
-padding:13px;
-background:#f8fafc;
-border:1px solid #e5e7eb;
-border-radius:11px
+padding:13px 10px;
+border-bottom:1px solid #eef0f4;
+cursor:pointer
 }
 
-.lesson-info{
-min-width:0
+.lesson:last-child{
+border-bottom:0
 }
 
 .lesson-number{
-font-size:8px;
+width:34px;
+height:34px;
+border-radius:9px;
+background:#f3f4f6;
+display:grid;
+place-items:center;
+font-size:10px;
 font-weight:900;
-color:#6366f1
+flex:none
 }
 
-.lesson-title{
-font-size:11px;
-font-weight:800;
+.lesson-info{
+flex:1
+}
+
+.lesson-info strong{
+display:block;
+font-size:11px
+}
+
+.lesson-info span{
+display:block;
+font-size:9px;
+color:#6b7280;
 margin-top:2px
 }
 
-.lesson-action{
-flex-shrink:0;
-border:0;
-border-radius:8px;
-padding:8px 10px;
+.lesson-arrow{
+font-size:13px;
+color:#6366f1
+}
+
+
+/* LESSON VIEW */
+
+.lesson-view{
+display:none;
+margin-top:18px;
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:18px;
+padding:25px;
+box-shadow:0 7px 25px rgba(15,23,42,.04)
+}
+
+.lesson-view.show{
+display:block
+}
+
+.lesson-view .number{
 font-size:8px;
+font-weight:900;
+color:#6366f1;
+letter-spacing:1px
+}
+
+.lesson-view h2{
+font-size:25px;
+margin:6px 0 15px
+}
+
+.lesson-description{
+font-size:11px;
+color:#6b7280;
+margin-bottom:18px
+}
+
+.lesson-content{
+font-size:13px;
+line-height:1.8;
+white-space:pre-wrap;
+color:#273449
+}
+
+.close-lesson{
+margin-bottom:15px;
+border:1px solid #d1d5db;
+background:#fff;
+padding:8px 12px;
+border-radius:8px;
+font-size:9px;
 font-weight:900;
 cursor:pointer
 }
 
-.free-btn{
-background:#16a34a;
-color:#fff
-}
-
-.premium-btn{
-background:#fbbf24;
-color:#111827
-}
-
-.locked-btn{
-background:#e5e7eb;
-color:#6b7280
-}
-
-/* MESSAGE */
-
-.message{
-display:none;
-text-align:center;
-padding:14px;
-font-size:10px;
-font-weight:700;
-color:#6b7280
-}
-
-.message.show{
-display:block
-}
 
 /* PREMIUM */
 
-.premium-box{
+.premium{
 margin-top:18px;
-padding:20px;
+background:
+linear-gradient(
+135deg,
+#fff,
+#fffdf3
+);
 border:1px solid #f1df9a;
-background:#fffdf3;
-border-radius:15px;
+border-radius:18px;
+padding:23px;
 text-align:center
 }
 
-.premium-box h3{
-font-size:17px;
-margin-bottom:4px
+.premium h2{
+font-size:21px;
+margin:5px 0
 }
 
-.premium-box p{
+.premium p{
 font-size:10px;
 color:#6b7280;
-margin-bottom:12px
+margin-bottom:13px
 }
 
 .premium-btn{
 display:inline-flex;
-align-items:center;
-justify-content:center;
 background:#fbbf24;
 color:#111827;
-border-radius:9px;
 padding:10px 15px;
-font-size:9px;
+border-radius:9px;
+font-size:10px;
 font-weight:900
 }
+
+
+/* LOADING */
+
+.loading{
+text-align:center;
+padding:30px;
+font-size:11px;
+color:#6b7280
+}
+
+.error{
+text-align:center;
+padding:25px;
+background:#fef2f2;
+border:1px solid #fecaca;
+border-radius:12px;
+color:#b91c1c;
+font-size:10px;
+font-weight:700
+}
+
 
 /* FOOTER */
 
 footer{
 background:#0b1120;
 color:#fff;
-text-align:center;
-padding:23px 0 15px
+padding:22px 0 15px;
+text-align:center
 }
 
-.footer-text{
-font-size:9px;
-color:#94a3b8
+.footer-brand{
+font-size:11px;
+font-weight:900
+}
+
+.footer-brand span{
+color:#94a3b8;
+font-weight:600
 }
 
 .copy{
 font-size:8px;
 color:#64748b;
-margin-top:8px
+margin-top:9px
 }
+
 
 /* WHATSAPP */
 
@@ -453,79 +540,91 @@ right:15px;
 bottom:15px;
 width:52px;
 height:52px;
-display:grid;
-place-items:center;
 border-radius:50%;
 background:#25d366;
 color:#fff;
-font-size:23px;
+display:grid;
+place-items:center;
+font-size:22px;
 box-shadow:0 8px 20px rgba(0,0,0,.2);
-z-index:200
+z-index:2000
 }
+
 
 /* MOBILE */
 
-@media(max-width:650px){
+@media(max-width:700px){
 
-.container{
-width:92%
+.info-grid{
+grid-template-columns:1fr 1fr 1fr;
+gap:6px
 }
 
-.welcome{
-padding:23px 19px
+.info-card{
+padding:13px 5px
 }
 
-.welcome h1{
-font-size:25px
+.info-value{
+font-size:13px
 }
 
-.status{
-grid-template-columns:1fr 1fr
-}
-
-.status-card:last-child{
-grid-column:1/-1
-}
-
-.course{
-padding:20px 15px
+.info-label{
+font-size:7px
 }
 
 .module-grid{
 grid-template-columns:1fr
 }
 
-.lesson{
-align-items:flex-start
+.course-card{
+padding:18px 14px
 }
 
-.lesson-action{
-margin-top:2px
+.welcome{
+padding:25px 18px
+}
+
+.welcome h1{
+font-size:25px
+}
+
+.lesson-view{
+padding:19px
 }
 
 }
 
 </style>
+
 </head>
 
+
 <body>
+
 
 <header>
 
 <div class="container nav">
 
-<div class="brand">
+<a href="index.html" class="logo">
 
 <img
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 alt="GOH Bible Academy">
 
 <div>
-<strong>GOH Bible Academy</strong>
-<span>Gate of Heaven Ministries</span>
+
+<div class="logo-title">
+GOH Bible Academy
+</div>
+
+<div class="logo-sub">
+Gate of Heaven Ministries
 </div>
 
 </div>
+
+</a>
 
 <button
 class="logout"
@@ -544,68 +643,78 @@ id="logoutBtn">
 
 <div class="container">
 
+
 <!-- WELCOME -->
 
-<section class="welcome">
+<div class="welcome">
 
-<div class="welcome-label">
+<div class="label">
 STUDENT DASHBOARD
 </div>
 
-<h1>
-Welcome, <span id="studentName">Student</span> 👋
+<h1 id="welcomeText">
+Welcome 👋
 </h1>
 
 <p>
-Continue your Biblical Studies journey through 180 structured lessons.
+Continue your Biblical Studies journey through
+180 structured lessons.
 </p>
 
-</section>
+</div>
 
 
-<!-- STATUS -->
+<!-- STUDENT INFO -->
 
-<div class="status">
+<div class="info-grid">
 
-<div class="status-card">
+<div class="info-card">
 
-<small>
+<div class="info-label">
 MEMBERSHIP
-</small>
+</div>
 
-<strong
-id="membership"
-class="free">
+<div
+class="info-value"
+id="membership">
 
 FREE
 
-</strong>
+</div>
 
 </div>
 
 
-<div class="status-card">
+<div class="info-card">
 
-<small>
+<div class="info-label">
 STUDENT ID
-</small>
+</div>
 
-<strong id="studentId">
-—
-</strong>
+<div
+class="info-value"
+id="studentId">
+
+-
+
+</div>
 
 </div>
 
 
-<div class="status-card">
+<div class="info-card">
 
-<small>
+<div class="info-label">
 LANGUAGE
-</small>
+</div>
 
-<strong id="language">
+<div
+class="info-value"
+id="language">
+
 English
-</strong>
+
+</div>
 
 </div>
 
@@ -614,7 +723,7 @@ English
 
 <!-- COURSE -->
 
-<section class="course">
+<div class="course-card">
 
 <div class="course-head">
 
@@ -637,8 +746,8 @@ Choose a module to view its 30 lessons.
 id="moduleGrid"
 class="module-grid">
 
-<div class="message show">
-Loading modules...
+<div class="loading">
+Loading course...
 </div>
 
 </div>
@@ -647,20 +756,28 @@ Loading modules...
 <!-- LESSONS -->
 
 <div
-id="lessonsPanel"
-class="lessons-panel">
+id="lessonsArea"
+class="lessons-area">
 
-<div class="lesson-head">
+<div
+class="lesson-header">
 
-<h3 id="selectedModule">
+<div class="label">
+MODULE LESSONS
+</div>
+
+<h2 id="lessonModuleTitle">
 Lessons
-</h3>
+</h2>
+
+<p id="lessonModuleDescription">
+</p>
 
 <button
-class="close-btn"
-id="closeLessons">
+class="back-btn"
+id="backModules">
 
-✕ Close
+← Back to Modules
 
 </button>
 
@@ -669,6 +786,55 @@ id="closeLessons">
 <div
 id="lessonList"
 class="lesson-list">
+
+</div>
+
+</div>
+
+
+<!-- LESSON VIEW -->
+
+<div
+id="lessonView"
+class="lesson-view">
+
+<button
+class="close-lesson"
+id="closeLesson">
+
+← Back to Lessons
+
+</button>
+
+<div
+class="number"
+id="lessonNumber">
+
+LESSON
+
+</div>
+
+<h2
+id="lessonTitle">
+
+Lesson
+
+</h2>
+
+<div
+class="lesson-description"
+id="lessonDescription">
+
+</div>
+
+<div
+class="lesson-content"
+id="lessonContent">
+
+Loading lesson...
+
+</div>
+
 </div>
 
 </div>
@@ -676,14 +842,19 @@ class="lesson-list">
 
 <!-- PREMIUM -->
 
-<div class="premium-box">
+<div class="premium">
 
-<h3>
+<div class="label">
+PREMIUM BIBLICAL STUDIES
+</div>
+
+<h2>
 ⭐ Continue Your Biblical Studies
-</h3>
+</h2>
 
 <p>
-Lesson 1 is free. Unlock the remaining lessons with Premium membership.
+Lesson 1 is free. Unlock the remaining lessons
+with Premium membership.
 </p>
 
 <a
@@ -696,7 +867,6 @@ View Premium Membership
 
 </div>
 
-</section>
 
 </div>
 
@@ -707,12 +877,18 @@ View Premium Membership
 
 <div class="container">
 
-<div class="footer-text">
-GOH Bible Academy • Gate of Heaven Ministries
+<div class="footer-brand">
+
+GOH Bible Academy
+<span>• Gate of Heaven Ministries</span>
+
 </div>
 
 <div class="copy">
-© 2026 GOH Bible Academy. All rights reserved.
+
+© 2026 GOH Bible Academy.
+All rights reserved.
+
 </div>
 
 </div>
@@ -725,7 +901,7 @@ class="whatsapp"
 href="https://wa.me/94771190395?text=Hello%20GOH%20Bible%20Academy"
 target="_blank"
 rel="noopener"
-aria-label="WhatsApp">
+aria-label="Contact GOH Bible Academy">
 
 💬
 
@@ -734,37 +910,32 @@ aria-label="WhatsApp">
 
 <script>
 
-/* =====================================
-   CLOUDFLARE DASHBOARD API
-===================================== */
 
-const API =
+/* =========================
+   DASHBOARD API
+========================= */
+
+const DASHBOARD_API =
 "https://dashboard.createlk.workers.dev";
 
 
-/* =====================================
-   STUDENT SESSION
-===================================== */
+/* =========================
+   SESSION
+========================= */
 
 function getStudent(){
 
+let student = null;
+
 try{
 
-const local =
+const saved =
 localStorage.getItem("goh_student");
 
-if(local){
+if(saved){
 
-return JSON.parse(local);
-
-}
-
-const session =
-sessionStorage.getItem("goh_student");
-
-if(session){
-
-return JSON.parse(session);
+student =
+JSON.parse(saved);
 
 }
 
@@ -774,420 +945,90 @@ console.error(error);
 
 }
 
-return null;
-
-}
-
-
-const student = getStudent();
-
-
-/* =====================================
-   AUTH
-===================================== */
 
 if(!student){
 
-window.location.replace("login.html");
+try{
+
+const saved =
+sessionStorage.getItem("goh_student");
+
+if(saved){
+
+student =
+JSON.parse(saved);
+
+}
+
+}catch(error){
+
+console.error(error);
+
+}
+
+}
+
+return student;
 
 }
 
 
-/* =====================================
-   STUDENT DISPLAY
-===================================== */
+const student =
+getStudent();
+
+
+/* =========================
+   LOGIN CHECK
+========================= */
+
+if(!student){
+
+window.location.href =
+"login.html";
+
+}
+
+
+/* =========================
+   STUDENT INFORMATION
+========================= */
 
 if(student){
 
-const name =
-(
-student.first_name || ""
-+
-" " +
-(student.last_name || "")
-).trim();
+document.getElementById(
+"welcomeText"
+).textContent =
+"Welcome, " +
+(student.first_name || "Student") +
+" 👋";
+
 
 document.getElementById(
-"studentName"
+"membership"
 ).textContent =
-name || "Student";
+student.membership_status ||
+"FREE";
 
 
 document.getElementById(
 "studentId"
 ).textContent =
-student.id || "—";
+student.id ||
+"-";
 
 
 document.getElementById(
 "language"
 ).textContent =
-student.language || "English";
-
-
-const status =
-String(
-student.membership_status || "FREE"
-).toUpperCase();
-
-
-const membership =
-document.getElementById("membership");
-
-
-membership.textContent =
-status;
-
-
-if(status === "PREMIUM"){
-
-membership.className =
-"premium";
-
-}else{
-
-membership.className =
-"free";
-
-}
+student.language ||
+"English";
 
 }
 
 
-/* =====================================
-   LOAD MODULES
-===================================== */
-
-async function loadModules(){
-
-const grid =
-document.getElementById("moduleGrid");
-
-try{
-
-const response =
-await fetch(
-API + "/api/modules"
-);
-
-
-if(!response.ok){
-
-throw new Error(
-"Unable to load modules."
-);
-
-}
-
-
-const data =
-await response.json();
-
-
-if(
-!data.success ||
-!Array.isArray(data.modules)
-){
-
-throw new Error(
-"No modules found."
-);
-
-}
-
-
-grid.innerHTML="";
-
-
-data.modules.forEach(function(module){
-
-const card =
-document.createElement("div");
-
-card.className =
-"module-card";
-
-
-card.innerHTML=`
-
-<div class="module-icon">
-${module.icon || "📖"}
-</div>
-
-<div class="module-number">
-MODULE ${String(module.id).padStart(2,"0")}
-</div>
-
-<div class="module-title">
-${escapeHTML(module.title)}
-</div>
-
-<div class="module-description">
-${escapeHTML(module.description || "")}
-</div>
-
-<div class="module-bottom">
-
-<span class="lesson-count">
-${module.lesson_count || 30} Lessons
-</span>
-
-<span class="open-module">
-View →
-</span>
-
-</div>
-
-`;
-
-
-card.onclick=function(){
-
-loadLessons(module.id,module.title);
-
-};
-
-
-grid.appendChild(card);
-
-});
-
-}catch(error){
-
-console.error(error);
-
-grid.innerHTML=`
-
-<div class="message show">
-Unable to load the course.
-Please try again.
-</div>
-
-`;
-
-}
-
-}
-
-
-/* =====================================
-   LOAD LESSONS
-===================================== */
-
-async function loadLessons(
-moduleId,
-moduleTitle
-){
-
-const panel =
-document.getElementById(
-"lessonsPanel"
-);
-
-const list =
-document.getElementById(
-"lessonList"
-);
-
-const title =
-document.getElementById(
-"selectedModule"
-);
-
-
-title.textContent =
-moduleTitle;
-
-
-list.innerHTML=`
-
-<div class="message show">
-Loading 30 lessons...
-</div>
-
-`;
-
-panel.classList.add("show");
-
-panel.scrollIntoView({
-behavior:"smooth",
-block:"start"
-});
-
-
-try{
-
-const response =
-await fetch(
-API +
-"/api/modules/" +
-encodeURIComponent(moduleId) +
-"/lessons?student_id=" +
-encodeURIComponent(student.id)
-);
-
-
-if(!response.ok){
-
-throw new Error(
-"Unable to load lessons."
-);
-
-}
-
-
-const data =
-await response.json();
-
-
-if(
-!data.success ||
-!Array.isArray(data.lessons)
-){
-
-throw new Error(
-"No lessons found."
-);
-
-}
-
-
-list.innerHTML="";
-
-
-data.lessons.forEach(function(lesson){
-
-const row =
-document.createElement("div");
-
-row.className =
-"lesson";
-
-
-const action =
-lesson.access === "FREE"
-? `
-<a
-href="${safeLessonURL(lesson.id)}"
-class="lesson-action free-btn">
-Start Free
-</a>
-`
-: lesson.access === "PREMIUM"
-? `
-<a
-href="${safeLessonURL(lesson.id)}"
-class="lesson-action premium-btn">
-⭐ Open
-</a>
-`
-: `
-<button
-class="lesson-action locked-btn"
-onclick="goPremium()">
-🔒 Premium
-</button>
-`;
-
-
-row.innerHTML=`
-
-<div class="lesson-info">
-
-<div class="lesson-number">
-LESSON ${String(lesson.lesson_number).padStart(2,"0")}
-</div>
-
-<div class="lesson-title">
-${escapeHTML(lesson.title)}
-</div>
-
-</div>
-
-${action}
-
-`;
-
-list.appendChild(row);
-
-});
-
-}catch(error){
-
-console.error(error);
-
-list.innerHTML=`
-
-<div class="message show">
-Unable to load lessons.
-Please try again.
-</div>
-
-`;
-
-}
-
-}
-
-
-/* =====================================
-   LESSON URL
-===================================== */
-
-function safeLessonURL(id){
-
-return "lesson.html?id=" +
-encodeURIComponent(id);
-
-}
-
-
-/* =====================================
-   PREMIUM
-===================================== */
-
-function goPremium(){
-
-window.location.href =
-"premium.html";
-
-}
-
-
-/* =====================================
-   HTML ESCAPE
-===================================== */
-
-function escapeHTML(value){
-
-return String(value || "")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
-}
-
-
-/* =====================================
-   CLOSE LESSONS
-===================================== */
-
-document.getElementById(
-"closeLessons"
-).onclick=function(){
-
-document.getElementById(
-"lessonsPanel"
-).classList.remove("show");
-
-};
-
-
-/* =====================================
+/* =========================
    LOGOUT
-===================================== */
+========================= */
 
 document.getElementById(
 "logoutBtn"
@@ -1209,16 +1050,498 @@ sessionStorage.removeItem(
 "goh_logged_in"
 );
 
-window.location.replace(
-"login.html"
-);
+window.location.href =
+"login.html";
 
 };
 
 
-/* =====================================
+/* =========================
+   ELEMENTS
+========================= */
+
+const moduleGrid =
+document.getElementById(
+"moduleGrid"
+);
+
+const lessonsArea =
+document.getElementById(
+"lessonsArea"
+);
+
+const lessonList =
+document.getElementById(
+"lessonList"
+);
+
+const lessonView =
+document.getElementById(
+"lessonView"
+);
+
+
+/* =========================
+   LOAD MODULES
+========================= */
+
+async function loadModules(){
+
+moduleGrid.innerHTML =
+'<div class="loading">Loading course...</div>';
+
+try{
+
+const response =
+await fetch(
+DASHBOARD_API +
+"/modules",
+{
+method:"GET"
+}
+);
+
+
+const data =
+await response.json();
+
+
+if(!response.ok ||
+!data.success){
+
+throw new Error(
+data.message ||
+"Unable to load course."
+);
+
+}
+
+
+const modules =
+data.modules || [];
+
+
+if(!modules.length){
+
+moduleGrid.innerHTML =
+'<div class="error">No course modules found.</div>';
+
+return;
+
+}
+
+
+moduleGrid.innerHTML =
+"";
+
+
+modules.forEach(
+function(module){
+
+const card =
+document.createElement(
+"div"
+);
+
+card.className =
+"module";
+
+
+card.innerHTML = `
+
+<div class="module-top">
+
+<div class="module-icon">
+${escapeHTML(module.icon || "📖")}
+</div>
+
+<div>
+
+<div class="module-number">
+MODULE ${String(module.id).padStart(2,"0")}
+</div>
+
+<h3>
+${escapeHTML(module.title)}
+</h3>
+
+</div>
+
+</div>
+
+<p>
+${escapeHTML(module.description || "")}
+</p>
+
+<div class="module-bottom">
+
+<span class="lesson-count">
+30 Lessons
+</span>
+
+<span class="open-text">
+View Lessons →
+</span>
+
+</div>
+
+`;
+
+
+card.onclick=function(){
+
+loadLessons(module);
+
+};
+
+
+moduleGrid.appendChild(card);
+
+});
+
+}catch(error){
+
+console.error(
+"Module loading error:",
+error
+);
+
+moduleGrid.innerHTML = `
+
+<div class="error">
+
+Unable to load the course.<br>
+
+<small>
+${escapeHTML(error.message)}
+</small>
+
+</div>
+
+`;
+
+}
+
+}
+
+
+/* =========================
+   LOAD LESSONS
+========================= */
+
+async function loadLessons(module){
+
+lessonsArea.classList.add(
+"show"
+);
+
+lessonView.classList.remove(
+"show"
+);
+
+lessonList.innerHTML =
+'<div class="loading">Loading lessons...</div>';
+
+document.getElementById(
+"lessonModuleTitle"
+).textContent =
+module.title;
+
+document.getElementById(
+"lessonModuleDescription"
+).textContent =
+module.description || "";
+
+
+lessonsArea.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+
+try{
+
+const response =
+await fetch(
+DASHBOARD_API +
+"/lessons?module_id=" +
+encodeURIComponent(module.id)
+);
+
+
+const data =
+await response.json();
+
+
+if(!response.ok ||
+!data.success){
+
+throw new Error(
+data.message ||
+"Unable to load lessons."
+);
+
+}
+
+
+const lessons =
+data.lessons || [];
+
+
+if(!lessons.length){
+
+lessonList.innerHTML =
+'<div class="loading">No lessons found for this module.</div>';
+
+return;
+
+}
+
+
+lessonList.innerHTML =
+"";
+
+
+lessons.forEach(
+function(lesson){
+
+const item =
+document.createElement(
+"div"
+);
+
+item.className =
+"lesson";
+
+
+item.innerHTML = `
+
+<div class="lesson-number">
+${lesson.lesson_number}
+</div>
+
+<div class="lesson-info">
+
+<strong>
+${escapeHTML(lesson.title)}
+</strong>
+
+<span>
+${escapeHTML(lesson.description || "Bible study lesson")}
+</span>
+
+</div>
+
+<div class="lesson-arrow">
+→
+</div>
+
+`;
+
+
+item.onclick=function(){
+
+openLesson(lesson.id);
+
+};
+
+
+lessonList.appendChild(item);
+
+});
+
+}catch(error){
+
+console.error(
+"Lesson loading error:",
+error
+);
+
+lessonList.innerHTML = `
+
+<div class="error">
+
+Unable to load lessons.<br>
+
+<small>
+${escapeHTML(error.message)}
+</small>
+
+</div>
+
+`;
+
+}
+
+}
+
+
+/* =========================
+   OPEN LESSON
+========================= */
+
+async function openLesson(id){
+
+lessonView.classList.add(
+"show"
+);
+
+document.getElementById(
+"lessonContent"
+).textContent =
+"Loading lesson...";
+
+document.getElementById(
+"lessonTitle"
+).textContent =
+"Loading...";
+
+
+lessonView.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+
+try{
+
+const response =
+await fetch(
+DASHBOARD_API +
+"/lesson?id=" +
+encodeURIComponent(id)
+);
+
+
+const data =
+await response.json();
+
+
+if(!response.ok ||
+!data.success){
+
+throw new Error(
+data.message ||
+"Unable to load lesson."
+);
+
+}
+
+
+const lesson =
+data.lesson;
+
+
+document.getElementById(
+"lessonNumber"
+).textContent =
+"LESSON " +
+lesson.lesson_number;
+
+
+document.getElementById(
+"lessonTitle"
+).textContent =
+lesson.title;
+
+
+document.getElementById(
+"lessonDescription"
+).textContent =
+lesson.description || "";
+
+
+document.getElementById(
+"lessonContent"
+).textContent =
+lesson.content ||
+"Lesson content will be available soon.";
+
+}catch(error){
+
+console.error(
+"Lesson error:",
+error
+);
+
+document.getElementById(
+"lessonTitle"
+).textContent =
+"Unable to load lesson";
+
+document.getElementById(
+"lessonContent"
+).textContent =
+error.message;
+
+}
+
+}
+
+
+/* =========================
+   BACK TO MODULES
+========================= */
+
+document.getElementById(
+"backModules"
+).onclick=function(){
+
+lessonsArea.classList.remove(
+"show"
+);
+
+lessonView.classList.remove(
+"show"
+);
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+};
+
+
+/* =========================
+   BACK TO LESSON LIST
+========================= */
+
+document.getElementById(
+"closeLesson"
+).onclick=function(){
+
+lessonView.classList.remove(
+"show"
+);
+
+lessonsArea.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+};
+
+
+/* =========================
+   HTML SAFETY
+========================= */
+
+function escapeHTML(value){
+
+return String(value ?? "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================
    START
-===================================== */
+========================= */
 
 if(student){
 
@@ -1229,4 +1552,5 @@ loadModules();
 </script>
 
 </body>
+
 </html>
