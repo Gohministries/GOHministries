@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#155eef">
+<title>GOH Ministries Finance - Approvals</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#f5f7fb;
+ color:#172033
+}
+header{
+ background:#155eef;
+ color:#fff;
+ padding:15px 18px
+}
+.head{
+ max-width:1100px;
+ margin:auto;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:12px
+}
+.logout{
+ background:#fff;
+ color:#155eef;
+ border:0;
+ border-radius:8px;
+ padding:9px 13px;
+ font-weight:bold;
+ cursor:pointer
+}
+nav{
+ max-width:1100px;
+ margin:10px auto 0;
+ display:flex;
+ gap:8px;
+ overflow:auto
+}
+nav a{
+ background:#fff;
+ color:#155eef;
+ padding:8px 11px;
+ border-radius:8px;
+ text-decoration:none;
+ font-size:12px;
+ white-space:nowrap
+}
+main{
+ max-width:1100px;
+ margin:auto;
+ padding:18px
+}
+.card{
+ background:#fff;
+ padding:18px;
+ border-radius:14px;
+ margin-bottom:16px;
+ box-shadow:0 2px 12px #0001
+}
+.top{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px
+}
+.refresh{
+ background:#eef4ff;
+ color:#155eef;
+ border:0;
+ border-radius:8px;
+ padding:10px 14px;
+ font-weight:bold;
+ cursor:pointer
+}
+.stats{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:12px
+}
+.stat{
+ margin:0
+}
+.stat strong{
+ display:block;
+ font-size:25px;
+ margin-top:6px
+}
+.small{
+ font-size:13px;
+ color:#667085
+}
+.record{
+ border:1px solid #e4e7ec;
+ border-radius:12px;
+ padding:16px;
+ margin-top:12px
+}
+.recordHead{
+ display:flex;
+ justify-content:space-between;
+ gap:15px
+}
+.amount{
+ font-size:20px;
+ font-weight:bold;
+ white-space:nowrap
+}
+.details{
+ margin-top:10px;
+ line-height:1.7;
+ font-size:14px
+}
+.badge{
+ display:inline-block;
+ padding:5px 9px;
+ border-radius:999px;
+ background:#fff7ed;
+ color:#c2410c;
+ font-size:12px;
+ font-weight:bold;
+ margin-top:8px
+}
+.actions{
+ display:flex;
+ flex-wrap:wrap;
+ gap:8px;
+ margin-top:14px
+}
+button{
+ border:0;
+ border-radius:8px;
+ padding:10px 14px;
+ font-weight:bold;
+ cursor:pointer
+}
+.view{
+ background:#eef4ff;
+ color:#155eef
+}
+.approve{
+ background:#16a34a;
+ color:#fff
+}
+.reject{
+ background:#dc2626;
+ color:#fff
+}
+button:disabled{
+ opacity:.55;
+ cursor:not-allowed
+}
+.msg{
+ display:none;
+ padding:12px;
+ border-radius:9px;
+ margin-bottom:14px;
+ font-size:14px
+}
+.ok{
+ display:block;
+ background:#dcfce7;
+ color:#166534
+}
+.bad{
+ display:block;
+ background:#fee2e2;
+ color:#991b1b
+}
+.empty{
+ text-align:center;
+ padding:28px;
+ color:#667085
+}
+.sectionTitle{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px
+}
+@media(max-width:700px){
+ .stats{
+  grid-template-columns:1fr
+ }
+ .recordHead{
+  flex-direction:column
+ }
+ .amount{
+  white-space:normal
+ }
+ main{
+  padding:12px
+ }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="head">
+ <b>GOH Ministries Finance</b>
+ <button class="logout" onclick="logout()">Logout</button>
+</div>
+
+<nav>
+ <a href="finance-dashboard.html">Dashboard</a>
+ <a href="income.html">Income</a>
+ <a href="expenses.html">Expenses</a>
+ <a href="donations.html">Donations</a>
+ <a href="receipts.html">Receipts</a>
+ <a href="reports.html">Reports</a>
+ <a href="approvals.html">Approvals</a>
+ <a href="admin.html">Administration</a>
+</nav>
+
+</header>
+
+
+<main>
+
+<div id="message" class="msg"></div>
+
+
+<div class="card">
+
+<div class="top">
+
+<div>
+ <h2 style="margin:0 0 5px">
+  Admin Approvals
+ </h2>
+
+ <div class="small">
+  Review financial records before they appear in official totals.
+ </div>
+</div>
+
+<button
+ class="refresh"
+ onclick="loadAll()">
+ ↻ Refresh
+</button>
+
+</div>
+
+</div>
+
+
+<div class="stats">
+
+<div class="card stat">
+ <div class="small">
+  Pending Income
+ </div>
+
+ <strong id="incomeCount">
+  0
+ </strong>
+</div>
+
+<div class="card stat">
+ <div class="small">
+  Pending Expenses
+ </div>
+
+ <strong id="expenseCount">
+  0
+ </strong>
+</div>
+
+<div class="card stat">
+ <div class="small">
+  Total Pending
+ </div>
+
+ <strong id="totalCount">
+  0
+ </strong>
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="sectionTitle">
+ <h3 style="margin:0">
+  Pending Income
+ </h3>
+</div>
+
+<div id="incomeList">
+ <div class="empty">
+  Loading...
+ </div>
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="sectionTitle">
+ <h3 style="margin:0">
+  Pending Expenses
+ </h3>
+</div>
+
+<div id="expenseList">
+ <div class="empty">
+  Loading...
+ </div>
+</div>
+
+</div>
+
+</main>
+
+
+<script>
+
+const API=
+"https://goh-finance-system.createlk.workers.dev";
+
+const KEY=
+"goh_finance_token";
+
+
+function headers(){
+
+ return {
+  "Content-Type":"application/json",
+  "Authorization":
+   "Bearer "+
+   localStorage.getItem(KEY)
+ };
+
+}
+
+
+function esc(v){
+
+ return String(v??"")
+ .replaceAll("&","&amp;")
+ .replaceAll("<","&lt;")
+ .replaceAll(">","&gt;")
+ .replaceAll('"',"&quot;")
+ .replaceAll("'","&#039;");
+
+}
+
+
+function money(v){
+
+ return "LKR "+
+ Number(v||0).toLocaleString(
+  "en-LK",
+  {
+   minimumFractionDigits:2,
+   maximumFractionDigits:2
+  }
+ );
+
+}
+
+
+function showMessage(
+ text,
+ ok=false
+){
+
+ const el=
+  document.getElementById(
+   "message"
+  );
+
+ el.textContent=text;
+
+ el.className=
+  "msg "+(ok?"ok":"bad");
+
+ window.scrollTo({
+  top:0,
+  behavior:"smooth"
+ });
+
+}
+
+
+async function checkAdmin(){
+
+ const token=
+  localStorage.getItem(KEY);
+
+ if(!token){
+
+  location.href=
+   "admin-login.html";
+
+  return false;
+
+ }
+
+ try{
+
+  const r=
+   await fetch(
+    API+"/api/me",
+    {
+     headers:headers()
+    }
+   );
+
+  const d=
+   await r.json();
+
+  if(
+   !r.ok||
+   !d.success
+  ){
+
+   throw new Error();
+
+  }
+
+  if(
+   d.user.role!=="admin"
+  ){
+
+   alert(
+    "Administrator access required."
+   );
+
+   location.href=
+    "finance-dashboard.html";
+
+   return false;
+
+  }
+
+  return true;
+
+ }catch(e){
+
+  localStorage.removeItem(KEY);
+
+  location.href=
+   "admin-login.html";
+
+  return false;
+
+ }
+
+}
+
+
+async function getRecords(
+ type
+){
+
+ const endpoint=
+  type==="income"
+  ?
+  "/api/income"
+  :
+  "/api/expenses";
+
+ const r=
+  await fetch(
+   API+endpoint,
+   {
+    headers:headers()
+   }
+  );
+
+ const d=
+  await r.json();
+
+ if(
+  r.status===401
+ ){
+
+  localStorage.removeItem(KEY);
+
+  location.href=
+   "admin-login.html";
+
+  throw new Error(
+   "Session expired."
+  );
+
+ }
+
+ if(
+  !r.ok||
+  !d.success
+ ){
+
+  throw new Error(
+   d.error||
+   "Unable to load "+type
+  );
+
+ }
+
+ return type==="income"
+  ?
+  (d.income||[])
+  :
+  (d.expenses||[]);
+
+}
+
+
+function renderRecord(
+ item,
+ type
+){
+
+ const receipt=
+  item.receipt_name
+  ?
+  `<a
+    href="${API}/api/${type}/${Number(item.id)}/receipt"
+    target="_blank"
+    rel="noopener"
+    style="text-decoration:none"
+   >
+   <button
+    type="button"
+    class="view"
+   >
+    📎 View Slip
+   </button>
+  </a>`
+  :
+  `<span class="small">
+    No receipt attached
+   </span>`;
+
+
+ const date=
+  esc(item.date||"");
+
+ const category=
+  esc(item.category||"");
+
+ const method=
+  esc(
+   item.payment_method||
+   ""
+  );
+
+ const reference=
+  esc(
+   item.reference_number||
+   ""
+  );
+
+ const description=
+  esc(
+   item.description||
+   ""
+  );
+
+
+ return `
+ <div class="record">
+
+  <div class="recordHead">
+
+   <div>
+
+    <b>
+     ${category}
+    </b>
+
+    <div class="small">
+     Submitted:
+     ${date}
+    </div>
+
+   </div>
+
+   <div class="amount">
+    ${money(item.amount)}
+   </div>
+
+  </div>
+
+  <span class="badge">
+   PENDING APPROVAL
+  </span>
+
+  <div class="details">
+
+   <b>Payment:</b>
+   ${method||"—"}
+
+   ${
+    reference
+    ?
+    `<br>
+     <b>Reference:</b>
+     ${reference}`
+    :
+    ""
+   }
+
+   ${
+    description
+    ?
+    `<br>
+     <b>Description:</b>
+     ${description}`
+    :
+    ""
+   }
+
+   ${
+    item.receipt_name
+    ?
+    `<br>
+     <b>Receipt:</b>
+     ${esc(item.receipt_name)}`
+    :
+    ""
+   }
+
+  </div>
+
+  <div class="actions">
+
+   ${receipt}
+
+   <button
+    class="approve"
+    onclick="approveRecord('${type}',${Number(item.id)},this)"
+   >
+    ✓ Approve
+   </button>
+
+   <button
+    class="reject"
+    onclick="rejectRecord('${type}',${Number(item.id)},this)"
+   >
+    ✕ Reject
+   </button>
+
+  </div>
+
+ </div>
+ `;
+
+}
+
+
+async function loadAll(){
+
+ document.getElementById(
+  "incomeList"
+ ).innerHTML=
+  `<div class="empty">
+   Loading...
+  </div>`;
+
+ document.getElementById(
+  "expenseList"
+ ).innerHTML=
+  `<div class="empty">
+   Loading...
+  </div>`;
+
+ try{
+
+  const ok=
+   await checkAdmin();
+
+  if(!ok)return;
+
+
+  const [
+   income,
+   expenses
+  ]=
+  await Promise.all([
+   getRecords("income"),
+   getRecords("expenses")
+  ]);
+
+
+  const pendingIncome=
+   income.filter(
+    x=>
+     String(
+      x.status||
+      "PENDING"
+     ).toUpperCase()==="PENDING"
+   );
+
+
+  const pendingExpenses=
+   expenses.filter(
+    x=>
+     String(
+      x.status||
+      "PENDING"
+     ).toUpperCase()==="PENDING"
+   );
+
+
+  document.getElementById(
+   "incomeCount"
+  ).textContent=
+   pendingIncome.length;
+
+
+  document.getElementById(
+   "expenseCount"
+  ).textContent=
+   pendingExpenses.length;
+
+
+  document.getElementById(
+   "totalCount"
+  ).textContent=
+   pendingIncome.length+
+   pendingExpenses.length;
+
+
+  document.getElementById(
+   "incomeList"
+  ).innerHTML=
+   pendingIncome.length
+   ?
+   pendingIncome
+    .map(
+     x=>
+      renderRecord(
+       x,
+       "income"
+      )
+    )
+    .join("")
+   :
+   `<div class="empty">
+     ✓ No pending income.
+    </div>`;
+
+
+  document.getElementById(
+   "expenseList"
+  ).innerHTML=
+   pendingExpenses.length
+   ?
+   pendingExpenses
+    .map(
+     x=>
+      renderRecord(
+       x,
+       "expenses"
+      )
+    )
+    .join("")
+   :
+   `<div class="empty">
+     ✓ No pending expenses.
+    </div>`;
+
+
+ }catch(e){
+
+  showMessage(
+   e.message||
+   "Unable to load approvals."
+  );
+
+ }
+
+}
+
+
+async function approveRecord(
+ type,
+ id,
+ button
+){
+
+ if(
+  !confirm(
+   "Approve this financial record?"
+  )
+ )return;
+
+
+ button.disabled=true;
+ button.textContent=
+  "Approving...";
+
+
+ try{
+
+  const r=
+   await fetch(
+    API+
+    "/api/"+type+
+    "/"+id+"/approve",
+    {
+     method:"POST",
+     headers:headers()
+    }
+   );
+
+
+  const d=
+   await r.json();
+
+
+  if(
+   r.status===401
+  ){
+
+   localStorage.removeItem(KEY);
+
+   location.href=
+    "admin-login.html";
+
+   return;
+
+  }
+
+
+  if(
+   !r.ok||
+   !d.success
+  ){
+
+   throw new Error(
+    d.error||
+    "Unable to approve record"
+   );
+
+  }
+
+
+  showMessage(
+   "Record approved successfully.",
+   true
+  );
+
+
+  await loadAll();
+
+
+ }catch(e){
+
+  showMessage(
+   e.message||
+   "Unable to approve record"
+  );
+
+  button.disabled=false;
+  button.textContent=
+   "✓ Approve";
+
+ }
+
+}
+
+
+async function rejectRecord(
+ type,
+ id,
+ button
+){
+
+ const reason=
+  prompt(
+   "Enter rejection reason:"
+  );
+
+
+ if(reason===null)return;
+
+
+ if(!reason.trim()){
+
+  alert(
+   "Please enter a rejection reason."
+  );
+
+  return;
+
+ }
+
+
+ button.disabled=true;
+ button.textContent=
+  "Rejecting...";
+
+
+ try{
+
+  const r=
+   await fetch(
+    API+
+    "/api/"+type+
+    "/"+id+"/reject",
+    {
+     method:"POST",
+     headers:headers(),
+     body:JSON.stringify({
+      reason:
+       reason.trim()
+     })
+    }
+   );
+
+
+  const d=
+   await r.json();
+
+
+  if(
+   r.status===401
+  ){
+
+   localStorage.removeItem(KEY);
+
+   location.href=
+    "admin-login.html";
+
+   return;
+
+  }
+
+
+  if(
+   !r.ok||
+   !d.success
+  ){
+
+   throw new Error(
+    d.error||
+    "Unable to reject record"
+   );
+
+  }
+
+
+  showMessage(
+   "Record rejected successfully.",
+   true
+  );
+
+
+  await loadAll();
+
+
+ }catch(e){
+
+  showMessage(
+   e.message||
+   "Unable to reject record"
+  );
+
+  button.disabled=false;
+  button.textContent=
+   "✕ Reject";
+
+ }
+
+}
+
+
+async function logout(){
+
+ try{
+
+  await fetch(
+   API+"/api/logout",
+   {
+    method:"POST",
+    headers:headers()
+   }
+  );
+
+ }catch(e){}
+
+ localStorage.removeItem(KEY);
+
+ location.href=
+  "admin-login.html";
+
+}
+
+
+loadAll();
+
+</script>
+
+</body>
+</html>
