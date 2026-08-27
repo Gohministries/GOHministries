@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>180 Bible Lessons | GOH Bible Academy</title>
+
+<meta name="description"
+content="Explore 180 Christian Biblical Studies lessons from GOH Bible Academy. Lesson 1 is free. Premium access is required for Lessons 2–180. Available in English, Tamil and Sinhala.">
+
+<meta name="theme-color" content="#111827">
+
+<link rel="icon"
+href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#f8fafc;
+color:#172033;
+line-height:1.5
+}
+
+a{
+text-decoration:none;
+color:inherit
+}
+
+.container{
+width:min(1000px,92%);
+margin:auto
+}
+
+/* HEADER */
+
+header{
+position:sticky;
+top:0;
+z-index:1000;
+background:#fff;
+border-bottom:1px solid #e5e7eb
+}
+
+.nav{
+height:64px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:9px
+}
+
+.logo img{
+width:42px;
+height:42px;
+object-fit:contain;
+border-radius:8px
+}
+
+.logo strong{
+display:block;
+font-size:13px
+}
+
+.logo span{
+font-size:8px;
+color:#6b7280
+}
+
+.nav-buttons{
+display:flex;
+gap:6px
+}
+
+.nav-btn{
+padding:8px 11px;
+border-radius:8px;
+font-size:10px;
+font-weight:900
+}
+
+.login{
+background:#111827;
+color:#fff
+}
+
+.register{
+background:#fbbf24;
+color:#111827
+}
+
+.menu{
+display:none;
+width:40px;
+height:40px;
+border:1px solid #e5e7eb;
+background:#fff;
+border-radius:8px;
+font-size:18px;
+cursor:pointer
+}
+
+/* MOBILE MENU */
+
+.mobile-menu{
+display:none
+}
+
+.mobile-menu.show{
+display:block;
+position:fixed;
+top:64px;
+left:0;
+right:0;
+z-index:999;
+background:#fff;
+border-bottom:1px solid #e5e7eb;
+box-shadow:0 12px 25px rgba(0,0,0,.12);
+padding:8px 4%
+}
+
+.mobile-menu a{
+display:block;
+padding:12px 8px;
+border-radius:8px;
+font-size:12px;
+font-weight:800
+}
+
+/* HERO */
+
+.hero{
+background:
+radial-gradient(circle at 85% 15%,rgba(99,102,241,.2),transparent 30%),
+linear-gradient(135deg,#111827,#253044);
+color:#fff;
+padding:48px 0
+}
+
+.hero-content{
+text-align:center
+}
+
+.label{
+font-size:9px;
+font-weight:900;
+letter-spacing:1.2px;
+color:#fbbf24
+}
+
+.hero h1{
+font-size:clamp(32px,6vw,50px);
+line-height:1.1;
+margin:8px 0
+}
+
+.hero p{
+max-width:650px;
+margin:auto;
+font-size:12px;
+color:#cbd5e1
+}
+
+.languages{
+display:flex;
+justify-content:center;
+gap:7px;
+flex-wrap:wrap;
+margin-top:16px
+}
+
+.languages span{
+padding:6px 11px;
+border-radius:20px;
+font-size:9px;
+font-weight:800;
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.12)
+}
+
+/* SUMMARY */
+
+.summary{
+margin-top:-20px;
+position:relative;
+z-index:2
+}
+
+.summary-box{
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:14px;
+padding:16px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:8px;
+box-shadow:0 8px 25px rgba(17,24,39,.07)
+}
+
+.summary-item{
+text-align:center;
+padding:8px
+}
+
+.summary-item strong{
+display:block;
+font-size:16px
+}
+
+.summary-item span{
+font-size:8px;
+color:#6b7280
+}
+
+/* LESSONS */
+
+.lessons{
+padding:40px 0 60px
+}
+
+.section-head{
+text-align:center;
+margin-bottom:25px
+}
+
+.section-head h2{
+font-size:27px
+}
+
+.section-head p{
+font-size:11px;
+color:#6b7280;
+margin-top:4px
+}
+
+/* MODULE */
+
+.module{
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:15px;
+margin-bottom:14px;
+overflow:hidden
+}
+
+.module-head{
+padding:17px 18px;
+background:#111827;
+color:#fff
+}
+
+.module-head small{
+font-size:8px;
+font-weight:900;
+letter-spacing:1px;
+color:#fbbf24
+}
+
+.module-head h3{
+font-size:17px;
+margin-top:3px
+}
+
+.module-head p{
+font-size:9px;
+color:#cbd5e1;
+margin-top:2px
+}
+
+/* LESSON GRID */
+
+.lesson-grid{
+padding:14px;
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:7px
+}
+
+.lesson-btn{
+min-height:48px;
+border:1px solid #e5e7eb;
+background:#fff;
+border-radius:9px;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:5px;
+font-size:9px;
+font-weight:900;
+cursor:pointer;
+transition:.15s
+}
+
+.lesson-btn:hover{
+border-color:#6366f1;
+transform:translateY(-1px)
+}
+
+.lesson-btn.free{
+background:#f0fdf4;
+border-color:#bbf7d0;
+color:#166534
+}
+
+.lesson-btn.premium{
+background:#f8fafc;
+color:#6b7280
+}
+
+.lesson-number{
+font-size:11px
+}
+
+.free-tag{
+font-size:7px;
+background:#22c55e;
+color:#fff;
+padding:2px 4px;
+border-radius:4px
+}
+
+.lock{
+font-size:10px
+}
+
+/* CTA */
+
+.cta{
+margin-top:25px;
+background:
+radial-gradient(circle at 85% 15%,rgba(99,102,241,.2),transparent 30%),
+linear-gradient(135deg,#111827,#253044);
+color:#fff;
+border-radius:16px;
+padding:28px;
+text-align:center
+}
+
+.cta h2{
+font-size:24px;
+margin-bottom:6px
+}
+
+.cta p{
+font-size:11px;
+color:#cbd5e1;
+margin-bottom:15px
+}
+
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:11px 16px;
+border-radius:9px;
+font-size:10px;
+font-weight:900
+}
+
+.yellow{
+background:#fbbf24;
+color:#111827
+}
+
+.white{
+background:#fff;
+color:#111827
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1120;
+color:#fff;
+padding:28px 0 15px;
+text-align:center
+}
+
+.footer-links{
+display:flex;
+justify-content:center;
+gap:18px;
+flex-wrap:wrap;
+margin-bottom:14px
+}
+
+.footer-links a{
+font-size:9px;
+color:#cbd5e1
+}
+
+.legal{
+border-top:1px solid rgba(255,255,255,.1);
+padding-top:13px;
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap
+}
+
+.legal a{
+font-size:8px;
+color:#94a3b8
+}
+
+.copy{
+font-size:8px;
+color:#64748b;
+margin-top:12px
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+position:fixed;
+right:16px;
+bottom:16px;
+width:54px;
+height:54px;
+display:grid;
+place-items:center;
+border-radius:50%;
+background:#25d366;
+color:#fff;
+font-size:25px;
+z-index:2000;
+box-shadow:0 7px 20px rgba(0,0,0,.22)
+}
+
+/* RESPONSIVE */
+
+@media(max-width:800px){
+
+.nav-buttons{
+display:none
+}
+
+.menu{
+display:block
+}
+
+.lesson-grid{
+grid-template-columns:repeat(3,1fr)
+}
+
+.summary-box{
+grid-template-columns:repeat(2,1fr)
+}
+
+}
+
+@media(max-width:500px){
+
+.container{
+width:92%
+}
+
+.lesson-grid{
+grid-template-columns:repeat(2,1fr)
+}
+
+.lesson-btn{
+min-height:50px
+}
+
+.summary-box{
+grid-template-columns:repeat(2,1fr)
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+<div class="container nav">
+
+<a href="index.html" class="logo">
+
+<img
+src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
+alt="GOH Bible Academy">
+
+<div>
+<strong>GOH Bible Academy</strong>
+<span>Gate of Heaven Ministries</span>
+</div>
+
+</a>
+
+<div class="nav-buttons">
+
+<a href="login.html" class="nav-btn login">
+🔐 Login
+</a>
+
+<a href="register.html" class="nav-btn register">
+📝 Register
+</a>
+
+</div>
+
+<button
+class="menu"
+id="menuBtn"
+aria-label="Open menu">
+
+☰
+
+</button>
+
+</div>
+
+</header>
+
+
+<!-- MOBILE MENU -->
+
+<nav class="mobile-menu" id="mobileMenu">
+
+<a href="index.html">⌂ Home</a>
+<a href="about.html">ℹ️ About</a>
+<a href="login.html">🔐 Student Login</a>
+<a href="register.html">📝 Registration</a>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="container hero-content">
+
+<div class="label">
+GOH BIBLE ACADEMY
+</div>
+
+<h1>
+180 Bible Lessons
+</h1>
+
+<p>
+A structured Christian Biblical Studies program designed
+to help you learn God's Word, grow in faith and prepare
+for Christian service.
+</p>
+
+<div class="languages">
+
+<span>English</span>
+<span>தமிழ்</span>
+<span>සිංහල</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SUMMARY -->
+
+<div class="container summary">
+
+<div class="summary-box">
+
+<div class="summary-item">
+<strong>180</strong>
+<span>Total Lessons</span>
+</div>
+
+<div class="summary-item">
+<strong>1</strong>
+<span>Free Lesson</span>
+</div>
+
+<div class="summary-item">
+<strong>179</strong>
+<span>Premium Lessons</span>
+</div>
+
+<div class="summary-item">
+<strong>3</strong>
+<span>Languages</span>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- LESSONS -->
+
+<section class="lessons">
+
+<div class="container">
+
+<div class="section-head">
+
+<h2>Course Lessons</h2>
+
+<p>
+Lesson 1 is free. Lessons 2–180 require Premium access.
+</p>
+
+</div>
+
+
+<!-- MODULE 1 -->
+
+<div class="module">
+
+<div class="module-head">
+
+<small>MODULE 01</small>
+
+<h3>Introduction to the Bible</h3>
+
+<p>Lessons 1–30</p>
+
+</div>
+
+<div class="lesson-grid" id="module1"></div>
+
+</div>
+
+
+<!-- MODULE 2 -->
+
+<div class="module">
+
+<div class="module-head">
+
+<small>MODULE 02</small>
+
+<h3>Old Testament Studies</h3>
+
+<p>Lessons 31–60</p>
+
+</div>
+
+<div class="lesson-grid" id="module2"></div>
+
+</div>
+
+
+<!-- MODULE 3 -->
+
+<div class="module">
+
+<div class="module-head">
+
+<small>MODULE 03</small>
+
+<h3>New Testament Studies</h3>
+
+<p>Lessons 61–90</p>
+
+</div>
+
+<div class="lesson-grid" id="module3"></div>
+
+</div>
+
+
+<!-- MODULE 4 -->
+
+<div class="module">
+
+<div class="module-head">
+
+<small>MODULE 04</small>
+
+<h3>Christian Doctrine</h3>
+
+<p>Lessons 91–120</p>
+
+</div>
+
+<div class="lesson-grid" id="module4"></div>
+
+</div>
+
+
+<!-- MODULE 5 -->
+
+<div class="module">
+
+<div class="module-head">
+
+<small>MODULE 05</small>
+
+<h3>Christian Life & Discipleship</h3>
+
+<p>Lessons 121–150</p>
+
+</div>
+
+<div class="lesson-grid" id="module5"></div>
+
+</div>
+
+
+<!-- MODULE 6 -->
+
+<div class="module">
+
+<div class="module-head">
+
+<small>MODULE 06</small>
+
+<h3>Evangelism & Christian Ministry</h3>
+
+<p>Lessons 151–180</p>
+
+</div>
+
+<div class="lesson-grid" id="module6"></div>
+
+</div>
+
+
+<!-- CTA -->
+
+<div class="cta">
+
+<h2>
+Ready to Continue?
+</h2>
+
+<p>
+Lesson 1 is free. Register and get Premium access
+to continue through all 180 lessons.
+</p>
+
+<a href="register.html" class="btn yellow">
+📝 Register Now
+</a>
+
+<a href="login.html" class="btn white">
+🔐 Login
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="container">
+
+<div class="footer-links">
+
+<a href="index.html">Home</a>
+<a href="courses.html">Courses</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+
+</div>
+
+<div class="legal">
+
+<a href="privacy.html">Privacy Policy</a>
+<a href="terms.html">Terms & Conditions</a>
+<a href="refund.html">Refund Policy</a>
+
+</div>
+
+<div class="copy">
+
+© 2026 GOH Bible Academy · Gate of Heaven Ministries
+
+</div>
+
+</div>
+
+</footer>
+
+
+<!-- WHATSAPP -->
+
+<a
+class="whatsapp"
+href="https://wa.me/94771190395?text=Hello%20GOH%20Bible%20Academy"
+target="_blank"
+rel="noopener"
+aria-label="WhatsApp GOH Bible Academy">
+
+💬
+
+</a>
+
+
+<script>
+
+/* MOBILE MENU */
+
+const menuBtn=document.getElementById("menuBtn");
+const mobileMenu=document.getElementById("mobileMenu");
+
+menuBtn.onclick=()=>{
+
+const open=mobileMenu.classList.toggle("show");
+
+menuBtn.textContent=open?"✕":"☰";
+
+};
+
+mobileMenu.querySelectorAll("a").forEach(a=>{
+
+a.onclick=()=>{
+
+mobileMenu.classList.remove("show");
+
+menuBtn.textContent="☰";
+
+};
+
+});
+
+
+/* LESSON GENERATOR */
+
+function createLessons(containerId,start,end){
+
+const container=document.getElementById(containerId);
+
+for(let i=start;i<=end;i++){
+
+const button=document.createElement("a");
+
+button.className=
+"lesson-btn "+(i===1?"free":"premium");
+
+if(i===1){
+
+button.href="lesson-1.html";
+
+button.innerHTML=
+'<span class="lesson-number">1</span>'+
+'<span>FREE</span>'+
+'<span class="free-tag">FREE</span>';
+
+}else{
+
+button.href="login.html";
+
+button.onclick=function(e){
+
+e.preventDefault();
+
+alert(
+"Premium access is required for Lesson "+
+i+". Please login or register to continue."
+);
+
+};
+
+button.innerHTML=
+'<span class="lesson-number">'+i+'</span>'+
+'<span>Lesson</span>'+
+'<span class="lock">🔒</span>';
+
+}
+
+container.appendChild(button);
+
+}
+
+}
+
+
+/* CREATE ALL 180 LESSONS */
+
+createLessons("module1",1,30);
+
+createLessons("module2",31,60);
+
+createLessons("module3",61,90);
+
+createLessons("module4",91,120);
+
+createLessons("module5",121,150);
+
+createLessons("module6",151,180);
+
+</script>
+
+</body>
+</html>
