@@ -8,38 +8,215 @@
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
-header{background:#155eef;color:#fff;padding:15px 18px}
-.head{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center}
-.logout{background:#fff;color:#155eef;border:0;border-radius:8px;padding:9px 13px;font-weight:bold;cursor:pointer}
-nav{max-width:1050px;margin:10px auto 0;display:flex;gap:8px;overflow:auto}
-nav a{background:#fff;color:#155eef;padding:8px 11px;border-radius:8px;text-decoration:none;font-size:12px;white-space:nowrap}
-main{max-width:1050px;margin:auto;padding:18px}
-.card{background:#fff;padding:18px;border-radius:14px;margin-bottom:16px;box-shadow:0 2px 12px #0001}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-label{display:block;font-size:13px;font-weight:bold;margin:9px 0 6px}
-input,select,textarea{width:100%;padding:12px;border:1px solid #d5dbe5;border-radius:8px;font-size:14px;background:#fff}
-textarea{min-height:90px;resize:vertical}
-button{border:0;border-radius:8px;padding:11px 15px;background:#155eef;color:#fff;font-weight:bold;cursor:pointer}
-form button{width:100%;margin-top:15px}
-button:disabled{opacity:.6}
-.msg{display:none;padding:11px;border-radius:8px;margin-bottom:12px;font-size:13px}
-.ok{display:block;background:#dcfce7;color:#166534}
-.bad{display:block;background:#fee2e2;color:#991b1b}
-.small{font-size:13px;color:#667085}
-.hint{font-size:11px;color:#667085;margin-top:5px}
-.table{overflow:auto}
-table{width:100%;min-width:800px;border-collapse:collapse}
-th,td{padding:10px;border-bottom:1px solid #edf0f4;text-align:left;font-size:13px}
-th{background:#f8fafc;color:#667085}
-.status{font-weight:bold}
-.pending{color:#b45309}
-.approved{color:#15803d}
-.rejected{color:#dc2626}
-.view{background:#475467;padding:7px 10px;font-size:12px}
+
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#f5f7fb;
+ color:#172033
+}
+
+header{
+ background:#155eef;
+ color:#fff;
+ padding:15px 18px
+}
+
+.head{
+ max-width:1050px;
+ margin:auto;
+ display:flex;
+ justify-content:space-between;
+ align-items:center
+}
+
+.logo{font-weight:bold}
+
+.logout{
+ background:#fff;
+ color:#155eef;
+ border:0;
+ border-radius:8px;
+ padding:9px 13px;
+ font-weight:bold;
+ cursor:pointer
+}
+
+nav{
+ max-width:1050px;
+ margin:10px auto 0;
+ display:flex;
+ gap:8px;
+ overflow:auto
+}
+
+nav a{
+ background:#fff;
+ color:#155eef;
+ padding:8px 11px;
+ border-radius:8px;
+ text-decoration:none;
+ font-size:12px;
+ white-space:nowrap
+}
+
+main{
+ max-width:1050px;
+ margin:auto;
+ padding:18px
+}
+
+.card{
+ background:#fff;
+ padding:18px;
+ border-radius:14px;
+ margin-bottom:16px;
+ box-shadow:0 2px 12px #0001
+}
+
+h2,h3{margin-top:0}
+
+.small{
+ font-size:13px;
+ color:#667085
+}
+
+.grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px
+}
+
+label{
+ display:block;
+ font-size:13px;
+ font-weight:bold;
+ margin:10px 0 6px
+}
+
+input,
+select,
+textarea{
+ width:100%;
+ padding:12px;
+ border:1px solid #d5dbe5;
+ border-radius:8px;
+ font-size:14px;
+ background:#fff;
+ font-family:inherit
+}
+
+textarea{
+ min-height:90px;
+ resize:vertical
+}
+
+button{
+ border:0;
+ border-radius:8px;
+ padding:11px 15px;
+ background:#155eef;
+ color:#fff;
+ font-weight:bold;
+ cursor:pointer
+}
+
+.submit{
+ width:100%;
+ margin-top:15px
+}
+
+button:disabled{
+ opacity:.6;
+ cursor:not-allowed
+}
+
+.msg{
+ display:none;
+ padding:11px;
+ border-radius:8px;
+ margin-bottom:15px;
+ font-size:13px
+}
+
+.ok{
+ display:block;
+ background:#dcfce7;
+ color:#166534
+}
+
+.bad{
+ display:block;
+ background:#fee2e2;
+ color:#991b1b
+}
+
+.table{
+ overflow:auto
+}
+
+table{
+ width:100%;
+ min-width:800px;
+ border-collapse:collapse
+}
+
+th,td{
+ padding:10px;
+ border-bottom:1px solid #edf0f4;
+ text-align:left;
+ font-size:13px
+}
+
+th{
+ background:#f8fafc;
+ color:#667085
+}
+
+.badge{
+ display:inline-block;
+ padding:5px 8px;
+ border-radius:20px;
+ font-size:11px;
+ font-weight:bold
+}
+
+.pending{
+ background:#fef3c7;
+ color:#92400e
+}
+
+.approved{
+ background:#dcfce7;
+ color:#166534
+}
+
+.rejected{
+ background:#fee2e2;
+ color:#991b1b
+}
+
+.view{
+ background:#475467;
+ padding:7px 10px;
+ font-size:12px
+}
+
+.empty{
+ text-align:center;
+ padding:20px;
+ color:#667085
+}
+
+.hint{
+ font-size:11px;
+ color:#667085;
+ margin-top:5px
+}
+
 @media(max-width:700px){
-.grid{grid-template-columns:1fr}
-main{padding:12px}
+ .grid{grid-template-columns:1fr}
+ main{padding:12px}
 }
 </style>
 </head>
@@ -47,9 +224,17 @@ main{padding:12px}
 <body>
 
 <header>
+
 <div class="head">
-<b>GOH Ministries Finance</b>
-<button class="logout" onclick="logout()">Logout</button>
+
+<div class="logo">
+GOH Ministries Finance
+</div>
+
+<button class="logout" onclick="logout()">
+Logout
+</button>
+
 </div>
 
 <nav>
@@ -57,83 +242,148 @@ main{padding:12px}
 <a href="income.html">Income</a>
 <a href="expenses.html">Expenses</a>
 <a href="donations.html">Donations</a>
+<a href="approvals.html">Approvals</a>
 <a href="receipts.html">Receipts</a>
 <a href="reports.html">Reports</a>
 <a href="admin.html">Administration</a>
 </nav>
+
 </header>
 
 <main>
 
 <div class="card">
+
 <h2>Income</h2>
-<div class="small">Record ministry income with the supporting receipt or slip.</div>
+
+<div class="small">
+Record ministry income with the supporting receipt or slip.
 </div>
 
-<div class="card">
+</div>
 
 <div id="msg" class="msg"></div>
 
-<form id="form">
+<div class="card">
+
+<h3>Record Income</h3>
+
+<form id="incomeForm">
 
 <div class="grid">
 
 <div>
+
 <label>Category</label>
+
 <select id="category" required>
+
 <option value="">Select category</option>
-<option>Offering</option>
-<option>Tithe</option>
-<option>Donation</option>
-<option>Church Fund</option>
-<option>Building Fund</option>
-<option>Mission Fund</option>
-<option>Other</option>
+<option value="Offering">Offering</option>
+<option value="Tithe">Tithe</option>
+<option value="Donation">Donation</option>
+<option value="Special Offering">Special Offering</option>
+<option value="Mission Support">Mission Support</option>
+<option value="Other">Other</option>
+
 </select>
+
 </div>
 
 <div>
+
 <label>Amount (LKR)</label>
-<input id="amount" type="number" min="0.01" step="0.01" placeholder="0.00" required>
+
+<input
+id="amount"
+type="number"
+min="0.01"
+step="0.01"
+placeholder="150"
+required
+>
+
 </div>
 
 <div>
+
 <label>Date</label>
-<input id="date" type="date" required>
+
+<input
+id="date"
+type="date"
+required
+>
+
 </div>
 
 <div>
+
 <label>Payment Method</label>
-<select id="payment" required>
-<option value="">Select method</option>
-<option>Cash</option>
-<option>Bank Transfer</option>
-<option>Cheque</option>
-<option>Online Payment</option>
-<option>Other</option>
+
+<select id="payment_method" required>
+
+<option value="">Select payment method</option>
+<option value="Cash">Cash</option>
+<option value="Bank Transfer">Bank Transfer</option>
+<option value="Cheque">Cheque</option>
+<option value="Online">Online</option>
+<option value="Other">Other</option>
+
 </select>
+
 </div>
 
 <div>
+
 <label>Reference Number</label>
-<input id="reference" type="text" placeholder="Optional">
+
+<input
+id="reference_number"
+type="text"
+placeholder="Optional"
+>
+
 </div>
 
 <div>
+
 <label>Receipt / Slip</label>
-<input id="receipt" type="file" accept="image/jpeg,image/png,application/pdf" required>
-<div class="hint">JPG, PNG or PDF. Maximum 5MB.</div>
+
+<input
+id="receipt"
+type="file"
+accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf"
+required
+>
+
+<div class="hint">
+JPG, PNG or PDF. Maximum 5MB.
+</div>
+
 </div>
 
 </div>
 
 <label>Description</label>
-<textarea id="description" placeholder="Optional details"></textarea>
 
-<button id="save" type="submit">Submit Income</button>
+<textarea
+id="description"
+placeholder="Optional details"
+></textarea>
+
+<button
+id="submitBtn"
+class="submit"
+type="submit"
+>
+Submit Income
+</button>
 
 </form>
+
 </div>
+
 
 <div class="card">
 
@@ -144,6 +394,7 @@ main{padding:12px}
 <table>
 
 <thead>
+
 <tr>
 <th>Date</th>
 <th>Category</th>
@@ -152,12 +403,17 @@ main{padding:12px}
 <th>Status</th>
 <th>Receipt</th>
 </tr>
+
 </thead>
 
-<tbody id="rows">
+<tbody id="records">
+
 <tr>
-<td colspan="6">Loading...</td>
+<td colspan="6" class="empty">
+Loading...
+</td>
 </tr>
+
 </tbody>
 
 </table>
@@ -173,9 +429,15 @@ main{padding:12px}
 const API="https://goh-finance.createlk.workers.dev";
 const KEY="goh_finance_token";
 
-function auth(){
- return{
-  "Authorization":"Bearer "+localStorage.getItem(KEY)
+const form=document.getElementById("incomeForm");
+const btn=document.getElementById("submitBtn");
+const msg=document.getElementById("msg");
+const records=document.getElementById("records");
+
+function authHeaders(){
+ return {
+  "Authorization":
+   "Bearer "+localStorage.getItem(KEY)
  };
 }
 
@@ -189,27 +451,54 @@ function esc(v){
 }
 
 function money(v){
- return "LKR "+Number(v||0).toLocaleString(
+ return Number(v||0).toLocaleString(
   "en-LK",
-  {minimumFractionDigits:2,maximumFractionDigits:2}
+  {
+   minimumFractionDigits:2,
+   maximumFractionDigits:2
+  }
  );
 }
 
 function show(text,ok=false){
- const m=document.getElementById("msg");
- m.textContent=text;
- m.className="msg "+(ok?"ok":"bad");
+
+ msg.textContent=text;
+
+ msg.className=
+  "msg "+(ok?"ok":"bad");
+
 }
 
-document.getElementById("date").value=
- new Date().toISOString().slice(0,10);
+function today(){
 
-async function check(){
+ const d=new Date();
 
- const t=localStorage.getItem(KEY);
+ const y=d.getFullYear();
 
- if(!t){
-  location.href="admin-login.html";
+ const m=String(
+  d.getMonth()+1
+ ).padStart(2,"0");
+
+ const day=String(
+  d.getDate()
+ ).padStart(2,"0");
+
+ return `${y}-${m}-${day}`;
+}
+
+document.getElementById("date").value=today();
+
+
+async function checkLogin(){
+
+ const token=
+  localStorage.getItem(KEY);
+
+ if(!token){
+
+  location.href=
+   "admin-login.html";
+
   return false;
  }
 
@@ -217,42 +506,234 @@ async function check(){
 
   const r=await fetch(
    API+"/api/me",
-   {headers:auth()}
+   {
+    headers:authHeaders()
+   }
   );
 
   const d=await r.json();
 
-  if(!r.ok||!d.success)
-   throw Error();
+  if(!r.ok||!d.success){
+
+   throw new Error(
+    d.error||"Session expired."
+   );
+
+  }
 
   return true;
 
- }catch{
+ }catch(e){
 
   localStorage.removeItem(KEY);
-  location.href="admin-login.html";
+
+  location.href=
+   "admin-login.html";
+
   return false;
+ }
+
+}
+
+
+async function loadRecords(){
+
+ records.innerHTML=
+ `<tr>
+  <td colspan="6" class="empty">
+   Loading...
+  </td>
+ </tr>`;
+
+ try{
+
+  const r=await fetch(
+   API+"/api/income",
+   {
+    method:"GET",
+    headers:authHeaders()
+   }
+  );
+
+  const d=await r.json();
+
+  if(!r.ok||!d.success){
+
+   throw new Error(
+    d.error||
+    "Unable to load income records."
+   );
+
+  }
+
+  const rows=d.income||[];
+
+  if(!rows.length){
+
+   records.innerHTML=
+   `<tr>
+    <td colspan="6" class="empty">
+     No income records found.
+    </td>
+   </tr>`;
+
+   return;
+  }
+
+  records.innerHTML=
+   rows.map(x=>{
+
+    let cls=
+     String(x.status||"")
+      .toLowerCase();
+
+    let receipt="";
+
+    if(x.receipt_name){
+
+     receipt=
+     `<button
+       class="view"
+       onclick="viewReceipt(${Number(x.id)})">
+       View Slip
+      </button>`;
+
+    }else{
+
+     receipt="-";
+
+    }
+
+    return `
+    <tr>
+
+     <td>${esc(x.date)}</td>
+
+     <td>${esc(x.category||"-")}</td>
+
+     <td>
+      <b>LKR ${money(x.amount)}</b>
+     </td>
+
+     <td>
+      ${esc(x.payment_method)}
+     </td>
+
+     <td>
+      <span class="badge ${cls}">
+       ${esc(x.status)}
+      </span>
+     </td>
+
+     <td>
+      ${receipt}
+     </td>
+
+    </tr>
+    `;
+
+   }).join("");
+
+ }catch(e){
+
+  records.innerHTML=
+  `<tr>
+   <td colspan="6" class="empty">
+    ${esc(e.message)}
+   </td>
+  </tr>`;
 
  }
 
 }
 
-document.getElementById("form").addEventListener(
+
+form.addEventListener(
  "submit",
- async e=>{
+ async function(e){
 
   e.preventDefault();
 
-  const btn=document.getElementById("save");
-  const file=document.getElementById("receipt").files[0];
+  const category=
+   document.getElementById(
+    "category"
+   ).value;
 
-  if(!file){
-   show("Receipt / slip is required.");
+  const amount=
+   document.getElementById(
+    "amount"
+   ).value;
+
+  const date=
+   document.getElementById(
+    "date"
+   ).value;
+
+  const payment=
+   document.getElementById(
+    "payment_method"
+   ).value;
+
+  const reference=
+   document.getElementById(
+    "reference_number"
+   ).value.trim();
+
+  const description=
+   document.getElementById(
+    "description"
+   ).value.trim();
+
+  const file=
+   document.getElementById(
+    "receipt"
+   ).files[0];
+
+  if(!category){
+
+   show("Please select a category.");
+   return;
+
+  }
+
+  if(!amount||Number(amount)<=0){
+
+   show("Please enter a valid amount.");
+   return;
+
+  }
+
+  if(!date){
+
+   show("Please select a date.");
+   return;
+
+  }
+
+  if(!payment){
+
+   show(
+    "Please select a payment method."
+   );
+
    return;
   }
 
-  if(file.size>5242880){
-   show("Receipt must be 5MB or smaller.");
+  if(!file){
+
+   show(
+    "Receipt / slip is required."
+   );
+
+   return;
+  }
+
+  if(file.size>5*1024*1024){
+
+   show(
+    "Receipt must be 5MB or smaller."
+   );
+
    return;
   }
 
@@ -263,43 +744,51 @@ document.getElementById("form").addEventListener(
   ];
 
   if(!allowed.includes(file.type)){
-   show("Only JPG, PNG or PDF files are allowed.");
+
+   show(
+    "Only JPG, PNG or PDF files are allowed."
+   );
+
    return;
   }
 
-  const fd=new FormData();
+  const data=new FormData();
 
-  fd.append(
+  data.append(
    "category",
-   document.getElementById("category").value
+   category
   );
 
-  fd.append(
+  data.append(
    "amount",
-   document.getElementById("amount").value
+   amount
   );
 
-  fd.append(
+  data.append(
    "date",
-   document.getElementById("date").value
+   date
   );
 
-  fd.append(
+  data.append(
    "payment_method",
-   document.getElementById("payment").value
+   payment
   );
 
-  fd.append(
+  data.append(
    "reference_number",
-   document.getElementById("reference").value
+   reference
   );
 
-  fd.append(
+  data.append(
    "description",
-   document.getElementById("description").value
+   description
   );
 
-  fd.append("receipt",file);
+  data.append(
+   "receipt",
+   file,
+   file.name
+  );
 
   btn.disabled=true;
   btn.textContent="Submitting...";
@@ -310,33 +799,41 @@ document.getElementById("form").addEventListener(
     API+"/api/income",
     {
      method:"POST",
-     headers:auth(),
-     body:fd
+     headers:authHeaders(),
+     body:data
     }
    );
 
    const d=await r.json();
 
-   if(!r.ok||!d.success)
-    throw Error(
-     d.error||"Unable to submit income."
+   if(!r.ok||!d.success){
+
+    throw new Error(
+     d.error||
+     "Unable to submit income."
     );
 
+   }
+
    show(
-    "Income submitted successfully. Waiting for approval.",
+    "Income submitted successfully. Waiting for administrator approval.",
     true
    );
 
-   e.target.reset();
+   form.reset();
 
-   document.getElementById("date").value=
-    new Date().toISOString().slice(0,10);
+   document.getElementById(
+    "date"
+   ).value=today();
 
-   await load();
+   await loadRecords();
 
-  }catch(err){
+  }catch(e){
 
-   show(err.message);
+   show(
+    e.message||
+    "Unable to submit income."
+   );
 
   }finally{
 
@@ -347,68 +844,6 @@ document.getElementById("form").addEventListener(
 
  });
 
-async function load(){
-
- try{
-
-  const r=await fetch(
-   API+"/api/income",
-   {headers:auth()}
-  );
-
-  const d=await r.json();
-
-  if(!r.ok||!d.success)
-   throw Error(
-    d.error||"Unable to load income."
-   );
-
-  const rows=d.income||[];
-
-  document.getElementById("rows").innerHTML=
-   rows.map(x=>{
-
-    const status=String(
-     x.status||""
-    ).toLowerCase();
-
-    return `
-    <tr>
-      <td>${esc(x.date)}</td>
-      <td>${esc(x.category)}</td>
-      <td>${money(x.amount)}</td>
-      <td>${esc(x.payment_method)}</td>
-      <td>
-       <span class="status ${esc(status)}">
-        ${esc(x.status)}
-       </span>
-      </td>
-      <td>
-       <button
-        class="view"
-        onclick="viewReceipt(${Number(x.id)})">
-        View
-       </button>
-      </td>
-    </tr>
-    `;
-
-   }).join("")||
-
-   `<tr>
-    <td colspan="6">No income records found.</td>
-   </tr>`;
-
- }catch(e){
-
-  document.getElementById("rows").innerHTML=
-   `<tr>
-    <td colspan="6">${esc(e.message)}</td>
-   </tr>`;
-
- }
-
-}
 
 async function viewReceipt(id){
 
@@ -416,24 +851,43 @@ async function viewReceipt(id){
 
   const r=await fetch(
    API+"/api/income/"+id+"/receipt",
-   {headers:auth()}
+   {
+    method:"GET",
+    headers:authHeaders()
+   }
   );
 
   if(!r.ok){
+
    let d={};
-   try{d=await r.json()}catch{}
-   throw Error(
-    d.error||"Unable to open receipt."
+
+   try{
+    d=await r.json();
+   }catch{}
+
+   throw new Error(
+    d.error||
+    "Unable to open receipt."
    );
+
   }
 
-  const blob=await r.blob();
-  const url=URL.createObjectURL(blob);
+  const blob=
+   await r.blob();
 
-  window.open(url,"_blank");
+  const url=
+   URL.createObjectURL(blob);
+
+  window.open(
+   url,
+   "_blank",
+   "noopener,noreferrer"
+  );
 
   setTimeout(
-   ()=>URL.revokeObjectURL(url),
+   ()=>{
+    URL.revokeObjectURL(url);
+   },
    60000
   );
 
@@ -445,6 +899,7 @@ async function viewReceipt(id){
 
 }
 
+
 async function logout(){
 
  try{
@@ -453,19 +908,26 @@ async function logout(){
    API+"/api/logout",
    {
     method:"POST",
-    headers:auth()
+    headers:authHeaders()
    }
   );
 
- }catch{}
+ }catch(e){}
 
  localStorage.removeItem(KEY);
- location.href="admin-login.html";
+
+ location.href=
+  "admin-login.html";
 
 }
 
-check().then(ok=>{
- if(ok)load();
+
+checkLogin().then(ok=>{
+
+ if(ok){
+  loadRecords();
+ }
+
 });
 
 </script>
