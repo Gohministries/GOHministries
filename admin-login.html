@@ -8,235 +8,459 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#f5f7fb;
-color:#172033;
-padding:20px
+ margin:0;
+ min-height:100vh;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+ font-family:Arial,sans-serif;
+ background:#f5f7fb;
+ color:#172033
 }
-.box{
-max-width:400px;
-margin:70px auto;
-background:#fff;
-padding:25px;
-border-radius:16px;
-box-shadow:0 5px 25px #0001
+
+.login{
+ width:100%;
+ max-width:420px;
+ background:#fff;
+ padding:28px;
+ border-radius:18px;
+ box-shadow:0 5px 25px #0002
 }
+
 .logo{
-width:48px;
-height:48px;
-border-radius:12px;
-background:#155eef;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold;
-font-size:20px;
-margin-bottom:15px
+ width:58px;
+ height:58px;
+ border-radius:14px;
+ background:#155eef;
+ color:#fff;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:26px;
+ font-weight:bold;
+ margin:0 auto 16px
 }
+
 h1{
-font-size:22px;
-margin:0 0 5px
+ text-align:center;
+ margin:0 0 6px;
+ font-size:24px
 }
-.sub{
-font-size:13px;
-color:#667085;
-margin-bottom:22px
+
+.subtitle{
+ text-align:center;
+ color:#667085;
+ font-size:13px;
+ margin-bottom:24px
 }
+
 label{
-display:block;
-font-size:13px;
-font-weight:bold;
-margin:14px 0 6px
+ display:block;
+ font-size:13px;
+ font-weight:bold;
+ margin:14px 0 7px
 }
+
 input{
-width:100%;
-padding:13px;
-border:1px solid #d5dbe5;
-border-radius:9px;
-font-size:14px
+ width:100%;
+ padding:13px;
+ border:1px solid #d5dbe5;
+ border-radius:9px;
+ font-size:15px;
+ outline:none
 }
+
+input:focus{
+ border-color:#155eef;
+ box-shadow:0 0 0 3px #155eef18
+}
+
 button{
-width:100%;
-padding:13px;
-margin-top:20px;
-border:0;
-border-radius:9px;
-background:#155eef;
-color:#fff;
-font-weight:bold;
-font-size:14px;
-cursor:pointer
+ width:100%;
+ border:0;
+ border-radius:9px;
+ padding:13px;
+ margin-top:20px;
+ background:#155eef;
+ color:#fff;
+ font-size:15px;
+ font-weight:bold;
+ cursor:pointer
 }
-button:disabled{opacity:.6}
-.msg{
-display:none;
-margin-top:15px;
-padding:11px;
-border-radius:9px;
-font-size:13px
+
+button:disabled{
+ opacity:.6;
+ cursor:not-allowed
 }
-.bad{
-display:block;
-background:#fee2e2;
-color:#991b1b
+
+.error{
+ display:none;
+ background:#fee2e2;
+ color:#991b1b;
+ padding:12px;
+ border-radius:9px;
+ margin-bottom:15px;
+ font-size:13px
+}
+
+.info{
+ margin-top:18px;
+ text-align:center;
+ color:#667085;
+ font-size:12px
 }
 </style>
 </head>
 
 <body>
 
-<div class="box">
+<div class="login">
 
-<div class="logo">G</div>
+<div class="logo">
+GOH
+</div>
 
 <h1>GOH Ministries Finance</h1>
 
-<div class="sub">
-Administration Panel
+<div class="subtitle">
+Finance System Login
 </div>
+
+<div id="error" class="error"></div>
 
 <form id="loginForm">
 
-<label>Email</label>
+<label for="email">
+Email
+</label>
 
 <input
-id="email"
-type="email"
-value="gateofheavensl1@gmail.com"
-autocomplete="username"
-required
+ id="email"
+ type="email"
+ placeholder="Enter your email"
+ autocomplete="username"
+ required
 >
 
-<label>Password</label>
+<label for="password">
+Password
+</label>
 
 <input
-id="password"
-type="password"
-autocomplete="current-password"
-required
+ id="password"
+ type="password"
+ placeholder="Enter your password"
+ autocomplete="current-password"
+ required
 >
 
-<button id="loginBtn" type="submit">
+<button
+ id="loginBtn"
+ type="submit"
+>
 Login
 </button>
 
 </form>
 
-<div id="msg" class="msg"></div>
+<div class="info">
+Authorized finance users only
+</div>
 
 </div>
 
 <script>
 
 const API=
-"https://goh-finance.createlk.workers.dev";
+"https://goh-finance-system.createlk.workers.dev";
 
 const KEY=
 "goh_finance_token";
 
 
-/* Already logged in */
+function showError(message){
 
-if(localStorage.getItem(KEY)){
-location.href="finance-dashboard.html";
-}
+ const box=
+ document.getElementById("error");
 
+ box.textContent=message;
 
-/* Login */
-
-document.getElementById("loginForm")
-.addEventListener("submit",async e=>{
-
-e.preventDefault();
-
-const btn=
-document.getElementById("loginBtn");
-
-const msg=
-document.getElementById("msg");
-
-const email=
-document.getElementById("email")
-.value.trim()
-.toLowerCase();
-
-const password=
-document.getElementById("password")
-.value;
-
-msg.className="msg";
-
-btn.disabled=true;
-btn.textContent="Logging in...";
-
-try{
-
-const r=await fetch(
-API+"/api/login",
-{
-method:"POST",
-headers:{
-"Content-Type":
-"application/json"
-},
-body:JSON.stringify({
-email,
-password
-})
-}
-);
-
-const data=await r.json();
-
-if(!r.ok||!data.success){
-
-throw Error(
-data.error||
-"Invalid email or password"
-);
-
-}
-
-if(!data.token){
-
-throw Error(
-"Login token was not returned"
-);
+ box.style.display="block";
 
 }
 
 
-/* Save session */
+function hideError(){
 
-localStorage.setItem(
-KEY,
-data.token
-);
-
-
-/* Go to dashboard */
-
-location.href=
-"finance-dashboard.html";
-
-}catch(err){
-
-msg.className="msg bad";
-msg.textContent=
-err.message||
-"Invalid email or password";
-
-}finally{
-
-btn.disabled=false;
-btn.textContent="Login";
+ document.getElementById(
+  "error"
+ ).style.display="none";
 
 }
 
-});
+
+/*
+--------------------------------------------------
+CHECK WHETHER ALREADY LOGGED IN
+--------------------------------------------------
+*/
+
+async function checkExistingLogin(){
+
+ const token=
+ localStorage.getItem(KEY);
+
+ if(!token){
+
+  return;
+
+ }
+
+ try{
+
+  const response=
+   await fetch(
+    API+"/api/me",
+    {
+     method:"GET",
+     headers:{
+      "Authorization":
+       "Bearer "+token
+     }
+    }
+   );
+
+  const data=
+   await response.json();
+
+  if(
+   response.ok &&
+   data.success &&
+   data.user
+  ){
+
+   /*
+    Existing valid session.
+    Go directly to dashboard.
+   */
+
+   location.replace(
+    "finance-dashboard.html"
+   );
+
+  }else{
+
+   localStorage.removeItem(KEY);
+
+  }
+
+ }catch(e){
+
+  /*
+   Do not delete token merely because
+   the network temporarily failed.
+  */
+
+ }
+
+}
+
+
+/*
+--------------------------------------------------
+LOGIN
+--------------------------------------------------
+*/
+
+document
+.getElementById("loginForm")
+.addEventListener(
+ "submit",
+ async function(e){
+
+  e.preventDefault();
+
+  hideError();
+
+  const btn=
+   document.getElementById("loginBtn");
+
+  const email=
+   document
+   .getElementById("email")
+   .value
+   .trim()
+   .toLowerCase();
+
+  const password=
+   document
+   .getElementById("password")
+   .value;
+
+  if(!email || !password){
+
+   showError(
+    "Please enter your email and password."
+   );
+
+   return;
+
+  }
+
+  btn.disabled=true;
+
+  btn.textContent=
+   "Logging in...";
+
+  try{
+
+   /*
+    IMPORTANT:
+    Login endpoint must return a token.
+   */
+
+   const response=
+    await fetch(
+     API+"/api/login",
+     {
+      method:"POST",
+
+      headers:{
+       "Content-Type":
+        "application/json"
+      },
+
+      body:JSON.stringify({
+       email:email,
+       password:password
+      })
+     }
+    );
+
+
+   const data=
+    await response.json();
+
+
+   if(
+    !response.ok ||
+    !data.success
+   ){
+
+    throw new Error(
+     data.error ||
+     "Invalid email or password."
+    );
+
+   }
+
+
+   /*
+    Accept common token names.
+   */
+
+   const token=
+    data.token ||
+    data.access_token ||
+    data.session_token;
+
+
+   if(!token){
+
+    throw new Error(
+     "Login succeeded but no authentication token was returned."
+    );
+
+   }
+
+
+   /*
+    Save the EXACT token key used
+    by dashboard and admin pages.
+   */
+
+   localStorage.setItem(
+    KEY,
+    token
+   );
+
+
+   /*
+    Verify the token before redirecting.
+   */
+
+   const verify=
+    await fetch(
+     API+"/api/me",
+     {
+      method:"GET",
+
+      headers:{
+       "Authorization":
+        "Bearer "+token
+      }
+     }
+    );
+
+
+   const user=
+    await verify.json();
+
+
+   if(
+    !verify.ok ||
+    !user.success ||
+    !user.user
+   ){
+
+    localStorage.removeItem(KEY);
+
+    throw new Error(
+     user.error ||
+     "Login verification failed."
+    );
+
+   }
+
+
+   /*
+    Successful login.
+   */
+
+   location.replace(
+    "finance-dashboard.html"
+   );
+
+
+  }catch(error){
+
+   showError(
+    error.message ||
+    "Unable to login."
+   );
+
+  }finally{
+
+   btn.disabled=false;
+
+   btn.textContent=
+    "Login";
+
+  }
+
+ });
+
+
+/*
+--------------------------------------------------
+START
+--------------------------------------------------
+*/
+
+checkExistingLogin();
 
 </script>
 
