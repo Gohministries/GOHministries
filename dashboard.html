@@ -7,16 +7,15 @@
 <title>Student Dashboard | GOH Bible Academy</title>
 
 <meta name="description"
-content="GOH Bible Academy student dashboard — access your Biblical Studies lessons and learning progress.">
+content="GOH Bible Academy student dashboard.">
 
 <meta name="theme-color" content="#111827">
-
-<link rel="manifest" href="/manifest.json">
 
 <link rel="icon"
 href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 
 <style>
+
 *{
 box-sizing:border-box;
 margin:0;
@@ -30,25 +29,28 @@ color:#172033;
 line-height:1.5
 }
 
+button,
 a{
-text-decoration:none;
-color:inherit
+font:inherit
+}
+
+a{
+text-decoration:none
 }
 
 .container{
-width:min(1000px,92%);
+width:min(900px,92%);
 margin:auto
 }
 
 /* HEADER */
 
 header{
+background:#fff;
+border-bottom:1px solid #e5e7eb;
 position:sticky;
 top:0;
-z-index:1000;
-background:rgba(255,255,255,.97);
-backdrop-filter:blur(10px);
-border-bottom:1px solid #e5e7eb
+z-index:100
 }
 
 .nav{
@@ -56,96 +58,49 @@ min-height:64px;
 display:flex;
 align-items:center;
 justify-content:space-between;
-gap:12px
+gap:10px
 }
 
-.logo{
+.brand{
 display:flex;
 align-items:center;
 gap:9px
 }
 
-.logo img{
+.brand img{
 width:42px;
 height:42px;
 object-fit:contain;
 border-radius:10px
 }
 
-.logo-title{
+.brand strong{
+display:block;
 font-size:14px;
 font-weight:900
 }
 
-.logo-sub{
+.brand span{
+display:block;
 font-size:8px;
 color:#6b7280
 }
 
-.nav-links{
-display:flex;
-align-items:center;
-gap:5px
-}
-
-.nav-links a{
-padding:8px 10px;
+.logout{
+border:0;
+background:#111827;
+color:#fff;
+padding:9px 13px;
 border-radius:9px;
 font-size:10px;
-font-weight:800
-}
-
-.nav-links a:hover{
-background:#f1f5f9
-}
-
-.logout{
-background:#111827;
-color:#fff
-}
-
-.menu{
-display:none;
-width:40px;
-height:40px;
-border:1px solid #e5e7eb;
-background:#fff;
-border-radius:9px;
-font-size:18px;
+font-weight:900;
 cursor:pointer
-}
-
-/* MOBILE MENU */
-
-.mobile-menu{
-display:none
-}
-
-.mobile-menu.show{
-display:block;
-position:fixed;
-top:64px;
-left:0;
-right:0;
-z-index:999;
-background:#fff;
-border-bottom:1px solid #e5e7eb;
-box-shadow:0 12px 25px rgba(0,0,0,.12);
-padding:8px 4%
-}
-
-.mobile-menu a{
-display:block;
-padding:12px 9px;
-border-radius:9px;
-font-size:12px;
-font-weight:800
 }
 
 /* MAIN */
 
 main{
-padding:28px 0 45px
+padding:25px 0 45px
 }
 
 /* WELCOME */
@@ -156,20 +111,20 @@ radial-gradient(circle at 90% 10%,rgba(99,102,241,.25),transparent 32%),
 linear-gradient(135deg,#111827,#273449);
 color:#fff;
 border-radius:22px;
-padding:30px;
+padding:28px;
 box-shadow:0 15px 35px rgba(15,23,42,.12);
-margin-bottom:13px
+margin-bottom:12px
 }
 
 .welcome-label{
-font-size:9px;
+font-size:8px;
 font-weight:900;
 letter-spacing:1.2px;
 color:#fbbf24
 }
 
 .welcome h1{
-font-size:30px;
+font-size:29px;
 line-height:1.15;
 margin:5px 0 7px
 }
@@ -181,32 +136,33 @@ color:#cbd5e1
 
 /* STATUS */
 
-.status-row{
+.status{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:10px;
-margin-bottom:13px
+gap:9px;
+margin-bottom:12px
 }
 
 .status-card{
 background:#fff;
 border:1px solid #e5e7eb;
-border-radius:15px;
-padding:17px;
+border-radius:14px;
+padding:15px;
+text-align:center;
 box-shadow:0 5px 18px rgba(15,23,42,.04)
 }
 
-.status-label{
-font-size:9px;
+.status-card small{
+display:block;
+font-size:8px;
 font-weight:800;
 color:#6b7280;
-margin-bottom:5px
+margin-bottom:4px
 }
 
-.status-value{
-font-size:18px;
-font-weight:900;
-color:#111827
+.status-card strong{
+font-size:17px;
+font-weight:900
 }
 
 .free{
@@ -217,221 +173,256 @@ color:#16a34a
 color:#7c3aed
 }
 
-/* SECTION */
+/* COURSE */
 
-.section{
+.course{
 background:#fff;
 border:1px solid #e5e7eb;
-border-radius:18px;
+border-radius:20px;
 padding:24px;
-margin-bottom:13px;
 box-shadow:0 5px 18px rgba(15,23,42,.04)
 }
 
-.section-head{
+.course-head{
 text-align:center;
-margin-bottom:20px
+margin-bottom:22px
 }
 
-.section-head h2{
-font-size:23px;
-margin-bottom:4px
+.course-head .label{
+font-size:8px;
+font-weight:900;
+letter-spacing:1.2px;
+color:#6366f1
 }
 
-.section-head p{
+.course-head h2{
+font-size:24px;
+margin:4px 0
+}
+
+.course-head p{
 font-size:10px;
 color:#6b7280
 }
 
-/* CONTINUE */
+/* MODULE GRID */
 
-.continue{
+.module-grid{
 display:grid;
-grid-template-columns:1fr auto;
-align-items:center;
-gap:20px;
-background:#f8fafc;
-border:1px solid #e5e7eb;
-border-radius:14px;
-padding:18px
+grid-template-columns:repeat(2,1fr);
+gap:11px
 }
 
-.continue-label{
+.module-card{
+border:1px solid #e5e7eb;
+background:#f8fafc;
+border-radius:16px;
+padding:20px;
+cursor:pointer;
+transition:.2s;
+position:relative
+}
+
+.module-card:hover{
+transform:translateY(-2px);
+background:#fff;
+box-shadow:0 9px 25px rgba(15,23,42,.07)
+}
+
+.module-icon{
+width:42px;
+height:42px;
+display:grid;
+place-items:center;
+border-radius:12px;
+background:#fff;
+font-size:21px;
+margin-bottom:11px;
+box-shadow:0 3px 10px rgba(0,0,0,.05)
+}
+
+.module-number{
 font-size:8px;
 font-weight:900;
 letter-spacing:1px;
 color:#6366f1
 }
 
-.continue h3{
-font-size:17px;
+.module-title{
+font-size:15px;
+font-weight:900;
 margin:4px 0
 }
 
-.continue p{
+.module-description{
 font-size:10px;
-color:#6b7280
+color:#6b7280;
+min-height:30px
 }
 
-.btn{
-display:inline-flex;
+.module-bottom{
+display:flex;
 align-items:center;
-justify-content:center;
-border:0;
-border-radius:9px;
-padding:11px 16px;
-font-size:10px;
+justify-content:space-between;
+gap:8px;
+margin-top:14px
+}
+
+.lesson-count{
+font-size:9px;
+font-weight:800;
+color:#374151;
+background:#fff;
+border:1px solid #e5e7eb;
+padding:6px 8px;
+border-radius:7px
+}
+
+.open-module{
+font-size:9px;
+font-weight:900;
+color:#4f46e5
+}
+
+/* LESSON PANEL */
+
+.lessons-panel{
+display:none;
+margin-top:20px;
+border-top:1px solid #e5e7eb;
+padding-top:20px
+}
+
+.lessons-panel.show{
+display:block
+}
+
+.lesson-head{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+margin-bottom:12px
+}
+
+.lesson-head h3{
+font-size:18px
+}
+
+.close-btn{
+border:1px solid #d1d5db;
+background:#fff;
+border-radius:8px;
+padding:7px 10px;
+font-size:9px;
 font-weight:900;
 cursor:pointer
 }
 
-.primary{
-background:#fbbf24;
-color:#111827
-}
-
-.dark{
-background:#111827;
-color:#fff
-}
-
-.outline{
-background:#fff;
-border:1px solid #d1d5db
-}
-
-/* PROGRESS */
-
-.progress-box{
-margin-top:18px
-}
-
-.progress-top{
-display:flex;
-justify-content:space-between;
-font-size:10px;
-font-weight:800;
-margin-bottom:7px
-}
-
-.progress-bar{
-height:9px;
-background:#e5e7eb;
-border-radius:20px;
-overflow:hidden
-}
-
-.progress-fill{
-height:100%;
-width:0%;
-background:#6366f1;
-border-radius:20px;
-transition:.4s
-}
-
-/* LESSONS */
-
-.lesson-grid{
+.lesson-list{
 display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px
+gap:8px
 }
 
-.lesson-card{
-border:1px solid #e5e7eb;
-border-radius:14px;
-padding:17px;
+.lesson{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+padding:13px;
 background:#f8fafc;
-position:relative
+border:1px solid #e5e7eb;
+border-radius:11px
+}
+
+.lesson-info{
+min-width:0
 }
 
 .lesson-number{
 font-size:8px;
 font-weight:900;
-letter-spacing:1px;
 color:#6366f1
 }
 
-.lesson-card h3{
-font-size:14px;
-margin:5px 0
+.lesson-title{
+font-size:11px;
+font-weight:800;
+margin-top:2px
 }
 
-.lesson-card p{
-font-size:10px;
-color:#6b7280;
-margin-bottom:11px
-}
-
-.lesson-btn{
-display:inline-flex;
-padding:8px 11px;
+.lesson-action{
+flex-shrink:0;
+border:0;
 border-radius:8px;
-background:#111827;
-color:#fff;
-font-size:9px;
-font-weight:900
+padding:8px 10px;
+font-size:8px;
+font-weight:900;
+cursor:pointer
 }
 
-.locked{
-opacity:.78
+.free-btn{
+background:#16a34a;
+color:#fff
 }
 
-.locked .lesson-btn{
+.premium-btn{
+background:#fbbf24;
+color:#111827
+}
+
+.locked-btn{
 background:#e5e7eb;
 color:#6b7280
+}
+
+/* MESSAGE */
+
+.message{
+display:none;
+text-align:center;
+padding:14px;
+font-size:10px;
+font-weight:700;
+color:#6b7280
+}
+
+.message.show{
+display:block
 }
 
 /* PREMIUM */
 
 .premium-box{
-text-align:center;
-background:
-linear-gradient(135deg,#fffdf3,#fff);
+margin-top:18px;
+padding:20px;
 border:1px solid #f1df9a;
-border-radius:16px;
-padding:24px
+background:#fffdf3;
+border-radius:15px;
+text-align:center
 }
 
-.premium-box h2{
-font-size:22px;
-margin:5px 0
+.premium-box h3{
+font-size:17px;
+margin-bottom:4px
 }
 
 .premium-box p{
-max-width:560px;
-margin:0 auto 15px;
 font-size:10px;
-color:#6b7280
+color:#6b7280;
+margin-bottom:12px
 }
 
-/* LINKS */
-
-.quick-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:9px
-}
-
-.quick{
-display:block;
-text-align:center;
-padding:15px 8px;
-background:#f8fafc;
-border:1px solid #e5e7eb;
-border-radius:12px;
-font-size:10px;
-font-weight:800
-}
-
-.quick span{
-display:block;
-font-size:20px;
-margin-bottom:5px
-}
-
-.quick:hover{
-background:#fff
+.premium-btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+background:#fbbf24;
+color:#111827;
+border-radius:9px;
+padding:10px 15px;
+font-size:9px;
+font-weight:900
 }
 
 /* FOOTER */
@@ -439,26 +430,19 @@ background:#fff
 footer{
 background:#0b1120;
 color:#fff;
-padding:25px 0 15px;
-text-align:center
+text-align:center;
+padding:23px 0 15px
 }
 
-.footer-links{
-display:flex;
-justify-content:center;
-gap:18px;
-flex-wrap:wrap
-}
-
-.footer-links a{
+.footer-text{
 font-size:9px;
-color:#a7b0c0
+color:#94a3b8
 }
 
 .copy{
 font-size:8px;
 color:#64748b;
-margin-top:11px
+margin-top:8px
 }
 
 /* WHATSAPP */
@@ -467,147 +451,93 @@ margin-top:11px
 position:fixed;
 right:15px;
 bottom:15px;
-width:53px;
-height:53px;
+width:52px;
+height:52px;
 display:grid;
 place-items:center;
+border-radius:50%;
 background:#25d366;
 color:#fff;
-border-radius:50%;
 font-size:23px;
-z-index:2000;
-box-shadow:0 8px 20px rgba(0,0,0,.22)
+box-shadow:0 8px 20px rgba(0,0,0,.2);
+z-index:200
 }
 
-/* RESPONSIVE */
+/* MOBILE */
 
-@media(max-width:800px){
-
-.nav-links{
-display:none
-}
-
-.menu{
-display:block
-}
-
-.status-row{
-grid-template-columns:1fr 1fr
-}
-
-.lesson-grid{
-grid-template-columns:repeat(2,1fr)
-}
-
-.quick-grid{
-grid-template-columns:repeat(2,1fr)
-}
-
-}
-
-@media(max-width:600px){
+@media(max-width:650px){
 
 .container{
 width:92%
 }
 
 .welcome{
-padding:25px 20px
+padding:23px 19px
 }
 
 .welcome h1{
 font-size:25px
 }
 
-.status-row{
+.status{
+grid-template-columns:1fr 1fr
+}
+
+.status-card:last-child{
+grid-column:1/-1
+}
+
+.course{
+padding:20px 15px
+}
+
+.module-grid{
 grid-template-columns:1fr
 }
 
-.section{
-padding:20px 16px
+.lesson{
+align-items:flex-start
 }
 
-.continue{
-grid-template-columns:1fr
-}
-
-.continue .btn{
-width:100%
-}
-
-.lesson-grid{
-grid-template-columns:1fr
+.lesson-action{
+margin-top:2px
 }
 
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-
 <header>
 
 <div class="container nav">
 
-<a href="index.html" class="logo">
+<div class="brand">
 
 <img
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 alt="GOH Bible Academy">
 
 <div>
-
-<div class="logo-title">
-GOH Bible Academy
-</div>
-
-<div class="logo-sub">
-Gate of Heaven Ministries
+<strong>GOH Bible Academy</strong>
+<span>Gate of Heaven Ministries</span>
 </div>
 
 </div>
-
-</a>
-
-<nav class="nav-links">
-
-<a href="lessons.html">📖 Lessons</a>
-<a href="about.html">ℹ️ About</a>
-<a href="contact.html">💬 Contact</a>
-
-<a href="#" class="logout" id="logoutBtn">
-🚪 Logout
-</a>
-
-</nav>
 
 <button
-class="menu"
-id="menuBtn"
-aria-label="Open menu"
-aria-expanded="false">
+class="logout"
+id="logoutBtn">
 
-☰
+🚪 Logout
 
 </button>
 
 </div>
 
 </header>
-
-
-<!-- MOBILE MENU -->
-
-<nav class="mobile-menu" id="mobileMenu">
-
-<a href="lessons.html">📖 Lessons</a>
-<a href="about.html">ℹ️ About</a>
-<a href="contact.html">💬 Contact</a>
-<a href="#" id="mobileLogout">🚪 Logout</a>
-
-</nav>
 
 
 <main>
@@ -619,7 +549,7 @@ aria-expanded="false">
 <section class="welcome">
 
 <div class="welcome-label">
-GOH BIBLE ACADEMY • STUDENT DASHBOARD
+STUDENT DASHBOARD
 </div>
 
 <h1>
@@ -627,7 +557,7 @@ Welcome, <span id="studentName">Student</span> 👋
 </h1>
 
 <p>
-Continue your Biblical Studies journey and grow deeper in God's Word.
+Continue your Biblical Studies journey through 180 structured lessons.
 </p>
 
 </section>
@@ -635,321 +565,132 @@ Continue your Biblical Studies journey and grow deeper in God's Word.
 
 <!-- STATUS -->
 
-<div class="status-row">
+<div class="status">
 
 <div class="status-card">
 
-<div class="status-label">
+<small>
 MEMBERSHIP
-</div>
+</small>
 
-<div
-class="status-value free"
-id="membership">
+<strong
+id="membership"
+class="free">
+
 FREE
-</div>
+
+</strong>
 
 </div>
 
 
 <div class="status-card">
 
-<div class="status-label">
+<small>
 STUDENT ID
-</div>
+</small>
 
-<div
-class="status-value"
-id="studentId">
+<strong id="studentId">
 —
-</div>
+</strong>
 
 </div>
 
 
 <div class="status-card">
 
-<div class="status-label">
+<small>
 LANGUAGE
-</div>
+</small>
 
-<div
-class="status-value"
-id="language">
+<strong id="language">
 English
-</div>
+</strong>
 
 </div>
 
 </div>
 
 
-<!-- CONTINUE -->
+<!-- COURSE -->
 
-<section class="section">
+<section class="course">
 
-<div class="section-head">
+<div class="course-head">
+
+<div class="label">
+CHRISTIAN BIBLICAL STUDIES
+</div>
 
 <h2>
-Continue Learning
+180-Lesson Program
 </h2>
 
 <p>
-Start where you left off.
+Choose a module to view its 30 lessons.
 </p>
 
 </div>
 
-
-<div class="continue">
-
-<div>
-
-<div class="continue-label">
-YOUR FREE LESSON
-</div>
-
-<h3>
-Lesson 1 — Introduction to the Bible
-</h3>
-
-<p>
-Begin your Biblical Studies journey with the first lesson.
-</p>
-
-</div>
-
-<a
-href="lesson-1.html"
-class="btn primary">
-
-📖 Continue Lesson
-
-</a>
-
-</div>
-
-
-<div class="progress-box">
-
-<div class="progress-top">
-
-<span>
-Course Progress
-</span>
-
-<span id="progressText">
-0%
-</span>
-
-</div>
-
-<div class="progress-bar">
 
 <div
-class="progress-fill"
-id="progressFill">
+id="moduleGrid"
+class="module-grid">
+
+<div class="message show">
+Loading modules...
 </div>
 
 </div>
-
-</div>
-
-</section>
 
 
 <!-- LESSONS -->
 
-<section class="section">
+<div
+id="lessonsPanel"
+class="lessons-panel">
 
-<div class="section-head">
+<div class="lesson-head">
 
-<h2>
-Your 180-Lesson Program
-</h2>
-
-<p>
-Lesson 1 is available free. Premium lessons require membership.
-</p>
-
-</div>
-
-
-<div class="lesson-grid">
-
-<div class="lesson-card">
-
-<div class="lesson-number">
-LESSON 01
-</div>
-
-<h3>
-Introduction to the Bible
+<h3 id="selectedModule">
+Lessons
 </h3>
 
-<p>
-Discover the foundation and purpose of Scripture.
-</p>
+<button
+class="close-btn"
+id="closeLessons">
 
-<a
-href="lesson-1.html"
-class="lesson-btn">
+✕ Close
 
-Start Free
-
-</a>
+</button>
 
 </div>
 
-
-<div class="lesson-card locked">
-
-<div class="lesson-number">
-LESSON 02
-</div>
-
-<h3>
-The Word of God
-</h3>
-
-<p>
-Explore the importance and authority of God's Word.
-</p>
-
-<a
-href="lessons.html"
-class="lesson-btn">
-
-🔒 Premium
-
-</a>
-
-</div>
-
-
-<div class="lesson-card locked">
-
-<div class="lesson-number">
-LESSON 03
-</div>
-
-<h3>
-Understanding Scripture
-</h3>
-
-<p>
-Learn principles for understanding biblical teaching.
-</p>
-
-<a
-href="lessons.html"
-class="lesson-btn">
-
-🔒 Premium
-
-</a>
-
+<div
+id="lessonList"
+class="lesson-list">
 </div>
 
 </div>
-
-<br>
-
-<div style="text-align:center">
-
-<a
-href="lessons.html"
-class="btn dark">
-
-📖 View All 180 Lessons
-
-</a>
-
-</div>
-
-</section>
 
 
 <!-- PREMIUM -->
 
-<section class="section">
-
 <div class="premium-box">
 
-<div class="welcome-label">
-PREMIUM BIBLICAL STUDIES
-</div>
-
-<h2>
-Continue Beyond Lesson 1
-</h2>
+<h3>
+⭐ Continue Your Biblical Studies
+</h3>
 
 <p>
-Unlock the complete 180-lesson Biblical Studies program
-and continue learning through all six modules.
+Lesson 1 is free. Unlock the remaining lessons with Premium membership.
 </p>
 
 <a
 href="premium.html"
-class="btn primary">
+class="premium-btn">
 
-⭐ View Premium Membership
-
-</a>
-
-</div>
-
-</section>
-
-
-<!-- QUICK LINKS -->
-
-<section class="section">
-
-<div class="section-head">
-
-<h2>
-Quick Access
-</h2>
-
-</div>
-
-
-<div class="quick-grid">
-
-<a
-href="lessons.html"
-class="quick">
-
-<span>📖</span>
-All Lessons
-
-</a>
-
-<a
-href="profile.html"
-class="quick">
-
-<span>👤</span>
-My Profile
-
-</a>
-
-<a
-href="about.html"
-class="quick">
-
-<span>ℹ️</span>
-About Academy
-
-</a>
-
-<a
-href="contact.html"
-class="quick">
-
-<span>💬</span>
-Contact
+View Premium Membership
 
 </a>
 
@@ -962,30 +703,12 @@ Contact
 </main>
 
 
-<!-- FOOTER -->
-
 <footer>
 
 <div class="container">
 
-<div class="footer-links">
-
-<a href="privacy.html">
-Privacy Policy
-</a>
-
-<a href="terms.html">
-Terms of Use
-</a>
-
-<a href="refund.html">
-Refund Policy
-</a>
-
-<a href="contact.html">
-Contact
-</a>
-
+<div class="footer-text">
+GOH Bible Academy • Gate of Heaven Ministries
 </div>
 
 <div class="copy">
@@ -997,43 +720,51 @@ Contact
 </footer>
 
 
-<!-- WHATSAPP -->
-
 <a
 class="whatsapp"
 href="https://wa.me/94771190395?text=Hello%20GOH%20Bible%20Academy"
 target="_blank"
 rel="noopener"
 aria-label="WhatsApp">
+
 💬
+
 </a>
 
 
 <script>
 
-/* =========================
+/* =====================================
+   CLOUDFLARE DASHBOARD API
+===================================== */
+
+const API =
+"https://dashboard.createlk.workers.dev";
+
+
+/* =====================================
    STUDENT SESSION
-========================= */
+===================================== */
 
 function getStudent(){
-
-let student=null;
 
 try{
 
 const local =
 localStorage.getItem("goh_student");
 
+if(local){
+
+return JSON.parse(local);
+
+}
+
 const session =
 sessionStorage.getItem("goh_student");
 
-if(local){
+if(session){
 
-student=JSON.parse(local);
-
-}else if(session){
-
-student=JSON.parse(session);
+return JSON.parse(session);
 
 }
 
@@ -1043,16 +774,17 @@ console.error(error);
 
 }
 
-return student;
+return null;
 
 }
 
 
-/* =========================
-   AUTH CHECK
-========================= */
+const student = getStudent();
 
-const student=getStudent();
+
+/* =====================================
+   AUTH
+===================================== */
 
 if(!student){
 
@@ -1061,195 +793,438 @@ window.location.replace("login.html");
 }
 
 
-/* =========================
-   DISPLAY STUDENT
-========================= */
+/* =====================================
+   STUDENT DISPLAY
+===================================== */
 
 if(student){
 
-const fullName =
+const name =
 (
-(student.first_name || "") +
+student.first_name || ""
++
 " " +
 (student.last_name || "")
 ).trim();
 
-document.getElementById("studentName")
-.textContent =
-fullName || "Student";
+document.getElementById(
+"studentName"
+).textContent =
+name || "Student";
 
 
-document.getElementById("studentId")
-.textContent =
+document.getElementById(
+"studentId"
+).textContent =
 student.id || "—";
 
 
-document.getElementById("language")
-.textContent =
+document.getElementById(
+"language"
+).textContent =
 student.language || "English";
 
 
-const membership =
+const status =
 String(
 student.membership_status || "FREE"
 ).toUpperCase();
 
 
-const membershipElement =
+const membership =
 document.getElementById("membership");
 
 
-membershipElement.textContent =
-membership;
+membership.textContent =
+status;
 
 
-if(membership === "PREMIUM"){
+if(status === "PREMIUM"){
 
-membershipElement.className =
-"status-value premium";
+membership.className =
+"premium";
 
 }else{
 
-membershipElement.className =
-"status-value free";
+membership.className =
+"free";
 
 }
 
 }
 
 
-/* =========================
+/* =====================================
+   LOAD MODULES
+===================================== */
+
+async function loadModules(){
+
+const grid =
+document.getElementById("moduleGrid");
+
+try{
+
+const response =
+await fetch(
+API + "/api/modules"
+);
+
+
+if(!response.ok){
+
+throw new Error(
+"Unable to load modules."
+);
+
+}
+
+
+const data =
+await response.json();
+
+
+if(
+!data.success ||
+!Array.isArray(data.modules)
+){
+
+throw new Error(
+"No modules found."
+);
+
+}
+
+
+grid.innerHTML="";
+
+
+data.modules.forEach(function(module){
+
+const card =
+document.createElement("div");
+
+card.className =
+"module-card";
+
+
+card.innerHTML=`
+
+<div class="module-icon">
+${module.icon || "📖"}
+</div>
+
+<div class="module-number">
+MODULE ${String(module.id).padStart(2,"0")}
+</div>
+
+<div class="module-title">
+${escapeHTML(module.title)}
+</div>
+
+<div class="module-description">
+${escapeHTML(module.description || "")}
+</div>
+
+<div class="module-bottom">
+
+<span class="lesson-count">
+${module.lesson_count || 30} Lessons
+</span>
+
+<span class="open-module">
+View →
+</span>
+
+</div>
+
+`;
+
+
+card.onclick=function(){
+
+loadLessons(module.id,module.title);
+
+};
+
+
+grid.appendChild(card);
+
+});
+
+}catch(error){
+
+console.error(error);
+
+grid.innerHTML=`
+
+<div class="message show">
+Unable to load the course.
+Please try again.
+</div>
+
+`;
+
+}
+
+}
+
+
+/* =====================================
+   LOAD LESSONS
+===================================== */
+
+async function loadLessons(
+moduleId,
+moduleTitle
+){
+
+const panel =
+document.getElementById(
+"lessonsPanel"
+);
+
+const list =
+document.getElementById(
+"lessonList"
+);
+
+const title =
+document.getElementById(
+"selectedModule"
+);
+
+
+title.textContent =
+moduleTitle;
+
+
+list.innerHTML=`
+
+<div class="message show">
+Loading 30 lessons...
+</div>
+
+`;
+
+panel.classList.add("show");
+
+panel.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+
+try{
+
+const response =
+await fetch(
+API +
+"/api/modules/" +
+encodeURIComponent(moduleId) +
+"/lessons?student_id=" +
+encodeURIComponent(student.id)
+);
+
+
+if(!response.ok){
+
+throw new Error(
+"Unable to load lessons."
+);
+
+}
+
+
+const data =
+await response.json();
+
+
+if(
+!data.success ||
+!Array.isArray(data.lessons)
+){
+
+throw new Error(
+"No lessons found."
+);
+
+}
+
+
+list.innerHTML="";
+
+
+data.lessons.forEach(function(lesson){
+
+const row =
+document.createElement("div");
+
+row.className =
+"lesson";
+
+
+const action =
+lesson.access === "FREE"
+? `
+<a
+href="${safeLessonURL(lesson.id)}"
+class="lesson-action free-btn">
+Start Free
+</a>
+`
+: lesson.access === "PREMIUM"
+? `
+<a
+href="${safeLessonURL(lesson.id)}"
+class="lesson-action premium-btn">
+⭐ Open
+</a>
+`
+: `
+<button
+class="lesson-action locked-btn"
+onclick="goPremium()">
+🔒 Premium
+</button>
+`;
+
+
+row.innerHTML=`
+
+<div class="lesson-info">
+
+<div class="lesson-number">
+LESSON ${String(lesson.lesson_number).padStart(2,"0")}
+</div>
+
+<div class="lesson-title">
+${escapeHTML(lesson.title)}
+</div>
+
+</div>
+
+${action}
+
+`;
+
+list.appendChild(row);
+
+});
+
+}catch(error){
+
+console.error(error);
+
+list.innerHTML=`
+
+<div class="message show">
+Unable to load lessons.
+Please try again.
+</div>
+
+`;
+
+}
+
+}
+
+
+/* =====================================
+   LESSON URL
+===================================== */
+
+function safeLessonURL(id){
+
+return "lesson.html?id=" +
+encodeURIComponent(id);
+
+}
+
+
+/* =====================================
+   PREMIUM
+===================================== */
+
+function goPremium(){
+
+window.location.href =
+"premium.html";
+
+}
+
+
+/* =====================================
+   HTML ESCAPE
+===================================== */
+
+function escapeHTML(value){
+
+return String(value || "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================
+   CLOSE LESSONS
+===================================== */
+
+document.getElementById(
+"closeLessons"
+).onclick=function(){
+
+document.getElementById(
+"lessonsPanel"
+).classList.remove("show");
+
+};
+
+
+/* =====================================
    LOGOUT
-========================= */
+===================================== */
 
-function logout(){
+document.getElementById(
+"logoutBtn"
+).onclick=function(){
 
-localStorage.removeItem("goh_student");
-localStorage.removeItem("goh_logged_in");
+localStorage.removeItem(
+"goh_student"
+);
 
-sessionStorage.removeItem("goh_student");
-sessionStorage.removeItem("goh_logged_in");
+localStorage.removeItem(
+"goh_logged_in"
+);
 
-window.location.replace("login.html");
+sessionStorage.removeItem(
+"goh_student"
+);
 
-}
+sessionStorage.removeItem(
+"goh_logged_in"
+);
 
-
-document.getElementById("logoutBtn")
-.addEventListener("click",function(e){
-
-e.preventDefault();
-
-logout();
-
-});
-
-
-document.getElementById("mobileLogout")
-.addEventListener("click",function(e){
-
-e.preventDefault();
-
-logout();
-
-});
-
-
-/* =========================
-   MOBILE MENU
-========================= */
-
-const menuBtn =
-document.getElementById("menuBtn");
-
-const mobileMenu =
-document.getElementById("mobileMenu");
-
-
-menuBtn.onclick=function(){
-
-const open =
-mobileMenu.classList.toggle("show");
-
-menuBtn.textContent =
-open ? "✕" : "☰";
-
-menuBtn.setAttribute(
-"aria-expanded",
-open
+window.location.replace(
+"login.html"
 );
 
 };
 
 
-mobileMenu
-.querySelectorAll("a")
-.forEach(function(link){
+/* =====================================
+   START
+===================================== */
 
-link.addEventListener("click",function(){
+if(student){
 
-if(link.id !== "mobileLogout"){
-
-mobileMenu.classList.remove("show");
-
-menuBtn.textContent="☰";
-
-menuBtn.setAttribute(
-"aria-expanded",
-"false"
-);
+loadModules();
 
 }
-
-});
-
-});
-
-
-/* =========================
-   SIMPLE PROGRESS
-========================= */
-
-let completedLessons=0;
-
-try{
-
-const saved =
-localStorage.getItem(
-"goh_completed_lessons"
-);
-
-if(saved){
-
-completedLessons =
-parseInt(saved,10) || 0;
-
-}
-
-}catch(e){
-
-completedLessons=0;
-
-}
-
-
-const progress =
-Math.min(
-100,
-Math.round(
-(completedLessons / 180) * 100
-)
-);
-
-
-document.getElementById("progressText")
-.textContent =
-progress + "%";
-
-
-document.getElementById("progressFill")
-.style.width =
-progress + "%";
 
 </script>
 
