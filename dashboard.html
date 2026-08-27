@@ -9,90 +9,62 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#f3f6fb;color:#172033;line-height:1.5}
-button{font-family:inherit;cursor:pointer}
-.container{width:min(1000px,94%);margin:auto}
-
-header{background:#fff;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:10}
-.nav{height:64px;display:flex;align-items:center;justify-content:space-between}
+body{font-family:Arial;background:#f3f6fb;color:#172033;line-height:1.5}
+.container{width:min(900px,94%);margin:auto}
+header{background:#fff;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:5}
+.nav{height:62px;display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;align-items:center;gap:9px}
-.logo img{width:42px;height:42px;object-fit:contain;border-radius:10px}
-.logo-title{font-size:14px;font-weight:900}
+.logo img{width:40px;height:40px;border-radius:9px}
+.logo-title{font-size:13px;font-weight:900}
 .logo-sub{font-size:8px;color:#6b7280}
-.logout,.back{border:0;background:#111827;color:#fff;padding:9px 13px;border-radius:9px;font-size:9px;font-weight:900}
-
-main{padding:25px 0 45px}
-.hero{background:#111827;color:#fff;border-radius:18px;padding:23px;margin-bottom:15px}
-.hero small{color:#fbbf24;font-size:9px;font-weight:900;letter-spacing:1px}
-.hero h1{font-size:23px;margin:5px 0}
+button{font-family:inherit;cursor:pointer}
+.logout,.back{border:0;background:#111827;color:#fff;padding:8px 11px;border-radius:8px;font-size:9px;font-weight:900}
+main{padding:22px 0 40px}
+.hero{background:#111827;color:#fff;border-radius:17px;padding:22px;margin-bottom:13px}
+.hero small{color:#fbbf24;font-size:9px;font-weight:900}
+.hero h1{font-size:22px;margin:5px 0}
 .hero p{font-size:10px;color:#d1d5db}
-
-.info{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:15px}
-.info-card,.progress,.module,.lesson,.language-box{background:#fff;border:1px solid #e5e7eb;border-radius:14px}
-.info-card{padding:14px}
-.info-card small{font-size:8px;color:#6b7280;font-weight:900}
-.info-card strong{display:block;font-size:14px;margin-top:3px}
-
-.language-box{padding:14px;margin-bottom:15px}
-.language-box label{display:block;font-size:8px;font-weight:900;color:#6b7280;margin-bottom:7px}
-.language-select{width:100%;padding:10px;border:1px solid #d1d5db;border-radius:9px;background:#fff;font-size:11px;font-weight:700}
-
-.progress{padding:17px;margin-bottom:20px}
-.progress-top{display:flex;justify-content:space-between;font-size:13px;font-weight:900}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:13px}
+.card,.module,.lesson{background:#fff;border:1px solid #e5e7eb;border-radius:13px}
+.card{padding:13px}
+.card small{font-size:8px;color:#6b7280;font-weight:900}
+.card strong{display:block;font-size:13px;margin-top:3px}
+.lang{margin-bottom:13px}
+.lang select{width:100%;padding:9px;border:1px solid #ddd;border-radius:8px;background:#fff;font-weight:700}
+.progress{padding:15px;margin-bottom:18px}
+.ptop{display:flex;justify-content:space-between;font-size:12px;font-weight:900}
 .percent{color:#4f46e5}
-.progress-text{font-size:9px;color:#6b7280;margin:6px 0 10px}
-.bar{height:10px;background:#e5e7eb;border-radius:20px;overflow:hidden}
-.fill{height:100%;width:0;background:#4f46e5;transition:.4s}
-.certificate{font-size:9px;color:#6b7280;font-weight:700;margin-top:9px}
-
-h2{font-size:17px}
-.sub{font-size:9px;color:#6b7280;margin:3px 0 14px}
-.modules{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-
-.module{padding:16px;cursor:pointer}
-.module:hover{box-shadow:0 8px 20px #0001}
-.module-top{display:flex;gap:11px}
-.icon{width:43px;height:43px;background:#f3f4f6;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:22px}
-.module-no{font-size:8px;color:#6366f1;font-weight:900}
-.module-title{font-size:13px;font-weight:900;margin-top:2px}
-.module-desc{font-size:9px;color:#6b7280;margin-top:4px}
-.module-bottom{border-top:1px solid #eee;margin-top:13px;padding-top:10px;display:flex;justify-content:space-between;align-items:center}
+.ptext{font-size:9px;color:#6b7280;margin:5px 0 9px}
+.bar{height:9px;background:#e5e7eb;border-radius:20px;overflow:hidden}
+.fill{height:100%;background:#4f46e5;width:0}
+h2{font-size:16px}
+.sub{font-size:9px;color:#6b7280;margin:3px 0 12px}
+.modules{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
+.module{padding:15px;cursor:pointer}
+.module:hover{box-shadow:0 6px 18px #0001}
+.mtop{display:flex;gap:10px}
+.icon{width:42px;height:42px;background:#f3f4f6;border-radius:10px;display:grid;place-items:center;font-size:21px;flex-shrink:0}
+.mno{font-size:8px;color:#4f46e5;font-weight:900}
+.mtitle{font-size:12px;font-weight:900;margin-top:2px}
+.mdesc{font-size:9px;color:#6b7280;margin-top:3px}
+.mbottom{border-top:1px solid #eee;margin-top:12px;padding-top:9px;display:flex;justify-content:space-between;align-items:center}
 .count{font-size:8px;color:#6b7280;font-weight:900}
-.view{border:0;background:#111827;color:#fff;padding:7px 10px;border-radius:7px;font-size:8px;font-weight:900}
-
-.lessons-section{display:none;margin-top:20px}
-.lesson-header{background:#111827;color:#fff;border-radius:15px;padding:17px;margin-bottom:10px}
-.lesson-header h2{font-size:17px}
-.lesson-header p{font-size:9px;color:#d1d5db;margin-top:3px}
-.back{margin-top:11px;background:#fff;color:#111827;padding:7px 10px}
-
-.lesson{padding:12px;display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.lesson-num{width:32px;height:32px;background:#f3f4f6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;flex-shrink:0}
-.lesson-info{flex:1}
-.lesson-title{font-size:10px;font-weight:900}
-.lesson-desc{font-size:8px;color:#6b7280}
-.lesson-btn{border:0;padding:7px 9px;border-radius:7px;font-size:8px;font-weight:900;white-space:nowrap}
-.free,.done{background:#dcfce7;color:#166534}
-.locked{background:#fef3c7;color:#92400e}
-
-.message{display:none;padding:10px;border-radius:9px;text-align:center;font-size:9px;font-weight:700;margin-bottom:12px}
-.message.show{display:block}
-.error{background:#fef2f2;color:#b91c1c}
-.loading{background:#eff6ff;color:#1d4ed8}
-
-.premium{margin-top:18px;background:#fff;border:1px solid #fde68a;border-radius:15px;padding:17px;text-align:center}
-.premium h3{font-size:14px}
-.premium p{font-size:9px;color:#6b7280;margin:5px 0 10px}
-.premium a{display:inline-block;background:#fbbf24;color:#111827;padding:9px 13px;border-radius:8px;font-size:9px;font-weight:900;text-decoration:none}
-
+.view{border:0;background:#111827;color:#fff;padding:7px 9px;border-radius:7px;font-size:8px;font-weight:900}
+.lessons{display:none}
+.lesson-head{background:#111827;color:#fff;border-radius:15px;padding:16px;margin-bottom:10px}
+.lesson-head h2{font-size:17px}
+.lesson-head p{font-size:9px;color:#d1d5db}
+.lesson-head .back{margin-top:10px;background:#fff;color:#111827}
+.lesson{display:flex;align-items:center;gap:10px;padding:11px;margin-bottom:7px}
+.num{width:31px;height:31px;background:#f3f4f6;border-radius:8px;display:grid;place-items:center;font-size:9px;font-weight:900;flex-shrink:0}
+.linfo{flex:1}
+.ltitle{font-size:10px;font-weight:900}
+.lbtn{border:0;background:#111827;color:#fff;padding:7px 9px;border-radius:7px;font-size:8px;font-weight:900}
+.done{background:#dcfce7;color:#166534}
 footer{background:#0b1120;color:#64748b;text-align:center;padding:18px;font-size:8px}
-
-@media(max-width:650px){
+@media(max-width:600px){
 .info{grid-template-columns:1fr 1fr}
 .modules{grid-template-columns:1fr}
-.info-card:last-child{grid-column:1/-1}
-.lesson{align-items:flex-start}
-.lesson-btn{margin-left:auto}
 }
 </style>
 </head>
@@ -121,55 +93,44 @@ footer{background:#0b1120;color:#64748b;text-align:center;padding:18px;font-size
 <p>Continue your Biblical Studies journey through 180 structured lessons.</p>
 </div>
 
-<div id="message" class="message"></div>
-
 <div class="info">
-<div class="info-card"><small>MEMBERSHIP</small><strong id="membership">FREE</strong></div>
-<div class="info-card"><small>STUDENT ID</small><strong id="studentId">—</strong></div>
-<div class="info-card"><small>LANGUAGE</small><strong id="language">English</strong></div>
+<div class="card"><small>MEMBERSHIP</small><strong id="membership">FREE</strong></div>
+<div class="card"><small>STUDENT ID</small><strong id="studentId">—</strong></div>
+<div class="card"><small>LANGUAGE</small><strong id="language">English</strong></div>
 </div>
 
-<div class="language-box">
-<label>SELECT LESSON LANGUAGE</label>
-<select id="languageSelect" class="language-select">
+<div class="card lang">
+<small>SELECT LESSON LANGUAGE</small>
+<select id="languageSelect">
 <option value="en">English</option>
 <option value="ta">தமிழ்</option>
 <option value="si">සිංහල</option>
 </select>
 </div>
 
-<div class="progress">
-<div class="progress-top">
+<div class="card progress">
+<div class="ptop">
 <span>🏆 Certificate Progress</span>
 <span class="percent" id="percent">0%</span>
 </div>
-<div class="progress-text" id="progressText">0 / 180 lessons completed</div>
+<div class="ptext" id="progressText">0 / 180 lessons completed</div>
 <div class="bar"><div class="fill" id="fill"></div></div>
-<div class="certificate" id="certificate">
-Complete all 180 lessons and pass each 5-question assessment.
-</div>
 </div>
 
-<section id="modulesSection">
+<section id="moduleSection">
 <h2>CHRISTIAN BIBLICAL STUDIES</h2>
 <div class="sub">180-Lesson Discipleship Training Program</div>
 <div class="modules" id="modules"></div>
 </section>
 
-<section class="lessons-section" id="lessonsSection">
-<div class="lesson-header">
+<section class="lessons" id="lessonSection">
+<div class="lesson-head">
 <h2 id="moduleTitle"></h2>
-<p id="moduleDescription"></p>
+<p id="moduleDesc"></p>
 <button class="back" id="back">← Back to Modules</button>
 </div>
-<div id="lessons"></div>
+<div id="lessonList"></div>
 </section>
-
-<div class="premium" id="premiumBox">
-<h3>⭐ Continue Your Biblical Studies</h3>
-<p>Lesson 1 is free. Unlock Lessons 2–180 with Premium membership.</p>
-<a href="premium.html">View Premium Membership</a>
-</div>
 
 </div>
 </main>
@@ -181,473 +142,214 @@ GOH Bible Academy • Gate of Heaven Ministries<br>
 
 <script>
 
-const API="https://dashboard.createlk.workers.dev";
-const LESSON_PAGE="lesson.html";
-const $=id=>document.getElementById(id);
+const API="https://lesson.createlk.workers.dev";
 
 const student=JSON.parse(
- localStorage.getItem("goh_student") ||
- sessionStorage.getItem("goh_student") ||
+ localStorage.getItem("goh_student")||
+ sessionStorage.getItem("goh_student")||
  "null"
 );
 
 if(!student)location.href="login.html";
 
-const names={en:"English",ta:"Tamil",si:"Sinhala"};
+const $=id=>document.getElementById(id);
 
-function getLang(){
- const x=String(
-  localStorage.getItem("goh_language") ||
-  student.language ||
-  "en"
- ).toLowerCase();
+$("welcome").textContent=
+"Welcome, "+(student.first_name||"Student")+" 👋";
 
- if(["ta","tamil","தமிழ்"].includes(x))return"ta";
- if(["si","sinhala","සිංහල"].includes(x))return"si";
- return"en";
-}
-
-let language=getLang();
-
-$("languageSelect").value=language;
-$("language").textContent=names[language];
-$("welcome").textContent="Welcome, "+(student.first_name||"Student")+" 👋";
 $("studentId").textContent=student.id||"—";
+
 $("membership").textContent=
- String(student.membership_status||"FREE").toUpperCase();
+String(student.membership_status||"FREE").toUpperCase();
 
-function msg(text,type){
- $("message").textContent=text;
- $("message").className="message show "+type;
-}
+let lang=localStorage.getItem("goh_language")||"en";
+$("languageSelect").value=lang;
+$("language").textContent={en:"English",ta:"Tamil",si:"Sinhala"}[lang];
 
-function esc(v){
- return String(v??"").replace(/[&<>"']/g,m=>({
- "&":"&amp;","<":"&lt;",">":"&gt;",
- '"':"&quot;","'":"&#039;"
- }[m]));
-}
 
-/* =========================
-   6 MODULES / 180 TITLES
-========================= */
+/* 180 LESSON TITLES */
 
-const course=[
-
-{
-id:1,
-icon:"📖",
-en:"Introduction to the Bible",
-ta:"வேதாகம அறிமுகம்",
-si:"බයිබලයට හැඳින්වීම",
-desc:"Bible foundations, inspiration, canon and interpretation.",
-lessons:[
-"The Bible: God’s Word",
-"Why We Need the Bible",
-"How God Reveals Himself",
-"Divine Inspiration",
-"Human Authors and Divine Guidance",
-"The Unity of Scripture",
-"The Authority of Scripture",
-"The Truthfulness of God’s Word",
-"The Old Testament",
-"The New Testament",
-"Bible Covenants",
-"The Canon of Scripture",
-"How the Bible Was Preserved",
-"Bible Translations",
-"Reading the Bible Correctly",
-"Understanding Context",
-"Historical Context",
-"Cultural Context",
-"Literary Context",
-"Interpreting Scripture",
-"Observation and Interpretation",
-"Application of Scripture",
-"Prayerful Bible Study",
-"The Holy Spirit and Scripture",
-"Jesus and the Scriptures",
-"The Bible and Salvation",
-"The Bible and Christian Living",
-"The Bible and Wisdom",
-"The Bible and Spiritual Growth",
-"Living Under God’s Word"
+const titles=[
+[
+"The Bible: God’s Word","The Inspiration of Scripture","The Authority of Scripture",
+"The Canon of Scripture","Old and New Testaments","Understanding Bible Context",
+"How to Study the Bible","Reading Scripture Prayerfully","Bible Interpretation",
+"Historical and Cultural Context","Literary Context","Understanding Bible Genres",
+"Promises and Commands","Law and Grace","Types and Shadows",
+"Christ in the Old Testament","Christ in the New Testament","The Gospel Message",
+"God’s Revelation","God’s Truth","Scripture and Faith","Scripture and Obedience",
+"Scripture and Spiritual Growth","Scripture and Wisdom","Scripture and Correction",
+"Scripture and Hope","Scripture and Holiness","Scripture and Discipleship",
+"Living by God’s Word","Building Life on Scripture"
+],
+[
+"Knowing God","The Character of God","The Holiness of God","The Love of God",
+"The Grace of God","The Mercy of God","The Faithfulness of God","The Justice of God",
+"The Sovereignty of God","The Trinity","God the Father","Jesus Christ the Son",
+"The Divinity of Christ","The Humanity of Christ","The Holy Spirit","The Work of the Holy Spirit",
+"Knowing God Personally","Worshiping God","Trusting God","Fearing God",
+"Loving God","Seeking God","Walking with God","Hearing God’s Word",
+"Obeying God","God’s Will","God’s Guidance","God’s Presence",
+"God’s Kingdom","Living for God"
+],
+[
+"Creation","Humanity Made in God’s Image","The Fall of Humanity","The Nature of Sin",
+"Original Sin","Sin and Separation from God","Repentance","Faith",
+"God’s Promise of Salvation","Jesus the Savior","The Birth of Christ","The Life of Christ",
+"The Teachings of Jesus","The Miracles of Jesus","The Cross of Christ","The Meaning of the Cross",
+"The Resurrection","The Ascension","Salvation by Grace","Justification by Faith",
+"New Birth","Forgiveness","Adoption as God’s Children","Sanctification",
+"Victory Over Sin","Eternal Life","Assurance of Salvation","The Hope of Salvation",
+"Sharing the Gospel","Living as a Saved Person"
+],
+[
+"Following Jesus","The Call to Discipleship","Counting the Cost","Denying Yourself",
+"Taking Up the Cross","Learning from Jesus","Prayer and Discipleship","Faith and Discipleship",
+"Obedience and Discipleship","Holiness in Daily Life","Love and Discipleship",
+"Serving Others","Humility","Forgiveness","Patience","Self-Control",
+"Faithfulness","Perseverance","Spiritual Growth","Bearing Fruit",
+"The Fruit of the Spirit","Walking by the Spirit","Overcoming Temptation",
+"Resisting the Enemy","Christian Character","Witnessing for Christ","Making Disciples",
+"Discipling Others","Finishing the Race","A Faithful Disciple"
+],
+[
+"Prayer","Why Christians Pray","Praying with Faith","Praying in Jesus’ Name",
+"Prayer and God’s Will","The Lord’s Prayer","Praise and Thanksgiving","Confession",
+"Intercession","Prayer for Others","Prayer in Difficult Times","Prayer and Fasting",
+"Listening to God","Waiting on God","Trusting God in Prayer","Persistent Prayer",
+"Spiritual Warfare","The Armor of God","Worship","Personal Worship",
+"Corporate Worship","Giving","Stewardship","Christian Fellowship",
+"Serving in the Church","Spiritual Gifts","Ministry and Service","Leadership",
+"Encouraging Others","A Life of Prayer"
+],
+[
+"The Mission of the Church","The Body of Christ","The Great Commission","Evangelism",
+"Sharing Your Testimony","Making Disciples","Christian Fellowship","Unity in Christ",
+"Serving One Another","Love in the Church","Church Leadership","Pastoral Ministry",
+"Teaching Ministry","Children and Youth Ministry","Mission and Outreach","Compassion Ministry",
+"Christian Family","Marriage and Family","Raising Godly Children","Work and Faith",
+"Christian Ethics","Integrity","Stewardship of Money","Helping the Poor",
+"Persecution and Suffering","Standing for Truth","Hope in Trials","The Return of Christ",
+"Eternal Kingdom","Finishing the Mission"
 ]
-},
-
-{
-id:2,
-icon:"✝️",
-en:"God, Creation and Humanity",
-ta:"தேவன், படைப்பு மற்றும் மனிதகுலம்",
-si:"දෙවියන්වහන්සේ, මැවීම සහ මනුෂ්‍යත්වය",
-desc:"Knowing God, creation, humanity and the purpose of life.",
-lessons:[
-"Knowing the Creator",
-"The One True God",
-"God’s Holiness",
-"God’s Love",
-"God’s Justice",
-"God’s Mercy",
-"God’s Faithfulness",
-"God’s Sovereignty",
-"God’s Wisdom",
-"God’s Omnipotence",
-"God’s Omniscience",
-"God’s Omnipresence",
-"The Trinity",
-"God the Father",
-"God the Son",
-"God the Holy Spirit",
-"Creation in Genesis",
-"Creation and God’s Purpose",
-"Humanity Created in God’s Image",
-"The Value of Human Life",
-"Human Dignity",
-"Work and Stewardship",
-"Marriage and Family",
-"God’s Design for Humanity",
-"The Fall of Humanity",
-"The Origin of Sin",
-"Consequences of Sin",
-"God’s Promise of Redemption",
-"Creation and Redemption",
-"Hope in God’s Creation"
-]
-},
-
-{
-id:3,
-icon:"🕊️",
-en:"Jesus Christ and Salvation",
-ta:"இயேசு கிறிஸ்து மற்றும் இரட்சிப்பு",
-si:"යේසුස් ක්‍රිස්තුස්වහන්සේ සහ ගැලවීම",
-desc:"The person, work, death, resurrection and salvation of Jesus Christ.",
-lessons:[
-"Who Is Jesus Christ?",
-"Jesus the Messiah",
-"Jesus the Son of God",
-"Jesus the Son of Man",
-"The Virgin Birth",
-"The Incarnation",
-"Jesus’ Sinless Life",
-"Jesus’ Teaching",
-"Jesus’ Miracles",
-"Jesus and Compassion",
-"Jesus and Prayer",
-"Jesus and the Kingdom",
-"Jesus Calls Disciples",
-"Following Jesus",
-"Jesus’ Suffering",
-"Jesus’ Death",
-"The Meaning of the Cross",
-"Jesus’ Resurrection",
-"Evidence for the Resurrection",
-"Jesus’ Ascension",
-"Jesus Our Savior",
-"Jesus Our Lord",
-"Repentance",
-"Faith in Christ",
-"Grace and Salvation",
-"Forgiveness of Sin",
-"Justification",
-"Adoption as God’s Children",
-"New Life in Christ",
-"Living for Christ"
-]
-},
-
-{
-id:4,
-icon:"🔥",
-en:"Holy Spirit and Christian Life",
-ta:"பரிசுத்த ஆவியும் கிறிஸ்தவ வாழ்க்கையும்",
-si:"ශුද්ධාත්මයාණන්වහන්සේ සහ කිතුනු ජීවිතය",
-desc:"The Holy Spirit, spiritual growth, holiness and daily discipleship.",
-lessons:[
-"Who Is the Holy Spirit?",
-"The Spirit in Creation",
-"The Spirit in the Old Testament",
-"The Spirit and Jesus",
-"The Promise of the Spirit",
-"Pentecost",
-"The Spirit and New Birth",
-"The Spirit Dwells in Believers",
-"Walking by the Spirit",
-"Life in the Spirit",
-"The Fruit of the Spirit",
-"Love",
-"Joy",
-"Peace",
-"Patience",
-"Kindness and Goodness",
-"Faithfulness",
-"Gentleness",
-"Self-Control",
-"Spiritual Gifts",
-"Prayer and the Spirit",
-"Spiritual Discernment",
-"Holiness",
-"Overcoming Temptation",
-"Renewing the Mind",
-"Christian Character",
-"Obedience",
-"Forgiving Others",
-"Serving Others",
-"Growing as a Disciple"
-]
-},
-
-{
-id:5,
-icon:"⛪",
-en:"Church and Christian Ministry",
-ta:"திருச்சபையும் கிறிஸ்தவ ஊழியமும்",
-si:"සභාව සහ කිතුනු සේවය",
-desc:"The church, fellowship, leadership, ministry and mission.",
-lessons:[
-"What Is the Church?",
-"The Body of Christ",
-"The People of God",
-"The Church’s Mission",
-"Worship",
-"Fellowship",
-"Christian Community",
-"Love in the Church",
-"Unity in the Church",
-"Serving One Another",
-"Spiritual Leadership",
-"Pastoral Ministry",
-"Teaching Ministry",
-"Evangelism",
-"Discipleship",
-"Prayer Ministry",
-"Children’s Ministry",
-"Youth Ministry",
-"Christian Service",
-"Using Spiritual Gifts",
-"Church Accountability",
-"Church Discipline",
-"Biblical Leadership",
-"Servant Leadership",
-"Church Ordinances",
-"Baptism",
-"The Lord’s Supper",
-"Mission and Evangelism",
-"Making Disciples",
-"Building a Healthy Church"
-]
-},
-
-{
-id:6,
-icon:"🌍",
-en:"Christian Discipleship and Mission",
-ta:"கிறிஸ்தவ சீஷத்துவமும் ஊழியப் பணியும்",
-si:"කිතුනු ගෝලත්වය සහ මෙහෙවර",
-desc:"Practical discipleship, mission, leadership and faithful Christian living.",
-lessons:[
-"What Is Discipleship?",
-"The Cost of Following Jesus",
-"Learning From Jesus",
-"Obeying Jesus",
-"Abiding in Christ",
-"Daily Prayer",
-"Daily Bible Study",
-"Faith and Trust",
-"Walking by Faith",
-"Christian Wisdom",
-"Making Godly Decisions",
-"Managing Time",
-"Stewardship",
-"Money and Christian Responsibility",
-"Work and Witness",
-"Family Discipleship",
-"Christian Relationships",
-"Serving the Community",
-"Sharing the Gospel",
-"Personal Evangelism",
-"Cross-Cultural Mission",
-"Compassion and Mission",
-"Christian Leadership",
-"Integrity in Leadership",
-"Handling Opposition",
-"Persevering in Faith",
-"Hope in Suffering",
-"Living as Salt and Light",
-"The Great Commission",
-"Finishing the Race"
-]
-}
-
 ];
 
-/* =========================
-   MODULE TITLE
-========================= */
 
-function moduleTitle(m){
- return language==="ta"?m.ta:
-        language==="si"?m.si:m.en;
-}
+/* MODULES */
 
-/* =========================
-   SHOW MODULES
-========================= */
+const modules=[
+["📖","Module 1","Introduction to the Bible","Bible foundations, inspiration, canon and interpretation."],
+["✝️","Module 2","Knowing God","Knowing God, His character, Christ and the Holy Spirit."],
+["❤️","Module 3","Salvation","Sin, grace, faith, salvation and life in Christ."],
+["👣","Module 4","Christian Discipleship","Following Jesus and growing in Christian character."],
+["🙏","Module 5","Prayer & Christian Life","Prayer, worship, service and spiritual growth."],
+["🌍","Module 6","Church & Mission","Church life, ministry, evangelism and Christian mission."]
+];
 
-function loadModules(){
+const modulesBox=$("modules");
 
- $("modules").innerHTML="";
+modules.forEach((m,i)=>{
 
- course.forEach((m,i)=>{
+ const el=document.createElement("div");
+ el.className="module";
 
-  const el=document.createElement("div");
-  el.className="module";
+ el.innerHTML=`
+ <div class="mtop">
+  <div class="icon">${m[0]}</div>
+  <div>
+   <div class="mno">${m[1].toUpperCase()}</div>
+   <div class="mtitle">${m[2]}</div>
+   <div class="mdesc">${m[3]}</div>
+  </div>
+ </div>
+ <div class="mbottom">
+  <span class="count">30 Lessons</span>
+  <button class="view">View Lessons →</button>
+ </div>`;
 
-  el.innerHTML=`
-   <div class="module-top">
-    <div class="icon">${m.icon}</div>
-    <div>
-     <div class="module-no">
-      MODULE ${String(i+1).padStart(2,"0")}
-     </div>
-     <div class="module-title">
-      ${esc(moduleTitle(m))}
-     </div>
-     <div class="module-desc">
-      ${esc(m.desc)}
-     </div>
-    </div>
-   </div>
+ el.onclick=()=>showLessons(i);
 
-   <div class="module-bottom">
-    <span class="count">30 Lessons</span>
-    <button class="view">View Lessons →</button>
-   </div>
-  `;
+ modulesBox.appendChild(el);
+});
 
-  el.onclick=()=>showLessons(m);
 
-  $("modules").appendChild(el);
+/* LESSON LIST */
 
- });
+function showLessons(moduleIndex){
 
-}
+ $("moduleSection").style.display="none";
+ $("lessonSection").style.display="block";
 
-/* =========================
-   SHOW 30 LESSON TITLES
-========================= */
+ $("moduleTitle").textContent=
+ modules[moduleIndex][1]+" — "+modules[moduleIndex][2];
 
-async function showLessons(module){
+ $("moduleDesc").textContent=
+ modules[moduleIndex][3];
 
- $("modulesSection").style.display="none";
- $("premiumBox").style.display="none";
- $("lessonsSection").style.display="block";
+ const box=$("lessonList");
+ box.innerHTML="";
 
- $("moduleTitle").textContent=moduleTitle(module);
- $("moduleDescription").textContent=module.desc;
- $("lessons").innerHTML="";
-
- /*
-  Titles are displayed immediately.
-  Actual lesson data is still loaded
-  from Cloudflare when opened.
- */
-
- module.lessons.forEach((title,index)=>{
+ titles[moduleIndex].forEach((title,index)=>{
 
   const lessonNumber=
-   (module.id-1)*30+index+1;
+   moduleIndex*30+index+1;
+
+  /*
+   IMPORTANT:
+   Lesson ID is the global lesson number.
+   Module ID is 1–6.
+  */
 
   const el=document.createElement("div");
   el.className="lesson";
 
   el.innerHTML=`
-   <div class="lesson-num">${lessonNumber}</div>
-
-   <div class="lesson-info">
-    <div class="lesson-title">${esc(title)}</div>
-    <div class="lesson-desc">
-     Lesson ${lessonNumber}
-    </div>
+   <div class="num">${lessonNumber}</div>
+   <div class="linfo">
+    <div class="ltitle">${title}</div>
    </div>
-
-   <button class="lesson-btn ${lessonNumber===1?"free":"locked"}">
-    ${lessonNumber===1?"Start →":"🔒 Premium"}
-   </button>
-  `;
+   <button class="lbtn">
+    ${lessonNumber===1?"✓ Completed":"Open →"}
+   </button>`;
 
   el.querySelector("button").onclick=()=>{
 
-   if(lessonNumber!==1 &&
-      String(student.membership_status||"").toUpperCase()!=="PREMIUM"){
-
-    location.href="premium.html";
-    return;
-   }
-
-   /*
-    Cloudflare lesson ID.
-    Your lesson table uses lesson IDs.
-    Lesson 1 = ID 1, Lesson 2 = ID 2...
-   */
-
-   const p=new URLSearchParams({
-    lesson_id:String(lessonNumber),
-    module_id:String(module.id),
-    student_id:String(student.id),
-    language:language
-   });
-
-   location.href=LESSON_PAGE+"?"+p.toString();
+   location.href=
+    "lesson.html"+
+    "?lesson_id="+encodeURIComponent(lessonNumber)+
+    "&module_id="+encodeURIComponent(moduleIndex+1)+
+    "&student_id="+encodeURIComponent(student.id)+
+    "&language="+encodeURIComponent(lang);
 
   };
 
-  $("lessons").appendChild(el);
-
+  box.appendChild(el);
  });
 
  window.scrollTo({top:0,behavior:"smooth"});
 }
 
-/* =========================
-   LANGUAGE
-========================= */
 
-$("languageSelect").onchange=function(){
-
- language=this.value;
-
- localStorage.setItem("goh_language",language);
- $("language").textContent=names[language];
-
- loadModules();
-
- if($("lessonsSection").style.display==="block"){
-  $("lessonsSection").style.display="none";
-  $("modulesSection").style.display="block";
-  $("premiumBox").style.display="block";
- }
-
-};
-
-/* =========================
-   BACK
-========================= */
+/* BACK */
 
 $("back").onclick=()=>{
-
- $("lessonsSection").style.display="none";
- $("modulesSection").style.display="block";
- $("premiumBox").style.display="block";
-
+ $("lessonSection").style.display="none";
+ $("moduleSection").style.display="block";
  window.scrollTo({top:0,behavior:"smooth"});
-
 };
 
-/* =========================
-   PROGRESS
-========================= */
+
+/* LANGUAGE */
+
+$("languageSelect").onchange=function(){
+ lang=this.value;
+ localStorage.setItem("goh_language",lang);
+ $("language").textContent=
+  {en:"English",ta:"Tamil",si:"Sinhala"}[lang];
+};
+
+
+/* PROGRESS */
 
 async function loadProgress(){
 
@@ -660,7 +362,7 @@ async function loadProgress(){
 
   const d=await r.json();
 
-  if(!r.ok||!d.success)return;
+  if(!d.success)return;
 
   const p=d.progress;
 
@@ -674,43 +376,24 @@ async function loadProgress(){
   $("fill").style.width=
    p.percentage+"%";
 
-  if(p.certificate_eligible){
-
-   $("certificate").textContent=
-    "🎓 Congratulations! You completed all 180 lessons.";
-
-  }
-
  }catch(e){
   console.error(e);
  }
-
 }
 
-/* =========================
-   LOGOUT
-========================= */
+
+/* LOGOUT */
 
 $("logout").onclick=()=>{
-
  localStorage.removeItem("goh_student");
- localStorage.removeItem("goh_logged_in");
-
  sessionStorage.removeItem("goh_student");
+ localStorage.removeItem("goh_logged_in");
  sessionStorage.removeItem("goh_logged_in");
-
  location.href="login.html";
-
 };
 
-/* =========================
-   START
-========================= */
-
-loadModules();
 loadProgress();
 
 </script>
-
 </body>
 </html>
