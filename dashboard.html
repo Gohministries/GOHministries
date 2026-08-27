@@ -6,13 +6,12 @@
 <title>Student Dashboard | GOH Bible Academy</title>
 <meta name="theme-color" content="#111827">
 
-<link rel="icon"
-href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
+<link rel="icon" href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,sans-serif;background:#f3f6fb;color:#172033;line-height:1.5}
-button{font-family:inherit;cursor:pointer}
+button,select{font-family:inherit}
 .container{width:min(1000px,94%);margin:auto}
 
 header{background:#fff;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:10}
@@ -29,8 +28,13 @@ main{padding:25px 0 45px}
 .hero h1{font-size:23px;margin:5px 0}
 .hero p{font-size:10px;color:#d1d5db}
 
+.message{display:none;padding:10px;border-radius:9px;text-align:center;font-size:9px;font-weight:700;margin-bottom:12px}
+.message.show{display:block}
+.error{background:#fef2f2;color:#b91c1c}
+.loading{background:#eff6ff;color:#1d4ed8}
+
 .info{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:15px}
-.info-card,.progress,.module,.lesson,.language-box{background:#fff;border:1px solid #e5e7eb;border-radius:14px}
+.info-card,.progress,.language-box,.module,.lesson{background:#fff;border:1px solid #e5e7eb;border-radius:14px}
 .info-card{padding:14px}
 .info-card small{font-size:8px;color:#6b7280;font-weight:900}
 .info-card strong{display:block;font-size:14px;margin-top:3px}
@@ -54,7 +58,7 @@ h2{font-size:17px}
 .module{padding:16px;cursor:pointer}
 .module:hover{box-shadow:0 8px 20px #0001}
 .module-top{display:flex;gap:11px}
-.icon{width:43px;height:43px;background:#f3f4f6;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:22px}
+.icon{width:43px;height:43px;background:#f3f4f6;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
 .module-no{font-size:8px;color:#6366f1;font-weight:900}
 .module-title{font-size:13px;font-weight:900;margin-top:2px}
 .module-desc{font-size:9px;color:#6b7280;margin-top:4px}
@@ -77,11 +81,6 @@ h2{font-size:17px}
 .free,.done{background:#dcfce7;color:#166534}
 .locked{background:#fef3c7;color:#92400e}
 
-.message{display:none;padding:10px;border-radius:9px;text-align:center;font-size:9px;font-weight:700;margin-bottom:12px}
-.message.show{display:block}
-.error{background:#fef2f2;color:#b91c1c}
-.loading{background:#eff6ff;color:#1d4ed8}
-
 .premium{margin-top:18px;background:#fff;border:1px solid #fde68a;border-radius:15px;padding:17px;text-align:center}
 .premium h3{font-size:14px}
 .premium p{font-size:9px;color:#6b7280;margin:5px 0 10px}
@@ -91,8 +90,8 @@ footer{background:#0b1120;color:#64748b;text-align:center;padding:18px;font-size
 
 @media(max-width:650px){
 .info{grid-template-columns:1fr 1fr}
-.modules{grid-template-columns:1fr}
 .info-card:last-child{grid-column:1/-1}
+.modules{grid-template-columns:1fr}
 .lesson{align-items:flex-start}
 .lesson-btn{margin-left:auto}
 }
@@ -103,7 +102,6 @@ footer{background:#0b1120;color:#64748b;text-align:center;padding:18px;font-size
 
 <header>
 <div class="container nav">
-
 <div class="logo">
 <img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 <div>
@@ -111,9 +109,7 @@ footer{background:#0b1120;color:#64748b;text-align:center;padding:18px;font-size
 <div class="logo-sub">Gate of Heaven Ministries</div>
 </div>
 </div>
-
 <button class="logout" id="logout">🚪 Logout</button>
-
 </div>
 </header>
 
@@ -129,27 +125,22 @@ footer{background:#0b1120;color:#64748b;text-align:center;padding:18px;font-size
 <div id="message" class="message"></div>
 
 <div class="info">
-
 <div class="info-card">
 <small>MEMBERSHIP</small>
 <strong id="membership">FREE</strong>
 </div>
-
 <div class="info-card">
 <small>STUDENT ID</small>
 <strong id="studentId">—</strong>
 </div>
-
 <div class="info-card">
 <small>LANGUAGE</small>
 <strong id="language">English</strong>
 </div>
-
 </div>
 
 <div class="language-box">
 <label>SELECT LESSON LANGUAGE</label>
-
 <select id="languageSelect" class="language-select">
 <option value="en">English</option>
 <option value="ta">தமிழ்</option>
@@ -158,7 +149,6 @@ footer{background:#0b1120;color:#64748b;text-align:center;padding:18px;font-size
 </div>
 
 <div class="progress">
-
 <div class="progress-top">
 <span>🏆 Certificate Progress</span>
 <span class="percent" id="percent">0%</span>
@@ -175,7 +165,6 @@ footer{background:#0b1120;color:#64748b;text-align:center;padding:18px;font-size
 <div class="certificate" id="certificate">
 Complete all 180 lessons and pass each 5-question assessment.
 </div>
-
 </div>
 
 <section id="modulesSection">
@@ -192,10 +181,7 @@ Complete all 180 lessons and pass each 5-question assessment.
 <div class="lesson-header">
 <h2 id="moduleTitle">Module</h2>
 <p id="moduleDescription"></p>
-
-<button class="back" id="back">
-← Back to Modules
-</button>
+<button class="back" id="back">← Back to Modules</button>
 </div>
 
 <div id="lessons"></div>
@@ -203,17 +189,9 @@ Complete all 180 lessons and pass each 5-question assessment.
 </section>
 
 <div class="premium" id="premiumBox">
-
 <h3>⭐ Continue Your Biblical Studies</h3>
-
-<p>
-Lesson 1 is free. Unlock Lessons 2–180 with Premium membership.
-</p>
-
-<a href="premium.html">
-View Premium Membership
-</a>
-
+<p>Lesson 1 is free. Unlock Lessons 2–180 with Premium membership.</p>
+<a href="premium.html">View Premium Membership</a>
 </div>
 
 </div>
@@ -231,393 +209,484 @@ const LESSON_PAGE="lesson.html";
 
 const $=id=>document.getElementById(id);
 
-function studentData(){
+/* STUDENT */
 
-  const raw=
-    localStorage.getItem("goh_student")||
-    sessionStorage.getItem("goh_student");
+function getStudent(){
+const raw=localStorage.getItem("goh_student")||
+sessionStorage.getItem("goh_student");
 
-  try{
-    return raw?JSON.parse(raw):null;
-  }catch{
-    return null;
-  }
+if(!raw)return null;
 
+try{return JSON.parse(raw)}
+catch{return null}
 }
 
-const student=studentData();
+const student=getStudent();
 
 if(!student){
-  location.href="login.html";
+location.href="login.html";
 }
 
-function esc(v){
-  return String(v??"").replace(/[&<>"']/g,m=>({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#039;"
-  }[m]));
-}
+/* LANGUAGE */
 
-const names={
-  en:"English",
-  ta:"Tamil",
-  si:"Sinhala"
-};
-
-let language=
-localStorage.getItem("goh_language")||"en";
+let language=localStorage.getItem("goh_language")||"en";
 
 if(!["en","ta","si"].includes(language))
-  language="en";
+language="en";
+
+const languageNames={
+en:"English",
+ta:"Tamil",
+si:"Sinhala"
+};
 
 $("languageSelect").value=language;
-$("language").textContent=names[language];
+$("language").textContent=languageNames[language];
+
+/* STUDENT INFO */
 
 $("welcome").textContent=
-"Welcome, "+(student.first_name||"Student")+" 👋";
+"Welcome, "+(student?.first_name||"Student")+" 👋";
 
-$("studentId").textContent=student.id||"—";
+$("studentId").textContent=student?.id||"—";
 
 $("membership").textContent=
-String(student.membership_status||"FREE").toUpperCase();
+String(student?.membership_status||"FREE").toUpperCase();
 
-function message(text,type="loading"){
-  $("message").textContent=text;
-  $("message").className="message show "+type;
+/* MESSAGE */
+
+function showMessage(text,type){
+$("message").textContent=text;
+$("message").className="message show "+type;
 }
 
+function hideMessage(){
+$("message").className="message";
+}
 
-/* LOAD ALL LESSONS */
+/* ESCAPE */
 
-async function loadAllLessons(){
+function esc(v){
+return String(v??"").replace(/[&<>"']/g,m=>({
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+}[m]));
+}
 
-  message("Loading 180 lessons...");
+/* MODULE TITLE */
 
-  try{
+function moduleTitle(m){
 
-    const r=await fetch(
-      API+
-      "/lessons?student_id="+
-      encodeURIComponent(student.id)+
-      "&language="+
-      encodeURIComponent(language)
-    );
-
-    const d=await r.json();
-
-    if(!r.ok||!d.success)
-      throw new Error(d.message||"Unable to load lessons.");
-
-    if(!Array.isArray(d.lessons)||!d.lessons.length)
-      throw new Error("No lessons found.");
-
-    window.allLessons=d.lessons;
-
-    buildModules(d.lessons);
-
-    $("message").className="message";
-
-  }catch(e){
-
-    console.error(e);
-
-    message(
-      e.message||"Unable to load lessons.",
-      "error"
-    );
-
-  }
+return m.title||
+m.title_en||
+m.name||
+"Module "+(m.module_id||m.id||"");
 
 }
 
+function moduleDescription(m){
 
-/* BUILD MODULES FROM LESSON DATA */
-
-function buildModules(lessons){
-
-  const groups={};
-
-  lessons.forEach(l=>{
-
-    const id=Number(l.module_id||1);
-
-    if(!groups[id])
-      groups[id]=[];
-
-    groups[id].push(l);
-
-  });
-
-  $("modules").innerHTML="";
-
-  Object.keys(groups)
-    .sort((a,b)=>Number(a)-Number(b))
-    .forEach(id=>{
-
-      const list=groups[id];
-
-      const first=list[0];
-
-      const el=document.createElement("div");
-
-      el.className="module";
-
-      el.innerHTML=`
-
-        <div class="module-top">
-
-          <div class="icon">📖</div>
-
-          <div>
-
-            <div class="module-no">
-              MODULE ${String(id).padStart(2,"0")}
-            </div>
-
-            <div class="module-title">
-              ${esc(first.module_title||first.module_name||"Module "+id)}
-            </div>
-
-            <div class="module-desc">
-              ${esc(first.module_description||"Biblical Studies")}
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="module-bottom">
-
-          <span class="count">
-            ${list.length} Lessons
-          </span>
-
-          <button class="view">
-            View Lessons →
-          </button>
-
-        </div>
-
-      `;
-
-      el.onclick=()=>showModule(
-        Number(id),
-        list,
-        first
-      );
-
-      $("modules").appendChild(el);
-
-    });
+return m.description||
+m.description_en||
+"";
 
 }
 
+/* LOAD MODULES */
 
-/* SHOW MODULE */
+async function loadModules(){
 
-function showModule(id,list,first){
+$("modules").innerHTML="";
 
-  $("modulesSection").style.display="none";
-  $("premiumBox").style.display="none";
-  $("lessonsSection").style.display="block";
+showMessage("Loading modules...","loading");
 
-  $("moduleTitle").textContent=
-    first.module_title||
-    first.module_name||
-    "Module "+id;
+try{
 
-  $("moduleDescription").textContent=
-    first.module_description||
-    "";
+const r=await fetch(API+"/modules");
+const d=await r.json();
 
-  $("lessons").innerHTML="";
+if(!r.ok)
+throw new Error(d.message||"Unable to load modules.");
 
-  list
-    .sort((a,b)=>
-      Number(a.lesson_number)-
-      Number(b.lesson_number)
-    )
-    .forEach(createLesson);
+const modules=
+Array.isArray(d.modules)?d.modules:
+Array.isArray(d.data)?d.data:
+Array.isArray(d)?d:[];
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+if(!modules.length)
+throw new Error("No modules available.");
+
+hideMessage();
+
+modules.forEach((m,index)=>{
+
+/*
+IMPORTANT:
+Support both:
+m.id
+m.module_id
+*/
+
+const moduleId=
+m.id ??
+m.module_id ??
+m.moduleId;
+
+if(moduleId==null)return;
+
+const title=moduleTitle(m);
+const description=moduleDescription(m);
+
+const el=document.createElement("div");
+
+el.className="module";
+
+el.innerHTML=`
+
+<div class="module-top">
+
+<div class="icon">
+${esc(m.icon||"📖")}
+</div>
+
+<div>
+
+<div class="module-no">
+MODULE ${String(index+1).padStart(2,"0")}
+</div>
+
+<div class="module-title">
+${esc(title)}
+</div>
+
+<div class="module-desc">
+${esc(description)}
+</div>
+
+</div>
+</div>
+
+<div class="module-bottom">
+
+<span class="count">
+${m.lesson_count||m.lessons_count||30} Lessons
+</span>
+
+<button class="view">
+View Lessons →
+</button>
+
+</div>
+`;
+
+el.onclick=()=>loadLessons({
+...m,
+id:moduleId,
+module_id:moduleId,
+title:title,
+description:description
+});
+
+$("modules").appendChild(el);
+
+});
+
+if(!$("modules").children.length)
+throw new Error("No valid module IDs found.");
+
+}catch(e){
+
+console.error(e);
+
+showMessage(
+e.message||"Unable to load modules.",
+"error"
+);
 
 }
 
+}
+
+/* LOAD LESSONS */
+
+async function loadLessons(module){
+
+const moduleId=
+module.module_id||
+module.id||
+module.moduleId;
+
+if(moduleId==null){
+
+showMessage("Invalid module ID.","error");
+return;
+
+}
+
+$("modulesSection").style.display="none";
+$("premiumBox").style.display="none";
+$("lessonsSection").style.display="block";
+
+$("moduleTitle").textContent=
+module.title||"Module";
+
+$("moduleDescription").textContent=
+module.description||"";
+
+$("lessons").innerHTML="";
+
+showMessage("Loading lessons...","loading");
+
+try{
+
+const url=
+API+
+"/lessons?module_id="+
+encodeURIComponent(moduleId)+
+"&student_id="+
+encodeURIComponent(student.id)+
+"&language="+
+encodeURIComponent(language);
+
+console.log("Loading:",url);
+
+const r=await fetch(url);
+const d=await r.json();
+
+if(!r.ok)
+throw new Error(d.message||"Unable to load lessons.");
+
+if(d.success===false)
+throw new Error(d.message||"Unable to load lessons.");
+
+const lessons=
+Array.isArray(d.lessons)?d.lessons:
+Array.isArray(d.data)?d.data:
+[];
+
+hideMessage();
+
+if(!lessons.length){
+
+$("lessons").innerHTML=`
+<div class="message show error">
+No lessons found in this module.
+</div>`;
+
+return;
+
+}
+
+lessons.forEach(createLesson);
+
+}catch(e){
+
+console.error(e);
+
+$("lessons").innerHTML=`
+<div class="message show error">
+${esc(e.message||"Unable to load lessons.")}
+</div>`;
+
+}
+
+}
 
 /* LESSON */
 
-function createLesson(l){
+function createLesson(lesson){
 
-  const locked=l.locked===true;
-  const completed=l.completed===true;
+const locked=lesson.locked===true;
+const completed=lesson.completed===true;
 
-  let text="Start →";
-  let cls="free";
+const number=
+lesson.lesson_number||
+lesson.lessonNumber||
+lesson.number||
+"";
 
-  if(completed){
-    text="✓ Completed";
-    cls="done";
-  }else if(locked){
-    text="🔒 Premium";
-    cls="locked";
-  }
+let text="Start →";
+let cls="free";
 
-  const el=document.createElement("div");
-
-  el.className="lesson";
-
-  el.innerHTML=`
-
-    <div class="lesson-num">
-      ${esc(l.lesson_number)}
-    </div>
-
-    <div class="lesson-info">
-
-      <div class="lesson-title">
-        ${esc(l.title)}
-      </div>
-
-      <div class="lesson-desc">
-        ${esc(l.description)}
-      </div>
-
-    </div>
-
-    <button class="lesson-btn ${cls}">
-      ${text}
-    </button>
-
-  `;
-
-  el.querySelector("button").onclick=()=>{
-
-    if(locked){
-      location.href="premium.html";
-      return;
-    }
-
-    const q=new URLSearchParams({
-      lesson_id:l.id,
-      module_id:l.module_id,
-      student_id:student.id,
-      language:language
-    });
-
-    location.href=LESSON_PAGE+"?"+q;
-
-  };
-
-  $("lessons").appendChild(el);
-
+if(completed){
+text="✓ Completed";
+cls="done";
 }
 
-
-/* PROGRESS */
-
-async function loadProgress(){
-
-  try{
-
-    const r=await fetch(
-      API+
-      "/progress?student_id="+
-      encodeURIComponent(student.id)
-    );
-
-    const d=await r.json();
-
-    if(!d.success)return;
-
-    const p=d.progress;
-
-    $("progressText").textContent=
-      p.completed+" / "+p.total+
-      " lessons completed";
-
-    $("percent").textContent=
-      p.percentage+"%";
-
-    $("fill").style.width=
-      p.percentage+"%";
-
-    $("certificate").textContent=
-      p.certificate_eligible
-      ?"🎓 Congratulations! You completed all 180 lessons."
-      :"Complete all 180 lessons and pass each 5-question assessment.";
-
-  }catch(e){
-    console.error(e);
-  }
-
+if(locked){
+text="🔒 Premium";
+cls="locked";
 }
 
+const el=document.createElement("div");
+
+el.className="lesson";
+
+el.innerHTML=`
+
+<div class="lesson-num">
+${esc(number)}
+</div>
+
+<div class="lesson-info">
+
+<div class="lesson-title">
+${esc(lesson.title||lesson.title_en)}
+</div>
+
+<div class="lesson-desc">
+${esc(lesson.description||lesson.description_en)}
+</div>
+
+</div>
+
+<button class="lesson-btn ${cls}">
+${text}
+</button>
+`;
+
+el.querySelector("button").onclick=()=>{
+
+if(locked){
+location.href="premium.html";
+return;
+}
+
+const lessonId=
+lesson.id||
+lesson.lesson_id;
+
+if(!lessonId){
+alert("Invalid lesson ID.");
+return;
+}
+
+const params=new URLSearchParams({
+lesson_id:String(lessonId),
+module_id:String(
+lesson.module_id||lesson.moduleId
+),
+student_id:String(student.id),
+language:language
+});
+
+location.href=
+LESSON_PAGE+"?"+params.toString();
+
+};
+
+$("lessons").appendChild(el);
+
+}
 
 /* LANGUAGE */
 
 $("languageSelect").onchange=function(){
 
-  language=this.value;
+language=this.value;
 
-  localStorage.setItem(
-    "goh_language",
-    language
-  );
+localStorage.setItem(
+"goh_language",
+language
+);
 
-  $("language").textContent=
-    names[language];
+$("language").textContent=
+languageNames[language];
 
-  $("lessonsSection").style.display="none";
-  $("modulesSection").style.display="block";
-  $("premiumBox").style.display="block";
+if($("lessonsSection").style.display==="block"){
 
-  loadAllLessons();
+$("lessonsSection").style.display="none";
+$("modulesSection").style.display="block";
+$("premiumBox").style.display="block";
+
+hideMessage();
+
+}
 
 };
-
 
 /* BACK */
 
 $("back").onclick=()=>{
 
-  $("lessonsSection").style.display="none";
-  $("modulesSection").style.display="block";
-  $("premiumBox").style.display="block";
+$("lessonsSection").style.display="none";
+$("modulesSection").style.display="block";
+$("premiumBox").style.display="block";
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+hideMessage();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
 };
 
+/* PROGRESS */
+
+async function loadProgress(){
+
+try{
+
+const r=await fetch(
+API+
+"/progress?student_id="+
+encodeURIComponent(student.id)
+);
+
+const d=await r.json();
+
+if(!r.ok||!d.success)return;
+
+const p=d.progress;
+
+$("progressText").textContent=
+(p.completed||0)+
+" / "+
+(p.total||180)+
+" lessons completed";
+
+$("percent").textContent=
+(p.percentage||0)+"%";
+
+$("fill").style.width=
+(p.percentage||0)+"%";
+
+if(p.certificate_eligible){
+
+$("certificate").textContent=
+"🎓 Congratulations! You completed all 180 lessons.";
+
+}
+
+}catch(e){
+console.error(e);
+}
+
+}
 
 /* LOGOUT */
 
 $("logout").onclick=()=>{
 
-  localStorage.removeItem("goh_student");
-  localStorage.removeItem("goh_logged_in");
+localStorage.removeItem("goh_student");
+localStorage.removeItem("goh_logged_in");
 
-  sessionStorage.removeItem("goh_student");
-  sessionStorage.removeItem("goh_logged_in");
+sessionStorage.removeItem("goh_student");
+sessionStorage.removeItem("goh_logged_in");
 
-  location.href="login.html";
+location.href="login.html";
 
 };
-
 
 /* START */
 
 if(student){
-  loadAllLessons();
-  loadProgress();
+loadModules();
+loadProgress();
 }
 
 </script>
