@@ -3,281 +3,839 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#155eef">
-<title>GOH Ministries Finance - Login</title>
+
+<title>Student Login | GOH Bible Academy</title>
+
+<meta name="description"
+content="Student login for GOH Bible Academy Christian Biblical Studies.">
+
+<meta name="theme-color" content="#111827">
+
+<link rel="icon"
+href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 
 <style>
-*{box-sizing:border-box}
-body{
+
+*{
+box-sizing:border-box;
 margin:0;
-font-family:Arial,sans-serif;
-background:#f5f7fb;
+padding:0
+}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#f3f6fb;
 color:#172033;
-padding:20px
+line-height:1.5;
+min-height:100vh
 }
-.box{
-max-width:400px;
-margin:70px auto;
-background:#fff;
-padding:25px;
-border-radius:16px;
-box-shadow:0 5px 25px #0001
+
+a{
+text-decoration:none;
+color:inherit
 }
+
+.container{
+width:min(1000px,92%);
+margin:auto
+}
+
+/* HEADER */
+
+header{
+position:sticky;
+top:0;
+z-index:1000;
+background:rgba(255,255,255,.97);
+backdrop-filter:blur(10px);
+border-bottom:1px solid #e5e7eb
+}
+
+.nav{
+min-height:64px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px
+}
+
 .logo{
-width:48px;
-height:48px;
-border-radius:12px;
-background:#155eef;
-color:#fff;
-display:grid;
-place-items:center;
-font-size:22px;
-font-weight:bold;
-margin-bottom:16px
+display:flex;
+align-items:center;
+gap:9px
 }
-h1{
-font-size:21px;
-margin:0 0 6px
+
+.logo img{
+width:42px;
+height:42px;
+object-fit:contain;
+border-radius:10px
 }
-p{
-font-size:13px;
-color:#667085;
-margin:0 0 22px
-}
-label{
-display:block;
-font-size:13px;
-font-weight:bold;
-margin:14px 0 6px
-}
-input{
-width:100%;
-padding:13px;
-border:1px solid #d5dbe5;
-border-radius:9px;
+
+.logo-title{
 font-size:14px;
-outline:none
+font-weight:900
 }
-input:focus{
-border-color:#155eef
+
+.logo-sub{
+font-size:8px;
+color:#6b7280
 }
-button{
-width:100%;
-margin-top:20px;
-padding:13px;
-border:0;
+
+.nav-links{
+display:flex;
+align-items:center;
+gap:5px
+}
+
+.nav-links a{
+padding:8px 10px;
 border-radius:9px;
-background:#155eef;
-color:#fff;
-font-size:14px;
-font-weight:bold;
+font-size:10px;
+font-weight:800
+}
+
+.nav-links a:hover{
+background:#f1f5f9
+}
+
+.login{
+background:#111827;
+color:#fff!important
+}
+
+.register{
+background:#fbbf24;
+color:#111827!important
+}
+
+.menu{
+display:none;
+width:40px;
+height:40px;
+border:1px solid #e5e7eb;
+background:#fff;
+border-radius:9px;
+font-size:18px;
 cursor:pointer
 }
-button:disabled{
-opacity:.6
+
+/* MOBILE MENU */
+
+.mobile-menu{
+display:none
 }
-.msg{
-display:none;
-padding:11px;
+
+.mobile-menu.show{
+display:block;
+position:fixed;
+top:64px;
+left:0;
+right:0;
+z-index:999;
+background:#fff;
+border-bottom:1px solid #e5e7eb;
+box-shadow:0 12px 25px rgba(0,0,0,.12);
+padding:8px 4%
+}
+
+.mobile-menu a{
+display:block;
+padding:12px 9px;
 border-radius:9px;
-margin-top:15px;
-font-size:13px
+font-size:12px;
+font-weight:800
 }
-.ok{
+
+.mobile-menu a:hover{
+background:#f1f5f9
+}
+
+/* LOGIN AREA */
+
+main{
+min-height:calc(100vh - 64px);
+display:flex;
+align-items:center;
+padding:35px 0
+}
+
+.login-card{
+width:min(430px,100%);
+margin:auto;
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:22px;
+padding:30px;
+box-shadow:0 15px 40px rgba(15,23,42,.08)
+}
+
+.login-logo{
+width:65px;
+height:65px;
+object-fit:contain;
 display:block;
-background:#dcfce7;
-color:#166534
+margin:0 auto 13px;
+background:#fff;
+border-radius:15px;
+padding:5px;
+box-shadow:0 5px 15px rgba(0,0,0,.07)
 }
-.bad{
+
+.head{
+text-align:center;
+margin-bottom:22px
+}
+
+.label{
+font-size:9px;
+font-weight:900;
+letter-spacing:1.2px;
+color:#6366f1
+}
+
+.head h1{
+font-size:27px;
+margin:6px 0
+}
+
+.head p{
+font-size:11px;
+color:#6b7280
+}
+
+/* FORM */
+
+.form-group{
+margin-bottom:14px
+}
+
+.form-group label{
 display:block;
-background:#fee2e2;
-color:#991b1b
+font-size:10px;
+font-weight:800;
+margin-bottom:6px;
+color:#374151
 }
+
+input{
+width:100%;
+height:44px;
+padding:0 12px;
+border:1px solid #d1d5db;
+border-radius:10px;
+background:#fff;
+font:inherit;
+font-size:12px;
+outline:none;
+transition:.2s
+}
+
+input:focus{
+border-color:#6366f1;
+box-shadow:0 0 0 3px rgba(99,102,241,.1)
+}
+
+.password-wrap{
+position:relative
+}
+
+.password-wrap input{
+padding-right:70px
+}
+
+.show-password{
+position:absolute;
+right:7px;
+top:7px;
+height:30px;
+padding:0 9px;
+border:0;
+background:#f3f4f6;
+border-radius:7px;
+font-size:9px;
+font-weight:800;
+cursor:pointer;
+color:#374151
+}
+
+.options{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+margin:3px 0 17px
+}
+
+.remember{
+display:flex;
+align-items:center;
+gap:6px;
+font-size:9px;
+color:#6b7280;
+cursor:pointer
+}
+
+.remember input{
+width:14px;
+height:14px;
+padding:0;
+accent-color:#111827
+}
+
+.forgot{
+font-size:9px;
+font-weight:800;
+color:#6366f1
+}
+
+.btn{
+width:100%;
+height:44px;
+border:0;
+border-radius:10px;
+font-size:11px;
+font-weight:900;
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center
+}
+
+.primary{
+background:#fbbf24;
+color:#111827
+}
+
+.btn:disabled{
+opacity:.65;
+cursor:not-allowed
+}
+
+/* MESSAGE */
+
+.message{
+display:none;
+padding:10px 12px;
+border-radius:9px;
+font-size:10px;
+font-weight:700;
+margin-bottom:13px;
+text-align:center
+}
+
+.message.show{
+display:block
+}
+
+.message.error{
+background:#fef2f2;
+color:#b91c1c;
+border:1px solid #fecaca
+}
+
+.message.success{
+background:#f0fdf4;
+color:#15803d;
+border:1px solid #bbf7d0
+}
+
+/* REGISTER */
+
+.register-box{
+margin-top:18px;
+padding-top:17px;
+border-top:1px solid #e5e7eb;
+text-align:center
+}
+
+.register-box p{
+font-size:10px;
+color:#6b7280;
+margin-bottom:9px
+}
+
+.register-link{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:9px 14px;
+border:1px solid #d1d5db;
+border-radius:9px;
+font-size:10px;
+font-weight:900
+}
+
+.register-link:hover{
+background:#f8fafc
+}
+
+.back{
+display:block;
+text-align:center;
+margin-top:17px;
+font-size:9px;
+font-weight:800;
+color:#6b7280
+}
+
+.back:hover{
+color:#111827
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1120;
+color:#fff;
+padding:22px 0 15px
+}
+
+.footer-legal{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap
+}
+
+.footer-legal a{
+font-size:9px;
+color:#a7b0c0
+}
+
+.footer-legal a:hover{
+color:#fbbf24
+}
+
+.copy{
+text-align:center;
+font-size:8px;
+color:#64748b;
+margin-top:11px
+}
+
+/* RESPONSIVE */
+
+@media(max-width:800px){
+
+.nav-links{
+display:none
+}
+
+.menu{
+display:block
+}
+
+}
+
+@media(max-width:500px){
+
+.container{
+width:92%
+}
+
+.login-card{
+padding:25px 19px;
+border-radius:19px
+}
+
+main{
+padding:25px 0
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="box">
+<!-- HEADER -->
 
-<div class="logo">G</div>
+<header>
 
-<h1>GOH Ministries Finance</h1>
-<p>Administration Panel</p>
+<div class="container nav">
 
-<form id="loginForm">
+<a href="index.html" class="logo">
 
-<label>Email</label>
-<input
-id="email"
-type="email"
-value="gateofheavensl1@gmail.com"
-autocomplete="username"
-required
->
+<img
+src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
+alt="GOH Bible Academy">
 
-<label>Password</label>
-<input
-id="password"
-type="password"
-autocomplete="current-password"
-required
->
+<div>
+<div class="logo-title">GOH Bible Academy</div>
+<div class="logo-sub">Gate of Heaven Ministries</div>
+</div>
 
-<button id="loginBtn" type="submit">
-Login
+</a>
+
+<nav class="nav-links">
+
+<a href="lessons.html">📖 Lessons</a>
+<a href="about.html">ℹ️ About</a>
+<a href="contact.html">💬 Contact</a>
+<a href="login.html" class="login">🔐 Login</a>
+<a href="register.html" class="register">📝 Register</a>
+
+</nav>
+
+<button
+class="menu"
+id="menuBtn"
+aria-label="Open menu"
+aria-expanded="false">
+☰
 </button>
-
-<div id="msg" class="msg"></div>
-
-</form>
 
 </div>
 
+</header>
+
+<!-- MOBILE MENU -->
+
+<nav class="mobile-menu" id="mobileMenu">
+
+<a href="lessons.html">📖 Lessons</a>
+<a href="about.html">ℹ️ About</a>
+<a href="contact.html">💬 Contact</a>
+<a href="login.html">🔐 Student Login</a>
+<a href="register.html">📝 Register</a>
+
+</nav>
+
+<!-- LOGIN -->
+
+<main>
+
+<div class="container">
+
+<div class="login-card">
+
+<img
+class="login-logo"
+src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
+alt="GOH Bible Academy">
+
+<div class="head">
+
+<div class="label">
+GOH BIBLE ACADEMY
+</div>
+
+<h1>
+Student Login
+</h1>
+
+<p>
+Sign in to continue your Biblical Studies journey.
+</p>
+
+</div>
+
+<div
+id="message"
+class="message">
+</div>
+
+<form id="loginForm">
+
+<div class="form-group">
+
+<label for="email">
+Email Address
+</label>
+
+<input
+type="email"
+id="email"
+name="email"
+placeholder="Enter your email"
+autocomplete="email"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label for="password">
+Password
+</label>
+
+<div class="password-wrap">
+
+<input
+type="password"
+id="password"
+name="password"
+placeholder="Enter your password"
+autocomplete="current-password"
+required>
+
+<button
+type="button"
+class="show-password"
+id="showPassword">
+Show
+</button>
+
+</div>
+
+</div>
+
+<div class="options">
+
+<label class="remember">
+
+<input
+type="checkbox"
+id="remember">
+
+Remember me
+
+</label>
+
+<a
+href="#"
+class="forgot"
+id="forgotLink">
+Forgot Password?
+</a>
+
+</div>
+
+<button
+type="submit"
+class="btn primary"
+id="loginBtn">
+
+🔐 Sign In
+
+</button>
+
+</form>
+
+<div class="register-box">
+
+<p>
+Don't have a student account?
+</p>
+
+<a
+href="register.html"
+class="register-link">
+
+📝 Create Account
+
+</a>
+
+</div>
+
+<a
+href="index.html"
+class="back">
+
+← Back to GOH Bible Academy
+
+</a>
+
+</div>
+
+</div>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="container">
+
+<div class="footer-legal">
+
+<a href="privacy.html">
+Privacy Policy
+</a>
+
+<a href="terms.html">
+Terms of Use
+</a>
+
+<a href="refund.html">
+Refund Policy
+</a>
+
+<a href="contact.html">
+Contact
+</a>
+
+</div>
+
+<div class="copy">
+© 2026 GOH Bible Academy. All rights reserved.
+</div>
+
+</div>
+
+</footer>
+
 <script>
 
-const API=
-"https://goh-finance.createlk.workers.dev";
+/* MOBILE MENU */
 
-const TOKEN_KEY=
-"goh_finance_token";
+const menuBtn=
+document.getElementById("menuBtn");
 
-const form=
-document.getElementById("loginForm");
+const mobileMenu=
+document.getElementById("mobileMenu");
 
-const btn=
-document.getElementById("loginBtn");
+menuBtn.addEventListener("click",function(){
 
-const msg=
-document.getElementById("msg");
+const open=
+mobileMenu.classList.toggle("show");
 
-function show(text,ok=false){
+menuBtn.textContent=
+open ? "✕" : "☰";
 
-msg.textContent=text;
+menuBtn.setAttribute(
+"aria-expanded",
+open ? "true" : "false"
+);
 
-msg.className=
-"msg "+(ok?"ok":"bad");
+});
+
+mobileMenu
+.querySelectorAll("a")
+.forEach(function(link){
+
+link.addEventListener("click",function(){
+
+mobileMenu.classList.remove("show");
+
+menuBtn.textContent="☰";
+
+menuBtn.setAttribute(
+"aria-expanded",
+"false"
+);
+
+});
+
+});
+
+/* SHOW PASSWORD */
+
+const password=
+document.getElementById("password");
+
+const showPassword=
+document.getElementById("showPassword");
+
+showPassword.addEventListener("click",function(){
+
+if(password.type==="password"){
+
+password.type="text";
+showPassword.textContent="Hide";
+
+}else{
+
+password.type="password";
+showPassword.textContent="Show";
 
 }
 
-form.addEventListener("submit",async e=>{
+});
+
+/* LOGIN */
+
+const loginForm=
+document.getElementById("loginForm");
+
+const loginBtn=
+document.getElementById("loginBtn");
+
+const message=
+document.getElementById("message");
+
+loginForm.addEventListener("submit",async function(e){
 
 e.preventDefault();
 
 const email=
-document.getElementById("email")
-.value.trim()
-.toLowerCase();
+document.getElementById("email").value.trim();
 
-const password=
-document.getElementById("password")
-.value;
+const pass=
+password.value;
 
-if(!email||!password){
+if(!email || !pass){
 
-show("Email and password are required.");
+showMessage(
+"Please enter your email and password.",
+"error"
+);
 
 return;
 
 }
 
-btn.disabled=true;
-btn.textContent="Logging in...";
+loginBtn.disabled=true;
+loginBtn.textContent="Signing in...";
 
 try{
 
-const response=
-await fetch(
-API+"/api/login",
-{
-method:"POST",
-headers:{
-"Content-Type":
-"application/json"
-},
-body:JSON.stringify({
-email,
-password
-})
-}
-);
+/*
+  Connect your existing Cloudflare login API here.
 
-const data=
-await response.json();
+  Example:
 
-if(!response.ok||!data.success){
+  const response=await fetch("YOUR_LOGIN_API",{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify({
+      email:email,
+      password:pass
+    })
+  });
 
-throw new Error(
-data.error||
-"Invalid email or password"
-);
+  const data=await response.json();
 
-}
+  if(!response.ok) throw new Error(data.message);
 
-if(!data.token){
-
-throw new Error(
-"Login succeeded but no session token was returned."
-);
-
-}
-
-/* IMPORTANT:
-   Same key used by all Finance pages.
+  localStorage.setItem("student",JSON.stringify(data));
+  window.location.href="dashboard.html";
 */
 
-localStorage.setItem(
-TOKEN_KEY,
-data.token
+showMessage(
+"Login system is ready to connect to your student API.",
+"success"
 );
-
-/* Verify the saved session */
-
-const check=
-await fetch(
-API+"/api/me",
-{
-headers:{
-"Authorization":
-"Bearer "+data.token
-}
-}
-);
-
-const checkData=
-await check.json();
-
-if(!check.ok||!checkData.success){
-
-localStorage.removeItem(TOKEN_KEY);
-
-throw new Error(
-"Login succeeded but the session could not be verified."
-);
-
-}
-
-show("Login successful.",true);
-
-setTimeout(()=>{
-
-location.href=
-"finance-dashboard.html";
-
-},300);
 
 }catch(error){
 
-show(error.message);
-
-}finally{
-
-btn.disabled=false;
-btn.textContent="Login";
+showMessage(
+error.message || "Unable to sign in. Please try again.",
+"error"
+);
 
 }
 
+loginBtn.disabled=false;
+loginBtn.textContent="🔐 Sign In";
+
 });
+
+/* MESSAGE */
+
+function showMessage(text,type){
+
+message.textContent=text;
+
+message.className=
+"message show "+type;
+
+}
 
 </script>
 
