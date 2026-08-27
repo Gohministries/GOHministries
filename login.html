@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Student Login | GOH Bible Academy</title>
+<title>Login | GOH Bible Academy</title>
 
 <meta name="description"
-content="Student login for GOH Bible Academy Christian Biblical Studies.">
+content="Student Login for GOH Bible Academy.">
 
 <meta name="theme-color" content="#111827">
 
@@ -26,8 +26,7 @@ body{
 font-family:Arial,Helvetica,sans-serif;
 background:#f3f6fb;
 color:#172033;
-line-height:1.5;
-min-height:100vh
+line-height:1.5
 }
 
 a{
@@ -43,11 +42,7 @@ margin:auto
 /* HEADER */
 
 header{
-position:sticky;
-top:0;
-z-index:1000;
-background:rgba(255,255,255,.97);
-backdrop-filter:blur(10px);
+background:#fff;
 border-bottom:1px solid #e5e7eb
 }
 
@@ -84,8 +79,8 @@ color:#6b7280
 
 .nav-links{
 display:flex;
-align-items:center;
-gap:5px
+gap:5px;
+align-items:center
 }
 
 .nav-links a{
@@ -106,8 +101,10 @@ color:#fff!important
 
 .register{
 background:#fbbf24;
-color:#111827!important
+color:#111827
 }
+
+/* MOBILE MENU BUTTON */
 
 .menu{
 display:none;
@@ -119,8 +116,6 @@ border-radius:9px;
 font-size:18px;
 cursor:pointer
 }
-
-/* MOBILE MENU */
 
 .mobile-menu{
 display:none
@@ -148,20 +143,20 @@ font-weight:800
 }
 
 .mobile-menu a:hover{
-background:#f1f5f9
+background:#f3f4f6
 }
 
-/* LOGIN AREA */
+/* MAIN */
 
 main{
-min-height:calc(100vh - 64px);
+min-height:calc(100vh - 120px);
+padding:35px 0;
 display:flex;
-align-items:center;
-padding:35px 0
+align-items:center
 }
 
-.login-card{
-width:min(430px,100%);
+.card{
+width:min(450px,100%);
 margin:auto;
 background:#fff;
 border:1px solid #e5e7eb;
@@ -170,21 +165,20 @@ padding:30px;
 box-shadow:0 15px 40px rgba(15,23,42,.08)
 }
 
-.login-logo{
+.logo-main{
 width:65px;
 height:65px;
-object-fit:contain;
 display:block;
-margin:0 auto 13px;
+margin:0 auto 12px;
+object-fit:contain;
 background:#fff;
 border-radius:15px;
-padding:5px;
-box-shadow:0 5px 15px rgba(0,0,0,.07)
+padding:5px
 }
 
 .head{
 text-align:center;
-margin-bottom:22px
+margin-bottom:23px
 }
 
 .label{
@@ -194,7 +188,7 @@ letter-spacing:1.2px;
 color:#6366f1
 }
 
-.head h1{
+h1{
 font-size:27px;
 margin:6px 0
 }
@@ -206,11 +200,11 @@ color:#6b7280
 
 /* FORM */
 
-.form-group{
+.group{
 margin-bottom:14px
 }
 
-.form-group label{
+label{
 display:block;
 font-size:10px;
 font-weight:800;
@@ -227,8 +221,7 @@ border-radius:10px;
 background:#fff;
 font:inherit;
 font-size:12px;
-outline:none;
-transition:.2s
+outline:none
 }
 
 input:focus{
@@ -236,35 +229,36 @@ border-color:#6366f1;
 box-shadow:0 0 0 3px rgba(99,102,241,.1)
 }
 
-.password-wrap{
+.password{
 position:relative
 }
 
-.password-wrap input{
-padding-right:70px
+.password input{
+padding-right:65px
 }
 
-.show-password{
+.show{
 position:absolute;
-right:7px;
+right:6px;
 top:7px;
 height:30px;
 padding:0 9px;
 border:0;
-background:#f3f4f6;
 border-radius:7px;
+background:#f3f4f6;
 font-size:9px;
 font-weight:800;
-cursor:pointer;
-color:#374151
+cursor:pointer
 }
+
+/* OPTIONS */
 
 .options{
 display:flex;
 align-items:center;
 justify-content:space-between;
 gap:10px;
-margin:3px 0 17px
+margin:2px 0 17px
 }
 
 .remember{
@@ -272,43 +266,36 @@ display:flex;
 align-items:center;
 gap:6px;
 font-size:9px;
-color:#6b7280;
-cursor:pointer
+color:#6b7280
 }
 
 .remember input{
 width:14px;
-height:14px;
-padding:0;
-accent-color:#111827
+height:14px
 }
 
 .forgot{
 font-size:9px;
 font-weight:800;
-color:#6366f1
+color:#4f46e5
 }
+
+/* BUTTON */
 
 .btn{
 width:100%;
 height:44px;
 border:0;
 border-radius:10px;
+background:#fbbf24;
+color:#111827;
 font-size:11px;
 font-weight:900;
-cursor:pointer;
-display:flex;
-align-items:center;
-justify-content:center
-}
-
-.primary{
-background:#fbbf24;
-color:#111827
+cursor:pointer
 }
 
 .btn:disabled{
-opacity:.65;
+opacity:.6;
 cursor:not-allowed
 }
 
@@ -316,37 +303,35 @@ cursor:not-allowed
 
 .message{
 display:none;
-padding:10px 12px;
+padding:10px;
 border-radius:9px;
 font-size:10px;
 font-weight:700;
-margin-bottom:13px;
-text-align:center
+text-align:center;
+margin-bottom:13px
 }
 
 .message.show{
 display:block
 }
 
-.message.error{
+.error{
 background:#fef2f2;
-color:#b91c1c;
-border:1px solid #fecaca
+color:#b91c1c
 }
 
-.message.success{
+.success{
 background:#f0fdf4;
-color:#15803d;
-border:1px solid #bbf7d0
+color:#15803d
 }
 
 /* REGISTER */
 
 .register-box{
-margin-top:18px;
-padding-top:17px;
+text-align:center;
 border-top:1px solid #e5e7eb;
-text-align:center
+margin-top:19px;
+padding-top:17px
 }
 
 .register-box p{
@@ -356,18 +341,12 @@ margin-bottom:9px
 }
 
 .register-link{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-padding:9px 14px;
+display:inline-block;
 border:1px solid #d1d5db;
 border-radius:9px;
+padding:9px 15px;
 font-size:10px;
 font-weight:900
-}
-
-.register-link:hover{
-background:#f8fafc
 }
 
 .back{
@@ -387,36 +366,35 @@ color:#111827
 
 footer{
 background:#0b1120;
-color:#fff;
-padding:22px 0 15px
+padding:22px 0 15px;
+text-align:center
 }
 
-.footer-legal{
+.footer-links{
 display:flex;
 justify-content:center;
 gap:20px;
 flex-wrap:wrap
 }
 
-.footer-legal a{
+.footer-links a{
 font-size:9px;
 color:#a7b0c0
 }
 
-.footer-legal a:hover{
+.footer-links a:hover{
 color:#fbbf24
 }
 
 .copy{
-text-align:center;
 font-size:8px;
 color:#64748b;
 margin-top:11px
 }
 
-/* RESPONSIVE */
+/* MOBILE */
 
-@media(max-width:800px){
+@media(max-width:700px){
 
 .nav-links{
 display:none
@@ -426,17 +404,8 @@ display:none
 display:block
 }
 
-}
-
-@media(max-width:500px){
-
-.container{
-width:92%
-}
-
-.login-card{
-padding:25px 19px;
-border-radius:19px
+.card{
+padding:25px 19px
 }
 
 main{
@@ -450,8 +419,6 @@ padding:25px 0
 
 <body>
 
-<!-- HEADER -->
-
 <header>
 
 <div class="container nav">
@@ -463,19 +430,40 @@ src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 alt="GOH Bible Academy">
 
 <div>
-<div class="logo-title">GOH Bible Academy</div>
-<div class="logo-sub">Gate of Heaven Ministries</div>
+
+<div class="logo-title">
+GOH Bible Academy
+</div>
+
+<div class="logo-sub">
+Gate of Heaven Ministries
+</div>
+
 </div>
 
 </a>
 
 <nav class="nav-links">
 
-<a href="lessons.html">📖 Lessons</a>
-<a href="about.html">ℹ️ About</a>
-<a href="contact.html">💬 Contact</a>
-<a href="login.html" class="login">🔐 Login</a>
-<a href="register.html" class="register">📝 Register</a>
+<a href="lessons.html">
+📖 Lessons
+</a>
+
+<a href="about.html">
+ℹ️ About
+</a>
+
+<a href="contact.html">
+💬 Contact
+</a>
+
+<a href="login.html" class="login">
+🔐 Login
+</a>
+
+<a href="register.html" class="register">
+📝 Register
+</a>
 
 </nav>
 
@@ -484,35 +472,49 @@ class="menu"
 id="menuBtn"
 aria-label="Open menu"
 aria-expanded="false">
+
 ☰
+
 </button>
 
 </div>
 
 </header>
 
-<!-- MOBILE MENU -->
 
 <nav class="mobile-menu" id="mobileMenu">
 
-<a href="lessons.html">📖 Lessons</a>
-<a href="about.html">ℹ️ About</a>
-<a href="contact.html">💬 Contact</a>
-<a href="login.html">🔐 Student Login</a>
-<a href="register.html">📝 Register</a>
+<a href="lessons.html">
+📖 Lessons
+</a>
+
+<a href="about.html">
+ℹ️ About
+</a>
+
+<a href="contact.html">
+💬 Contact
+</a>
+
+<a href="login.html">
+🔐 Student Login
+</a>
+
+<a href="register.html">
+📝 Register
+</a>
 
 </nav>
 
-<!-- LOGIN -->
 
 <main>
 
 <div class="container">
 
-<div class="login-card">
+<div class="card">
 
 <img
-class="login-logo"
+class="logo-main"
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 alt="GOH Bible Academy">
 
@@ -532,55 +534,59 @@ Sign in to continue your Biblical Studies journey.
 
 </div>
 
+
 <div
 id="message"
 class="message">
 </div>
 
+
 <form id="loginForm">
 
-<div class="form-group">
+<div class="group">
 
 <label for="email">
 Email Address
 </label>
 
 <input
-type="email"
 id="email"
-name="email"
+type="email"
 placeholder="Enter your email"
 autocomplete="email"
 required>
 
 </div>
 
-<div class="form-group">
+
+<div class="group">
 
 <label for="password">
 Password
 </label>
 
-<div class="password-wrap">
+<div class="password">
 
 <input
-type="password"
 id="password"
-name="password"
+type="password"
 placeholder="Enter your password"
 autocomplete="current-password"
 required>
 
 <button
 type="button"
-class="show-password"
+class="show"
 id="showPassword">
+
 Show
+
 </button>
 
 </div>
 
 </div>
+
 
 <div class="options">
 
@@ -590,22 +596,26 @@ Show
 type="checkbox"
 id="remember">
 
+<span>
 Remember me
+</span>
 
 </label>
 
 <a
-href="#"
-class="forgot"
-id="forgotLink">
+href="forgot-password.html"
+class="forgot">
+
 Forgot Password?
+
 </a>
 
 </div>
 
+
 <button
 type="submit"
-class="btn primary"
+class="btn"
 id="loginBtn">
 
 🔐 Sign In
@@ -613,6 +623,7 @@ id="loginBtn">
 </button>
 
 </form>
+
 
 <div class="register-box">
 
@@ -630,6 +641,7 @@ class="register-link">
 
 </div>
 
+
 <a
 href="index.html"
 class="back">
@@ -644,13 +656,12 @@ class="back">
 
 </main>
 
-<!-- FOOTER -->
 
 <footer>
 
 <div class="container">
 
-<div class="footer-legal">
+<div class="footer-links">
 
 <a href="privacy.html">
 Privacy Policy
@@ -678,94 +689,81 @@ Contact
 
 </footer>
 
+
 <script>
 
-/* MOBILE MENU */
+/* LOGIN WORKER */
 
-const menuBtn=
-document.getElementById("menuBtn");
+const LOGIN_API =
+"https://login.createlk.workers.dev/";
 
-const mobileMenu=
-document.getElementById("mobileMenu");
 
-menuBtn.addEventListener("click",function(){
+const form =
+document.getElementById("loginForm");
 
-const open=
-mobileMenu.classList.toggle("show");
+const button =
+document.getElementById("loginBtn");
 
-menuBtn.textContent=
-open ? "✕" : "☰";
+const message =
+document.getElementById("message");
 
-menuBtn.setAttribute(
-"aria-expanded",
-open ? "true" : "false"
-);
-
-});
-
-mobileMenu
-.querySelectorAll("a")
-.forEach(function(link){
-
-link.addEventListener("click",function(){
-
-mobileMenu.classList.remove("show");
-
-menuBtn.textContent="☰";
-
-menuBtn.setAttribute(
-"aria-expanded",
-"false"
-);
-
-});
-
-});
-
-/* SHOW PASSWORD */
-
-const password=
+const password =
 document.getElementById("password");
 
-const showPassword=
+const showPassword =
 document.getElementById("showPassword");
 
-showPassword.addEventListener("click",function(){
 
-if(password.type==="password"){
+/* PASSWORD */
 
-password.type="text";
-showPassword.textContent="Hide";
+showPassword.onclick=function(){
 
-}else{
+const hidden =
+password.type === "password";
 
-password.type="password";
-showPassword.textContent="Show";
+password.type =
+hidden ? "text" : "password";
+
+showPassword.textContent =
+hidden ? "Hide" : "Show";
+
+};
+
+
+/* MESSAGE */
+
+function showMessage(text,type){
+
+message.textContent=text;
+
+message.className =
+"message show " + type;
 
 }
 
-});
 
 /* LOGIN */
 
-const loginForm=
-document.getElementById("loginForm");
-
-const loginBtn=
-document.getElementById("loginBtn");
-
-const message=
-document.getElementById("message");
-
-loginForm.addEventListener("submit",async function(e){
+form.addEventListener(
+"submit",
+async function(e){
 
 e.preventDefault();
 
-const email=
-document.getElementById("email").value.trim();
 
-const pass=
+const email =
+document.getElementById("email")
+.value
+.trim()
+.toLowerCase();
+
+const pass =
 password.value;
+
+const remember =
+document.getElementById("remember")
+.checked;
+
 
 if(!email || !pass){
 
@@ -778,64 +776,196 @@ return;
 
 }
 
-loginBtn.disabled=true;
-loginBtn.textContent="Signing in...";
+
+button.disabled=true;
+
+button.textContent=
+"Signing In...";
+
 
 try{
 
+const response =
+await fetch(
+LOGIN_API,
+{
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+email:email,
+
+password:pass
+
+})
+
+}
+);
+
+
+let data;
+
+try{
+
+data =
+await response.json();
+
+}catch{
+
+throw new Error(
+"Server returned an invalid response."
+);
+
+}
+
+
+if(!response.ok || !data.success){
+
+throw new Error(
+data.message ||
+"Invalid email or password."
+);
+
+}
+
+
 /*
-  Connect your existing Cloudflare login API here.
-
-  Example:
-
-  const response=await fetch("YOUR_LOGIN_API",{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json"
-    },
-    body:JSON.stringify({
-      email:email,
-      password:pass
-    })
-  });
-
-  const data=await response.json();
-
-  if(!response.ok) throw new Error(data.message);
-
-  localStorage.setItem("student",JSON.stringify(data));
-  window.location.href="dashboard.html";
+Save student session
 */
 
+const student = {
+
+id:data.student_id,
+
+first_name:data.first_name || "",
+
+last_name:data.last_name || "",
+
+email:data.email || email,
+
+membership_status:
+data.membership_status || "FREE",
+
+membership_expiry:
+data.membership_expiry || null
+
+};
+
+
+if(remember){
+
+localStorage.setItem(
+"goh_student",
+JSON.stringify(student)
+);
+
+localStorage.setItem(
+"goh_logged_in",
+"true"
+);
+
+}else{
+
+sessionStorage.setItem(
+"goh_student",
+JSON.stringify(student)
+);
+
+sessionStorage.setItem(
+"goh_logged_in",
+"true"
+);
+
+}
+
+
 showMessage(
-"Login system is ready to connect to your student API.",
+"Login successful. Redirecting...",
 "success"
 );
 
+
+setTimeout(
+function(){
+
+window.location.href=
+"dashboard.html";
+
+},
+700
+);
+
+
 }catch(error){
 
+console.error(
+"Login error:",
+error
+);
+
 showMessage(
-error.message || "Unable to sign in. Please try again.",
+error.message ||
+"Unable to connect to the login server.",
 "error"
 );
 
-}
+button.disabled=false;
 
-loginBtn.disabled=false;
-loginBtn.textContent="🔐 Sign In";
+button.textContent=
+"🔐 Sign In";
+
+}
 
 });
 
-/* MESSAGE */
 
-function showMessage(text,type){
+/* MOBILE MENU */
 
-message.textContent=text;
+const menuBtn =
+document.getElementById("menuBtn");
 
-message.className=
-"message show "+type;
+const mobileMenu =
+document.getElementById("mobileMenu");
 
-}
+
+menuBtn.onclick=function(){
+
+const open =
+mobileMenu.classList.toggle("show");
+
+menuBtn.textContent =
+open ? "✕" : "☰";
+
+menuBtn.setAttribute(
+"aria-expanded",
+open
+);
+
+};
+
+
+mobileMenu
+.querySelectorAll("a")
+.forEach(function(link){
+
+link.onclick=function(){
+
+mobileMenu.classList.remove("show");
+
+menuBtn.textContent="☰";
+
+menuBtn.setAttribute(
+"aria-expanded",
+"false"
+);
+
+};
+
+});
 
 </script>
 
