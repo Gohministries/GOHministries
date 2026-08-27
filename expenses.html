@@ -10,7 +10,7 @@
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
 header{background:#155eef;color:#fff;padding:15px 18px}
-.head{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+.head{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:12px}
 .logout{background:#fff;color:#155eef;border:0;border-radius:8px;padding:9px 13px;font-weight:bold;cursor:pointer}
 nav{max-width:1050px;margin:10px auto 0;display:flex;gap:8px;overflow:auto}
 nav a{background:#fff;color:#155eef;padding:8px 11px;border-radius:8px;text-decoration:none;font-size:12px;white-space:nowrap}
@@ -18,32 +18,38 @@ main{max-width:1050px;margin:auto;padding:18px}
 .card{background:#fff;padding:18px;border-radius:14px;margin-bottom:16px;box-shadow:0 2px 12px #0001}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.stat strong{display:block;font-size:24px;margin-top:6px}
+.stat strong{display:block;font-size:23px;margin-top:6px}
 label{display:block;font-size:13px;font-weight:bold;margin:9px 0 6px}
 input,select,textarea{width:100%;padding:12px;border:1px solid #d5dbe5;border-radius:8px;font-size:14px;background:#fff}
-textarea{min-height:80px;resize:vertical}
+textarea{min-height:90px;resize:vertical}
 button{border:0;border-radius:8px;padding:11px 15px;background:#155eef;color:#fff;font-weight:bold;cursor:pointer}
+button:disabled{opacity:.6;cursor:not-allowed}
 form button{width:100%;margin-top:15px}
-button:disabled{opacity:.6}
-.danger{background:#dc2626}
-.success{background:#16a34a}
 .msg{display:none;padding:11px;border-radius:8px;margin-bottom:12px;font-size:13px}
 .ok{display:block;background:#dcfce7;color:#166534}
 .bad{display:block;background:#fee2e2;color:#991b1b}
+.notice{background:#eef4ff;color:#155eef;padding:13px;border-radius:10px;margin-bottom:16px;font-size:13px}
+.remuneration{background:#f8fafc;border:1px solid #dbe4f0;border-radius:12px;padding:15px;margin-top:15px;display:none}
+.remuneration h4{margin:0 0 6px}
+.amountBox{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:12px;margin-top:10px}
+.amountBox strong{font-size:20px}
+.allocation{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+.alloc{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:12px}
+.alloc b{display:block;margin-bottom:5px}
 .small{font-size:13px;color:#667085}
 .hint{font-size:11px;color:#667085;margin-top:5px}
 .table{overflow:auto}
 table{width:100%;min-width:900px;border-collapse:collapse}
 th,td{padding:10px;border-bottom:1px solid #edf0f4;text-align:left;font-size:13px}
 th{background:#f8fafc;color:#667085}
-.status{font-weight:bold}
-.pending{color:#b45309}
-.approved{color:#15803d}
-.rejected{color:#dc2626}
-.receipt{background:#475467;padding:8px 10px;font-size:12px}
-.delete{background:#dc2626;padding:8px 10px;font-size:12px}
+.badge{display:inline-block;padding:5px 8px;border-radius:20px;font-size:11px;font-weight:bold}
+.pending{background:#fff7ed;color:#c2410c}
+.approved{background:#dcfce7;color:#166534}
+.rejected{background:#fee2e2;color:#991b1b}
+.paid{background:#dbeafe;color:#1d4ed8}
+.loading{padding:20px;text-align:center;color:#667085}
 @media(max-width:700px){
-.grid,.stats{grid-template-columns:1fr}
+.grid,.stats,.allocation{grid-template-columns:1fr}
 main{padding:12px}
 }
 </style>
@@ -71,111 +77,223 @@ main{padding:12px}
 <main>
 
 <div class="card">
-<h2>Expenses</h2>
+<h2 style="margin-top:0">Expenses</h2>
 <div class="small">
-Record ministry expenses and upload the payment slip or receipt.
-All new expenses require administrator approval.
+Record and manage ministry expenses, remuneration and approved ministry allocations.
 </div>
 </div>
 
-<div class="stats">
-
-<div class="card stat">
-<div class="small">Approved Expenses</div>
-<strong id="total">LKR 0.00</strong>
+<div class="notice">
+<b>Financial Policy</b><br>
+All expenses and remuneration should be properly documented and approved according to the ministry's governing procedures, budget and applicable legal requirements.
 </div>
 
-<div class="card stat">
-<div class="small">Pending</div>
-<strong id="pending">0</strong>
-</div>
-
-<div class="card stat">
-<div class="small">Records</div>
-<strong id="count">0</strong>
-</div>
-
-</div>
+<div id="msg" class="msg"></div>
 
 <div class="card">
 
-<h3>Add Expense</h3>
-
-<div id="msg" class="msg"></div>
+<h3>Record Expense</h3>
 
 <form id="expenseForm">
 
 <div class="grid">
 
 <div>
-<label>Category</label>
-<input
-id="category"
-type="text"
-placeholder="e.g. Construction, Transport, Electricity"
-required>
-</div>
-
-<div>
-<label>Amount (LKR)</label>
-<input
-id="amount"
-type="number"
-min="0.01"
-step="0.01"
-placeholder="0.00"
-required>
-</div>
-
-<div>
-<label>Date</label>
+<label>Expense Date</label>
 <input id="date" type="date" required>
 </div>
 
 <div>
-<label>Payment Method</label>
-<select id="payment" required>
-<option value="">Select payment method</option>
-<option>Cash</option>
-<option>Bank Transfer</option>
-<option>Card</option>
-<option>Cheque</option>
-<option>Other</option>
+<label>Expense Category</label>
+<select id="category" required>
+<option value="">Select category</option>
+<option value="Building & Construction">Building & Construction</option>
+<option value="Utilities">Utilities</option>
+<option value="Transport">Transport</option>
+<option value="Communication">Communication</option>
+<option value="Ministry & Church Programs">Ministry & Church Programs</option>
+<option value="Charity / Benevolence">Charity / Benevolence</option>
+<option value="Staff & Ministry">Staff & Ministry</option>
+<option value="Equipment">Equipment</option>
+<option value="Office">Office</option>
+<option value="Community Development">Community Development</option>
+<option value="Evangelism & Outreach">Evangelism & Outreach</option>
+<option value="Other">Other</option>
 </select>
 </div>
 
 <div>
-<label>Reference Number</label>
-<input
-id="reference"
-type="text"
-placeholder="Optional">
+<label>Expense Type</label>
+<select id="type" required>
+
+<option value="">Select expense type</option>
+<option value="General Ministry Expense">General Ministry Expense</option>
+<option value="Full-Time Pastor Remuneration">Full-Time Pastor Remuneration</option>
+<option value="Part-Time Minister Remuneration">Part-Time Minister Remuneration</option>
+<option value="Staff Salary">Staff Salary</option>
+<option value="Pastoral Ministry">Pastoral Ministry</option>
+<option value="Building Expense">Building Expense</option>
+<option value="Community Assistance">Community Assistance</option>
+<option value="Evangelism & Outreach">Evangelism & Outreach</option>
+<option value="Transport Expense">Transport Expense</option>
+<option value="Other">Other</option>
+
+</select>
 </div>
 
 <div>
-<label>Receipt / Payment Slip</label>
-<input
-id="receipt"
-type="file"
-accept="image/jpeg,image/png,application/pdf"
-required>
-<div class="hint">JPG, PNG or PDF — maximum 5MB.</div>
+<label>Amount (LKR)</label>
+<input id="amount" type="number" min="0" step="0.01" placeholder="0.00" required>
+</div>
+
+<div>
+<label>Payment Method</label>
+<select id="payment_method">
+<option value="Bank Transfer">Bank Transfer</option>
+<option value="Cash">Cash</option>
+<option value="Cheque">Cheque</option>
+</select>
+</div>
+
+<div>
+<label>Reference / Receipt Number</label>
+<input id="reference" type="text" placeholder="Optional reference">
+</div>
+
+</div>
+
+<!-- PASTOR REMUNERATION -->
+
+<div id="pastorBox" class="remuneration">
+
+<h4>Full-Time Pastor & Founder Remuneration</h4>
+
+<div class="small">
+Monthly remuneration for full-time pastoral leadership and ministry service.
+</div>
+
+<div class="grid">
+
+<div>
+<label>Approved Unrestricted Ministry Income (LKR)</label>
+<input id="approvedIncome" type="number" min="0" step="0.01" placeholder="0.00">
+</div>
+
+<div>
+<label>Budget Guideline</label>
+<input value="Up to 40%" readonly>
+<div class="hint">
+Internal budgeting guideline — not a legal entitlement or statutory limit.
+</div>
+</div>
+
+</div>
+
+<div class="amountBox">
+<div class="small">40% Budget Reference</div>
+<strong id="budgetAmount">LKR 0.00</strong>
+</div>
+
+<div class="hint" style="margin-top:10px">
+The 40% figure is a ministry budgeting reference. Actual remuneration should be approved according to the ministry's governing process, available funds, applicable law and proper financial records.
+</div>
+
+</div>
+
+<!-- REMAINING MINISTRY ALLOCATION -->
+
+<div id="allocationBox" class="remuneration" style="display:none">
+
+<h4>Remaining Ministry Allocation</h4>
+
+<div class="small">
+The remaining budget may be used for other approved ministry purposes according to the ministry's needs and governing decisions.
+</div>
+
+<div class="allocation">
+
+<div class="alloc">
+<b>60% Reference</b>
+<span id="remainingAmount">LKR 0.00</span>
+</div>
+
+<div class="alloc">
+<b>Part-Time Ministers & Workers</b>
+<span class="small">May be allocated according to approved ministry needs.</span>
+</div>
+
+<div class="alloc">
+<b>Community & Benevolence</b>
+<span class="small">Assistance and community support.</span>
+</div>
+
+<div class="alloc">
+<b>Church & Ministry Operations</b>
+<span class="small">Programs, utilities, transport and administration.</span>
+</div>
+
+<div class="alloc">
+<b>Building & Projects</b>
+<span class="small">Construction, maintenance and development.</span>
+</div>
+
+<div class="alloc">
+<b>Evangelism & Outreach</b>
+<span class="small">Approved evangelism and outreach activities.</span>
+</div>
+
+</div>
+
+<div class="hint" style="margin-top:10px">
+The 60% is not required to be spent in any particular category. Actual allocation should follow the approved ministry budget and documented decisions.
 </div>
 
 </div>
 
 <label>Description</label>
+
 <textarea
 id="description"
-placeholder="Optional description"></textarea>
+placeholder="Describe the purpose of this expense..."
+required></textarea>
+
+<label>Supporting Document</label>
+
+<input id="document" type="file" accept="image/*,.pdf">
+
+<div class="hint">
+Upload a receipt, invoice, payment evidence or other supporting document where applicable.
+</div>
 
 <button id="saveBtn" type="submit">
-Save Expense
+Submit Expense for Approval
 </button>
 
 </form>
+</div>
+
+<!-- SUMMARY -->
+
+<div class="stats">
+
+<div class="card stat">
+<div class="small">Total Approved Expenses</div>
+<strong id="totalExpenses">LKR 0.00</strong>
+</div>
+
+<div class="card stat">
+<div class="small">Pending</div>
+<strong id="pendingCount">0</strong>
+</div>
+
+<div class="card stat">
+<div class="small">Approved Records</div>
+<strong id="approvedCount">0</strong>
+</div>
 
 </div>
+
+<!-- RECORDS -->
 
 <div class="card">
 
@@ -189,349 +307,99 @@ Save Expense
 <tr>
 <th>Date</th>
 <th>Category</th>
+<th>Type</th>
 <th>Amount</th>
-<th>Payment</th>
-<th>Reference</th>
+<th>Method</th>
 <th>Status</th>
-<th>Receipt</th>
-<th>Action</th>
+<th>Reference</th>
 </tr>
 </thead>
 
-<tbody id="rows">
+<tbody id="expenses">
 <tr>
-<td colspan="8">Loading...</td>
+<td colspan="7" class="loading">Loading...</td>
 </tr>
 </tbody>
 
 </table>
 
 </div>
-
 </div>
 
 </main>
 
 <script>
 
-const API="https://goh-finance.createlk.workers.dev";
-const KEY="goh_finance_token";
+const API=
+"https://goh-finance-system.createlk.workers.dev";
 
-function authHeaders(){
-return{
-"Authorization":"Bearer "+localStorage.getItem(KEY)
-};
-}
+const KEY=
+"goh_finance_token";
 
-function jsonHeaders(){
+let records=[];
+
+
+/* AUTH */
+
+function headers(){
+
 return{
 "Content-Type":"application/json",
-"Authorization":"Bearer "+localStorage.getItem(KEY)
+"Authorization":
+"Bearer "+
+localStorage.getItem(KEY)
 };
+
 }
 
-function esc(v){
-return String(v??"")
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
-}
+
+/* MONEY */
 
 function money(v){
-return "LKR "+Number(v||0).toLocaleString(
+
+return "LKR "+
+Number(v||0).toLocaleString(
 "en-LK",
 {
 minimumFractionDigits:2,
 maximumFractionDigits:2
 }
 );
+
 }
+
+
+/* ESCAPE */
+
+function esc(v){
+
+return String(v??"")
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+
+/* MESSAGE */
 
 function show(text,ok=false){
-const el=document.getElementById("msg");
+
+const el=
+document.getElementById("msg");
+
 el.textContent=text;
-el.className="msg "+(ok?"ok":"bad");
-}
 
-async function check(){
-
-const token=localStorage.getItem(KEY);
-
-if(!token){
-location.href="admin-login.html";
-return false;
-}
-
-try{
-
-const r=await fetch(
-API+"/api/me",
-{headers:authHeaders()}
-);
-
-const d=await r.json();
-
-if(!r.ok||!d.success)throw Error();
-
-return true;
-
-}catch(e){
-
-localStorage.removeItem(KEY);
-location.href="admin-login.html";
-return false;
+el.className=
+"msg "+
+(ok?"ok":"bad");
 
 }
 
-}
 
-async function load(){
-
-try{
-
-const r=await fetch(
-API+"/api/expenses",
-{headers:authHeaders()}
-);
-
-const d=await r.json();
-
-if(!r.ok||!d.success)
-throw Error(d.error||"Unable to load expenses");
-
-const rows=d.expenses||[];
-
-let approved=0;
-let pending=0;
-
-rows.forEach(x=>{
-if(x.status==="APPROVED")approved+=Number(x.amount)||0;
-if(x.status==="PENDING")pending++;
-});
-
-document.getElementById("total").textContent=money(approved);
-document.getElementById("pending").textContent=pending;
-document.getElementById("count").textContent=rows.length;
-
-document.getElementById("rows").innerHTML=
-
-rows.map(x=>{
-
-const status=String(x.status||"").toLowerCase();
-
-return `
-<tr>
-
-<td>${esc(x.date)}</td>
-
-<td>${esc(x.category)}</td>
-
-<td>${money(x.amount)}</td>
-
-<td>${esc(x.payment_method)}</td>
-
-<td>${esc(x.reference_number||"-")}</td>
-
-<td>
-<span class="status ${esc(status)}">
-${esc(x.status)}
-</span>
-</td>
-
-<td>
-${x.receipt_key?
-`<button class="receipt"
-onclick="viewReceipt(${Number(x.id)})">
-View
-</button>`:"-"}
-</td>
-
-<td>
-${
-x.status==="PENDING"||x.status==="REJECTED"
-?`<button class="delete"
-onclick="deleteExpense(${Number(x.id)})">
-Delete
-</button>`:"-"
-}
-</td>
-
-</tr>
-`;
-
-}).join("")||
-
-`<tr>
-<td colspan="8">No expense records found.</td>
-</tr>`;
-
-}catch(e){
-
-document.getElementById("rows").innerHTML=
-`<tr>
-<td colspan="8">${esc(e.message)}</td>
-</tr>`;
-
-}
-
-}
-
-document.getElementById("expenseForm")
-.addEventListener("submit",async e=>{
-
-e.preventDefault();
-
-const btn=document.getElementById("saveBtn");
-
-const file=document.getElementById("receipt").files[0];
-
-if(!file){
-show("Receipt / payment slip is required.");
-return;
-}
-
-if(file.size>5242880){
-show("Receipt must be 5MB or smaller.");
-return;
-}
-
-const allowed=[
-"image/jpeg",
-"image/png",
-"application/pdf"
-];
-
-if(!allowed.includes(file.type)){
-show("Only JPG, PNG or PDF files are allowed.");
-return;
-}
-
-const fd=new FormData();
-
-fd.append(
-"category",
-document.getElementById("category").value.trim()
-);
-
-fd.append(
-"amount",
-document.getElementById("amount").value
-);
-
-fd.append(
-"date",
-document.getElementById("date").value
-);
-
-fd.append(
-"payment_method",
-document.getElementById("payment").value
-);
-
-fd.append(
-"reference_number",
-document.getElementById("reference").value.trim()
-);
-
-fd.append(
-"description",
-document.getElementById("description").value.trim()
-);
-
-fd.append("receipt",file);
-
-btn.disabled=true;
-btn.textContent="Saving...";
-
-try{
-
-const r=await fetch(
-API+"/api/expenses",
-{
-method:"POST",
-headers:authHeaders(),
-body:fd
-}
-);
-
-const d=await r.json();
-
-if(!r.ok||!d.success)
-throw Error(
-d.error||"Unable to save expense"
-);
-
-show(
-"Expense submitted successfully. Waiting for administrator approval.",
-true
-);
-
-e.target.reset();
-
-document.getElementById("date").value=
-new Date().toISOString().slice(0,10);
-
-await load();
-
-}catch(err){
-
-show(err.message);
-
-}finally{
-
-btn.disabled=false;
-btn.textContent="Save Expense";
-
-}
-
-});
-
-function viewReceipt(id){
-
-const token=localStorage.getItem(KEY);
-
-window.open(
-API+"/api/expenses/"+id+"/receipt?token="+
-encodeURIComponent(token),
-"_blank"
-);
-
-}
-
-async function deleteExpense(id){
-
-if(!confirm(
-"Delete this expense record?"
-))return;
-
-try{
-
-const r=await fetch(
-API+"/api/expenses/"+id,
-{
-method:"DELETE",
-headers:authHeaders()
-}
-);
-
-const d=await r.json();
-
-if(!r.ok||!d.success)
-throw Error(
-d.error||"Unable to delete expense"
-);
-
-await load();
-
-}catch(e){
-
-alert(e.message);
-
-}
-
-}
+/* LOGOUT */
 
 async function logout(){
 
@@ -541,22 +409,457 @@ await fetch(
 API+"/api/logout",
 {
 method:"POST",
-headers:authHeaders()
+headers:headers()
 }
 );
 
 }catch(e){}
 
 localStorage.removeItem(KEY);
-location.href="admin-login.html";
+
+location.href=
+"admin-login.html";
 
 }
+
+
+/* DEFAULT DATE */
 
 document.getElementById("date").value=
 new Date().toISOString().slice(0,10);
 
-check().then(ok=>{
-if(ok)load();
+
+/* PASTOR TYPE */
+
+document.getElementById("type")
+.addEventListener("change",function(){
+
+const pastor=
+this.value===
+"Full-Time Pastor Remuneration";
+
+document.getElementById("pastorBox")
+.style.display=
+pastor?"block":"none";
+
+document.getElementById("allocationBox")
+.style.display=
+pastor?"block":"none";
+
+if(pastor){
+
+document.getElementById("category")
+.value=
+"Staff & Ministry";
+
+}
+
+});
+
+
+/* CALCULATE 40 / 60 */
+
+document.getElementById("approvedIncome")
+.addEventListener("input",function(){
+
+const income=
+Number(this.value)||0;
+
+document.getElementById("budgetAmount")
+.textContent=
+money(income*0.40);
+
+document.getElementById("remainingAmount")
+.textContent=
+money(income*0.60);
+
+});
+
+
+/* LOGIN CHECK */
+
+async function checkLogin(){
+
+const token=
+localStorage.getItem(KEY);
+
+if(!token){
+
+location.href=
+"admin-login.html";
+
+return false;
+
+}
+
+try{
+
+const r=
+await fetch(
+API+"/api/me",
+{
+headers:headers()
+}
+);
+
+const d=
+await r.json();
+
+if(!r.ok||!d.success){
+
+throw Error();
+
+}
+
+return true;
+
+}catch(e){
+
+localStorage.removeItem(KEY);
+
+location.href=
+"admin-login.html";
+
+return false;
+
+}
+
+}
+
+
+/* LOAD EXPENSES */
+
+async function loadExpenses(){
+
+try{
+
+const r=
+await fetch(
+API+"/api/expenses",
+{
+headers:headers()
+}
+);
+
+const d=
+await r.json();
+
+if(!r.ok||!d.success){
+
+throw Error(
+d.error||
+"Unable to load expenses."
+);
+
+}
+
+records=
+d.expenses||[];
+
+let total=0;
+let pending=0;
+let approved=0;
+
+records.forEach(x=>{
+
+const status=
+String(
+x.status||"PENDING"
+).toUpperCase();
+
+if(status==="APPROVED"){
+
+total+=
+Number(x.amount)||0;
+
+approved++;
+
+}
+
+if(status==="PENDING"){
+
+pending++;
+
+}
+
+});
+
+
+document.getElementById("totalExpenses")
+.textContent=
+money(total);
+
+document.getElementById("pendingCount")
+.textContent=
+pending;
+
+document.getElementById("approvedCount")
+.textContent=
+approved;
+
+
+document.getElementById("expenses")
+.innerHTML=
+
+records.map(x=>{
+
+const status=
+String(
+x.status||"PENDING"
+).toUpperCase();
+
+const cls=
+status==="APPROVED"
+?"approved":
+status==="REJECTED"
+?"rejected":
+status==="PAID"
+?"paid":
+"pending";
+
+return`
+
+<tr>
+
+<td>${esc(x.date)}</td>
+
+<td>${esc(x.category)}</td>
+
+<td>${esc(
+x.type||
+x.expense_type||
+""
+)}</td>
+
+<td>${money(x.amount)}</td>
+
+<td>${esc(
+x.payment_method||""
+)}</td>
+
+<td>
+<span class="badge ${cls}">
+${esc(status)}
+</span>
+</td>
+
+<td>${esc(
+x.reference||""
+)}</td>
+
+</tr>
+
+`;
+
+}).join("")
+
+||
+
+`<tr>
+<td colspan="7">
+No expense records found.
+</td>
+</tr>`;
+
+
+}catch(e){
+
+document.getElementById("expenses")
+.innerHTML=
+
+`<tr>
+<td colspan="7">
+${esc(e.message)}
+</td>
+</tr>`;
+
+}
+
+}
+
+
+/* CREATE EXPENSE */
+
+document.getElementById("expenseForm")
+.addEventListener("submit",async e=>{
+
+e.preventDefault();
+
+const btn=
+document.getElementById("saveBtn");
+
+const type=
+document.getElementById("type").value;
+
+const amount=
+Number(
+document.getElementById("amount").value
+);
+
+if(!amount||amount<=0){
+
+show(
+"Please enter a valid expense amount."
+);
+
+return;
+
+}
+
+
+/* EXTRA VALIDATION FOR PASTOR REMUNERATION */
+
+if(
+type===
+"Full-Time Pastor Remuneration"
+){
+
+const income=
+Number(
+document.getElementById(
+"approvedIncome"
+).value
+)||0;
+
+if(!income){
+
+show(
+"Please enter the approved unrestricted ministry income."
+);
+
+return;
+
+}
+
+const maximum=
+income*0.40;
+
+if(amount>maximum){
+
+show(
+"Pastor remuneration exceeds the 40% internal budget reference."
+);
+
+return;
+
+}
+
+}
+
+
+btn.disabled=true;
+btn.textContent="Submitting...";
+
+
+try{
+
+const payload={
+
+date:
+document.getElementById("date").value,
+
+category:
+document.getElementById("category").value,
+
+type:type,
+
+amount:amount,
+
+payment_method:
+document.getElementById("payment_method").value,
+
+reference:
+document.getElementById("reference")
+.value.trim(),
+
+description:
+document.getElementById("description")
+.value.trim()
+
+};
+
+
+const r=
+await fetch(
+API+"/api/expenses",
+{
+method:"POST",
+headers:headers(),
+body:JSON.stringify(payload)
+}
+);
+
+
+const d=
+await r.json();
+
+
+if(!r.ok||!d.success){
+
+throw Error(
+d.error||
+"Unable to submit expense."
+);
+
+}
+
+
+show(
+"Expense submitted successfully for approval.",
+true
+);
+
+
+e.target.reset();
+
+document.getElementById("date").value=
+new Date().toISOString().slice(0,10);
+
+document.getElementById("pastorBox")
+.style.display="none";
+
+document.getElementById("allocationBox")
+.style.display="none";
+
+document.getElementById("budgetAmount")
+.textContent="LKR 0.00";
+
+document.getElementById("remainingAmount")
+.textContent="LKR 0.00";
+
+
+await loadExpenses();
+
+
+}catch(err){
+
+show(
+err.message||
+"Unable to submit expense."
+);
+
+}finally{
+
+btn.disabled=false;
+
+btn.textContent=
+"Submit Expense for Approval";
+
+}
+
+});
+
+
+/* START */
+
+checkLogin().then(ok=>{
+
+if(ok){
+
+loadExpenses();
+
+}
+
 });
 
 </script>
