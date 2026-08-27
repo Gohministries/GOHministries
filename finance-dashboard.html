@@ -4,152 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#155eef">
-<title>GOH Ministries Finance</title>
+<title>GOH Ministries Finance - Dashboard</title>
 
 <style>
 *{box-sizing:border-box}
-
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#f5f7fb;
-color:#172033
-}
-
-header{
-background:#155eef;
-color:#fff;
-padding:15px 18px
-}
-
-.head{
-max-width:1050px;
-margin:auto;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px
-}
-
-.logout{
-background:#fff;
-color:#155eef;
-border:0;
-border-radius:8px;
-padding:9px 13px;
-font-weight:bold;
-cursor:pointer
-}
-
-main{
-max-width:1050px;
-margin:auto;
-padding:18px
-}
-
-.card{
-background:#fff;
-padding:18px;
-border-radius:14px;
-margin-bottom:16px;
-box-shadow:0 2px 12px #0001
-}
-
-.small{
-font-size:13px;
-color:#667085
-}
-
-.stats{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:12px
-}
-
-.stat strong{
-display:block;
-font-size:24px;
-margin-top:7px
-}
-
-.links{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:12px
-}
-
-.link{
-display:block;
-background:#f8fafc;
-border:1px solid #e5e7eb;
-padding:17px;
-border-radius:12px;
-text-decoration:none;
-color:#172033
-}
-
-.link b{
-display:block;
-margin-bottom:5px
-}
-
-.link span{
-font-size:12px;
-color:#667085
-}
-
-.notice{
-padding:12px;
-border-radius:9px;
-background:#eef4ff;
-color:#174ea6;
-font-size:13px;
-margin-bottom:16px
-}
-
-.error{
-background:#fee2e2;
-color:#991b1b
-}
-
-.refresh{
-background:#155eef;
-color:#fff;
-border:0;
-border-radius:8px;
-padding:9px 13px;
-font-weight:bold;
-cursor:pointer
-}
-
-.topline{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px
-}
-
-#loading{
-text-align:center;
-padding:30px
-}
-
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
+header{background:#155eef;color:#fff;padding:15px 18px}
+.head{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+.logout{background:#fff;color:#155eef;border:0;border-radius:8px;padding:9px 13px;font-weight:bold;cursor:pointer}
+nav{max-width:1050px;margin:10px auto 0;display:flex;gap:8px;overflow:auto}
+nav a{background:#fff;color:#155eef;padding:8px 11px;border-radius:8px;text-decoration:none;font-size:12px;white-space:nowrap}
+main{max-width:1050px;margin:auto;padding:18px}
+.card{background:#fff;padding:18px;border-radius:14px;margin-bottom:16px;box-shadow:0 2px 12px #0001}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stat strong{display:block;font-size:24px;margin-top:7px}
+.small{font-size:13px;color:#667085}
+.balance{font-size:30px;font-weight:bold;margin-top:7px}
+.actions{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.actions a{display:block;text-align:center;text-decoration:none;background:#155eef;color:#fff;padding:12px;border-radius:9px;font-weight:bold;font-size:13px}
+.warning{background:#fff7ed;color:#9a3412}
 @media(max-width:700px){
-
-.stats,
-.links{
-grid-template-columns:1fr
-}
-
-main{
-padding:12px
-}
-
-.topline{
-align-items:flex-start;
-flex-direction:column
-}
-
+.grid,.actions{grid-template-columns:1fr}
+main{padding:12px}
 }
 </style>
 </head>
@@ -159,294 +35,114 @@ flex-direction:column
 <header>
 
 <div class="head">
-
 <b>GOH Ministries Finance</b>
-
-<button
-class="logout"
-onclick="logout()">
-Logout
-</button>
-
+<button class="logout" onclick="logout()">Logout</button>
 </div>
+
+<nav>
+<a href="finance-dashboard.html">Dashboard</a>
+<a href="income.html">Income</a>
+<a href="expenses.html">Expenses</a>
+<a href="donations.html">Donations</a>
+<a href="receipts.html">Receipts</a>
+<a href="reports.html">Reports</a>
+<a href="admin.html">Administration</a>
+</nav>
 
 </header>
 
-
 <main>
 
-<div
-id="loading"
-class="card">
-
-Loading finance dashboard...
-
+<div class="card">
+<h2>Finance Dashboard</h2>
+<div class="small">
+Welcome, <b id="user">Loading...</b>
+</div>
 </div>
 
+<div class="grid">
 
-<div
-id="app"
-style="display:none">
-
-
-<div
-id="notice"
-class="notice">
+<div class="card stat">
+<div class="small">Total Income</div>
+<strong id="income">LKR 0</strong>
 </div>
 
+<div class="card stat">
+<div class="small">Total Expenses</div>
+<strong id="expenses">LKR 0</strong>
+</div>
+
+<div class="card stat">
+<div class="small">Balance</div>
+<div class="balance" id="balance">LKR 0</div>
+</div>
+
+</div>
 
 <div class="card">
 
-<div class="topline">
+<h3>This Month</h3>
+
+<div class="grid">
 
 <div>
+<div class="small">Income</div>
+<strong id="mi">LKR 0</strong>
+</div>
 
-<h2
-id="welcome">
-Finance Dashboard
-</h2>
+<div>
+<div class="small">Expenses</div>
+<strong id="me">LKR 0</strong>
+</div>
 
-<div
-class="small"
-id="user">
+<div>
+<div class="small">Balance</div>
+<strong id="mb">LKR 0</strong>
 </div>
 
 </div>
 
-<button
-class="refresh"
-onclick="loadDashboard()">
-Refresh
-</button>
-
 </div>
-
-</div>
-
-
-<div class="stats">
-
-<div class="card stat">
-
-<div class="small">
-Total Income
-</div>
-
-<strong id="income">
-LKR 0.00
-</strong>
-
-</div>
-
-
-<div class="card stat">
-
-<div class="small">
-Total Expenses
-</div>
-
-<strong id="expenses">
-LKR 0.00
-</strong>
-
-</div>
-
-
-<div class="card stat">
-
-<div class="small">
-Current Balance
-</div>
-
-<strong id="balance">
-LKR 0.00
-</strong>
-
-</div>
-
-</div>
-
 
 <div class="card">
 
-<h3>
-This Month
-</h3>
+<h3>Pending Approvals</h3>
 
-<div class="stats">
+<div class="grid">
 
 <div>
-
-<div class="small">
-Income
+<div class="small">Income</div>
+<strong id="pi">0</strong>
 </div>
-
-<strong id="monthIncome">
-LKR 0.00
-</strong>
-
-</div>
-
 
 <div>
-
-<div class="small">
-Expenses
+<div class="small">Expenses</div>
+<strong id="pe">0</strong>
 </div>
-
-<strong id="monthExpenses">
-LKR 0.00
-</strong>
-
-</div>
-
 
 <div>
-
-<div class="small">
-Balance
-</div>
-
-<strong id="monthBalance">
-LKR 0.00
+<div class="small">Action</div>
+<strong>
+<a href="admin-approvals.html"
+style="color:#155eef;text-decoration:none">
+Review
+</a>
 </strong>
-
 </div>
 
 </div>
 
 </div>
-
 
 <div class="card">
 
-<h3>
-Finance
-</h3>
+<h3>Quick Actions</h3>
 
-<div class="links">
+<div class="actions">
 
-<a
-class="link"
-href="income.html">
-
-<b>
-Income
-</b>
-
-<span>
-Record ministry income
-</span>
-
-</a>
-
-
-<a
-class="link"
-href="donations.html">
-
-<b>
-Donations
-</b>
-
-<span>
-Record ministry donations
-</span>
-
-</a>
-
-
-<a
-class="link"
-href="expenses.html">
-
-<b>
-Expenses
-</b>
-
-<span>
-Record ministry expenses
-</span>
-
-</a>
-
-
-<a
-class="link"
-href="receipts.html">
-
-<b>
-Receipts
-</b>
-
-<span>
-Manage receipts
-</span>
-
-</a>
-
-
-<a
-class="link"
-href="reports.html">
-
-<b>
-Reports
-</b>
-
-<span>
-View financial reports
-</span>
-
-</a>
-
-
-<a
-class="link"
-href="attendance.html">
-
-<b>
-Attendance
-</b>
-
-<span>
-Record church attendance
-</span>
-
-</a>
-
-
-<a
-class="link"
-href="members.html">
-
-<b>
-Members
-</b>
-
-<span>
-Manage ministry members
-</span>
-
-</a>
-
-
-<a
-class="link"
-href="admin.html"
-id="adminLink">
-
-<b>
-Administration
-</b>
-
-<span>
-Manage finance users
-</span>
-
-</a>
-
-</div>
+<a href="income.html">Add Income</a>
+<a href="expenses.html">Add Expense</a>
+<a href="donations.html">Add Donation</a>
 
 </div>
 
@@ -454,418 +150,120 @@ Manage finance users
 
 </main>
 
-
 <script>
 
-const AUTH_API =
-"https://goh-finance.createlk.workers.dev";
+const API="https://goh-finance.createlk.workers.dev";
+const KEY="goh_finance_token";
 
-const DATA_API =
-"https://goh-finance-data.createlk.workers.dev";
-
-const KEY =
-"goh_finance_token";
-
-
-function getToken(){
-
-return localStorage.getItem(KEY);
-
+function headers(){
+ return{
+  "Authorization":
+   "Bearer "+localStorage.getItem(KEY)
+ };
 }
 
-
-function authHeaders(){
-
-return {
-"Authorization":
-"Bearer "+getToken()
-};
-
+function money(n){
+ return "LKR "+Number(n||0).toLocaleString(
+  "en-LK",
+  {
+   minimumFractionDigits:2,
+   maximumFractionDigits:2
+  }
+ );
 }
 
+async function load(){
 
-function money(value){
+ const token=localStorage.getItem(KEY);
 
-return "LKR "+
-Number(value||0).toLocaleString(
-"en-LK",
-{
-minimumFractionDigits:2,
-maximumFractionDigits:2
-}
-);
+ if(!token){
+  location.href="admin-login.html";
+  return;
+ }
 
-}
+ try{
 
+  const me=await fetch(
+   API+"/api/me",
+   {headers:headers()}
+  );
 
-function showLogin(){
+  const md=await me.json();
 
-localStorage.removeItem(KEY);
+  if(!me.ok||!md.success)
+   throw Error();
 
-location.href="admin-login.html";
+  document.getElementById("user")
+   .textContent=md.user.name;
 
-}
+  const r=await fetch(
+   API+"/api/dashboard",
+   {headers:headers()}
+  );
 
+  const d=await r.json();
 
-async function getMe(){
+  if(!r.ok||!d.success)
+   throw Error(
+    d.error||"Unable to load dashboard"
+   );
 
-const response =
-await fetch(
-AUTH_API+"/api/me",
-{
-headers:authHeaders()
-}
-);
+  document.getElementById("income")
+   .textContent=money(d.total_income);
 
-if(response.status===401){
+  document.getElementById("expenses")
+   .textContent=money(d.total_expenses);
 
-showLogin();
-return null;
+  document.getElementById("balance")
+   .textContent=money(d.balance);
 
-}
+  document.getElementById("mi")
+   .textContent=money(d.this_month.income);
 
-const data =
-await response.json();
+  document.getElementById("me")
+   .textContent=money(d.this_month.expenses);
 
-if(
-!response.ok ||
-!data.success
-){
+  document.getElementById("mb")
+   .textContent=money(d.this_month.balance);
 
-showLogin();
-return null;
+  document.getElementById("pi")
+   .textContent=d.pending_income||0;
 
-}
+  document.getElementById("pe")
+   .textContent=d.pending_expenses||0;
 
-return data.user;
+  if(md.user.role!=="admin"){
+   document.querySelector(
+    'a[href="admin.html"]'
+   ).style.display="none";
+  }
 
-}
+ }catch(e){
 
+  localStorage.removeItem(KEY);
+  location.href="admin-login.html";
 
-async function getIncome(){
-
-const response =
-await fetch(
-DATA_API+"/api/income",
-{
-headers:authHeaders()
-}
-);
-
-if(response.status===401){
-
-showLogin();
-return null;
-
-}
-
-const data =
-await response.json();
-
-if(
-!response.ok ||
-!data.success
-){
-
-throw new Error(
-data.error||
-"Unable to load income"
-);
+ }
 
 }
-
-return data.income||[];
-
-}
-
-
-async function getExpenses(){
-
-try{
-
-const response =
-await fetch(
-DATA_API+"/api/expenses",
-{
-headers:authHeaders()
-}
-);
-
-if(response.status===404){
-
-return [];
-
-}
-
-if(response.status===401){
-
-showLogin();
-return null;
-
-}
-
-const data =
-await response.json();
-
-if(
-!response.ok ||
-!data.success
-){
-
-return [];
-
-}
-
-return data.expenses||[];
-
-}catch(e){
-
-return [];
-
-}
-
-}
-
-
-async function loadDashboard(){
-
-const token =
-getToken();
-
-if(!token){
-
-showLogin();
-return;
-
-}
-
-
-const notice =
-document.getElementById(
-"notice"
-);
-
-notice.className="notice";
-notice.textContent="";
-
-
-try{
-
-const user =
-await getMe();
-
-if(!user) return;
-
-
-document.getElementById(
-"welcome"
-).textContent =
-"Welcome, "+user.name;
-
-
-document.getElementById(
-"user"
-).textContent =
-"Logged in as "+
-user.email+
-" • "+
-user.role;
-
-
-if(user.role!=="admin"){
-
-document.getElementById(
-"adminLink"
-).style.display="none";
-
-}
-
-
-const income =
-await getIncome();
-
-if(!income) return;
-
-
-const expenses =
-await getExpenses();
-
-if(!expenses) return;
-
-
-const totalIncome =
-income.reduce(
-(sum,item)=>
-sum+(Number(item.amount)||0),
-0
-);
-
-
-const totalExpenses =
-expenses.reduce(
-(sum,item)=>
-sum+(Number(item.amount)||0),
-0
-);
-
-
-const balance =
-totalIncome-totalExpenses;
-
-
-const now =
-new Date();
-
-
-const year =
-now.getFullYear();
-
-
-const month =
-String(
-now.getMonth()+1
-).padStart(2,"0");
-
-
-const prefix =
-year+"-"+month;
-
-
-const monthIncome =
-income
-.filter(item =>
-String(item.date||"")
-.startsWith(prefix)
-)
-.reduce(
-(sum,item)=>
-sum+(Number(item.amount)||0),
-0
-);
-
-
-const monthExpenses =
-expenses
-.filter(item =>
-String(item.date||"")
-.startsWith(prefix)
-)
-.reduce(
-(sum,item)=>
-sum+(Number(item.amount)||0),
-0
-);
-
-
-document.getElementById(
-"income"
-).textContent =
-money(totalIncome);
-
-
-document.getElementById(
-"expenses"
-).textContent =
-money(totalExpenses);
-
-
-document.getElementById(
-"balance"
-).textContent =
-money(balance);
-
-
-document.getElementById(
-"monthIncome"
-).textContent =
-money(monthIncome);
-
-
-document.getElementById(
-"monthExpenses"
-).textContent =
-money(monthExpenses);
-
-
-document.getElementById(
-"monthBalance"
-).textContent =
-money(
-monthIncome-monthExpenses
-);
-
-
-if(
-expenses.length===0
-){
-
-notice.textContent =
-"Income data is connected. Expense records are not available yet.";
-
-}else{
-
-notice.textContent =
-"Finance data updated successfully.";
-
-}
-
-
-document.getElementById(
-"loading"
-).style.display="none";
-
-
-document.getElementById(
-"app"
-).style.display="block";
-
-
-}catch(error){
-
-console.error(error);
-
-notice.className =
-"notice error";
-
-notice.textContent =
-error.message||
-"Unable to load finance data.";
-
-document.getElementById(
-"loading"
-).style.display="none";
-
-document.getElementById(
-"app"
-).style.display="block";
-
-}
-
-}
-
 
 async function logout(){
 
-try{
+ try{
+  await fetch(
+   API+"/api/logout",
+   {
+    method:"POST",
+    headers:headers()
+   }
+  );
+ }catch(e){}
 
-await fetch(
-AUTH_API+"/api/logout",
-{
-method:"POST",
-headers:authHeaders()
-}
-);
-
-}catch(e){}
-
-localStorage.removeItem(KEY);
-
-location.href="admin-login.html";
-
+ localStorage.removeItem(KEY);
+ location.href="admin-login.html";
 }
 
-
-loadDashboard();
+load();
 
 </script>
 
