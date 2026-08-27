@@ -28,7 +28,7 @@ header{
  display:flex;
  justify-content:space-between;
  align-items:center;
- gap:12px
+ gap:10px
 }
 
 .logout{
@@ -194,6 +194,15 @@ th{
  color:#667085
 }
 
+.errorPage{
+ display:none;
+ background:#fee2e2;
+ color:#991b1b;
+ padding:12px;
+ border-radius:9px;
+ margin-bottom:16px
+}
+
 @media(max-width:700px){
 
  .grid,
@@ -217,7 +226,9 @@ th{
 
 <b>GOH Ministries Finance</b>
 
-<button class="logout" onclick="logout()">
+<button
+ class="logout"
+ onclick="logout()">
 Logout
 </button>
 
@@ -260,6 +271,11 @@ Administration
 
 <main>
 
+<div
+ id="pageError"
+ class="errorPage">
+</div>
+
 
 <div class="card">
 
@@ -268,8 +284,12 @@ Administration Panel
 </h2>
 
 <div class="small">
+
 Logged in as
-<b id="currentUser">Loading...</b>
+<b id="currentUser">
+Checking...
+</b>
+
 </div>
 
 </div>
@@ -324,15 +344,20 @@ Administrators
 Create User
 </h3>
 
-<div class="small" style="margin-bottom:15px">
-Only administrators can create or disable finance system users.
+<div
+ class="small"
+ style="margin-bottom:15px">
+
+Only administrators can create
+or disable finance system users.
+
 </div>
+
 
 <div id="msg" class="msg"></div>
 
 
 <form id="userForm">
-
 
 <div class="grid">
 
@@ -344,11 +369,11 @@ Name
 </label>
 
 <input
-id="name"
-type="text"
-placeholder="Full name"
-autocomplete="name"
-required>
+ id="name"
+ type="text"
+ placeholder="Full name"
+ autocomplete="name"
+ required>
 
 </div>
 
@@ -360,11 +385,11 @@ Email
 </label>
 
 <input
-id="email"
-type="email"
-placeholder="user@example.com"
-autocomplete="email"
-required>
+ id="email"
+ type="email"
+ placeholder="user@example.com"
+ autocomplete="email"
+ required>
 
 </div>
 
@@ -376,12 +401,12 @@ Password
 </label>
 
 <input
-id="password"
-type="password"
-placeholder="Minimum 12 characters"
-autocomplete="new-password"
-minlength="12"
-required>
+ id="password"
+ type="password"
+ placeholder="Minimum 12 characters"
+ autocomplete="new-password"
+ minlength="12"
+ required>
 
 <div class="hint">
 Password must contain at least 12 characters.
@@ -414,12 +439,15 @@ Administrator
 
 </div>
 
-
 </div>
 
 
-<button id="createBtn" type="submit">
+<button
+ id="createBtn"
+ type="submit">
+
 Create User
+
 </button>
 
 </form>
@@ -440,41 +468,25 @@ Users
 <thead>
 
 <tr>
-
-<th>
-Name
-</th>
-
-<th>
-Email
-</th>
-
-<th>
-Role
-</th>
-
-<th>
-Status
-</th>
-
-<th>
-Created
-</th>
-
-<th>
-Action
-</th>
-
+<th>Name</th>
+<th>Email</th>
+<th>Role</th>
+<th>Status</th>
+<th>Created</th>
+<th>Action</th>
 </tr>
 
 </thead>
 
-
 <tbody id="users">
 
 <tr>
-<td colspan="6" class="loading">
+<td
+ colspan="6"
+ class="loading">
+
 Loading...
+
 </td>
 </tr>
 
@@ -500,37 +512,24 @@ Audit Log
 <thead>
 
 <tr>
-
-<th>
-Date
-</th>
-
-<th>
-User
-</th>
-
-<th>
-Action
-</th>
-
-<th>
-Table
-</th>
-
-<th>
-Details
-</th>
-
+<th>Date</th>
+<th>User</th>
+<th>Action</th>
+<th>Table</th>
+<th>Details</th>
 </tr>
 
 </thead>
 
-
 <tbody id="audit">
 
 <tr>
-<td colspan="5" class="loading">
+<td
+ colspan="5"
+ class="loading">
+
 Loading...
+
 </td>
 </tr>
 
@@ -542,15 +541,10 @@ Loading...
 
 </div>
 
-
 </main>
 
 
 <script>
-
-/* =====================================================
-   SAME FINANCE API AS DASHBOARD
-===================================================== */
 
 const API=
 "https://goh-finance-system.createlk.workers.dev";
@@ -559,9 +553,7 @@ const KEY=
 "goh_finance_token";
 
 
-/* =====================================================
-   AUTH HEADERS
-===================================================== */
+/* AUTH */
 
 function headers(){
 
@@ -579,13 +571,11 @@ function headers(){
 }
 
 
-/* =====================================================
-   ESCAPE HTML
-===================================================== */
+/* ESCAPE */
 
-function esc(v){
+function esc(value){
 
- return String(v??"")
+ return String(value??"")
   .replaceAll("&","&amp;")
   .replaceAll("<","&lt;")
   .replaceAll(">","&gt;")
@@ -595,37 +585,54 @@ function esc(v){
 }
 
 
-/* =====================================================
-   MESSAGE
-===================================================== */
+/* MESSAGE */
 
-function show(text,ok=false){
+function showMessage(
+ text,
+ success=false
+){
 
  const el=
   document.getElementById("msg");
 
- el.textContent=
-  text;
+ el.textContent=text;
 
  el.className=
-  "msg "+(ok?"ok":"bad");
+  "msg "+
+  (success?"ok":"bad");
 
 }
 
 
-/* =====================================================
-   CHECK LOGIN + ADMIN
-===================================================== */
+/* PAGE ERROR */
 
-async function check(){
+function pageError(text){
+
+ const el=
+  document.getElementById(
+   "pageError"
+  );
+
+ el.textContent=text;
+
+ el.style.display="block";
+
+}
+
+
+/* CHECK ADMIN */
+
+async function checkAdmin(){
 
  const token=
   localStorage.getItem(KEY);
 
+
  if(!token){
 
-  location.href=
-   "admin-login.html";
+  location.replace(
+   "admin-login.html"
+  );
 
   return false;
 
@@ -634,7 +641,7 @@ async function check(){
 
  try{
 
-  const r=
+  const response=
    await fetch(
     API+"/api/me",
     {
@@ -644,35 +651,53 @@ async function check(){
    );
 
 
-  const d=
-   await r.json();
+  const data=
+   await response.json();
 
 
   if(
-   !r.ok||
-   !d.success||
-   !d.user
+   !response.ok||
+   !data.success||
+   !data.user
   ){
 
-   throw new Error(
-    d.error||
-    "Authentication required."
-   );
+   /*
+    Only remove token when the
+    server explicitly rejects it.
+   */
+
+   if(
+    response.status===401||
+    response.status===403
+   ){
+
+    localStorage.removeItem(KEY);
+
+    location.replace(
+     "admin-login.html"
+    );
+
+   }
+
+   return false;
 
   }
 
 
-  if(
-   String(d.user.role)
-    .toLowerCase()!=="admin"
-  ){
+  const role=
+   String(data.user.role||"")
+    .toLowerCase();
+
+
+  if(role!=="admin"){
 
    alert(
     "Administrator access required."
    );
 
-   location.href=
-    "finance-dashboard.html";
+   location.replace(
+    "finance-dashboard.html"
+   );
 
    return false;
 
@@ -682,21 +707,20 @@ async function check(){
   document
    .getElementById("currentUser")
    .textContent=
-   d.user.name+
-   " ("+
-   d.user.email+
-   ")";
+    data.user.name+
+    " ("+
+    data.user.email+
+    ")";
 
 
   return true;
 
 
- }catch(e){
+ }catch(error){
 
-  localStorage.removeItem(KEY);
-
-  location.href=
-   "admin-login.html";
+  pageError(
+   "Unable to connect to the finance server."
+  );
 
   return false;
 
@@ -705,15 +729,13 @@ async function check(){
 }
 
 
-/* =====================================================
-   LOAD USERS
-===================================================== */
+/* LOAD USERS */
 
 async function loadUsers(){
 
  try{
 
-  const r=
+  const response=
    await fetch(
     API+"/api/admin/users",
     {
@@ -723,48 +745,53 @@ async function loadUsers(){
    );
 
 
-  const d=
-   await r.json();
-
-
   if(
-   r.status===401
+   response.status===401||
+   response.status===403
   ){
 
-   throw new Error(
-    "Authentication required."
+   localStorage.removeItem(KEY);
+
+   location.replace(
+    "admin-login.html"
    );
+
+   return;
 
   }
 
 
+  const data=
+   await response.json();
+
+
   if(
-   !r.ok||
-   !d.success
+   !response.ok||
+   !data.success
   ){
 
    throw new Error(
-    d.error||
+    data.error||
     "Unable to load users."
    );
 
   }
 
 
-  const rows=
-   d.users||[];
+  const users=
+   data.users||[];
 
 
   document
    .getElementById("total")
    .textContent=
-   rows.length;
+   users.length;
 
 
   document
    .getElementById("active")
    .textContent=
-   rows.filter(
+   users.filter(
     x=>Number(x.active)===1
    ).length;
 
@@ -772,7 +799,7 @@ async function loadUsers(){
   document
    .getElementById("admins")
    .textContent=
-   rows.filter(
+   users.filter(
     x=>
      String(x.role)
       .toLowerCase()==="admin"
@@ -783,8 +810,7 @@ async function loadUsers(){
    .getElementById("users")
    .innerHTML=
 
-
-   rows.map(x=>`
+   users.map(x=>`
 
 <tr>
 
@@ -833,10 +859,10 @@ ${esc(x.created_at)}
 
 ${
  Number(x.active)===1
-  ?
-  "Disable"
-  :
-  "Enable"
+ ?
+ "Disable"
+ :
+ "Enable"
 }
 
 </button>
@@ -847,32 +873,25 @@ ${
 
 `).join("")
 
+ ||
 
- ||`
-
-<tr>
-
+`<tr>
 <td colspan="6">
 No users found.
 </td>
-
-</tr>
-
-`;
+</tr>`;
 
 
- }catch(e){
+ }catch(error){
 
  document
   .getElementById("users")
   .innerHTML=
 
 `<tr>
-
 <td colspan="6">
-${esc(e.message)}
+${esc(error.message)}
 </td>
-
 </tr>`;
 
  }
@@ -880,15 +899,13 @@ ${esc(e.message)}
 }
 
 
-/* =====================================================
-   CREATE USER
-===================================================== */
+/* CREATE USER */
 
 document
  .getElementById("userForm")
  .addEventListener(
   "submit",
-  async e=>{
+  async function(e){
 
    e.preventDefault();
 
@@ -932,7 +949,7 @@ document
     !password
    ){
 
-    show(
+    showMessage(
      "Name, email and password are required."
     );
 
@@ -941,11 +958,9 @@ document
    }
 
 
-   if(
-    password.length<12
-   ){
+   if(password.length<12){
 
-    show(
+    showMessage(
      "Password must contain at least 12 characters."
     );
 
@@ -962,8 +977,7 @@ document
 
    try{
 
-
-    const r=
+    const response=
      await fetch(
       API+"/api/admin/users",
       {
@@ -971,49 +985,49 @@ document
        headers:headers(),
 
        body:JSON.stringify({
-
         name:name,
-
         email:email,
-
         password:password,
-
         role:role
-
        })
       }
      );
 
 
-    const d=
-     await r.json();
-
-
     if(
-     r.status===401
+     response.status===401||
+     response.status===403
     ){
 
-     throw new Error(
-      "Authentication required."
+     localStorage.removeItem(KEY);
+
+     location.replace(
+      "admin-login.html"
      );
+
+     return;
 
     }
 
 
+    const data=
+     await response.json();
+
+
     if(
-     !r.ok||
-     !d.success
+     !response.ok||
+     !data.success
     ){
 
      throw new Error(
-      d.error||
+      data.error||
       "Unable to create user."
      );
 
     }
 
 
-    show(
+    showMessage(
      "User created successfully.",
      true
     );
@@ -1032,13 +1046,12 @@ document
     await loadAudit();
 
 
-   }catch(err){
+   }catch(error){
 
-    show(
-     err.message||
+    showMessage(
+     error.message||
      "Unable to create user."
     );
-
 
    }finally{
 
@@ -1053,9 +1066,7 @@ document
  );
 
 
-/* =====================================================
-   ENABLE / DISABLE USER
-===================================================== */
+/* ENABLE / DISABLE */
 
 async function toggleUser(
  id,
@@ -1085,8 +1096,7 @@ async function toggleUser(
 
  try{
 
-
-  const r=
+  const response=
    await fetch(
     API+"/api/admin/users/"+id,
     {
@@ -1094,41 +1104,42 @@ async function toggleUser(
      headers:headers(),
 
      body:JSON.stringify({
-
       active:
        current===1
-        ?
-        0
-        :
-        1
-
+        ?0
+        :1
      })
     }
    );
 
 
-  const d=
-   await r.json();
-
-
   if(
-   r.status===401
+   response.status===401||
+   response.status===403
   ){
 
-   throw new Error(
-    "Authentication required."
+   localStorage.removeItem(KEY);
+
+   location.replace(
+    "admin-login.html"
    );
+
+   return;
 
   }
 
 
+  const data=
+   await response.json();
+
+
   if(
-   !r.ok||
-   !d.success
+   !response.ok||
+   !data.success
   ){
 
    throw new Error(
-    d.error||
+    data.error||
     "Unable to update user."
    );
 
@@ -1140,10 +1151,10 @@ async function toggleUser(
   await loadAudit();
 
 
- }catch(e){
+ }catch(error){
 
   alert(
-   e.message||
+   error.message||
    "Unable to update user."
   );
 
@@ -1152,16 +1163,13 @@ async function toggleUser(
 }
 
 
-/* =====================================================
-   LOAD AUDIT LOG
-===================================================== */
+/* AUDIT LOG */
 
 async function loadAudit(){
 
  try{
 
-
-  const r=
+  const response=
    await fetch(
     API+"/api/admin/audit",
     {
@@ -1171,44 +1179,48 @@ async function loadAudit(){
    );
 
 
-  const d=
-   await r.json();
-
-
   if(
-   r.status===401
+   response.status===401||
+   response.status===403
   ){
 
-   throw new Error(
-    "Authentication required."
+   localStorage.removeItem(KEY);
+
+   location.replace(
+    "admin-login.html"
    );
+
+   return;
 
   }
 
 
+  const data=
+   await response.json();
+
+
   if(
-   !r.ok||
-   !d.success
+   !response.ok||
+   !data.success
   ){
 
    throw new Error(
-    d.error||
+    data.error||
     "Unable to load audit log."
    );
 
   }
 
 
-  const rows=
-   d.logs||[];
+  const logs=
+   data.logs||[];
 
 
   document
    .getElementById("audit")
    .innerHTML=
 
-
-   rows.map(x=>`
+   logs.map(x=>`
 
 <tr>
 
@@ -1240,32 +1252,25 @@ ${esc(x.details||"")}
 
 `).join("")
 
+ ||
 
- ||`
-
-<tr>
-
+`<tr>
 <td colspan="5">
 No audit records.
 </td>
-
-</tr>
-
-`;
+</tr>`;
 
 
- }catch(e){
+ }catch(error){
 
  document
   .getElementById("audit")
   .innerHTML=
 
 `<tr>
-
 <td colspan="5">
-${esc(e.message)}
+${esc(error.message)}
 </td>
-
 </tr>`;
 
  }
@@ -1273,38 +1278,44 @@ ${esc(e.message)}
 }
 
 
-/* =====================================================
-   LOGOUT
-===================================================== */
+/* LOGOUT */
 
 async function logout(){
 
- try{
+ const token=
+  localStorage.getItem(KEY);
 
-  await fetch(
-   API+"/api/logout",
-   {
-    method:"POST",
-    headers:headers()
-   }
-  );
 
- }catch(e){}
+ if(token){
+
+  try{
+
+   await fetch(
+    API+"/api/logout",
+    {
+     method:"POST",
+     headers:headers()
+    }
+   );
+
+  }catch(error){}
+
+ }
 
 
  localStorage.removeItem(KEY);
 
- location.href=
-  "admin-login.html";
+
+ location.replace(
+  "admin-login.html"
+ );
 
 }
 
 
-/* =====================================================
-   START
-===================================================== */
+/* START */
 
-check().then(ok=>{
+checkAdmin().then(ok=>{
 
  if(ok){
 
