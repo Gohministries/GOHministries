@@ -3,426 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Student Dashboard | GOH Bible Academy</title>
+<title>GOH Bible Academy</title>
 <meta name="theme-color" content="#111827">
 
-<link rel="icon"
-href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
+<link rel="icon" href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-
-body{
-font-family:Arial,sans-serif;
-background:#f3f6fb;
-color:#172033;
-line-height:1.5
-}
-
-button{font-family:inherit;cursor:pointer}
+body{font-family:Arial,sans-serif;background:#f3f6fb;color:#172033;line-height:1.5}
+button,select{font-family:inherit;cursor:pointer}
 .container{width:min(1000px,94%);margin:auto}
 
-header{
-background:#fff;
-border-bottom:1px solid #e5e7eb;
-position:sticky;
-top:0;
-z-index:10
-}
-
-.nav{
-height:64px;
-display:flex;
-align-items:center;
-justify-content:space-between
-}
-
-.logo{
-display:flex;
-align-items:center;
-gap:9px
-}
-
-.logo img{
-width:42px;
-height:42px;
-object-fit:contain;
-border-radius:10px
-}
-
+header{background:#fff;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:10}
+.nav{height:64px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:9px}
+.logo img{width:42px;height:42px;object-fit:contain;border-radius:10px}
 .logo-title{font-size:14px;font-weight:900}
 .logo-sub{font-size:8px;color:#6b7280}
-
-.logout{
-border:0;
-background:#111827;
-color:#fff;
-padding:9px 13px;
-border-radius:9px;
-font-size:10px;
-font-weight:900
-}
+.logout{border:0;background:#111827;color:#fff;padding:9px 13px;border-radius:9px;font-size:10px;font-weight:900}
 
 main{padding:25px 0 45px}
-
-.hero{
-background:#111827;
-color:#fff;
-border-radius:18px;
-padding:23px;
-margin-bottom:15px
-}
-
-.hero small{
-color:#fbbf24;
-font-size:9px;
-font-weight:900;
-letter-spacing:1px
-}
-
+.hero{background:#111827;color:#fff;border-radius:18px;padding:23px;margin-bottom:15px}
+.hero small{color:#fbbf24;font-size:9px;font-weight:900;letter-spacing:1px}
 .hero h1{font-size:23px;margin:5px 0}
 .hero p{font-size:10px;color:#d1d5db}
 
-.info{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
-margin-bottom:15px
-}
-
-.info-card,.progress,.module,.lesson{
-background:#fff;
-border:1px solid #e5e7eb;
-border-radius:14px
-}
-
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:15px}
+.info-card,.progress,.module,.lesson{background:#fff;border:1px solid #e5e7eb;border-radius:14px}
 .info-card{padding:14px}
+.info-card small{font-size:8px;color:#6b7280;font-weight:900}
+.info-card strong{display:block;font-size:14px;margin-top:3px}
 
-.info-card small{
-font-size:8px;
-color:#6b7280;
-font-weight:900
-}
+.language-box{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:14px;margin-bottom:15px}
+.language-box label{display:block;font-size:8px;font-weight:900;color:#6b7280;margin-bottom:7px}
+.language-select{width:100%;padding:10px;border:1px solid #d1d5db;border-radius:9px;background:#fff;font-size:11px;font-weight:700}
 
-.info-card strong{
-display:block;
-font-size:14px;
-margin-top:3px
-}
-
-/* LANGUAGE */
-
-.language-box{
-background:#fff;
-border:1px solid #e5e7eb;
-border-radius:14px;
-padding:14px;
-margin-bottom:15px
-}
-
-.language-box label{
-display:block;
-font-size:8px;
-font-weight:900;
-color:#6b7280;
-margin-bottom:7px
-}
-
-.language-select{
-width:100%;
-padding:10px;
-border:1px solid #d1d5db;
-border-radius:9px;
-background:#fff;
-font-size:11px;
-font-weight:700;
-color:#172033
-}
-
-/* PROGRESS */
-
-.progress{
-padding:17px;
-margin-bottom:20px
-}
-
-.progress-top{
-display:flex;
-justify-content:space-between;
-font-size:13px;
-font-weight:900
-}
-
+.progress{padding:17px;margin-bottom:20px}
+.progress-top{display:flex;justify-content:space-between;font-size:13px;font-weight:900}
 .percent{color:#4f46e5}
-
-.progress-text{
-font-size:9px;
-color:#6b7280;
-margin:6px 0 10px
-}
-
-.bar{
-height:10px;
-background:#e5e7eb;
-border-radius:20px;
-overflow:hidden
-}
-
-.fill{
-height:100%;
-width:0;
-background:#4f46e5;
-transition:.4s
-}
-
-.certificate{
-font-size:9px;
-color:#6b7280;
-font-weight:700;
-margin-top:9px
-}
+.progress-text{font-size:9px;color:#6b7280;margin:6px 0 10px}
+.bar{height:10px;background:#e5e7eb;border-radius:20px;overflow:hidden}
+.fill{height:100%;width:0;background:#4f46e5;transition:.4s}
+.certificate{font-size:9px;color:#6b7280;font-weight:700;margin-top:9px}
 
 h2{font-size:17px}
+.sub{font-size:9px;color:#6b7280;margin:3px 0 14px}
 
-.sub{
-font-size:9px;
-color:#6b7280;
-margin:3px 0 14px
-}
-
-.modules{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px
-}
-
-.module{
-padding:16px;
-cursor:pointer
-}
-
+.modules{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.module{padding:16px;cursor:pointer}
 .module:hover{box-shadow:0 8px 20px #0001}
+.module-top{display:flex;gap:11px}
+.icon{width:43px;height:43px;background:#f3f4f6;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.module-no{font-size:8px;color:#6366f1;font-weight:900}
+.module-title{font-size:13px;font-weight:900}
+.module-desc{font-size:9px;color:#6b7280;margin-top:4px}
+.module-bottom{border-top:1px solid #eee;margin-top:13px;padding-top:10px;display:flex;justify-content:space-between;align-items:center}
+.count{font-size:8px;color:#6b7280;font-weight:900}
+.view{border:0;background:#111827;color:#fff;padding:7px 10px;border-radius:7px;font-size:8px;font-weight:900}
 
-.module-top{
-display:flex;
-gap:11px
-}
-
-.icon{
-width:43px;
-height:43px;
-background:#f3f4f6;
-border-radius:11px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:22px
-}
-
-.module-no{
-font-size:8px;
-color:#6366f1;
-font-weight:900
-}
-
-.module-title{
-font-size:13px;
-font-weight:900;
-margin-top:2px
-}
-
-.module-desc{
-font-size:9px;
-color:#6b7280;
-margin-top:4px
-}
-
-.module-bottom{
-border-top:1px solid #eee;
-margin-top:13px;
-padding-top:10px;
-display:flex;
-justify-content:space-between;
-align-items:center
-}
-
-.count{
-font-size:8px;
-color:#6b7280;
-font-weight:900
-}
-
-.view{
-border:0;
-background:#111827;
-color:#fff;
-padding:7px 10px;
-border-radius:7px;
-font-size:8px;
-font-weight:900
-}
-
-/* LESSONS */
-
-.lessons-section{
-display:none;
-margin-top:20px
-}
-
-.lesson-header{
-background:#111827;
-color:#fff;
-border-radius:15px;
-padding:17px;
-margin-bottom:10px
-}
-
+.lessons-section{display:none;margin-top:20px}
+.lesson-header{background:#111827;color:#fff;border-radius:15px;padding:17px;margin-bottom:10px}
 .lesson-header h2{font-size:17px}
+.lesson-header p{font-size:9px;color:#d1d5db}
+.back{border:0;background:#fff;color:#111827;padding:7px 10px;border-radius:7px;font-size:8px;font-weight:900;margin-top:11px}
 
-.lesson-header p{
-font-size:9px;
-color:#d1d5db;
-margin-top:3px
-}
-
-.back{
-border:0;
-background:#fff;
-color:#111827;
-padding:7px 10px;
-border-radius:7px;
-font-size:8px;
-font-weight:900;
-margin-top:11px
-}
-
-.lesson{
-padding:12px;
-display:flex;
-align-items:center;
-gap:10px;
-margin-bottom:8px
-}
-
-.lesson-num{
-width:32px;
-height:32px;
-background:#f3f4f6;
-border-radius:8px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:9px;
-font-weight:900;
-flex-shrink:0
-}
-
+.lesson{padding:12px;display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.lesson-num{width:32px;height:32px;background:#f3f4f6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;flex-shrink:0}
 .lesson-info{flex:1}
+.lesson-title{font-size:10px;font-weight:900}
+.lesson-desc{font-size:8px;color:#6b7280}
+.lesson-btn{border:0;padding:7px 9px;border-radius:7px;font-size:8px;font-weight:900;white-space:nowrap}
+.free,.done{background:#dcfce7;color:#166534}
+.locked{background:#fef3c7;color:#92400e}
 
-.lesson-title{
-font-size:10px;
-font-weight:900
-}
-
-.lesson-desc{
-font-size:8px;
-color:#6b7280
-}
-
-.lesson-btn{
-border:0;
-padding:7px 9px;
-border-radius:7px;
-font-size:8px;
-font-weight:900;
-white-space:nowrap
-}
-
-.free,.done{
-background:#dcfce7;
-color:#166534
-}
-
-.locked{
-background:#fef3c7;
-color:#92400e
-}
-
-.message{
-display:none;
-padding:10px;
-border-radius:9px;
-text-align:center;
-font-size:9px;
-font-weight:700;
-margin-bottom:12px
-}
-
+.message{display:none;padding:10px;border-radius:9px;text-align:center;font-size:9px;font-weight:700;margin-bottom:12px}
 .message.show{display:block}
+.error{background:#fef2f2;color:#b91c1c}
+.loading{background:#eff6ff;color:#1d4ed8}
 
-.error{
-background:#fef2f2;
-color:#b91c1c
-}
+.empty{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:25px;text-align:center;font-size:10px;color:#6b7280}
 
-.loading{
-background:#eff6ff;
-color:#1d4ed8
-}
-
-.premium{
-margin-top:18px;
-background:#fff;
-border:1px solid #fde68a;
-border-radius:15px;
-padding:17px;
-text-align:center
-}
-
+.premium{margin-top:18px;background:#fff;border:1px solid #fde68a;border-radius:15px;padding:17px;text-align:center}
 .premium h3{font-size:14px}
+.premium p{font-size:9px;color:#6b7280;margin:5px 0 10px}
+.premium a{display:inline-block;background:#fbbf24;color:#111827;padding:9px 13px;border-radius:8px;font-size:9px;font-weight:900;text-decoration:none}
 
-.premium p{
-font-size:9px;
-color:#6b7280;
-margin:5px 0 10px
-}
-
-.premium a{
-display:inline-block;
-background:#fbbf24;
-color:#111827;
-padding:9px 13px;
-border-radius:8px;
-font-size:9px;
-font-weight:900;
-text-decoration:none
-}
-
-footer{
-background:#0b1120;
-color:#64748b;
-text-align:center;
-padding:18px;
-font-size:8px
-}
+footer{background:#0b1120;color:#64748b;text-align:center;padding:18px;font-size:8px}
 
 @media(max-width:650px){
-
 .info{grid-template-columns:1fr 1fr}
 .modules{grid-template-columns:1fr}
-
-.info-card:last-child{
-grid-column:1/-1
-}
-
-.lesson{
-align-items:flex-start
-}
-
+.info-card:last-child{grid-column:1/-1}
+.lesson{align-items:flex-start}
 .lesson-btn{margin-left:auto}
-
 }
-
 </style>
 </head>
 
@@ -430,908 +104,330 @@ align-items:flex-start
 
 <header>
 <div class="container nav">
-
 <div class="logo">
-
-<img
-src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
-alt="GOH Bible Academy">
-
+<img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 <div>
 <div class="logo-title">GOH Bible Academy</div>
 <div class="logo-sub">Gate of Heaven Ministries</div>
 </div>
-
 </div>
-
-<button class="logout" id="logout">
-🚪 Logout
-</button>
-
+<button class="logout" id="logout">🚪 Logout</button>
 </div>
 </header>
-
 
 <main>
 <div class="container">
 
 <div class="hero">
-
 <small>STUDENT DASHBOARD</small>
-
-<h1 id="welcome">
-Welcome 👋
-</h1>
-
-<p>
-Continue your Biblical Studies journey through 180 structured lessons.
-</p>
-
+<h1 id="welcome">Welcome 👋</h1>
+<p>Continue your Biblical Studies journey through 180 structured lessons.</p>
 </div>
-
 
 <div id="message" class="message"></div>
 
-
 <div class="info">
-
 <div class="info-card">
 <small>MEMBERSHIP</small>
 <strong id="membership">FREE</strong>
 </div>
-
 <div class="info-card">
 <small>STUDENT ID</small>
 <strong id="studentId">—</strong>
 </div>
-
 <div class="info-card">
 <small>LANGUAGE</small>
 <strong id="language">English</strong>
 </div>
-
 </div>
 
-
-<!-- LANGUAGE SELECTOR -->
-
 <div class="language-box">
-
-<label for="languageSelect">
-SELECT LESSON LANGUAGE
-</label>
-
+<label>SELECT LESSON LANGUAGE</label>
 <select id="languageSelect" class="language-select">
-
 <option value="en">English</option>
 <option value="ta">தமிழ்</option>
 <option value="si">සිංහල</option>
-
 </select>
-
 </div>
-
-
-<!-- PROGRESS -->
 
 <div class="progress">
-
 <div class="progress-top">
-
-<span>
-🏆 Certificate Progress
-</span>
-
-<span
-class="percent"
-id="percent">
-0%
-</span>
-
+<span>🏆 Certificate Progress</span>
+<span class="percent" id="percent">0%</span>
 </div>
-
-<div
-class="progress-text"
-id="progressText">
-
-0 / 180 lessons completed
-
-</div>
-
-<div class="bar">
-
-<div
-class="fill"
-id="fill">
-</div>
-
-</div>
-
-<div
-class="certificate"
-id="certificate">
-
+<div class="progress-text" id="progressText">0 / 180 lessons completed</div>
+<div class="bar"><div class="fill" id="fill"></div></div>
+<div class="certificate" id="certificate">
 Complete all 180 lessons and pass each 5-question assessment.
-
 </div>
-
 </div>
-
-
-<!-- MODULES -->
 
 <section id="modulesSection">
-
-<h2>
-CHRISTIAN BIBLICAL STUDIES
-</h2>
-
-<div class="sub">
-180-Lesson Program • Choose a module.
+<h2>CHRISTIAN BIBLICAL STUDIES</h2>
+<div class="sub">180-Lesson Program • Choose a module.</div>
+<div class="modules" id="modules">
+<div class="empty">Loading modules...</div>
 </div>
-
-<div
-class="modules"
-id="modules">
-</div>
-
 </section>
 
-
-<!-- LESSONS -->
-
-<section
-class="lessons-section"
-id="lessonsSection">
+<section class="lessons-section" id="lessonsSection">
 
 <div class="lesson-header">
-
-<h2 id="moduleTitle">
-Module
-</h2>
-
+<h2 id="moduleTitle">Module</h2>
 <p id="moduleDescription"></p>
-
-<button
-class="back"
-id="back">
-
-← Back to Modules
-
-</button>
-
+<button class="back" id="back">← Back to Modules</button>
 </div>
 
-<div
-class="lessons"
-id="lessons">
-</div>
+<div id="lessons"></div>
 
 </section>
 
-
-<!-- PREMIUM -->
-
-<div
-class="premium"
-id="premiumBox">
-
-<h3>
-⭐ Continue Your Biblical Studies
-</h3>
-
-<p>
-Lesson 1 is free. Unlock Lessons 2–180 with Premium membership.
-</p>
-
-<a href="premium.html">
-View Premium Membership
-</a>
-
+<div class="premium" id="premiumBox">
+<h3>⭐ Continue Your Biblical Studies</h3>
+<p>Lesson 1 is free. Unlock Lessons 2–180 with Premium membership.</p>
+<a href="premium.html">View Premium Membership</a>
 </div>
 
 </div>
 </main>
 
-
 <footer>
-
 GOH Bible Academy • Gate of Heaven Ministries<br>
-
 © 2026 GOH Bible Academy. All rights reserved.
-
 </footer>
-
 
 <script>
 
-/* =========================
-   API
-========================= */
+const API="https://dashboard.createlk.workers.dev";
+const $=id=>document.getElementById(id);
 
-const API =
-"https://dashboard.createlk.workers.dev";
-
-const LESSON_PAGE =
-"lesson.html";
-
-
-/* =========================
-   ELEMENT
-========================= */
-
-const $ = id =>
-document.getElementById(id);
-
-
-/* =========================
-   STUDENT SESSION
-========================= */
-
-function getStudent(){
-
-  const raw =
-    localStorage.getItem("goh_student") ||
-    sessionStorage.getItem("goh_student");
-
-  if(!raw) return null;
-
-  try{
-    return JSON.parse(raw);
-  }catch{
-    return null;
-  }
-
+function student(){
+let x=localStorage.getItem("goh_student")||
+sessionStorage.getItem("goh_student");
+try{return x?JSON.parse(x):null}catch{return null}
 }
 
-const student =
-getStudent();
+const user=student();
 
+if(!user) location.href="login.html";
 
-if(!student){
+let language=localStorage.getItem("goh_language")||(
+["ta","si"].includes(user?.language)?user.language:"en"
+);
 
-  location.href="login.html";
+const names={en:"English",ta:"Tamil",si:"Sinhala"};
 
+$("languageSelect").value=language;
+$("language").textContent=names[language];
+$("welcome").textContent="Welcome, "+(user.first_name||"Student")+" 👋";
+$("studentId").textContent=user.id||"—";
+$("membership").textContent=(user.membership_status||"FREE").toUpperCase();
+
+function esc(x){
+return String(x??"").replace(/[&<>"']/g,m=>({
+"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+}[m]));
 }
 
-
-/* =========================
-   LANGUAGE
-========================= */
-
-function getLanguage(){
-
-  const saved =
-    localStorage.getItem("goh_language");
-
-  if(
-    saved === "en" ||
-    saved === "ta" ||
-    saved === "si"
-  ){
-    return saved;
-  }
-
-  const value =
-    String(
-      student?.language || "en"
-    ).toLowerCase();
-
-  if(
-    value === "ta" ||
-    value === "tamil"
-  ) return "ta";
-
-  if(
-    value === "si" ||
-    value === "sinhala"
-  ) return "si";
-
-  return "en";
-
+function text(o,name){
+return o[name+"_"+language]||o[name+"_en"]||o[name]||"";
 }
-
-
-let language =
-getLanguage();
-
-
-$("languageSelect").value =
-language;
-
-
-const languageNames = {
-  en:"English",
-  ta:"Tamil",
-  si:"Sinhala"
-};
-
-
-$("language").textContent =
-languageNames[language];
-
-
-/* =========================
-   STUDENT INFO
-========================= */
-
-$("welcome").textContent =
-"Welcome, " +
-(student?.first_name || "Student") +
-" 👋";
-
-$("studentId").textContent =
-student?.id || "—";
-
-$("membership").textContent =
-String(
-  student?.membership_status || "FREE"
-).toUpperCase();
-
-
-/* =========================
-   MESSAGE
-========================= */
-
-function msg(text,type){
-
-  $("message").textContent =
-    text;
-
-  $("message").className =
-    "message show " + type;
-
-}
-
-
-/* =========================
-   ESCAPE
-========================= */
-
-function esc(value){
-
-  return String(value ?? "")
-    .replace(/[&<>"']/g,m=>({
-
-      "&":"&amp;",
-      "<":"&lt;",
-      ">":"&gt;",
-      '"':"&quot;",
-      "'":"&#039;"
-
-    }[m]));
-
-}
-
-
-/* =========================
-   LOAD MODULES
-========================= */
 
 async function loadModules(){
 
-  $("modules").innerHTML =
-    "";
+$("modules").innerHTML='<div class="empty">Loading modules...</div>';
 
-  try{
+try{
 
-    const r =
-      await fetch(
-        API + "/modules"
-      );
+let r=await fetch(API+"/modules",{cache:"no-store"});
+let d=await r.json();
 
-    const d =
-      await r.json();
+let modules=d.modules||d.data||d;
 
-    if(!r.ok || !d.success){
+if(!Array.isArray(modules)) throw Error("Unable to load modules.");
 
-      throw new Error(
-        d.message ||
-        "Unable to load modules."
-      );
+$("modules").innerHTML="";
 
-    }
+modules.forEach((m,i)=>{
 
-    if(!Array.isArray(d.modules)){
+let el=document.createElement("div");
+el.className="module";
 
-      throw new Error(
-        "No modules available."
-      );
+el.innerHTML=`
+<div class="module-top">
+<div class="icon">${esc(m.icon||"📖")}</div>
+<div>
+<div class="module-no">MODULE ${String(i+1).padStart(2,"0")}</div>
+<div class="module-title">${esc(text(m,"title"))}</div>
+<div class="module-desc">${esc(text(m,"description"))}</div>
+</div>
+</div>
+<div class="module-bottom">
+<span class="count">Loading...</span>
+<button class="view">View Lessons →</button>
+</div>`;
 
-    }
+el.onclick=()=>loadLessons(m,el);
+$("modules").appendChild(el);
 
-    d.modules.forEach(m=>{
+});
 
-      const el =
-        document.createElement("div");
+}catch(e){
 
-      el.className =
-        "module";
-
-      el.innerHTML = `
-
-        <div class="module-top">
-
-          <div class="icon">
-            ${esc(m.icon || "📖")}
-          </div>
-
-          <div>
-
-            <div class="module-no">
-              MODULE ${String(m.id).padStart(2,"0")}
-            </div>
-
-            <div class="module-title">
-              ${esc(m.title)}
-            </div>
-
-            <div class="module-desc">
-              ${esc(m.description)}
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="module-bottom">
-
-          <span class="count">
-            30 Lessons
-          </span>
-
-          <button class="view">
-            View Lessons →
-          </button>
-
-        </div>
-
-      `;
-
-      el.onclick =
-        () => loadLessons(m);
-
-      $("modules").appendChild(el);
-
-    });
-
-  }catch(e){
-
-    console.error(e);
-
-    msg(
-      e.message ||
-      "Unable to load the course.",
-      "error"
-    );
-
-  }
+$("modules").innerHTML=
+`<div class="empty">${esc(e.message)}</div>`;
 
 }
 
-
-/* =========================
-   LOAD LESSONS
-========================= */
-
-async function loadLessons(module){
-
-  $("modulesSection").style.display =
-    "none";
-
-  $("premiumBox").style.display =
-    "none";
-
-  $("lessonsSection").style.display =
-    "block";
-
-  $("moduleTitle").textContent =
-    module.title || "Module";
-
-  $("moduleDescription").textContent =
-    module.description || "";
-
-  $("lessons").innerHTML =
-    "";
-
-  msg(
-    "Loading lessons...",
-    "loading"
-  );
-
-  try{
-
-    const url =
-      API +
-      "/lessons?module_id=" +
-      encodeURIComponent(module.id) +
-      "&student_id=" +
-      encodeURIComponent(student.id) +
-      "&language=" +
-      encodeURIComponent(language);
-
-    const r =
-      await fetch(url);
-
-    const d =
-      await r.json();
-
-    if(!r.ok || !d.success){
-
-      throw new Error(
-        d.message ||
-        "Unable to load lessons."
-      );
-
-    }
-
-    $("message").className =
-      "message";
-
-    $("membership").textContent =
-      String(
-        d.membership?.status ||
-        "FREE"
-      ).toUpperCase();
-
-
-    if(
-      !Array.isArray(d.lessons) ||
-      d.lessons.length === 0
-    ){
-
-      $("lessons").innerHTML = `
-        <div class="message show error">
-          No lessons found in this module.
-        </div>
-      `;
-
-      return;
-
-    }
-
-
-    d.lessons.forEach(
-      createLesson
-    );
-
-
-  }catch(e){
-
-    console.error(e);
-
-    $("lessons").innerHTML = `
-
-      <div class="message show error">
-        ${esc(
-          e.message ||
-          "Unable to load lessons."
-        )}
-      </div>
-
-    `;
-
-  }
-
 }
 
+async function loadLessons(module,card){
 
-/* =========================
-   CREATE LESSON
-========================= */
+$("modulesSection").style.display="none";
+$("premiumBox").style.display="none";
+$("lessonsSection").style.display="block";
 
-function createLesson(lesson){
+$("moduleTitle").textContent=text(module,"title");
+$("moduleDescription").textContent=text(module,"description");
+$("lessons").innerHTML='<div class="empty">Loading lessons...</div>';
 
-  const locked =
-    lesson.locked === true;
+try{
 
-  const completed =
-    lesson.completed === true;
+let url=API+
+"/lessons?module_id="+encodeURIComponent(module.id)+
+"&student_id="+encodeURIComponent(user.id)+
+"&language="+language;
 
-  const number =
-    Number(
-      lesson.lesson_number
-    );
+let r=await fetch(url,{cache:"no-store"});
+let d=await r.json();
 
+let lessons=d.lessons||d.data||d;
 
-  let text =
-    "Start →";
+if(!Array.isArray(lessons))
+throw Error("Unable to load lessons.");
 
-  let cls =
-    "free";
-
-
-  if(completed){
-
-    text =
-      "✓ Completed";
-
-    cls =
-      "done";
-
-  }else if(locked){
-
-    text =
-      "🔒 Premium";
-
-    cls =
-      "locked";
-
-  }
-
-
-  const el =
-    document.createElement("div");
-
-  el.className =
-    "lesson";
-
-
-  el.innerHTML = `
-
-    <div class="lesson-num">
-      ${number}
-    </div>
-
-    <div class="lesson-info">
-
-      <div class="lesson-title">
-        ${esc(lesson.title)}
-      </div>
-
-      <div class="lesson-desc">
-        ${esc(lesson.description)}
-      </div>
-
-    </div>
-
-    <button
-      class="lesson-btn ${cls}">
-
-      ${text}
-
-    </button>
-
-  `;
-
-
-  el.querySelector("button")
-    .onclick = function(){
-
-      if(locked){
-
-        location.href =
-          "premium.html";
-
-        return;
-
-      }
-
-
-      /*
-        Lesson 1 is FREE.
-        Lessons 2–180 require Premium.
-
-        The Lesson Worker performs
-        the final access check.
-      */
-
-      const params =
-        new URLSearchParams({
-
-          lesson_id:
-            String(lesson.id),
-
-          module_id:
-            String(lesson.module_id),
-
-          student_id:
-            String(student.id),
-
-          language:
-            language
-
-        });
-
-
-      location.href =
-        LESSON_PAGE +
-        "?" +
-        params.toString();
-
-    };
-
-
-  $("lessons")
-    .appendChild(el);
-
-}
-
-
-/* =========================
-   LANGUAGE CHANGE
-========================= */
-
-$("languageSelect")
-.addEventListener(
-  "change",
-  async function(){
-
-    language =
-      this.value;
-
-    localStorage.setItem(
-      "goh_language",
-      language
-    );
-
-    $("language").textContent =
-      languageNames[language];
-
-
-    /*
-      If lessons are already open,
-      reload the current module
-      in the selected language.
-    */
-
-    if(
-      $("lessonsSection").style.display
-      === "block"
-    ){
-
-      const title =
-        $("moduleTitle").textContent;
-
-      msg(
-        "Language changed. Select the module again.",
-        "loading"
-      );
-
-      $("lessonsSection").style.display =
-        "none";
-
-      $("premiumBox").style.display =
-        "block";
-
-      $("modulesSection").style.display =
-        "block";
-
-    }
-
-  }
+lessons.sort((a,b)=>
+Number(a.lesson_number)-Number(b.lesson_number)
 );
 
+if(card)
+card.querySelector(".count").textContent=
+lessons.length+" Lessons";
 
-/* =========================
-   BACK
-========================= */
+$("lessons").innerHTML="";
 
-$("back").onclick =
-function(){
+lessons.forEach(l=>{
 
-  $("lessonsSection").style.display =
-    "none";
+let locked=l.locked===true||l.locked===1;
+let completed=l.completed===true||l.completed===1;
 
-  $("modulesSection").style.display =
-    "block";
+let el=document.createElement("div");
+el.className="lesson";
 
-  $("premiumBox").style.display =
-    "block";
+el.innerHTML=`
+<div class="lesson-num">${l.lesson_number}</div>
+<div class="lesson-info">
+<div class="lesson-title">${esc(text(l,"title"))}</div>
+<div class="lesson-desc">${esc(text(l,"description"))}</div>
+</div>
+<button class="lesson-btn ${locked?"locked":completed?"done":"free"}">
+${locked?"🔒 Premium":completed?"✓ Completed":"Start →"}
+</button>`;
 
-  $("message").className =
-    "message";
+el.querySelector("button").onclick=()=>{
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+if(locked){
+location.href="premium.html";
+return;
+}
+
+location.href=
+"lesson.html?"+
+new URLSearchParams({
+lesson_id:l.id,
+module_id:l.module_id||module.id,
+student_id:user.id,
+language:language
+});
 
 };
 
+$("lessons").appendChild(el);
 
-/* =========================
-   PROGRESS
-========================= */
+});
+
+}catch(e){
+
+$("lessons").innerHTML=
+`<div class="empty">${esc(e.message)}</div>`;
+
+}
+
+}
 
 async function loadProgress(){
 
-  try{
+try{
 
-    const r =
-      await fetch(
-        API +
-        "/progress?student_id=" +
-        encodeURIComponent(student.id)
-      );
+let r=await fetch(
+API+"/progress?student_id="+encodeURIComponent(user.id),
+{cache:"no-store"}
+);
 
-    const d =
-      await r.json();
+let d=await r.json();
+let p=d.progress||d;
 
-    if(!r.ok || !d.success)
-      return;
+let completed=Number(p.completed||0);
+let total=Number(p.total||180);
+let percent=Number(p.percentage||((completed/total)*100));
 
+$("progressText").textContent=
+completed+" / "+total+" lessons completed";
 
-    const p =
-      d.progress;
+$("percent").textContent=percent+"%";
+$("fill").style.width=Math.min(percent,100)+"%";
 
-
-    $("progressText").textContent =
-      p.completed +
-      " / " +
-      p.total +
-      " lessons completed";
-
-
-    $("percent").textContent =
-      p.percentage + "%";
-
-
-    $("fill").style.width =
-      p.percentage + "%";
-
-
-    if(p.certificate_eligible){
-
-      $("certificate").textContent =
-        "🎓 Congratulations! You completed all 180 lessons.";
-
-    }else{
-
-      $("certificate").textContent =
-        "Complete all 180 lessons and pass each 5-question assessment.";
-
-    }
-
-
-  }catch(e){
-
-    console.error(e);
-
-  }
+}catch(e){}
 
 }
 
+$("languageSelect").onchange=function(){
 
-/* =========================
-   LOGOUT
-========================= */
+language=this.value;
+localStorage.setItem("goh_language",language);
+$("language").textContent=names[language];
 
-$("logout").onclick =
-function(){
+$("lessonsSection").style.display="none";
+$("modulesSection").style.display="block";
+$("premiumBox").style.display="block";
 
-  localStorage.removeItem(
-    "goh_student"
-  );
-
-  localStorage.removeItem(
-    "goh_logged_in"
-  );
-
-  sessionStorage.removeItem(
-    "goh_student"
-  );
-
-  sessionStorage.removeItem(
-    "goh_logged_in"
-  );
-
-  location.href =
-    "login.html";
+loadModules();
 
 };
 
+$("back").onclick=function(){
 
-/* =========================
-   START
-========================= */
+$("lessonsSection").style.display="none";
+$("modulesSection").style.display="block";
+$("premiumBox").style.display="block";
 
-if(student){
+window.scrollTo({top:0,behavior:"smooth"});
 
-  loadModules();
-  loadProgress();
+};
 
-}
+$("logout").onclick=function(){
+
+localStorage.removeItem("goh_student");
+sessionStorage.removeItem("goh_student");
+localStorage.removeItem("goh_logged_in");
+sessionStorage.removeItem("goh_logged_in");
+
+location.href="login.html";
+
+};
+
+loadModules();
+loadProgress();
 
 </script>
 
