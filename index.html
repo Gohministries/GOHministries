@@ -7,7 +7,7 @@
 <title>GOH Bible Academy | Christian Biblical Studies</title>
 
 <meta name="description"
-content="GOH Bible Academy offers structured Christian Biblical Studies with Bible lessons, quizzes, progress tracking and certificates.">
+content="GOH Bible Academy offers structured Christian Biblical Studies in English, Tamil and Sinhala with Bible lessons, quizzes, progress tracking and certificates.">
 
 <meta name="theme-color" content="#111827">
 
@@ -28,7 +28,10 @@ color:#172033;
 line-height:1.5
 }
 
-a{text-decoration:none;color:inherit}
+a{
+text-decoration:none;
+color:inherit
+}
 
 .container{
 width:min(1050px,92%);
@@ -87,7 +90,8 @@ padding:8px 9px;
 border-radius:8px;
 font-size:10px;
 font-weight:800;
-color:#374151
+color:#374151;
+white-space:nowrap
 }
 
 .nav-links a:hover{
@@ -272,6 +276,23 @@ font-size:15px
 .stat span{
 font-size:8px;
 color:#94a3b8
+}
+
+/* LANGUAGE NOTICE */
+
+.language-notice{
+margin-top:18px;
+padding:12px 15px;
+border:1px solid rgba(251,191,36,.35);
+background:rgba(251,191,36,.08);
+border-radius:10px;
+font-size:10px;
+font-weight:800;
+color:#f8fafc
+}
+
+.language-notice strong{
+color:#fbbf24
 }
 
 /* SECTIONS */
@@ -615,18 +636,23 @@ margin-top:13px
 
 .whatsapp{
 position:fixed;
-right:15px;
-bottom:15px;
-width:52px;
-height:52px;
+right:16px;
+bottom:16px;
+width:54px;
+height:54px;
 display:grid;
 place-items:center;
 border-radius:50%;
 background:#25d366;
 color:#fff;
-font-size:23px;
+font-size:25px;
 z-index:2000;
-box-shadow:0 7px 20px rgba(0,0,0,.2)
+box-shadow:0 7px 20px rgba(0,0,0,.22);
+transition:.2s
+}
+
+.whatsapp:hover{
+transform:scale(1.06)
 }
 
 /* RESPONSIVE */
@@ -748,7 +774,7 @@ Gate of Heaven Ministries
 
 <a href="#course">📚 Course</a>
 <a href="#modules">📖 Lessons</a>
-<a href="#languages">🌍 Languages</a>
+<a href="#languages">🌐 Languages</a>
 <a href="login.html" class="login">🔐 Login</a>
 <a href="register.html" class="register">📝 Register</a>
 
@@ -758,7 +784,8 @@ Gate of Heaven Ministries
 <button
 class="menu"
 id="menuBtn"
-aria-label="Open menu">
+aria-label="Open menu"
+aria-expanded="false">
 
 ☰
 
@@ -775,11 +802,9 @@ aria-label="Open menu">
 
 <a href="#course">📚 Course</a>
 <a href="#modules">📖 Lessons</a>
-<a href="#languages">🌍 Languages</a>
+<a href="#languages">🌐 Languages</a>
 <a href="about.html">ℹ️ About</a>
-
 <a href="login.html">🔐 Student Login</a>
-
 <a href="register.html">📝 Student Registration</a>
 
 </nav>
@@ -804,11 +829,11 @@ Learn God's Word.<br>
 </h1>
 
 <p class="hero-text">
-A structured online Christian Biblical Studies
-program designed to help students understand
-the Bible, strengthen their faith and prepare for
-Christian service.
+A structured online Christian Biblical Studies program
+designed to help students understand the Bible, strengthen
+their faith and prepare for Christian service.
 </p>
+
 
 <div class="buttons">
 
@@ -880,6 +905,14 @@ style="width:100%">
 
 </a>
 
+
+<div class="language-notice">
+
+<strong>Available in:</strong>
+English · தமிழ் · සිංහල
+
+</div>
+
 </div>
 
 </div>
@@ -921,6 +954,7 @@ GOH BIBLE ACADEMY
 </h2>
 
 <p>
+Available in English, Tamil and Sinhala.
 Students can study at their own pace during their active access period.
 </p>
 
@@ -1074,14 +1108,14 @@ class="btn dark">
 
 <div class="heading">
 
-<small>LANGUAGES</small>
+<small>COURSE LANGUAGES</small>
 
 <h2>
-Study in Your Language
+Available in Three Languages
 </h2>
 
 <p>
-Learning resources can be provided in English, Tamil and Sinhala.
+Study the Bible in the language that is most comfortable for you.
 </p>
 
 </div>
@@ -1101,7 +1135,7 @@ English
 </strong>
 
 <p>
-English Bible studies
+Christian Biblical Studies in English
 </p>
 
 </div>
@@ -1118,7 +1152,7 @@ English Bible studies
 </strong>
 
 <p>
-தமிழ் வேதாகமப் பாடங்கள்
+கிறிஸ்தவ வேதாகமப் பாடங்கள் தமிழில்
 </p>
 
 </div>
@@ -1135,7 +1169,7 @@ English Bible studies
 </strong>
 
 <p>
-සිංහල බයිබල් පාඩම්
+ක්‍රිස්තියානි බයිබල් අධ්‍යයනය සිංහලෙන්
 </p>
 
 </div>
@@ -1243,7 +1277,7 @@ Complete requirements.
 </section>
 
 
-<!-- STUDENT ACCESS -->
+<!-- ACCESS -->
 
 <section class="access">
 
@@ -1256,7 +1290,7 @@ Ready to Begin?
 </h2>
 
 <p>
-Create your student account to access the Bible Academy platform.
+Create your student account and begin your Bible learning journey.
 </p>
 
 <div class="buttons" style="justify-content:center">
@@ -1280,7 +1314,7 @@ class="btn dark">
 </div>
 
 <p class="access-note">
-Course access, pricing and requirements are displayed before enrollment.
+Course price, access period and requirements are displayed before enrollment.
 </p>
 
 </div>
@@ -1396,6 +1430,7 @@ Refund Policy
 <div class="bottom">
 
 © 2026 GOH Bible Academy · Gate of Heaven Ministries
+
 </div>
 
 </div>
@@ -1410,7 +1445,7 @@ class="whatsapp"
 href="https://wa.me/94771190395?text=Hello%20GOH%20Bible%20Academy"
 target="_blank"
 rel="noopener"
-aria-label="Contact GOH Bible Academy">
+aria-label="Contact GOH Bible Academy on WhatsApp">
 
 💬
 
@@ -1434,6 +1469,11 @@ mobileMenu.classList.toggle("show");
 menuBtn.textContent=
 open ? "✕" : "☰";
 
+menuBtn.setAttribute(
+"aria-expanded",
+open
+);
+
 };
 
 
@@ -1446,6 +1486,11 @@ a.onclick=()=>{
 mobileMenu.classList.remove("show");
 
 menuBtn.textContent="☰";
+
+menuBtn.setAttribute(
+"aria-expanded",
+"false"
+);
 
 };
 
@@ -1463,6 +1508,11 @@ mobileMenu.classList.contains("show") &&
 mobileMenu.classList.remove("show");
 
 menuBtn.textContent="☰";
+
+menuBtn.setAttribute(
+"aria-expanded",
+"false"
+);
 
 }
 
