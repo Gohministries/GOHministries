@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Lesson | GOH Bible Academy</title>
 <meta name="theme-color" content="#111827">
-
 <link rel="icon" href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 
 <style>
@@ -13,7 +12,6 @@
 body{font-family:Arial,sans-serif;background:#f3f6fb;color:#172033;line-height:1.6}
 button{font-family:inherit;cursor:pointer}
 .container{width:min(850px,94%);margin:auto}
-
 header{background:#fff;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:10}
 .nav{min-height:64px;display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;align-items:center;gap:9px}
@@ -21,50 +19,38 @@ header{background:#fff;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-i
 .logo-title{font-size:13px;font-weight:900}
 .logo-sub{font-size:8px;color:#6b7280}
 .back{border:0;background:#111827;color:#fff;padding:8px 11px;border-radius:8px;font-size:9px;font-weight:900}
-
 main{padding:24px 0 45px}
-
 .message{display:none;padding:11px;border-radius:9px;text-align:center;font-size:10px;font-weight:700;margin-bottom:13px}
 .message.show{display:block}
 .loading{background:#eff6ff;color:#1d4ed8}
 .error{background:#fef2f2;color:#b91c1c}
 .success{background:#dcfce7;color:#166534}
-
 .hero{background:#111827;color:#fff;border-radius:18px;padding:23px;margin-bottom:13px}
 .label{color:#fbbf24;font-size:9px;font-weight:900;letter-spacing:1px}
 .hero h1{font-size:24px;margin:5px 0;line-height:1.35}
 .hero p{color:#d1d5db;font-size:10px}
-
 .card{background:#fff;border:1px solid #e5e7eb;border-radius:15px;padding:18px;margin-bottom:13px}
 .title{font-size:14px;font-weight:900;margin-bottom:11px}
 .content{font-size:12px;color:#374151;white-space:pre-line;overflow-wrap:anywhere}
-
 .verse{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:15px}
 .ref{font-size:13px;font-weight:900;color:#92400e;margin-bottom:7px}
 .verse-text{font-size:16px;color:#374151;font-style:italic;white-space:pre-line}
-
 .question{border-top:1px solid #e5e7eb;padding:15px 0}
 .question:first-child{border-top:0}
 .question-text{font-size:11px;font-weight:900;margin-bottom:9px}
-
 .option{display:flex;gap:8px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:9px;padding:10px;margin:6px 0;font-size:10px}
 .option.selected{border-color:#6366f1;background:#eef2ff}
-
 .submit,.next{width:100%;border:0;color:#fff;padding:12px;border-radius:9px;font-size:10px;font-weight:900;margin-top:8px}
 .submit{background:#111827}
 .next{background:#4f46e5;display:none}
 .submit:disabled{opacity:.5;cursor:not-allowed}
-
 .result{display:none;margin-top:13px;padding:14px;border-radius:11px;text-align:center;font-size:10px;font-weight:800}
 .result.show{display:block}
 .pass{background:#dcfce7;color:#166534}
 .fail{background:#fef2f2;color:#b91c1c}
-
 .done{display:none;background:#dcfce7;color:#166534;border:1px solid #86efac;border-radius:10px;padding:12px;margin-bottom:12px;text-align:center;font-size:10px;font-weight:900}
 .done.show{display:block}
-
 footer{background:#0b1120;color:#64748b;text-align:center;padding:18px;font-size:8px}
-
 @media(max-width:500px){
 .hero h1{font-size:20px}
 .card{padding:15px}
@@ -78,10 +64,8 @@ footer{background:#0b1120;color:#64748b;text-align:center;padding:18px;font-size
 
 <header>
 <div class="container nav">
-
 <div class="logo">
 <img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
-
 <div>
 <div class="logo-title">GOH Bible Academy</div>
 <div class="logo-sub">Gate of Heaven Ministries</div>
@@ -91,7 +75,6 @@ footer{background:#0b1120;color:#64748b;text-align:center;padding:18px;font-size
 <button class="back" onclick="location.href='dashboard.html'">
 ← Dashboard
 </button>
-
 </div>
 </header>
 
@@ -115,7 +98,6 @@ footer{background:#0b1120;color:#64748b;text-align:center;padding:18px;font-size
 
 <div class="card">
 <div class="title" id="verseTitle">📖 Bible Verse</div>
-
 <div class="verse">
 <div class="ref" id="reference"></div>
 <div class="verse-text" id="verseText"></div>
@@ -162,29 +144,31 @@ GOH Bible Academy • Gate of Heaven Ministries<br>
 const API="https://lesson.createlk.workers.dev";
 const $=id=>document.getElementById(id);
 
-
-/* STUDENT */
-
 const student=JSON.parse(
- localStorage.getItem("goh_student") ||
- sessionStorage.getItem("goh_student") ||
+ localStorage.getItem("goh_student")||
+ sessionStorage.getItem("goh_student")||
  "null"
 );
 
-if(!student){
- location.href="login.html";
-}
+if(!student)location.href="login.html";
 
 
 /* URL */
 
 const params=new URLSearchParams(location.search);
 
-const lessonId=Number(params.get("lesson_id") || 1);
+const lessonNumber=Number(
+ params.get("lesson_number") ||
+ params.get("lesson_id") ||
+ 1
+);
 
-let moduleId=Number(params.get("module_id") || 0);
+const moduleId=Number(
+ params.get("module_id") ||
+ 1
+);
 
-const studentId=Number(student?.id || 0);
+const studentId=Number(student.id||0);
 
 
 /* LANGUAGE */
@@ -192,18 +176,16 @@ const studentId=Number(student?.id || 0);
 function getLang(){
 
  const x=String(
-  localStorage.getItem("goh_language") ||
-  student?.language ||
+  params.get("language")||
+  localStorage.getItem("goh_language")||
+  student.language||
   "en"
  ).toLowerCase();
 
- if(x==="ta" || x==="tamil" || x==="தமிழ்")
-  return "ta";
+ if(x==="ta"||x==="tamil"||x==="தமிழ்")return"ta";
+ if(x==="si"||x==="sinhala"||x==="සිංහල")return"si";
 
- if(x==="si" || x==="sinhala" || x==="සිංහල")
-  return "si";
-
- return "en";
+ return"en";
 }
 
 const lang=getLang();
@@ -212,7 +194,6 @@ const lang=getLang();
 /* UI */
 
 const UI={
-
  en:{
   explanation:"📖 Lesson Explanation",
   verse:"📖 Bible Verse",
@@ -229,7 +210,6 @@ const UI={
   saved:"✓ Progress saved.",
   continue:"Continue →"
  },
-
  ta:{
   explanation:"📖 பாட விளக்கம்",
   verse:"📖 வேதாகம வசனம்",
@@ -246,7 +226,6 @@ const UI={
   saved:"✓ முன்னேற்றம் சேமிக்கப்பட்டது.",
   continue:"தொடரவும் →"
  },
-
  si:{
   explanation:"📖 පාඩම් පැහැදිලි කිරීම",
   verse:"📖 බයිබල් පදය",
@@ -263,11 +242,8 @@ const UI={
   saved:"✓ ප්‍රගතිය සුරැකුණි.",
   continue:"ඉදිරියට →"
  }
-
 }[lang];
 
-
-/* LANGUAGE UI */
 
 $("explanationTitle").textContent=UI.explanation;
 $("verseTitle").textContent=UI.verse;
@@ -277,19 +253,13 @@ $("submit").textContent=UI.submit;
 $("next").textContent=UI.continue;
 
 
-/* STATE */
-
 let questions=[];
-let lessonCompleted=false;
+let completed=false;
 
-
-/* MESSAGE */
 
 function message(text,type){
-
  $("message").textContent=text;
  $("message").className="message show "+type;
-
 }
 
 function hideMessage(){
@@ -297,156 +267,7 @@ function hideMessage(){
 }
 
 
-/* CLEAR */
-
-function clearAssessment(){
-
- $("questions").innerHTML="";
- $("submit").style.display="none";
-
-}
-
-
-/* COMPLETED */
-
-function showCompleted(){
-
- lessonCompleted=true;
-
- clearAssessment();
-
- $("done").textContent=UI.completed;
- $("done").classList.add("show");
-
- $("result").className="result show pass";
- $("result").textContent=UI.completed;
-
- $("next").style.display="block";
- $("next").disabled=false;
-
-}
-
-
-/* QUESTIONS */
-
-function buildQuestions(){
-
- if(lessonCompleted)return;
-
- const box=$("questions");
-
- box.innerHTML="";
-
- if(!Array.isArray(questions) || questions.length!==5){
-
-  $("submit").style.display="none";
-
-  box.innerHTML=`
-   <div style="
-    background:#fef2f2;
-    color:#b91c1c;
-    padding:11px;
-    border-radius:9px;
-    text-align:center;
-    font-size:10px;
-    font-weight:700">
-    ${UI.missing}
-   </div>
-  `;
-
-  return;
- }
-
- $("submit").style.display="block";
-
- questions.forEach((q,i)=>{
-
-  const div=document.createElement("div");
-  div.className="question";
-
-  let options=[];
-
-  if(Array.isArray(q.options)){
-   options=q.options;
-  }else{
-
-   let raw=
-    lang==="ta"
-     ?q.options_ta
-     :lang==="si"
-      ?q.options_si
-      :q.options_en;
-
-   try{
-    options=typeof raw==="string"
-     ?JSON.parse(raw)
-     :(raw||[]);
-   }catch{
-    options=[];
-   }
-  }
-
-  let questionText=q.question || "";
-
-  if(lang==="ta" && q.question_ta)
-   questionText=q.question_ta;
-
-  if(lang==="si" && q.question_si)
-   questionText=q.question_si;
-
-  if(lang==="en" && q.question_en)
-   questionText=q.question_en;
-
-  div.innerHTML=`
-
-   <div class="question-text">
-    ${i+1}. ${questionText}
-   </div>
-
-   ${options.map((o,n)=>`
-
-    <label class="option">
-
-     <input
-      type="radio"
-      name="q${i}"
-      value="${n}">
-
-     <span>${o}</span>
-
-    </label>
-
-   `).join("")}
-  `;
-
-  box.appendChild(div);
-
- });
-
- box.querySelectorAll("input").forEach(input=>{
-
-  input.addEventListener("change",()=>{
-
-   document
-    .querySelectorAll(`input[name="${input.name}"]`)
-    .forEach(x=>{
-     const option=x.closest(".option");
-     if(option)option.classList.remove("selected");
-    });
-
-   const current=input.closest(".option");
-
-   if(current)
-    current.classList.add("selected");
-
-  });
-
- });
-
-}
-
-
-/* LOAD LESSON */
+/* LOAD */
 
 async function loadLesson(){
 
@@ -454,35 +275,38 @@ async function loadLesson(){
 
  try{
 
-  if(!Number.isInteger(lessonId) || lessonId<1)
-   throw new Error("Invalid lesson ID.");
+  if(!Number.isInteger(lessonNumber)||lessonNumber<1)
+   throw new Error("Invalid lesson number.");
+
+  if(!Number.isInteger(moduleId)||moduleId<1)
+   throw new Error("Invalid module ID.");
 
   if(!studentId)
    throw new Error("Invalid student ID.");
 
 
   /*
-   IMPORTANT FIX:
-   Do NOT send module_id when it is
-   missing or invalid.
+   IMPORTANT FIX
+
+   Use module_id + lesson_number.
+
+   Example:
+   Module 2 / Lesson 1
+   = module_id=2
+   = lesson_number=1
+
+   NOT lesson_id=31
   */
 
-  let url=
+  const url=
    API+
-   "/lesson?lesson_id="+
-   encodeURIComponent(lessonId)+
-   "&student_id="+
-   encodeURIComponent(studentId)+
-   "&language="+
-   encodeURIComponent(lang);
-
-  if(Number.isInteger(moduleId) && moduleId>0){
-
-   url+=
-    "&module_id="+
-    encodeURIComponent(moduleId);
-
-  }
+   "/lesson"+
+   "?module_id="+encodeURIComponent(moduleId)+
+   "&lesson_number="+encodeURIComponent(
+    moduleLessonNumber()
+   )+
+   "&student_id="+encodeURIComponent(studentId)+
+   "&language="+encodeURIComponent(lang);
 
 
   const response=await fetch(url);
@@ -490,34 +314,14 @@ async function loadLesson(){
   const data=await response.json();
 
 
-  if(!response.ok || !data.success){
-
+  if(!response.ok||!data.success)
    throw new Error(
-    data.message ||
-    "Unable to load lesson."
+    data.message||"Unable to load lesson."
    );
 
-  }
 
+  const lesson=data.lesson||{};
 
-  const lesson=data.lesson || {};
-
-
-  /*
-   Use module ID returned by Worker.
-  */
-
-  if(
-   lesson.module_id &&
-   Number(lesson.module_id)>0
-  ){
-
-   moduleId=Number(lesson.module_id);
-
-  }
-
-
-  /* PREMIUM */
 
   if(lesson.locked){
 
@@ -538,26 +342,23 @@ async function loadLesson(){
   }
 
 
-  /* CONTENT */
-
   $("number").textContent=
-   "LESSON "+
-   (lesson.lesson_number || lessonId);
+   "LESSON "+lessonNumber;
 
   $("title").textContent=
-   lesson.title || "";
+   lesson.title||"";
 
   $("description").textContent=
-   lesson.description || "";
+   lesson.description||"";
 
   $("content").textContent=
-   lesson.content || "";
+   lesson.content||"";
 
   $("reference").textContent=
-   lesson.bible_reference || "";
+   lesson.bible_reference||"";
 
   $("verseText").textContent=
-   lesson.bible_verse || "";
+   lesson.bible_verse||"";
 
 
   $("lesson").style.display="block";
@@ -565,46 +366,35 @@ async function loadLesson(){
   hideMessage();
 
 
-  /*
-   COMPLETED CHECK
-  */
-
   if(
-   lesson.completed===true ||
-   lesson.completed===1 ||
+   lesson.completed===true||
+   lesson.completed===1||
    lesson.completed==="1"
   ){
 
    showCompleted();
    return;
-
   }
 
 
-  lessonCompleted=false;
-
   questions=
    Array.isArray(data.questions)
-    ?data.questions.slice(0,5)
-    :[];
-
+   ?data.questions.slice(0,5)
+   :[];
 
   buildQuestions();
 
 
-  if(questions.length!==5){
-
+  if(questions.length!==5)
    message(UI.missing,"error");
 
-  }
 
- }catch(error){
+ }catch(e){
 
-  console.error(error);
+  console.error(e);
 
   message(
-   error.message ||
-   "Unable to load lesson.",
+   e.message||"Unable to load lesson.",
    "error"
   );
 
@@ -613,12 +403,146 @@ async function loadLesson(){
 }
 
 
+/*
+ Convert dashboard global number
+ to lesson number inside module.
+
+ 1  -> module 1 lesson 1
+ 30 -> module 1 lesson 30
+ 31 -> module 2 lesson 1
+ 32 -> module 2 lesson 2
+
+ If dashboard sends lesson_number directly,
+ use it unchanged.
+*/
+
+function moduleLessonNumber(){
+
+ const supplied=params.get("lesson_number");
+
+ if(supplied!==null)
+  return Number(supplied);
+
+ return ((lessonNumber-1)%30)+1;
+}
+
+
+/* QUESTIONS */
+
+function buildQuestions(){
+
+ if(completed)return;
+
+ const box=$("questions");
+ box.innerHTML="";
+
+ if(questions.length!==5){
+  $("submit").style.display="none";
+  return;
+ }
+
+ $("submit").style.display="block";
+
+ questions.forEach((q,i)=>{
+
+  let options=[];
+
+  if(Array.isArray(q.options)){
+   options=q.options;
+  }else{
+
+   let raw=
+    lang==="ta"
+     ?q.options_ta
+     :lang==="si"
+      ?q.options_si
+      :q.options_en;
+
+   try{
+    options=
+     typeof raw==="string"
+      ?JSON.parse(raw)
+      :(raw||[]);
+   }catch{
+    options=[];
+   }
+  }
+
+
+  let text=
+   lang==="ta"
+    ?q.question_ta
+    :lang==="si"
+     ?q.question_si
+     :q.question_en;
+
+  if(!text)text=q.question||"";
+
+
+  const div=document.createElement("div");
+  div.className="question";
+
+  div.innerHTML=`
+   <div class="question-text">
+    ${i+1}. ${text}
+   </div>
+
+   ${options.map((o,n)=>`
+    <label class="option">
+     <input type="radio" name="q${i}" value="${n}">
+     <span>${o}</span>
+    </label>
+   `).join("")}
+  `;
+
+  box.appendChild(div);
+ });
+
+
+ box.querySelectorAll("input").forEach(input=>{
+  input.onchange=()=>{
+
+   document
+    .querySelectorAll(
+     'input[name="'+input.name+'"]'
+    )
+    .forEach(x=>{
+     x.closest(".option")
+      ?.classList.remove("selected");
+    });
+
+   input.closest(".option")
+    ?.classList.add("selected");
+  };
+ });
+
+}
+
+
+/* COMPLETED */
+
+function showCompleted(){
+
+ completed=true;
+
+ $("questions").innerHTML="";
+ $("submit").style.display="none";
+
+ $("done").textContent=UI.completed;
+ $("done").classList.add("show");
+
+ $("result").className="result show pass";
+ $("result").textContent=UI.completed;
+
+ $("next").style.display="block";
+}
+
+
 /* SUBMIT */
 
-$("submit").addEventListener("click",async function(){
+$("submit").onclick=async()=>{
 
- if(lessonCompleted)return;
-
+ if(completed)return;
 
  const selected=[
   ...document.querySelectorAll(
@@ -626,33 +550,27 @@ $("submit").addEventListener("click",async function(){
   )
  ];
 
-
  if(selected.length!==5){
 
   message(UI.all,"error");
   return;
-
  }
-
 
  let score=0;
 
-
  selected.forEach(input=>{
 
-  const index=
-   Number(input.name.replace("q",""));
+  const i=Number(
+   input.name.replace("q","")
+  );
 
-  const correct=
-   Number(
-    questions[index].correct_answer
-   );
-
-  if(Number(input.value)===correct)
+  if(
+   Number(input.value)===
+   Number(questions[i].correct_answer)
+  ){
    score++;
-
+  }
  });
-
 
  const percent=score*20;
 
@@ -660,17 +578,15 @@ $("submit").addEventListener("click",async function(){
  if(percent<70){
 
   $("result").className="result show fail";
-
   $("result").textContent=
-   `${UI.fail} Score: ${percent}%`;
+   UI.fail+" Score: "+percent+"%";
 
   message(
-   `${UI.fail} Score: ${percent}%`,
+   UI.fail+" Score: "+percent+"%",
    "error"
   );
 
   return;
-
  }
 
 
@@ -680,111 +596,95 @@ $("submit").addEventListener("click",async function(){
 
  try{
 
-  const response=await fetch(
+  const r=await fetch(
    API+"/complete",
    {
     method:"POST",
-
     headers:{
      "Content-Type":"application/json"
     },
-
     body:JSON.stringify({
-
      student_id:studentId,
-
-     lesson_id:lessonId,
-
-     module_id:moduleId
-
+     lesson_id:lessonNumber,
+     module_id:moduleId,
+     lesson_number:moduleLessonNumber()
     })
    }
   );
 
 
-  const data=await response.json();
+  const d=await r.json();
 
-
-  if(!response.ok || !data.success){
-
+  if(!r.ok||!d.success)
    throw new Error(
-    data.message ||
-    "Unable to save progress."
+    d.message||"Unable to save progress."
    );
 
-  }
 
-
-  lessonCompleted=true;
+  completed=true;
 
   $("questions").innerHTML="";
-
   $("submit").style.display="none";
 
   $("done").textContent=UI.completed;
   $("done").classList.add("show");
 
   $("result").className="result show pass";
-
   $("result").textContent=
-   `${UI.pass} Score: ${percent}%`;
+   UI.pass+" Score: "+percent+"%";
 
   $("next").style.display="block";
-  $("next").disabled=false;
 
   message(UI.saved,"success");
 
 
- }catch(error){
-
-  console.error(error);
+ }catch(e){
 
   $("submit").disabled=false;
   $("submit").textContent=UI.submit;
 
   message(
-   error.message ||
-   "Unable to save progress.",
+   e.message||"Unable to save progress.",
    "error"
   );
-
  }
 
-});
+};
 
 
 /* NEXT */
 
-$("next").addEventListener("click",function(){
+$("next").onclick=()=>{
 
- const nextLesson=lessonId+1;
+ const next=lessonNumber+1;
 
- let url=
-  "lesson.html?lesson_id="+
-  encodeURIComponent(nextLesson);
+ let nextModule=moduleId;
 
- if(moduleId>0){
+ if(next>moduleId*30)
+  nextModule=moduleId+1;
 
-  url+=
-   "&module_id="+
-   encodeURIComponent(moduleId);
+ if(next>180){
 
+  location.href="dashboard.html";
+  return;
  }
 
- url+=
-  "&language="+
-  encodeURIComponent(lang);
+ const nextLessonInModule=
+  ((next-1)%30)+1;
 
- location.href=url;
+ location.href=
+  "lesson.html"+
+  "?lesson_id="+encodeURIComponent(next)+
+  "&module_id="+encodeURIComponent(nextModule)+
+  "&lesson_number="+encodeURIComponent(
+   nextLessonInModule
+  )+
+  "&student_id="+encodeURIComponent(studentId)+
+  "&language="+encodeURIComponent(lang);
+};
 
-});
 
-
-/* START */
-
-if(student){
- loadLesson();
-}
+loadLesson();
 
 </script>
 
