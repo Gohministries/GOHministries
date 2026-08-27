@@ -381,6 +381,7 @@ Welcome, <b id="user">Loading...</b>
 <td style="padding:12px 0;border-bottom:1px solid #eee">
 Total Approved Income
 </td>
+
 <td id="tableIncome"
 style="padding:12px 0;border-bottom:1px solid #eee;text-align:right;font-weight:bold">
 LKR 0.00
@@ -391,6 +392,7 @@ LKR 0.00
 <td style="padding:12px 0;border-bottom:1px solid #eee">
 Total Approved Expenses
 </td>
+
 <td id="tableExpenses"
 style="padding:12px 0;border-bottom:1px solid #eee;text-align:right;font-weight:bold">
 LKR 0.00
@@ -401,6 +403,7 @@ LKR 0.00
 <td style="padding:12px 0;font-weight:bold">
 Available Balance
 </td>
+
 <td id="tableBalance"
 style="padding:12px 0;text-align:right;font-weight:bold;font-size:18px">
 LKR 0.00
@@ -415,167 +418,272 @@ LKR 0.00
 
 <script>
 
-const API="https://goh-finance.createlk.workers.dev";
+/* =====================================================
+   CORRECT FINANCE API
+===================================================== */
+
+const API="https://goh-finance-data.createlk.workers.dev";
+
 const KEY="goh_finance_token";
 
+
 function headers(){
+
  return{
-  "Authorization":"Bearer "+localStorage.getItem(KEY)
+  "Authorization":
+   "Bearer "+localStorage.getItem(KEY)
  };
+
 }
 
+
 function money(v){
- return "LKR "+Number(v||0).toLocaleString(
+
+ return "LKR "+
+ Number(v||0).toLocaleString(
   "en-LK",
   {
    minimumFractionDigits:2,
    maximumFractionDigits:2
   }
  );
+
 }
+
 
 function toggleMenu(){
- document.getElementById("menu")
- .classList.toggle("open");
+
+ document
+  .getElementById("menu")
+  .classList
+  .toggle("open");
+
 }
 
+
 function showError(text){
- const x=document.getElementById("error");
+
+ const x=
+  document.getElementById("error");
+
  x.textContent=text;
+
  x.style.display="block";
+
 }
+
 
 async function check(){
 
- const token=localStorage.getItem(KEY);
+ const token=
+  localStorage.getItem(KEY);
 
  if(!token){
+
   location.href="admin-login.html";
+
   return false;
+
  }
 
  try{
 
-  const r=await fetch(
-   API+"/api/me",
-   {headers:headers()}
-  );
-
-  const d=await r.json();
-
-  if(!r.ok||!d.success)
-   throw Error(
-    d.error||"Authentication failed."
+  const r=
+   await fetch(
+    API+"/api/me",
+    {
+     method:"GET",
+     headers:headers()
+    }
    );
 
-  document.getElementById("user")
-   .textContent=d.user.name;
+  const d=
+   await r.json();
+
+  if(!r.ok||!d.success){
+
+   throw Error(
+    d.error||
+    "Authentication failed."
+   );
+
+  }
+
+  document
+   .getElementById("user")
+   .textContent=
+   d.user.name;
 
   return true;
 
  }catch(e){
 
   localStorage.removeItem(KEY);
+
   location.href="admin-login.html";
+
   return false;
 
  }
 
 }
 
+
 async function loadDashboard(){
 
  try{
 
-  document.getElementById("error")
+  document
+   .getElementById("error")
    .style.display="none";
 
-  const r=await fetch(
-   API+"/api/dashboard",
-   {
-    method:"GET",
-    headers:headers()
-   }
-  );
-
-  const d=await r.json();
-
-  if(!r.ok||!d.success)
-   throw Error(
-    d.error||"Unable to load dashboard."
+  const r=
+   await fetch(
+    API+"/api/dashboard",
+    {
+     method:"GET",
+     headers:headers()
+    }
    );
 
+  const d=
+   await r.json();
+
+  if(!r.ok||!d.success){
+
+   throw Error(
+    d.error||
+    "Unable to load dashboard."
+   );
+
+  }
+
+
   const income=
-   Number(d.total_income)||0;
+   Number(
+    d.total_income
+   )||0;
+
 
   const expenses=
-   Number(d.total_expenses)||0;
+   Number(
+    d.total_expenses
+   )||0;
+
 
   const donations=
-   Number(d.total_donations)||0;
+   Number(
+    d.total_donations
+   )||0;
+
 
   const balance=
    Number(
     d.balance
-   )||income-expenses;
+   )||
+   (income-expenses);
+
 
   const mi=
    Number(
     d.this_month?.income
    )||0;
 
+
   const me=
    Number(
     d.this_month?.expenses
    )||0;
+
 
   const md=
    Number(
     d.this_month?.donations
    )||0;
 
+
   const mb=
    Number(
     d.this_month?.balance
-   )||mi-me;
+   )||
+   (mi-me);
 
-  document.getElementById("income")
-   .textContent=money(income);
 
-  document.getElementById("expenses")
-   .textContent=money(expenses);
-
-  document.getElementById("donations")
-   .textContent=money(donations);
-
-  document.getElementById("balance")
-   .textContent=money(balance);
-
-  document.getElementById("monthIncome")
-   .textContent=money(mi);
-
-  document.getElementById("monthExpenses")
-   .textContent=money(me);
-
-  document.getElementById("monthBalance")
-   .textContent=money(mb);
-
-  document.getElementById("pendingIncome")
+  document
+   .getElementById("income")
    .textContent=
-   Number(d.pending_income)||0;
+   money(income);
 
-  document.getElementById("pendingExpenses")
+
+  document
+   .getElementById("expenses")
    .textContent=
-   Number(d.pending_expenses)||0;
+   money(expenses);
 
-  document.getElementById("tableIncome")
-   .textContent=money(income);
 
-  document.getElementById("tableExpenses")
-   .textContent=money(expenses);
+  document
+   .getElementById("donations")
+   .textContent=
+   money(donations);
 
-  document.getElementById("tableBalance")
-   .textContent=money(balance);
+
+  document
+   .getElementById("balance")
+   .textContent=
+   money(balance);
+
+
+  document
+   .getElementById("monthIncome")
+   .textContent=
+   money(mi);
+
+
+  document
+   .getElementById("monthExpenses")
+   .textContent=
+   money(me);
+
+
+  document
+   .getElementById("monthBalance")
+   .textContent=
+   money(mb);
+
+
+  document
+   .getElementById("pendingIncome")
+   .textContent=
+   Number(
+    d.pending_income
+   )||0;
+
+
+  document
+   .getElementById("pendingExpenses")
+   .textContent=
+   Number(
+    d.pending_expenses
+   )||0;
+
+
+  document
+   .getElementById("tableIncome")
+   .textContent=
+   money(income);
+
+
+  document
+   .getElementById("tableExpenses")
+   .textContent=
+   money(expenses);
+
+
+  document
+   .getElementById("tableBalance")
+   .textContent=
+   money(balance);
+
 
  }catch(e){
 
@@ -587,6 +695,7 @@ async function loadDashboard(){
  }
 
 }
+
 
 async function logout(){
 
@@ -602,16 +711,20 @@ async function logout(){
 
  }catch(e){}
 
+
  localStorage.removeItem(KEY);
 
  location.href="admin-login.html";
 
 }
 
+
 check().then(ok=>{
 
  if(ok){
+
   loadDashboard();
+
  }
 
 });
