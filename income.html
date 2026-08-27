@@ -23,14 +23,13 @@ header{
 }
 
 .head{
- max-width:1100px;
+ max-width:1050px;
  margin:auto;
  display:flex;
  justify-content:space-between;
- align-items:center
+ align-items:center;
+ gap:10px
 }
-
-.logo{font-weight:bold}
 
 .logout{
  background:#fff;
@@ -43,7 +42,7 @@ header{
 }
 
 nav{
- max-width:1100px;
+ max-width:1050px;
  margin:10px auto 0;
  display:flex;
  gap:8px;
@@ -61,7 +60,7 @@ nav a{
 }
 
 main{
- max-width:1100px;
+ max-width:1050px;
  margin:auto;
  padding:18px
 }
@@ -74,19 +73,29 @@ main{
  box-shadow:0 2px 12px #0001
 }
 
-h2,h3{margin-top:0}
-
 .grid{
  display:grid;
  grid-template-columns:1fr 1fr;
  gap:12px
 }
 
+.stats{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:12px
+}
+
+.stat strong{
+ display:block;
+ font-size:23px;
+ margin-top:6px
+}
+
 label{
  display:block;
  font-size:13px;
  font-weight:bold;
- margin:10px 0 6px
+ margin:9px 0 6px
 }
 
 input,select,textarea{
@@ -96,19 +105,12 @@ input,select,textarea{
  border-radius:8px;
  font-size:14px;
  background:#fff;
- font-family:inherit
+ font-family:Arial,sans-serif
 }
 
 textarea{
  min-height:90px;
  resize:vertical
-}
-
-input:focus,
-select:focus,
-textarea:focus{
- outline:none;
- border-color:#155eef
 }
 
 button{
@@ -126,16 +128,28 @@ button:disabled{
  cursor:not-allowed
 }
 
-.submit{
+form button{
  width:100%;
  margin-top:15px
+}
+
+.danger{
+ background:#dc2626
+}
+
+.success{
+ background:#16a34a
+}
+
+.gray{
+ background:#667085
 }
 
 .msg{
  display:none;
  padding:11px;
  border-radius:8px;
- margin-bottom:15px;
+ margin-bottom:12px;
  font-size:13px
 }
 
@@ -151,24 +165,13 @@ button:disabled{
  color:#991b1b
 }
 
-.small{
- font-size:13px;
- color:#667085
-}
-
-.hint{
- font-size:11px;
- color:#667085;
- margin-top:5px
-}
-
 .table{
  overflow:auto
 }
 
 table{
  width:100%;
- min-width:850px;
+ min-width:900px;
  border-collapse:collapse
 }
 
@@ -184,17 +187,32 @@ th{
  color:#667085
 }
 
+.small{
+ font-size:13px;
+ color:#667085
+}
+
+.loading{
+ text-align:center;
+ padding:20px;
+ color:#667085
+}
+
+.error{
+ display:none;
+ background:#fee2e2;
+ color:#991b1b;
+ padding:12px;
+ border-radius:9px;
+ margin-bottom:16px
+}
+
 .badge{
  display:inline-block;
- padding:5px 8px;
+ padding:4px 8px;
  border-radius:20px;
  font-size:11px;
  font-weight:bold
-}
-
-.pending{
- background:#fef3c7;
- color:#92400e
 }
 
 .approved{
@@ -202,31 +220,27 @@ th{
  color:#166534
 }
 
+.pending{
+ background:#fef3c7;
+ color:#92400e
+}
+
 .rejected{
  background:#fee2e2;
  color:#991b1b
 }
 
-.view{
- background:#475467;
- padding:7px 10px;
- font-size:12px
-}
-
-.empty{
- padding:20px;
- text-align:center;
- color:#667085
-}
-
 @media(max-width:700px){
- .grid{
+
+ .grid,
+ .stats{
   grid-template-columns:1fr
  }
 
  main{
   padding:12px
  }
+
 }
 </style>
 </head>
@@ -236,22 +250,49 @@ th{
 <header>
 
 <div class="head">
-<div class="logo">GOH Ministries Finance</div>
 
-<button class="logout" onclick="logout()">
+<b>GOH Ministries Finance</b>
+
+<button
+ class="logout"
+ onclick="logout()">
 Logout
 </button>
+
 </div>
 
 <nav>
-<a href="finance-dashboard.html">Dashboard</a>
-<a href="income.html">Income</a>
-<a href="expenses.html">Expenses</a>
-<a href="donations.html">Donations</a>
-<a href="approvals.html">Approvals</a>
-<a href="receipts.html">Receipts</a>
-<a href="reports.html">Reports</a>
-<a href="admin.html">Administration</a>
+
+<a href="finance-dashboard.html">
+Dashboard
+</a>
+
+<a href="income.html">
+Income
+</a>
+
+<a href="expenses.html">
+Expenses
+</a>
+
+<a href="donations.html">
+Donations
+</a>
+
+<a href="receipts.html">
+Receipts
+</a>
+
+<a href="reports.html">
+Reports
+</a>
+
+<a
+ href="admin.html"
+ id="adminLink">
+Administration
+</a>
+
 </nav>
 
 </header>
@@ -259,42 +300,131 @@ Logout
 
 <main>
 
+<div id="error" class="error"></div>
+
+
 <div class="card">
 
-<h2>Income</h2>
+<h2>
+Income
+</h2>
 
 <div class="small">
-Record ministry income with the supporting receipt or slip.
+Record and manage ministry income.
+</div>
+
+<div class="small" style="margin-top:6px">
+Logged in as <b id="currentUser">Checking...</b>
 </div>
 
 </div>
 
 
-<div id="msg" class="msg"></div>
+<div class="stats">
+
+<div class="card stat">
+
+<div class="small">
+Approved Income
+</div>
+
+<strong id="approvedTotal">
+LKR 0.00
+</strong>
+
+</div>
+
+
+<div class="card stat">
+
+<div class="small">
+Pending
+</div>
+
+<strong id="pendingTotal">
+LKR 0.00
+</strong>
+
+</div>
+
+
+<div class="card stat">
+
+<div class="small">
+Records
+</div>
+
+<strong id="recordCount">
+0
+</strong>
+
+</div>
+
+</div>
 
 
 <div class="card">
 
-<h3>Record Income</h3>
+<h3>
+Record Income
+</h3>
+
+<div id="msg" class="msg"></div>
 
 <form id="incomeForm">
 
 <div class="grid">
 
+
 <div>
 
-<label>Category</label>
+<label>
+Date
+</label>
+
+<input
+ id="date"
+ type="date"
+ required>
+
+</div>
+
+
+<div>
+
+<label>
+Income Type
+</label>
 
 <select id="category" required>
 
-<option value="">Select category</option>
-<option value="Offering">Offering</option>
-<option value="Tithe">Tithe</option>
-<option value="Donation">Donation</option>
-<option value="Special Offering">Special Offering</option>
-<option value="Mission Support">Mission Support</option>
-<option value="Building Fund">Building Fund</option>
-<option value="Other">Other</option>
+<option value="">
+Select type
+</option>
+
+<option value="Offering">
+Offering
+</option>
+
+<option value="Tithe">
+Tithe
+</option>
+
+<option value="Donation">
+Donation
+</option>
+
+<option value="Mission">
+Mission
+</option>
+
+<option value="Special Offering">
+Special Offering
+</option>
+
+<option value="Other">
+Other
+</option>
 
 </select>
 
@@ -303,45 +433,44 @@ Record ministry income with the supporting receipt or slip.
 
 <div>
 
-<label>Amount (LKR)</label>
+<label>
+Amount (LKR)
+</label>
 
 <input
-id="amount"
-type="number"
-min="0.01"
-step="0.01"
-placeholder="0.00"
-required
->
+ id="amount"
+ type="number"
+ min="0.01"
+ step="0.01"
+ placeholder="0.00"
+ required>
 
 </div>
 
 
 <div>
 
-<label>Date</label>
+<label>
+Payment Method
+</label>
 
-<input
-id="date"
-type="date"
-required
->
+<select id="payment_method">
 
-</div>
+<option value="Cash">
+Cash
+</option>
 
+<option value="Bank">
+Bank
+</option>
 
-<div>
+<option value="Transfer">
+Bank Transfer
+</option>
 
-<label>Payment Method</label>
-
-<select id="payment_method" required>
-
-<option value="">Select payment method</option>
-<option value="Cash">Cash</option>
-<option value="Bank Transfer">Bank Transfer</option>
-<option value="Deposit">Bank Deposit</option>
-<option value="Cheque">Cheque</option>
-<option value="Other">Other</option>
+<option value="Other">
+Other
+</option>
 
 </select>
 
@@ -350,51 +479,41 @@ required
 
 <div>
 
-<label>Reference Number</label>
+<label>
+Reference
+</label>
 
 <input
-id="reference_number"
-type="text"
-placeholder="Optional"
->
+ id="reference"
+ type="text"
+ placeholder="Receipt or reference number">
 
 </div>
 
 
 <div>
 
-<label>Receipt / Slip</label>
+<label>
+Description
+</label>
 
 <input
-id="receipt"
-type="file"
-accept="image/jpeg,image/png,application/pdf"
-required
->
-
-<div class="hint">
-JPG, PNG or PDF. Maximum 5MB.
-</div>
-
-</div>
+ id="description"
+ type="text"
+ placeholder="Income description">
 
 </div>
 
 
-<label>Description</label>
-
-<textarea
-id="description"
-placeholder="Optional details"
-></textarea>
+</div>
 
 
 <button
-id="submitBtn"
-class="submit"
-type="submit"
->
-Submit Income
+ id="saveBtn"
+ type="submit">
+
+Save Income
+
 </button>
 
 </form>
@@ -404,7 +523,9 @@ Submit Income
 
 <div class="card">
 
-<h3>Income Records</h3>
+<h3>
+Income Records
+</h3>
 
 <div class="table">
 
@@ -414,12 +535,12 @@ Submit Income
 
 <tr>
 <th>Date</th>
-<th>Category</th>
+<th>Type</th>
 <th>Amount</th>
-<th>Payment</th>
+<th>Method</th>
 <th>Reference</th>
 <th>Status</th>
-<th>Receipt</th>
+<th>Created By</th>
 </tr>
 
 </thead>
@@ -427,7 +548,9 @@ Submit Income
 <tbody id="records">
 
 <tr>
-<td colspan="7" class="empty">
+<td
+ colspan="7"
+ class="loading">
 Loading...
 </td>
 </tr>
@@ -445,538 +568,657 @@ Loading...
 
 <script>
 
-const API="https://goh-finance-system.createlk.workers.dev";
-const KEY="goh_finance_token";
+const API=
+"https://goh-finance-system.createlk.workers.dev";
+
+const KEY=
+"goh_finance_token";
+
+let records=[];
 
 
-function authHeaders(){
+/* AUTH */
 
-return{
-"Authorization":
-"Bearer "+localStorage.getItem(KEY)
-};
+function headers(){
 
-}
-
-
-function jsonHeaders(){
-
-return{
-"Content-Type":"application/json",
-"Authorization":
-"Bearer "+localStorage.getItem(KEY)
-};
+ return{
+  "Content-Type":"application/json",
+  "Authorization":
+   "Bearer "+
+   localStorage.getItem(KEY)
+ };
 
 }
 
 
-function esc(v){
+/* HTML ESCAPE */
 
-return String(v ?? "")
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
+function esc(value){
 
-}
-
-
-function money(v){
-
-return Number(v || 0).toLocaleString(
-"en-LK",
-{
-minimumFractionDigits:2,
-maximumFractionDigits:2
-}
-);
+ return String(value??"")
+  .replaceAll("&","&amp;")
+  .replaceAll("<","&lt;")
+  .replaceAll(">","&gt;")
+  .replaceAll('"',"&quot;")
+  .replaceAll("'","&#039;");
 
 }
 
 
-function show(text,ok=false){
+/* MONEY */
 
-const el=
-document.getElementById("msg");
+function money(value){
 
-el.textContent=text;
-
-el.className=
-"msg "+(ok?"ok":"bad");
-
-}
-
-
-function today(){
-
-const d=new Date();
-
-const y=d.getFullYear();
-
-const m=
-String(d.getMonth()+1)
-.padStart(2,"0");
-
-const day=
-String(d.getDate())
-.padStart(2,"0");
-
-return y+"-"+m+"-"+day;
+ return "LKR "+
+ Number(value||0).toLocaleString(
+  "en-LK",
+  {
+   minimumFractionDigits:2,
+   maximumFractionDigits:2
+  }
+ );
 
 }
 
 
-document.getElementById("date").value=today();
+/* MESSAGE */
 
+function showMessage(
+ text,
+ success=false
+){
 
-async function checkLogin(){
+ const el=
+  document.getElementById("msg");
 
-const token=
-localStorage.getItem(KEY);
+ el.textContent=text;
 
-if(!token){
-
-location.href="admin-login.html";
-return false;
-
-}
-
-try{
-
-const r=await fetch(
-API+"/api/me",
-{
-headers:authHeaders()
-}
-);
-
-const d=await r.json();
-
-if(!r.ok||!d.success){
-
-throw new Error(
-d.error||"Session expired."
-);
-
-}
-
-return true;
-
-}catch(e){
-
-localStorage.removeItem(KEY);
-
-location.href="admin-login.html";
-
-return false;
-
-}
+ el.className=
+  "msg "+
+  (success?"ok":"bad");
 
 }
 
 
-async function loadRecords(){
+/* TODAY */
 
-const tbody=
-document.getElementById("records");
+function setToday(){
 
-try{
+ const d=
+  new Date();
 
-const r=await fetch(
-API+"/api/income",
-{
-method:"GET",
-headers:authHeaders()
+ const year=
+  d.getFullYear();
+
+ const month=
+  String(
+   d.getMonth()+1
+  ).padStart(2,"0");
+
+ const day=
+  String(
+   d.getDate()
+  ).padStart(2,"0");
+
+ document
+  .getElementById("date")
+  .value=
+  year+"-"+month+"-"+day;
+
 }
-);
 
-const d=await r.json();
 
-if(!r.ok||!d.success){
+/* CHECK LOGIN */
 
-throw new Error(
-d.error||"Unable to load income records."
-);
+async function checkSession(){
+
+ const token=
+  localStorage.getItem(KEY);
+
+ if(!token){
+
+  location.replace(
+   "admin-login.html"
+  );
+
+  return null;
+
+ }
+
+
+ try{
+
+  const response=
+   await fetch(
+    API+"/api/me",
+    {
+     method:"GET",
+     headers:headers()
+    }
+   );
+
+
+  const data=
+   await response.json();
+
+
+  if(
+   !response.ok||
+   !data.success||
+   !data.user
+  ){
+
+   if(
+    response.status===401||
+    response.status===403
+   ){
+
+    localStorage.removeItem(KEY);
+
+    location.replace(
+     "admin-login.html"
+    );
+
+   }
+
+   return null;
+
+  }
+
+
+  const role=
+   String(data.user.role||"")
+    .toLowerCase();
+
+
+  /*
+   Viewer cannot create
+   or manage financial records.
+  */
+
+  if(
+   role!=="admin"&&
+   role!=="finance"
+  ){
+
+   alert(
+    "Finance access required."
+   );
+
+   location.replace(
+    "finance-dashboard.html"
+   );
+
+   return null;
+
+  }
+
+
+  document
+   .getElementById("currentUser")
+   .textContent=
+   data.user.name+
+   " ("+
+   data.user.email+
+   ")";
+
+
+  if(role!=="admin"){
+
+   document
+    .getElementById("adminLink")
+    .style.display="none";
+
+  }
+
+
+  return data.user;
+
+
+ }catch(error){
+
+  document
+   .getElementById("error")
+   .textContent=
+   "Unable to connect to the finance server.";
+
+  document
+   .getElementById("error")
+   .style.display="block";
+
+  return null;
+
+ }
 
 }
 
-const rows=d.income||[];
 
-if(!rows.length){
+/* LOAD INCOME */
 
-tbody.innerHTML=`
-<tr>
-<td colspan="7" class="empty">
-No income records found.
+async function loadIncome(){
+
+ try{
+
+  const response=
+   await fetch(
+    API+"/api/income",
+    {
+     method:"GET",
+     headers:headers()
+    }
+   );
+
+
+  if(
+   response.status===401||
+   response.status===403
+  ){
+
+   localStorage.removeItem(KEY);
+
+   location.replace(
+    "admin-login.html"
+   );
+
+   return;
+
+  }
+
+
+  const data=
+   await response.json();
+
+
+  if(
+   !response.ok||
+   !data.success
+  ){
+
+   throw new Error(
+    data.error||
+    "Unable to load income."
+   );
+
+  }
+
+
+  records=
+   data.income||[];
+
+
+  let approved=0;
+  let pending=0;
+
+
+  records.forEach(x=>{
+
+   const status=
+    String(
+     x.status||"PENDING"
+    ).toUpperCase();
+
+
+   const amount=
+    Number(x.amount)||0;
+
+
+   if(status==="APPROVED"){
+
+    approved+=amount;
+
+   }
+
+
+   if(status==="PENDING"){
+
+    pending+=amount;
+
+   }
+
+  });
+
+
+  document
+   .getElementById("approvedTotal")
+   .textContent=
+   money(approved);
+
+
+  document
+   .getElementById("pendingTotal")
+   .textContent=
+   money(pending);
+
+
+  document
+   .getElementById("recordCount")
+   .textContent=
+   records.length;
+
+
+  renderRecords();
+
+
+ }catch(error){
+
+  document
+   .getElementById("records")
+   .innerHTML=
+
+`<tr>
+<td colspan="7">
+${esc(error.message)}
 </td>
 </tr>`;
 
-return;
+ }
 
 }
 
-tbody.innerHTML=
 
-rows.map(x=>{
+/* STATUS */
 
-let status=
-String(x.status||"PENDING")
-.toUpperCase();
+function statusBadge(status){
 
-let badge="pending";
+ const s=
+  String(
+   status||"PENDING"
+  ).toUpperCase();
 
-if(status==="APPROVED")
-badge="approved";
 
-if(status==="REJECTED")
-badge="rejected";
+ if(s==="APPROVED"){
 
-return`
+  return `
+  <span class="badge approved">
+  Approved
+  </span>`;
+
+ }
+
+
+ if(s==="REJECTED"){
+
+  return `
+  <span class="badge rejected">
+  Rejected
+  </span>`;
+
+ }
+
+
+ return `
+ <span class="badge pending">
+ Pending
+ </span>`;
+
+}
+
+
+/* RENDER */
+
+function renderRecords(){
+
+ document
+  .getElementById("records")
+  .innerHTML=
+
+  records.map(x=>`
 
 <tr>
 
-<td>${esc(x.date)}</td>
-
-<td>${esc(x.category)}</td>
-
 <td>
-<b>LKR ${money(x.amount)}</b>
-</td>
-
-<td>${esc(x.payment_method)}</td>
-
-<td>${esc(x.reference_number||"-")}</td>
-
-<td>
-<span class="badge ${badge}">
-${esc(status)}
-</span>
+${esc(x.date)}
 </td>
 
 <td>
+${esc(x.category||x.type||"")}
+</td>
 
-${
-x.receipt_name
-?
-`<button
-class="view"
-onclick="viewReceipt(${Number(x.id)})">
-View
-</button>`
-:
-`<span class="small">None</span>`
-}
+<td>
+${money(x.amount)}
+</td>
 
+<td>
+${esc(x.payment_method||"")}
+</td>
+
+<td>
+${esc(x.reference||"")}
+</td>
+
+<td>
+${statusBadge(x.status)}
+</td>
+
+<td>
+${esc(
+ x.created_by_name||
+ x.user_name||
+ x.created_by||
+ ""
+)}
 </td>
 
 </tr>
 
-`;
+`).join("")
 
-}).join("");
+ ||
 
-
-}catch(e){
-
-tbody.innerHTML=`
-<tr>
-<td colspan="7" class="empty">
-${esc(e.message)}
+`<tr>
+<td colspan="7">
+No income records found.
 </td>
 </tr>`;
 
 }
 
-}
 
+/* SAVE */
 
-document.getElementById("incomeForm")
-.addEventListener("submit",async e=>{
+document
+ .getElementById("incomeForm")
+ .addEventListener(
+  "submit",
+  async function(e){
 
-e.preventDefault();
+   e.preventDefault();
 
-const btn=
-document.getElementById("submitBtn");
 
-const category=
-document.getElementById("category")
-.value;
+   const btn=
+    document.getElementById(
+     "saveBtn"
+    );
 
-const amount=
-document.getElementById("amount")
-.value;
 
-const date=
-document.getElementById("date")
-.value;
+   const payload={
 
-const payment=
-document.getElementById("payment_method")
-.value;
+    date:
+     document
+      .getElementById("date")
+      .value,
 
-const reference=
-document.getElementById("reference_number")
-.value.trim();
+    category:
+     document
+      .getElementById("category")
+      .value,
 
-const description=
-document.getElementById("description")
-.value.trim();
+    amount:
+     Number(
+      document
+       .getElementById("amount")
+       .value
+     ),
 
-const file=
-document.getElementById("receipt")
-.files[0];
+    payment_method:
+     document
+      .getElementById("payment_method")
+      .value,
 
+    reference:
+     document
+      .getElementById("reference")
+      .value
+      .trim(),
 
-if(!category){
+    description:
+     document
+      .getElementById("description")
+      .value
+      .trim()
 
-show("Please select an income category.");
-return;
+   };
 
-}
 
+   if(
+    !payload.date||
+    !payload.category||
+    !payload.amount||
+    payload.amount<=0
+   ){
 
-if(!amount||Number(amount)<=0){
+    showMessage(
+     "Please complete the required fields."
+    );
 
-show("Please enter a valid amount.");
-return;
+    return;
 
-}
+   }
 
 
-if(!date){
+   btn.disabled=true;
 
-show("Please select a date.");
-return;
+   btn.textContent=
+    "Saving...";
 
-}
 
+   try{
 
-if(!payment){
+    const response=
+     await fetch(
+      API+"/api/income",
+      {
+       method:"POST",
+       headers:headers(),
+       body:JSON.stringify(payload)
+      }
+     );
 
-show("Please select a payment method.");
-return;
 
-}
+    if(
+     response.status===401||
+     response.status===403
+    ){
 
+     localStorage.removeItem(KEY);
 
-if(!file){
+     location.replace(
+      "admin-login.html"
+     );
 
-show("Receipt / slip is required.");
-return;
+     return;
 
-}
+    }
 
 
-if(file.size>5*1024*1024){
+    const data=
+     await response.json();
 
-show("Receipt must be 5MB or smaller.");
-return;
 
-}
+    if(
+     !response.ok||
+     !data.success
+    ){
 
+     throw new Error(
+      data.error||
+      "Unable to save income."
+     );
 
-const allowed=[
-"image/jpeg",
-"image/png",
-"application/pdf"
-];
+    }
 
 
-if(!allowed.includes(file.type)){
+    showMessage(
+     "Income recorded successfully.",
+     true
+    );
 
-show("Only JPG, PNG or PDF files are allowed.");
-return;
 
-}
+    document
+     .getElementById("amount")
+     .value="";
 
 
-const formData=new FormData();
+    document
+     .getElementById("reference")
+     .value="";
 
-formData.append(
-"category",
-category
-);
 
-formData.append(
-"amount",
-amount
-);
+    document
+     .getElementById("description")
+     .value="";
 
-formData.append(
-"date",
-date
-);
 
-formData.append(
-"payment_method",
-payment
-);
+    await loadIncome();
 
-formData.append(
-"reference_number",
-reference
-);
 
-formData.append(
-"description",
-description
-);
+   }catch(error){
 
-formData.append(
-"receipt",
-file
-);
+    showMessage(
+     error.message||
+     "Unable to save income."
+    );
 
+   }finally{
 
-btn.disabled=true;
-btn.textContent="Submitting...";
+    btn.disabled=false;
 
+    btn.textContent=
+     "Save Income";
 
-try{
+   }
 
-const r=await fetch(
-API+"/api/income",
-{
-method:"POST",
-headers:authHeaders(),
-body:formData
-}
-);
+  }
+ );
 
 
-const d=await r.json();
-
-
-if(!r.ok||!d.success){
-
-throw new Error(
-d.error||"Unable to submit income."
-);
-
-}
-
-
-show(
-"Income submitted successfully and is waiting for approval.",
-true
-);
-
-
-e.target.reset();
-
-document.getElementById("date")
-.value=today();
-
-
-await loadRecords();
-
-
-}catch(err){
-
-show(
-err.message||
-"Unable to submit income."
-);
-
-}finally{
-
-btn.disabled=false;
-btn.textContent="Submit Income";
-
-}
-
-});
-
-
-async function viewReceipt(id){
-
-try{
-
-const r=await fetch(
-API+"/api/income/"+id+"/receipt",
-{
-method:"GET",
-headers:authHeaders()
-}
-);
-
-
-if(!r.ok){
-
-let d={};
-
-try{
-d=await r.json();
-}catch{}
-
-throw new Error(
-d.error||"Unable to open receipt."
-);
-
-}
-
-
-const blob=
-await r.blob();
-
-const url=
-URL.createObjectURL(blob);
-
-
-window.open(
-url,
-"_blank",
-"noopener,noreferrer"
-);
-
-
-setTimeout(
-()=>{
-URL.revokeObjectURL(url);
-},
-60000
-);
-
-
-}catch(e){
-
-alert(e.message);
-
-}
-
-}
-
+/* LOGOUT */
 
 async function logout(){
 
-try{
+ try{
 
-await fetch(
-API+"/api/logout",
-{
-method:"POST",
-headers:authHeaders()
-}
-);
+  await fetch(
+   API+"/api/logout",
+   {
+    method:"POST",
+    headers:headers()
+   }
+  );
 
-}catch(e){}
-
-
-localStorage.removeItem(KEY);
-
-location.href="admin-login.html";
-
-}
+ }catch(error){}
 
 
-checkLogin().then(ok=>{
+ localStorage.removeItem(KEY);
 
-if(ok){
-
-loadRecords();
+ location.replace(
+  "admin-login.html"
+ );
 
 }
+
+
+/* START */
+
+setToday();
+
+checkSession().then(user=>{
+
+ if(user){
+
+  loadIncome();
+
+ }
 
 });
 
