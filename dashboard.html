@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Student Dashboard | GOH Bible Academy</title>
+<title>Login | GOH Bible Academy</title>
 
 <meta name="description"
-content="GOH Bible Academy Student Dashboard">
+content="Student Login for GOH Bible Academy.">
 
 <meta name="theme-color" content="#111827">
 
@@ -42,9 +42,6 @@ margin:auto
 /* HEADER */
 
 header{
-position:sticky;
-top:0;
-z-index:1000;
 background:#fff;
 border-bottom:1px solid #e5e7eb
 }
@@ -82,12 +79,11 @@ color:#6b7280
 
 .nav-links{
 display:flex;
-align-items:center;
-gap:5px
+gap:5px;
+align-items:center
 }
 
-.nav-links a,
-.logout{
+.nav-links a{
 padding:8px 10px;
 border-radius:9px;
 font-size:10px;
@@ -98,12 +94,17 @@ font-weight:800
 background:#f1f5f9
 }
 
-.logout{
-border:0;
+.login{
 background:#111827;
-color:#fff;
-cursor:pointer
+color:#fff!important
 }
+
+.register{
+background:#fbbf24;
+color:#111827
+}
+
+/* MOBILE MENU BUTTON */
 
 .menu{
 display:none;
@@ -115,8 +116,6 @@ border-radius:9px;
 font-size:18px;
 cursor:pointer
 }
-
-/* MOBILE MENU */
 
 .mobile-menu{
 display:none
@@ -135,292 +134,239 @@ box-shadow:0 12px 25px rgba(0,0,0,.12);
 padding:8px 4%
 }
 
-.mobile-menu a,
-.mobile-menu button{
+.mobile-menu a{
 display:block;
-width:100%;
-text-align:left;
 padding:12px 9px;
-border:0;
-background:none;
 border-radius:9px;
 font-size:12px;
-font-weight:800;
-cursor:pointer
+font-weight:800
 }
 
-.mobile-menu a:hover,
-.mobile-menu button:hover{
+.mobile-menu a:hover{
 background:#f3f4f6
 }
 
 /* MAIN */
 
 main{
-padding:25px 0 40px
+min-height:calc(100vh - 120px);
+padding:35px 0;
+display:flex;
+align-items:center
 }
 
-/* WELCOME */
-
-.welcome{
-background:
-radial-gradient(circle at 90% 10%,rgba(99,102,241,.22),transparent 30%),
-linear-gradient(135deg,#111827,#273449);
-color:#fff;
+.card{
+width:min(450px,100%);
+margin:auto;
+background:#fff;
+border:1px solid #e5e7eb;
 border-radius:22px;
-padding:28px;
-box-shadow:0 15px 35px rgba(15,23,42,.12);
-margin-bottom:12px
+padding:30px;
+box-shadow:0 15px 40px rgba(15,23,42,.08)
 }
 
-.welcome-label{
+.logo-main{
+width:65px;
+height:65px;
+display:block;
+margin:0 auto 12px;
+object-fit:contain;
+background:#fff;
+border-radius:15px;
+padding:5px
+}
+
+.head{
+text-align:center;
+margin-bottom:23px
+}
+
+.label{
 font-size:9px;
 font-weight:900;
 letter-spacing:1.2px;
-color:#fbbf24
+color:#6366f1
 }
 
-.welcome h1{
-font-size:28px;
-margin:5px 0
+h1{
+font-size:27px;
+margin:6px 0
 }
 
-.welcome p{
+.head p{
 font-size:11px;
-color:#cbd5e1
+color:#6b7280
 }
 
-/* STATUS */
+/* FORM */
 
-.status-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
-margin-bottom:12px
+.group{
+margin-bottom:14px
 }
 
-.status-card{
+label{
+display:block;
+font-size:10px;
+font-weight:800;
+margin-bottom:6px;
+color:#374151
+}
+
+input{
+width:100%;
+height:44px;
+padding:0 12px;
+border:1px solid #d1d5db;
+border-radius:10px;
 background:#fff;
-border:1px solid #e5e7eb;
-border-radius:15px;
-padding:18px;
-box-shadow:0 6px 20px rgba(15,23,42,.04)
+font:inherit;
+font-size:12px;
+outline:none
 }
 
-.status-label{
+input:focus{
+border-color:#6366f1;
+box-shadow:0 0 0 3px rgba(99,102,241,.1)
+}
+
+.password{
+position:relative
+}
+
+.password input{
+padding-right:65px
+}
+
+.show{
+position:absolute;
+right:6px;
+top:7px;
+height:30px;
+padding:0 9px;
+border:0;
+border-radius:7px;
+background:#f3f4f6;
 font-size:9px;
 font-weight:800;
-color:#6b7280;
-margin-bottom:5px
-}
-
-.status-value{
-font-size:17px;
-font-weight:900;
-color:#111827
-}
-
-.free{
-color:#16a34a
-}
-
-.premium{
-color:#2563eb
-}
-
-/* CARD */
-
-.card{
-background:#fff;
-border:1px solid #e5e7eb;
-border-radius:18px;
-padding:23px;
-margin-bottom:12px;
-box-shadow:0 6px 20px rgba(15,23,42,.04)
-}
-
-.card-head{
-text-align:center;
-margin-bottom:20px
-}
-
-.card-head h2{
-font-size:23px
-}
-
-.card-head p{
-font-size:10px;
-color:#6b7280;
-margin-top:3px
-}
-
-/* ACTIONS */
-
-.actions{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px
-}
-
-.action{
-border:1px solid #e5e7eb;
-border-radius:14px;
-padding:20px 12px;
-text-align:center;
-background:#f8fafc;
-transition:.2s
-}
-
-.action:hover{
-transform:translateY(-2px);
-box-shadow:0 8px 20px rgba(15,23,42,.07)
-}
-
-.action-icon{
-font-size:25px;
-margin-bottom:7px
-}
-
-.action h3{
-font-size:13px;
-margin-bottom:3px
-}
-
-.action p{
-font-size:9px;
-color:#6b7280;
-margin-bottom:10px
-}
-
-.btn{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-border:0;
-border-radius:9px;
-padding:9px 13px;
-font-size:9px;
-font-weight:900;
 cursor:pointer
 }
 
-.primary{
-background:#fbbf24;
-color:#111827
-}
+/* OPTIONS */
 
-.dark{
-background:#111827;
-color:#fff
-}
-
-.outline{
-background:#fff;
-border:1px solid #d1d5db
-}
-
-/* PROGRESS */
-
-.progress-box{
-margin-top:10px
-}
-
-.progress-top{
+.options{
 display:flex;
+align-items:center;
 justify-content:space-between;
-font-size:10px;
-font-weight:800;
-margin-bottom:7px
+gap:10px;
+margin:2px 0 17px
 }
 
-.progress-bar{
-height:9px;
-background:#e5e7eb;
-border-radius:20px;
-overflow:hidden
-}
-
-.progress-fill{
-height:100%;
-width:0%;
-background:#fbbf24;
-border-radius:20px;
-transition:.4s
-}
-
-/* MODULES */
-
-.module-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:9px
-}
-
-.module{
-border:1px solid #e5e7eb;
-border-radius:13px;
-padding:16px;
-background:#f8fafc
-}
-
-.module-number{
-font-size:8px;
-font-weight:900;
-color:#6366f1;
-letter-spacing:1px
-}
-
-.module h3{
-font-size:13px;
-margin:4px 0
-}
-
-.module p{
+.remember{
+display:flex;
+align-items:center;
+gap:6px;
 font-size:9px;
 color:#6b7280
 }
 
-.module a{
-display:inline-block;
-margin-top:9px;
+.remember input{
+width:14px;
+height:14px
+}
+
+.forgot{
 font-size:9px;
-font-weight:900;
+font-weight:800;
 color:#4f46e5
 }
 
-/* PROFILE */
+/* BUTTON */
 
-.profile{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px
-}
-
-.profile-item{
-background:#f8fafc;
-border:1px solid #e5e7eb;
+.btn{
+width:100%;
+height:44px;
+border:0;
 border-radius:10px;
-padding:12px
-}
-
-.profile-item span{
-display:block;
-font-size:8px;
-color:#6b7280;
-margin-bottom:3px
-}
-
-.profile-item strong{
+background:#fbbf24;
+color:#111827;
 font-size:11px;
-word-break:break-word
+font-weight:900;
+cursor:pointer
+}
+
+.btn:disabled{
+opacity:.6;
+cursor:not-allowed
+}
+
+/* MESSAGE */
+
+.message{
+display:none;
+padding:10px;
+border-radius:9px;
+font-size:10px;
+font-weight:700;
+text-align:center;
+margin-bottom:13px
+}
+
+.message.show{
+display:block
+}
+
+.error{
+background:#fef2f2;
+color:#b91c1c
+}
+
+.success{
+background:#f0fdf4;
+color:#15803d
+}
+
+/* REGISTER */
+
+.register-box{
+text-align:center;
+border-top:1px solid #e5e7eb;
+margin-top:19px;
+padding-top:17px
+}
+
+.register-box p{
+font-size:10px;
+color:#6b7280;
+margin-bottom:9px
+}
+
+.register-link{
+display:inline-block;
+border:1px solid #d1d5db;
+border-radius:9px;
+padding:9px 15px;
+font-size:10px;
+font-weight:900
+}
+
+.back{
+display:block;
+text-align:center;
+margin-top:17px;
+font-size:9px;
+font-weight:800;
+color:#6b7280
+}
+
+.back:hover{
+color:#111827
 }
 
 /* FOOTER */
 
 footer{
 background:#0b1120;
-color:#fff;
-padding:23px 0 15px;
+padding:22px 0 15px;
 text-align:center
 }
 
@@ -443,12 +389,12 @@ color:#fbbf24
 .copy{
 font-size:8px;
 color:#64748b;
-margin-top:10px
+margin-top:11px
 }
 
 /* MOBILE */
 
-@media(max-width:750px){
+@media(max-width:700px){
 
 .nav-links{
 display:none
@@ -458,32 +404,12 @@ display:none
 display:block
 }
 
-.status-grid{
-grid-template-columns:1fr
-}
-
-.actions{
-grid-template-columns:1fr
-}
-
-.module-grid{
-grid-template-columns:1fr
-}
-
-.profile{
-grid-template-columns:1fr
-}
-
-.welcome{
-padding:23px 19px
-}
-
-.welcome h1{
-font-size:24px
-}
-
 .card{
-padding:19px 15px
+padding:25px 19px
+}
+
+main{
+padding:25px 0
 }
 
 }
@@ -523,17 +449,21 @@ Gate of Heaven Ministries
 📖 Lessons
 </a>
 
-<a href="profile.html">
-👤 Profile
+<a href="about.html">
+ℹ️ About
 </a>
 
 <a href="contact.html">
 💬 Contact
 </a>
 
-<button class="logout" id="logoutBtn">
-Logout
-</button>
+<a href="login.html" class="login">
+🔐 Login
+</a>
+
+<a href="register.html" class="register">
+📝 Register
+</a>
 
 </nav>
 
@@ -554,25 +484,25 @@ aria-expanded="false">
 
 <nav class="mobile-menu" id="mobileMenu">
 
-<a href="dashboard.html">
-🏠 Dashboard
-</a>
-
 <a href="lessons.html">
 📖 Lessons
 </a>
 
-<a href="profile.html">
-👤 Profile
+<a href="about.html">
+ℹ️ About
 </a>
 
 <a href="contact.html">
 💬 Contact
 </a>
 
-<button id="mobileLogout">
-🚪 Logout
-</button>
+<a href="login.html">
+🔐 Student Login
+</a>
+
+<a href="register.html">
+📝 Register
+</a>
 
 </nav>
 
@@ -581,482 +511,146 @@ aria-expanded="false">
 
 <div class="container">
 
+<div class="card">
 
-<!-- WELCOME -->
+<img
+class="logo-main"
+src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
+alt="GOH Bible Academy">
 
-<section class="welcome">
+<div class="head">
 
-<div class="welcome-label">
+<div class="label">
 GOH BIBLE ACADEMY
 </div>
 
 <h1>
-Welcome, <span id="studentName">Student</span> 👋
+Student Login
 </h1>
 
 <p>
-Continue your Biblical Studies journey and grow in God's Word.
-</p>
-
-</section>
-
-
-<!-- STATUS -->
-
-<div class="status-grid">
-
-<div class="status-card">
-
-<div class="status-label">
-MEMBERSHIP
-</div>
-
-<div
-class="status-value free"
-id="membershipStatus">
-
-FREE
-
-</div>
-
-</div>
-
-
-<div class="status-card">
-
-<div class="status-label">
-LANGUAGE
-</div>
-
-<div
-class="status-value"
-id="studentLanguage">
-
-English
-
-</div>
-
-</div>
-
-
-<div class="status-card">
-
-<div class="status-label">
-STUDENT ID
-</div>
-
-<div
-class="status-value"
-id="studentId">
-
-—
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- QUICK ACTIONS -->
-
-<section class="card">
-
-<div class="card-head">
-
-<h2>
-Continue Learning
-</h2>
-
-<p>
-Access your Bible lessons and learning resources.
+Sign in to continue your Biblical Studies journey.
 </p>
 
 </div>
 
 
-<div class="actions">
-
-
-<div class="action">
-
-<div class="action-icon">
-📖
+<div
+id="message"
+class="message">
 </div>
 
-<h3>
-180 Bible Lessons
-</h3>
+
+<form id="loginForm">
+
+<div class="group">
+
+<label for="email">
+Email Address
+</label>
+
+<input
+id="email"
+type="email"
+placeholder="Enter your email"
+autocomplete="email"
+required>
+
+</div>
+
+
+<div class="group">
+
+<label for="password">
+Password
+</label>
+
+<div class="password">
+
+<input
+id="password"
+type="password"
+placeholder="Enter your password"
+autocomplete="current-password"
+required>
+
+<button
+type="button"
+class="show"
+id="showPassword">
+
+Show
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="options">
+
+<label class="remember">
+
+<input
+type="checkbox"
+id="remember">
+
+<span>
+Remember me
+</span>
+
+</label>
+
+<a
+href="forgot-password.html"
+class="forgot">
+
+Forgot Password?
+
+</a>
+
+</div>
+
+
+<button
+type="submit"
+class="btn"
+id="loginBtn">
+
+🔐 Sign In
+
+</button>
+
+</form>
+
+
+<div class="register-box">
 
 <p>
-Explore the complete course curriculum.
+Don't have a student account?
 </p>
 
 <a
-href="lessons.html"
-class="btn dark">
+href="register.html"
+class="register-link">
 
-View Lessons
+📝 Create Account
 
 </a>
 
 </div>
 
-
-<div class="action">
-
-<div class="action-icon">
-🎁
-</div>
-
-<h3>
-Free Lesson
-</h3>
-
-<p>
-Start your first Bible lesson.
-</p>
 
 <a
-href="lesson-1.html"
-class="btn primary">
+href="index.html"
+class="back">
 
-Start Lesson 1
-
-</a>
-
-</div>
-
-
-<div class="action">
-
-<div class="action-icon">
-⭐
-</div>
-
-<h3>
-Premium
-</h3>
-
-<p>
-Continue with premium Biblical Studies.
-</p>
-
-<a
-href="premium.html"
-class="btn primary">
-
-View Premium
+← Back to GOH Bible Academy
 
 </a>
 
 </div>
-
-
-</div>
-
-</section>
-
-
-<!-- PROGRESS -->
-
-<section class="card">
-
-<div class="card-head">
-
-<h2>
-Learning Progress
-</h2>
-
-<p>
-Your progress through the 180-lesson program.
-</p>
-
-</div>
-
-
-<div class="progress-box">
-
-<div class="progress-top">
-
-<span>
-Course Progress
-</span>
-
-<strong id="progressText">
-0 / 180
-
-</strong>
-
-</div>
-
-<div class="progress-bar">
-
-<div
-class="progress-fill"
-id="progressFill">
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- MODULES -->
-
-<section class="card">
-
-<div class="card-head">
-
-<h2>
-Course Modules
-</h2>
-
-<p>
-Six modules covering 180 Biblical Studies lessons.
-</p>
-
-</div>
-
-
-<div class="module-grid">
-
-
-<div class="module">
-
-<div class="module-number">
-MODULE 01
-</div>
-
-<h3>
-Introduction to the Bible
-</h3>
-
-<p>
-Foundations, inspiration, canon and interpretation.
-</p>
-
-<a href="lessons.html">
-View Module →
-</a>
-
-</div>
-
-
-<div class="module">
-
-<div class="module-number">
-MODULE 02
-</div>
-
-<h3>
-Old Testament Studies
-</h3>
-
-<p>
-History, books, themes and message of the Old Testament.
-</p>
-
-<a href="lessons.html">
-View Module →
-</a>
-
-</div>
-
-
-<div class="module">
-
-<div class="module-number">
-MODULE 03
-</div>
-
-<h3>
-New Testament Studies
-</h3>
-
-<p>
-Jesus, the Gospels, Acts and the New Testament.
-</p>
-
-<a href="lessons.html">
-View Module →
-</a>
-
-</div>
-
-
-<div class="module">
-
-<div class="module-number">
-MODULE 04
-</div>
-
-<h3>
-Christian Doctrine
-</h3>
-
-<p>
-Important biblical teachings and Christian beliefs.
-</p>
-
-<a href="lessons.html">
-View Module →
-</a>
-
-</div>
-
-
-<div class="module">
-
-<div class="module-number">
-MODULE 05
-</div>
-
-<h3>
-Christian Life & Discipleship
-</h3>
-
-<p>
-Prayer, faith, holiness and spiritual growth.
-</p>
-
-<a href="lessons.html">
-View Module →
-</a>
-
-</div>
-
-
-<div class="module">
-
-<div class="module-number">
-MODULE 06
-</div>
-
-<h3>
-Evangelism & Ministry
-</h3>
-
-<p>
-Gospel outreach, leadership and Christian service.
-</p>
-
-<a href="lessons.html">
-View Module →
-</a>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<!-- PROFILE -->
-
-<section class="card">
-
-<div class="card-head">
-
-<h2>
-Student Information
-</h2>
-
-</div>
-
-
-<div class="profile">
-
-<div class="profile-item">
-
-<span>
-First Name
-</span>
-
-<strong id="firstName">
-—
-
-</strong>
-
-</div>
-
-
-<div class="profile-item">
-
-<span>
-Last Name
-</span>
-
-<strong id="lastName">
-—
-
-</strong>
-
-</div>
-
-
-<div class="profile-item">
-
-<span>
-Email
-</span>
-
-<strong id="email">
-—
-
-</strong>
-
-</div>
-
-
-<div class="profile-item">
-
-<span>
-Phone
-</span>
-
-<strong id="phone">
-—
-
-</strong>
-
-</div>
-
-
-<div class="profile-item">
-
-<span>
-Language
-</span>
-
-<strong id="profileLanguage">
-—
-
-</strong>
-
-</div>
-
-
-<div class="profile-item">
-
-<span>
-Membership Expiry
-</span>
-
-<strong id="expiry">
-—
-
-</strong>
-
-</div>
-
-</div>
-
-</section>
-
 
 </div>
 
@@ -1069,24 +663,20 @@ Membership Expiry
 
 <div class="footer-links">
 
-<a href="lessons.html">
-Lessons
-</a>
-
-<a href="about.html">
-About
-</a>
-
-<a href="contact.html">
-Contact
-</a>
-
 <a href="privacy.html">
 Privacy Policy
 </a>
 
 <a href="terms.html">
 Terms of Use
+</a>
+
+<a href="refund.html">
+Refund Policy
+</a>
+
+<a href="contact.html">
+Contact
 </a>
 
 </div>
@@ -1102,190 +692,238 @@ Terms of Use
 
 <script>
 
-/* ================= SESSION ================= */
+/* LOGIN WORKER */
 
-let student = null;
-
-
-/*
-Check localStorage first,
-then sessionStorage.
-*/
-
-const savedStudent =
-localStorage.getItem("goh_student") ||
-sessionStorage.getItem("goh_student");
+const LOGIN_API =
+"https://login.createlk.workers.dev/";
 
 
-if(savedStudent){
+const form =
+document.getElementById("loginForm");
+
+const button =
+document.getElementById("loginBtn");
+
+const message =
+document.getElementById("message");
+
+const password =
+document.getElementById("password");
+
+const showPassword =
+document.getElementById("showPassword");
+
+
+/* PASSWORD */
+
+showPassword.onclick=function(){
+
+const hidden =
+password.type === "password";
+
+password.type =
+hidden ? "text" : "password";
+
+showPassword.textContent =
+hidden ? "Hide" : "Show";
+
+};
+
+
+/* MESSAGE */
+
+function showMessage(text,type){
+
+message.textContent=text;
+
+message.className =
+"message show " + type;
+
+}
+
+
+/* LOGIN */
+
+form.addEventListener(
+"submit",
+async function(e){
+
+e.preventDefault();
+
+
+const email =
+document.getElementById("email")
+.value
+.trim()
+.toLowerCase();
+
+const pass =
+password.value;
+
+const remember =
+document.getElementById("remember")
+.checked;
+
+
+if(!email || !pass){
+
+showMessage(
+"Please enter your email and password.",
+"error"
+);
+
+return;
+
+}
+
+
+button.disabled=true;
+
+button.textContent=
+"Signing In...";
+
 
 try{
 
-student =
-JSON.parse(savedStudent);
+const response =
+await fetch(
+LOGIN_API,
+{
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+email:email,
+
+password:pass
+
+})
+
+}
+);
+
+
+let data;
+
+try{
+
+data =
+await response.json();
+
+}catch{
+
+throw new Error(
+"Server returned an invalid response."
+);
+
+}
+
+
+if(!response.ok || !data.success){
+
+throw new Error(
+data.message ||
+"Invalid email or password."
+);
+
+}
+
+
+/*
+Save student session
+*/
+
+const student = {
+
+id:data.student_id,
+
+first_name:data.first_name || "",
+
+last_name:data.last_name || "",
+
+email:data.email || email,
+
+membership_status:
+data.membership_status || "FREE",
+
+membership_expiry:
+data.membership_expiry || null
+
+};
+
+
+if(remember){
+
+localStorage.setItem(
+"goh_student",
+JSON.stringify(student)
+);
+
+localStorage.setItem(
+"goh_logged_in",
+"true"
+);
+
+}else{
+
+sessionStorage.setItem(
+"goh_student",
+JSON.stringify(student)
+);
+
+sessionStorage.setItem(
+"goh_logged_in",
+"true"
+);
+
+}
+
+
+showMessage(
+"Login successful. Redirecting...",
+"success"
+);
+
+
+setTimeout(
+function(){
+
+window.location.href=
+"dashboard.html";
+
+},
+700
+);
+
 
 }catch(error){
 
-student=null;
-
-}
-
-}
-
-
-/*
-If there is no login session,
-return to login page.
-*/
-
-if(!student){
-
-window.location.href="login.html";
-
-}
-
-
-/* ================= STUDENT DATA ================= */
-
-if(student){
-
-document.getElementById("studentName")
-.textContent =
-student.first_name || "Student";
-
-
-document.getElementById("studentId")
-.textContent =
-student.id || "—";
-
-
-document.getElementById("studentLanguage")
-.textContent =
-student.language || "English";
-
-
-document.getElementById("firstName")
-.textContent =
-student.first_name || "—";
-
-
-document.getElementById("lastName")
-.textContent =
-student.last_name || "—";
-
-
-document.getElementById("email")
-.textContent =
-student.email || "—";
-
-
-document.getElementById("phone")
-.textContent =
-student.phone || "—";
-
-
-document.getElementById("profileLanguage")
-.textContent =
-student.language || "English";
-
-
-document.getElementById("expiry")
-.textContent =
-student.membership_expiry || "Not applicable";
-
-
-const status =
-String(
-student.membership_status || "FREE"
-).toUpperCase();
-
-
-const statusElement =
-document.getElementById("membershipStatus");
-
-
-statusElement.textContent=status;
-
-
-if(status==="PREMIUM"){
-
-statusElement.classList.remove("free");
-
-statusElement.classList.add("premium");
-
-}
-
-}
-
-
-/* ================= PROGRESS ================= */
-
-/*
-Temporary local progress.
-
-Later this can be connected
-to your Cloudflare progress API.
-*/
-
-const progress =
-parseInt(
-localStorage.getItem(
-"goh_course_progress"
-) || "0"
+console.error(
+"Login error:",
+error
 );
 
-const total=180;
-
-const safeProgress =
-Math.max(
-0,
-Math.min(progress,total)
+showMessage(
+error.message ||
+"Unable to connect to the login server.",
+"error"
 );
 
-const percent =
-(total > 0)
-?
-(safeProgress / total) * 100
-:
-0;
+button.disabled=false;
 
-
-document.getElementById("progressText")
-.textContent =
-safeProgress + " / " + total;
-
-
-document.getElementById("progressFill")
-.style.width =
-percent + "%";
-
-
-/* ================= LOGOUT ================= */
-
-function logout(){
-
-localStorage.removeItem("goh_student");
-
-localStorage.removeItem("goh_logged_in");
-
-sessionStorage.removeItem("goh_student");
-
-sessionStorage.removeItem("goh_logged_in");
-
-window.location.href="login.html";
+button.textContent=
+"🔐 Sign In";
 
 }
 
-
-document.getElementById("logoutBtn")
-.onclick=logout;
+});
 
 
-document.getElementById("mobileLogout")
-.onclick=logout;
-
-
-/* ================= MOBILE MENU ================= */
+/* MOBILE MENU */
 
 const menuBtn =
 document.getElementById("menuBtn");
@@ -1326,30 +964,6 @@ menuBtn.setAttribute(
 );
 
 };
-
-});
-
-
-document.addEventListener(
-"click",
-function(e){
-
-if(
-mobileMenu.classList.contains("show") &&
-!mobileMenu.contains(e.target) &&
-!menuBtn.contains(e.target)
-){
-
-mobileMenu.classList.remove("show");
-
-menuBtn.textContent="☰";
-
-menuBtn.setAttribute(
-"aria-expanded",
-"false"
-);
-
-}
 
 });
 
