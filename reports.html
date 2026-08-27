@@ -5,28 +5,43 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#155eef">
 <title>GOH Ministries Finance - Reports</title>
+
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
-header{background:#155eef;color:#fff;padding:14px 18px}
-.head{max-width:1050px;margin:auto}
-nav{display:flex;gap:8px;margin-top:12px;overflow:auto}
-nav a{background:#fff;color:#155eef;padding:9px 12px;border-radius:8px;text-decoration:none;font-size:13px;white-space:nowrap}
+header{background:#155eef;color:#fff;padding:15px 18px}
+.head{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+.logout{background:#fff;color:#155eef;border:0;border-radius:8px;padding:9px 13px;font-weight:bold;cursor:pointer}
+nav{max-width:1050px;margin:10px auto 0;display:flex;gap:8px;overflow:auto}
+nav a{background:#fff;color:#155eef;padding:8px 11px;border-radius:8px;text-decoration:none;font-size:12px;white-space:nowrap}
 main{max-width:1050px;margin:auto;padding:18px}
 .card{background:#fff;padding:18px;border-radius:14px;margin-bottom:16px;box-shadow:0 2px 12px #0001}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.stat strong{display:block;font-size:24px;margin-top:7px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat strong{display:block;font-size:22px;margin-top:7px}
 label{display:block;font-size:13px;font-weight:bold;margin:8px 0 6px}
-input{width:100%;padding:11px;border:1px solid #d5dbe5;border-radius:8px}
-button{border:0;border-radius:8px;padding:11px 15px;background:#155eef;color:#fff;font-weight:bold;cursor:pointer;margin-top:14px}
+input{width:100%;padding:12px;border:1px solid #d5dbe5;border-radius:8px;font-size:14px}
+button{border:0;border-radius:8px;padding:11px 15px;background:#155eef;color:#fff;font-weight:bold;cursor:pointer}
+.actions{display:flex;gap:10px;margin-top:15px}
+.actions button{flex:1}
 .secondary{background:#475467}
-.table{overflow:auto}
-table{width:100%;border-collapse:collapse;min-width:650px}
-th,td{padding:10px;border-bottom:1px solid #eee;text-align:left;font-size:13px}
-th{background:#f8fafc;color:#667085}
 .small{font-size:13px;color:#667085}
-@media(max-width:650px){.grid,.stats{grid-template-columns:1fr}}
+.msg{display:none;padding:11px;border-radius:8px;margin-bottom:12px;font-size:13px}
+.ok{display:block;background:#dcfce7;color:#166534}
+.bad{display:block;background:#fee2e2;color:#991b1b}
+table{width:100%;border-collapse:collapse}
+th,td{padding:11px;border-bottom:1px solid #edf0f4;text-align:left;font-size:13px}
+th{background:#f8fafc;color:#667085}
+.balance{font-size:28px!important}
+@media(max-width:750px){
+.stats{grid-template-columns:1fr 1fr}
+.grid{grid-template-columns:1fr}
+.actions{flex-direction:column}
+}
+@media(max-width:450px){
+.stats{grid-template-columns:1fr}
+main{padding:12px}
+}
 </style>
 </head>
 
@@ -35,28 +50,35 @@ th{background:#f8fafc;color:#667085}
 <header>
 <div class="head">
 <b>GOH Ministries Finance</b>
+<button class="logout" onclick="logout()">Logout</button>
+</div>
 
 <nav>
 <a href="finance-dashboard.html">Dashboard</a>
 <a href="income.html">Income</a>
 <a href="expenses.html">Expenses</a>
-<a href="reports.html">Reports</a>
+<a href="donations.html">Donations</a>
+<a href="approvals.html">Approvals</a>
 <a href="receipts.html">Receipts</a>
+<a href="reports.html">Reports</a>
 <a href="admin.html">Administration</a>
 </nav>
-</div>
 </header>
 
 <main>
 
 <div class="card">
-<h2>Finance Reports</h2>
-<p class="small">View income, expenses and balance for a selected period.</p>
+<h2>Financial Reports</h2>
+<div class="small">
+View approved income, expenses and donations for a selected date range.
+</div>
 </div>
 
 <div class="card">
 
 <h3>Date Range</h3>
+
+<div id="msg" class="msg"></div>
 
 <div class="grid">
 
@@ -72,57 +94,69 @@ th{background:#f8fafc;color:#667085}
 
 </div>
 
+<div class="actions">
 <button onclick="generate()">Generate Report</button>
-<button class="secondary" onclick="downloadCSV()">Export CSV</button>
+<button class="secondary" onclick="clearDates()">Clear</button>
+</div>
 
 </div>
 
 <div class="stats">
 
 <div class="card stat">
-<div class="small">Income</div>
+<div class="small">Approved Income</div>
 <strong id="income">LKR 0.00</strong>
 </div>
 
 <div class="card stat">
-<div class="small">Expenses</div>
+<div class="small">Approved Expenses</div>
 <strong id="expenses">LKR 0.00</strong>
 </div>
 
 <div class="card stat">
+<div class="small">Donations</div>
+<strong id="donations">LKR 0.00</strong>
+</div>
+
+<div class="card stat">
 <div class="small">Balance</div>
-<strong id="balance">LKR 0.00</strong>
+<strong id="balance" class="balance">LKR 0.00</strong>
 </div>
 
 </div>
 
 <div class="card">
 
-<h3>Report Details</h3>
-
-<div class="table">
+<h3>Report Summary</h3>
 
 <table>
-
-<thead>
+<tbody>
 <tr>
-<th>Date</th>
-<th>Type</th>
-<th>Description</th>
-<th>Category</th>
-<th>Amount</th>
+<th>Period</th>
+<td id="period">All dates</td>
 </tr>
-</thead>
 
-<tbody id="rows">
 <tr>
-<td colspan="5">Generate a report.</td>
+<th>Total Income</th>
+<td id="ri">LKR 0.00</td>
+</tr>
+
+<tr>
+<th>Total Expenses</th>
+<td id="re">LKR 0.00</td>
+</tr>
+
+<tr>
+<th>Total Donations</th>
+<td id="rd">LKR 0.00</td>
+</tr>
+
+<tr>
+<th>Balance</th>
+<td id="rb">LKR 0.00</td>
 </tr>
 </tbody>
-
 </table>
-
-</div>
 
 </div>
 
@@ -130,27 +164,17 @@ th{background:#f8fafc;color:#667085}
 
 <script>
 
-const API=
-"https://goh-finance.createlk.workers.dev";
-
-const KEY=
-"goh_finance_token";
-
-let report=[];
+const API="https://goh-finance.createlk.workers.dev";
+const KEY="goh_finance_token";
 
 function headers(){
 return{
-"Content-Type":"application/json",
-"Authorization":
-"Bearer "+localStorage.getItem(KEY)
+"Authorization":"Bearer "+localStorage.getItem(KEY)
 };
 }
 
 function money(v){
-return "LKR "+
-Number(v||0).toLocaleString(
-"en-LK",
-{
+return "LKR "+Number(v||0).toLocaleString("en-LK",{
 minimumFractionDigits:2,
 maximumFractionDigits:2
 });
@@ -165,26 +189,15 @@ return String(v??"")
 .replaceAll("'","&#039;");
 }
 
-function today(){
-const d=new Date();
-return d.getFullYear()+"-"+
-String(d.getMonth()+1).padStart(2,"0")+"-"+
-String(d.getDate()).padStart(2,"0");
+function show(text,ok=false){
+const x=document.getElementById("msg");
+x.textContent=text;
+x.className="msg "+(ok?"ok":"bad");
 }
-
-function firstDay(){
-const d=new Date();
-return d.getFullYear()+"-"+
-String(d.getMonth()+1).padStart(2,"0")+"-01";
-}
-
-document.getElementById("from").value=firstDay();
-document.getElementById("to").value=today();
 
 async function check(){
 
-const token=
-localStorage.getItem(KEY);
+const token=localStorage.getItem(KEY);
 
 if(!token){
 location.href="admin-login.html";
@@ -198,7 +211,10 @@ API+"/api/me",
 {headers:headers()}
 );
 
-if(!r.ok)throw Error();
+const d=await r.json();
+
+if(!r.ok||!d.success)
+throw Error();
 
 return true;
 
@@ -212,175 +228,91 @@ return false;
 
 }
 
-
 async function generate(){
 
-const from=
-document.getElementById("from").value;
+const from=document.getElementById("from").value;
+const to=document.getElementById("to").value;
 
-const to=
-document.getElementById("to").value;
-
-if(!from||!to){
-alert("Select both dates.");
+if(from&&to&&from>to){
+show("The From date cannot be after the To date.");
 return;
 }
 
-if(from>to){
-alert("From date cannot be after To date.");
-return;
-}
+let url=API+"/api/reports";
+const q=[];
+
+if(from)q.push("from="+encodeURIComponent(from));
+if(to)q.push("to="+encodeURIComponent(to));
+
+if(q.length)url+="?"+q.join("&");
 
 try{
 
-const [ir,er]=await Promise.all([
-
-fetch(
-API+"/api/finance/income",
+const r=await fetch(
+url,
 {headers:headers()}
-),
-
-fetch(
-API+"/api/finance/expenses",
-{headers:headers()}
-)
-
-]);
-
-const incomeData=await ir.json();
-const expenseData=await er.json();
-
-if(!ir.ok||!incomeData.success)
-throw Error(
-incomeData.error||"Unable to load income"
 );
 
-if(!er.ok||!expenseData.success)
-throw Error(
-expenseData.error||"Unable to load expenses"
-);
+const d=await r.json();
 
-const income=(incomeData.income||[])
-.filter(x=>
-String(x.date||"")>=from&&
-String(x.date||"")<=to
-)
-.map(x=>({
-date:x.date,
-type:"Income",
-description:x.source||"Income",
-category:x.category||"",
-amount:Number(x.amount)||0
-}));
+if(!r.ok||!d.success)
+throw Error(d.error||"Unable to generate report.");
 
-const expenses=(expenseData.expenses||[])
-.filter(x=>
-String(x.date||"")>=from&&
-String(x.date||"")<=to
-)
-.map(x=>({
-date:x.date,
-type:"Expense",
-description:x.description||"Expense",
-category:x.category||"",
-amount:Number(x.amount)||0
-}));
+document.getElementById("income").textContent=money(d.income);
+document.getElementById("expenses").textContent=money(d.expenses);
+document.getElementById("donations").textContent=money(d.donations);
+document.getElementById("balance").textContent=money(d.balance);
 
-report=[...income,...expenses]
-.sort((a,b)=>
-String(b.date).localeCompare(String(a.date))
-);
+document.getElementById("ri").textContent=money(d.income);
+document.getElementById("re").textContent=money(d.expenses);
+document.getElementById("rd").textContent=money(d.donations);
+document.getElementById("rb").textContent=money(d.balance);
 
-const totalIncome=
-income.reduce((s,x)=>s+x.amount,0);
+let period="All dates";
 
-const totalExpenses=
-expenses.reduce((s,x)=>s+x.amount,0);
+if(from&&to)period=from+" to "+to;
+else if(from)period="From "+from;
+else if(to)period="Up to "+to;
 
-document.getElementById("income")
-.textContent=money(totalIncome);
+document.getElementById("period").textContent=period;
 
-document.getElementById("expenses")
-.textContent=money(totalExpenses);
-
-document.getElementById("balance")
-.textContent=
-money(totalIncome-totalExpenses);
-
-document.getElementById("rows")
-.innerHTML=
-
-report.map(x=>`
-
-<tr>
-<td>${esc(x.date)}</td>
-<td>${esc(x.type)}</td>
-<td>${esc(x.description)}</td>
-<td>${esc(x.category)}</td>
-<td>${money(x.amount)}</td>
-</tr>
-
-`).join("")||
-
-`<tr>
-<td colspan="5">No records found.</td>
-</tr>`;
+show("Report generated successfully.",true);
 
 }catch(e){
 
-alert(e.message);
+show(e.message);
 
 }
 
 }
 
+function clearDates(){
 
-function downloadCSV(){
+document.getElementById("from").value="";
+document.getElementById("to").value="";
 
-if(!report.length){
-alert("Generate a report first.");
-return;
-}
-
-const lines=[
-["Date","Type","Description","Category","Amount"],
-...report.map(x=>[
-x.date,
-x.type,
-x.description,
-x.category,
-x.amount
-])
-];
-
-const csv=
-lines.map(row=>
-row.map(v=>
-`"${String(v??"").replaceAll('"','""')}"`
-).join(",")
-).join("\n");
-
-const blob=
-new Blob([csv],{
-type:"text/csv;charset=utf-8"
-});
-
-const url=
-URL.createObjectURL(blob);
-
-const a=
-document.createElement("a");
-
-a.href=url;
-a.download=
-"goh-finance-report.csv";
-
-a.click();
-
-URL.revokeObjectURL(url);
+generate();
 
 }
 
+async function logout(){
+
+try{
+
+await fetch(
+API+"/api/logout",
+{
+method:"POST",
+headers:headers()
+}
+);
+
+}catch(e){}
+
+localStorage.removeItem(KEY);
+location.href="admin-login.html";
+
+}
 
 check().then(ok=>{
 if(ok)generate();
