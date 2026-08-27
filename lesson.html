@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Lesson | GOH Bible Academy</title>
 <meta name="theme-color" content="#111827">
+
 <link rel="icon" href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,Helvetica,sans-serif;background:#f3f6fb;color:#172033;line-height:1.6}
+body{font-family:Arial,sans-serif;background:#f3f6fb;color:#172033;line-height:1.6}
 button{font-family:inherit;cursor:pointer}
 .container{width:min(850px,94%);margin:auto}
 
@@ -22,74 +23,135 @@ header{background:#fff;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-i
 .back{border:0;background:#111827;color:#fff;padding:8px 11px;border-radius:8px;font-size:9px;font-weight:900}
 
 main{padding:24px 0 45px}
-.message{display:none;padding:11px;border-radius:9px;text-align:center;font-size:10px;font-weight:700;margin-bottom:13px}
+
+.message{
+ display:none;
+ padding:11px;
+ border-radius:9px;
+ text-align:center;
+ font-size:10px;
+ font-weight:700;
+ margin-bottom:13px
+}
 .message.show{display:block}
-.error{background:#fef2f2;color:#b91c1c}
 .loading{background:#eff6ff;color:#1d4ed8}
-.success{background:#f0fdf4;color:#15803d}
+.error{background:#fef2f2;color:#b91c1c}
+.success{background:#dcfce7;color:#166534}
 
-.lesson-head{background:#111827;color:#fff;border-radius:18px;padding:23px;margin-bottom:13px}
+.hero{
+ background:#111827;
+ color:#fff;
+ border-radius:18px;
+ padding:23px;
+ margin-bottom:13px
+}
 .label{color:#fbbf24;font-size:9px;font-weight:900;letter-spacing:1px}
-.lesson-head h1{font-size:24px;margin:5px 0;line-height:1.35}
-.lesson-head p{color:#d1d5db;font-size:10px}
+.hero h1{font-size:24px;margin:5px 0;line-height:1.35}
+.hero p{color:#d1d5db;font-size:10px}
 
-.card{background:#fff;border:1px solid #e5e7eb;border-radius:15px;padding:18px;margin-bottom:13px}
-.card-title{font-size:13px;font-weight:900;margin-bottom:9px}
-.explanation{font-size:11px;color:#374151;white-space:pre-line;overflow-wrap:anywhere}
+.card{
+ background:#fff;
+ border:1px solid #e5e7eb;
+ border-radius:15px;
+ padding:18px;
+ margin-bottom:13px
+}
+.title{font-size:14px;font-weight:900;margin-bottom:11px}
+.content{
+ font-size:12px;
+ color:#374151;
+ white-space:pre-line;
+ overflow-wrap:anywhere
+}
 
-.verse{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:15px}
-.reference{font-size:12px;font-weight:900;color:#92400e;margin-bottom:6px}
-.verse-text{font-size:11px;color:#374151;font-style:italic;white-space:pre-line;overflow-wrap:anywhere}
+.verse{
+ background:#fffbeb;
+ border:1px solid #fde68a;
+ border-radius:12px;
+ padding:15px
+}
+.ref{font-size:13px;font-weight:900;color:#92400e;margin-bottom:7px}
+.verse-text{
+ font-size:16px;
+ color:#374151;
+ font-style:italic;
+ white-space:pre-line
+}
 
-.assessment-title{font-size:16px;font-weight:900;margin-bottom:4px}
-.assessment-sub{font-size:9px;color:#6b7280;margin-bottom:15px}
-.question{border-top:1px solid #e5e7eb;padding:14px 0}
+.question{border-top:1px solid #e5e7eb;padding:15px 0}
 .question:first-child{border-top:0}
-.question-text{font-size:11px;font-weight:900;margin-bottom:8px;line-height:1.5}
+.question-text{font-size:11px;font-weight:900;margin-bottom:9px}
 
 .option{
-display:flex;
-align-items:flex-start;
-gap:8px;
-background:#f9fafb;
-border:1px solid #e5e7eb;
-border-radius:9px;
-padding:9px;
-margin:6px 0;
-font-size:10px;
-cursor:pointer;
+ display:flex;
+ gap:8px;
+ background:#f9fafb;
+ border:1px solid #e5e7eb;
+ border-radius:9px;
+ padding:10px;
+ margin:6px 0;
+ font-size:10px;
+ cursor:pointer
 }
-.option:hover{background:#f3f4f6}
-.option input{margin-top:3px;flex:none}
-.option.correct{background:#dcfce7;border-color:#22c55e;color:#166534;font-weight:800}
-.option.wrong{background:#fee2e2;border-color:#ef4444;color:#991b1b;font-weight:800}
-.option.disabled{cursor:not-allowed}
+.option.selected{
+ border-color:#6366f1;
+ background:#eef2ff
+}
 
-.submit,.next-btn{
-width:100%;
-border:0;
-color:#fff;
-padding:12px;
-border-radius:9px;
-font-size:10px;
-font-weight:900;
-margin-top:8px
+.submit,.next{
+ width:100%;
+ border:0;
+ color:#fff;
+ padding:12px;
+ border-radius:9px;
+ font-size:10px;
+ font-weight:900;
+ margin-top:8px
 }
 .submit{background:#111827}
-.next-btn{display:none;background:#4f46e5}
+.next{background:#4f46e5;display:none}
 .submit:disabled{opacity:.5;cursor:not-allowed}
 
-.result{display:none;margin-top:13px;padding:14px;border-radius:11px;text-align:center;font-size:10px;font-weight:800}
+.result{
+ display:none;
+ margin-top:13px;
+ padding:14px;
+ border-radius:11px;
+ text-align:center;
+ font-size:10px;
+ font-weight:800
+}
 .result.show{display:block}
 .pass{background:#dcfce7;color:#166534}
 .fail{background:#fef2f2;color:#b91c1c}
 
-footer{background:#0b1120;color:#64748b;text-align:center;padding:18px;font-size:8px}
+.done{
+ display:none;
+ background:#dcfce7;
+ color:#166534;
+ border:1px solid #86efac;
+ border-radius:10px;
+ padding:12px;
+ margin-bottom:12px;
+ text-align:center;
+ font-size:10px;
+ font-weight:900
+}
+.done.show{display:block}
+
+footer{
+ background:#0b1120;
+ color:#64748b;
+ text-align:center;
+ padding:18px;
+ font-size:8px
+}
 
 @media(max-width:500px){
-.lesson-head{padding:19px}
-.lesson-head h1{font-size:20px}
-.card{padding:15px}
+ .hero h1{font-size:20px}
+ .card{padding:15px}
+ .verse-text{font-size:14px}
+ .content{font-size:11px}
 }
 </style>
 </head>
@@ -98,14 +160,19 @@ footer{background:#0b1120;color:#64748b;text-align:center;padding:18px;font-size
 
 <header>
 <div class="container nav">
+
 <div class="logo">
-<img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png" alt="GOH Bible Academy">
+<img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 <div>
 <div class="logo-title">GOH Bible Academy</div>
 <div class="logo-sub">Gate of Heaven Ministries</div>
 </div>
 </div>
-<button class="back" id="backBtn">← Dashboard</button>
+
+<button class="back" onclick="location.href='dashboard.html'">
+← Dashboard
+</button>
+
 </div>
 </header>
 
@@ -114,41 +181,56 @@ footer{background:#0b1120;color:#64748b;text-align:center;padding:18px;font-size
 
 <div id="message" class="message"></div>
 
-<div id="lessonArea" style="display:none">
+<div id="lesson" style="display:none">
 
-<div class="lesson-head">
-<div class="label" id="lessonLabel"></div>
-<h1 id="lessonTitle"></h1>
-<p id="lessonDescription"></p>
+<div class="hero">
+<div class="label" id="number"></div>
+<h1 id="title"></h1>
+<p id="description"></p>
 </div>
 
 <div class="card">
-<div class="card-title" id="explanationTitle"></div>
-<div class="explanation" id="lessonContent"></div>
+<div class="title" id="explanationTitle">📖 Lesson Explanation</div>
+<div class="content" id="content"></div>
 </div>
 
 <div class="card">
-<div class="card-title" id="verseTitle"></div>
+<div class="title" id="verseTitle">📖 Bible Verse</div>
+
 <div class="verse">
-<div class="reference" id="bibleReference"></div>
-<div class="verse-text" id="bibleVerse"></div>
+<div class="ref" id="reference"></div>
+<div class="verse-text" id="verseText"></div>
 </div>
+
 </div>
 
-<div class="card" id="assessmentCard">
+<div class="card" id="assessment">
 
-<div class="assessment-title" id="assessmentTitle"></div>
-<div class="assessment-sub" id="assessmentSub"></div>
+<div class="title" id="assessmentTitle">
+📝 5-Question Assessment
+</div>
 
-<form id="assessment"></form>
+<p id="assessmentSub"
+style="font-size:10px;color:#666;margin-bottom:12px">
+You must score at least 70% to complete this lesson.
+</p>
 
-<button class="submit" id="submitBtn" type="button"></button>
+<div id="done" class="done"></div>
+
+<form id="questions"></form>
+
+<button class="submit" id="submit" type="button">
+Submit Assessment
+</button>
 
 <div id="result" class="result"></div>
 
-<button class="next-btn" id="nextBtn" type="button"></button>
+<button class="next" id="next" type="button">
+Continue →
+</button>
 
 </div>
+
 </div>
 </div>
 </main>
@@ -159,404 +241,408 @@ GOH Bible Academy • Gate of Heaven Ministries<br>
 </footer>
 
 <script>
+
 const API="https://lesson.createlk.workers.dev";
-const DASHBOARD="dashboard.html";
 const $=id=>document.getElementById(id);
 
-function getStudent(){
-  const raw=localStorage.getItem("goh_student")||sessionStorage.getItem("goh_student");
-  if(!raw)return null;
-  try{return JSON.parse(raw)}catch{return null}
-}
-
-const student=getStudent();
+const student=JSON.parse(
+ localStorage.getItem("goh_student") ||
+ sessionStorage.getItem("goh_student") ||
+ "null"
+);
 
 if(!student){
-  location.href="login.html";
+ location.href="login.html";
 }
 
-const params=new URLSearchParams(location.search);
+const p=new URLSearchParams(location.search);
 
-const lessonId=Number(params.get("lesson_id")||1);
-const moduleId=Number(params.get("module_id")||1);
-const studentId=Number(params.get("student_id")||student?.id||0);
+const lessonId=Number(p.get("lesson_id")||1);
+const moduleId=Number(p.get("module_id")||1);
+const studentId=Number(student.id||0);
 
-function getLanguage(){
-  const v=String(
-    student?.language||
-    localStorage.getItem("goh_language")||
-    "en"
-  ).toLowerCase();
+let questions=[];
 
-  if(v==="ta"||v==="tamil")return"ta";
-  if(v==="si"||v==="sinhala")return"si";
-  return"en";
+function getLang(){
+
+ const x=String(
+  student.language ||
+  localStorage.getItem("goh_language") ||
+  "en"
+ ).toLowerCase();
+
+ return x==="ta"||x==="tamil"
+  ?"ta"
+  :x==="si"||x==="sinhala"
+   ?"si"
+   :"en";
 }
 
-const language=getLanguage();
+const lang=getLang();
 
 const UI={
-en:{
-explanation:"📖 Lesson Explanation",
-verse:"📖 Bible Verse",
-assessment:"📝 5-Question Assessment",
-sub:"You must score at least 70% to complete this lesson.",
-submit:"Submit Assessment",
-continue:"Continue →",
-loading:"Loading lesson...",
-invalid:"Unable to load this lesson.",
-premium:"Premium membership is required for this lesson.",
-all:"Please answer all 5 questions.",
-missing:"Assessment questions are not available.",
-passed:"🎉 Congratulations! Assessment passed.",
-failed:"You need at least 70% to complete this lesson.",
-completed:"✅ Lesson completed successfully.",
-saveError:"Assessment passed, but progress could not be saved."
-},
-ta:{
-explanation:"📖 பாட விளக்கம்",
-verse:"📖 வேதாகம வசனம்",
-assessment:"📝 5 கேள்வி மதிப்பீடு",
-sub:"இந்தப் பாடத்தை நிறைவு செய்ய குறைந்தது 70% மதிப்பெண் பெற வேண்டும்.",
-submit:"மதிப்பீட்டை சமர்ப்பிக்கவும்",
-continue:"தொடரவும் →",
-loading:"பாடம் ஏற்றப்படுகிறது...",
-invalid:"இந்தப் பாடத்தை ஏற்ற முடியவில்லை.",
-premium:"இந்தப் பாடத்திற்கு Premium உறுப்பினர் தேவை.",
-all:"அனைத்து 5 கேள்விகளுக்கும் பதிலளிக்கவும்.",
-missing:"மதிப்பீட்டு கேள்விகள் கிடைக்கவில்லை.",
-passed:"🎉 வாழ்த்துகள்! மதிப்பீட்டில் தேர்ச்சி பெற்றுள்ளீர்கள்.",
-failed:"இந்தப் பாடத்தை நிறைவு செய்ய குறைந்தது 70% பெற வேண்டும்.",
-completed:"✅ பாடம் வெற்றிகரமாக நிறைவு செய்யப்பட்டது.",
-saveError:"மதிப்பீட்டில் தேர்ச்சி பெற்றாலும் முன்னேற்றத்தை சேமிக்க முடியவில்லை."
-},
-si:{
-explanation:"📖 පාඩම් පැහැදිලි කිරීම",
-verse:"📖 බයිබල් පදය",
-assessment:"📝 ප්‍රශ්න 5ක ඇගයීම",
-sub:"මෙම පාඩම සම්පූර්ණ කිරීමට අවම වශයෙන් 70%ක් ලබාගත යුතුය.",
-submit:"ඇගයීම ඉදිරිපත් කරන්න",
-continue:"ඉදිරියට →",
-loading:"පාඩම පූරණය වෙමින් පවතී...",
-invalid:"මෙම පාඩම පූරණය කළ නොහැක.",
-premium:"මෙම පාඩම සඳහා Premium සාමාජිකත්වය අවශ්‍ය වේ.",
-all:"ප්‍රශ්න 5ටම පිළිතුරු දෙන්න.",
-missing:"ඇගයීමේ ප්‍රශ්න ලබා ගත නොහැක.",
-passed:"🎉 සුභ පැතුම්! ඔබ ඇගයීම සමත් වී ඇත.",
-failed:"මෙම පාඩම සම්පූර්ණ කිරීමට අවම වශයෙන් 70%ක් අවශ්‍ය වේ.",
-completed:"✅ පාඩම සාර්ථකව සම්පූර්ණ කරන ලදී.",
-saveError:"ඇගයීම සමත් වුවද ප්‍රගතිය සුරැකීමට නොහැකි විය."
-}
-};
+ en:{
+  explanation:"📖 Lesson Explanation",
+  verse:"📖 Bible Verse",
+  assessment:"📝 5-Question Assessment",
+  sub:"You must score at least 70% to complete this lesson.",
+  submit:"Submit Assessment",
+  completed:"✓ This lesson has already been completed.",
+  loading:"Loading lesson...",
+  all:"Please answer all 5 questions.",
+  missing:"Assessment questions are not available.",
+  pass:"🎉 Congratulations! You passed.",
+  fail:"You need at least 70% to pass.",
+  saving:"Saving progress...",
+  saved:"✓ Progress saved.",
+  complete:"✓ Lesson completed successfully.",
+  continue:"Continue →"
+ },
 
-const T=UI[language];
+ ta:{
+  explanation:"📖 பாட விளக்கம்",
+  verse:"📖 வேதாகம வசனம்",
+  assessment:"📝 5 கேள்வி மதிப்பீடு",
+  sub:"இந்தப் பாடத்தை நிறைவு செய்ய குறைந்தது 70% பெற வேண்டும்.",
+  submit:"மதிப்பீட்டை சமர்ப்பிக்கவும்",
+  completed:"✓ இந்தப் பாடம் ஏற்கனவே நிறைவு செய்யப்பட்டுள்ளது.",
+  loading:"பாடம் ஏற்றப்படுகிறது...",
+  all:"அனைத்து 5 கேள்விகளுக்கும் பதிலளிக்கவும்.",
+  missing:"மதிப்பீட்டு கேள்விகள் கிடைக்கவில்லை.",
+  pass:"🎉 வாழ்த்துகள்! நீங்கள் தேர்ச்சி பெற்றுள்ளீர்கள்.",
+  fail:"தேர்ச்சி பெற குறைந்தது 70% தேவை.",
+  saving:"முன்னேற்றம் சேமிக்கப்படுகிறது...",
+  saved:"✓ முன்னேற்றம் சேமிக்கப்பட்டது.",
+  complete:"✓ பாடம் வெற்றிகரமாக நிறைவு செய்யப்பட்டது.",
+  continue:"தொடரவும் →"
+ },
 
-$("explanationTitle").textContent=T.explanation;
-$("verseTitle").textContent=T.verse;
-$("assessmentTitle").textContent=T.assessment;
-$("assessmentSub").textContent=T.sub;
-$("submitBtn").textContent=T.submit;
-$("nextBtn").textContent=T.continue;
+ si:{
+  explanation:"📖 පාඩම් පැහැදිලි කිරීම",
+  verse:"📖 බයිබල් පදය",
+  assessment:"📝 ප්‍රශ්න 5ක ඇගයීම",
+  sub:"මෙම පාඩම සම්පූර්ණ කිරීමට අවම වශයෙන් 70%ක් ලබාගත යුතුය.",
+  submit:"ඇගයීම ඉදිරිපත් කරන්න",
+  completed:"✓ මෙම පාඩම දැනටමත් සම්පූර්ණ කර ඇත.",
+  loading:"පාඩම පූරණය වෙමින් පවතී...",
+  all:"කරුණාකර ප්‍රශ්න 5ටම පිළිතුරු දෙන්න.",
+  missing:"ඇගයීමේ ප්‍රශ්න නොමැත.",
+  pass:"🎉 සුභ පැතුම්! ඔබ සමත් වී ඇත.",
+  fail:"සමත් වීමට අවම වශයෙන් 70% අවශ්‍යයි.",
+  saving:"ප්‍රගතිය සුරැකෙමින් පවතී...",
+  saved:"✓ ප්‍රගතිය සුරැකුණි.",
+  complete:"✓ පාඩම සාර්ථකව සම්පූර්ණ කරන ලදී.",
+  continue:"ඉදිරියට →"
+ }
+}[lang];
 
-function showMessage(text,type){
-  $("message").textContent=text;
-  $("message").className="message show "+type;
+$("explanationTitle").textContent=UI.explanation;
+$("verseTitle").textContent=UI.verse;
+$("assessmentTitle").textContent=UI.assessment;
+$("assessmentSub").textContent=UI.sub;
+$("submit").textContent=UI.submit;
+$("next").textContent=UI.continue;
+
+
+/* MESSAGE */
+
+function message(text,type){
+ $("message").textContent=text;
+ $("message").className="message show "+type;
 }
 
 function hideMessage(){
-  $("message").textContent="";
-  $("message").className="message";
+ $("message").className="message";
 }
 
-function esc(v){
-  return String(v??"").replace(/[&<>"']/g,m=>({
-    "&":"&amp;","<":"&lt;",">":"&gt;",
-    '"':"&quot;","'":"&#039;"
-  }[m]));
-}
 
-let currentQuestions=[];
+/* QUESTIONS */
 
-/* Convert database question to frontend format */
-function normalizeQuestion(q){
+function build(){
 
-  let options=[];
+ const box=$("questions");
+ box.innerHTML="";
 
-  if(language==="ta"){
-    try{options=JSON.parse(q.options_ta||"[]")}catch{}
-  }else if(language==="si"){
-    try{options=JSON.parse(q.options_si||"[]")}catch{}
-  }else{
-    try{options=JSON.parse(q.options_en||"[]")}catch{}
-  }
+ if(questions.length!==5){
 
-  let question="";
+  $("submit").style.display="none";
 
-  if(language==="ta"){
-    question=q.question_ta||q.question_en||"";
-  }else if(language==="si"){
-    question=q.question_si||q.question_en||"";
-  }else{
-    question=q.question_en||"";
-  }
+  message(UI.missing,"error");
 
-  return{
-    id:q.id,
-    question:question,
-    options:options,
-    answer:Number(q.correct_answer)
+  return;
+ }
+
+ questions.forEach((q,i)=>{
+
+  const div=document.createElement("div");
+  div.className="question";
+
+  div.innerHTML=`
+   <div class="question-text">
+    ${i+1}. ${escapeHTML(q.question||"")}
+   </div>
+
+   ${(Array.isArray(q.options)?q.options:[]).map((o,n)=>`
+    <label class="option">
+     <input type="radio" name="q${i}" value="${n}">
+     <span>${escapeHTML(o)}</span>
+    </label>
+   `).join("")}
+  `;
+
+  box.appendChild(div);
+ });
+
+ box.querySelectorAll("input").forEach(input=>{
+
+  input.onchange=()=>{
+
+   document.querySelectorAll(
+    `input[name="${input.name}"]`
+   ).forEach(x=>{
+    x.closest(".option").classList.remove("selected");
+   });
+
+   input.closest(".option").classList.add("selected");
   };
+
+ });
 }
 
-function buildQuestions(rows){
 
-  const questions=rows
-    .map(normalizeQuestion)
-    .filter(q=>q.question&&q.options.length>=2);
+/* ESCAPE */
 
-  currentQuestions=questions.slice(0,5);
+function escapeHTML(value){
 
-  const form=$("assessment");
-  form.innerHTML="";
-
-  if(currentQuestions.length!==5){
-    $("submitBtn").style.display="none";
-    form.innerHTML=
-      `<div class="message show error">${esc(T.missing)}</div>`;
-    return false;
-  }
-
-  $("submitBtn").style.display="block";
-
-  currentQuestions.forEach((q,index)=>{
-
-    const div=document.createElement("div");
-    div.className="question";
-
-    div.innerHTML=`
-      <div class="question-text">
-        ${index+1}. ${esc(q.question)}
-      </div>
-
-      ${q.options.map((option,i)=>`
-        <label class="option">
-          <input type="radio" name="q${index}" value="${i}">
-          <span>${esc(option)}</span>
-        </label>
-      `).join("")}
-    `;
-
-    form.appendChild(div);
-  });
-
-  return true;
+ return String(value)
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
 }
 
-async function loadLesson(){
 
-  showMessage(T.loading,"loading");
+/* COMPLETED */
 
-  try{
+function completed(){
 
-    if(!Number.isInteger(lessonId)||lessonId<1)
-      throw new Error(T.invalid);
+ $("questions").innerHTML="";
 
-    if(!Number.isInteger(studentId)||studentId<1)
-      throw new Error(T.invalid);
+ $("submit").style.display="none";
 
-    const url=
-      API+
-      "/lesson?lesson_id="+encodeURIComponent(lessonId)+
-      "&module_id="+encodeURIComponent(moduleId)+
-      "&student_id="+encodeURIComponent(studentId)+
-      "&language="+encodeURIComponent(language);
+ $("done").textContent=UI.completed;
+ $("done").classList.add("show");
 
-    const response=await fetch(url);
-    const data=await response.json();
+ /*
+  Only ONE completion message.
+  Result is hidden.
+ */
 
-    if(!response.ok||!data.success)
-      throw new Error(data.message||T.invalid);
+ $("result").className="result";
 
-    if(data.lesson?.locked===true){
-      showMessage(T.premium,"error");
-      setTimeout(()=>location.href="premium.html",1200);
-      return;
-    }
-
-    const lesson=data.lesson;
-
-    $("lessonLabel").textContent=
-      "LESSON "+Number(lesson.lesson_number||lessonId);
-
-    $("lessonTitle").textContent=lesson.title||"";
-    $("lessonDescription").textContent=lesson.description||"";
-    $("lessonContent").textContent=lesson.content||"";
-    $("bibleReference").textContent=lesson.bible_reference||"";
-    $("bibleVerse").textContent=lesson.bible_verse||"";
-
-    $("lessonArea").style.display="block";
-    hideMessage();
-
-    const rows=Array.isArray(data.questions)
-      ? data.questions
-      : [];
-
-    buildQuestions(rows);
-
-  }catch(error){
-
-    console.error(error);
-
-    showMessage(error.message||T.invalid,"error");
-  }
+ $("next").style.display="block";
 }
 
-$("submitBtn").onclick=async()=>{
 
-  if(currentQuestions.length!==5){
-    showMessage(T.missing,"error");
-    return;
+/* LOAD */
+
+async function load(){
+
+ message(UI.loading,"loading");
+
+ try{
+
+  if(!Number.isInteger(lessonId)||lessonId<1)
+   throw Error("Invalid lesson ID.");
+
+  if(!studentId)
+   throw Error("Invalid student ID.");
+
+  const r=await fetch(
+   API+
+   `/lesson?lesson_id=${lessonId}`+
+   `&module_id=${moduleId}`+
+   `&student_id=${studentId}`+
+   `&language=${lang}`
+  );
+
+  const d=await r.json();
+
+  if(!r.ok||!d.success)
+   throw Error(d.message||"Unable to load lesson.");
+
+  if(d.lesson?.locked){
+
+   message(
+    lang==="ta"
+     ?"இந்தப் பாடத்திற்கு Premium உறுப்பினர் தேவை."
+     :lang==="si"
+      ?"මෙම පාඩම සඳහා Premium සාමාජිකත්වය අවශ්‍ය වේ."
+      :"Premium membership is required.",
+    "error"
+   );
+
+   setTimeout(()=>{
+    location.href="premium.html";
+   },1000);
+
+   return;
   }
 
-  let score=0;
-  let answered=0;
+  const l=d.lesson;
 
-  currentQuestions.forEach((q,index)=>{
+  $("number").textContent=
+   "LESSON "+(l.lesson_number||lessonId);
 
-    const selected=document.querySelector(
-      `input[name="q${index}"]:checked`
-    );
+  $("title").textContent=l.title||"";
+  $("description").textContent=l.description||"";
+  $("content").textContent=l.content||"";
+  $("reference").textContent=l.bible_reference||"";
+  $("verseText").textContent=l.bible_verse||"";
 
-    if(selected)answered++;
-
-  });
-
-  if(answered!==5){
-    showMessage(T.all,"error");
-    return;
-  }
+  $("lesson").style.display="block";
 
   hideMessage();
 
-  currentQuestions.forEach((q,index)=>{
+  questions=(d.questions||[]).slice(0,5);
 
-    const selected=document.querySelector(
-      `input[name="q${index}"]:checked`
-    );
+  build();
 
-    const selectedAnswer=Number(selected.value);
-    const correctAnswer=Number(q.answer);
-
-    if(selectedAnswer===correctAnswer)score++;
-
-    const question=
-      document.querySelectorAll(".question")[index];
-
-    question.querySelectorAll(".option").forEach((option,i)=>{
-
-      option.classList.add("disabled");
-
-      const input=option.querySelector("input");
-      input.disabled=true;
-
-      if(i===correctAnswer)
-        option.classList.add("correct");
-
-      if(i===selectedAnswer&&selectedAnswer!==correctAnswer)
-        option.classList.add("wrong");
-    });
-  });
-
-  const percent=Math.round(score/5*100);
-  const result=$("result");
-
-  result.className="result show";
-
-  $("submitBtn").disabled=true;
-
-  if(percent>=70){
-
-    result.classList.add("pass");
-    result.textContent=
-      T.passed+" "+score+"/5 ("+percent+"%)";
-
-    try{
-
-      await completeLesson();
-
-      result.textContent=
-        T.completed+" "+score+"/5 ("+percent+"%)";
-
-    }catch(e){
-
-      console.error(e);
-
-      result.textContent=
-        T.saveError+" "+score+"/5 ("+percent+"%)";
-    }
-
-    $("nextBtn").style.display="block";
-
-  }else{
-
-    result.classList.add("fail");
-    result.textContent=
-      T.failed+" "+score+"/5 ("+percent+"%)";
-
-    setTimeout(resetAssessment,1200);
+  if(l.completed){
+   completed();
   }
-};
 
-function resetAssessment(){
+ }catch(e){
 
-  document.querySelectorAll(".option").forEach(option=>{
+  console.error(e);
+  message(e.message||UI.missing,"error");
 
-    option.classList.remove(
-      "correct",
-      "wrong",
-      "disabled"
-    );
-
-    const input=option.querySelector("input");
-    input.disabled=false;
-    input.checked=false;
-  });
-
-  $("result").className="result";
-  $("submitBtn").disabled=false;
+ }
 }
 
-async function completeLesson(){
 
-  const response=await fetch(API+"/complete",{
+/* SUBMIT */
+
+$("submit").onclick=async()=>{
+
+ const selected=[
+  ...document.querySelectorAll(
+   "#questions input:checked"
+  )
+ ];
+
+ if(selected.length!==5){
+
+  message(UI.all,"error");
+  return;
+ }
+
+ let score=0;
+
+ selected.forEach(input=>{
+
+  const i=Number(
+   input.name.substring(1)
+  );
+
+  if(
+   Number(input.value)===
+   Number(questions[i].answer)
+  ){
+   score++;
+  }
+
+ });
+
+ const percent=score*20;
+
+ if(percent<70){
+
+  $("result").className="result show fail";
+
+  $("result").textContent=
+   `${UI.fail} Score: ${percent}%`;
+
+  return;
+ }
+
+
+ $("submit").disabled=true;
+ $("submit").textContent=UI.saving;
+
+
+ try{
+
+  const r=await fetch(
+   API+"/complete",
+   {
     method:"POST",
     headers:{
-      "Content-Type":"application/json"
+     "Content-Type":"application/json"
     },
     body:JSON.stringify({
-      student_id:studentId,
-      lesson_id:lessonId
+     student_id:studentId,
+     lesson_id:lessonId,
+     module_id:moduleId
     })
-  });
+   }
+  );
 
-  const data=await response.json();
+  const d=await r.json();
 
-  if(!response.ok||!data.success){
-    throw new Error(
-      data.message||"Unable to save progress."
-    );
-  }
-}
+  if(!r.ok||!d.success)
+   throw Error(
+    d.message||"Unable to save progress."
+   );
 
-$("backBtn").onclick=()=>{
-  location.href=DASHBOARD;
+
+  $("questions").innerHTML="";
+
+  $("done").textContent=UI.complete;
+  $("done").classList.add("show");
+
+  $("result").className="result show pass";
+  $("result").textContent=
+   `${UI.pass} Score: ${percent}%`;
+
+  $("submit").style.display="none";
+
+  $("next").style.display="block";
+
+  message(UI.saved,"success");
+
+
+ }catch(e){
+
+  $("submit").disabled=false;
+  $("submit").textContent=UI.submit;
+
+  message(
+   e.message||"Unable to save progress.",
+   "error"
+  );
+
+ }
 };
 
-$("nextBtn").onclick=()=>{
-  location.href=DASHBOARD;
+
+/* NEXT */
+
+$("next").onclick=()=>{
+
+ location.href=
+  `lesson.html?lesson_id=${lessonId+1}`+
+  `&module_id=${moduleId}`+
+  `&student_id=${studentId}`;
+
 };
 
-if(student)loadLesson();
+
+/* START */
+
+load();
+
 </script>
 
 </body>
