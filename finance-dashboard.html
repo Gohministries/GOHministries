@@ -276,8 +276,6 @@ Welcome, <b id="user">Loading...</b>
 
 </div>
 
-<!-- MAIN SUMMARY -->
-
 <div class="stats">
 
 <div class="card stat income">
@@ -301,8 +299,6 @@ Welcome, <b id="user">Loading...</b>
 </div>
 
 </div>
-
-<!-- MONTH -->
 
 <div class="card section">
 
@@ -329,8 +325,6 @@ Welcome, <b id="user">Loading...</b>
 
 </div>
 
-<!-- APPROVALS -->
-
 <div class="card section">
 
 <h3>Pending Approvals</h3>
@@ -350,8 +344,6 @@ Welcome, <b id="user">Loading...</b>
 </div>
 
 </div>
-
-<!-- QUICK MENU -->
 
 <div class="card section">
 
@@ -378,8 +370,6 @@ Welcome, <b id="user">Loading...</b>
 </div>
 
 </div>
-
-<!-- FINANCIAL STATUS -->
 
 <div class="card section">
 
@@ -474,7 +464,9 @@ async function check(){
   const d=await r.json();
 
   if(!r.ok||!d.success)
-   throw Error();
+   throw Error(
+    d.error||"Authentication failed."
+   );
 
   document.getElementById("user")
    .textContent=d.user.name;
@@ -500,7 +492,10 @@ async function loadDashboard(){
 
   const r=await fetch(
    API+"/api/dashboard",
-   {headers:headers()}
+   {
+    method:"GET",
+    headers:headers()
+   }
   );
 
   const d=await r.json();
@@ -510,21 +505,39 @@ async function loadDashboard(){
     d.error||"Unable to load dashboard."
    );
 
-  const income=Number(d.total_income)||0;
-  const expenses=Number(d.total_expenses)||0;
-  const balance=Number(d.balance)||0;
+  const income=
+   Number(d.total_income)||0;
 
-  const mi=Number(
-   d.this_month?.income
-  )||0;
+  const expenses=
+   Number(d.total_expenses)||0;
 
-  const me=Number(
-   d.this_month?.expenses
-  )||0;
+  const donations=
+   Number(d.total_donations)||0;
 
-  const mb=Number(
-   d.this_month?.balance
-  )||0;
+  const balance=
+   Number(
+    d.balance
+   )||income-expenses;
+
+  const mi=
+   Number(
+    d.this_month?.income
+   )||0;
+
+  const me=
+   Number(
+    d.this_month?.expenses
+   )||0;
+
+  const md=
+   Number(
+    d.this_month?.donations
+   )||0;
+
+  const mb=
+   Number(
+    d.this_month?.balance
+   )||mi-me;
 
   document.getElementById("income")
    .textContent=money(income);
@@ -532,18 +545,11 @@ async function loadDashboard(){
   document.getElementById("expenses")
    .textContent=money(expenses);
 
+  document.getElementById("donations")
+   .textContent=money(donations);
+
   document.getElementById("balance")
    .textContent=money(balance);
-
-  /*
-   The current Worker dashboard endpoint
-   does not return total donations.
-   Donations remain available through
-   the Donations page and Reports page.
-  */
-
-  document.getElementById("donations")
-   .textContent="See Reports";
 
   document.getElementById("monthIncome")
    .textContent=money(mi);
@@ -573,7 +579,10 @@ async function loadDashboard(){
 
  }catch(e){
 
-  showError(e.message);
+  showError(
+   e.message||
+   "Unable to load dashboard."
+  );
 
  }
 
