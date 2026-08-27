@@ -3,44 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Lesson 1 | GOH Bible Academy</title>
+
+<title>Lesson | GOH Bible Academy</title>
+
 <meta name="theme-color" content="#111827">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0
+}
+
 body{
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:Arial,sans-serif;
   background:#f3f6fb;
   color:#172033;
   line-height:1.6
 }
-.container{width:min(850px,94%);margin:auto}
+
+.container{
+  width:min(850px,94%);
+  margin:auto
+}
+
 header{
   background:#fff;
-  border-bottom:1px solid #e5e7eb;
-  position:sticky;
-  top:0;
-  z-index:10
+  border-bottom:1px solid #e5e7eb
 }
+
 .nav{
-  min-height:62px;
+  min-height:64px;
   display:flex;
   align-items:center;
   justify-content:space-between
 }
+
 .logo{
   display:flex;
   align-items:center;
   gap:9px
 }
+
 .logo img{
   width:40px;
   height:40px;
   object-fit:contain;
   border-radius:9px
 }
-.logo-title{font-size:13px;font-weight:900}
-.logo-sub{font-size:8px;color:#6b7280}
+
+.logo-title{
+  font-size:13px;
+  font-weight:900
+}
+
+.logo-sub{
+  font-size:8px;
+  color:#6b7280
+}
+
 .back{
   border:0;
   background:#111827;
@@ -51,110 +72,195 @@ header{
   font-weight:900;
   cursor:pointer
 }
-main{padding:24px 0 45px}
-.hero{
-  background:#111827;
-  color:#fff;
-  border-radius:18px;
-  padding:23px;
-  margin-bottom:15px
+
+main{
+  padding:24px 0 45px
 }
-.label{
-  color:#fbbf24;
-  font-size:9px;
-  font-weight:900;
-  letter-spacing:1px
+
+.message{
+  display:none;
+  padding:11px;
+  border-radius:9px;
+  margin-bottom:12px;
+  text-align:center;
+  font-size:10px;
+  font-weight:800
 }
-.hero h1{font-size:24px;margin-top:4px}
-.hero p{font-size:10px;color:#d1d5db}
-.card{
+
+.message.show{
+  display:block
+}
+
+.error{
+  background:#fef2f2;
+  color:#b91c1c
+}
+
+.loading{
+  background:#eff6ff;
+  color:#1d4ed8
+}
+
+.success{
+  background:#f0fdf4;
+  color:#15803d
+}
+
+.lesson-card{
   background:#fff;
   border:1px solid #e5e7eb;
-  border-radius:16px;
-  padding:20px;
-  margin-bottom:15px
+  border-radius:18px;
+  padding:22px;
+  margin-bottom:16px
 }
-.card-title{
-  font-size:14px;
+
+.badge{
+  display:inline-block;
+  background:#dcfce7;
+  color:#166534;
+  padding:5px 8px;
+  border-radius:6px;
+  font-size:8px;
   font-weight:900;
-  margin-bottom:9px
+  margin-bottom:8px
 }
+
+h1{
+  font-size:24px;
+  margin-bottom:5px
+}
+
+.description{
+  font-size:11px;
+  color:#6b7280;
+  margin-bottom:18px
+}
+
 .content{
   font-size:12px;
-  white-space:pre-wrap
+  white-space:pre-line;
+  margin-bottom:20px
 }
+
 .verse{
   background:#fffbeb;
   border:1px solid #fde68a;
-  border-radius:14px;
-  padding:17px;
-  margin-top:15px
+  border-radius:13px;
+  padding:16px;
+  margin-bottom:20px
 }
-.reference{
-  font-size:11px;
+
+.verse-title{
+  font-size:10px;
   font-weight:900;
   color:#92400e;
   margin-bottom:6px
 }
+
+.reference{
+  font-size:10px;
+  font-weight:900;
+  margin-bottom:6px
+}
+
 .verse-text{
-  font-size:13px;
-  font-weight:700;
-  color:#451a03
+  font-size:12px;
+  font-style:italic
 }
-.question{
+
+.assessment{
+  background:#fff;
   border:1px solid #e5e7eb;
-  border-radius:13px;
-  padding:15px;
-  margin-top:12px
+  border-radius:18px;
+  padding:20px
 }
+
+.assessment h2{
+  font-size:17px;
+  margin-bottom:4px
+}
+
+.assessment-sub{
+  font-size:9px;
+  color:#6b7280;
+  margin-bottom:16px
+}
+
+.question{
+  padding:14px;
+  border:1px solid #e5e7eb;
+  border-radius:11px;
+  margin-bottom:10px
+}
+
 .question-title{
   font-size:11px;
   font-weight:900;
   margin-bottom:9px
 }
+
 .option{
   display:block;
   background:#f8fafc;
-  border:1px solid #e5e7eb;
-  border-radius:9px;
-  padding:9px;
-  margin-top:7px;
-  font-size:10px;
+  border-radius:8px;
+  padding:8px;
+  margin-top:6px;
+  font-size:9px;
   cursor:pointer
 }
-.option:hover{background:#f1f5f9}
-.option input{margin-right:7px}
+
+.option input{
+  margin-right:6px
+}
+
 .submit{
   width:100%;
   border:0;
   background:#111827;
   color:#fff;
-  padding:13px;
-  border-radius:10px;
-  font-size:11px;
+  padding:11px;
+  border-radius:9px;
+  font-size:10px;
   font-weight:900;
   cursor:pointer;
-  margin-top:18px
+  margin-top:5px
 }
-.submit:disabled{opacity:.5;cursor:not-allowed}
+
 .result{
   display:none;
-  margin-top:14px;
-  padding:13px;
-  border-radius:10px;
+  margin-top:12px;
+  padding:12px;
+  border-radius:9px;
   text-align:center;
   font-size:10px;
   font-weight:900
 }
-.result.show{display:block}
-.result.success{background:#dcfce7;color:#166534}
-.result.error{background:#fee2e2;color:#991b1b}
-.loading{
-  text-align:center;
-  padding:30px;
-  color:#6b7280;
-  font-size:11px
+
+.result.show{
+  display:block
 }
+
+.pass{
+  background:#dcfce7;
+  color:#166534
+}
+
+.fail{
+  background:#fef2f2;
+  color:#b91c1c
+}
+
+.complete{
+  background:#f0fdf4;
+  border:1px solid #bbf7d0;
+  padding:13px;
+  border-radius:10px;
+  font-size:10px;
+  font-weight:900;
+  text-align:center;
+  margin-bottom:15px
+}
+
 footer{
   background:#0b1120;
   color:#64748b;
@@ -162,12 +268,10 @@ footer{
   padding:18px;
   font-size:8px
 }
-.hidden{display:none}
 
 @media(max-width:500px){
-  .hero h1{font-size:20px}
-  .card{padding:15px}
-  .content{font-size:11px}
+  h1{font-size:20px}
+  .lesson-card,.assessment{padding:16px}
 }
 </style>
 </head>
@@ -175,82 +279,38 @@ footer{
 <body>
 
 <header>
-  <div class="container nav">
+<div class="container nav">
 
-    <div class="logo">
-      <img
-        src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
-        alt="GOH Bible Academy">
+<div class="logo">
 
-      <div>
-        <div class="logo-title">GOH Bible Academy</div>
-        <div class="logo-sub">Gate of Heaven Ministries</div>
-      </div>
-    </div>
+<img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 
-    <button class="back" onclick="goDashboard()">
-      ← Dashboard
-    </button>
+<div>
+<div class="logo-title">GOH Bible Academy</div>
+<div class="logo-sub">Gate of Heaven Ministries</div>
+</div>
 
-  </div>
+</div>
+
+<button class="back" id="back">
+← Dashboard
+</button>
+
+</div>
 </header>
 
 <main>
+
 <div class="container">
 
-  <div id="loading" class="card loading">
-    Loading Lesson 1...
-  </div>
+<div id="message" class="message"></div>
 
-  <div id="lessonArea" class="hidden">
+<div id="lessonArea"></div>
 
-    <div class="hero">
-      <div class="label">MODULE 01 • LESSON 1</div>
-      <h1 id="lessonTitle"></h1>
-      <p id="lessonDescription"></p>
-    </div>
-
-    <div class="card">
-      <div class="card-title">📖 Lesson</div>
-      <div id="lessonContent" class="content"></div>
-
-      <div class="verse">
-        <div id="bibleReference" class="reference"></div>
-        <div id="bibleVerse" class="verse-text"></div>
-      </div>
-    </div>
-
-    <div class="card">
-
-      <div class="card-title">
-        📝 5-Question Assessment
-      </div>
-
-      <p style="font-size:10px;color:#6b7280">
-        Answer all 5 questions. You must pass the assessment
-        before Lesson 1 is marked as completed.
-      </p>
-
-      <form id="quizForm">
-
-        <div id="questions"></div>
-
-        <button
-          type="submit"
-          class="submit"
-          id="submitBtn">
-          Submit Assessment
-        </button>
-
-      </form>
-
-      <div id="result" class="result"></div>
-
-    </div>
-
-  </div>
+<div id="assessmentArea"></div>
 
 </div>
+
 </main>
 
 <footer>
@@ -263,106 +323,98 @@ GOH Bible Academy • Gate of Heaven Ministries<br>
 const API =
 "https://lesson.createlk.workers.dev";
 
-const DASHBOARD =
-"https://dashboard.createlk.workers.dev";
+const params =
+new URLSearchParams(location.search);
 
-const MODULE_ID = 1;
-const LESSON_NUMBER = 1;
+const lessonId =
+Number(params.get("lesson_id"));
 
-let student = null;
-let lesson = null;
-let questions = [];
-
-
-/* =========================
-   STUDENT
-========================= */
+const studentId =
+Number(params.get("student_id"));
 
 function getStudent(){
 
-  let raw =
-    localStorage.getItem("goh_student");
-
-  if(!raw){
-    raw =
-      sessionStorage.getItem("goh_student");
-  }
-
-  if(!raw) return null;
+  const raw =
+    localStorage.getItem("goh_student") ||
+    sessionStorage.getItem("goh_student");
 
   try{
-    return JSON.parse(raw);
+    return raw ? JSON.parse(raw) : null;
   }catch{
     return null;
   }
 }
 
-
-student = getStudent();
+const student =
+getStudent();
 
 if(!student){
+  location.href="login.html";
+}
 
-  window.location.href =
-    "login.html";
+if(!lessonId || !studentId){
+  showMessage(
+    "Invalid lesson information.",
+    "error"
+  );
+}else{
+  loadLesson();
+}
+
+function showMessage(text,type){
+
+  const el =
+    document.getElementById("message");
+
+  el.textContent=text;
+  el.className=
+    "message show "+type;
+}
+
+function esc(value){
+
+  return String(value ?? "")
+    .replace(/[&<>"']/g,m=>({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+    }[m]));
 
 }
 
+function language(){
 
-/* =========================
-   LANGUAGE
-========================= */
-
-function getLanguage(){
-
-  const value =
+  const x =
     String(
-      student?.language || "English"
+      student?.language || "en"
     ).toLowerCase();
 
-  if(
-    value === "ta" ||
-    value === "tamil"
-  ){
-    return "ta";
-  }
+  if(x==="ta" || x==="tamil") return "ta";
 
-  if(
-    value === "si" ||
-    value === "sinhala"
-  ){
-    return "si";
-  }
+  if(x==="si" || x==="sinhala") return "si";
 
   return "en";
 }
 
-
-/* =========================
-   LOAD LESSON
-========================= */
-
 async function loadLesson(){
 
-  const language =
-    getLanguage();
+  showMessage(
+    "Loading Lesson...",
+    "loading"
+  );
 
   try{
 
-    /*
-      Lesson 1 is requested from
-      the separate Cloudflare Lesson Worker.
-    */
-
     const url =
-      API +
-      "/lesson?module_id=" +
-      encodeURIComponent(MODULE_ID) +
-      "&lesson_number=" +
-      encodeURIComponent(LESSON_NUMBER) +
-      "&student_id=" +
-      encodeURIComponent(student.id) +
-      "&language=" +
-      encodeURIComponent(language);
+      API+
+      "/lesson?lesson_id="+
+      encodeURIComponent(lessonId)+
+      "&student_id="+
+      encodeURIComponent(studentId)+
+      "&language="+
+      language();
 
     const response =
       await fetch(url);
@@ -370,437 +422,384 @@ async function loadLesson(){
     const data =
       await response.json();
 
+    if(response.status===403 &&
+       data.premium_required){
+
+      location.href="premium.html";
+      return;
+    }
+
     if(!response.ok || !data.success){
 
       throw new Error(
         data.message ||
-        "Unable to load Lesson 1."
+        "Unable to load lesson."
       );
 
     }
 
-    /*
-      Worker may return lesson directly
-      or inside data.lesson.
-    */
+    document.getElementById(
+      "message"
+    ).className="message";
 
-    lesson =
-      data.lesson || data;
-
-    renderLesson();
+    renderLesson(data);
 
   }catch(error){
 
-    console.error(error);
-
-    document.getElementById("loading").innerHTML =
-      "Unable to load Lesson 1.<br><br>" +
-      escapeHtml(
-        error.message ||
-        "Cloudflare Worker error."
-      );
+    showMessage(
+      error.message ||
+      "Unable to load lesson.",
+      "error"
+    );
 
   }
 
 }
 
+function renderLesson(data){
 
-/* =========================
-   RENDER LESSON
-========================= */
+  const l =
+    data.lesson;
 
-function renderLesson(){
+  let html="";
 
-  document.getElementById("loading")
-    .classList.add("hidden");
+  html+=`
 
-  document.getElementById("lessonArea")
-    .classList.remove("hidden");
+    <div class="lesson-card">
 
-  document.getElementById("lessonTitle")
-    .textContent =
-      lesson.title || "Lesson 1";
+      <span class="badge">
+        LESSON ${esc(l.lesson_number)}
+      </span>
 
-  document.getElementById("lessonDescription")
-    .textContent =
-      lesson.description || "";
+      <h1>
+        ${esc(l.title)}
+      </h1>
 
-  document.getElementById("lessonContent")
-    .textContent =
-      lesson.content || "";
-
-  document.getElementById("bibleReference")
-    .textContent =
-      lesson.bible_reference || "";
-
-  document.getElementById("bibleVerse")
-    .textContent =
-      lesson.bible_verse || "";
-
-  /*
-    Questions can be supplied by
-    the Lesson Worker.
-  */
-
-  questions =
-    Array.isArray(lesson.questions)
-      ? lesson.questions
-      : Array.isArray(dataQuestionsFallback())
-        ? dataQuestionsFallback()
-        : [];
-
-  renderQuestions();
-
-}
-
-
-/* =========================
-   QUESTIONS
-========================= */
-
-function renderQuestions(){
-
-  const box =
-    document.getElementById("questions");
-
-  box.innerHTML = "";
-
-  if(questions.length !== 5){
-
-    box.innerHTML = `
-      <div class="result show error">
-        The 5-question assessment is not available yet.
+      <div class="description">
+        ${esc(l.description)}
       </div>
+
+      <div class="content">
+        ${esc(l.content)}
+      </div>
+
+  `;
+
+  if(l.bible_reference || l.bible_verse){
+
+    html+=`
+
+      <div class="verse">
+
+        <div class="verse-title">
+          📖 BIBLE VERSE
+        </div>
+
+        <div class="reference">
+          ${esc(l.bible_reference)}
+        </div>
+
+        <div class="verse-text">
+          ${esc(l.bible_verse)}
+        </div>
+
+      </div>
+
     `;
 
-    document.getElementById("submitBtn")
-      .disabled = true;
+  }
 
-    return;
+  if(l.completed){
+
+    html+=`
+
+      <div class="complete">
+        ✅ You have already completed this lesson.
+      </div>
+
+    `;
 
   }
 
-  questions.forEach(
-    (question,index)=>{
+  html+=`</div>`;
 
-      const number =
-        index + 1;
+  document.getElementById(
+    "lessonArea"
+  ).innerHTML=html;
 
-      const options =
-        Array.isArray(question.options)
-          ? question.options
-          : [];
+  renderAssessment();
 
-      const div =
-        document.createElement("div");
+}
 
-      div.className =
-        "question";
+function renderAssessment(){
 
-      let html = `
+  const questions=[
+    {
+      q:"What is the Bible?",
+      options:[
+        "The Word of God",
+        "A history book only",
+        "A newspaper",
+        "A dictionary"
+      ],
+      answer:0
+    },
+    {
+      q:"Why should Christians study the Bible?",
+      options:[
+        "To know God and His will",
+        "Only for entertainment",
+        "To become famous",
+        "To avoid prayer"
+      ],
+      answer:0
+    },
+    {
+      q:"What should we do when reading Scripture?",
+      options:[
+        "Read and understand it carefully",
+        "Ignore its meaning",
+        "Change every verse",
+        "Read only the title"
+      ],
+      answer:0
+    },
+    {
+      q:"Who is the central focus of Christian Scripture?",
+      options:[
+        "God and His redemptive work",
+        "World politics",
+        "Money",
+        "Sports"
+      ],
+      answer:0
+    },
+    {
+      q:"What is an important purpose of God's Word?",
+      options:[
+        "Teaching and guiding believers",
+        "Providing entertainment only",
+        "Replacing prayer",
+        "Making people wealthy"
+      ],
+      answer:0
+    }
+  ];
+
+  let html=`
+
+    <div class="assessment">
+
+      <h2>📝 5-Question Assessment</h2>
+
+      <div class="assessment-sub">
+        You must score at least 70% to complete this lesson.
+      </div>
+
+  `;
+
+  questions.forEach((q,i)=>{
+
+    html+=`
+
+      <div class="question">
+
         <div class="question-title">
-          ${number}. ${escapeHtml(
-            question.question || ""
-          )}
+          ${i+1}. ${esc(q.q)}
         </div>
+
+    `;
+
+    q.options.forEach((option,j)=>{
+
+      html+=`
+
+        <label class="option">
+
+          <input
+            type="radio"
+            name="q${i}"
+            value="${j}">
+
+          ${esc(option)}
+
+        </label>
+
       `;
 
-      options.forEach(
-        (option,optionIndex)=>{
+    });
 
-          const value =
-            String(
-              question.answer !== undefined
-                ? optionIndex
-                : option
-            );
+    html+=`</div>`;
 
-          html += `
-            <label class="option">
-              <input
-                type="radio"
-                name="q${number}"
-                value="${escapeHtml(value)}">
-              ${escapeHtml(
-                typeof option === "string"
-                  ? option
-                  : option.text || ""
-              )}
-            </label>
-          `;
+  });
 
-        }
+  html+=`
+
+      <button
+        class="submit"
+        id="submit">
+        Submit Assessment
+      </button>
+
+      <div
+        id="result"
+        class="result">
+      </div>
+
+    </div>
+
+  `;
+
+  document.getElementById(
+    "assessmentArea"
+  ).innerHTML=html;
+
+  document.getElementById(
+    "submit"
+  ).onclick=()=>submitAssessment(questions);
+
+}
+
+async function submitAssessment(questions){
+
+  let score=0;
+
+  for(let i=0;i<questions.length;i++){
+
+    const selected =
+      document.querySelector(
+        `input[name="q${i}"]:checked`
       );
 
-      div.innerHTML =
-        html;
-
-      box.appendChild(div);
-
-    }
-  );
-
-}
-
-
-/* =========================
-   FALLBACK
-========================= */
-
-function dataQuestionsFallback(){
-
-  /*
-    No local questions are created here.
-    Questions must come from Cloudflare
-    so the lesson content and assessment
-    remain controlled by the Worker.
-  */
-
-  return [];
-
-}
-
-
-/* =========================
-   SUBMIT
-========================= */
-
-document.getElementById(
-  "quizForm"
-).addEventListener(
-  "submit",
-  async function(event){
-
-    event.preventDefault();
-
-    if(questions.length !== 5){
+    if(!selected){
+      showResult(
+        "Please answer all 5 questions.",
+        false
+      );
       return;
     }
 
-    const answers = [];
-
-    for(let i=0;i<5;i++){
-
-      const selected =
-        document.querySelector(
-          `input[name="q${i+1}"]:checked`
-        );
-
-      if(!selected){
-
-        showResult(
-          "Please answer all 5 questions.",
-          false
-        );
-
-        return;
-
-      }
-
-      answers.push(
-        selected.value
-      );
-
-    }
-
-    const button =
-      document.getElementById(
-        "submitBtn"
-      );
-
-    button.disabled = true;
-    button.textContent =
-      "Checking Answers...";
-
-    try{
-
-      /*
-        Assessment is checked by
-        Cloudflare Lesson Worker.
-      */
-
-      const response =
-        await fetch(
-          API + "/assessment",
-          {
-            method:"POST",
-
-            headers:{
-              "Content-Type":
-                "application/json"
-            },
-
-            body:JSON.stringify({
-
-              student_id:
-                Number(student.id),
-
-              lesson_id:
-                Number(
-                  lesson.id ||
-                  1
-                ),
-
-              module_id:
-                MODULE_ID,
-
-              lesson_number:
-                LESSON_NUMBER,
-
-              answers:
-                answers,
-
-              language:
-                getLanguage()
-
-            })
-          }
-        );
-
-      const data =
-        await response.json();
-
-      if(!response.ok || !data.success){
-
-        showResult(
-          data.message ||
-          "Assessment failed.",
-          false
-        );
-
-        button.disabled = false;
-        button.textContent =
-          "Submit Assessment";
-
-        return;
-
-      }
-
-
-      /*
-        Worker should only return
-        completed=true after the
-        student passes all 5 questions.
-      */
-
-      if(data.passed === true){
-
-        showResult(
-          data.message ||
-          "Excellent! You passed the 5-question assessment. Lesson 1 completed.",
-          true
-        );
-
-        button.textContent =
-          "✓ Lesson Completed";
-
-        button.disabled = true;
-
-        /*
-          Refresh dashboard progress
-          after successful completion.
-        */
-
-        setTimeout(
-          ()=>{
-            window.location.href =
-              "dashboard.html";
-          },
-          1800
-        );
-
-      }else{
-
-        showResult(
-          data.message ||
-          "You did not pass. Please review the lesson and try again.",
-          false
-        );
-
-        button.disabled = false;
-        button.textContent =
-          "Try Again";
-
-      }
-
-    }catch(error){
-
-      console.error(error);
-
-      showResult(
-        "Unable to check the assessment. Please try again.",
-        false
-      );
-
-      button.disabled = false;
-      button.textContent =
-        "Submit Assessment";
-
+    if(
+      Number(selected.value) ===
+      questions[i].answer
+    ){
+      score++;
     }
 
   }
-);
 
+  const percentage =
+    score * 20;
 
-/* =========================
-   RESULT
-========================= */
+  if(percentage < 70){
 
-function showResult(
-  text,
-  success
-){
-
-  const box =
-    document.getElementById(
-      "result"
+    showResult(
+      "You scored "+
+      percentage+
+      "%. You need at least 70%. Please try again.",
+      false
     );
 
-  box.textContent =
-    text;
+    return;
+  }
 
-  box.className =
-    "result show " +
-    (success
-      ? "success"
-      : "error");
+  showResult(
+    "You scored "+
+    percentage+
+    "%. Passing! Saving your lesson progress...",
+    true
+  );
+
+  try{
+
+    const response =
+      await fetch(
+        API+"/complete",
+        {
+          method:"POST",
+          headers:{
+            "Content-Type":
+              "application/json"
+          },
+          body:JSON.stringify({
+            student_id:studentId,
+            lesson_id:lessonId,
+            score:percentage
+          })
+        }
+      );
+
+    const data =
+      await response.json();
+
+    if(
+      response.status===403 &&
+      data.premium_required
+    ){
+      location.href="premium.html";
+      return;
+    }
+
+    if(!response.ok || !data.success){
+
+      throw new Error(
+        data.message ||
+        "Could not save progress."
+      );
+
+    }
+
+    showResult(
+      "🎉 Passed! Lesson completed. "+
+      data.progress.completed+
+      "/"+
+      data.progress.total+
+      " lessons completed.",
+      true
+    );
+
+    document.getElementById(
+      "submit"
+    ).disabled=true;
+
+    document.getElementById(
+      "submit"
+    ).textContent=
+      "✓ Lesson Completed";
+
+  }catch(error){
+
+    showResult(
+      error.message ||
+      "Could not save progress.",
+      false
+    );
+
+  }
 
 }
 
+function showResult(text,success){
 
-/* =========================
-   DASHBOARD
-========================= */
+  const el =
+    document.getElementById("result");
 
-function goDashboard(){
+  el.textContent=text;
 
-  window.location.href =
+  el.className=
+    "result show "+
+    (success ? "pass" : "fail");
+
+}
+
+document.getElementById(
+  "back"
+).onclick=()=>{
+
+  location.href=
     "dashboard.html";
 
-}
-
-
-/* =========================
-   ESCAPE
-========================= */
-
-function escapeHtml(value){
-
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-
-/* =========================
-   START
-========================= */
-
-loadLesson();
+};
 
 </script>
 
