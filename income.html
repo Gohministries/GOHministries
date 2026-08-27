@@ -8,27 +8,146 @@
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
-header{background:#155eef;color:#fff;padding:15px 18px}
-.head{max-width:900px;margin:auto;display:flex;justify-content:space-between;align-items:center}
-.back{background:#fff;color:#155eef;border:0;border-radius:8px;padding:9px 13px;font-weight:bold}
-main{max-width:900px;margin:auto;padding:18px}
-.card{background:#fff;padding:18px;border-radius:14px;margin-bottom:16px;box-shadow:0 2px 12px #0001}
-label{display:block;font-size:13px;font-weight:bold;margin:13px 0 6px}
-input,select,textarea{width:100%;padding:12px;border:1px solid #d5dbe5;border-radius:9px;font-size:14px}
-textarea{min-height:75px;resize:vertical}
-button{padding:11px 15px;border:0;border-radius:9px;background:#155eef;color:#fff;font-weight:bold;cursor:pointer}
-.save{width:100%;margin-top:16px}
-.msg{display:none;padding:11px;border-radius:9px;margin-top:12px;font-size:13px}
-.ok{display:block;background:#dcfce7;color:#166534}
-.bad{display:block;background:#fee2e2;color:#991b1b}
-.total{font-size:25px;font-weight:bold;margin-top:5px}
-.item{border:1px solid #e5e7eb;border-radius:10px;padding:13px;margin-top:10px}
-.top{display:flex;justify-content:space-between;gap:10px}
-.amount{font-weight:bold}
-.meta{font-size:12px;color:#667085;margin-top:5px}
-.delete{margin-top:10px;background:#dc2626}
-@media(max-width:600px){.top{display:block}}
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f5f7fb;
+color:#172033
+}
+header{
+background:#155eef;
+color:#fff;
+padding:15px 18px
+}
+.head{
+max-width:900px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center
+}
+.back{
+background:#fff;
+color:#155eef;
+border:0;
+border-radius:8px;
+padding:9px 13px;
+font-weight:bold;
+cursor:pointer
+}
+main{
+max-width:900px;
+margin:auto;
+padding:18px
+}
+.card{
+background:#fff;
+padding:18px;
+border-radius:14px;
+margin-bottom:16px;
+box-shadow:0 2px 12px #0001
+}
+h2,h3{margin-top:0}
+label{
+display:block;
+font-size:13px;
+font-weight:bold;
+margin:13px 0 6px
+}
+input,select,textarea{
+width:100%;
+padding:12px;
+border:1px solid #d5dbe5;
+border-radius:9px;
+font-size:14px;
+background:#fff
+}
+textarea{
+min-height:75px;
+resize:vertical
+}
+button{
+padding:11px 15px;
+border:0;
+border-radius:9px;
+background:#155eef;
+color:#fff;
+font-weight:bold;
+cursor:pointer
+}
+button:disabled{
+opacity:.6;
+cursor:not-allowed
+}
+.save{
+width:100%;
+margin-top:16px
+}
+.total{
+font-size:26px;
+font-weight:bold;
+margin-top:6px
+}
+.msg{
+display:none;
+padding:11px;
+border-radius:9px;
+margin-top:12px;
+font-size:13px
+}
+.ok{
+display:block;
+background:#dcfce7;
+color:#166534
+}
+.bad{
+display:block;
+background:#fee2e2;
+color:#991b1b
+}
+.item{
+border:1px solid #e5e7eb;
+border-radius:10px;
+padding:14px;
+margin-top:10px
+}
+.itemtop{
+display:flex;
+justify-content:space-between;
+gap:12px
+}
+.amount{
+font-weight:bold;
+font-size:16px
+}
+.meta{
+font-size:12px;
+color:#667085;
+margin-top:5px
+}
+.receipt{
+display:inline-block;
+margin-top:10px;
+text-decoration:none;
+font-size:13px;
+font-weight:bold;
+color:#155eef
+}
+.delete{
+margin-top:10px;
+background:#dc2626
+}
+.required{
+color:#dc2626
+}
+@media(max-width:600px){
+.itemtop{
+display:block
+}
+.amount{
+margin-top:8px
+}
+}
 </style>
 </head>
 
@@ -36,21 +155,38 @@ button{padding:11px 15px;border:0;border-radius:9px;background:#155eef;color:#ff
 
 <header>
 <div class="head">
+
 <b>GOH Ministries Finance</b>
-<button class="back"
+
+<button
+class="back"
 onclick="location.href='finance-dashboard.html'">
 Dashboard
 </button>
+
 </div>
 </header>
 
+
 <main>
 
+
 <div class="card">
+
 <h2>Income</h2>
-<div class="meta">Total Income</div>
-<div class="total" id="total">LKR 0.00</div>
+
+<div class="meta">
+Total Income
 </div>
+
+<div
+class="total"
+id="total">
+LKR 0.00
+</div>
+
+</div>
+
 
 <div class="card">
 
@@ -58,17 +194,28 @@ Dashboard
 
 <form id="form">
 
+
 <label>Category</label>
-<select id="category" required>
-<option value="">Select category</option>
+
+<select
+id="category"
+required>
+
+<option value="">
+Select category
+</option>
+
 <option>Offering</option>
 <option>Tithe</option>
 <option>Donation</option>
 <option>Special Offering</option>
 <option>Other Income</option>
+
 </select>
 
+
 <label>Amount</label>
+
 <input
 id="amount"
 type="number"
@@ -78,23 +225,86 @@ placeholder="0.00"
 required
 >
 
+
 <label>Date</label>
-<input id="date" type="date" required>
+
+<input
+id="date"
+type="date"
+required
+>
+
+
+<label>Payment Method</label>
+
+<select
+id="payment_method"
+required>
+
+<option value="">
+Select payment method
+</option>
+
+<option>Cash</option>
+<option>Bank Transfer</option>
+<option>Cheque</option>
+
+</select>
+
+
+<label>Reference Number</label>
+
+<input
+id="reference_number"
+type="text"
+placeholder="Optional reference number"
+>
+
 
 <label>Description</label>
+
 <textarea
 id="description"
-placeholder="Optional description"></textarea>
+placeholder="Optional description">
+</textarea>
 
-<button class="save" id="save" type="submit">
+
+<label>
+Receipt / Slip
+<span class="required">*</span>
+</label>
+
+<input
+id="receipt"
+type="file"
+accept="image/jpeg,image/png,application/pdf"
+>
+
+
+<div class="meta">
+JPG, PNG or PDF • Maximum 5MB
+</div>
+
+
+<button
+class="save"
+id="save"
+type="submit">
+
 Save Income
+
 </button>
 
-<div id="msg" class="msg"></div>
+
+<div
+id="msg"
+class="msg">
+</div>
 
 </form>
 
 </div>
+
 
 <div class="card">
 
@@ -106,32 +316,36 @@ Loading...
 
 </div>
 
+
 </main>
+
 
 <script>
 
 const API =
 "https://goh-finance-data.createlk.workers.dev";
 
-const KEY =
+const AUTH_KEY =
 "goh_finance_token";
 
 
 function token(){
-return localStorage.getItem(KEY);
+return localStorage.getItem(AUTH_KEY);
 }
 
 
-function auth(){
+function headers(){
+
 return {
-"Content-Type":"application/json",
 "Authorization":
 "Bearer "+token()
 };
+
 }
 
 
 function money(value){
+
 return "LKR "+
 Number(value||0).toLocaleString(
 "en-LK",
@@ -140,6 +354,19 @@ minimumFractionDigits:2,
 maximumFractionDigits:2
 }
 );
+
+}
+
+
+function escapeHtml(value){
+
+return String(value||"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
 }
 
 
@@ -152,10 +379,22 @@ el.textContent=text;
 
 el.className =
 "msg "+(ok?"ok":"bad");
+
 }
 
 
-/* CHECK LOGIN */
+function today(){
+
+document.getElementById("date")
+.value =
+new Date()
+.toISOString()
+.slice(0,10);
+
+}
+
+
+/* LOGIN CHECK */
 
 async function checkLogin(){
 
@@ -172,35 +411,51 @@ try{
 
 const r =
 await fetch(
-"https://goh-finance.createlk.workers.dev/api/income",
+"https://goh-finance.createlk.workers.dev/api/me",
 {
 headers:{
-"Authorization":"Bearer "+t
+"Authorization":
+"Bearer "+t
 }
 }
 );
 
 if(r.status===401){
 
-localStorage.removeItem(KEY);
+localStorage.removeItem(
+AUTH_KEY
+);
 
-location.href="admin-login.html";
+location.href=
+"admin-login.html";
+
 return false;
 
 }
 
-/*
-Any other response means the token
-was accepted. The page can continue.
-*/
+const d =
+await r.json();
+
+if(!d.success){
+
+localStorage.removeItem(
+AUTH_KEY
+);
+
+location.href=
+"admin-login.html";
+
+return false;
+
+}
 
 return true;
 
 }catch(e){
 
-showMessage(
-"Unable to connect to Finance Data Worker."
-);
+document.getElementById("records")
+.textContent=
+"Unable to verify login.";
 
 return false;
 
@@ -209,7 +464,7 @@ return false;
 }
 
 
-/* LOAD INCOME */
+/* LOAD */
 
 async function loadIncome(){
 
@@ -219,33 +474,41 @@ const r =
 await fetch(
 API+"/api/income",
 {
-headers:auth()
+headers:headers()
 }
 );
 
+
 if(r.status===401){
 
-localStorage.removeItem(KEY);
+localStorage.removeItem(
+AUTH_KEY
+);
 
-location.href="admin-login.html";
+location.href=
+"admin-login.html";
+
 return;
 
 }
 
-const data =
+
+const d =
 await r.json();
 
-if(!r.ok || !data.success){
+
+if(!r.ok||!d.success){
 
 throw new Error(
-data.error ||
+d.error||
 "Unable to load income"
 );
 
 }
 
+
 const rows =
-data.income || [];
+d.income||[];
 
 
 let total=0;
@@ -256,7 +519,8 @@ total += Number(x.amount)||0;
 
 
 document.getElementById("total")
-.textContent=money(total);
+.textContent=
+money(total);
 
 
 const box =
@@ -278,14 +542,31 @@ rows.map(x=>`
 
 <div class="item">
 
-<div class="top">
+<div class="itemtop">
 
 <div>
-<b>${escapeHtml(x.category)}</b>
+
+<b>
+${escapeHtml(x.category)}
+</b>
 
 <div class="meta">
-${escapeHtml(x.date)}
+Date: ${escapeHtml(x.date)}
 </div>
+
+<div class="meta">
+Payment: ${escapeHtml(x.payment_method)}
+</div>
+
+${
+x.reference_number
+?
+`<div class="meta">
+Reference: ${escapeHtml(x.reference_number)}
+</div>`
+:""
+}
+
 </div>
 
 <div class="amount">
@@ -293,6 +574,7 @@ ${money(x.amount)}
 </div>
 
 </div>
+
 
 ${
 x.description
@@ -302,6 +584,22 @@ ${escapeHtml(x.description)}
 </div>`
 :""
 }
+
+
+${
+x.receipt_name
+?
+`<div>
+<a
+class="receipt"
+href="#"
+onclick="return viewReceipt(${x.id})">
+📎 View Receipt
+</a>
+</div>`
+:""
+}
+
 
 <button
 class="delete"
@@ -327,38 +625,147 @@ escapeHtml(e.message)+
 }
 
 
-/* ADD INCOME */
+/* ADD */
 
 async function addIncome(e){
 
 e.preventDefault();
 
+
 const button =
 document.getElementById("save");
 
 button.disabled=true;
-button.textContent="Saving...";
+button.textContent=
+"Saving...";
 
 
 try{
 
-const body={
 
-category:
-document.getElementById("category").value,
+const file =
+document.getElementById(
+"receipt"
+).files[0];
 
-amount:
-Number(
-document.getElementById("amount").value
-),
 
-date:
-document.getElementById("date").value,
+const payment =
+document.getElementById(
+"payment_method"
+).value;
 
-description:
-document.getElementById("description").value.trim()
 
-};
+/*
+Receipt is required for
+Bank Transfer.
+*/
+
+if(
+payment==="Bank Transfer" &&
+!file
+){
+
+throw new Error(
+"Receipt/slip is required for bank transfers."
+);
+
+}
+
+
+/*
+Optional for cash and cheque.
+*/
+
+if(file){
+
+if(
+file.size >
+5*1024*1024
+){
+
+throw new Error(
+"Receipt must be 5MB or smaller."
+);
+
+}
+
+const allowed=[
+"image/jpeg",
+"image/png",
+"application/pdf"
+];
+
+if(
+!allowed.includes(file.type)
+){
+
+throw new Error(
+"Only JPG, PNG or PDF files are allowed."
+);
+
+}
+
+}
+
+
+const form =
+new FormData();
+
+
+form.append(
+"category",
+document.getElementById(
+"category"
+).value
+);
+
+
+form.append(
+"amount",
+document.getElementById(
+"amount"
+).value
+);
+
+
+form.append(
+"date",
+document.getElementById(
+"date"
+).value
+);
+
+
+form.append(
+"payment_method",
+payment
+);
+
+
+form.append(
+"reference_number",
+document.getElementById(
+"reference_number"
+).value
+);
+
+
+form.append(
+"description",
+document.getElementById(
+"description"
+).value
+);
+
+
+if(file){
+
+form.append(
+"receipt",
+file
+);
+
+}
 
 
 const r =
@@ -366,30 +773,37 @@ await fetch(
 API+"/api/income",
 {
 method:"POST",
-headers:auth(),
-body:JSON.stringify(body)
+headers:{
+"Authorization":
+"Bearer "+token()
+},
+body:form
 }
 );
 
 
-const data =
+const d =
 await r.json();
 
 
 if(r.status===401){
 
-localStorage.removeItem(KEY);
+localStorage.removeItem(
+AUTH_KEY
+);
 
-location.href="admin-login.html";
+location.href=
+"admin-login.html";
+
 return;
 
 }
 
 
-if(!r.ok || !data.success){
+if(!r.ok||!d.success){
 
 throw new Error(
-data.error ||
+d.error||
 "Unable to save income"
 );
 
@@ -402,11 +816,13 @@ true
 );
 
 
-document.getElementById("form")
-.reset();
+document.getElementById(
+"form"
+).reset();
 
 
-setToday();
+today();
+
 
 await loadIncome();
 
@@ -418,9 +834,65 @@ showMessage(e.message);
 }finally{
 
 button.disabled=false;
-button.textContent="Save Income";
+button.textContent=
+"Save Income";
 
 }
+
+}
+
+
+/* RECEIPT */
+
+async function viewReceipt(id){
+
+try{
+
+const r =
+await fetch(
+API+"/api/income/"+id+"/receipt",
+{
+headers:headers()
+}
+);
+
+
+if(!r.ok){
+
+const d =
+await r.json()
+.catch(()=>({}));
+
+throw new Error(
+d.error||
+"Unable to open receipt"
+);
+
+}
+
+
+const blob =
+await r.blob();
+
+
+const url =
+URL.createObjectURL(blob);
+
+
+window.open(
+url,
+"_blank"
+);
+
+
+}catch(e){
+
+alert(e.message);
+
+}
+
+
+return false;
 
 }
 
@@ -429,9 +901,15 @@ button.textContent="Save Income";
 
 async function deleteIncome(id){
 
-if(!confirm(
+if(
+!confirm(
 "Delete this income record?"
-)) return;
+)
+){
+
+return;
+
+}
 
 
 try{
@@ -441,29 +919,33 @@ await fetch(
 API+"/api/income/"+id,
 {
 method:"DELETE",
-headers:auth()
+headers:headers()
 }
 );
 
 
-const data =
+const d =
 await r.json();
 
 
 if(r.status===401){
 
-localStorage.removeItem(KEY);
+localStorage.removeItem(
+AUTH_KEY
+);
 
-location.href="admin-login.html";
+location.href=
+"admin-login.html";
+
 return;
 
 }
 
 
-if(!r.ok || !data.success){
+if(!r.ok||!d.success){
 
 throw new Error(
-data.error ||
+d.error||
 "Unable to delete income"
 );
 
@@ -482,47 +964,22 @@ alert(e.message);
 }
 
 
-/* ESCAPE HTML */
+/* FORM */
 
-function escapeHtml(value){
-
-return String(value||"")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
-}
-
-
-/* TODAY */
-
-function setToday(){
-
-document.getElementById("date")
-.value =
-new Date()
-.toISOString()
-.slice(0,10);
-
-}
-
-
-document.getElementById("form")
-.addEventListener(
+document.getElementById(
+"form"
+).addEventListener(
 "submit",
 addIncome
 );
 
 
-/* START */
+today();
+
 
 (async()=>{
 
 if(await checkLogin()){
-
-setToday();
 
 await loadIncome();
 
