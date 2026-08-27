@@ -5,44 +5,35 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Student Dashboard | GOH Bible Academy</title>
 <meta name="theme-color" content="#111827">
-
 <link rel="icon" href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,sans-serif;background:#f3f6fb;color:#172033;line-height:1.5}
-button,select{font-family:inherit}
+button{font-family:inherit;cursor:pointer}
 .container{width:min(1000px,94%);margin:auto}
-
 header{background:#fff;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:10}
 .nav{height:64px;display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;align-items:center;gap:9px}
 .logo img{width:42px;height:42px;object-fit:contain;border-radius:10px}
 .logo-title{font-size:14px;font-weight:900}
 .logo-sub{font-size:8px;color:#6b7280}
-.logout{border:0;background:#111827;color:#fff;padding:9px 13px;border-radius:9px;font-size:10px;font-weight:900}
-
+.logout,.view{border:0;background:#111827;color:#fff;font-weight:900}
+.logout{padding:9px 13px;border-radius:9px;font-size:10px}
 main{padding:25px 0 45px}
 .hero{background:#111827;color:#fff;border-radius:18px;padding:23px;margin-bottom:15px}
 .hero small{color:#fbbf24;font-size:9px;font-weight:900;letter-spacing:1px}
 .hero h1{font-size:23px;margin:5px 0}
-.hero p{font-size:10px;color:#d1d5db}
-
-.message{display:none;padding:10px;border-radius:9px;text-align:center;font-size:9px;font-weight:700;margin-bottom:12px}
-.message.show{display:block}
-.error{background:#fef2f2;color:#b91c1c}
-.loading{background:#eff6ff;color:#1d4ed8}
-
+.hero p,.sub,.lesson-desc,.module-desc{font-size:9px;color:#6b7280}
+.hero p{color:#d1d5db}
 .info{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:15px}
-.info-card,.progress,.language-box,.module,.lesson{background:#fff;border:1px solid #e5e7eb;border-radius:14px}
+.info-card,.progress,.module,.lesson,.language-box,.premium{background:#fff;border:1px solid #e5e7eb;border-radius:14px}
 .info-card{padding:14px}
-.info-card small{font-size:8px;color:#6b7280;font-weight:900}
+.info-card small,.language-box label{font-size:8px;color:#6b7280;font-weight:900}
 .info-card strong{display:block;font-size:14px;margin-top:3px}
-
 .language-box{padding:14px;margin-bottom:15px}
-.language-box label{display:block;font-size:8px;font-weight:900;color:#6b7280;margin-bottom:7px}
+.language-box label{display:block;margin-bottom:7px}
 .language-select{width:100%;padding:10px;border:1px solid #d1d5db;border-radius:9px;background:#fff;font-size:11px;font-weight:700}
-
 .progress{padding:17px;margin-bottom:20px}
 .progress-top{display:flex;justify-content:space-between;font-size:13px;font-weight:900}
 .percent{color:#4f46e5}
@@ -50,42 +41,39 @@ main{padding:25px 0 45px}
 .bar{height:10px;background:#e5e7eb;border-radius:20px;overflow:hidden}
 .fill{height:100%;width:0;background:#4f46e5;transition:.4s}
 .certificate{font-size:9px;color:#6b7280;font-weight:700;margin-top:9px}
-
 h2{font-size:17px}
-.sub{font-size:9px;color:#6b7280;margin:3px 0 14px}
-
-.modules{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.modules{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px}
 .module{padding:16px;cursor:pointer}
 .module:hover{box-shadow:0 8px 20px #0001}
 .module-top{display:flex;gap:11px}
-.icon{width:43px;height:43px;background:#f3f4f6;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.icon{width:43px;height:43px;background:#f3f4f6;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:22px}
 .module-no{font-size:8px;color:#6366f1;font-weight:900}
 .module-title{font-size:13px;font-weight:900;margin-top:2px}
-.module-desc{font-size:9px;color:#6b7280;margin-top:4px}
+.module-desc{margin-top:4px}
 .module-bottom{border-top:1px solid #eee;margin-top:13px;padding-top:10px;display:flex;justify-content:space-between;align-items:center}
 .count{font-size:8px;color:#6b7280;font-weight:900}
-.view{border:0;background:#111827;color:#fff;padding:7px 10px;border-radius:7px;font-size:8px;font-weight:900}
-
+.view{padding:7px 10px;border-radius:7px;font-size:8px}
 .lessons-section{display:none;margin-top:20px}
 .lesson-header{background:#111827;color:#fff;border-radius:15px;padding:17px;margin-bottom:10px}
 .lesson-header h2{font-size:17px}
 .lesson-header p{font-size:9px;color:#d1d5db;margin-top:3px}
 .back{border:0;background:#fff;color:#111827;padding:7px 10px;border-radius:7px;font-size:8px;font-weight:900;margin-top:11px}
-
 .lesson{padding:12px;display:flex;align-items:center;gap:10px;margin-bottom:8px}
 .lesson-num{width:32px;height:32px;background:#f3f4f6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;flex-shrink:0}
 .lesson-info{flex:1}
 .lesson-title{font-size:10px;font-weight:900}
-.lesson-desc{font-size:8px;color:#6b7280}
+.lesson-desc{margin-top:2px}
 .lesson-btn{border:0;padding:7px 9px;border-radius:7px;font-size:8px;font-weight:900;white-space:nowrap}
 .free,.done{background:#dcfce7;color:#166534}
 .locked{background:#fef3c7;color:#92400e}
-
-.premium{margin-top:18px;background:#fff;border:1px solid #fde68a;border-radius:15px;padding:17px;text-align:center}
+.message{display:none;padding:10px;border-radius:9px;text-align:center;font-size:9px;font-weight:700;margin-bottom:12px}
+.message.show{display:block}
+.error{background:#fef2f2;color:#b91c1c}
+.loading{background:#eff6ff;color:#1d4ed8}
+.premium{margin-top:18px;padding:17px;text-align:center;border-color:#fde68a}
 .premium h3{font-size:14px}
 .premium p{font-size:9px;color:#6b7280;margin:5px 0 10px}
 .premium a{display:inline-block;background:#fbbf24;color:#111827;padding:9px 13px;border-radius:8px;font-size:9px;font-weight:900;text-decoration:none}
-
 footer{background:#0b1120;color:#64748b;text-align:center;padding:18px;font-size:8px}
 
 @media(max-width:650px){
@@ -153,27 +141,17 @@ footer{background:#0b1120;color:#64748b;text-align:center;padding:18px;font-size
 <span>🏆 Certificate Progress</span>
 <span class="percent" id="percent">0%</span>
 </div>
-
-<div class="progress-text" id="progressText">
-0 / 180 lessons completed
-</div>
-
-<div class="bar">
-<div class="fill" id="fill"></div>
-</div>
-
+<div class="progress-text" id="progressText">0 / 180 lessons completed</div>
+<div class="bar"><div class="fill" id="fill"></div></div>
 <div class="certificate" id="certificate">
 Complete all 180 lessons and pass each 5-question assessment.
 </div>
 </div>
 
 <section id="modulesSection">
-
 <h2>CHRISTIAN BIBLICAL STUDIES</h2>
 <div class="sub">180-Lesson Program • Choose a module.</div>
-
 <div class="modules" id="modules"></div>
-
 </section>
 
 <section class="lessons-section" id="lessonsSection">
@@ -209,41 +187,41 @@ const LESSON_PAGE="lesson.html";
 
 const $=id=>document.getElementById(id);
 
-/* STUDENT */
-
 function getStudent(){
-const raw=localStorage.getItem("goh_student")||
-sessionStorage.getItem("goh_student");
-
-if(!raw)return null;
-
-try{return JSON.parse(raw)}
-catch{return null}
+  const raw=localStorage.getItem("goh_student")||
+            sessionStorage.getItem("goh_student");
+  if(!raw)return null;
+  try{return JSON.parse(raw)}catch{return null}
 }
 
 const student=getStudent();
 
 if(!student){
-location.href="login.html";
+  location.href="login.html";
 }
 
-/* LANGUAGE */
+function getLanguage(){
+  const saved=localStorage.getItem("goh_language");
+  if(["en","ta","si"].includes(saved))return saved;
 
-let language=localStorage.getItem("goh_language")||"en";
+  const v=String(student?.language||"en").toLowerCase();
 
-if(!["en","ta","si"].includes(language))
-language="en";
+  if(v==="ta"||v==="tamil")return"ta";
+  if(v==="si"||v==="sinhala")return"si";
+  return"en";
+}
 
-const languageNames={
-en:"English",
-ta:"Tamil",
-si:"Sinhala"
-};
+let language=getLanguage();
 
 $("languageSelect").value=language;
-$("language").textContent=languageNames[language];
 
-/* STUDENT INFO */
+const languageNames={
+  en:"English",
+  ta:"Tamil",
+  si:"Sinhala"
+};
+
+$("language").textContent=languageNames[language];
 
 $("welcome").textContent=
 "Welcome, "+(student?.first_name||"Student")+" 👋";
@@ -253,440 +231,399 @@ $("studentId").textContent=student?.id||"—";
 $("membership").textContent=
 String(student?.membership_status||"FREE").toUpperCase();
 
-/* MESSAGE */
-
-function showMessage(text,type){
-$("message").textContent=text;
-$("message").className="message show "+type;
+function msg(text,type){
+  $("message").textContent=text;
+  $("message").className="message show "+type;
 }
-
-function hideMessage(){
-$("message").className="message";
-}
-
-/* ESCAPE */
 
 function esc(v){
-return String(v??"").replace(/[&<>"']/g,m=>({
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#039;"
-}[m]));
+  return String(v??"").replace(/[&<>"']/g,m=>({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#039;"
+  }[m]));
 }
 
-/* MODULE TITLE */
+/* =========================
+   MODULES
+========================= */
 
-function moduleTitle(m){
-
-return m.title||
-m.title_en||
-m.name||
-"Module "+(m.module_id||m.id||"");
-
-}
-
-function moduleDescription(m){
-
-return m.description||
-m.description_en||
-"";
-
-}
-
-/* LOAD MODULES */
+let currentModule=null;
 
 async function loadModules(){
 
-$("modules").innerHTML="";
+  $("modules").innerHTML="";
 
-showMessage("Loading modules...","loading");
+  try{
 
-try{
+    const r=await fetch(API+"/modules");
+    const d=await r.json();
 
-const r=await fetch(API+"/modules");
-const d=await r.json();
+    if(!r.ok||!d.success)
+      throw new Error(d.message||"Unable to load modules.");
 
-if(!r.ok)
-throw new Error(d.message||"Unable to load modules.");
+    const modules=Array.isArray(d.modules)
+      ?d.modules
+      :(Array.isArray(d.data)?d.data:[]);
 
-const modules=
-Array.isArray(d.modules)?d.modules:
-Array.isArray(d.data)?d.data:
-Array.isArray(d)?d:[];
+    if(!modules.length)
+      throw new Error("No modules available.");
 
-if(!modules.length)
-throw new Error("No modules available.");
+    modules.forEach((m,index)=>{
 
-hideMessage();
+      /* FIX:
+         Accept all common module ID names.
+      */
 
-modules.forEach((m,index)=>{
+      const moduleId=
+        m.module_id ??
+        m.id ??
+        m.moduleId;
 
-/*
-IMPORTANT:
-Support both:
-m.id
-m.module_id
-*/
+      if(moduleId===undefined||moduleId===null){
+        console.warn("Module has no ID:",m);
+        return;
+      }
 
-const moduleId=
-m.id ??
-m.module_id ??
-m.moduleId;
+      const title=
+        m[`title_${language}`]||
+        m.title||
+        m.title_en||
+        "Module "+(index+1);
 
-if(moduleId==null)return;
+      const description=
+        m[`description_${language}`]||
+        m.description||
+        m.description_en||
+        "";
 
-const title=moduleTitle(m);
-const description=moduleDescription(m);
+      const lessonsCount=
+        m.lesson_count||
+        m.lessons_count||
+        m.count||
+        30;
 
-const el=document.createElement("div");
+      const el=document.createElement("div");
 
-el.className="module";
+      el.className="module";
 
-el.innerHTML=`
+      el.innerHTML=`
+        <div class="module-top">
+          <div class="icon">${esc(m.icon||"📖")}</div>
+          <div>
+            <div class="module-no">
+              MODULE ${String(index+1).padStart(2,"0")}
+            </div>
+            <div class="module-title">${esc(title)}</div>
+            <div class="module-desc">${esc(description)}</div>
+          </div>
+        </div>
 
-<div class="module-top">
+        <div class="module-bottom">
+          <span class="count">${esc(lessonsCount)} Lessons</span>
+          <button class="view">View Lessons →</button>
+        </div>
+      `;
 
-<div class="icon">
-${esc(m.icon||"📖")}
-</div>
+      el.onclick=()=>loadLessons({
+        id:Number(moduleId),
+        title:title,
+        description:description
+      });
 
-<div>
+      $("modules").appendChild(el);
 
-<div class="module-no">
-MODULE ${String(index+1).padStart(2,"0")}
-</div>
+    });
 
-<div class="module-title">
-${esc(title)}
-</div>
+  }catch(e){
 
-<div class="module-desc">
-${esc(description)}
-</div>
+    console.error(e);
 
-</div>
-</div>
+    msg(e.message||"Unable to load modules.","error");
 
-<div class="module-bottom">
-
-<span class="count">
-${m.lesson_count||m.lessons_count||30} Lessons
-</span>
-
-<button class="view">
-View Lessons →
-</button>
-
-</div>
-`;
-
-el.onclick=()=>loadLessons({
-...m,
-id:moduleId,
-module_id:moduleId,
-title:title,
-description:description
-});
-
-$("modules").appendChild(el);
-
-});
-
-if(!$("modules").children.length)
-throw new Error("No valid module IDs found.");
-
-}catch(e){
-
-console.error(e);
-
-showMessage(
-e.message||"Unable to load modules.",
-"error"
-);
-
+  }
 }
 
-}
-
-/* LOAD LESSONS */
+/* =========================
+   LESSONS
+========================= */
 
 async function loadLessons(module){
 
-const moduleId=
-module.module_id||
-module.id||
-module.moduleId;
+  if(!module||!Number.isFinite(Number(module.id))){
+    msg("Invalid module ID.","error");
+    return;
+  }
 
-if(moduleId==null){
+  currentModule=module;
 
-showMessage("Invalid module ID.","error");
-return;
+  $("modulesSection").style.display="none";
+  $("premiumBox").style.display="none";
+  $("lessonsSection").style.display="block";
 
+  $("moduleTitle").textContent=module.title;
+  $("moduleDescription").textContent=module.description;
+  $("lessons").innerHTML="";
+
+  msg("Loading lessons...","loading");
+
+  try{
+
+    const url=
+      API+
+      "/lessons?module_id="+
+      encodeURIComponent(module.id)+
+      "&student_id="+
+      encodeURIComponent(student.id)+
+      "&language="+
+      encodeURIComponent(language);
+
+    console.log("Loading:",url);
+
+    const r=await fetch(url);
+    const d=await r.json();
+
+    if(!r.ok||!d.success)
+      throw new Error(d.message||"Unable to load lessons.");
+
+    $("message").className="message";
+
+    if(d.membership?.status){
+      $("membership").textContent=
+        String(d.membership.status).toUpperCase();
+    }
+
+    const lessons=
+      Array.isArray(d.lessons)
+      ?d.lessons
+      :(Array.isArray(d.data)?d.data:[]);
+
+    if(!lessons.length){
+
+      $("lessons").innerHTML=`
+        <div class="message show error">
+          No lessons found in this module.
+        </div>
+      `;
+
+      return;
+    }
+
+    lessons.forEach(createLesson);
+
+  }catch(e){
+
+    console.error(e);
+
+    $("lessons").innerHTML=`
+      <div class="message show error">
+        ${esc(e.message||"Unable to load lessons.")}
+      </div>
+    `;
+  }
 }
 
-$("modulesSection").style.display="none";
-$("premiumBox").style.display="none";
-$("lessonsSection").style.display="block";
-
-$("moduleTitle").textContent=
-module.title||"Module";
-
-$("moduleDescription").textContent=
-module.description||"";
-
-$("lessons").innerHTML="";
-
-showMessage("Loading lessons...","loading");
-
-try{
-
-const url=
-API+
-"/lessons?module_id="+
-encodeURIComponent(moduleId)+
-"&student_id="+
-encodeURIComponent(student.id)+
-"&language="+
-encodeURIComponent(language);
-
-console.log("Loading:",url);
-
-const r=await fetch(url);
-const d=await r.json();
-
-if(!r.ok)
-throw new Error(d.message||"Unable to load lessons.");
-
-if(d.success===false)
-throw new Error(d.message||"Unable to load lessons.");
-
-const lessons=
-Array.isArray(d.lessons)?d.lessons:
-Array.isArray(d.data)?d.data:
-[];
-
-hideMessage();
-
-if(!lessons.length){
-
-$("lessons").innerHTML=`
-<div class="message show error">
-No lessons found in this module.
-</div>`;
-
-return;
-
-}
-
-lessons.forEach(createLesson);
-
-}catch(e){
-
-console.error(e);
-
-$("lessons").innerHTML=`
-<div class="message show error">
-${esc(e.message||"Unable to load lessons.")}
-</div>`;
-
-}
-
-}
-
-/* LESSON */
+/* =========================
+   LESSON ITEM
+========================= */
 
 function createLesson(lesson){
 
-const locked=lesson.locked===true;
-const completed=lesson.completed===true;
+  const locked=lesson.locked===true;
+  const completed=lesson.completed===true;
 
-const number=
-lesson.lesson_number||
-lesson.lessonNumber||
-lesson.number||
-"";
+  const number=
+    lesson.lesson_number||
+    lesson.number||
+    lesson.id;
 
-let text="Start →";
-let cls="free";
+  const title=
+    lesson[`title_${language}`]||
+    lesson.title||
+    lesson.title_en||
+    "Lesson "+number;
 
-if(completed){
-text="✓ Completed";
-cls="done";
+  const description=
+    lesson[`description_${language}`]||
+    lesson.description||
+    lesson.description_en||
+    "";
+
+  let text="Start →";
+  let cls="free";
+
+  if(completed){
+    text="✓ Completed";
+    cls="done";
+  }else if(locked){
+    text="🔒 Premium";
+    cls="locked";
+  }
+
+  const el=document.createElement("div");
+
+  el.className="lesson";
+
+  el.innerHTML=`
+    <div class="lesson-num">${esc(number)}</div>
+
+    <div class="lesson-info">
+      <div class="lesson-title">${esc(title)}</div>
+      <div class="lesson-desc">${esc(description)}</div>
+    </div>
+
+    <button class="lesson-btn ${cls}">
+      ${text}
+    </button>
+  `;
+
+  el.querySelector("button").onclick=()=>{
+
+    if(locked){
+      location.href="premium.html";
+      return;
+    }
+
+    /*
+      IMPORTANT:
+      Send the actual lesson ID returned by
+      Cloudflare, not the lesson number.
+    */
+
+    const lessonId=
+      lesson.id||
+      lesson.lesson_id;
+
+    if(!lessonId){
+      alert("Invalid lesson ID.");
+      return;
+    }
+
+    const params=new URLSearchParams({
+      lesson_id:String(lessonId),
+      module_id:String(
+        lesson.module_id||
+        lesson.moduleId||
+        currentModule.id
+      ),
+      student_id:String(student.id),
+      language:language
+    });
+
+    location.href=LESSON_PAGE+"?"+params.toString();
+
+  };
+
+  $("lessons").appendChild(el);
 }
 
-if(locked){
-text="🔒 Premium";
-cls="locked";
-}
-
-const el=document.createElement("div");
-
-el.className="lesson";
-
-el.innerHTML=`
-
-<div class="lesson-num">
-${esc(number)}
-</div>
-
-<div class="lesson-info">
-
-<div class="lesson-title">
-${esc(lesson.title||lesson.title_en)}
-</div>
-
-<div class="lesson-desc">
-${esc(lesson.description||lesson.description_en)}
-</div>
-
-</div>
-
-<button class="lesson-btn ${cls}">
-${text}
-</button>
-`;
-
-el.querySelector("button").onclick=()=>{
-
-if(locked){
-location.href="premium.html";
-return;
-}
-
-const lessonId=
-lesson.id||
-lesson.lesson_id;
-
-if(!lessonId){
-alert("Invalid lesson ID.");
-return;
-}
-
-const params=new URLSearchParams({
-lesson_id:String(lessonId),
-module_id:String(
-lesson.module_id||lesson.moduleId
-),
-student_id:String(student.id),
-language:language
-});
-
-location.href=
-LESSON_PAGE+"?"+params.toString();
-
-};
-
-$("lessons").appendChild(el);
-
-}
-
-/* LANGUAGE */
+/* =========================
+   LANGUAGE
+========================= */
 
 $("languageSelect").onchange=function(){
 
-language=this.value;
+  language=this.value;
 
-localStorage.setItem(
-"goh_language",
-language
-);
+  localStorage.setItem("goh_language",language);
 
-$("language").textContent=
-languageNames[language];
+  $("language").textContent=languageNames[language];
 
-if($("lessonsSection").style.display==="block"){
+  /*
+    Reload modules so titles and descriptions
+    change immediately.
+  */
 
-$("lessonsSection").style.display="none";
-$("modulesSection").style.display="block";
-$("premiumBox").style.display="block";
+  $("lessonsSection").style.display="none";
+  $("modulesSection").style.display="block";
+  $("premiumBox").style.display="block";
 
-hideMessage();
+  $("message").className="message";
 
-}
-
+  loadModules();
 };
 
-/* BACK */
+/* =========================
+   BACK
+========================= */
 
 $("back").onclick=()=>{
 
-$("lessonsSection").style.display="none";
-$("modulesSection").style.display="block";
-$("premiumBox").style.display="block";
+  $("lessonsSection").style.display="none";
+  $("modulesSection").style.display="block";
+  $("premiumBox").style.display="block";
+  $("message").className="message";
 
-hideMessage();
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 };
 
-/* PROGRESS */
+/* =========================
+   PROGRESS
+========================= */
 
 async function loadProgress(){
 
-try{
+  try{
 
-const r=await fetch(
-API+
-"/progress?student_id="+
-encodeURIComponent(student.id)
-);
+    const r=await fetch(
+      API+
+      "/progress?student_id="+
+      encodeURIComponent(student.id)
+    );
 
-const d=await r.json();
+    const d=await r.json();
 
-if(!r.ok||!d.success)return;
+    if(!r.ok||!d.success)return;
 
-const p=d.progress;
+    const p=d.progress;
 
-$("progressText").textContent=
-(p.completed||0)+
-" / "+
-(p.total||180)+
-" lessons completed";
+    $("progressText").textContent=
+      p.completed+" / "+p.total+
+      " lessons completed";
 
-$("percent").textContent=
-(p.percentage||0)+"%";
+    $("percent").textContent=
+      p.percentage+"%";
 
-$("fill").style.width=
-(p.percentage||0)+"%";
+    $("fill").style.width=
+      p.percentage+"%";
 
-if(p.certificate_eligible){
+    $("certificate").textContent=
+      p.certificate_eligible
+      ?"🎓 Congratulations! You completed all 180 lessons."
+      :"Complete all 180 lessons and pass each 5-question assessment.";
 
-$("certificate").textContent=
-"🎓 Congratulations! You completed all 180 lessons.";
-
+  }catch(e){
+    console.error(e);
+  }
 }
 
-}catch(e){
-console.error(e);
-}
-
-}
-
-/* LOGOUT */
+/* =========================
+   LOGOUT
+========================= */
 
 $("logout").onclick=()=>{
 
-localStorage.removeItem("goh_student");
-localStorage.removeItem("goh_logged_in");
+  localStorage.removeItem("goh_student");
+  localStorage.removeItem("goh_logged_in");
 
-sessionStorage.removeItem("goh_student");
-sessionStorage.removeItem("goh_logged_in");
+  sessionStorage.removeItem("goh_student");
+  sessionStorage.removeItem("goh_logged_in");
 
-location.href="login.html";
-
+  location.href="login.html";
 };
 
-/* START */
+/* =========================
+   START
+========================= */
 
 if(student){
-loadModules();
-loadProgress();
+  loadModules();
+  loadProgress();
 }
 
 </script>
