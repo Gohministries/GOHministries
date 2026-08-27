@@ -22,6 +22,7 @@ main{max-width:1050px;margin:auto;padding:18px}
 .link b{display:block;margin-bottom:5px}
 .link span{font-size:12px;color:#667085}
 #loading{text-align:center;padding:30px}
+#error{display:none;background:#fff7ed;color:#9a3412;padding:12px;border-radius:10px;margin-bottom:16px;font-size:13px}
 @media(max-width:700px){
 .stats,.links{grid-template-columns:1fr}
 main{padding:12px}
@@ -43,6 +44,8 @@ main{padding:12px}
 <div id="loading" class="card">
 Loading finance dashboard...
 </div>
+
+<div id="error"></div>
 
 <div id="app" style="display:none">
 
@@ -102,8 +105,13 @@ Loading finance dashboard...
 <div class="links">
 
 <a class="link" href="income.html">
-<b>Income & Donations</b>
+<b>Income</b>
 <span>Record ministry income</span>
+</a>
+
+<a class="link" href="donations.html">
+<b>Donations</b>
+<span>Record ministry donations</span>
 </a>
 
 <a class="link" href="expenses.html">
@@ -119,6 +127,16 @@ Loading finance dashboard...
 <a class="link" href="reports.html">
 <b>Reports</b>
 <span>View financial reports</span>
+</a>
+
+<a class="link" href="attendance.html">
+<b>Attendance</b>
+<span>Record church attendance</span>
+</a>
+
+<a class="link" href="members.html">
+<b>Members</b>
+<span>Manage ministry members</span>
 </a>
 
 <a class="link" href="admin.html" id="adminLink">
@@ -142,119 +160,225 @@ const API=
 const KEY=
 "goh_finance_token";
 
+
 function headers(){
+
 return{
 "Content-Type":"application/json",
 "Authorization":
-"Bearer "+localStorage.getItem(KEY)
+"Bearer "+
+localStorage.getItem(KEY)
 };
+
 }
 
+
 function money(v){
+
 return "LKR "+
 Number(v||0).toLocaleString(
 "en-LK",
 {
 minimumFractionDigits:2,
 maximumFractionDigits:2
-});
 }
+);
+
+}
+
 
 async function load(){
 
 const token=
 localStorage.getItem(KEY);
 
+
+/* No token */
+
 if(!token){
-location.href="admin-login.html";
+
+location.href=
+"admin-login.html";
+
 return;
+
 }
+
 
 try{
 
-const me=await fetch(
+
+/* Check login only */
+
+const me=
+await fetch(
 API+"/api/me",
-{headers:headers()}
+{
+headers:{
+"Authorization":
+"Bearer "+token
+}
+}
 );
 
-const user=await me.json();
 
-if(!me.ok||!user.success)
-throw Error();
+const user=
+await me.json();
+
+
+/*
+IMPORTANT:
+Only remove token when /api/me
+says the session is invalid.
+*/
+
+if(
+me.status===401 ||
+!user.success
+){
+
+localStorage.removeItem(KEY);
+
+location.href=
+"admin-login.html";
+
+return;
+
+}
+
+
+const u=
+user.user;
+
+
+/* User information */
 
 document.getElementById("welcome")
 .textContent=
-"Welcome, "+user.user.name;
+"Welcome, "+u.name;
+
 
 document.getElementById("user")
 .textContent=
 "Logged in as "+
-user.user.email+
+u.email+
 " • "+
-user.user.role;
+u.role;
 
 
-/* Hide administration for non-admin */
+/* Admin link */
 
-if(user.user.role!=="admin"){
+if(u.role!=="admin"){
+
 document.getElementById(
 "adminLink"
 ).style.display="none";
+
 }
 
 
-/* Load finance data */
+/*
+Show dashboard NOW.
+Finance APIs cannot log the user out.
+*/
 
-const [ir,er]=await Promise.all([
+document.getElementById("loading")
+.style.display="none";
 
-fetch(
+document.getElementById("app")
+.style.display="block";
+
+
+/* Load finance data separately */
+
+let income=[];
+let expenses=[];
+
+
+try{
+
+const r=
+await fetch(
 API+"/api/finance/income",
 {headers:headers()}
-),
+);
 
-fetch(
+if(r.ok){
+
+const d=
+await r.json();
+
+if(d.success){
+
+income=
+d.income||[];
+
+}
+
+}
+
+}catch(e){
+
+console.log(
+"Income API unavailable"
+);
+
+}
+
+
+try{
+
+const r=
+await fetch(
 API+"/api/finance/expenses",
 {headers:headers()}
-)
-
-]);
-
-const incomeData=await ir.json();
-const expenseData=await er.json();
-
-if(!ir.ok||!incomeData.success)
-throw Error(
-incomeData.error||
-"Unable to load income"
 );
 
-if(!er.ok||!expenseData.success)
-throw Error(
-expenseData.error||
-"Unable to load expenses"
+if(r.ok){
+
+const d=
+await r.json();
+
+if(d.success){
+
+expenses=
+d.expenses||[];
+
+}
+
+}
+
+}catch(e){
+
+console.log(
+"Expenses API unavailable"
 );
 
-const income=
-incomeData.income||[];
+}
 
-const expenses=
-expenseData.expenses||[];
 
+/* Totals */
 
 const totalIncome=
 income.reduce(
-(s,x)=>s+(Number(x.amount)||0),
+(s,x)=>
+s+(Number(x.amount)||0),
 0
 );
+
 
 const totalExpenses=
 expenses.reduce(
-(s,x)=>s+(Number(x.amount)||0),
+(s,x)=>
+s+(Number(x.amount)||0),
 0
 );
 
 
-const now=new Date();
+/* Current month */
+
+const now=
+new Date();
 
 const prefix=
 now.getFullYear()+"-"+
@@ -269,7 +393,8 @@ String(x.date||"")
 .startsWith(prefix)
 )
 .reduce(
-(s,x)=>s+(Number(x.amount)||0),
+(s,x)=>
+s+(Number(x.amount)||0),
 0
 );
 
@@ -281,35 +406,74 @@ String(x.date||"")
 .startsWith(prefix)
 )
 .reduce(
-(s,x)=>s+(Number(x.amount)||0),
+(s,x)=>
+s+(Number(x.amount)||0),
 0
 );
 
+
+/* Display */
 
 document.getElementById("income")
 .textContent=
 money(totalIncome);
 
+
 document.getElementById("expenses")
 .textContent=
 money(totalExpenses);
 
+
 document.getElementById("balance")
 .textContent=
-money(totalIncome-totalExpenses);
+money(
+totalIncome-
+totalExpenses
+);
+
 
 document.getElementById("monthIncome")
 .textContent=
 money(monthIncome);
 
+
 document.getElementById("monthExpenses")
 .textContent=
 money(monthExpenses);
 
+
 document.getElementById("monthBalance")
 .textContent=
-money(monthIncome-monthExpenses);
+money(
+monthIncome-
+monthExpenses
+);
 
+
+/* API warning */
+
+if(
+income.length===0 &&
+expenses.length===0
+){
+
+const error=
+document.getElementById("error");
+
+error.textContent=
+"Finance records are not available yet. Your login session is active.";
+
+error.style.display="block";
+
+}
+
+
+}catch(e){
+
+/*
+Do NOT remove the token here.
+Only /api/me failure should log out.
+*/
 
 document.getElementById("loading")
 .style.display="none";
@@ -317,12 +481,12 @@ document.getElementById("loading")
 document.getElementById("app")
 .style.display="block";
 
+document.getElementById("error")
+.textContent=
+"Dashboard loaded. Some finance data is temporarily unavailable.";
 
-}catch(e){
-
-localStorage.removeItem(KEY);
-
-location.href="admin-login.html";
+document.getElementById("error")
+.style.display="block";
 
 }
 
@@ -331,21 +495,30 @@ location.href="admin-login.html";
 
 async function logout(){
 
+const token=
+localStorage.getItem(KEY);
+
+
 try{
 
 await fetch(
 API+"/api/logout",
 {
 method:"POST",
-headers:headers()
+headers:{
+"Authorization":
+"Bearer "+token
+}
 }
 );
 
 }catch(e){}
 
+
 localStorage.removeItem(KEY);
 
-location.href="admin-login.html";
+location.href=
+"admin-login.html";
 
 }
 
