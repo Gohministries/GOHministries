@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Premium | GOH Bible Academy</title>
+<meta name="theme-color" content="#111827">
+
+<link rel="icon"
+href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Arial,sans-serif;
+background:#f3f6fb;
+color:#172033;
+line-height:1.5
+}
+
+button{font-family:inherit;cursor:pointer}
+
+.container{
+width:min(650px,94%);
+margin:auto
+}
+
+header{
+background:#fff;
+border-bottom:1px solid #e5e7eb
+}
+
+.nav{
+height:64px;
+display:flex;
+align-items:center;
+justify-content:space-between
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:9px
+}
+
+.logo img{
+width:40px;
+height:40px;
+object-fit:contain;
+border-radius:9px
+}
+
+.logo-title{
+font-size:13px;
+font-weight:900
+}
+
+.logo-sub{
+font-size:8px;
+color:#6b7280
+}
+
+.back{
+border:0;
+background:#111827;
+color:#fff;
+padding:8px 11px;
+border-radius:8px;
+font-size:9px;
+font-weight:900
+}
+
+main{
+padding:25px 0 45px
+}
+
+.hero{
+background:#111827;
+color:#fff;
+border-radius:18px;
+padding:25px;
+text-align:center;
+margin-bottom:15px
+}
+
+.hero-icon{
+font-size:38px;
+margin-bottom:8px
+}
+
+.hero small{
+color:#fbbf24;
+font-size:9px;
+font-weight:900;
+letter-spacing:1px
+}
+
+.hero h1{
+font-size:24px;
+margin:5px 0
+}
+
+.hero p{
+font-size:10px;
+color:#d1d5db
+}
+
+.card{
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:15px;
+padding:20px;
+margin-bottom:13px
+}
+
+.price{
+text-align:center
+}
+
+.price small{
+font-size:9px;
+color:#6b7280;
+font-weight:900
+}
+
+.amount{
+font-size:34px;
+font-weight:900;
+margin:4px 0
+}
+
+.amount span{
+font-size:12px;
+color:#6b7280
+}
+
+.features{
+margin-top:15px
+}
+
+.feature{
+display:flex;
+gap:9px;
+padding:9px 0;
+border-bottom:1px solid #f1f5f9;
+font-size:10px
+}
+
+.feature:last-child{
+border-bottom:0
+}
+
+.pay{
+width:100%;
+border:0;
+background:#fbbf24;
+color:#111827;
+padding:13px;
+border-radius:10px;
+font-size:11px;
+font-weight:900;
+margin-top:15px
+}
+
+.pay:disabled{
+opacity:.5;
+cursor:not-allowed
+}
+
+.status{
+text-align:center;
+padding:12px;
+border-radius:10px;
+font-size:10px;
+font-weight:800;
+margin-bottom:13px;
+display:none
+}
+
+.status.show{
+display:block
+}
+
+.success{
+background:#dcfce7;
+color:#166534
+}
+
+.error{
+background:#fef2f2;
+color:#b91c1c
+}
+
+.loading{
+background:#eff6ff;
+color:#1d4ed8
+}
+
+.countdown{
+background:#111827;
+color:#fff;
+border-radius:15px;
+padding:20px;
+text-align:center;
+margin-bottom:13px
+}
+
+.countdown-label{
+font-size:9px;
+color:#9ca3af;
+font-weight:900;
+letter-spacing:1px
+}
+
+.time{
+font-size:27px;
+font-weight:900;
+margin-top:5px;
+letter-spacing:1px
+}
+
+.expired{
+background:#fef2f2;
+color:#b91c1c;
+border:1px solid #fecaca;
+border-radius:12px;
+padding:14px;
+text-align:center;
+font-size:10px;
+font-weight:900;
+display:none
+}
+
+.expired.show{
+display:block
+}
+
+.note{
+font-size:8px;
+color:#6b7280;
+text-align:center;
+margin-top:12px
+}
+
+footer{
+background:#0b1120;
+color:#64748b;
+text-align:center;
+padding:18px;
+font-size:8px
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container nav">
+
+<div class="logo">
+
+<img
+src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
+alt="GOH Bible Academy">
+
+<div>
+<div class="logo-title">
+GOH Bible Academy
+</div>
+
+<div class="logo-sub">
+Gate of Heaven Ministries
+</div>
+</div>
+
+</div>
+
+<button
+class="back"
+onclick="location.href='dashboard.html'">
+← Dashboard
+</button>
+
+</div>
+</header>
+
+
+<main>
+<div class="container">
+
+
+<div id="status" class="status"></div>
+
+
+<!-- ACTIVE PREMIUM -->
+
+<div id="activeBox" style="display:none">
+
+<div class="countdown">
+
+<div class="countdown-label">
+PREMIUM MEMBERSHIP ACTIVE
+</div>
+
+<div class="time" id="countdown">
+30d 00h 00m 00s
+</div>
+
+</div>
+
+<div class="card">
+
+<div style="
+text-align:center;
+font-size:18px;
+font-weight:900;
+margin-bottom:6px">
+⭐ Premium Active
+</div>
+
+<div style="
+text-align:center;
+font-size:10px;
+color:#6b7280">
+You can access Lessons 2–180.
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PREMIUM PURCHASE -->
+
+<div id="purchaseBox">
+
+<div class="hero">
+
+<div class="hero-icon">
+🎓
+</div>
+
+<small>
+GOH BIBLE ACADEMY
+</small>
+
+<h1>
+Premium Membership
+</h1>
+
+<p>
+Complete your 180-lesson discipleship training.
+</p>
+
+</div>
+
+
+<div class="card price">
+
+<small>
+PREMIUM MEMBERSHIP
+</small>
+
+<div class="amount">
+LKR 1,500
+<span>/ 30 days</span>
+</div>
+
+<div class="features">
+
+<div class="feature">
+<span>📖</span>
+<span>Access Lessons 2–180</span>
+</div>
+
+<div class="feature">
+<span>🎓</span>
+<span>Complete all 6 Bible-study modules</span>
+</div>
+
+<div class="feature">
+<span>📝</span>
+<span>5-question assessment for every lesson</span>
+</div>
+
+<div class="feature">
+<span>✅</span>
+<span>70% minimum passing score</span>
+</div>
+
+<div class="feature">
+<span>📊</span>
+<span>Progress tracking toward completion</span>
+</div>
+
+<div class="feature">
+<span>🏆</span>
+<span>Certificate eligibility after completing the program</span>
+</div>
+
+</div>
+
+
+<button
+id="payButton"
+class="pay">
+Pay LKR 1,500 with PayHere
+</button>
+
+<div class="note">
+Secure payment powered by PayHere.
+</div>
+
+</div>
+
+
+<div
+id="expiredBox"
+class="expired">
+
+Premium membership has expired.<br>
+Renew for LKR 1,500 and continue your studies.
+
+</div>
+
+</div>
+
+
+</div>
+</main>
+
+
+<footer>
+
+GOH Bible Academy • Gate of Heaven Ministries<br>
+
+© 2026 GOH Bible Academy. All rights reserved.
+
+</footer>
+
+
+<script>
+
+const CHECKOUT_API =
+"https://YOUR-PAYHERE-CHECKOUT-WORKER.workers.dev";
+
+
+const API =
+"https://dashboard.createlk.workers.dev";
+
+
+const $ =
+id => document.getElementById(id);
+
+
+/* =========================
+   STUDENT
+========================= */
+
+function getStudent(){
+
+const raw =
+localStorage.getItem("goh_student") ||
+sessionStorage.getItem("goh_student");
+
+if(!raw)return null;
+
+try{
+return JSON.parse(raw);
+}catch{
+return null;
+}
+
+}
+
+
+const student =
+getStudent();
+
+
+if(!student){
+
+location.href =
+"login.html";
+
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+function showStatus(text,type){
+
+$("status").textContent =
+text;
+
+$("status").className =
+"status show " + type;
+
+}
+
+
+/* =========================
+   CHECK PREMIUM
+========================= */
+
+async function checkPremium(){
+
+if(!student)return;
+
+try{
+
+const response =
+await fetch(
+API +
+"/progress?student_id=" +
+encodeURIComponent(student.id)
+);
+
+const data =
+await response.json();
+
+
+/*
+If your dashboard Worker later
+returns membership information,
+use it here.
+*/
+
+let status =
+String(
+student.membership_status ||
+"FREE"
+).toUpperCase();
+
+
+let expiry =
+student.membership_expiry ||
+null;
+
+
+if(
+data.membership
+){
+
+status =
+String(
+data.membership.status ||
+status
+).toUpperCase();
+
+expiry =
+data.membership.expiry ||
+expiry;
+
+}
+
+
+/*
+ACTIVE PREMIUM
+*/
+
+if(
+status==="PREMIUM" &&
+expiry
+){
+
+const expiryDate =
+new Date(expiry);
+
+if(
+expiryDate.getTime() >
+Date.now()
+){
+
+$("purchaseBox").style.display =
+"none";
+
+$("activeBox").style.display =
+"block";
+
+startCountdown(
+expiryDate
+);
+
+return;
+
+}
+
+}
+
+
+/*
+EXPIRED / FREE
+*/
+
+$("activeBox").style.display =
+"none";
+
+$("purchaseBox").style.display =
+"block";
+
+$("expiredBox").classList.add(
+"show"
+);
+
+
+}catch(error){
+
+console.error(error);
+
+/*
+Do not block payment button
+if status check fails.
+*/
+
+$("purchaseBox").style.display =
+"block";
+
+}
+
+}
+
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+let timer = null;
+
+
+function startCountdown(expiry){
+
+if(timer)
+clearInterval(timer);
+
+
+function update(){
+
+let remaining =
+expiry.getTime() -
+Date.now();
+
+
+if(remaining<=0){
+
+clearInterval(timer);
+
+$("countdown").textContent =
+"Expired";
+
+$("activeBox").style.display =
+"none";
+
+$("purchaseBox").style.display =
+"block";
+
+$("expiredBox").classList.add(
+"show"
+);
+
+return;
+
+}
+
+
+const seconds =
+Math.floor(
+remaining / 1000
+);
+
+const days =
+Math.floor(
+seconds / 86400
+);
+
+const hours =
+Math.floor(
+(seconds % 86400) / 3600
+);
+
+const minutes =
+Math.floor(
+(seconds % 3600) / 60
+);
+
+const secs =
+seconds % 60;
+
+
+$("countdown").textContent =
+days + "d " +
+String(hours).padStart(2,"0") + "h " +
+String(minutes).padStart(2,"0") + "m " +
+String(secs).padStart(2,"0") + "s";
+
+}
+
+
+update();
+
+timer =
+setInterval(
+update,
+1000
+);
+
+}
+
+
+/* =========================
+   PAYHERE
+========================= */
+
+$("payButton").onclick =
+async function(){
+
+if(!student){
+
+location.href =
+"login.html";
+
+return;
+
+}
+
+
+const button =
+$("payButton");
+
+
+button.disabled =
+true;
+
+button.textContent =
+"Preparing secure payment...";
+
+
+showStatus(
+"Connecting to PayHere...",
+"loading"
+);
+
+
+try{
+
+const response =
+await fetch(
+CHECKOUT_API +
+"/create-checkout",
+{
+method:"POST",
+
+headers:{
+"Content-Type":
+"application/json"
+},
+
+body:JSON.stringify({
+
+student_id:
+student.id,
+
+first_name:
+student.first_name || "",
+
+last_name:
+student.last_name || "",
+
+email:
+student.email || "",
+
+phone:
+student.phone || "",
+
+amount:
+"1500.00",
+
+currency:
+"LKR",
+
+items:
+"GOH Bible Academy Premium - 30 Days"
+
+})
+}
+);
+
+
+const data =
+await response.json();
+
+
+if(
+!response.ok ||
+!data.success
+){
+
+throw new Error(
+data.message ||
+"Unable to start payment."
+);
+
+}
+
+
+/*
+Worker returns the PayHere
+form fields.
+*/
+
+if(
+data.action &&
+data.fields
+){
+
+const form =
+document.createElement("form");
+
+form.method =
+"POST";
+
+form.action =
+data.action;
+
+Object.entries(
+data.fields
+).forEach(
+([name,value])=>{
+
+const input =
+document.createElement("input");
+
+input.type =
+"hidden";
+
+input.name =
+name;
+
+input.value =
+value ?? "";
+
+form.appendChild(
+input
+);
+
+});
+
+
+document.body.appendChild(
+form
+);
+
+form.submit();
+
+return;
+
+}
+
+
+/*
+Alternative:
+Worker can return a
+ready-made checkout URL.
+*/
+
+if(data.url){
+
+location.href =
+data.url;
+
+return;
+
+}
+
+
+throw new Error(
+"Invalid checkout response."
+);
+
+
+}catch(error){
+
+console.error(error);
+
+showStatus(
+error.message ||
+"Unable to start payment.",
+"error"
+);
+
+button.disabled =
+false;
+
+button.textContent =
+"Pay LKR 1,500 with PayHere";
+
+}
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+if(student){
+
+checkPremium();
+
+}
+
+</script>
+
+</body>
+</html>
