@@ -9,29 +9,43 @@
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
-header{background:#155eef;color:#fff;padding:14px 18px}
+header{background:#155eef;color:#fff;padding:15px 18px}
 .head{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center}
-.logout{background:#fff;color:#155eef;border:0;border-radius:8px;padding:9px 14px;font-weight:bold;cursor:pointer}
+.logout{background:#fff;color:#155eef;border:0;border-radius:8px;padding:9px 13px;font-weight:bold;cursor:pointer}
+nav{max-width:1050px;margin:10px auto 0;display:flex;gap:8px;overflow:auto}
+nav a{background:#fff;color:#155eef;padding:8px 11px;border-radius:8px;text-decoration:none;font-size:12px;white-space:nowrap}
 main{max-width:1050px;margin:auto;padding:18px}
-.card{background:#fff;padding:18px;border-radius:14px;margin-bottom:16px;box-shadow:0 2px 12px #0000000d}
-h2,h3{margin-top:0}.sub{color:#667085;font-size:13px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.stat strong{display:block;font-size:24px;margin-top:7px}
+.card{background:#fff;padding:18px;border-radius:14px;margin-bottom:16px;box-shadow:0 2px 12px #0001}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-label{display:block;font-size:13px;font-weight:bold;margin:10px 0 6px}
-input,select,textarea{width:100%;padding:11px;border:1px solid #d5dbe5;border-radius:8px;font-size:14px;font-family:inherit}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stat strong{display:block;font-size:24px;margin-top:6px}
+label{display:block;font-size:13px;font-weight:bold;margin:9px 0 6px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #d5dbe5;border-radius:8px;font-size:14px;background:#fff}
 textarea{min-height:80px;resize:vertical}
-.primary{width:100%;padding:12px;margin-top:15px;border:0;border-radius:8px;background:#155eef;color:#fff;font-weight:bold;cursor:pointer}
-.primary:disabled{opacity:.6}
-.msg{display:none;padding:11px;border-radius:8px;font-size:13px;margin-bottom:12px}
+button{border:0;border-radius:8px;padding:11px 15px;background:#155eef;color:#fff;font-weight:bold;cursor:pointer}
+form button{width:100%;margin-top:15px}
+button:disabled{opacity:.6}
+.danger{background:#dc2626}
+.success{background:#16a34a}
+.msg{display:none;padding:11px;border-radius:8px;margin-bottom:12px;font-size:13px}
 .ok{display:block;background:#dcfce7;color:#166534}
 .bad{display:block;background:#fee2e2;color:#991b1b}
-.table{overflow-x:auto}
-table{width:100%;border-collapse:collapse;min-width:800px}
-th,td{padding:10px;border-bottom:1px solid #edf0f4;font-size:13px;text-align:left}
+.small{font-size:13px;color:#667085}
+.hint{font-size:11px;color:#667085;margin-top:5px}
+.table{overflow:auto}
+table{width:100%;min-width:900px;border-collapse:collapse}
+th,td{padding:10px;border-bottom:1px solid #edf0f4;text-align:left;font-size:13px}
 th{background:#f8fafc;color:#667085}
-.delete{border:0;border-radius:7px;padding:7px 10px;background:#fee2e2;color:#991b1b;font-weight:bold;cursor:pointer}
-@media(max-width:700px){.stats,.grid{grid-template-columns:1fr}main{padding:12px}}
+.status{font-weight:bold}
+.pending{color:#b45309}
+.approved{color:#15803d}
+.rejected{color:#dc2626}
+.receipt{background:#475467;padding:8px 10px;font-size:12px}
+.delete{background:#dc2626;padding:8px 10px;font-size:12px}
+@media(max-width:700px){
+.grid,.stats{grid-template-columns:1fr}
+main{padding:12px}
+}
 </style>
 </head>
 
@@ -42,29 +56,42 @@ th{background:#f8fafc;color:#667085}
 <b>GOH Ministries Finance</b>
 <button class="logout" onclick="logout()">Logout</button>
 </div>
+
+<nav>
+<a href="finance-dashboard.html">Dashboard</a>
+<a href="income.html">Income</a>
+<a href="expenses.html">Expenses</a>
+<a href="donations.html">Donations</a>
+<a href="receipts.html">Receipts</a>
+<a href="reports.html">Reports</a>
+<a href="admin.html">Administration</a>
+</nav>
 </header>
 
 <main>
 
 <div class="card">
 <h2>Expenses</h2>
-<div class="sub">Record and monitor ministry expenses.</div>
+<div class="small">
+Record ministry expenses and upload the payment slip or receipt.
+All new expenses require administrator approval.
+</div>
 </div>
 
 <div class="stats">
 
 <div class="card stat">
-<div class="sub">Total Expenses</div>
+<div class="small">Approved Expenses</div>
 <strong id="total">LKR 0.00</strong>
 </div>
 
 <div class="card stat">
-<div class="sub">This Month</div>
-<strong id="month">LKR 0.00</strong>
+<div class="small">Pending</div>
+<strong id="pending">0</strong>
 </div>
 
 <div class="card stat">
-<div class="sub">Transactions</div>
+<div class="small">Records</div>
 <strong id="count">0</strong>
 </div>
 
@@ -81,9 +108,22 @@ th{background:#f8fafc;color:#667085}
 <div class="grid">
 
 <div>
-<label>Description</label>
-<input id="description"
-placeholder="What was purchased or paid?"
+<label>Category</label>
+<input
+id="category"
+type="text"
+placeholder="e.g. Construction, Transport, Electricity"
+required>
+</div>
+
+<div>
+<label>Amount (LKR)</label>
+<input
+id="amount"
+type="number"
+min="0.01"
+step="0.01"
+placeholder="0.00"
 required>
 </div>
 
@@ -93,35 +133,12 @@ required>
 </div>
 
 <div>
-<label>Amount (LKR)</label>
-<input id="amount"
-type="number"
-min="0.01"
-step="0.01"
-placeholder="0.00"
-required>
-</div>
-
-<div>
-<label>Category</label>
-<select id="category">
-<option value="Construction">Construction</option>
-<option value="Utilities">Utilities</option>
-<option value="Transport">Transport</option>
-<option value="Food">Food</option>
-<option value="Equipment">Equipment</option>
-<option value="Salary">Salary</option>
-<option value="Mission">Mission</option>
-<option value="Office">Office</option>
-<option value="Other">Other</option>
-</select>
-</div>
-
-<div>
 <label>Payment Method</label>
-<select id="method">
+<select id="payment" required>
+<option value="">Select payment method</option>
 <option>Cash</option>
 <option>Bank Transfer</option>
+<option>Card</option>
 <option>Cheque</option>
 <option>Other</option>
 </select>
@@ -129,18 +146,30 @@ required>
 
 <div>
 <label>Reference Number</label>
-<input id="reference" placeholder="Optional">
+<input
+id="reference"
+type="text"
+placeholder="Optional">
+</div>
+
+<div>
+<label>Receipt / Payment Slip</label>
+<input
+id="receipt"
+type="file"
+accept="image/jpeg,image/png,application/pdf"
+required>
+<div class="hint">JPG, PNG or PDF — maximum 5MB.</div>
 </div>
 
 </div>
 
-<label>Notes</label>
-<textarea id="notes"
-placeholder="Optional notes"></textarea>
+<label>Description</label>
+<textarea
+id="description"
+placeholder="Optional description"></textarea>
 
-<button id="saveBtn"
-class="primary"
-type="submit">
+<button id="saveBtn" type="submit">
 Save Expense
 </button>
 
@@ -159,18 +188,19 @@ Save Expense
 <thead>
 <tr>
 <th>Date</th>
-<th>Description</th>
 <th>Category</th>
-<th>Method</th>
-<th>Reference</th>
 <th>Amount</th>
+<th>Payment</th>
+<th>Reference</th>
+<th>Status</th>
+<th>Receipt</th>
 <th>Action</th>
 </tr>
 </thead>
 
-<tbody id="records">
+<tbody id="rows">
 <tr>
-<td colspan="7">Loading...</td>
+<td colspan="8">Loading...</td>
 </tr>
 </tbody>
 
@@ -184,18 +214,19 @@ Save Expense
 
 <script>
 
-const API=
-"https://goh-finance.createlk.workers.dev";
+const API="https://goh-finance.createlk.workers.dev";
+const KEY="goh_finance_token";
 
-const TOKEN_KEY=
-"goh_finance_token";
+function authHeaders(){
+return{
+"Authorization":"Bearer "+localStorage.getItem(KEY)
+};
+}
 
-function headers(){
+function jsonHeaders(){
 return{
 "Content-Type":"application/json",
-"Authorization":
-"Bearer "+
-localStorage.getItem(TOKEN_KEY)
+"Authorization":"Bearer "+localStorage.getItem(KEY)
 };
 }
 
@@ -209,35 +240,24 @@ return String(v??"")
 }
 
 function money(v){
-return "LKR "+
-Number(v||0).toLocaleString(
+return "LKR "+Number(v||0).toLocaleString(
 "en-LK",
 {
 minimumFractionDigits:2,
 maximumFractionDigits:2
-});
+}
+);
 }
 
-function today(){
-const d=new Date();
-return d.getFullYear()+"-"+
-String(d.getMonth()+1).padStart(2,"0")+"-"+
-String(d.getDate()).padStart(2,"0");
-}
-
-function msg(text,ok=false){
+function show(text,ok=false){
 const el=document.getElementById("msg");
 el.textContent=text;
 el.className="msg "+(ok?"ok":"bad");
 }
 
-document.getElementById("date").value=today();
+async function check(){
 
-
-async function checkLogin(){
-
-const token=
-localStorage.getItem(TOKEN_KEY);
+const token=localStorage.getItem(KEY);
 
 if(!token){
 location.href="admin-login.html";
@@ -248,157 +268,179 @@ try{
 
 const r=await fetch(
 API+"/api/me",
-{headers:headers()}
+{headers:authHeaders()}
 );
 
 const d=await r.json();
 
-if(!r.ok||!d.success)
-throw Error();
+if(!r.ok||!d.success)throw Error();
 
 return true;
 
 }catch(e){
 
-localStorage.removeItem(TOKEN_KEY);
+localStorage.removeItem(KEY);
 location.href="admin-login.html";
 return false;
 
 }
+
 }
 
-
-async function loadExpenses(){
+async function load(){
 
 try{
 
 const r=await fetch(
-API+"/api/finance/expenses",
-{headers:headers()}
+API+"/api/expenses",
+{headers:authHeaders()}
 );
 
 const d=await r.json();
 
 if(!r.ok||!d.success)
-throw Error(
-d.error||"Unable to load expenses"
-);
+throw Error(d.error||"Unable to load expenses");
 
 const rows=d.expenses||[];
 
-let total=0;
-let month=0;
-
-const prefix=
-new Date().getFullYear()+"-"+
-String(new Date().getMonth()+1).padStart(2,"0");
+let approved=0;
+let pending=0;
 
 rows.forEach(x=>{
-
-const a=Number(x.amount)||0;
-
-total+=a;
-
-if(String(x.date||"").startsWith(prefix))
-month+=a;
-
+if(x.status==="APPROVED")approved+=Number(x.amount)||0;
+if(x.status==="PENDING")pending++;
 });
 
-document.getElementById("total")
-.textContent=money(total);
+document.getElementById("total").textContent=money(approved);
+document.getElementById("pending").textContent=pending;
+document.getElementById("count").textContent=rows.length;
 
-document.getElementById("month")
-.textContent=money(month);
+document.getElementById("rows").innerHTML=
 
-document.getElementById("count")
-.textContent=rows.length;
+rows.map(x=>{
 
-document.getElementById("records")
-.innerHTML=
+const status=String(x.status||"").toLowerCase();
 
-rows.map(x=>`
-
+return `
 <tr>
+
 <td>${esc(x.date)}</td>
-<td>${esc(x.description)}</td>
+
 <td>${esc(x.category)}</td>
-<td>${esc(x.payment_method)}</td>
-<td>${esc(x.reference)}</td>
+
 <td>${money(x.amount)}</td>
+
+<td>${esc(x.payment_method)}</td>
+
+<td>${esc(x.reference_number||"-")}</td>
+
+<td>
+<span class="status ${esc(status)}">
+${esc(x.status)}
+</span>
+</td>
+
+<td>
+${x.receipt_key?
+`<button class="receipt"
+onclick="viewReceipt(${Number(x.id)})">
+View
+</button>`:"-"}
+</td>
+
 <td>
 ${
-x.id
-?
-`<button class="delete"
+x.status==="PENDING"||x.status==="REJECTED"
+?`<button class="delete"
 onclick="deleteExpense(${Number(x.id)})">
 Delete
-</button>`
-:""
+</button>`:"-"
 }
 </td>
-</tr>
 
-`).join("")||
+</tr>
+`;
+
+}).join("")||
 
 `<tr>
-<td colspan="7">No expense records</td>
+<td colspan="8">No expense records found.</td>
 </tr>`;
 
 }catch(e){
 
-document.getElementById("records")
-.innerHTML=
+document.getElementById("rows").innerHTML=
 `<tr>
-<td colspan="7">${esc(e.message)}</td>
+<td colspan="8">${esc(e.message)}</td>
 </tr>`;
 
 }
 
 }
-
 
 document.getElementById("expenseForm")
 .addEventListener("submit",async e=>{
 
 e.preventDefault();
 
-const btn=
-document.getElementById("saveBtn");
+const btn=document.getElementById("saveBtn");
 
-const body={
+const file=document.getElementById("receipt").files[0];
 
-description:
-document.getElementById("description").value.trim(),
-
-date:
-document.getElementById("date").value,
-
-amount:
-Number(document.getElementById("amount").value),
-
-category:
-document.getElementById("category").value,
-
-payment_method:
-document.getElementById("method").value,
-
-reference:
-document.getElementById("reference").value.trim(),
-
-notes:
-document.getElementById("notes").value.trim()
-
-};
-
-if(!body.description||
-!body.date||
-!body.amount||
-body.amount<=0){
-
-msg("Please enter description, date and a valid amount.");
+if(!file){
+show("Receipt / payment slip is required.");
 return;
-
 }
+
+if(file.size>5242880){
+show("Receipt must be 5MB or smaller.");
+return;
+}
+
+const allowed=[
+"image/jpeg",
+"image/png",
+"application/pdf"
+];
+
+if(!allowed.includes(file.type)){
+show("Only JPG, PNG or PDF files are allowed.");
+return;
+}
+
+const fd=new FormData();
+
+fd.append(
+"category",
+document.getElementById("category").value.trim()
+);
+
+fd.append(
+"amount",
+document.getElementById("amount").value
+);
+
+fd.append(
+"date",
+document.getElementById("date").value
+);
+
+fd.append(
+"payment_method",
+document.getElementById("payment").value
+);
+
+fd.append(
+"reference_number",
+document.getElementById("reference").value.trim()
+);
+
+fd.append(
+"description",
+document.getElementById("description").value.trim()
+);
+
+fd.append("receipt",file);
 
 btn.disabled=true;
 btn.textContent="Saving...";
@@ -406,11 +448,11 @@ btn.textContent="Saving...";
 try{
 
 const r=await fetch(
-API+"/api/finance/expenses",
+API+"/api/expenses",
 {
 method:"POST",
-headers:headers(),
-body:JSON.stringify(body)
+headers:authHeaders(),
+body:fd
 }
 );
 
@@ -421,20 +463,21 @@ throw Error(
 d.error||"Unable to save expense"
 );
 
-msg(
-"Expense saved successfully.",
+show(
+"Expense submitted successfully. Waiting for administrator approval.",
 true
 );
 
 e.target.reset();
 
-document.getElementById("date").value=today();
+document.getElementById("date").value=
+new Date().toISOString().slice(0,10);
 
-loadExpenses();
+await load();
 
 }catch(err){
 
-msg(err.message);
+show(err.message);
 
 }finally{
 
@@ -445,6 +488,17 @@ btn.textContent="Save Expense";
 
 });
 
+function viewReceipt(id){
+
+const token=localStorage.getItem(KEY);
+
+window.open(
+API+"/api/expenses/"+id+"/receipt?token="+
+encodeURIComponent(token),
+"_blank"
+);
+
+}
 
 async function deleteExpense(id){
 
@@ -455,10 +509,10 @@ if(!confirm(
 try{
 
 const r=await fetch(
-API+"/api/finance/expenses/"+id,
+API+"/api/expenses/"+id,
 {
 method:"DELETE",
-headers:headers()
+headers:authHeaders()
 }
 );
 
@@ -466,10 +520,10 @@ const d=await r.json();
 
 if(!r.ok||!d.success)
 throw Error(
-d.error||"Unable to delete"
+d.error||"Unable to delete expense"
 );
 
-loadExpenses();
+await load();
 
 }catch(e){
 
@@ -479,28 +533,30 @@ alert(e.message);
 
 }
 
-
 async function logout(){
 
 try{
+
 await fetch(
 API+"/api/logout",
 {
 method:"POST",
-headers:headers()
+headers:authHeaders()
 }
 );
+
 }catch(e){}
 
-localStorage.removeItem(TOKEN_KEY);
-
+localStorage.removeItem(KEY);
 location.href="admin-login.html";
 
 }
 
+document.getElementById("date").value=
+new Date().toISOString().slice(0,10);
 
-checkLogin().then(ok=>{
-if(ok)loadExpenses();
+check().then(ok=>{
+if(ok)load();
 });
 
 </script>
