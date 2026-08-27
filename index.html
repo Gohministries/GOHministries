@@ -7,7 +7,7 @@
 <title>GOH Bible Academy | Christian Biblical Studies</title>
 
 <meta name="description"
-content="GOH Bible Academy offers structured Christian Biblical Studies in English, Tamil and Sinhala. Start with Lesson 1 free.">
+content="GOH Bible Academy — Christian Biblical Studies in English, Tamil and Sinhala with 180 structured lessons.">
 
 <meta name="theme-color" content="#111827">
 
@@ -17,15 +17,9 @@ content="GOH Bible Academy offers structured Christian Biblical Studies in Engli
 href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 
 <style>
-*{
-box-sizing:border-box;
-margin:0;
-padding:0
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
-html{
-scroll-behavior:smooth
-}
+html{scroll-behavior:smooth}
 
 body{
 font-family:Arial,Helvetica,sans-serif;
@@ -34,10 +28,7 @@ color:#172033;
 line-height:1.5
 }
 
-a{
-text-decoration:none;
-color:inherit
-}
+a{text-decoration:none;color:inherit}
 
 .container{
 width:min(1050px,92%);
@@ -81,14 +72,14 @@ font-weight:900
 }
 
 .logo-sub{
-font-size:9px;
+font-size:8px;
 color:#6b7280
 }
 
 .nav-links{
 display:flex;
-align-items:center;
-gap:3px
+gap:4px;
+align-items:center
 }
 
 .nav-links a{
@@ -96,7 +87,6 @@ padding:8px 9px;
 border-radius:8px;
 font-size:10px;
 font-weight:800;
-color:#374151;
 white-space:nowrap
 }
 
@@ -105,13 +95,13 @@ background:#f3f4f6
 }
 
 .login{
-background:#111827!important;
-color:#fff!important
+background:#111827;
+color:#fff
 }
 
 .register{
-background:#fbbf24!important;
-color:#111827!important
+background:#fbbf24;
+color:#111827
 }
 
 .menu{
@@ -140,7 +130,7 @@ right:0;
 z-index:999;
 background:#fff;
 border-bottom:1px solid #e5e7eb;
-box-shadow:0 12px 25px rgba(0,0,0,.12);
+box-shadow:0 10px 25px rgba(0,0,0,.12);
 padding:8px 4%
 }
 
@@ -149,8 +139,7 @@ display:block;
 padding:12px 8px;
 border-radius:8px;
 font-size:12px;
-font-weight:800;
-color:#374151
+font-weight:800
 }
 
 .mobile-menu a:hover{
@@ -164,14 +153,12 @@ display:inline-flex;
 align-items:center;
 justify-content:center;
 padding:11px 17px;
-border:0;
 border-radius:9px;
 font-size:11px;
-font-weight:900;
-cursor:pointer
+font-weight:900
 }
 
-.yellow{
+.primary{
 background:#fbbf24;
 color:#111827
 }
@@ -185,23 +172,23 @@ color:#fff
 
 .hero{
 background:
-radial-gradient(circle at 85% 15%,rgba(99,102,241,.22),transparent 30%),
-linear-gradient(135deg,#111827,#253044);
+radial-gradient(circle at 85% 15%,rgba(99,102,241,.25),transparent 30%),
+linear-gradient(135deg,#0f172a,#263246);
 color:#fff;
-padding:75px 0
+padding:70px 0
 }
 
 .hero-grid{
 display:grid;
-grid-template-columns:1.2fr .8fr;
-gap:30px;
+grid-template-columns:1.15fr .85fr;
+gap:35px;
 align-items:center
 }
 
-.badge{
+.label{
 font-size:9px;
 font-weight:900;
-letter-spacing:1px;
+letter-spacing:1.2px;
 color:#fbbf24
 }
 
@@ -209,18 +196,18 @@ color:#fbbf24
 font-size:clamp(38px,6vw,62px);
 line-height:1.05;
 letter-spacing:-2px;
-margin:10px 0 16px
+margin:10px 0 15px
 }
 
 .hero h1 span{
 color:#fbbf24
 }
 
-.hero-text{
-max-width:570px;
-font-size:14px;
-color:#d1d5db;
-margin-bottom:20px
+.hero p{
+max-width:590px;
+font-size:13px;
+color:#cbd5e1;
+margin-bottom:18px
 }
 
 .languages{
@@ -231,27 +218,26 @@ margin-bottom:20px
 }
 
 .languages span{
-font-size:9px;
-font-weight:800;
 padding:6px 10px;
 border-radius:20px;
-background:rgba(255,255,255,.08);
-border:1px solid rgba(255,255,255,.12);
-color:#e5e7eb
-}
-
-/* HERO CARD */
-
-.hero-card{
 background:rgba(255,255,255,.07);
-border:1px solid rgba(255,255,255,.13);
-border-radius:18px;
-padding:25px
+border:1px solid rgba(255,255,255,.12);
+font-size:9px;
+font-weight:800
 }
 
-.hero-card img{
-width:64px;
-height:64px;
+/* COURSE CARD */
+
+.course-card{
+background:rgba(255,255,255,.07);
+border:1px solid rgba(255,255,255,.14);
+border-radius:18px;
+padding:24px
+}
+
+.course-card img{
+width:62px;
+height:62px;
 object-fit:contain;
 background:#fff;
 border-radius:12px;
@@ -259,110 +245,98 @@ padding:5px;
 margin-bottom:12px
 }
 
-.hero-card small{
-font-size:9px;
-font-weight:900;
-letter-spacing:1px;
-color:#fbbf24
+.course-card h2{
+font-size:26px;
+margin:6px 0
 }
 
-.hero-card h2{
-font-size:25px;
-line-height:1.15;
-margin:6px 0 9px
-}
-
-.hero-card p{
+.course-card p{
 font-size:11px;
-color:#d1d5db;
-margin-bottom:17px
+color:#cbd5e1;
+margin-bottom:15px
 }
 
-.course-info{
+.stats{
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:7px;
-margin-bottom:17px
+margin-bottom:16px
 }
 
-.course-info div{
-background:rgba(255,255,255,.06);
-border:1px solid rgba(255,255,255,.08);
-padding:9px;
-border-radius:8px;
-text-align:center
+.stat{
+padding:10px;
+text-align:center;
+border-radius:9px;
+background:rgba(255,255,255,.06)
 }
 
-.course-info strong{
+.stat strong{
 display:block;
-font-size:14px
+font-size:17px
 }
 
-.course-info span{
+.stat span{
 font-size:8px;
-color:#cbd5e1
+color:#94a3b8
+}
+
+.course-card .btn{
+width:100%
 }
 
 /* SECTIONS */
 
 section{
-padding:60px 0
+padding:55px 0
 }
 
 .section-head{
 text-align:center;
-margin-bottom:25px
-}
-
-.section-head small{
-font-size:9px;
-font-weight:900;
-letter-spacing:1px;
-color:#6366f1
+max-width:650px;
+margin:0 auto 25px
 }
 
 .section-head h2{
 font-size:28px;
-line-height:1.15;
 margin:5px 0
 }
 
 .section-head p{
-font-size:12px;
+font-size:11px;
 color:#6b7280
 }
 
-/* COURSE */
+/* HIGHLIGHTS */
 
-.course{
+.highlights{
 background:#fff
 }
 
-.course-grid{
+.grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:10px
 }
 
 .card{
-background:#f8fafc;
+background:#fff;
 border:1px solid #e5e7eb;
 border-radius:14px;
-padding:20px
+padding:19px
 }
 
 .icon{
-font-size:22px;
+font-size:21px;
 margin-bottom:7px
 }
 
 .card h3{
-font-size:15px;
+font-size:14px;
 margin-bottom:5px
 }
 
 .card p{
-font-size:11px;
+font-size:10px;
 color:#6b7280
 }
 
@@ -373,28 +347,21 @@ background:#f8fafc
 }
 
 .free-box{
-max-width:800px;
+max-width:850px;
 margin:auto;
 background:#fff;
 border:1px solid #e5e7eb;
-border-radius:18px;
-padding:28px;
-display:grid;
-grid-template-columns:1fr auto;
+border-radius:16px;
+padding:25px;
+display:flex;
 align-items:center;
+justify-content:space-between;
 gap:20px
-}
-
-.free-box small{
-font-size:9px;
-font-weight:900;
-letter-spacing:1px;
-color:#16a34a
 }
 
 .free-box h2{
 font-size:24px;
-margin:5px 0
+margin:4px 0
 }
 
 .free-box p{
@@ -402,93 +369,85 @@ font-size:11px;
 color:#6b7280
 }
 
-/* STRUCTURE */
+/* MODULES */
 
-.structure{
+.modules{
 background:#fff
 }
 
-.structure-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px
-}
-
-.structure-card{
+.module{
+background:#fff;
 border:1px solid #e5e7eb;
-border-radius:14px;
-padding:20px;
-text-align:center
+border-radius:13px;
+padding:18px
 }
 
-.structure-card strong{
-display:block;
-font-size:24px;
-margin-bottom:2px
+.module small{
+font-size:8px;
+font-weight:900;
+color:#6366f1
 }
 
-.structure-card span{
+.module h3{
+font-size:13px;
+margin:5px 0
+}
+
+.module p{
 font-size:10px;
 color:#6b7280
+}
+
+.count{
+display:inline-block;
+margin-top:9px;
+padding:5px 8px;
+background:#f3f4f6;
+border-radius:6px;
+font-size:8px;
+font-weight:800
 }
 
 /* LANGUAGES */
 
-.language-section{
+.lang-section{
 background:#f8fafc
 }
 
-.language-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px
-}
-
-.language-card{
-background:#fff;
-border:1px solid #e5e7eb;
-border-radius:14px;
-padding:20px;
+.lang-card{
 text-align:center
 }
 
-.language-card strong{
+.lang-card strong{
 display:block;
-font-size:16px;
-margin-bottom:4px
+font-size:18px;
+margin-bottom:3px
 }
 
-.language-card span{
+.lang-card span{
 font-size:10px;
 color:#6b7280
 }
 
-/* FINAL */
+/* CTA */
 
-.final{
+.cta{
 background:
-radial-gradient(circle at 85% 15%,rgba(99,102,241,.2),transparent 30%),
+radial-gradient(circle at 85% 15%,rgba(99,102,241,.25),transparent 30%),
 linear-gradient(135deg,#111827,#253044);
 color:#fff;
 text-align:center
 }
 
-.final small{
-font-size:9px;
-font-weight:900;
-letter-spacing:1px;
-color:#fbbf24
-}
-
-.final h2{
-font-size:31px;
+.cta h2{
+font-size:30px;
 margin:7px 0
 }
 
-.final p{
+.cta p{
 max-width:600px;
 margin:0 auto 18px;
-font-size:12px;
+font-size:11px;
 color:#cbd5e1
 }
 
@@ -502,8 +461,8 @@ padding:30px 0 15px
 
 .footer-top{
 display:flex;
-justify-content:space-between;
 align-items:center;
+justify-content:space-between;
 gap:20px
 }
 
@@ -514,9 +473,8 @@ gap:9px
 }
 
 .footer-brand img{
-width:42px;
-height:42px;
-object-fit:contain;
+width:40px;
+height:40px;
 background:#fff;
 border-radius:8px;
 padding:3px
@@ -535,20 +493,21 @@ color:#94a3b8
 .footer-links{
 display:flex;
 gap:14px;
-flex-wrap:wrap;
-justify-content:flex-end
+flex-wrap:wrap
 }
 
-.footer-links a{
+.footer-links a,
+.footer-legal a{
 font-size:9px;
 color:#cbd5e1
 }
 
-.footer-links a:hover{
+.footer-links a:hover,
+.footer-legal a:hover{
 color:#fbbf24
 }
 
-.legal{
+.footer-legal{
 border-top:1px solid rgba(255,255,255,.1);
 margin-top:20px;
 padding-top:13px;
@@ -558,16 +517,11 @@ gap:18px;
 flex-wrap:wrap
 }
 
-.legal a{
-font-size:8px;
-color:#94a3b8
-}
-
 .copy{
 text-align:center;
 font-size:8px;
 color:#64748b;
-margin-top:12px
+margin-top:11px
 }
 
 /* WHATSAPP */
@@ -580,10 +534,10 @@ width:53px;
 height:53px;
 display:grid;
 place-items:center;
-border-radius:50%;
 background:#25d366;
 color:#fff;
-font-size:24px;
+border-radius:50%;
+font-size:23px;
 z-index:2000;
 box-shadow:0 7px 20px rgba(0,0,0,.2)
 }
@@ -604,8 +558,8 @@ display:block
 grid-template-columns:1fr
 }
 
-.free-box{
-grid-template-columns:1fr
+.grid{
+grid-template-columns:repeat(2,1fr)
 }
 
 }
@@ -624,18 +578,18 @@ padding:55px 0
 letter-spacing:-1px
 }
 
-.course-grid,
-.structure-grid,
-.language-grid{
+.grid{
 grid-template-columns:1fr
 }
 
 .free-box{
+display:block;
 padding:22px
 }
 
 .free-box .btn{
-width:100%
+width:100%;
+margin-top:15px
 }
 
 .footer-top{
@@ -647,6 +601,10 @@ grid-template-columns:1fr
 justify-content:flex-start
 }
 
+.cta h2{
+font-size:27px
+}
+
 }
 </style>
 </head>
@@ -656,7 +614,6 @@ justify-content:flex-start
 <!-- HEADER -->
 
 <header>
-
 <div class="container nav">
 
 <a href="index.html" class="logo">
@@ -673,50 +630,27 @@ alt="GOH Bible Academy">
 </a>
 
 <nav class="nav-links">
-
 <a href="lessons.html">📖 Lessons</a>
-
 <a href="about.html">ℹ️ About</a>
-
 <a href="contact.html">💬 Contact</a>
-
 <a href="login.html" class="login">🔐 Login</a>
-
 <a href="register.html" class="register">📝 Register</a>
-
 </nav>
 
-<button
-class="menu"
-id="menuBtn"
-aria-label="Open menu"
-aria-expanded="false">
-
-☰
-
-</button>
+<button class="menu" id="menuBtn" aria-label="Menu">☰</button>
 
 </div>
-
 </header>
 
-
-<!-- MOBILE MENU -->
+<!-- MOBILE -->
 
 <nav class="mobile-menu" id="mobileMenu">
-
-<a href="lessons.html">📖 180 Lessons</a>
-
+<a href="lessons.html">📖 Lessons</a>
 <a href="about.html">ℹ️ About</a>
-
 <a href="contact.html">💬 Contact</a>
-
 <a href="login.html">🔐 Student Login</a>
-
 <a href="register.html">📝 Register</a>
-
 </nav>
-
 
 <!-- HERO -->
 
@@ -726,197 +660,141 @@ aria-expanded="false">
 
 <div>
 
-<div class="badge">
-GOH BIBLE ACADEMY
-</div>
+<div class="label">GOH BIBLE ACADEMY</div>
 
 <h1>
 Study God's Word.<br>
 <span>Grow in Christ.</span>
 </h1>
 
-<p class="hero-text">
-A structured Christian Biblical Studies program designed
-to help you understand Scripture, strengthen your faith,
-grow as a disciple and prepare for Christian service.
+<p>
+A structured Christian Biblical Studies program
+with 180 lessons designed to help you understand
+Scripture, grow in faith and prepare for Christian service.
 </p>
 
 <div class="languages">
-
 <span>English</span>
 <span>தமிழ்</span>
 <span>සිංහල</span>
-
 </div>
 
-<a href="lesson-1.html" class="btn yellow">
+<a href="lesson-1.html" class="btn primary">
 🎁 Start Lesson 1 Free
 </a>
 
 </div>
 
-
-<div class="hero-card">
+<div class="course-card">
 
 <img
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 alt="GOH Bible Academy">
 
-<small>
-CHRISTIAN BIBLICAL STUDIES
-</small>
+<div class="label">CHRISTIAN BIBLICAL STUDIES</div>
 
-<h2>
-180 Bible Lessons
-</h2>
+<h2>180 Bible Lessons</h2>
 
 <p>
-Learn systematically through Bible studies,
-Christian doctrine, discipleship, evangelism
-and ministry.
+Study the Bible, Christian doctrine, discipleship,
+evangelism and ministry at your own pace.
 </p>
 
-<div class="course-info">
+<div class="stats">
 
-<div>
+<div class="stat">
 <strong>180</strong>
 <span>Lessons</span>
 </div>
 
-<div>
+<div class="stat">
+<strong>6</strong>
+<span>Modules</span>
+</div>
+
+<div class="stat">
 <strong>3</strong>
 <span>Languages</span>
 </div>
 
-<div>
+<div class="stat">
 <strong>1</strong>
 <span>Free Lesson</span>
 </div>
 
-<div>
-<strong>179</strong>
-<span>Premium</span>
 </div>
 
-</div>
-
-<a href="lessons.html" class="btn yellow" style="width:100%">
-📖 View All Lessons
+<a href="lessons.html" class="btn primary">
+📖 View Lessons
 </a>
 
 </div>
 
 </div>
-
 </section>
 
+<!-- HIGHLIGHTS -->
 
-<!-- COURSE -->
-
-<section class="course">
+<section class="highlights">
 
 <div class="container">
 
 <div class="section-head">
 
-<small>ABOUT THE COURSE</small>
+<div class="label">COURSE HIGHLIGHTS</div>
 
-<h2>Learn. Grow. Serve.</h2>
+<h2>Build a Strong Biblical Foundation</h2>
 
 <p>
-A practical and structured journey through Christian Biblical Studies.
+Learn Scripture systematically and grow in your Christian faith.
 </p>
 
 </div>
 
-
-<div class="course-grid">
+<div class="grid">
 
 <div class="card">
-
 <div class="icon">📖</div>
-
 <h3>Bible Studies</h3>
-
-<p>
-Explore the Old Testament, New Testament and major biblical themes.
-</p>
-
+<p>Understand Scripture and its central message.</p>
 </div>
 
-
 <div class="card">
-
 <div class="icon">✝️</div>
-
 <h3>Christian Doctrine</h3>
-
-<p>
-Build a strong foundation in essential Christian beliefs and teachings.
-</p>
-
+<p>Study essential biblical foundations of Christian faith.</p>
 </div>
 
-
 <div class="card">
-
 <div class="icon">🙏</div>
-
-<h3>Discipleship</h3>
-
-<p>
-Develop a deeper relationship with Christ and grow in spiritual maturity.
-</p>
-
+<h3>Spiritual Growth</h3>
+<p>Develop prayer, faith and a deeper walk with Christ.</p>
 </div>
 
-
 <div class="card">
-
 <div class="icon">🌍</div>
-
 <h3>Evangelism</h3>
-
-<p>
-Learn how to share the Gospel and reach others with the message of Christ.
-</p>
-
+<p>Learn biblical principles for sharing the Gospel.</p>
 </div>
 
-
 <div class="card">
-
 <div class="icon">🤝</div>
-
-<h3>Christian Service</h3>
-
-<p>
-Discover biblical principles for serving God, the church and people.
-</p>
-
+<h3>Discipleship</h3>
+<p>Grow as a faithful follower of Jesus Christ.</p>
 </div>
-
 
 <div class="card">
-
-<div class="icon">🎓</div>
-
-<h3>Structured Learning</h3>
-
-<p>
-Progress through 180 lessons in a clear and organized learning pathway.
-</p>
-
+<div class="icon">⛪</div>
+<h3>Christian Ministry</h3>
+<p>Prepare to serve God and people faithfully.</p>
 </div>
 
 </div>
 
 </div>
-
 </section>
 
-
-<!-- FREE LESSON -->
+<!-- FREE -->
 
 <section class="free">
 
@@ -926,204 +804,150 @@ Progress through 180 lessons in a clear and organized learning pathway.
 
 <div>
 
-<small>FREE START</small>
+<div class="label" style="color:#16a34a">
+FREE LESSON
+</div>
 
-<h2>Begin With Lesson 1</h2>
+<h2>Start With Lesson 1</h2>
 
 <p>
-Try the first lesson completely free before deciding
-to continue with the full Premium course.
+Experience the course before continuing to the complete program.
 </p>
 
 </div>
 
-<a href="lesson-1.html" class="btn yellow">
-🎁 Start Free
+<a href="lesson-1.html" class="btn primary">
+Start Free Lesson
 </a>
 
 </div>
 
 </div>
-
 </section>
 
+<!-- MODULES -->
 
-<!-- STRUCTURE -->
-
-<section class="structure">
+<section class="modules">
 
 <div class="container">
 
 <div class="section-head">
 
-<small>COURSE STRUCTURE</small>
+<div class="label">CURRICULUM</div>
 
-<h2>180 Lessons</h2>
+<h2>Six Study Modules</h2>
 
-<p>
-A complete structured Biblical Studies journey.
-</p>
+<p>180 lessons covering major areas of Christian Biblical Studies.</p>
 
 </div>
 
+<div class="grid">
 
-<div class="structure-grid">
-
-<div class="structure-card">
-
-<strong>30</strong>
-
-<span>
-Introduction to the Bible
-</span>
-
+<div class="module">
+<small>MODULE 01</small>
+<h3>Introduction to the Bible</h3>
+<p>Bible foundations, inspiration, canon and interpretation.</p>
+<span class="count">30 Lessons</span>
 </div>
 
-
-<div class="structure-card">
-
-<strong>30</strong>
-
-<span>
-Old Testament Studies
-</span>
-
+<div class="module">
+<small>MODULE 02</small>
+<h3>Old Testament Studies</h3>
+<p>History, books, themes and message of the Old Testament.</p>
+<span class="count">30 Lessons</span>
 </div>
 
-
-<div class="structure-card">
-
-<strong>30</strong>
-
-<span>
-New Testament Studies
-</span>
-
+<div class="module">
+<small>MODULE 03</small>
+<h3>New Testament Studies</h3>
+<p>Jesus, the Gospels, Acts and the New Testament.</p>
+<span class="count">30 Lessons</span>
 </div>
 
-
-<div class="structure-card">
-
-<strong>30</strong>
-
-<span>
-Christian Doctrine
-</span>
-
+<div class="module">
+<small>MODULE 04</small>
+<h3>Christian Doctrine</h3>
+<p>Important biblical teachings and Christian beliefs.</p>
+<span class="count">30 Lessons</span>
 </div>
 
-
-<div class="structure-card">
-
-<strong>30</strong>
-
-<span>
-Christian Life & Discipleship
-</span>
-
+<div class="module">
+<small>MODULE 05</small>
+<h3>Christian Life & Discipleship</h3>
+<p>Prayer, faith, holiness and spiritual growth.</p>
+<span class="count">30 Lessons</span>
 </div>
 
-
-<div class="structure-card">
-
-<strong>30</strong>
-
-<span>
-Evangelism & Ministry
-</span>
-
+<div class="module">
+<small>MODULE 06</small>
+<h3>Evangelism & Ministry</h3>
+<p>Gospel outreach, leadership and Christian service.</p>
+<span class="count">30 Lessons</span>
 </div>
 
 </div>
 
 </div>
-
 </section>
-
 
 <!-- LANGUAGES -->
 
-<section class="language-section">
+<section class="lang-section">
 
 <div class="container">
 
 <div class="section-head">
 
-<small>LEARN IN YOUR LANGUAGE</small>
+<div class="label">LANGUAGES</div>
 
-<h2>Three Languages</h2>
+<h2>Study in Three Languages</h2>
 
-<p>
-Study God's Word in a language you understand.
-</p>
+<p>Learn in the language that is most comfortable for you.</p>
 
 </div>
 
+<div class="grid">
 
-<div class="language-grid">
-
-<div class="language-card">
-
+<div class="card lang-card">
 <strong>English</strong>
-
-<span>
-Christian Biblical Studies
-</span>
-
+<span>Christian Biblical Studies</span>
 </div>
 
-
-<div class="language-card">
-
+<div class="card lang-card">
 <strong>தமிழ்</strong>
-
-<span>
-கிறிஸ்தவ வேதாகமப் படிப்பு
-</span>
-
+<span>கிறிஸ்தவ வேதாகமப் படிப்பு</span>
 </div>
 
-
-<div class="language-card">
-
+<div class="card lang-card">
 <strong>සිංහල</strong>
-
-<span>
-ක්‍රිස්තියානි බයිබල් අධ්‍යයනය
-</span>
-
+<span>ක්‍රිස්තියානි බයිබල් අධ්‍යයනය</span>
 </div>
 
 </div>
 
 </div>
-
 </section>
 
+<!-- CTA -->
 
-<!-- FINAL -->
-
-<section class="final">
+<section class="cta">
 
 <div class="container">
 
-<small>
-GOH BIBLE ACADEMY
-</small>
+<div class="label">GOH BIBLE ACADEMY</div>
 
-<h2>
-Grow Deeper in God's Word
-</h2>
+<h2>Grow Deeper in God's Word</h2>
 
 <p>
-Start with the free lesson and continue your
-180-lesson Christian Biblical Studies journey.
+Create your student account and begin your Biblical Studies journey.
 </p>
 
+<a href="register.html" class="btn primary">
+📝 Create Student Account
+</a>
+
 </div>
-
 </section>
-
 
 <!-- FOOTER -->
 
@@ -1146,40 +970,29 @@ alt="GOH Bible Academy">
 
 </div>
 
-
 <nav class="footer-links">
-
 <a href="lessons.html">Lessons</a>
 <a href="about.html">About</a>
 <a href="contact.html">Contact</a>
 <a href="login.html">Login</a>
-
 </nav>
 
 </div>
 
-
-<div class="legal">
+<div class="footer-legal">
 
 <a href="privacy.html">Privacy Policy</a>
-
-<a href="terms.html">Terms & Conditions</a>
-
+<a href="terms.html">Terms of Use</a>
 <a href="refund.html">Refund Policy</a>
 
 </div>
 
-
 <div class="copy">
-
-© 2026 GOH Bible Academy · Gate of Heaven Ministries
-
+© 2026 GOH Bible Academy. All rights reserved.
 </div>
 
 </div>
-
 </footer>
-
 
 <!-- WHATSAPP -->
 
@@ -1189,18 +1002,12 @@ href="https://wa.me/94771190395?text=Hello%20GOH%20Bible%20Academy"
 target="_blank"
 rel="noopener"
 aria-label="WhatsApp GOH Bible Academy">
-
 💬
-
 </a>
-
 
 <script>
 
-/* MOBILE MENU */
-
 const menuBtn=document.getElementById("menuBtn");
-
 const mobileMenu=document.getElementById("mobileMenu");
 
 menuBtn.onclick=()=>{
@@ -1209,31 +1016,16 @@ const open=mobileMenu.classList.toggle("show");
 
 menuBtn.textContent=open?"✕":"☰";
 
-menuBtn.setAttribute(
-"aria-expanded",
-open
-);
-
 };
-
 
 mobileMenu.querySelectorAll("a").forEach(a=>{
 
 a.onclick=()=>{
-
 mobileMenu.classList.remove("show");
-
 menuBtn.textContent="☰";
-
-menuBtn.setAttribute(
-"aria-expanded",
-"false"
-);
-
 };
 
 });
-
 
 document.addEventListener("click",e=>{
 
@@ -1242,16 +1034,8 @@ mobileMenu.classList.contains("show") &&
 !mobileMenu.contains(e.target) &&
 !menuBtn.contains(e.target)
 ){
-
 mobileMenu.classList.remove("show");
-
 menuBtn.textContent="☰";
-
-menuBtn.setAttribute(
-"aria-expanded",
-"false"
-);
-
 }
 
 });
