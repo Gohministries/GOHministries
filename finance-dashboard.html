@@ -4,28 +4,152 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#155eef">
-<title>GOH Ministries Finance - Dashboard</title>
+<title>GOH Ministries Finance</title>
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
-header{background:#155eef;color:#fff;padding:15px 18px}
-.head{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center}
-.logout{background:#fff;color:#155eef;border:0;border-radius:8px;padding:9px 13px;font-weight:bold;cursor:pointer}
-main{max-width:1050px;margin:auto;padding:18px}
-.card{background:#fff;padding:18px;border-radius:14px;margin-bottom:16px;box-shadow:0 2px 12px #0001}
-.small{font-size:13px;color:#667085}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.stat strong{display:block;font-size:24px;margin-top:7px}
-.links{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.link{display:block;background:#f8fafc;border:1px solid #e5e7eb;padding:17px;border-radius:12px;text-decoration:none;color:#172033}
-.link b{display:block;margin-bottom:5px}
-.link span{font-size:12px;color:#667085}
-#loading{text-align:center;padding:30px}
-#error{display:none;background:#fff7ed;color:#9a3412;padding:12px;border-radius:10px;margin-bottom:16px;font-size:13px}
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f5f7fb;
+color:#172033
+}
+
+header{
+background:#155eef;
+color:#fff;
+padding:15px 18px
+}
+
+.head{
+max-width:1050px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px
+}
+
+.logout{
+background:#fff;
+color:#155eef;
+border:0;
+border-radius:8px;
+padding:9px 13px;
+font-weight:bold;
+cursor:pointer
+}
+
+main{
+max-width:1050px;
+margin:auto;
+padding:18px
+}
+
+.card{
+background:#fff;
+padding:18px;
+border-radius:14px;
+margin-bottom:16px;
+box-shadow:0 2px 12px #0001
+}
+
+.small{
+font-size:13px;
+color:#667085
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px
+}
+
+.stat strong{
+display:block;
+font-size:24px;
+margin-top:7px
+}
+
+.links{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px
+}
+
+.link{
+display:block;
+background:#f8fafc;
+border:1px solid #e5e7eb;
+padding:17px;
+border-radius:12px;
+text-decoration:none;
+color:#172033
+}
+
+.link b{
+display:block;
+margin-bottom:5px
+}
+
+.link span{
+font-size:12px;
+color:#667085
+}
+
+.notice{
+padding:12px;
+border-radius:9px;
+background:#eef4ff;
+color:#174ea6;
+font-size:13px;
+margin-bottom:16px
+}
+
+.error{
+background:#fee2e2;
+color:#991b1b
+}
+
+.refresh{
+background:#155eef;
+color:#fff;
+border:0;
+border-radius:8px;
+padding:9px 13px;
+font-weight:bold;
+cursor:pointer
+}
+
+.topline{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px
+}
+
+#loading{
+text-align:center;
+padding:30px
+}
+
 @media(max-width:700px){
-.stats,.links{grid-template-columns:1fr}
-main{padding:12px}
+
+.stats,
+.links{
+grid-template-columns:1fr
+}
+
+main{
+padding:12px
+}
+
+.topline{
+align-items:flex-start;
+flex-direction:column
+}
+
 }
 </style>
 </head>
@@ -33,115 +157,293 @@ main{padding:12px}
 <body>
 
 <header>
+
 <div class="head">
+
 <b>GOH Ministries Finance</b>
-<button class="logout" onclick="logout()">Logout</button>
+
+<button
+class="logout"
+onclick="logout()">
+Logout
+</button>
+
 </div>
+
 </header>
+
 
 <main>
 
-<div id="loading" class="card">
+<div
+id="loading"
+class="card">
+
 Loading finance dashboard...
+
 </div>
 
-<div id="error"></div>
 
-<div id="app" style="display:none">
+<div
+id="app"
+style="display:none">
+
+
+<div
+id="notice"
+class="notice">
+</div>
+
 
 <div class="card">
-<h2 id="welcome">Finance Dashboard</h2>
-<div class="small" id="user"></div>
+
+<div class="topline">
+
+<div>
+
+<h2
+id="welcome">
+Finance Dashboard
+</h2>
+
+<div
+class="small"
+id="user">
 </div>
+
+</div>
+
+<button
+class="refresh"
+onclick="loadDashboard()">
+Refresh
+</button>
+
+</div>
+
+</div>
+
 
 <div class="stats">
 
 <div class="card stat">
-<div class="small">Total Income</div>
-<strong id="income">LKR 0.00</strong>
+
+<div class="small">
+Total Income
 </div>
+
+<strong id="income">
+LKR 0.00
+</strong>
+
+</div>
+
 
 <div class="card stat">
-<div class="small">Total Expenses</div>
-<strong id="expenses">LKR 0.00</strong>
+
+<div class="small">
+Total Expenses
 </div>
+
+<strong id="expenses">
+LKR 0.00
+</strong>
+
+</div>
+
 
 <div class="card stat">
-<div class="small">Current Balance</div>
-<strong id="balance">LKR 0.00</strong>
+
+<div class="small">
+Current Balance
+</div>
+
+<strong id="balance">
+LKR 0.00
+</strong>
+
 </div>
 
 </div>
+
 
 <div class="card">
 
-<h3>This Month</h3>
+<h3>
+This Month
+</h3>
 
 <div class="stats">
 
 <div>
-<div class="small">Income</div>
-<strong id="monthIncome">LKR 0.00</strong>
+
+<div class="small">
+Income
 </div>
+
+<strong id="monthIncome">
+LKR 0.00
+</strong>
+
+</div>
+
 
 <div>
-<div class="small">Expenses</div>
-<strong id="monthExpenses">LKR 0.00</strong>
+
+<div class="small">
+Expenses
 </div>
+
+<strong id="monthExpenses">
+LKR 0.00
+</strong>
+
+</div>
+
 
 <div>
-<div class="small">Balance</div>
-<strong id="monthBalance">LKR 0.00</strong>
+
+<div class="small">
+Balance
 </div>
+
+<strong id="monthBalance">
+LKR 0.00
+</strong>
 
 </div>
 
 </div>
+
+</div>
+
 
 <div class="card">
 
-<h3>Finance</h3>
+<h3>
+Finance
+</h3>
 
 <div class="links">
 
-<a class="link" href="income.html">
-<b>Income</b>
-<span>Record ministry income</span>
+<a
+class="link"
+href="income.html">
+
+<b>
+Income
+</b>
+
+<span>
+Record ministry income
+</span>
+
 </a>
 
-<a class="link" href="donations.html">
-<b>Donations</b>
-<span>Record ministry donations</span>
+
+<a
+class="link"
+href="donations.html">
+
+<b>
+Donations
+</b>
+
+<span>
+Record ministry donations
+</span>
+
 </a>
 
-<a class="link" href="expenses.html">
-<b>Expenses</b>
-<span>Record ministry expenses</span>
+
+<a
+class="link"
+href="expenses.html">
+
+<b>
+Expenses
+</b>
+
+<span>
+Record ministry expenses
+</span>
+
 </a>
 
-<a class="link" href="receipts.html">
-<b>Receipts</b>
-<span>Manage receipts</span>
+
+<a
+class="link"
+href="receipts.html">
+
+<b>
+Receipts
+</b>
+
+<span>
+Manage receipts
+</span>
+
 </a>
 
-<a class="link" href="reports.html">
-<b>Reports</b>
-<span>View financial reports</span>
+
+<a
+class="link"
+href="reports.html">
+
+<b>
+Reports
+</b>
+
+<span>
+View financial reports
+</span>
+
 </a>
 
-<a class="link" href="attendance.html">
-<b>Attendance</b>
-<span>Record church attendance</span>
+
+<a
+class="link"
+href="attendance.html">
+
+<b>
+Attendance
+</b>
+
+<span>
+Record church attendance
+</span>
+
 </a>
 
-<a class="link" href="members.html">
-<b>Members</b>
-<span>Manage ministry members</span>
+
+<a
+class="link"
+href="members.html">
+
+<b>
+Members
+</b>
+
+<span>
+Manage ministry members
+</span>
+
 </a>
 
-<a class="link" href="admin.html" id="adminLink">
-<b>Administration</b>
-<span>Manage finance users</span>
+
+<a
+class="link"
+href="admin.html"
+id="adminLink">
+
+<b>
+Administration
+</b>
+
+<span>
+Manage finance users
+</span>
+
 </a>
 
 </div>
@@ -152,31 +454,40 @@ Loading finance dashboard...
 
 </main>
 
+
 <script>
 
-const API=
+const AUTH_API =
 "https://goh-finance.createlk.workers.dev";
 
-const KEY=
+const DATA_API =
+"https://goh-finance-data.createlk.workers.dev";
+
+const KEY =
 "goh_finance_token";
 
 
-function headers(){
+function getToken(){
 
-return{
-"Content-Type":"application/json",
+return localStorage.getItem(KEY);
+
+}
+
+
+function authHeaders(){
+
+return {
 "Authorization":
-"Bearer "+
-localStorage.getItem(KEY)
+"Bearer "+getToken()
 };
 
 }
 
 
-function money(v){
+function money(value){
 
 return "LKR "+
-Number(v||0).toLocaleString(
+Number(value||0).toLocaleString(
 "en-LK",
 {
 minimumFractionDigits:2,
@@ -187,88 +498,181 @@ maximumFractionDigits:2
 }
 
 
-async function load(){
+function showLogin(){
 
-const token=
-localStorage.getItem(KEY);
+localStorage.removeItem(KEY);
+
+location.href="admin-login.html";
+
+}
 
 
-/* No token */
+async function getMe(){
+
+const response =
+await fetch(
+AUTH_API+"/api/me",
+{
+headers:authHeaders()
+}
+);
+
+if(response.status===401){
+
+showLogin();
+return null;
+
+}
+
+const data =
+await response.json();
+
+if(
+!response.ok ||
+!data.success
+){
+
+showLogin();
+return null;
+
+}
+
+return data.user;
+
+}
+
+
+async function getIncome(){
+
+const response =
+await fetch(
+DATA_API+"/api/income",
+{
+headers:authHeaders()
+}
+);
+
+if(response.status===401){
+
+showLogin();
+return null;
+
+}
+
+const data =
+await response.json();
+
+if(
+!response.ok ||
+!data.success
+){
+
+throw new Error(
+data.error||
+"Unable to load income"
+);
+
+}
+
+return data.income||[];
+
+}
+
+
+async function getExpenses(){
+
+try{
+
+const response =
+await fetch(
+DATA_API+"/api/expenses",
+{
+headers:authHeaders()
+}
+);
+
+if(response.status===404){
+
+return [];
+
+}
+
+if(response.status===401){
+
+showLogin();
+return null;
+
+}
+
+const data =
+await response.json();
+
+if(
+!response.ok ||
+!data.success
+){
+
+return [];
+
+}
+
+return data.expenses||[];
+
+}catch(e){
+
+return [];
+
+}
+
+}
+
+
+async function loadDashboard(){
+
+const token =
+getToken();
 
 if(!token){
 
-location.href=
-"admin-login.html";
-
+showLogin();
 return;
 
 }
+
+
+const notice =
+document.getElementById(
+"notice"
+);
+
+notice.className="notice";
+notice.textContent="";
 
 
 try{
 
+const user =
+await getMe();
 
-/* Check login only */
-
-const me=
-await fetch(
-API+"/api/me",
-{
-headers:{
-"Authorization":
-"Bearer "+token
-}
-}
-);
+if(!user) return;
 
 
-const user=
-await me.json();
+document.getElementById(
+"welcome"
+).textContent =
+"Welcome, "+user.name;
 
 
-/*
-IMPORTANT:
-Only remove token when /api/me
-says the session is invalid.
-*/
-
-if(
-me.status===401 ||
-!user.success
-){
-
-localStorage.removeItem(KEY);
-
-location.href=
-"admin-login.html";
-
-return;
-
-}
-
-
-const u=
-user.user;
-
-
-/* User information */
-
-document.getElementById("welcome")
-.textContent=
-"Welcome, "+u.name;
-
-
-document.getElementById("user")
-.textContent=
+document.getElementById(
+"user"
+).textContent =
 "Logged in as "+
-u.email+
+user.email+
 " • "+
-u.role;
+user.role;
 
 
-/* Admin link */
-
-if(u.role!=="admin"){
+if(user.role!=="admin"){
 
 document.getElementById(
 "adminLink"
@@ -277,216 +681,163 @@ document.getElementById(
 }
 
 
-/*
-Show dashboard NOW.
-Finance APIs cannot log the user out.
-*/
+const income =
+await getIncome();
 
-document.getElementById("loading")
-.style.display="none";
-
-document.getElementById("app")
-.style.display="block";
+if(!income) return;
 
 
-/* Load finance data separately */
+const expenses =
+await getExpenses();
 
-let income=[];
-let expenses=[];
-
-
-try{
-
-const r=
-await fetch(
-API+"/api/finance/income",
-{headers:headers()}
-);
-
-if(r.ok){
-
-const d=
-await r.json();
-
-if(d.success){
-
-income=
-d.income||[];
-
-}
-
-}
-
-}catch(e){
-
-console.log(
-"Income API unavailable"
-);
-
-}
+if(!expenses) return;
 
 
-try{
-
-const r=
-await fetch(
-API+"/api/finance/expenses",
-{headers:headers()}
-);
-
-if(r.ok){
-
-const d=
-await r.json();
-
-if(d.success){
-
-expenses=
-d.expenses||[];
-
-}
-
-}
-
-}catch(e){
-
-console.log(
-"Expenses API unavailable"
-);
-
-}
-
-
-/* Totals */
-
-const totalIncome=
+const totalIncome =
 income.reduce(
-(s,x)=>
-s+(Number(x.amount)||0),
+(sum,item)=>
+sum+(Number(item.amount)||0),
 0
 );
 
 
-const totalExpenses=
+const totalExpenses =
 expenses.reduce(
-(s,x)=>
-s+(Number(x.amount)||0),
+(sum,item)=>
+sum+(Number(item.amount)||0),
 0
 );
 
 
-/* Current month */
+const balance =
+totalIncome-totalExpenses;
 
-const now=
+
+const now =
 new Date();
 
-const prefix=
-now.getFullYear()+"-"+
-String(now.getMonth()+1)
-.padStart(2,"0");
+
+const year =
+now.getFullYear();
 
 
-const monthIncome=
+const month =
+String(
+now.getMonth()+1
+).padStart(2,"0");
+
+
+const prefix =
+year+"-"+month;
+
+
+const monthIncome =
 income
-.filter(x=>
-String(x.date||"")
+.filter(item =>
+String(item.date||"")
 .startsWith(prefix)
 )
 .reduce(
-(s,x)=>
-s+(Number(x.amount)||0),
+(sum,item)=>
+sum+(Number(item.amount)||0),
 0
 );
 
 
-const monthExpenses=
+const monthExpenses =
 expenses
-.filter(x=>
-String(x.date||"")
+.filter(item =>
+String(item.date||"")
 .startsWith(prefix)
 )
 .reduce(
-(s,x)=>
-s+(Number(x.amount)||0),
+(sum,item)=>
+sum+(Number(item.amount)||0),
 0
 );
 
 
-/* Display */
-
-document.getElementById("income")
-.textContent=
+document.getElementById(
+"income"
+).textContent =
 money(totalIncome);
 
 
-document.getElementById("expenses")
-.textContent=
+document.getElementById(
+"expenses"
+).textContent =
 money(totalExpenses);
 
 
-document.getElementById("balance")
-.textContent=
-money(
-totalIncome-
-totalExpenses
-);
+document.getElementById(
+"balance"
+).textContent =
+money(balance);
 
 
-document.getElementById("monthIncome")
-.textContent=
+document.getElementById(
+"monthIncome"
+).textContent =
 money(monthIncome);
 
 
-document.getElementById("monthExpenses")
-.textContent=
+document.getElementById(
+"monthExpenses"
+).textContent =
 money(monthExpenses);
 
 
-document.getElementById("monthBalance")
-.textContent=
+document.getElementById(
+"monthBalance"
+).textContent =
 money(
-monthIncome-
-monthExpenses
+monthIncome-monthExpenses
 );
 
 
-/* API warning */
-
 if(
-income.length===0 &&
 expenses.length===0
 ){
 
-const error=
-document.getElementById("error");
+notice.textContent =
+"Income data is connected. Expense records are not available yet.";
 
-error.textContent=
-"Finance records are not available yet. Your login session is active.";
+}else{
 
-error.style.display="block";
+notice.textContent =
+"Finance data updated successfully.";
 
 }
 
 
-}catch(e){
+document.getElementById(
+"loading"
+).style.display="none";
 
-/*
-Do NOT remove the token here.
-Only /api/me failure should log out.
-*/
 
-document.getElementById("loading")
-.style.display="none";
+document.getElementById(
+"app"
+).style.display="block";
 
-document.getElementById("app")
-.style.display="block";
 
-document.getElementById("error")
-.textContent=
-"Dashboard loaded. Some finance data is temporarily unavailable.";
+}catch(error){
 
-document.getElementById("error")
-.style.display="block";
+console.error(error);
+
+notice.className =
+"notice error";
+
+notice.textContent =
+error.message||
+"Unable to load finance data.";
+
+document.getElementById(
+"loading"
+).style.display="none";
+
+document.getElementById(
+"app"
+).style.display="block";
 
 }
 
@@ -495,35 +846,26 @@ document.getElementById("error")
 
 async function logout(){
 
-const token=
-localStorage.getItem(KEY);
-
-
 try{
 
 await fetch(
-API+"/api/logout",
+AUTH_API+"/api/logout",
 {
 method:"POST",
-headers:{
-"Authorization":
-"Bearer "+token
-}
+headers:authHeaders()
 }
 );
 
 }catch(e){}
 
-
 localStorage.removeItem(KEY);
 
-location.href=
-"admin-login.html";
+location.href="admin-login.html";
 
 }
 
 
-load();
+loadDashboard();
 
 </script>
 
