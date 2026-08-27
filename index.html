@@ -8,7 +8,7 @@
 <title>GOH Bible Academy | Christian Biblical Studies</title>
 
 <meta name="description"
-content="GOH Bible Academy — 180 Christian Biblical Studies lessons in English, Tamil and Sinhala. Start with Lesson 1 free.">
+content="GOH Bible Academy — 180 structured Christian Biblical Studies lessons in English, Tamil and Sinhala. Start with Lesson 1 free.">
 
 <meta name="theme-color" content="#111827">
 
@@ -31,7 +31,7 @@ scroll-behavior:smooth
 
 body{
 font-family:Arial,Helvetica,sans-serif;
-background:#f5f7fb;
+background:#f8fafc;
 color:#172033;
 line-height:1.5
 }
@@ -41,18 +41,22 @@ text-decoration:none;
 color:inherit
 }
 
+button{
+font:inherit
+}
+
 .container{
-width:min(1050px,92%);
+width:min(1080px,92%);
 margin:auto
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 
 header{
 position:sticky;
 top:0;
 z-index:1000;
-background:rgba(255,255,255,.97);
+background:rgba(255,255,255,.96);
 backdrop-filter:blur(10px);
 border-bottom:1px solid #e5e7eb
 }
@@ -72,35 +76,37 @@ gap:10px
 }
 
 .logo img{
-width:44px;
-height:44px;
+width:43px;
+height:43px;
 object-fit:contain;
-border-radius:10px
+border-radius:9px
 }
 
 .logo-title{
-font-size:15px;
+font-size:14px;
 font-weight:900;
 color:#111827
 }
 
 .logo-sub{
-font-size:9px;
-color:#6b7280
+font-size:8px;
+color:#6b7280;
+margin-top:1px
 }
 
 .nav-links{
 display:flex;
 align-items:center;
-gap:4px
+gap:3px
 }
 
 .nav-links a{
-padding:9px 10px;
-border-radius:9px;
-font-size:11px;
+padding:8px 9px;
+border-radius:8px;
+font-size:10px;
 font-weight:800;
-color:#374151
+color:#374151;
+white-space:nowrap
 }
 
 .nav-links a:hover{
@@ -124,11 +130,11 @@ height:40px;
 border:1px solid #e5e7eb;
 background:#fff;
 border-radius:9px;
-font-size:18px;
-cursor:pointer
+cursor:pointer;
+font-size:18px
 }
 
-/* MOBILE MENU */
+/* ================= MOBILE MENU ================= */
 
 .mobile-menu{
 display:none
@@ -149,8 +155,8 @@ padding:8px 4%
 
 .mobile-menu a{
 display:block;
-padding:13px 10px;
-border-radius:9px;
+padding:12px 9px;
+border-radius:8px;
 font-size:12px;
 font-weight:800;
 color:#374151
@@ -160,15 +166,15 @@ color:#374151
 background:#f3f4f6
 }
 
-/* BUTTONS */
+/* ================= BUTTONS ================= */
 
 .btn{
 display:inline-flex;
 align-items:center;
 justify-content:center;
 border:0;
-border-radius:10px;
-padding:12px 18px;
+border-radius:9px;
+padding:11px 17px;
 font-size:11px;
 font-weight:900;
 cursor:pointer
@@ -190,35 +196,41 @@ border:1px solid #d1d5db;
 color:#111827
 }
 
-/* HERO */
+/* ================= HERO ================= */
 
 .hero{
+position:relative;
+overflow:hidden;
 background:
-radial-gradient(circle at 85% 15%,rgba(99,102,241,.25),transparent 32%),
+radial-gradient(circle at 85% 15%,rgba(99,102,241,.24),transparent 31%),
+radial-gradient(circle at 10% 90%,rgba(251,191,36,.08),transparent 28%),
 linear-gradient(135deg,#0f172a,#263246);
 color:#fff;
-padding:70px 0
+padding:78px 0 85px
 }
 
 .hero-grid{
 display:grid;
-grid-template-columns:1.1fr .9fr;
-gap:35px;
+grid-template-columns:1.12fr .88fr;
+gap:45px;
 align-items:center
 }
 
 .hero-label{
+display:inline-flex;
+align-items:center;
+gap:6px;
 font-size:9px;
 font-weight:900;
 letter-spacing:1.3px;
 color:#fbbf24;
-margin-bottom:12px
+margin-bottom:11px
 }
 
 .hero h1{
-font-size:clamp(40px,6vw,62px);
-line-height:1.04;
-letter-spacing:-2px;
+font-size:clamp(39px,6vw,64px);
+line-height:1.03;
+letter-spacing:-2.5px;
 margin-bottom:17px
 }
 
@@ -227,38 +239,38 @@ color:#fbbf24
 }
 
 .hero-description{
-max-width:590px;
+max-width:620px;
 font-size:14px;
-color:#cbd5e1;
 line-height:1.7;
-margin-bottom:18px
+color:#cbd5e1;
+margin-bottom:20px
 }
 
-.languages{
+.language-pills{
 display:flex;
 gap:7px;
 flex-wrap:wrap;
 margin-bottom:22px
 }
 
-.languages span{
+.language-pills span{
 padding:6px 10px;
+border:1px solid rgba(255,255,255,.13);
+background:rgba(255,255,255,.06);
 border-radius:20px;
 font-size:9px;
 font-weight:800;
-background:rgba(255,255,255,.07);
-border:1px solid rgba(255,255,255,.13);
 color:#e2e8f0
 }
 
-/* COURSE CARD */
+/* HERO CARD */
 
 .course-card{
-background:rgba(255,255,255,.08);
+background:rgba(255,255,255,.075);
 border:1px solid rgba(255,255,255,.14);
 border-radius:20px;
-padding:25px;
-box-shadow:0 20px 45px rgba(0,0,0,.18)
+padding:26px;
+box-shadow:0 20px 45px rgba(0,0,0,.16)
 }
 
 .course-logo{
@@ -268,10 +280,10 @@ object-fit:contain;
 background:#fff;
 border-radius:13px;
 padding:5px;
-margin-bottom:13px
+margin-bottom:14px
 }
 
-.course-label{
+.course-card-label{
 font-size:9px;
 font-weight:900;
 letter-spacing:1px;
@@ -284,23 +296,23 @@ line-height:1.15;
 margin:7px 0 9px
 }
 
-.course-card p{
+.course-card-description{
 font-size:11px;
 color:#cbd5e1;
-margin-bottom:17px
+margin-bottom:18px
 }
 
 .stats{
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:7px;
-margin-bottom:17px
+margin-bottom:18px
 }
 
 .stat{
 padding:11px;
 border-radius:10px;
-background:rgba(255,255,255,.06);
+background:rgba(255,255,255,.055);
 border:1px solid rgba(255,255,255,.08);
 text-align:center
 }
@@ -319,15 +331,15 @@ color:#94a3b8
 width:100%
 }
 
-/* SECTIONS */
+/* ================= SECTION ================= */
 
 section{
-padding:60px 0
+padding:65px 0
 }
 
 .section-head{
-max-width:680px;
-margin:0 auto 28px;
+max-width:700px;
+margin:0 auto 30px;
 text-align:center
 }
 
@@ -339,7 +351,7 @@ color:#6366f1
 }
 
 .section-head h2{
-font-size:29px;
+font-size:30px;
 line-height:1.15;
 margin:6px 0
 }
@@ -349,7 +361,7 @@ font-size:12px;
 color:#6b7280
 }
 
-/* CARDS */
+/* ================= CARD GRID ================= */
 
 .card-grid{
 display:grid;
@@ -357,55 +369,56 @@ grid-template-columns:repeat(3,1fr);
 gap:11px
 }
 
-.card{
-background:#fff;
+.info-card{
+padding:21px;
 border:1px solid #e5e7eb;
 border-radius:15px;
-padding:21px;
+background:#fff;
 box-shadow:0 5px 18px rgba(17,24,39,.035);
 transition:.2s
 }
 
-.card:hover{
+.info-card:hover{
 transform:translateY(-2px);
 box-shadow:0 12px 28px rgba(17,24,39,.07)
 }
 
-.card-icon{
+.info-icon{
 width:40px;
 height:40px;
 display:grid;
 place-items:center;
 background:#f3f4f6;
-border-radius:11px;
-font-size:19px;
-margin-bottom:10px
+border-radius:10px;
+font-size:18px;
+margin-bottom:11px
 }
 
-.card h3{
+.info-card h3{
 font-size:15px;
 margin-bottom:5px
 }
 
-.card p{
+.info-card p{
 font-size:11px;
 color:#6b7280
 }
 
-/* FREE LESSON */
+/* ================= FREE LESSON ================= */
 
 .free-section{
-background:#fff
+background:#f8fafc
 }
 
 .free-card{
 max-width:850px;
 margin:auto;
-background:#f8fafc;
+padding:30px;
 border:1px solid #e5e7eb;
 border-radius:18px;
-padding:28px;
-text-align:center
+background:#fff;
+text-align:center;
+box-shadow:0 8px 25px rgba(17,24,39,.04)
 }
 
 .free-label{
@@ -423,18 +436,34 @@ margin:5px 0 7px
 .free-card p{
 font-size:11px;
 color:#6b7280;
-margin:0 auto 17px;
-max-width:600px
+max-width:620px;
+margin:0 auto 17px
 }
 
-/* MODULES */
+/* ================= MODULES ================= */
 
 .modules{
-background:#f8fafc
+background:#fff
+}
+
+.module-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px
 }
 
 .module{
-position:relative
+border:1px solid #e5e7eb;
+border-radius:14px;
+padding:20px;
+background:#fff;
+box-shadow:0 5px 18px rgba(17,24,39,.035);
+transition:.2s
+}
+
+.module:hover{
+transform:translateY(-2px);
+box-shadow:0 12px 25px rgba(17,24,39,.07)
 }
 
 .module-number{
@@ -465,10 +494,10 @@ font-weight:800;
 color:#4b5563
 }
 
-/* LEARNING */
+/* ================= LEARNING ================= */
 
 .learning{
-background:#fff
+background:#f8fafc
 }
 
 .learning-grid{
@@ -478,15 +507,16 @@ gap:12px
 }
 
 .learning-card{
-background:#f8fafc;
+background:#fff;
 border:1px solid #e5e7eb;
 border-radius:15px;
-padding:22px
+padding:22px;
+box-shadow:0 5px 18px rgba(17,24,39,.035)
 }
 
 .learning-card h3{
 font-size:16px;
-margin-bottom:7px
+margin-bottom:8px
 }
 
 .learning-card p{
@@ -506,15 +536,15 @@ font-weight:700;
 color:#374151
 }
 
-/* FINAL */
+/* ================= FINAL ================= */
 
 .final{
 background:
-radial-gradient(circle at 85% 15%,rgba(99,102,241,.25),transparent 30%),
+radial-gradient(circle at 85% 15%,rgba(99,102,241,.24),transparent 30%),
 linear-gradient(135deg,#111827,#253044);
 color:#fff;
 text-align:center;
-padding:65px 0
+padding:70px 0
 }
 
 .final-label{
@@ -525,18 +555,19 @@ color:#fbbf24
 }
 
 .final h2{
-font-size:31px;
+font-size:32px;
+line-height:1.15;
 margin:7px 0 9px
 }
 
 .final p{
-max-width:600px;
-margin:0 auto 19px;
+max-width:620px;
+margin:0 auto 20px;
 font-size:12px;
 color:#cbd5e1
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 
 footer{
 background:#0b1120;
@@ -629,7 +660,7 @@ color:#64748b;
 margin-top:17px
 }
 
-/* WHATSAPP */
+/* ================= WHATSAPP ================= */
 
 .whatsapp{
 position:fixed;
@@ -647,7 +678,7 @@ z-index:2000;
 box-shadow:0 8px 22px rgba(0,0,0,.22)
 }
 
-/* RESPONSIVE */
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:900px){
 
@@ -664,6 +695,10 @@ grid-template-columns:1fr
 }
 
 .card-grid{
+grid-template-columns:repeat(2,1fr)
+}
+
+.module-grid{
 grid-template-columns:repeat(2,1fr)
 }
 
@@ -684,8 +719,13 @@ letter-spacing:-1px
 }
 
 .card-grid,
+.module-grid,
 .learning-grid{
 grid-template-columns:1fr
+}
+
+.free-card{
+padding:23px
 }
 
 .footer-links{
@@ -708,6 +748,10 @@ font-size:10px
 font-size:10px
 }
 
+.final h2{
+font-size:27px
+}
+
 }
 </style>
 
@@ -715,7 +759,7 @@ font-size:10px
 
 <body>
 
-<!-- HEADER -->
+<!-- ================= HEADER ================= -->
 
 <header>
 
@@ -766,7 +810,7 @@ aria-expanded="false">
 </header>
 
 
-<!-- MOBILE MENU -->
+<!-- ================= MOBILE MENU ================= -->
 
 <nav class="mobile-menu" id="mobileMenu">
 
@@ -779,7 +823,7 @@ aria-expanded="false">
 </nav>
 
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 
 <section class="hero">
 
@@ -797,19 +841,21 @@ Study God's Word.<br>
 </h1>
 
 <p class="hero-description">
-A structured Christian Biblical Studies program
-designed to help you understand Scripture,
-strengthen your faith and grow as a disciple of Jesus Christ.
+A structured Christian Biblical Studies program designed
+to help you understand Scripture, strengthen your faith,
+grow as a disciple and prepare for Christian service.
 </p>
 
-<div class="languages">
+<div class="language-pills">
+
 <span>English</span>
 <span>தமிழ்</span>
 <span>සිංහල</span>
+
 </div>
 
 <a href="lesson-1.html" class="btn primary">
-📖 Start Lesson 1 Free
+🎁 Start Lesson 1 Free
 </a>
 
 </div>
@@ -822,7 +868,7 @@ class="course-logo"
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 alt="GOH Bible Academy">
 
-<div class="course-label">
+<div class="course-card-label">
 CHRISTIAN BIBLICAL STUDIES
 </div>
 
@@ -830,10 +876,9 @@ CHRISTIAN BIBLICAL STUDIES
 180 Bible Lessons
 </h2>
 
-<p>
-Study Scripture, Christian doctrine,
-discipleship, evangelism and ministry
-through a structured learning journey.
+<p class="course-card-description">
+A structured learning journey covering Scripture,
+Christian doctrine, discipleship, evangelism and ministry.
 </p>
 
 <div class="stats">
@@ -861,7 +906,7 @@ through a structured learning journey.
 </div>
 
 <a href="lessons.html" class="btn primary">
-📚 View Lessons
+📖 View 180 Lessons
 </a>
 
 </div>
@@ -871,7 +916,7 @@ through a structured learning journey.
 </section>
 
 
-<!-- WHY STUDY -->
+<!-- ================= COURSE BENEFITS ================= -->
 
 <section>
 
@@ -880,15 +925,15 @@ through a structured learning journey.
 <div class="section-head">
 
 <div class="section-label">
-COURSE BENEFITS
+WHY STUDY WITH US
 </div>
 
 <h2>
-Build a Strong Biblical Foundation
+A Clear Path to Biblical Growth
 </h2>
 
 <p>
-Learn God's Word in a simple and structured way.
+Learn Scripture systematically and develop a stronger foundation for Christian life and service.
 </p>
 
 </div>
@@ -896,79 +941,79 @@ Learn God's Word in a simple and structured way.
 
 <div class="card-grid">
 
-<div class="card">
+<div class="info-card">
 
-<div class="card-icon">📖</div>
+<div class="info-icon">📖</div>
 
 <h3>Biblical Foundation</h3>
 
 <p>
-Understand Scripture and its central message.
+Build a strong understanding of the Bible and its central message.
 </p>
 
 </div>
 
 
-<div class="card">
+<div class="info-card">
 
-<div class="card-icon">✝️</div>
+<div class="info-icon">✝️</div>
 
 <h3>Christian Doctrine</h3>
 
 <p>
-Study essential Christian beliefs from Scripture.
+Study essential Christian beliefs from a biblical perspective.
 </p>
 
 </div>
 
 
-<div class="card">
+<div class="info-card">
 
-<div class="card-icon">🙏</div>
+<div class="info-icon">🙏</div>
 
 <h3>Spiritual Growth</h3>
 
 <p>
-Develop your prayer life and relationship with Christ.
+Develop your prayer life, faith and relationship with Christ.
 </p>
 
 </div>
 
 
-<div class="card">
+<div class="info-card">
 
-<div class="card-icon">🌍</div>
+<div class="info-icon">🌍</div>
 
 <h3>Evangelism</h3>
 
 <p>
-Learn biblical principles for sharing the Gospel.
+Learn biblical principles for sharing the Gospel with others.
 </p>
 
 </div>
 
 
-<div class="card">
+<div class="info-card">
 
-<div class="card-icon">🤝</div>
+<div class="info-icon">🤝</div>
 
 <h3>Discipleship</h3>
 
 <p>
-Grow as a faithful follower of Jesus.
+Grow as a faithful follower of Jesus and encourage others.
 </p>
 
 </div>
 
 
-<div class="card">
+<div class="info-card">
 
-<div class="card-icon">⛪</div>
+<div class="info-icon">⛪</div>
 
 <h3>Christian Ministry</h3>
 
 <p>
-Learn practical principles for serving God and people.
+Explore practical principles for serving God and people.
 </p>
 
 </div>
@@ -980,7 +1025,7 @@ Learn practical principles for serving God and people.
 </section>
 
 
-<!-- FREE LESSON -->
+<!-- ================= FREE LESSON ================= -->
 
 <section class="free-section">
 
@@ -989,7 +1034,7 @@ Learn practical principles for serving God and people.
 <div class="free-card">
 
 <div class="free-label">
-FREE LESSON
+FREE INTRODUCTION
 </div>
 
 <h2>
@@ -997,12 +1042,11 @@ Start With Lesson 1
 </h2>
 
 <p>
-Try the academy before continuing to the full course.
-Lesson 1 is available free.
+Experience the teaching style and begin your Biblical Studies journey with our first lesson at no cost.
 </p>
 
 <a href="lesson-1.html" class="btn primary">
-📖 Start Free Lesson
+🎁 Start Free Lesson
 </a>
 
 </div>
@@ -1012,7 +1056,7 @@ Lesson 1 is available free.
 </section>
 
 
-<!-- CURRICULUM -->
+<!-- ================= CURRICULUM ================= -->
 
 <section class="modules">
 
@@ -1021,7 +1065,7 @@ Lesson 1 is available free.
 <div class="section-head">
 
 <div class="section-label">
-CURRICULUM
+COURSE CURRICULUM
 </div>
 
 <h2>
@@ -1029,15 +1073,15 @@ Six Study Modules
 </h2>
 
 <p>
-180 lessons covering major areas of Christian Biblical Studies.
+180 lessons organized into six major areas of Christian Biblical Studies.
 </p>
 
 </div>
 
 
-<div class="card-grid">
+<div class="module-grid">
 
-<div class="card module">
+<div class="module">
 
 <div class="module-number">
 MODULE 01
@@ -1048,7 +1092,7 @@ Introduction to the Bible
 </h3>
 
 <p>
-Bible foundations, inspiration, canon and interpretation.
+Bible foundations, inspiration, canon, interpretation and study.
 </p>
 
 <span class="module-count">
@@ -1058,7 +1102,7 @@ Bible foundations, inspiration, canon and interpretation.
 </div>
 
 
-<div class="card module">
+<div class="module">
 
 <div class="module-number">
 MODULE 02
@@ -1069,7 +1113,7 @@ Old Testament Studies
 </h3>
 
 <p>
-History, books, themes and message of the Old Testament.
+Explore the history, books, themes and message of the Old Testament.
 </p>
 
 <span class="module-count">
@@ -1079,7 +1123,7 @@ History, books, themes and message of the Old Testament.
 </div>
 
 
-<div class="card module">
+<div class="module">
 
 <div class="module-number">
 MODULE 03
@@ -1090,7 +1134,7 @@ New Testament Studies
 </h3>
 
 <p>
-Jesus, the Gospel, Acts and New Testament studies.
+Study the life of Jesus, the Gospel, Acts and the New Testament.
 </p>
 
 <span class="module-count">
@@ -1100,7 +1144,7 @@ Jesus, the Gospel, Acts and New Testament studies.
 </div>
 
 
-<div class="card module">
+<div class="module">
 
 <div class="module-number">
 MODULE 04
@@ -1111,7 +1155,7 @@ Christian Doctrine
 </h3>
 
 <p>
-Important biblical teachings and Christian beliefs.
+Explore important biblical teachings and foundations of Christian faith.
 </p>
 
 <span class="module-count">
@@ -1121,7 +1165,7 @@ Important biblical teachings and Christian beliefs.
 </div>
 
 
-<div class="card module">
+<div class="module">
 
 <div class="module-number">
 MODULE 05
@@ -1132,7 +1176,7 @@ Christian Life & Discipleship
 </h3>
 
 <p>
-Prayer, faith, holiness and spiritual growth.
+Study prayer, faith, holiness, spiritual growth and discipleship.
 </p>
 
 <span class="module-count">
@@ -1142,7 +1186,7 @@ Prayer, faith, holiness and spiritual growth.
 </div>
 
 
-<div class="card module">
+<div class="module">
 
 <div class="module-number">
 MODULE 06
@@ -1153,7 +1197,7 @@ Evangelism & Ministry
 </h3>
 
 <p>
-Gospel outreach, leadership, service and ministry.
+Learn about Gospel outreach, leadership, service and Christian ministry.
 </p>
 
 <span class="module-count">
@@ -1169,7 +1213,7 @@ Gospel outreach, leadership, service and ministry.
 </section>
 
 
-<!-- LEARNING -->
+<!-- ================= LEARNING ================= -->
 
 <section class="learning">
 
@@ -1178,15 +1222,15 @@ Gospel outreach, leadership, service and ministry.
 <div class="section-head">
 
 <div class="section-label">
-LEARNING
+LEARNING EXPERIENCE
 </div>
 
 <h2>
-Study at Your Own Pace
+Designed for Flexible Learning
 </h2>
 
 <p>
-Complete the lessons according to your own schedule.
+Study at your own pace while progressing through the course.
 </p>
 
 </div>
@@ -1201,15 +1245,15 @@ What You Can Do
 </h3>
 
 <p>
-Use the academy to build your biblical knowledge.
+The academy is designed to make Biblical Studies simple and accessible.
 </p>
 
 <div class="learning-list">
 
 <div>✓ Study structured lessons</div>
 <div>✓ Review biblical teachings</div>
-<div>✓ Complete assessments</div>
-<div>✓ Track learning progress</div>
+<div>✓ Complete quizzes and assessments</div>
+<div>✓ Track your learning progress</div>
 
 </div>
 
@@ -1223,7 +1267,7 @@ Who Can Study?
 </h3>
 
 <p>
-Designed for Christians who want to grow in Scripture.
+The course can serve believers who want to deepen their knowledge of Scripture.
 </p>
 
 <div class="learning-list">
@@ -1231,7 +1275,7 @@ Designed for Christians who want to grow in Scripture.
 <div>✓ New believers</div>
 <div>✓ Bible students</div>
 <div>✓ Church members</div>
-<div>✓ Ministry students</div>
+<div>✓ Christians preparing for ministry</div>
 
 </div>
 
@@ -1244,7 +1288,7 @@ Designed for Christians who want to grow in Scripture.
 </section>
 
 
-<!-- FINAL -->
+<!-- ================= FINAL CTA ================= -->
 
 <section class="final">
 
@@ -1259,8 +1303,7 @@ Grow Deeper in God's Word
 </h2>
 
 <p>
-Begin with the free lesson and continue your
-Biblical Studies journey with GOH Bible Academy.
+Begin with Lesson 1 and discover a structured path for Christian Biblical Studies.
 </p>
 
 <a href="register.html" class="btn primary">
@@ -1272,7 +1315,7 @@ Biblical Studies journey with GOH Bible Academy.
 </section>
 
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
@@ -1331,9 +1374,7 @@ Refund Policy
 
 
 <div class="copyright">
-
 © 2026 GOH Bible Academy. All rights reserved
-
 </div>
 
 </div>
@@ -1341,7 +1382,7 @@ Refund Policy
 </footer>
 
 
-<!-- WHATSAPP -->
+<!-- ================= WHATSAPP ================= -->
 
 <a
 class="whatsapp"
