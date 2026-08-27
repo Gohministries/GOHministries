@@ -7,7 +7,7 @@
 <title>Register | GOH Bible Academy</title>
 
 <meta name="description"
-content="Create your student account at GOH Bible Academy and begin Christian Biblical Studies.">
+content="Create your student account at GOH Bible Academy.">
 
 <meta name="theme-color" content="#111827">
 
@@ -21,8 +21,7 @@ body{
 font-family:Arial,Helvetica,sans-serif;
 background:#f3f6fb;
 color:#172033;
-line-height:1.5;
-min-height:100vh
+line-height:1.5
 }
 
 a{text-decoration:none;color:inherit}
@@ -35,11 +34,7 @@ margin:auto
 /* HEADER */
 
 header{
-position:sticky;
-top:0;
-z-index:1000;
-background:rgba(255,255,255,.97);
-backdrop-filter:blur(10px);
+background:#fff;
 border-bottom:1px solid #e5e7eb
 }
 
@@ -76,7 +71,6 @@ color:#6b7280
 
 .nav-links{
 display:flex;
-align-items:center;
 gap:5px
 }
 
@@ -97,58 +91,19 @@ color:#fff!important
 }
 
 .register{
-background:#fbbf24;
-color:#111827!important
-}
-
-.menu{
-display:none;
-width:40px;
-height:40px;
-border:1px solid #e5e7eb;
-background:#fff;
-border-radius:9px;
-font-size:18px;
-cursor:pointer
-}
-
-/* MOBILE */
-
-.mobile-menu{
-display:none
-}
-
-.mobile-menu.show{
-display:block;
-position:fixed;
-top:64px;
-left:0;
-right:0;
-z-index:999;
-background:#fff;
-border-bottom:1px solid #e5e7eb;
-box-shadow:0 12px 25px rgba(0,0,0,.12);
-padding:8px 4%
-}
-
-.mobile-menu a{
-display:block;
-padding:12px 9px;
-border-radius:9px;
-font-size:12px;
-font-weight:800
+background:#fbbf24
 }
 
 /* MAIN */
 
 main{
-min-height:calc(100vh - 64px);
+min-height:calc(100vh - 120px);
 padding:35px 0;
 display:flex;
 align-items:center
 }
 
-.register-card{
+.card{
 width:min(470px,100%);
 margin:auto;
 background:#fff;
@@ -161,18 +116,17 @@ box-shadow:0 15px 40px rgba(15,23,42,.08)
 .logo-main{
 width:65px;
 height:65px;
-object-fit:contain;
 display:block;
-margin:0 auto 13px;
+margin:0 auto 12px;
+object-fit:contain;
 background:#fff;
 border-radius:15px;
-padding:5px;
-box-shadow:0 5px 15px rgba(0,0,0,.07)
+padding:5px
 }
 
 .head{
 text-align:center;
-margin-bottom:21px
+margin-bottom:22px
 }
 
 .label{
@@ -182,7 +136,7 @@ letter-spacing:1.2px;
 color:#6366f1
 }
 
-.head h1{
+h1{
 font-size:27px;
 margin:6px 0
 }
@@ -194,26 +148,25 @@ color:#6b7280
 
 /* FORM */
 
-.form-row{
+.row{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:10px
 }
 
-.form-group{
+.group{
 margin-bottom:13px
 }
 
-.form-group label{
+label{
 display:block;
 font-size:10px;
 font-weight:800;
-color:#374151;
-margin-bottom:6px
+margin-bottom:6px;
+color:#374151
 }
 
-input,
-select{
+input,select{
 width:100%;
 height:44px;
 padding:0 12px;
@@ -225,75 +178,69 @@ font-size:12px;
 outline:none
 }
 
-input:focus,
-select:focus{
+input:focus,select:focus{
 border-color:#6366f1;
 box-shadow:0 0 0 3px rgba(99,102,241,.1)
 }
 
-.password-wrap{
+.password{
 position:relative
 }
 
-.password-wrap input{
-padding-right:70px
+.password input{
+padding-right:65px
 }
 
-.show-password{
+.show{
 position:absolute;
-right:7px;
+right:6px;
 top:7px;
 height:30px;
 padding:0 9px;
 border:0;
-background:#f3f4f6;
 border-radius:7px;
+background:#f3f4f6;
 font-size:9px;
 font-weight:800;
 cursor:pointer
 }
 
-.agreement{
+.agree{
 display:flex;
-align-items:flex-start;
 gap:7px;
-margin:5px 0 16px;
+align-items:flex-start;
 font-size:9px;
-color:#6b7280
+color:#6b7280;
+margin:5px 0 16px
 }
 
-.agreement input{
+.agree input{
 width:14px;
 height:14px;
-flex:0 0 14px;
 margin-top:1px
 }
 
-.agreement a{
+.agree a{
 color:#4f46e5;
 font-weight:800
 }
+
+/* BUTTON */
 
 .btn{
 width:100%;
 height:44px;
 border:0;
 border-radius:10px;
+background:#fbbf24;
+color:#111827;
 font-size:11px;
 font-weight:900;
-cursor:pointer;
-display:flex;
-align-items:center;
-justify-content:center
-}
-
-.primary{
-background:#fbbf24;
-color:#111827
+cursor:pointer
 }
 
 .btn:disabled{
-opacity:.65;
+opacity:.6;
 cursor:not-allowed
 }
 
@@ -301,37 +248,35 @@ cursor:not-allowed
 
 .message{
 display:none;
-padding:10px 12px;
+padding:10px;
 border-radius:9px;
 font-size:10px;
 font-weight:700;
-margin-bottom:13px;
-text-align:center
+text-align:center;
+margin-bottom:13px
 }
 
 .message.show{
 display:block
 }
 
-.message.error{
+.error{
 background:#fef2f2;
-color:#b91c1c;
-border:1px solid #fecaca
+color:#b91c1c
 }
 
-.message.success{
+.success{
 background:#f0fdf4;
-color:#15803d;
-border:1px solid #bbf7d0
+color:#15803d
 }
 
 /* LOGIN */
 
 .login-box{
-margin-top:18px;
-padding-top:17px;
+text-align:center;
 border-top:1px solid #e5e7eb;
-text-align:center
+margin-top:18px;
+padding-top:17px
 }
 
 .login-box p{
@@ -341,84 +286,62 @@ margin-bottom:9px
 }
 
 .login-link{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-padding:9px 15px;
+display:inline-block;
 border:1px solid #d1d5db;
 border-radius:9px;
+padding:9px 15px;
 font-size:10px;
 font-weight:900
-}
-
-.login-link:hover{
-background:#f8fafc
-}
-
-.back{
-display:block;
-text-align:center;
-margin-top:16px;
-font-size:9px;
-font-weight:800;
-color:#6b7280
 }
 
 /* FOOTER */
 
 footer{
 background:#0b1120;
-color:#fff;
-padding:22px 0 15px
+padding:22px 0 15px;
+text-align:center
 }
 
-.footer-legal{
+.footer-links{
 display:flex;
 justify-content:center;
 gap:20px;
 flex-wrap:wrap
 }
 
-.footer-legal a{
+.footer-links a{
 font-size:9px;
 color:#a7b0c0
 }
 
-.footer-legal a:hover{
+.footer-links a:hover{
 color:#fbbf24
 }
 
 .copy{
-text-align:center;
 font-size:8px;
 color:#64748b;
 margin-top:11px
 }
 
-/* RESPONSIVE */
+/* MOBILE */
 
-@media(max-width:800px){
-.nav-links{display:none}
-.menu{display:block}
+@media(max-width:700px){
+
+.nav-links{
+display:none
 }
 
-@media(max-width:520px){
-
-.container{
-width:92%
+.row{
+grid-template-columns:1fr
 }
 
-.register-card{
-padding:25px 19px;
-border-radius:19px
+.card{
+padding:25px 19px
 }
 
 main{
 padding:25px 0
-}
-
-.form-row{
-grid-template-columns:1fr
 }
 
 }
@@ -426,8 +349,6 @@ grid-template-columns:1fr
 </head>
 
 <body>
-
-<!-- HEADER -->
 
 <header>
 
@@ -440,8 +361,13 @@ src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 alt="GOH Bible Academy">
 
 <div>
-<div class="logo-title">GOH Bible Academy</div>
-<div class="logo-sub">Gate of Heaven Ministries</div>
+<div class="logo-title">
+GOH Bible Academy
+</div>
+
+<div class="logo-sub">
+Gate of Heaven Ministries
+</div>
 </div>
 
 </a>
@@ -456,37 +382,16 @@ alt="GOH Bible Academy">
 
 </nav>
 
-<button
-class="menu"
-id="menuBtn"
-aria-label="Open menu"
-aria-expanded="false">
-☰
-</button>
-
 </div>
 
 </header>
 
-<!-- MOBILE MENU -->
-
-<nav class="mobile-menu" id="mobileMenu">
-
-<a href="lessons.html">📖 Lessons</a>
-<a href="about.html">ℹ️ About</a>
-<a href="contact.html">💬 Contact</a>
-<a href="login.html">🔐 Student Login</a>
-<a href="register.html">📝 Register</a>
-
-</nav>
-
-<!-- REGISTER -->
 
 <main>
 
 <div class="container">
 
-<div class="register-card">
+<div class="card">
 
 <img
 class="logo-main"
@@ -499,137 +404,115 @@ alt="GOH Bible Academy">
 GOH BIBLE ACADEMY
 </div>
 
-<h1>
-Create Student Account
-</h1>
+<h1>Create Student Account</h1>
 
 <p>
-Register to begin your Christian Biblical Studies journey.
+Register to begin your Biblical Studies journey.
 </p>
 
 </div>
 
-<div
-id="message"
-class="message">
-</div>
+<div id="message" class="message"></div>
 
 <form id="registerForm">
 
-<div class="form-row">
+<div class="row">
 
-<div class="form-group">
+<div class="group">
 
 <label for="firstName">
 First Name
 </label>
 
 <input
-type="text"
 id="firstName"
-name="firstName"
+type="text"
 placeholder="First name"
-autocomplete="given-name"
 required>
 
 </div>
 
-<div class="form-group">
+<div class="group">
 
 <label for="lastName">
 Last Name
 </label>
 
 <input
-type="text"
 id="lastName"
-name="lastName"
+type="text"
 placeholder="Last name"
-autocomplete="family-name"
 required>
 
 </div>
 
 </div>
 
-<div class="form-group">
+
+<div class="group">
 
 <label for="email">
 Email Address
 </label>
 
 <input
-type="email"
 id="email"
-name="email"
+type="email"
 placeholder="Enter your email"
-autocomplete="email"
 required>
 
 </div>
 
-<div class="form-group">
+
+<div class="group">
 
 <label for="phone">
 Phone Number
 </label>
 
 <input
-type="tel"
 id="phone"
-name="phone"
-placeholder="Enter your phone number"
-autocomplete="tel"
->
+type="tel"
+placeholder="Enter your phone number">
 
 </div>
 
-<div class="form-group">
+
+<div class="group">
 
 <label for="language">
 Preferred Language
 </label>
 
-<select
-id="language"
-name="language">
+<select id="language">
 
-<option value="English">
-English
-</option>
-
-<option value="Tamil">
-தமிழ்
-</option>
-
-<option value="Sinhala">
-සිංහල
-</option>
+<option value="English">English</option>
+<option value="Tamil">தமிழ்</option>
+<option value="Sinhala">සිංහල</option>
 
 </select>
 
 </div>
 
-<div class="form-group">
+
+<div class="group">
 
 <label for="password">
 Password
 </label>
 
-<div class="password-wrap">
+<div class="password">
 
 <input
-type="password"
 id="password"
-name="password"
-placeholder="Create a password"
-autocomplete="new-password"
-required
-minlength="6">
+type="password"
+placeholder="Minimum 6 characters"
+minlength="6"
+required>
 
 <button
 type="button"
-class="show-password"
+class="show"
 id="showPassword">
 Show
 </button>
@@ -638,24 +521,23 @@ Show
 
 </div>
 
-<div class="form-group">
+
+<div class="group">
 
 <label for="confirmPassword">
 Confirm Password
 </label>
 
 <input
-type="password"
 id="confirmPassword"
-name="confirmPassword"
-placeholder="Confirm your password"
-autocomplete="new-password"
-required
-minlength="6">
+type="password"
+placeholder="Confirm password"
+required>
 
 </div>
 
-<label class="agreement">
+
+<label class="agree">
 
 <input
 type="checkbox"
@@ -672,9 +554,10 @@ and
 
 </label>
 
+
 <button
 type="submit"
-class="btn primary"
+class="btn"
 id="registerBtn">
 
 📝 Create Account
@@ -683,11 +566,10 @@ id="registerBtn">
 
 </form>
 
+
 <div class="login-box">
 
-<p>
-Already have a student account?
-</p>
+<p>Already have an account?</p>
 
 <a
 href="login.html"
@@ -699,43 +581,23 @@ class="login-link">
 
 </div>
 
-<a
-href="index.html"
-class="back">
-
-← Back to GOH Bible Academy
-
-</a>
-
 </div>
 
 </div>
 
 </main>
 
-<!-- FOOTER -->
 
 <footer>
 
 <div class="container">
 
-<div class="footer-legal">
+<div class="footer-links">
 
-<a href="privacy.html">
-Privacy Policy
-</a>
-
-<a href="terms.html">
-Terms of Use
-</a>
-
-<a href="refund.html">
-Refund Policy
-</a>
-
-<a href="contact.html">
-Contact
-</a>
+<a href="privacy.html">Privacy Policy</a>
+<a href="terms.html">Terms of Use</a>
+<a href="refund.html">Refund Policy</a>
+<a href="contact.html">Contact</a>
 
 </div>
 
@@ -747,97 +609,74 @@ Contact
 
 </footer>
 
+
 <script>
 
-/* MOBILE MENU */
+/* PUT YOUR CLOUDFLARE REGISTER WORKER URL HERE */
 
-const menuBtn=
-document.getElementById("menuBtn");
+const REGISTER_API =
+"https://YOUR-REGISTER-WORKER.workers.dev";
 
-const mobileMenu=
-document.getElementById("mobileMenu");
 
-menuBtn.addEventListener("click",function(){
+const form =
+document.getElementById("registerForm");
 
-const open=
-mobileMenu.classList.toggle("show");
+const button =
+document.getElementById("registerBtn");
 
-menuBtn.textContent=
-open ? "✕" : "☰";
+const message =
+document.getElementById("message");
 
-menuBtn.setAttribute(
-"aria-expanded",
-open ? "true" : "false"
-);
-
-});
-
-mobileMenu
-.querySelectorAll("a")
-.forEach(function(link){
-
-link.addEventListener("click",function(){
-
-mobileMenu.classList.remove("show");
-
-menuBtn.textContent="☰";
-
-menuBtn.setAttribute(
-"aria-expanded",
-"false"
-);
-
-});
-
-});
-
-/* PASSWORD */
-
-const password=
+const password =
 document.getElementById("password");
 
-const showPassword=
+const confirmPassword =
+document.getElementById("confirmPassword");
+
+const showPassword =
 document.getElementById("showPassword");
 
-showPassword.addEventListener("click",function(){
 
-if(password.type==="password"){
+/* SHOW / HIDE PASSWORD */
 
-password.type="text";
-showPassword.textContent="Hide";
+showPassword.onclick=function(){
 
-}else{
+const hidden=password.type==="password";
 
-password.type="password";
-showPassword.textContent="Show";
+password.type=hidden?"text":"password";
+confirmPassword.type=hidden?"text":"password";
+
+showPassword.textContent=hidden?"Hide":"Show";
+
+};
+
+
+/* MESSAGE */
+
+function showMessage(text,type){
+
+message.textContent=text;
+
+message.className=
+"message show "+type;
 
 }
 
-});
 
 /* REGISTER */
-
-const form=
-document.getElementById("registerForm");
-
-const registerBtn=
-document.getElementById("registerBtn");
-
-const message=
-document.getElementById("message");
 
 form.addEventListener("submit",async function(e){
 
 e.preventDefault();
 
-const firstName=
+const first_name=
 document.getElementById("firstName").value.trim();
 
-const lastName=
+const last_name=
 document.getElementById("lastName").value.trim();
 
 const email=
-document.getElementById("email").value.trim();
+document.getElementById("email").value.trim().toLowerCase();
 
 const phone=
 document.getElementById("phone").value.trim();
@@ -845,11 +684,10 @@ document.getElementById("phone").value.trim();
 const language=
 document.getElementById("language").value;
 
-const pass=
-document.getElementById("password").value;
+const pass=password.value;
 
-const confirm=
-document.getElementById("confirmPassword").value;
+const confirm=confirmPassword.value;
+
 
 if(pass!==confirm){
 
@@ -862,6 +700,7 @@ return;
 
 }
 
+
 if(pass.length<6){
 
 showMessage(
@@ -873,71 +712,82 @@ return;
 
 }
 
-registerBtn.disabled=true;
-registerBtn.textContent="Creating account...";
+
+button.disabled=true;
+
+button.textContent="Creating Account...";
+
 
 try{
 
-/*
-  Connect your existing Cloudflare
-  registration API here.
+const response=await fetch(
+REGISTER_API,
+{
+method:"POST",
 
-  Example:
+headers:{
+"Content-Type":"application/json"
+},
 
-  const response=await fetch("YOUR_REGISTER_API",{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json"
-    },
-    body:JSON.stringify({
-      first_name:firstName,
-      last_name:lastName,
-      email:email,
-      phone:phone,
-      language:language,
-      password:pass
-    })
-  });
+body:JSON.stringify({
 
-  const data=await response.json();
+first_name:first_name,
+last_name:last_name,
+email:email,
+phone:phone,
+language:language,
+password:pass
 
-  if(!response.ok){
-    throw new Error(data.message || "Registration failed");
-  }
+})
 
-  window.location.href="login.html";
-*/
+}
+);
+
+
+const data=await response.json();
+
+
+if(!response.ok || !data.success){
+
+throw new Error(
+data.message ||
+"Registration failed."
+);
+
+}
+
 
 showMessage(
-"Registration form is ready to connect to your student API.",
+"Account created successfully.",
 "success"
 );
+
+
+form.reset();
+
+
+setTimeout(function(){
+
+window.location.href="login.html";
+
+},1200);
+
 
 }catch(error){
 
 showMessage(
 error.message ||
-"Unable to create your account. Please try again.",
+"Unable to create account. Please try again.",
 "error"
 );
 
-}
+button.disabled=false;
 
-registerBtn.disabled=false;
-registerBtn.textContent="📝 Create Account";
+button.textContent="📝 Create Account";
+
+}
 
 });
-
-/* MESSAGE */
-
-function showMessage(text,type){
-
-message.textContent=text;
-
-message.className=
-"message show "+type;
-
-}
 
 </script>
 
