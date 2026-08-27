@@ -1,487 +1,1322 @@
-<!DOCTYPE html>  <html lang="en">  
-<head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width,initial-scale=1">  
-<meta name="theme-color" content="#155eef">  
-<title>GOH Ministries Finance - Administration</title>  
-<style>  
-*{box-sizing:border-box}  
-body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}  
-header{background:#155eef;color:#fff;padding:15px 18px}  
-.head{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center}  
-.logout{background:#fff;color:#155eef;border:0;border-radius:8px;padding:9px 13px;font-weight:bold;cursor:pointer}  
-nav{max-width:1050px;margin:10px auto 0;display:flex;gap:8px;overflow:auto}  
-nav a{background:#fff;color:#155eef;padding:8px 11px;border-radius:8px;text-decoration:none;font-size:12px;white-space:nowrap}  
-main{max-width:1050px;margin:auto;padding:18px}  
-.card{background:#fff;padding:18px;border-radius:14px;margin-bottom:16px;box-shadow:0 2px 12px #0001}  
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}  
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}  
-.stat strong{display:block;font-size:24px;margin-top:6px}  
-label{display:block;font-size:13px;font-weight:bold;margin:9px 0 6px}  
-input,select{width:100%;padding:12px;border:1px solid #d5dbe5;border-radius:8px;font-size:14px;background:#fff}  
-button{border:0;border-radius:8px;padding:11px 15px;background:#155eef;color:#fff;font-weight:bold;cursor:pointer}  
-form button{width:100%;margin-top:15px}  
-button:disabled{opacity:.6}  
-.danger{background:#dc2626}  
-.success{background:#16a34a}  
-.msg{display:none;padding:11px;border-radius:8px;margin-bottom:12px;font-size:13px}  
-.ok{display:block;background:#dcfce7;color:#166534}  
-.bad{display:block;background:#fee2e2;color:#991b1b}  
-.table{overflow:auto}  
-table{width:100%;min-width:750px;border-collapse:collapse}  
-th,td{padding:10px;border-bottom:1px solid #edf0f4;text-align:left;font-size:13px}  
-th{background:#f8fafc;color:#667085}  
-.small{font-size:13px;color:#667085}  
-.hint{font-size:11px;color:#667085;margin-top:5px}  
-@media(max-width:700px){  
-.grid,.stats{grid-template-columns:1fr}  
-main{padding:12px}  
-}  
-</style>  
-</head>  <body>  <header>  
-<div class="head">  
-<b>GOH Ministries Finance</b>  
-<button class="logout" onclick="logout()">Logout</button>  
-</div>  <nav>  
-<a href="finance-dashboard.html">Dashboard</a>  
-<a href="income.html">Income</a>  
-<a href="expenses.html">Expenses</a>  
-<a href="donations.html">Donations</a>  
-<a href="receipts.html">Receipts</a>  
-<a href="reports.html">Reports</a>  
-<a href="admin.html">Administration</a>  
-</nav>  
-</header>  <main>  <div class="card">  
-<h2>Administration Panel</h2>  
-<div class="small">  
-Logged in as <b id="currentUser">Loading...</b>  
-</div>  
-</div>  <div class="stats">  <div class="card stat">  
-<div class="small">Total Users</div>  
-<strong id="total">0</strong>  
-</div>  <div class="card stat">  
-<div class="small">Active Users</div>  
-<strong id="active">0</strong>  
-</div>  <div class="card stat">  
-<div class="small">Administrators</div>  
-<strong id="admins">0</strong>  
-</div>  </div>  <div class="card">  <h3>Create User</h3>  <div class="small" style="margin-bottom:15px">  
-Only administrators can create or disable finance system users.  
-</div>  <div id="msg" class="msg"></div>  <form id="userForm">  <div class="grid">  <div>  
-<label>Name</label>  
-<input  
-id="name"  
-type="text"  
-placeholder="Full name"  
-autocomplete="name"  
-required>  
-</div>  <div>  
-<label>Email</label>  
-<input  
-id="email"  
-type="email"  
-placeholder="user@example.com"  
-autocomplete="email"  
-required>  
-</div>  <div>  
-<label>Password</label>  
-<input  
-id="password"  
-type="password"  
-placeholder="Minimum 12 characters"  
-autocomplete="new-password"  
-minlength="12"  
-required>  
-<div class="hint">  
-Password must contain at least 12 characters.  
-</div>  
-</div>  <div>  
-<label>Role</label>  
-<select id="role">  
-<option value="viewer">Viewer</option>  
-<option value="finance">Finance</option>  
-<option value="admin">Administrator</option>  
-</select>  
-</div>  </div>  <button id="createBtn" type="submit">  
-Create User  
-</button>  </form>  </div>  <div class="card">  <h3>Users</h3>  <div class="table">  <table>  <thead>  
-<tr>  
-<th>Name</th>  
-<th>Email</th>  
-<th>Role</th>  
-<th>Status</th>  
-<th>Created</th>  
-<th>Action</th>  
-</tr>  
-</thead>  <tbody id="users">  
-<tr>  
-<td colspan="6">Loading...</td>  
-</tr>  
-</tbody>  </table>  </div>  </div>  <div class="card">  <h3>Audit Log</h3>  <div class="table">  <table>  <thead>  
-<tr>  
-<th>Date</th>  
-<th>User</th>  
-<th>Action</th>  
-<th>Table</th>  
-<th>Details</th>  
-</tr>  
-</thead>  <tbody id="audit">  
-<tr>  
-<td colspan="5">Loading...</td>  
-</tr>  
-</tbody>  </table>  </div>  </div>  </main>  <script>  
-  
-const API="https://goh-finance.createlk.workers.dev";  
-const KEY="goh_finance_token";  
-  
-function headers(){  
-return{  
-"Content-Type":"application/json",  
-"Authorization":"Bearer "+localStorage.getItem(KEY)  
-};  
-}  
-  
-function esc(v){  
-return String(v??"")  
-.replaceAll("&","&amp;")  
-.replaceAll("<","&lt;")  
-.replaceAll(">","&gt;")  
-.replaceAll('"',"&quot;")  
-.replaceAll("'","&#039;");  
-}  
-  
-function show(text,ok=false){  
-const el=document.getElementById("msg");  
-el.textContent=text;  
-el.className="msg "+(ok?"ok":"bad");  
-}  
-  
-async function check(){  
-  
-const token=localStorage.getItem(KEY);  
-  
-if(!token){  
-location.href="admin-login.html";  
-return false;  
-}  
-  
-try{  
-  
-const r=await fetch(  
-API+"/api/me",  
-{headers:headers()}  
-);  
-  
-const d=await r.json();  
-  
-if(!r.ok||!d.success)  
-throw Error();  
-  
-if(d.user.role!=="admin"){  
-alert("Administrator access required.");  
-location.href="finance-dashboard.html";  
-return false;  
-}  
-  
-document.getElementById("currentUser")  
-.textContent=  
-d.user.name+" ("+d.user.email+")";  
-  
-return true;  
-  
-}catch(e){  
-  
-localStorage.removeItem(KEY);  
-location.href="admin-login.html";  
-return false;  
-  
-}  
-  
-}  
-  
-async function loadUsers(){  
-  
-try{  
-  
-const r=await fetch(  
-API+"/api/admin/users",  
-{headers:headers()}  
-);  
-  
-const d=await r.json();  
-  
-if(!r.ok||!d.success)  
-throw Error(d.error||"Unable to load users");  
-  
-const rows=d.users||[];  
-  
-document.getElementById("total")  
-.textContent=rows.length;  
-  
-document.getElementById("active")  
-.textContent=  
-rows.filter(x=>Number(x.active)===1).length;  
-  
-document.getElementById("admins")  
-.textContent=  
-rows.filter(x=>x.role==="admin").length;  
-  
-document.getElementById("users")  
-.innerHTML=  
-  
-rows.map(x=>`  
-  
-<tr>  
-<td>${esc(x.name)}</td>  
-<td>${esc(x.email)}</td>  
-<td>${esc(x.role)}</td>  
-<td>${Number(x.active)===1?"Active":"Disabled"}</td>  
-<td>${esc(x.created_at)}</td>  
-<td>  
-<button  
-class="${Number(x.active)===1?"danger":"success"}"  
-onclick="toggleUser(${Number(x.id)},${Number(x.active)})">  
-${Number(x.active)===1?"Disable":"Enable"}  
-</button>  
-</td>  
-</tr>  
-  
-`).join("")||  
-  
-`<tr>  
-<td colspan="6">No users found.</td>  
-</tr>`;  
-  
-}catch(e){  
-  
-document.getElementById("users")  
-.innerHTML=  
-`<tr>  
-<td colspan="6">${esc(e.message)}</td>  
-</tr>`;  
-  
-}  
-  
-}  
-  
-  
-document.getElementById("userForm")  
-.addEventListener("submit",async e=>{  
-  
-e.preventDefault();  
-  
-const btn=  
-document.getElementById("createBtn");  
-  
-const name=  
-document.getElementById("name")  
-.value.trim();  
-  
-const email=  
-document.getElementById("email")  
-.value.trim()  
-.toLowerCase();  
-  
-const password=  
-document.getElementById("password")  
-.value;  
-  
-const role=  
-document.getElementById("role")  
-.value;  
-  
-if(!name||!email||!password){  
-  
-show("Name, email and password are required.");  
-return;  
-  
-}  
-  
-if(password.length<12){  
-  
-show("Password must contain at least 12 characters.");  
-return;  
-  
-}  
-  
-btn.disabled=true;  
-btn.textContent="Creating...";  
-  
-try{  
-  
-const r=await fetch(  
-API+"/api/admin/users",  
-{  
-method:"POST",  
-headers:headers(),  
-body:JSON.stringify({  
-name:name,  
-email:email,  
-password:password,  
-role:role  
-})  
-}  
-);  
-  
-const d=await r.json();  
-  
-if(!r.ok||!d.success){  
-  
-throw Error(  
-d.error||"Unable to create user"  
-);  
-  
-}  
-  
-show(  
-"User created successfully.",  
-true  
-);  
-  
-e.target.reset();  
-  
-document.getElementById("role")  
-.value="viewer";  
-  
-await loadUsers();  
-await loadAudit();  
-  
-}catch(err){  
-  
-show(err.message);  
-  
-}finally{  
-  
-btn.disabled=false;  
-btn.textContent="Create User";  
-  
-}  
-  
-});  
-  
-  
-async function toggleUser(id,current){  
-  
-const action=  
-current===1?"disable":"enable";  
-  
-if(!confirm(  
-"Are you sure you want to "+action+" this user?"  
-))return;  
-  
-try{  
-  
-const r=await fetch(  
-API+"/api/admin/users/"+id,  
-{  
-method:"PATCH",  
-headers:headers(),  
-body:JSON.stringify({  
-active:current===1?0:1  
-})  
-}  
-);  
-  
-const d=await r.json();  
-  
-if(!r.ok||!d.success)  
-throw Error(  
-d.error||"Unable to update user"  
-);  
-  
-await loadUsers();  
-await loadAudit();  
-  
-}catch(e){  
-  
-alert(e.message);  
-  
-}  
-  
-}  
-  
-  
-async function loadAudit(){  
-  
-try{  
-  
-const r=await fetch(  
-API+"/api/admin/audit",  
-{headers:headers()}  
-);  
-  
-const d=await r.json();  
-  
-if(!r.ok||!d.success)  
-throw Error(  
-d.error||"Unable to load audit log"  
-);  
-  
-const rows=d.logs||[];  
-  
-document.getElementById("audit")  
-.innerHTML=  
-  
-rows.map(x=>`  
-  
-<tr>  
-<td>${esc(x.created_at)}</td>  
-<td>${esc(x.user_name||x.user_email||"")}</td>  
-<td>${esc(x.action)}</td>  
-<td>${esc(x.table_name||"")}</td>  
-<td>${esc(x.details||"")}</td>  
-</tr>  
-  
-`).join("")||  
-  
-`<tr>  
-<td colspan="5">No audit records.</td>  
-</tr>`;  
-  
-}catch(e){  
-  
-document.getElementById("audit")  
-.innerHTML=  
-`<tr>  
-<td colspan="5">${esc(e.message)}</td>  
-</tr>`;  
-  
-}  
-  
-}  
-  
-  
-async function logout(){  
-  
-try{  
-  
-await fetch(  
-API+"/api/logout",  
-{  
-method:"POST",  
-headers:headers()  
-}  
-);  
-  
-}catch(e){}  
-  
-localStorage.removeItem(KEY);  
-  
-location.href="admin-login.html";  
-  
-}  
-  
-  
-check().then(ok=>{  
-  
-if(ok){  
-  
-loadUsers();  
-loadAudit();  
-  
-}  
-  
-});  
-  
-</script>  </body>  
-</html>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#155eef">
+<title>GOH Ministries Finance - Administration</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#f5f7fb;
+ color:#172033
+}
+
+header{
+ background:#155eef;
+ color:#fff;
+ padding:15px 18px
+}
+
+.head{
+ max-width:1050px;
+ margin:auto;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:12px
+}
+
+.logout{
+ background:#fff;
+ color:#155eef;
+ border:0;
+ border-radius:8px;
+ padding:9px 13px;
+ font-weight:bold;
+ cursor:pointer
+}
+
+nav{
+ max-width:1050px;
+ margin:10px auto 0;
+ display:flex;
+ gap:8px;
+ overflow:auto
+}
+
+nav a{
+ background:#fff;
+ color:#155eef;
+ padding:8px 11px;
+ border-radius:8px;
+ text-decoration:none;
+ font-size:12px;
+ white-space:nowrap
+}
+
+main{
+ max-width:1050px;
+ margin:auto;
+ padding:18px
+}
+
+.card{
+ background:#fff;
+ padding:18px;
+ border-radius:14px;
+ margin-bottom:16px;
+ box-shadow:0 2px 12px #0001
+}
+
+.grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px
+}
+
+.stats{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:12px
+}
+
+.stat strong{
+ display:block;
+ font-size:24px;
+ margin-top:6px
+}
+
+label{
+ display:block;
+ font-size:13px;
+ font-weight:bold;
+ margin:9px 0 6px
+}
+
+input,select{
+ width:100%;
+ padding:12px;
+ border:1px solid #d5dbe5;
+ border-radius:8px;
+ font-size:14px;
+ background:#fff
+}
+
+button{
+ border:0;
+ border-radius:8px;
+ padding:11px 15px;
+ background:#155eef;
+ color:#fff;
+ font-weight:bold;
+ cursor:pointer
+}
+
+form button{
+ width:100%;
+ margin-top:15px
+}
+
+button:disabled{
+ opacity:.6;
+ cursor:not-allowed
+}
+
+.danger{
+ background:#dc2626
+}
+
+.success{
+ background:#16a34a
+}
+
+.msg{
+ display:none;
+ padding:11px;
+ border-radius:8px;
+ margin-bottom:12px;
+ font-size:13px
+}
+
+.ok{
+ display:block;
+ background:#dcfce7;
+ color:#166534
+}
+
+.bad{
+ display:block;
+ background:#fee2e2;
+ color:#991b1b
+}
+
+.table{
+ overflow:auto
+}
+
+table{
+ width:100%;
+ min-width:750px;
+ border-collapse:collapse
+}
+
+th,td{
+ padding:10px;
+ border-bottom:1px solid #edf0f4;
+ text-align:left;
+ font-size:13px
+}
+
+th{
+ background:#f8fafc;
+ color:#667085
+}
+
+.small{
+ font-size:13px;
+ color:#667085
+}
+
+.hint{
+ font-size:11px;
+ color:#667085;
+ margin-top:5px
+}
+
+.loading{
+ text-align:center;
+ padding:20px;
+ color:#667085
+}
+
+@media(max-width:700px){
+
+ .grid,
+ .stats{
+  grid-template-columns:1fr
+ }
+
+ main{
+  padding:12px
+ }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="head">
+
+<b>GOH Ministries Finance</b>
+
+<button class="logout" onclick="logout()">
+Logout
+</button>
+
+</div>
+
+<nav>
+
+<a href="finance-dashboard.html">
+Dashboard
+</a>
+
+<a href="income.html">
+Income
+</a>
+
+<a href="expenses.html">
+Expenses
+</a>
+
+<a href="donations.html">
+Donations
+</a>
+
+<a href="receipts.html">
+Receipts
+</a>
+
+<a href="reports.html">
+Reports
+</a>
+
+<a href="admin.html">
+Administration
+</a>
+
+</nav>
+
+</header>
+
+
+<main>
+
+
+<div class="card">
+
+<h2>
+Administration Panel
+</h2>
+
+<div class="small">
+Logged in as
+<b id="currentUser">Loading...</b>
+</div>
+
+</div>
+
+
+<div class="stats">
+
+<div class="card stat">
+
+<div class="small">
+Total Users
+</div>
+
+<strong id="total">
+0
+</strong>
+
+</div>
+
+
+<div class="card stat">
+
+<div class="small">
+Active Users
+</div>
+
+<strong id="active">
+0
+</strong>
+
+</div>
+
+
+<div class="card stat">
+
+<div class="small">
+Administrators
+</div>
+
+<strong id="admins">
+0
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Create User
+</h3>
+
+<div class="small" style="margin-bottom:15px">
+Only administrators can create or disable finance system users.
+</div>
+
+<div id="msg" class="msg"></div>
+
+
+<form id="userForm">
+
+
+<div class="grid">
+
+
+<div>
+
+<label>
+Name
+</label>
+
+<input
+id="name"
+type="text"
+placeholder="Full name"
+autocomplete="name"
+required>
+
+</div>
+
+
+<div>
+
+<label>
+Email
+</label>
+
+<input
+id="email"
+type="email"
+placeholder="user@example.com"
+autocomplete="email"
+required>
+
+</div>
+
+
+<div>
+
+<label>
+Password
+</label>
+
+<input
+id="password"
+type="password"
+placeholder="Minimum 12 characters"
+autocomplete="new-password"
+minlength="12"
+required>
+
+<div class="hint">
+Password must contain at least 12 characters.
+</div>
+
+</div>
+
+
+<div>
+
+<label>
+Role
+</label>
+
+<select id="role">
+
+<option value="viewer">
+Viewer
+</option>
+
+<option value="finance">
+Finance
+</option>
+
+<option value="admin">
+Administrator
+</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+
+<button id="createBtn" type="submit">
+Create User
+</button>
+
+</form>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Users
+</h3>
+
+<div class="table">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+Name
+</th>
+
+<th>
+Email
+</th>
+
+<th>
+Role
+</th>
+
+<th>
+Status
+</th>
+
+<th>
+Created
+</th>
+
+<th>
+Action
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody id="users">
+
+<tr>
+<td colspan="6" class="loading">
+Loading...
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Audit Log
+</h3>
+
+<div class="table">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+Date
+</th>
+
+<th>
+User
+</th>
+
+<th>
+Action
+</th>
+
+<th>
+Table
+</th>
+
+<th>
+Details
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody id="audit">
+
+<tr>
+<td colspan="5" class="loading">
+Loading...
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+</main>
+
+
+<script>
+
+/* =====================================================
+   SAME FINANCE API AS DASHBOARD
+===================================================== */
+
+const API=
+"https://goh-finance-system.createlk.workers.dev";
+
+const KEY=
+"goh_finance_token";
+
+
+/* =====================================================
+   AUTH HEADERS
+===================================================== */
+
+function headers(){
+
+ const token=
+  localStorage.getItem(KEY);
+
+ return{
+  "Content-Type":
+   "application/json",
+
+  "Authorization":
+   "Bearer "+token
+ };
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function esc(v){
+
+ return String(v??"")
+  .replaceAll("&","&amp;")
+  .replaceAll("<","&lt;")
+  .replaceAll(">","&gt;")
+  .replaceAll('"',"&quot;")
+  .replaceAll("'","&#039;");
+
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+function show(text,ok=false){
+
+ const el=
+  document.getElementById("msg");
+
+ el.textContent=
+  text;
+
+ el.className=
+  "msg "+(ok?"ok":"bad");
+
+}
+
+
+/* =====================================================
+   CHECK LOGIN + ADMIN
+===================================================== */
+
+async function check(){
+
+ const token=
+  localStorage.getItem(KEY);
+
+ if(!token){
+
+  location.href=
+   "admin-login.html";
+
+  return false;
+
+ }
+
+
+ try{
+
+  const r=
+   await fetch(
+    API+"/api/me",
+    {
+     method:"GET",
+     headers:headers()
+    }
+   );
+
+
+  const d=
+   await r.json();
+
+
+  if(
+   !r.ok||
+   !d.success||
+   !d.user
+  ){
+
+   throw new Error(
+    d.error||
+    "Authentication required."
+   );
+
+  }
+
+
+  if(
+   String(d.user.role)
+    .toLowerCase()!=="admin"
+  ){
+
+   alert(
+    "Administrator access required."
+   );
+
+   location.href=
+    "finance-dashboard.html";
+
+   return false;
+
+  }
+
+
+  document
+   .getElementById("currentUser")
+   .textContent=
+   d.user.name+
+   " ("+
+   d.user.email+
+   ")";
+
+
+  return true;
+
+
+ }catch(e){
+
+  localStorage.removeItem(KEY);
+
+  location.href=
+   "admin-login.html";
+
+  return false;
+
+ }
+
+}
+
+
+/* =====================================================
+   LOAD USERS
+===================================================== */
+
+async function loadUsers(){
+
+ try{
+
+  const r=
+   await fetch(
+    API+"/api/admin/users",
+    {
+     method:"GET",
+     headers:headers()
+    }
+   );
+
+
+  const d=
+   await r.json();
+
+
+  if(
+   r.status===401
+  ){
+
+   throw new Error(
+    "Authentication required."
+   );
+
+  }
+
+
+  if(
+   !r.ok||
+   !d.success
+  ){
+
+   throw new Error(
+    d.error||
+    "Unable to load users."
+   );
+
+  }
+
+
+  const rows=
+   d.users||[];
+
+
+  document
+   .getElementById("total")
+   .textContent=
+   rows.length;
+
+
+  document
+   .getElementById("active")
+   .textContent=
+   rows.filter(
+    x=>Number(x.active)===1
+   ).length;
+
+
+  document
+   .getElementById("admins")
+   .textContent=
+   rows.filter(
+    x=>
+     String(x.role)
+      .toLowerCase()==="admin"
+   ).length;
+
+
+  document
+   .getElementById("users")
+   .innerHTML=
+
+
+   rows.map(x=>`
+
+<tr>
+
+<td>
+${esc(x.name)}
+</td>
+
+<td>
+${esc(x.email)}
+</td>
+
+<td>
+${esc(x.role)}
+</td>
+
+<td>
+${
+ Number(x.active)===1
+ ?
+ "Active"
+ :
+ "Disabled"
+}
+</td>
+
+<td>
+${esc(x.created_at)}
+</td>
+
+<td>
+
+<button
+ class="${
+  Number(x.active)===1
+   ?
+   "danger"
+   :
+   "success"
+ }"
+ onclick="
+ toggleUser(
+  ${Number(x.id)},
+  ${Number(x.active)}
+ )
+">
+
+${
+ Number(x.active)===1
+  ?
+  "Disable"
+  :
+  "Enable"
+}
+
+</button>
+
+</td>
+
+</tr>
+
+`).join("")
+
+
+ ||`
+
+<tr>
+
+<td colspan="6">
+No users found.
+</td>
+
+</tr>
+
+`;
+
+
+ }catch(e){
+
+ document
+  .getElementById("users")
+  .innerHTML=
+
+`<tr>
+
+<td colspan="6">
+${esc(e.message)}
+</td>
+
+</tr>`;
+
+ }
+
+}
+
+
+/* =====================================================
+   CREATE USER
+===================================================== */
+
+document
+ .getElementById("userForm")
+ .addEventListener(
+  "submit",
+  async e=>{
+
+   e.preventDefault();
+
+
+   const btn=
+    document.getElementById(
+     "createBtn"
+    );
+
+
+   const name=
+    document
+     .getElementById("name")
+     .value
+     .trim();
+
+
+   const email=
+    document
+     .getElementById("email")
+     .value
+     .trim()
+     .toLowerCase();
+
+
+   const password=
+    document
+     .getElementById("password")
+     .value;
+
+
+   const role=
+    document
+     .getElementById("role")
+     .value;
+
+
+   if(
+    !name||
+    !email||
+    !password
+   ){
+
+    show(
+     "Name, email and password are required."
+    );
+
+    return;
+
+   }
+
+
+   if(
+    password.length<12
+   ){
+
+    show(
+     "Password must contain at least 12 characters."
+    );
+
+    return;
+
+   }
+
+
+   btn.disabled=true;
+
+   btn.textContent=
+    "Creating...";
+
+
+   try{
+
+
+    const r=
+     await fetch(
+      API+"/api/admin/users",
+      {
+       method:"POST",
+       headers:headers(),
+
+       body:JSON.stringify({
+
+        name:name,
+
+        email:email,
+
+        password:password,
+
+        role:role
+
+       })
+      }
+     );
+
+
+    const d=
+     await r.json();
+
+
+    if(
+     r.status===401
+    ){
+
+     throw new Error(
+      "Authentication required."
+     );
+
+    }
+
+
+    if(
+     !r.ok||
+     !d.success
+    ){
+
+     throw new Error(
+      d.error||
+      "Unable to create user."
+     );
+
+    }
+
+
+    show(
+     "User created successfully.",
+     true
+    );
+
+
+    e.target.reset();
+
+
+    document
+     .getElementById("role")
+     .value="viewer";
+
+
+    await loadUsers();
+
+    await loadAudit();
+
+
+   }catch(err){
+
+    show(
+     err.message||
+     "Unable to create user."
+    );
+
+
+   }finally{
+
+    btn.disabled=false;
+
+    btn.textContent=
+     "Create User";
+
+   }
+
+  }
+ );
+
+
+/* =====================================================
+   ENABLE / DISABLE USER
+===================================================== */
+
+async function toggleUser(
+ id,
+ current
+){
+
+ const action=
+  current===1
+   ?
+   "disable"
+   :
+   "enable";
+
+
+ if(
+  !confirm(
+   "Are you sure you want to "+
+   action+
+   " this user?"
+  )
+ ){
+
+  return;
+
+ }
+
+
+ try{
+
+
+  const r=
+   await fetch(
+    API+"/api/admin/users/"+id,
+    {
+     method:"PATCH",
+     headers:headers(),
+
+     body:JSON.stringify({
+
+      active:
+       current===1
+        ?
+        0
+        :
+        1
+
+     })
+    }
+   );
+
+
+  const d=
+   await r.json();
+
+
+  if(
+   r.status===401
+  ){
+
+   throw new Error(
+    "Authentication required."
+   );
+
+  }
+
+
+  if(
+   !r.ok||
+   !d.success
+  ){
+
+   throw new Error(
+    d.error||
+    "Unable to update user."
+   );
+
+  }
+
+
+  await loadUsers();
+
+  await loadAudit();
+
+
+ }catch(e){
+
+  alert(
+   e.message||
+   "Unable to update user."
+  );
+
+ }
+
+}
+
+
+/* =====================================================
+   LOAD AUDIT LOG
+===================================================== */
+
+async function loadAudit(){
+
+ try{
+
+
+  const r=
+   await fetch(
+    API+"/api/admin/audit",
+    {
+     method:"GET",
+     headers:headers()
+    }
+   );
+
+
+  const d=
+   await r.json();
+
+
+  if(
+   r.status===401
+  ){
+
+   throw new Error(
+    "Authentication required."
+   );
+
+  }
+
+
+  if(
+   !r.ok||
+   !d.success
+  ){
+
+   throw new Error(
+    d.error||
+    "Unable to load audit log."
+   );
+
+  }
+
+
+  const rows=
+   d.logs||[];
+
+
+  document
+   .getElementById("audit")
+   .innerHTML=
+
+
+   rows.map(x=>`
+
+<tr>
+
+<td>
+${esc(x.created_at)}
+</td>
+
+<td>
+${esc(
+ x.user_name||
+ x.user_email||
+ ""
+)}
+</td>
+
+<td>
+${esc(x.action)}
+</td>
+
+<td>
+${esc(x.table_name||"")}
+</td>
+
+<td>
+${esc(x.details||"")}
+</td>
+
+</tr>
+
+`).join("")
+
+
+ ||`
+
+<tr>
+
+<td colspan="5">
+No audit records.
+</td>
+
+</tr>
+
+`;
+
+
+ }catch(e){
+
+ document
+  .getElementById("audit")
+  .innerHTML=
+
+`<tr>
+
+<td colspan="5">
+${esc(e.message)}
+</td>
+
+</tr>`;
+
+ }
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+async function logout(){
+
+ try{
+
+  await fetch(
+   API+"/api/logout",
+   {
+    method:"POST",
+    headers:headers()
+   }
+  );
+
+ }catch(e){}
+
+
+ localStorage.removeItem(KEY);
+
+ location.href=
+  "admin-login.html";
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+check().then(ok=>{
+
+ if(ok){
+
+  loadUsers();
+
+  loadAudit();
+
+ }
+
+});
+
+</script>
+
+</body>
+</html>
