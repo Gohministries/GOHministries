@@ -8,213 +8,171 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
  margin:0;
  font-family:Arial,sans-serif;
  background:#f5f7fb;
  color:#172033
 }
+
 header{
  background:#155eef;
  color:#fff;
  padding:15px 18px
 }
+
 .head{
  max-width:1100px;
  margin:auto;
  display:flex;
+ align-items:center;
  justify-content:space-between;
- align-items:center
+ gap:10px
 }
+
 .brand{
- font-size:17px;
  font-weight:bold
 }
-.menuBtn{
- background:#fff;
- color:#155eef;
+
+button{
  border:0;
  border-radius:8px;
- padding:9px 14px;
+ padding:10px 14px;
  font-weight:bold;
  cursor:pointer
 }
-.menu{
- display:none;
- max-width:1100px;
- margin:12px auto 0;
+
+.logout{
  background:#fff;
- border-radius:12px;
- padding:10px;
- box-shadow:0 4px 18px #0002
-}
-.menu.open{display:grid}
-.menu a{
- color:#172033;
- text-decoration:none;
- padding:13px 14px;
- border-radius:8px;
- font-size:14px
-}
-.menu a:hover{
- background:#eef4ff;
  color:#155eef
 }
+
 main{
  max-width:1100px;
  margin:auto;
  padding:18px
 }
-.welcome{
- background:#fff;
- padding:20px;
- border-radius:16px;
- margin-bottom:16px;
- box-shadow:0 2px 12px #0001
-}
-.welcome h2{
- margin:0 0 6px
-}
-.small{
- color:#667085;
- font-size:13px
-}
-.stats{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:12px;
- margin-bottom:16px
-}
+
 .card{
  background:#fff;
  padding:18px;
  border-radius:14px;
+ margin-bottom:16px;
  box-shadow:0 2px 12px #0001
 }
-.stat strong{
- display:block;
- font-size:22px;
- margin-top:8px
+
+.notice{
+ background:#eef4ff;
+ color:#155eef;
+ padding:13px;
+ border-radius:10px;
+ margin-bottom:16px
 }
-.label{
+
+.small{
  font-size:13px;
  color:#667085
 }
-.balance{
- border-top:4px solid #155eef
+
+.notice .small{
+ margin-top:5px
 }
-.income{
- border-top:4px solid #16a34a
-}
-.expense{
- border-top:4px solid #dc2626
-}
-.donation{
- border-top:4px solid #7c3aed
-}
-.section{
- margin-bottom:16px
-}
-.section h3{
- margin:0 0 14px
-}
-.monthGrid{
+
+.stats{
  display:grid;
  grid-template-columns:repeat(3,1fr);
  gap:12px
 }
-.monthCard{
- background:#f8fafc;
- padding:16px;
- border-radius:12px
-}
-.monthCard strong{
+
+.stat strong{
  display:block;
- font-size:20px;
+ font-size:23px;
  margin-top:7px
 }
-.pendingGrid{
+
+.links{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:12px
+}
+
+.link{
+ display:block;
+ background:#f8fafc;
+ border:1px solid #e5e7eb;
+ padding:16px;
+ border-radius:12px;
+ text-decoration:none;
+ color:#172033
+}
+
+.link:hover{
+ background:#eef4ff;
+ color:#155eef
+}
+
+.link b{
+ display:block;
+ margin-bottom:5px
+}
+
+.link span{
+ font-size:12px;
+ color:#667085
+}
+
+.pending{
  display:grid;
  grid-template-columns:1fr 1fr;
  gap:12px
 }
-.pending{
+
+.pendingBox{
  background:#fff7ed;
  border:1px solid #fed7aa;
  padding:16px;
  border-radius:12px
 }
-.pending strong{
+
+.pendingBox strong{
  display:block;
- font-size:24px;
- margin-top:6px;
- color:#b45309
-}
-.actions{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:10px
-}
-.action{
- display:block;
- text-decoration:none;
- background:#fff;
- color:#172033;
- padding:16px;
- border-radius:12px;
- box-shadow:0 2px 10px #0001;
- font-weight:bold;
- text-align:center
-}
-.action:hover{
- color:#155eef;
- background:#eef4ff
-}
-.refresh{
- background:#155eef;
- color:#fff;
- border:0;
- padding:10px 15px;
- border-radius:8px;
- font-weight:bold;
- cursor:pointer;
- float:right
-}
-.loading{
- color:#667085
-}
-.error{
- color:#b42318;
- background:#fee4e2;
- padding:12px;
- border-radius:8px;
- display:none;
- margin-bottom:15px
-}
-.logout{
- background:#fff;
- color:#155eef;
- border:0;
- border-radius:8px;
- padding:9px 13px;
- font-weight:bold;
- cursor:pointer;
- margin-left:7px
-}
-.topBtns{
- display:flex;
- align-items:center
+ font-size:25px;
+ margin-top:5px
 }
 
-@media(max-width:800px){
- .stats{grid-template-columns:1fr 1fr}
- .actions{grid-template-columns:1fr 1fr}
+.refresh{
+ background:#eef4ff;
+ color:#155eef
 }
-@media(max-width:600px){
- main{padding:12px}
- .stats,.monthGrid,.pendingGrid{grid-template-columns:1fr}
- .actions{grid-template-columns:1fr 1fr}
- .brand{font-size:15px}
+
+.error{
+ display:none;
+ background:#fee2e2;
+ color:#991b1b;
+ padding:12px;
+ border-radius:9px;
+ margin-bottom:16px
+}
+
+.loading{
+ text-align:center;
+ padding:25px;
+ color:#667085
+}
+
+@media(max-width:700px){
+
+ .stats,
+ .links,
+ .pending{
+  grid-template-columns:1fr
+ }
+
+ main{
+  padding:12px
+ }
+
 }
 </style>
 </head>
@@ -229,218 +187,321 @@ main{
 GOH Ministries Finance
 </div>
 
-<div class="topBtns">
-
-<button class="menuBtn" onclick="toggleMenu()">
-☰ Menu
-</button>
-
-<button class="logout" onclick="logout()">
+<button
+ class="logout"
+ onclick="logout()">
 Logout
 </button>
 
 </div>
 
-</div>
-
-<div id="menu" class="menu">
-
-<a href="finance-dashboard.html">🏠 Dashboard</a>
-<a href="income.html">💰 Income</a>
-<a href="expenses.html">💸 Expenses</a>
-<a href="donations.html">❤️ Donations</a>
-<a href="approvals.html">✅ Approvals</a>
-<a href="receipts.html">🧾 Receipts</a>
-<a href="reports.html">📊 Reports</a>
-<a href="admin.html">⚙️ Administration</a>
-
-</div>
-
 </header>
+
 
 <main>
 
 <div id="error" class="error"></div>
 
-<div class="welcome">
 
-<button class="refresh" onclick="loadDashboard()">
+<div class="notice">
+
+<b id="welcome">
+Finance Dashboard
+</b>
+
+<div
+ id="user"
+ class="small">
+Checking login...
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+">
+
+<div>
+
+<h2 style="margin:0 0 5px">
+Financial Overview
+</h2>
+
+<div class="small">
+Approved income and expenses
+</div>
+
+</div>
+
+<button
+ class="refresh"
+ onclick="loadDashboard()">
 ↻ Refresh
 </button>
 
-<h2>Financial Dashboard</h2>
-
-<div class="small">
-Welcome, <b id="user">Loading...</b>
 </div>
 
 </div>
+
 
 <div class="stats">
 
-<div class="card stat income">
-<div class="label">Total Income</div>
-<strong id="income">LKR 0.00</strong>
+<div class="card stat">
+
+<div class="small">
+Total Income
 </div>
 
-<div class="card stat expense">
-<div class="label">Total Expenses</div>
-<strong id="expenses">LKR 0.00</strong>
-</div>
-
-<div class="card stat donation">
-<div class="label">Total Donations</div>
-<strong id="donations">LKR 0.00</strong>
-</div>
-
-<div class="card stat balance">
-<div class="label">Current Balance</div>
-<strong id="balance">LKR 0.00</strong>
-</div>
+<strong id="income">
+LKR 0.00
+</strong>
 
 </div>
 
-<div class="card section">
 
-<h3>This Month</h3>
+<div class="card stat">
 
-<div class="monthGrid">
-
-<div class="monthCard">
-<div class="label">Income</div>
-<strong id="monthIncome">LKR 0.00</strong>
+<div class="small">
+Total Expenses
 </div>
 
-<div class="monthCard">
-<div class="label">Expenses</div>
-<strong id="monthExpenses">LKR 0.00</strong>
+<strong id="expenses">
+LKR 0.00
+</strong>
+
 </div>
 
-<div class="monthCard">
-<div class="label">Monthly Balance</div>
-<strong id="monthBalance">LKR 0.00</strong>
+
+<div class="card stat">
+
+<div class="small">
+Current Balance
 </div>
+
+<strong id="balance">
+LKR 0.00
+</strong>
 
 </div>
 
 </div>
 
-<div class="card section">
 
-<h3>Pending Approvals</h3>
+<div class="card">
 
-<div class="pendingGrid">
+<h3>
+This Month
+</h3>
+
+<div class="stats">
+
+<div>
+
+<div class="small">
+Income
+</div>
+
+<strong id="monthIncome">
+LKR 0.00
+</strong>
+
+</div>
+
+
+<div>
+
+<div class="small">
+Expenses
+</div>
+
+<strong id="monthExpenses">
+LKR 0.00
+</strong>
+
+</div>
+
+
+<div>
+
+<div class="small">
+Balance
+</div>
+
+<strong id="monthBalance">
+LKR 0.00
+</strong>
+
+</div>
+
+</div>
+
+</div>
+
 
 <div class="pending">
-<div class="label">Pending Income</div>
-<strong id="pendingIncome">0</strong>
+
+<div class="pendingBox">
+
+<div class="small">
+Pending Income
 </div>
 
-<div class="pending">
-<div class="label">Pending Expenses</div>
-<strong id="pendingExpenses">0</strong>
+<strong id="pendingIncome">
+0
+</strong>
+
+<div class="small">
+Awaiting review
+</div>
+
+</div>
+
+
+<div class="pendingBox">
+
+<div class="small">
+Pending Expenses
+</div>
+
+<strong id="pendingExpenses">
+0
+</strong>
+
+<div class="small">
+Awaiting review
 </div>
 
 </div>
 
 </div>
 
-<div class="card section">
 
-<h3>Quick Access</h3>
+<div class="card">
 
-<div class="actions">
+<h3>
+Finance
+</h3>
 
-<a class="action" href="income.html">
-💰<br><br>Income
+<div class="links">
+
+
+<a class="link" href="income.html">
+
+<b>💰 Income</b>
+
+<span>
+Record ministry income
+</span>
+
 </a>
 
-<a class="action" href="expenses.html">
-💸<br><br>Expenses
+
+<a class="link" href="expenses.html">
+
+<b>💸 Expenses</b>
+
+<span>
+Record ministry expenses
+</span>
+
 </a>
 
-<a class="action" href="donations.html">
-❤️<br><br>Donations
+
+<a class="link" href="donations.html">
+
+<b>❤️ Donations</b>
+
+<span>
+Record ministry donations
+</span>
+
 </a>
 
-<a class="action" href="approvals.html">
-✅<br><br>Approvals
+
+<a class="link" href="receipts.html">
+
+<b>🧾 Receipts</b>
+
+<span>
+Manage receipts
+</span>
+
 </a>
+
+
+<a class="link" href="reports.html">
+
+<b>📊 Reports</b>
+
+<span>
+View financial reports
+</span>
+
+</a>
+
+
+<a
+ class="link"
+ href="admin.html"
+ id="adminLink">
+
+<b>⚙️ Administration</b>
+
+<span>
+Manage finance users
+</span>
+
+</a>
+
 
 </div>
 
 </div>
 
-<div class="card section">
-
-<h3>Financial Position</h3>
-
-<table style="width:100%;border-collapse:collapse">
-
-<tr>
-<td style="padding:12px 0;border-bottom:1px solid #eee">
-Total Approved Income
-</td>
-
-<td id="tableIncome"
-style="padding:12px 0;border-bottom:1px solid #eee;text-align:right;font-weight:bold">
-LKR 0.00
-</td>
-</tr>
-
-<tr>
-<td style="padding:12px 0;border-bottom:1px solid #eee">
-Total Approved Expenses
-</td>
-
-<td id="tableExpenses"
-style="padding:12px 0;border-bottom:1px solid #eee;text-align:right;font-weight:bold">
-LKR 0.00
-</td>
-</tr>
-
-<tr>
-<td style="padding:12px 0;font-weight:bold">
-Available Balance
-</td>
-
-<td id="tableBalance"
-style="padding:12px 0;text-align:right;font-weight:bold;font-size:18px">
-LKR 0.00
-</td>
-</tr>
-
-</table>
-
-</div>
 
 </main>
 
+
 <script>
 
-/* =====================================================
-   CORRECT FINANCE API
-===================================================== */
+const API=
+"https://goh-finance-system.createlk.workers.dev";
 
-const API="https://goh-finance-data.createlk.workers.dev";
-
-const KEY="goh_finance_token";
+const KEY=
+"goh_finance_token";
 
 
-function headers(){
+let incomeRecords=[];
+let expenseRecords=[];
+
+
+/* AUTH */
+
+function authHeaders(){
+
+ const token=
+  localStorage.getItem(KEY);
 
  return{
   "Authorization":
-   "Bearer "+localStorage.getItem(KEY)
+   "Bearer "+token
  };
 
 }
 
 
-function money(v){
+/* MONEY */
+
+function money(value){
 
  return "LKR "+
- Number(v||0).toLocaleString(
+ Number(value||0).toLocaleString(
   "en-LK",
   {
    minimumFractionDigits:2,
@@ -451,244 +512,443 @@ function money(v){
 }
 
 
-function toggleMenu(){
+/* SET */
 
- document
-  .getElementById("menu")
-  .classList
-  .toggle("open");
+function set(id,value){
+
+ const el=
+  document.getElementById(id);
+
+ if(el){
+  el.textContent=value;
+ }
 
 }
 
 
-function showError(text){
+/* ERROR */
 
- const x=
+function showError(message){
+
+ const box=
   document.getElementById("error");
 
- x.textContent=text;
+ box.textContent=message;
 
- x.style.display="block";
+ box.style.display="block";
 
 }
 
 
-async function check(){
+/* HIDE ERROR */
+
+function hideError(){
+
+ document.getElementById(
+  "error"
+ ).style.display="none";
+
+}
+
+
+/* CHECK SESSION */
+
+async function checkSession(){
 
  const token=
   localStorage.getItem(KEY);
 
  if(!token){
 
-  location.href="admin-login.html";
+  location.replace(
+   "admin-login.html"
+  );
 
-  return false;
+  return null;
 
  }
 
+
  try{
 
-  const r=
+  const response=
    await fetch(
     API+"/api/me",
     {
      method:"GET",
-     headers:headers()
+     headers:authHeaders()
     }
    );
 
-  const d=
-   await r.json();
 
-  if(!r.ok||!d.success){
+  const data=
+   await response.json();
 
-   throw Error(
-    d.error||
-    "Authentication failed."
+
+  if(
+   !response.ok||
+   !data.success||
+   !data.user
+  ){
+
+   localStorage.removeItem(KEY);
+
+   location.replace(
+    "admin-login.html"
    );
+
+   return null;
 
   }
 
-  document
-   .getElementById("user")
-   .textContent=
-   d.user.name;
 
-  return true;
+  set(
+   "welcome",
+   "Welcome, "+data.user.name
+  );
 
- }catch(e){
 
-  localStorage.removeItem(KEY);
+  set(
+   "user",
+   data.user.email+
+   " • "+
+   data.user.role
+  );
 
-  location.href="admin-login.html";
 
-  return false;
+  /*
+   Only administrators see
+   Administration.
+  */
+
+  if(
+   String(data.user.role)
+    .toLowerCase()!=="admin"
+  ){
+
+   document
+    .getElementById("adminLink")
+    .style.display="none";
+
+  }
+
+
+  return data.user;
+
+
+ }catch(error){
+
+  /*
+   Network errors should NOT
+   immediately destroy the token.
+  */
+
+  showError(
+   "Unable to connect to the finance server."
+  );
+
+  return null;
 
  }
 
 }
 
 
+/* LOAD RECORDS */
+
+async function loadRecords(){
+
+ const token=
+  localStorage.getItem(KEY);
+
+ if(!token){
+
+  throw new Error(
+   "Authentication required."
+  );
+
+ }
+
+
+ const [
+  incomeResponse,
+  expenseResponse
+ ]=
+ await Promise.all([
+
+  fetch(
+   API+"/api/income",
+   {
+    method:"GET",
+    headers:authHeaders()
+   }
+  ),
+
+  fetch(
+   API+"/api/expenses",
+   {
+    method:"GET",
+    headers:authHeaders()
+   }
+  )
+
+ ]);
+
+
+ if(
+  incomeResponse.status===401||
+  expenseResponse.status===401
+ ){
+
+  localStorage.removeItem(KEY);
+
+  location.replace(
+   "admin-login.html"
+  );
+
+  throw new Error(
+   "Your login session has expired."
+  );
+
+ }
+
+
+ const incomeData=
+  await incomeResponse.json();
+
+ const expenseData=
+  await expenseResponse.json();
+
+
+ if(
+  !incomeResponse.ok||
+  !incomeData.success
+ ){
+
+  throw new Error(
+   incomeData.error||
+   "Unable to load income."
+  );
+
+ }
+
+
+ if(
+  !expenseResponse.ok||
+  !expenseData.success
+ ){
+
+  throw new Error(
+   expenseData.error||
+   "Unable to load expenses."
+  );
+
+ }
+
+
+ incomeRecords=
+  incomeData.income||[];
+
+ expenseRecords=
+  expenseData.expenses||[];
+
+}
+
+
+/* DASHBOARD */
+
 async function loadDashboard(){
+
+ hideError();
+
+ const user=
+  await checkSession();
+
+ if(!user){
+  return;
+ }
+
 
  try{
 
-  document
-   .getElementById("error")
-   .style.display="none";
-
-  const r=
-   await fetch(
-    API+"/api/dashboard",
-    {
-     method:"GET",
-     headers:headers()
-    }
-   );
-
-  const d=
-   await r.json();
-
-  if(!r.ok||!d.success){
-
-   throw Error(
-    d.error||
-    "Unable to load dashboard."
-   );
-
-  }
+  await loadRecords();
 
 
-  const income=
-   Number(
-    d.total_income
-   )||0;
+  let totalIncome=0;
+  let totalExpenses=0;
+
+  let pendingIncome=0;
+  let pendingExpenses=0;
 
 
-  const expenses=
-   Number(
-    d.total_expenses
-   )||0;
+  incomeRecords.forEach(x=>{
+
+   const status=
+    String(
+     x.status||"PENDING"
+    ).toUpperCase();
 
 
-  const donations=
-   Number(
-    d.total_donations
-   )||0;
+   if(status==="APPROVED"){
+
+    totalIncome+=
+     Number(x.amount)||0;
+
+   }
 
 
-  const balance=
-   Number(
-    d.balance
-   )||
-   (income-expenses);
+   if(status==="PENDING"){
+
+    pendingIncome++;
+
+   }
+
+  });
 
 
-  const mi=
-   Number(
-    d.this_month?.income
-   )||0;
+  expenseRecords.forEach(x=>{
+
+   const status=
+    String(
+     x.status||"PENDING"
+    ).toUpperCase();
 
 
-  const me=
-   Number(
-    d.this_month?.expenses
-   )||0;
+   if(status==="APPROVED"){
+
+    totalExpenses+=
+     Number(x.amount)||0;
+
+   }
 
 
-  const md=
-   Number(
-    d.this_month?.donations
-   )||0;
+   if(status==="PENDING"){
+
+    pendingExpenses++;
+
+   }
+
+  });
 
 
-  const mb=
-   Number(
-    d.this_month?.balance
-   )||
-   (mi-me);
+  /*
+   Sri Lanka local date.
+  */
+
+  const now=
+   new Date();
 
 
-  document
-   .getElementById("income")
-   .textContent=
-   money(income);
+  const year=
+   now.getFullYear();
 
 
-  document
-   .getElementById("expenses")
-   .textContent=
-   money(expenses);
+  const month=
+   String(
+    now.getMonth()+1
+   ).padStart(2,"0");
 
 
-  document
-   .getElementById("donations")
-   .textContent=
-   money(donations);
+  const prefix=
+   year+"-"+month;
 
 
-  document
-   .getElementById("balance")
-   .textContent=
-   money(balance);
+  let monthIncome=0;
+  let monthExpenses=0;
 
 
-  document
-   .getElementById("monthIncome")
-   .textContent=
-   money(mi);
+  incomeRecords.forEach(x=>{
+
+   if(
+    String(x.status||"")
+     .toUpperCase()==="APPROVED"&&
+    String(x.date||"")
+     .startsWith(prefix)
+   ){
+
+    monthIncome+=
+     Number(x.amount)||0;
+
+   }
+
+  });
 
 
-  document
-   .getElementById("monthExpenses")
-   .textContent=
-   money(me);
+  expenseRecords.forEach(x=>{
+
+   if(
+    String(x.status||"")
+     .toUpperCase()==="APPROVED"&&
+    String(x.date||"")
+     .startsWith(prefix)
+   ){
+
+    monthExpenses+=
+     Number(x.amount)||0;
+
+   }
+
+  });
 
 
-  document
-   .getElementById("monthBalance")
-   .textContent=
-   money(mb);
+  set(
+   "income",
+   money(totalIncome)
+  );
 
 
-  document
-   .getElementById("pendingIncome")
-   .textContent=
-   Number(
-    d.pending_income
-   )||0;
+  set(
+   "expenses",
+   money(totalExpenses)
+  );
 
 
-  document
-   .getElementById("pendingExpenses")
-   .textContent=
-   Number(
-    d.pending_expenses
-   )||0;
+  set(
+   "balance",
+   money(
+    totalIncome-
+    totalExpenses
+   )
+  );
 
 
-  document
-   .getElementById("tableIncome")
-   .textContent=
-   money(income);
+  set(
+   "monthIncome",
+   money(monthIncome)
+  );
 
 
-  document
-   .getElementById("tableExpenses")
-   .textContent=
-   money(expenses);
+  set(
+   "monthExpenses",
+   money(monthExpenses)
+  );
 
 
-  document
-   .getElementById("tableBalance")
-   .textContent=
-   money(balance);
+  set(
+   "monthBalance",
+   money(
+    monthIncome-
+    monthExpenses
+   )
+  );
 
 
- }catch(e){
+  set(
+   "pendingIncome",
+   pendingIncome
+  );
+
+
+  set(
+   "pendingExpenses",
+   pendingExpenses
+  );
+
+
+ }catch(error){
 
   showError(
-   e.message||
+   error.message||
    "Unable to load dashboard."
   );
 
@@ -697,37 +957,44 @@ async function loadDashboard(){
 }
 
 
+/* LOGOUT */
+
 async function logout(){
 
- try{
+ const token=
+  localStorage.getItem(KEY);
 
-  await fetch(
-   API+"/api/logout",
-   {
-    method:"POST",
-    headers:headers()
-   }
-  );
 
- }catch(e){}
+ if(token){
+
+  try{
+
+   await fetch(
+    API+"/api/logout",
+    {
+     method:"POST",
+     headers:authHeaders()
+    }
+   );
+
+  }catch(e){}
+
+ }
 
 
  localStorage.removeItem(KEY);
 
- location.href="admin-login.html";
+
+ location.replace(
+  "admin-login.html"
+ );
 
 }
 
 
-check().then(ok=>{
+/* START */
 
- if(ok){
-
-  loadDashboard();
-
- }
-
-});
+loadDashboard();
 
 </script>
 
