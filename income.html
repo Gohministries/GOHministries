@@ -23,7 +23,7 @@ header{
 }
 
 .head{
- max-width:1050px;
+ max-width:1100px;
  margin:auto;
  display:flex;
  justify-content:space-between;
@@ -43,7 +43,7 @@ header{
 }
 
 nav{
- max-width:1050px;
+ max-width:1100px;
  margin:10px auto 0;
  display:flex;
  gap:8px;
@@ -61,7 +61,7 @@ nav a{
 }
 
 main{
- max-width:1050px;
+ max-width:1100px;
  margin:auto;
  padding:18px
 }
@@ -76,11 +76,6 @@ main{
 
 h2,h3{margin-top:0}
 
-.small{
- font-size:13px;
- color:#667085
-}
-
 .grid{
  display:grid;
  grid-template-columns:1fr 1fr;
@@ -94,9 +89,7 @@ label{
  margin:10px 0 6px
 }
 
-input,
-select,
-textarea{
+input,select,textarea{
  width:100%;
  padding:12px;
  border:1px solid #d5dbe5;
@@ -111,6 +104,13 @@ textarea{
  resize:vertical
 }
 
+input:focus,
+select:focus,
+textarea:focus{
+ outline:none;
+ border-color:#155eef
+}
+
 button{
  border:0;
  border-radius:8px;
@@ -121,14 +121,14 @@ button{
  cursor:pointer
 }
 
-.submit{
- width:100%;
- margin-top:15px
-}
-
 button:disabled{
  opacity:.6;
  cursor:not-allowed
+}
+
+.submit{
+ width:100%;
+ margin-top:15px
 }
 
 .msg{
@@ -151,13 +151,24 @@ button:disabled{
  color:#991b1b
 }
 
+.small{
+ font-size:13px;
+ color:#667085
+}
+
+.hint{
+ font-size:11px;
+ color:#667085;
+ margin-top:5px
+}
+
 .table{
  overflow:auto
 }
 
 table{
  width:100%;
- min-width:800px;
+ min-width:850px;
  border-collapse:collapse
 }
 
@@ -203,20 +214,19 @@ th{
 }
 
 .empty{
- text-align:center;
  padding:20px;
+ text-align:center;
  color:#667085
 }
 
-.hint{
- font-size:11px;
- color:#667085;
- margin-top:5px
-}
-
 @media(max-width:700px){
- .grid{grid-template-columns:1fr}
- main{padding:12px}
+ .grid{
+  grid-template-columns:1fr
+ }
+
+ main{
+  padding:12px
+ }
 }
 </style>
 </head>
@@ -226,15 +236,11 @@ th{
 <header>
 
 <div class="head">
-
-<div class="logo">
-GOH Ministries Finance
-</div>
+<div class="logo">GOH Ministries Finance</div>
 
 <button class="logout" onclick="logout()">
 Logout
 </button>
-
 </div>
 
 <nav>
@@ -250,6 +256,7 @@ Logout
 
 </header>
 
+
 <main>
 
 <div class="card">
@@ -262,7 +269,9 @@ Record ministry income with the supporting receipt or slip.
 
 </div>
 
+
 <div id="msg" class="msg"></div>
+
 
 <div class="card">
 
@@ -284,11 +293,13 @@ Record ministry income with the supporting receipt or slip.
 <option value="Donation">Donation</option>
 <option value="Special Offering">Special Offering</option>
 <option value="Mission Support">Mission Support</option>
+<option value="Building Fund">Building Fund</option>
 <option value="Other">Other</option>
 
 </select>
 
 </div>
+
 
 <div>
 
@@ -299,11 +310,12 @@ id="amount"
 type="number"
 min="0.01"
 step="0.01"
-placeholder="150"
+placeholder="0.00"
 required
 >
 
 </div>
+
 
 <div>
 
@@ -317,6 +329,7 @@ required
 
 </div>
 
+
 <div>
 
 <label>Payment Method</label>
@@ -326,13 +339,14 @@ required
 <option value="">Select payment method</option>
 <option value="Cash">Cash</option>
 <option value="Bank Transfer">Bank Transfer</option>
+<option value="Deposit">Bank Deposit</option>
 <option value="Cheque">Cheque</option>
-<option value="Online">Online</option>
 <option value="Other">Other</option>
 
 </select>
 
 </div>
+
 
 <div>
 
@@ -346,6 +360,7 @@ placeholder="Optional"
 
 </div>
 
+
 <div>
 
 <label>Receipt / Slip</label>
@@ -353,7 +368,7 @@ placeholder="Optional"
 <input
 id="receipt"
 type="file"
-accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf"
+accept="image/jpeg,image/png,application/pdf"
 required
 >
 
@@ -365,12 +380,14 @@ JPG, PNG or PDF. Maximum 5MB.
 
 </div>
 
+
 <label>Description</label>
 
 <textarea
 id="description"
 placeholder="Optional details"
 ></textarea>
+
 
 <button
 id="submitBtn"
@@ -400,6 +417,7 @@ Submit Income
 <th>Category</th>
 <th>Amount</th>
 <th>Payment</th>
+<th>Reference</th>
 <th>Status</th>
 <th>Receipt</th>
 </tr>
@@ -409,7 +427,7 @@ Submit Income
 <tbody id="records">
 
 <tr>
-<td colspan="6" class="empty">
+<td colspan="7" class="empty">
 Loading...
 </td>
 </tr>
@@ -424,509 +442,541 @@ Loading...
 
 </main>
 
+
 <script>
 
-const API="https://goh-finance.createlk.workers.dev";
+const API="https://goh-finance-system.createlk.workers.dev";
 const KEY="goh_finance_token";
 
-const form=document.getElementById("incomeForm");
-const btn=document.getElementById("submitBtn");
-const msg=document.getElementById("msg");
-const records=document.getElementById("records");
 
 function authHeaders(){
- return {
-  "Authorization":
-   "Bearer "+localStorage.getItem(KEY)
- };
+
+return{
+"Authorization":
+"Bearer "+localStorage.getItem(KEY)
+};
+
 }
+
+
+function jsonHeaders(){
+
+return{
+"Content-Type":"application/json",
+"Authorization":
+"Bearer "+localStorage.getItem(KEY)
+};
+
+}
+
 
 function esc(v){
- return String(v??"")
- .replaceAll("&","&amp;")
- .replaceAll("<","&lt;")
- .replaceAll(">","&gt;")
- .replaceAll('"',"&quot;")
- .replaceAll("'","&#039;");
+
+return String(v ?? "")
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
 }
 
+
 function money(v){
- return Number(v||0).toLocaleString(
-  "en-LK",
-  {
-   minimumFractionDigits:2,
-   maximumFractionDigits:2
-  }
- );
+
+return Number(v || 0).toLocaleString(
+"en-LK",
+{
+minimumFractionDigits:2,
+maximumFractionDigits:2
 }
+);
+
+}
+
 
 function show(text,ok=false){
 
- msg.textContent=text;
+const el=
+document.getElementById("msg");
 
- msg.className=
-  "msg "+(ok?"ok":"bad");
+el.textContent=text;
+
+el.className=
+"msg "+(ok?"ok":"bad");
 
 }
+
 
 function today(){
 
- const d=new Date();
+const d=new Date();
 
- const y=d.getFullYear();
+const y=d.getFullYear();
 
- const m=String(
-  d.getMonth()+1
- ).padStart(2,"0");
+const m=
+String(d.getMonth()+1)
+.padStart(2,"0");
 
- const day=String(
-  d.getDate()
- ).padStart(2,"0");
+const day=
+String(d.getDate())
+.padStart(2,"0");
 
- return `${y}-${m}-${day}`;
+return y+"-"+m+"-"+day;
+
 }
+
 
 document.getElementById("date").value=today();
 
 
 async function checkLogin(){
 
- const token=
-  localStorage.getItem(KEY);
+const token=
+localStorage.getItem(KEY);
 
- if(!token){
+if(!token){
 
-  location.href=
-   "admin-login.html";
+location.href="admin-login.html";
+return false;
 
-  return false;
- }
+}
 
- try{
+try{
 
-  const r=await fetch(
-   API+"/api/me",
-   {
-    headers:authHeaders()
-   }
-  );
+const r=await fetch(
+API+"/api/me",
+{
+headers:authHeaders()
+}
+);
 
-  const d=await r.json();
+const d=await r.json();
 
-  if(!r.ok||!d.success){
+if(!r.ok||!d.success){
 
-   throw new Error(
-    d.error||"Session expired."
-   );
+throw new Error(
+d.error||"Session expired."
+);
 
-  }
+}
 
-  return true;
+return true;
 
- }catch(e){
+}catch(e){
 
-  localStorage.removeItem(KEY);
+localStorage.removeItem(KEY);
 
-  location.href=
-   "admin-login.html";
+location.href="admin-login.html";
 
-  return false;
- }
+return false;
+
+}
 
 }
 
 
 async function loadRecords(){
 
- records.innerHTML=
- `<tr>
-  <td colspan="6" class="empty">
-   Loading...
-  </td>
- </tr>`;
+const tbody=
+document.getElementById("records");
 
- try{
+try{
 
-  const r=await fetch(
-   API+"/api/income",
-   {
-    method:"GET",
-    headers:authHeaders()
-   }
-  );
+const r=await fetch(
+API+"/api/income",
+{
+method:"GET",
+headers:authHeaders()
+}
+);
 
-  const d=await r.json();
+const d=await r.json();
 
-  if(!r.ok||!d.success){
+if(!r.ok||!d.success){
 
-   throw new Error(
-    d.error||
-    "Unable to load income records."
-   );
+throw new Error(
+d.error||"Unable to load income records."
+);
 
-  }
+}
 
-  const rows=d.income||[];
+const rows=d.income||[];
 
-  if(!rows.length){
+if(!rows.length){
 
-   records.innerHTML=
-   `<tr>
-    <td colspan="6" class="empty">
-     No income records found.
-    </td>
-   </tr>`;
+tbody.innerHTML=`
+<tr>
+<td colspan="7" class="empty">
+No income records found.
+</td>
+</tr>`;
 
-   return;
-  }
+return;
 
-  records.innerHTML=
-   rows.map(x=>{
+}
 
-    let cls=
-     String(x.status||"")
-      .toLowerCase();
+tbody.innerHTML=
 
-    let receipt="";
+rows.map(x=>{
 
-    if(x.receipt_name){
+let status=
+String(x.status||"PENDING")
+.toUpperCase();
 
-     receipt=
-     `<button
-       class="view"
-       onclick="viewReceipt(${Number(x.id)})">
-       View Slip
-      </button>`;
+let badge="pending";
 
-    }else{
+if(status==="APPROVED")
+badge="approved";
 
-     receipt="-";
+if(status==="REJECTED")
+badge="rejected";
 
-    }
+return`
 
-    return `
-    <tr>
+<tr>
 
-     <td>${esc(x.date)}</td>
+<td>${esc(x.date)}</td>
 
-     <td>${esc(x.category||"-")}</td>
+<td>${esc(x.category)}</td>
 
-     <td>
-      <b>LKR ${money(x.amount)}</b>
-     </td>
+<td>
+<b>LKR ${money(x.amount)}</b>
+</td>
 
-     <td>
-      ${esc(x.payment_method)}
-     </td>
+<td>${esc(x.payment_method)}</td>
 
-     <td>
-      <span class="badge ${cls}">
-       ${esc(x.status)}
-      </span>
-     </td>
+<td>${esc(x.reference_number||"-")}</td>
 
-     <td>
-      ${receipt}
-     </td>
+<td>
+<span class="badge ${badge}">
+${esc(status)}
+</span>
+</td>
 
-    </tr>
-    `;
+<td>
 
-   }).join("");
+${
+x.receipt_name
+?
+`<button
+class="view"
+onclick="viewReceipt(${Number(x.id)})">
+View
+</button>`
+:
+`<span class="small">None</span>`
+}
 
- }catch(e){
+</td>
 
-  records.innerHTML=
-  `<tr>
-   <td colspan="6" class="empty">
-    ${esc(e.message)}
-   </td>
-  </tr>`;
+</tr>
 
- }
+`;
+
+}).join("");
+
+
+}catch(e){
+
+tbody.innerHTML=`
+<tr>
+<td colspan="7" class="empty">
+${esc(e.message)}
+</td>
+</tr>`;
+
+}
 
 }
 
 
-form.addEventListener(
- "submit",
- async function(e){
+document.getElementById("incomeForm")
+.addEventListener("submit",async e=>{
 
-  e.preventDefault();
+e.preventDefault();
 
-  const category=
-   document.getElementById(
-    "category"
-   ).value;
+const btn=
+document.getElementById("submitBtn");
 
-  const amount=
-   document.getElementById(
-    "amount"
-   ).value;
+const category=
+document.getElementById("category")
+.value;
 
-  const date=
-   document.getElementById(
-    "date"
-   ).value;
+const amount=
+document.getElementById("amount")
+.value;
 
-  const payment=
-   document.getElementById(
-    "payment_method"
-   ).value;
+const date=
+document.getElementById("date")
+.value;
 
-  const reference=
-   document.getElementById(
-    "reference_number"
-   ).value.trim();
+const payment=
+document.getElementById("payment_method")
+.value;
 
-  const description=
-   document.getElementById(
-    "description"
-   ).value.trim();
+const reference=
+document.getElementById("reference_number")
+.value.trim();
 
-  const file=
-   document.getElementById(
-    "receipt"
-   ).files[0];
+const description=
+document.getElementById("description")
+.value.trim();
 
-  if(!category){
+const file=
+document.getElementById("receipt")
+.files[0];
 
-   show("Please select a category.");
-   return;
 
-  }
+if(!category){
 
-  if(!amount||Number(amount)<=0){
+show("Please select an income category.");
+return;
 
-   show("Please enter a valid amount.");
-   return;
+}
 
-  }
 
-  if(!date){
+if(!amount||Number(amount)<=0){
 
-   show("Please select a date.");
-   return;
+show("Please enter a valid amount.");
+return;
 
-  }
+}
 
-  if(!payment){
 
-   show(
-    "Please select a payment method."
-   );
+if(!date){
 
-   return;
-  }
+show("Please select a date.");
+return;
 
-  if(!file){
+}
 
-   show(
-    "Receipt / slip is required."
-   );
 
-   return;
-  }
+if(!payment){
 
-  if(file.size>5*1024*1024){
+show("Please select a payment method.");
+return;
 
-   show(
-    "Receipt must be 5MB or smaller."
-   );
+}
 
-   return;
-  }
 
-  const allowed=[
-   "image/jpeg",
-   "image/png",
-   "application/pdf"
-  ];
+if(!file){
 
-  if(!allowed.includes(file.type)){
+show("Receipt / slip is required.");
+return;
 
-   show(
-    "Only JPG, PNG or PDF files are allowed."
-   );
+}
 
-   return;
-  }
 
-  const data=new FormData();
+if(file.size>5*1024*1024){
 
-  data.append(
-   "category",
-   category
-  );
+show("Receipt must be 5MB or smaller.");
+return;
 
-  data.append(
-   "amount",
-   amount
-  );
+}
 
-  data.append(
-   "date",
-   date
-  );
 
-  data.append(
-   "payment_method",
-   payment
-  );
+const allowed=[
+"image/jpeg",
+"image/png",
+"application/pdf"
+];
 
-  data.append(
-   "reference_number",
-   reference
-  );
 
-  data.append(
-   "description",
-   description
-  );
+if(!allowed.includes(file.type)){
 
-  data.append(
-   "receipt",
-   file,
-   file.name
-  );
+show("Only JPG, PNG or PDF files are allowed.");
+return;
 
-  btn.disabled=true;
-  btn.textContent="Submitting...";
+}
 
-  try{
 
-   const r=await fetch(
-    API+"/api/income",
-    {
-     method:"POST",
-     headers:authHeaders(),
-     body:data
-    }
-   );
+const formData=new FormData();
 
-   const d=await r.json();
+formData.append(
+"category",
+category
+);
 
-   if(!r.ok||!d.success){
+formData.append(
+"amount",
+amount
+);
 
-    throw new Error(
-     d.error||
-     "Unable to submit income."
-    );
+formData.append(
+"date",
+date
+);
 
-   }
+formData.append(
+"payment_method",
+payment
+);
 
-   show(
-    "Income submitted successfully. Waiting for administrator approval.",
-    true
-   );
+formData.append(
+"reference_number",
+reference
+);
 
-   form.reset();
+formData.append(
+"description",
+description
+);
 
-   document.getElementById(
-    "date"
-   ).value=today();
+formData.append(
+"receipt",
+file
+);
 
-   await loadRecords();
 
-  }catch(e){
+btn.disabled=true;
+btn.textContent="Submitting...";
 
-   show(
-    e.message||
-    "Unable to submit income."
-   );
 
-  }finally{
+try{
 
-   btn.disabled=false;
-   btn.textContent="Submit Income";
+const r=await fetch(
+API+"/api/income",
+{
+method:"POST",
+headers:authHeaders(),
+body:formData
+}
+);
 
-  }
 
- });
+const d=await r.json();
+
+
+if(!r.ok||!d.success){
+
+throw new Error(
+d.error||"Unable to submit income."
+);
+
+}
+
+
+show(
+"Income submitted successfully and is waiting for approval.",
+true
+);
+
+
+e.target.reset();
+
+document.getElementById("date")
+.value=today();
+
+
+await loadRecords();
+
+
+}catch(err){
+
+show(
+err.message||
+"Unable to submit income."
+);
+
+}finally{
+
+btn.disabled=false;
+btn.textContent="Submit Income";
+
+}
+
+});
 
 
 async function viewReceipt(id){
 
- try{
+try{
 
-  const r=await fetch(
-   API+"/api/income/"+id+"/receipt",
-   {
-    method:"GET",
-    headers:authHeaders()
-   }
-  );
+const r=await fetch(
+API+"/api/income/"+id+"/receipt",
+{
+method:"GET",
+headers:authHeaders()
+}
+);
 
-  if(!r.ok){
 
-   let d={};
+if(!r.ok){
 
-   try{
-    d=await r.json();
-   }catch{}
+let d={};
 
-   throw new Error(
-    d.error||
-    "Unable to open receipt."
-   );
+try{
+d=await r.json();
+}catch{}
 
-  }
+throw new Error(
+d.error||"Unable to open receipt."
+);
 
-  const blob=
-   await r.blob();
+}
 
-  const url=
-   URL.createObjectURL(blob);
 
-  window.open(
-   url,
-   "_blank",
-   "noopener,noreferrer"
-  );
+const blob=
+await r.blob();
 
-  setTimeout(
-   ()=>{
-    URL.revokeObjectURL(url);
-   },
-   60000
-  );
+const url=
+URL.createObjectURL(blob);
 
- }catch(e){
 
-  alert(e.message);
+window.open(
+url,
+"_blank",
+"noopener,noreferrer"
+);
 
- }
+
+setTimeout(
+()=>{
+URL.revokeObjectURL(url);
+},
+60000
+);
+
+
+}catch(e){
+
+alert(e.message);
+
+}
 
 }
 
 
 async function logout(){
 
- try{
+try{
 
-  await fetch(
-   API+"/api/logout",
-   {
-    method:"POST",
-    headers:authHeaders()
-   }
-  );
+await fetch(
+API+"/api/logout",
+{
+method:"POST",
+headers:authHeaders()
+}
+);
 
- }catch(e){}
+}catch(e){}
 
- localStorage.removeItem(KEY);
 
- location.href=
-  "admin-login.html";
+localStorage.removeItem(KEY);
+
+location.href="admin-login.html";
 
 }
 
 
 checkLogin().then(ok=>{
 
- if(ok){
-  loadRecords();
- }
+if(ok){
+
+loadRecords();
+
+}
 
 });
 
