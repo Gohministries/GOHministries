@@ -50,7 +50,8 @@ width:min(1050px,92%);
 margin:auto
 }
 
-/* HEADER */
+
+/* ================= HEADER ================= */
 
 header{
 position:sticky;
@@ -91,14 +92,9 @@ font-size:9px;
 color:#6b7280
 }
 
-.nav-right{
-display:flex;
-align-items:center;
-gap:6px
-}
-
 .nav-links{
 display:flex;
+align-items:center;
 gap:2px
 }
 
@@ -115,17 +111,6 @@ white-space:nowrap
 background:#f3f4f6
 }
 
-.install{
-background:#111827;
-color:#fff;
-border:0;
-border-radius:8px;
-padding:8px 11px;
-font-size:10px;
-font-weight:900;
-cursor:pointer
-}
-
 .menu{
 display:none;
 width:40px;
@@ -137,11 +122,15 @@ font-size:18px;
 cursor:pointer
 }
 
+
+/* ================= MOBILE MENU ================= */
+
 .mobile-menu{
 display:none
 }
 
-/* BUTTONS */
+
+/* ================= BUTTONS ================= */
 
 .btn{
 display:inline-flex;
@@ -175,7 +164,8 @@ background:#4f46e5;
 color:#fff
 }
 
-/* HERO */
+
+/* ================= HERO ================= */
 
 .hero{
 background:
@@ -232,7 +222,8 @@ gap:8px;
 flex-wrap:wrap
 }
 
-/* FEATURE */
+
+/* ================= FEATURE ================= */
 
 .feature{
 background:rgba(255,255,255,.07);
@@ -270,7 +261,8 @@ color:#d1d5db;
 margin-bottom:16px
 }
 
-/* SECTIONS */
+
+/* ================= SECTIONS ================= */
 
 section{
 padding:60px 0
@@ -299,7 +291,8 @@ font-size:12px;
 color:#6b7280
 }
 
-/* CARDS */
+
+/* ================= CARDS ================= */
 
 .grid{
 display:grid;
@@ -321,8 +314,8 @@ box-shadow:0 8px 25px rgba(0,0,0,.06)
 }
 
 .card-icon{
-font-size:23px;
-margin-bottom:6px
+font-size:22px;
+margin-bottom:7px
 }
 
 .card h3{
@@ -343,7 +336,8 @@ font-weight:900;
 color:#4f46e5
 }
 
-/* DAILY */
+
+/* ================= DAILY VERSE ================= */
 
 .daily{
 background:#fff
@@ -352,6 +346,7 @@ background:#fff
 .daily-box{
 max-width:850px;
 margin:auto;
+
 background:
 radial-gradient(
 circle at 90% 10%,
@@ -394,24 +389,30 @@ font-size:11px;
 color:#cbd5e1
 }
 
-/* AD PLACEHOLDER */
+
+/* ================= AD AREA ================= */
 
 .ad-space{
 width:100%;
 min-height:90px;
+
 display:flex;
 align-items:center;
 justify-content:center;
+
 margin:25px 0;
+
 background:#f1f5f9;
 border:1px dashed #cbd5e1;
 border-radius:10px;
+
 color:#94a3b8;
 font-size:9px;
 letter-spacing:.5px
 }
 
-/* CTA */
+
+/* ================= CTA ================= */
 
 .final-cta{
 background:
@@ -449,7 +450,8 @@ gap:8px;
 flex-wrap:wrap
 }
 
-/* FOOTER */
+
+/* ================= FOOTER ================= */
 
 footer{
 background:#0b1120;
@@ -511,7 +513,9 @@ display:flex;
 justify-content:center;
 gap:18px;
 flex-wrap:wrap;
+
 border-top:1px solid rgba(255,255,255,.1);
+
 margin-top:22px;
 padding-top:15px
 }
@@ -528,25 +532,35 @@ font-size:9px;
 color:#64748b
 }
 
-/* WHATSAPP */
+
+/* ================= WHATSAPP ================= */
 
 .whatsapp{
 position:fixed;
 right:15px;
 bottom:15px;
+
 width:53px;
 height:53px;
+
 display:grid;
 place-items:center;
+
 border-radius:50%;
+
 background:#25d366;
 color:#fff;
-font-size:24px;
+
+font-size:23px;
+
 z-index:2000;
-box-shadow:0 7px 20px rgba(0,0,0,.2)
+
+box-shadow:
+0 7px 20px rgba(0,0,0,.2)
 }
 
-/* RESPONSIVE */
+
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:900px){
 
@@ -560,24 +574,39 @@ display:block
 
 .mobile-menu{
 position:fixed;
+
 top:64px;
 left:0;
 right:0;
+
 z-index:999;
+
 background:#fff;
+
 border-top:1px solid #e5e7eb;
 border-bottom:1px solid #e5e7eb;
-box-shadow:0 12px 25px rgba(0,0,0,.12);
+
+box-shadow:
+0 12px 25px rgba(0,0,0,.12);
+
 padding:8px 4%
 }
 
 .mobile-menu a{
 display:block;
+
 padding:12px 8px;
+
 border-radius:8px;
+
 font-size:12px;
 font-weight:800;
+
 color:#374151
+}
+
+.mobile-menu a:hover{
+background:#f3f4f6
 }
 
 .mobile-menu.show{
@@ -589,6 +618,9 @@ grid-template-columns:1fr
 }
 
 }
+
+
+/* ================= SMALL MOBILE ================= */
 
 @media(max-width:600px){
 
@@ -645,17 +677,21 @@ gap:10px 18px
 }
 
 </style>
+
 </head>
 
 <body>
 
-<!-- HEADER -->
+
+<!-- ================= HEADER ================= -->
 
 <header>
 
 <div class="container nav">
 
-<a href="index.html" class="logo">
+<a
+href="index.html"
+class="logo">
 
 <img
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
@@ -675,79 +711,106 @@ Gate of Heaven Ministries
 
 </a>
 
-<div class="nav-right">
 
 <nav class="nav-links">
 
-<a href="about.html">ℹ️ About</a>
+<a href="about.html">
+ℹ️ About
+</a>
 
-<a href="ministries.html">🙏 Ministries</a>
+<a href="ministries.html">
+⛪ Ministries
+</a>
 
-<a href="articles.html">📖 Bible</a>
+<a href="articles.html">
+📖 Bible
+</a>
 
-<a href="prayer.html">🙏 Prayer</a>
+<a href="prayer.html">
+🕊️ Prayer
+</a>
 
-<a href="testimony.html">❤️ Testimony</a>
+<a href="testimony.html">
+✨ Testimony
+</a>
 
-<a href="contact.html">💬 Contact</a>
+<a href="media.html">
+▶️ Media
+</a>
+
+<a href="contact.html">
+✉️ Contact
+</a>
 
 </nav>
 
-<button
-class="install"
-id="installBtn">
-⇩ Install
-</button>
 
 <button
 class="menu"
 id="menuBtn"
 aria-label="Open menu"
 aria-expanded="false">
-☰
-</button>
 
-</div>
+☰
+
+</button>
 
 </div>
 
 </header>
 
 
-<!-- MOBILE MENU -->
+<!-- ================= MOBILE MENU ================= -->
 
 <nav
 class="mobile-menu"
 id="mobileMenu">
 
-<a href="about.html">ℹ️ About</a>
+<a href="about.html">
+ℹ️ About
+</a>
 
-<a href="ministries.html">🙏 Ministries</a>
+<a href="ministries.html">
+⛪ Ministries
+</a>
 
-<a href="articles.html">📖 Bible</a>
+<a href="articles.html">
+📖 Bible
+</a>
 
-<a href="prayer.html">🙏 Prayer Request</a>
+<a href="prayer.html">
+🕊️ Prayer Request
+</a>
 
-<a href="testimony.html">❤️ Share Testimony</a>
+<a href="testimony.html">
+✨ Share Testimony
+</a>
 
-<a href="quiz.html">📝 Bible Quiz</a>
+<a href="media.html">
+▶️ Media
+</a>
 
-<a href="media.html">🎥 Media</a>
+<a href="events.html">
+📅 Events
+</a>
 
-<a href="events.html">📅 Events</a>
+<a href="contact.html">
+✉️ Contact
+</a>
 
-<a href="donate.html">❤️ Donate</a>
-
-<a href="contact.html">💬 Contact</a>
+<a href="donate.html">
+🤲 Support Ministry
+</a>
 
 </nav>
 
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 
 <section class="hero">
 
 <div class="container hero-grid">
+
 
 <div>
 
@@ -755,28 +818,44 @@ id="mobileMenu">
 GATE OF HEAVEN MINISTRIES
 </div>
 
+
 <h1>
+
 Building Believers.<br>
-<span>Making Disciples.</span>
+
+<span>
+Making Disciples.
+</span>
+
 </h1>
 
+
 <p class="hero-text">
-Proclaiming Christ, teaching God's Word, strengthening believers
-and helping people grow as faithful disciples of Jesus Christ.
+
+Proclaiming Christ, teaching God's Word,
+strengthening believers and helping people
+grow as faithful disciples of Jesus Christ.
+
 </p>
+
 
 <div class="buttons">
 
 <a
 href="prayer.html"
 class="btn primary">
-🙏 Request Prayer
+
+🕊️ Request Prayer
+
 </a>
+
 
 <a
 href="articles.html"
 class="btn light">
+
 📖 Explore Bible
+
 </a>
 
 </div>
@@ -786,29 +865,39 @@ class="btn light">
 
 <div class="feature">
 
+
 <img
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 class="feature-logo"
 alt="GOH Ministries">
 
+
 <small>
 GATE OF HEAVEN MINISTRIES
 </small>
+
 
 <h2>
 Serving Christ. Serving People.
 </h2>
 
+
 <p>
-A Christ-centered ministry committed to prayer,
-Bible teaching, discipleship, evangelism and outreach.
+
+A Christ-centered ministry committed
+to prayer, Bible teaching, discipleship,
+evangelism and outreach.
+
 </p>
+
 
 <a
 href="ministries.html"
 class="btn primary"
 style="width:100%">
-Explore Our Ministries
+
+⛪ Explore Our Ministries
+
 </a>
 
 </div>
@@ -818,7 +907,7 @@ Explore Our Ministries
 </section>
 
 
-<!-- DAILY VERSE -->
+<!-- ================= DAILY VERSE ================= -->
 
 <section class="daily">
 
@@ -830,17 +919,24 @@ Explore Our Ministries
 TODAY'S BIBLE VERSE
 </div>
 
+
 <h2>
 God's Word for Today
 </h2>
 
+
 <div class="daily-verse">
-"Your word is a lamp to my feet and a light to my path."
+
+"Your word is a lamp to my feet
+and a light to my path."
+
 </div>
+
 
 <div class="daily-ref">
 Psalm 119:105
 </div>
+
 
 <div class="buttons"
 style="justify-content:center;margin-top:18px">
@@ -848,7 +944,9 @@ style="justify-content:center;margin-top:18px">
 <a
 href="articles.html"
 class="btn light">
-Read More Bible Content →
+
+📖 Read Bible Content →
+
 </a>
 
 </div>
@@ -860,22 +958,25 @@ Read More Bible Content →
 </section>
 
 
-<!-- AD LOCATION -->
+<!-- ================= AD SPACE ================= -->
 
 <div class="container">
 
 <div class="ad-space">
+
 ADVERTISEMENT
-</div>
 
 </div>
 
+</div>
 
-<!-- USER FEATURES -->
+
+<!-- ================= USER FEATURES ================= -->
 
 <section>
 
 <div class="container">
+
 
 <div class="head">
 
@@ -902,7 +1003,7 @@ href="prayer.html"
 class="card">
 
 <div class="card-icon">
-🙏
+🕊️
 </div>
 
 <h3>
@@ -925,7 +1026,7 @@ href="testimony.html"
 class="card">
 
 <div class="card-icon">
-❤️
+✨
 </div>
 
 <h3>
@@ -994,7 +1095,7 @@ href="media.html"
 class="card">
 
 <div class="card-icon">
-🎥
+▶️
 </div>
 
 <h3>
@@ -1042,22 +1143,25 @@ View Events →
 </section>
 
 
-<!-- AD LOCATION -->
+<!-- ================= AD SPACE ================= -->
 
 <div class="container">
 
 <div class="ad-space">
+
 ADVERTISEMENT
-</div>
 
 </div>
 
+</div>
 
-<!-- MINISTRY -->
+
+<!-- ================= MINISTRIES ================= -->
 
 <section>
 
 <div class="container">
+
 
 <div class="head">
 
@@ -1082,7 +1186,7 @@ Serving people through prayer, God's Word and the Gospel.
 <div class="card">
 
 <div class="card-icon">
-🙏
+🕊️
 </div>
 
 <h3>
@@ -1150,7 +1254,7 @@ Helping believers grow spiritually and serve faithfully.
 <div class="card">
 
 <div class="card-icon">
-❤️
+🫶
 </div>
 
 <h3>
@@ -1189,7 +1293,9 @@ Building a Christ-centered community through fellowship.
 <a
 href="ministries.html"
 class="btn dark">
-View All Ministries →
+
+⛪ View All Ministries →
+
 </a>
 
 </div>
@@ -1199,48 +1305,66 @@ View All Ministries →
 </section>
 
 
-<!-- CONTENT CTA -->
+<!-- ================= FINAL CTA ================= -->
 
 <section class="final-cta">
 
 <div class="container">
+
 
 <div style="
 font-size:9px;
 font-weight:900;
 letter-spacing:1px;
 color:#fbbf24">
+
 GOH MINISTRIES
+
 </div>
+
 
 <h2>
 Walk With Us in Faith
 </h2>
 
+
 <p>
-Join us as we pray, learn God's Word, grow in Christ,
-serve others and share the Gospel.
+
+Join us as we pray, learn God's Word,
+grow in Christ, serve others and share the Gospel.
+
 </p>
 
+
 <div class="final-actions">
+
 
 <a
 href="prayer.html"
 class="btn primary">
-🙏 Prayer Request
+
+🕊️ Prayer Request
+
 </a>
+
 
 <a
 href="testimony.html"
 class="btn light">
-❤️ Share Testimony
+
+✨ Share Testimony
+
 </a>
+
 
 <a
 href="donate.html"
 class="btn dark">
-❤️ Support Ministry
+
+🤲 Support Ministry
+
 </a>
+
 
 </div>
 
@@ -1249,19 +1373,22 @@ class="btn dark">
 </section>
 
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
 <div class="container">
 
+
 <div class="footer-top">
+
 
 <div class="footer-brand">
 
 <img
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 alt="GOH Ministries">
+
 
 <div>
 
@@ -1280,23 +1407,41 @@ Gate of Heaven Ministries
 
 <nav class="footer-links">
 
-<a href="about.html">About</a>
+<a href="about.html">
+About
+</a>
 
-<a href="ministries.html">Ministries</a>
+<a href="ministries.html">
+Ministries
+</a>
 
-<a href="articles.html">Bible</a>
+<a href="articles.html">
+Bible
+</a>
 
-<a href="prayer.html">Prayer</a>
+<a href="prayer.html">
+Prayer
+</a>
 
-<a href="testimony.html">Testimony</a>
+<a href="testimony.html">
+Testimony
+</a>
 
-<a href="media.html">Media</a>
+<a href="media.html">
+Media
+</a>
 
-<a href="events.html">Events</a>
+<a href="events.html">
+Events
+</a>
 
-<a href="donate.html">Donate</a>
+<a href="donate.html">
+Donate
+</a>
 
-<a href="contact.html">Contact</a>
+<a href="contact.html">
+Contact
+</a>
 
 </nav>
 
@@ -1327,7 +1472,7 @@ Terms of Use
 </footer>
 
 
-<!-- WHATSAPP -->
+<!-- ================= WHATSAPP ================= -->
 
 <a
 class="whatsapp"
@@ -1335,27 +1480,32 @@ href="https://wa.me/94771190395?text=Hello%20GOH%20Ministries"
 target="_blank"
 rel="noopener"
 aria-label="WhatsApp GOH Ministries">
+
 💬
+
 </a>
 
+
+<!-- ================= JAVASCRIPT ================= -->
 
 <script>
 
 /* MOBILE MENU */
 
-const menuBtn=
+const menuBtn =
 document.getElementById("menuBtn");
 
-const mobileMenu=
+const mobileMenu =
 document.getElementById("mobileMenu");
 
-menuBtn.onclick=()=>{
 
-const open=
+menuBtn.onclick = () => {
+
+const open =
 mobileMenu.classList.toggle("show");
 
-menuBtn.textContent=
-open?"✕":"☰";
+menuBtn.textContent =
+open ? "✕" : "☰";
 
 menuBtn.setAttribute(
 "aria-expanded",
@@ -1365,17 +1515,17 @@ open
 };
 
 
-/* CLOSE MOBILE MENU */
+/* CLOSE AFTER CLICK */
 
 mobileMenu
 .querySelectorAll("a")
-.forEach(a=>{
+.forEach(link => {
 
-a.onclick=()=>{
+link.onclick = () => {
 
 mobileMenu.classList.remove("show");
 
-menuBtn.textContent="☰";
+menuBtn.textContent = "☰";
 
 menuBtn.setAttribute(
 "aria-expanded",
@@ -1387,19 +1537,21 @@ menuBtn.setAttribute(
 });
 
 
-/* CLICK OUTSIDE */
+/* CLOSE WHEN CLICKING OUTSIDE */
 
-document.addEventListener("click",e=>{
+document.addEventListener(
+"click",
+event => {
 
 if(
 mobileMenu.classList.contains("show") &&
-!mobileMenu.contains(e.target) &&
-!menuBtn.contains(e.target)
+!mobileMenu.contains(event.target) &&
+!menuBtn.contains(event.target)
 ){
 
 mobileMenu.classList.remove("show");
 
-menuBtn.textContent="☰";
+menuBtn.textContent = "☰";
 
 menuBtn.setAttribute(
 "aria-expanded",
@@ -1409,61 +1561,6 @@ menuBtn.setAttribute(
 }
 
 });
-
-
-/* PWA INSTALL */
-
-let deferredPrompt=null;
-
-const installBtn=
-document.getElementById("installBtn");
-
-window.addEventListener(
-"beforeinstallprompt",
-e=>{
-
-e.preventDefault();
-
-deferredPrompt=e;
-
-installBtn.style.display="block";
-
-}
-);
-
-
-installBtn.onclick=async()=>{
-
-if(deferredPrompt){
-
-deferredPrompt.prompt();
-
-const choice=
-await deferredPrompt.userChoice;
-
-deferredPrompt=null;
-
-}else{
-
-alert(
-"Open your browser menu and choose Install app or Add to Home screen."
-);
-
-}
-
-};
-
-
-window.addEventListener(
-"appinstalled",
-()=>{
-
-deferredPrompt=null;
-
-installBtn.style.display="none";
-
-}
-);
 
 </script>
 
