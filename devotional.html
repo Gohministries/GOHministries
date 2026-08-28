@@ -10,13 +10,21 @@ src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pu
 crossorigin="anonymous"></script>
 
 <title>Daily Devotional | GOH Ministries</title>
+<meta name="description"
+content="Daily Bible devotional, Bible verse, Christian encouragement and prayer from GOH Ministries.">
+
 <meta name="theme-color" content="#111827">
 
 <link rel="icon"
 href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0
+}
 
 body{
 font-family:Arial,sans-serif;
@@ -25,12 +33,17 @@ color:#172033;
 line-height:1.6
 }
 
-a{text-decoration:none;color:inherit}
+a{
+text-decoration:none;
+color:inherit
+}
 
 .container{
 width:min(900px,92%);
 margin:auto
 }
+
+/* HEADER */
 
 header{
 background:#fff;
@@ -89,6 +102,8 @@ font-size:18px;
 padding:8px
 }
 
+/* HERO */
+
 .hero{
 padding:18px 0 10px
 }
@@ -130,6 +145,8 @@ font-size:11px;
 font-weight:800
 }
 
+/* BOX */
+
 .box{
 background:#fff;
 border:1px solid #e5e7eb;
@@ -137,6 +154,8 @@ border-radius:18px;
 padding:20px;
 margin:10px 0
 }
+
+/* LANGUAGE */
 
 .lang-title{
 text-align:center;
@@ -166,6 +185,8 @@ cursor:pointer
 background:#111827;
 color:#fff
 }
+
+/* DEVOTIONAL */
 
 .section{
 padding:18px 0;
@@ -216,6 +237,8 @@ padding:15px;
 border-radius:8px
 }
 
+/* SHARE */
+
 .share{
 text-align:center;
 margin-top:15px
@@ -257,6 +280,8 @@ display:block;
 margin:auto
 }
 
+/* STATUS */
+
 .status{
 text-align:center;
 padding:25px;
@@ -267,6 +292,8 @@ font-size:12px
 .error{
 color:#dc2626
 }
+
+/* ARCHIVE */
 
 .archive-title{
 text-align:center
@@ -358,7 +385,7 @@ background:transparent
 /* WHATSAPP GROUP */
 
 .whatsapp-group{
-margin:14px 0;
+margin:14px 0
 }
 
 .whatsapp-group a{
@@ -369,7 +396,7 @@ background:#15803d;
 color:#fff;
 padding:14px 16px;
 border-radius:14px;
-box-shadow:0 5px 15px #0002;
+box-shadow:0 5px 15px #0002
 }
 
 .group-icon{
@@ -381,30 +408,88 @@ color:#15803d;
 display:grid;
 place-items:center;
 font-size:22px;
-flex-shrink:0;
+flex-shrink:0
 }
 
 .group-text{
-flex:1;
+flex:1
 }
 
 .group-text strong{
 display:block;
 font-size:13px;
-font-weight:900;
+font-weight:900
 }
 
 .group-text span{
 display:block;
 font-size:9px;
 opacity:.9;
-margin-top:2px;
+margin-top:2px
 }
 
 .group-arrow{
 font-size:25px;
-font-weight:300;
+font-weight:300
 }
+
+/* CREATE LK PROMOTION */
+
+.createlk-promo{
+margin:14px 0;
+background:linear-gradient(135deg,#eff6ff,#eef2ff);
+border:1px solid #c7d2fe;
+border-radius:15px;
+padding:16px;
+display:flex;
+align-items:center;
+gap:13px
+}
+
+.createlk-icon{
+width:46px;
+height:46px;
+border-radius:12px;
+background:#2563eb;
+color:#fff;
+display:grid;
+place-items:center;
+font-size:23px;
+flex-shrink:0
+}
+
+.createlk-text{
+flex:1
+}
+
+.createlk-text strong{
+display:block;
+font-size:14px;
+font-weight:900;
+color:#111827
+}
+
+.createlk-text span{
+display:block;
+font-size:9px;
+color:#64748b;
+margin-top:3px
+}
+
+.createlk-btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+background:#2563eb;
+color:#fff;
+padding:9px 12px;
+border-radius:8px;
+font-size:9px;
+font-weight:900;
+white-space:nowrap
+}
+
+/* FOOTER */
 
 footer{
 background:#0b1120;
@@ -452,6 +537,8 @@ font-size:8px;
 color:#64748b
 }
 
+/* WHATSAPP */
+
 .whatsapp{
 position:fixed;
 right:15px;
@@ -463,67 +550,11 @@ background:#25d366;
 color:#fff;
 display:grid;
 place-items:center;
-font-size:23px
+font-size:23px;
+z-index:999
 }
 
-/* CREATE LK POPUP */
-
-.promo{
-position:fixed;
-inset:0;
-background:#0009;
-display:none;
-place-items:center;
-z-index:9999;
-padding:20px
-}
-
-.promo-box{
-width:min(360px,100%);
-background:#fff;
-border-radius:18px;
-padding:25px;
-text-align:center;
-box-shadow:0 15px 50px #0005
-}
-
-.promo-box h2{
-font-size:22px;
-margin:5px 0
-}
-
-.promo-box p{
-font-size:12px;
-color:#64748b
-}
-
-.promo-btns{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:8px;
-margin-top:18px
-}
-
-.promo-btns button,
-.promo-btns a{
-border:0;
-border-radius:9px;
-padding:12px;
-font-size:11px;
-font-weight:900;
-cursor:pointer;
-text-align:center
-}
-
-.promo-cancel{
-background:#e5e7eb;
-color:#334155
-}
-
-.promo-go{
-background:#2563eb;
-color:#fff
-}
+/* MOBILE */
 
 @media(max-width:650px){
 
@@ -567,49 +598,34 @@ padding:10px
 padding:12px
 }
 
+.createlk-promo{
+align-items:flex-start
 }
+
+.createlk-btn{
+padding:10px
+}
+
+}
+
+/* VERY SMALL SCREENS */
+
+@media(max-width:400px){
+
+.createlk-promo{
+flex-wrap:wrap
+}
+
+.createlk-btn{
+width:100%
+}
+
+}
+
 </style>
 </head>
 
 <body>
-
-<!-- CREATE LK PROMOTION -->
-
-<div class="promo" id="promo">
-
-<div class="promo-box">
-
-<div style="font-size:38px">🎓</div>
-
-<h2>CreateLK Academy</h2>
-
-<p>
-Improve your English with AI-powered practice.
-</p>
-
-<div class="promo-btns">
-
-<button
-class="promo-cancel"
-onclick="closePromo()">
-Cancel
-</button>
-
-<a
-class="promo-go"
-href="https://createlk.com/"
-target="_blank"
-rel="noopener"
-onclick="closePromo()">
-🚀 Go
-</a>
-
-</div>
-
-</div>
-
-</div>
-
 
 <header>
 
@@ -617,11 +633,20 @@ onclick="closePromo()">
 
 <a href="index.html" class="logo">
 
-<img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
+<img
+src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
+alt="GOH Ministries">
 
 <div>
-<div class="logo-title">GOH Ministries</div>
-<div class="logo-sub">Gate of Heaven Ministries</div>
+
+<div class="logo-title">
+GOH Ministries
+</div>
+
+<div class="logo-sub">
+Gate of Heaven Ministries
+</div>
+
 </div>
 
 </a>
@@ -635,7 +660,12 @@ onclick="closePromo()">
 
 </nav>
 
-<button class="menu" id="menu">☰</button>
+<button
+class="menu"
+id="menu"
+aria-label="Open menu">
+☰
+</button>
 
 </div>
 
@@ -648,8 +678,10 @@ onclick="closePromo()">
 
 <div class="hero-card">
 
-<img class="hero-logo"
-src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
+<img
+class="hero-logo"
+src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
+alt="Gate of Heaven Ministries">
 
 <div class="label">
 GATE OF HEAVEN MINISTRIES
@@ -705,24 +737,28 @@ Loading devotional...
 
 <div class="preview" id="imagePreview">
 
-<img id="previewImg"
+<img
+id="previewImg"
 alt="GOH Ministries Daily Devotional">
 
 </div>
 
-<button id="createBtn"
+<button
+id="createBtn"
 onclick="prepareShare()">
 🖼️ Create Share Image
 </button>
 
-<button id="shareBtn"
+<button
+id="shareBtn"
 class="shareBtn"
 onclick="shareImage()"
 style="display:none">
 📤 Share Image
 </button>
 
-<button id="downloadBtn"
+<button
+id="downloadBtn"
 class="downloadBtn"
 onclick="downloadImage()"
 style="display:none">
@@ -734,7 +770,7 @@ style="display:none">
 </div>
 
 
-<!-- WHATSAPP GROUP BUTTON -->
+<!-- WHATSAPP GROUP -->
 
 <div class="whatsapp-group">
 
@@ -743,19 +779,63 @@ href="https://chat.whatsapp.com/F72xNfuToIy8un4oGC6uhX?s=cl&p=a&mlu=4"
 target="_blank"
 rel="noopener">
 
-<div class="group-icon">💬</div>
-
-<div class="group-text">
-<strong>Join Our WhatsApp Group</strong>
-<span>Daily Devotional • Bible Verse • Prayer</span>
+<div class="group-icon">
+💬
 </div>
 
-<div class="group-arrow">›</div>
+<div class="group-text">
+
+<strong>
+Join Our WhatsApp Group
+</strong>
+
+<span>
+Daily Devotional • Bible Verse • Prayer
+</span>
+
+</div>
+
+<div class="group-arrow">
+›
+</div>
 
 </a>
 
 </div>
 
+
+<!-- CREATE LK ACADEMY PROMOTION -->
+
+<div class="createlk-promo">
+
+<div class="createlk-icon">
+🎓
+</div>
+
+<div class="createlk-text">
+
+<strong>
+CreateLK Academy
+</strong>
+
+<span>
+Improve your English with AI-powered practice.
+</span>
+
+</div>
+
+<a
+class="createlk-btn"
+href="https://createlk.com/"
+target="_blank"
+rel="noopener">
+🚀 Visit Academy
+</a>
+
+</div>
+
+
+<!-- ARCHIVE -->
 
 <div class="box">
 
@@ -798,8 +878,10 @@ Select any date from the calendar.
 
 <footer>
 
-<img class="footer-logo"
-src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
+<img
+class="footer-logo"
+src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
+alt="GOH Ministries">
 
 <strong>
 GOH Ministries
@@ -828,50 +910,53 @@ Gate of Heaven Ministries
 </footer>
 
 
-<a class="whatsapp"
+<a
+class="whatsapp"
 href="https://wa.me/94771190395"
 target="_blank"
-rel="noopener">
+rel="noopener"
+aria-label="Contact GOH Ministries on WhatsApp">
+
 💬
+
 </a>
 
 
 <script>
 
-const API=
+const API =
 "https://devotional.createlk.workers.dev";
 
-const R2_BACKGROUND=
+const R2_BACKGROUND =
 "https://media.gohministries.org/file_000000006fd88211892f13d25892d800.png";
 
-const WEBSITE=
+const WEBSITE =
 "https://gohministries.org";
 
-const params=
+const params =
 new URLSearchParams(location.search);
 
-let lang=
-params.get("lang")||"en";
+let lang =
+params.get("lang") || "en";
 
-let selected=
+let selected =
 params.get("date");
 
-let year=
+let year =
 new Date().getFullYear();
 
-let devotional=null;
-let generatedFile=null;
-let previewURL=null;
+let devotional = null;
+let generatedFile = null;
+let previewURL = null;
 
-if(!["en","ta","si"].includes(lang))
+if(!["en","ta","si"].includes(lang)){
 lang="en";
-
+}
 
 const months=[
 "January","February","March","April","May","June",
 "July","August","September","October","November","December"
 ];
-
 
 function today(){
 
@@ -886,7 +971,6 @@ d.getDate()
 ).padStart(2,"0");
 
 }
-
 
 function dateText(md){
 
@@ -906,7 +990,6 @@ year:"numeric"
 );
 
 }
-
 
 function safe(x){
 
@@ -932,7 +1015,7 @@ document.getElementById(
 ).textContent=
 dateText(md);
 
-const result=
+const result =
 document.getElementById("result");
 
 document.getElementById(
@@ -947,7 +1030,7 @@ result.textContent=
 
 try{
 
-const r=
+const r =
 await fetch(
 API+
 "?date="+
@@ -964,7 +1047,7 @@ throw new Error(
 "Server error: HTTP "+r.status
 );
 
-const data=
+const data =
 await r.json();
 
 if(!data.success)
@@ -973,7 +1056,7 @@ data.error||
 "Devotional not available."
 );
 
-const x=
+const x =
 data.devotional;
 
 if(!x)
@@ -984,13 +1067,9 @@ throw new Error(
 devotional={
 
 verse:x.bible_verse||"",
-
 reference:x.bible_reference||"",
-
 title:x.title||"",
-
 message:x.message||"",
-
 prayer:x.prayer||""
 
 };
@@ -1001,7 +1080,9 @@ result.innerHTML=`
 
 <div class="section">
 
-<h2>📖 BIBLE VERSE</h2>
+<h2>
+📖 BIBLE VERSE
+</h2>
 
 <div class="verse">
 
@@ -1015,10 +1096,11 @@ ${safe(x.bible_reference)}
 
 </div>
 
-
 <div class="section">
 
-<h2>💡 EXPLANATION</h2>
+<h2>
+💡 EXPLANATION
+</h2>
 
 <div class="title">
 ${safe(x.title)}
@@ -1030,10 +1112,11 @@ ${safe(x.message)}
 
 </div>
 
-
 <div class="section">
 
-<h2>🙏 PRAYER</h2>
+<h2>
+🙏 PRAYER
+</h2>
 
 <div class="prayer text">
 ${safe(x.prayer)}
@@ -1048,7 +1131,7 @@ document.getElementById(
 ).style.display=
 "block";
 
-const p=
+const p =
 new URLSearchParams();
 
 p.set("lang",lang);
@@ -1084,7 +1167,7 @@ text,
 width
 ){
 
-const words=
+const words =
 String(text).split(/\s+/);
 
 const lines=[];
@@ -1094,9 +1177,9 @@ for(
 const word of words
 ){
 
-const test=
-line?
-line+" "+word:
+const test =
+line ?
+line+" "+word :
 word;
 
 if(
@@ -1132,7 +1215,7 @@ throw new Error(
 "Devotional not loaded."
 );
 
-const response=
+const response =
 await fetch(
 R2_BACKGROUND+
 "?v="+Date.now(),
@@ -1147,13 +1230,13 @@ throw new Error(
 "Background image failed to load."
 );
 
-const blob=
+const blob =
 await response.blob();
 
-const url=
+const url =
 URL.createObjectURL(blob);
 
-const img=
+const img =
 new Image();
 
 await new Promise(
@@ -1172,7 +1255,7 @@ img.src=url;
 }
 );
 
-const canvas=
+const canvas =
 document.createElement(
 "canvas"
 );
@@ -1180,20 +1263,19 @@ document.createElement(
 canvas.width=1080;
 canvas.height=1350;
 
-const ctx=
+const ctx =
 canvas.getContext("2d");
 
-
-const scale=
+const scale =
 Math.max(
 canvas.width/img.width,
 canvas.height/img.height
 );
 
-const w=
+const w =
 img.width*scale;
 
-const h=
+const h =
 img.height*scale;
 
 ctx.drawImage(
@@ -1204,8 +1286,7 @@ w,
 h
 );
 
-
-ctx.fillStyle=
+ctx.fillStyle =
 "rgba(0,0,0,.40)";
 
 ctx.fillRect(
@@ -1215,14 +1296,12 @@ ctx.fillRect(
 1350
 );
 
-
 ctx.textAlign="center";
 ctx.textBaseline="middle";
 
-
 ctx.fillStyle="#fff";
 
-ctx.font=
+ctx.font =
 "900 30px Arial";
 
 ctx.fillText(
@@ -1231,13 +1310,12 @@ ctx.fillText(
 105
 );
 
-
 let size=56;
 
-ctx.font=
+ctx.font =
 `700 ${size}px Arial`;
 
-let lines=
+let lines =
 wrap(
 ctx,
 "“"+devotional.verse+"”",
@@ -1251,10 +1329,10 @@ size>30
 
 size-=2;
 
-ctx.font=
+ctx.font =
 `700 ${size}px Arial`;
 
-lines=
+lines =
 wrap(
 ctx,
 "“"+devotional.verse+"”",
@@ -1263,18 +1341,15 @@ ctx,
 
 }
 
-
-const lineHeight=
+const lineHeight =
 size*1.35;
 
-const verseHeight=
-lines.length*
-lineHeight;
+const verseHeight =
+lines.length*lineHeight;
 
-let y=
+let y =
 650-
 verseHeight/2;
-
 
 ctx.fillStyle="#fff";
 
@@ -1292,12 +1367,11 @@ y+=lineHeight;
 
 }
 
-
 y+=30;
 
 ctx.fillStyle="#fbbf24";
 
-ctx.font=
+ctx.font =
 "900 32px Arial";
 
 ctx.fillText(
@@ -1306,10 +1380,9 @@ devotional.reference,
 y
 );
 
-
 ctx.fillStyle="#fff";
 
-ctx.font=
+ctx.font =
 "800 25px Arial";
 
 ctx.fillText(
@@ -1318,9 +1391,7 @@ ctx.fillText(
 1260
 );
 
-
 URL.revokeObjectURL(url);
-
 
 return new Promise(
 (resolve,reject)=>{
@@ -1346,22 +1417,22 @@ new Error(
 
 async function prepareShare(){
 
-const btn=
+const btn =
 document.getElementById(
 "createBtn"
 );
 
 btn.disabled=true;
 
-btn.textContent=
+btn.textContent =
 "⏳ Creating...";
 
 try{
 
-const blob=
+const blob =
 await createImage();
 
-generatedFile=
+generatedFile =
 new File(
 [blob],
 "goh-devotional.png",
@@ -1370,38 +1441,37 @@ type:"image/png"
 }
 );
 
-
 if(previewURL)
 URL.revokeObjectURL(
 previewURL
 );
 
-previewURL=
+previewURL =
 URL.createObjectURL(
 blob
 );
 
 document.getElementById(
 "previewImg"
-).src=
+).src =
 previewURL;
 
 document.getElementById(
 "imagePreview"
-).style.display=
+).style.display =
 "block";
 
 document.getElementById(
 "shareBtn"
-).style.display=
+).style.display =
 "inline-block";
 
 document.getElementById(
 "downloadBtn"
-).style.display=
+).style.display =
 "inline-block";
 
-btn.textContent=
+btn.textContent =
 "✅ Image Created";
 
 }
@@ -1415,7 +1485,7 @@ e.message+
 "\n\nCheck your R2 CORS settings."
 );
 
-btn.textContent=
+btn.textContent =
 "🖼️ Create Share Image";
 
 }
@@ -1439,16 +1509,14 @@ return;
 
 }
 
-
-const devotionalURL=
+const devotionalURL =
 WEBSITE+
 "/devotional.html?lang="+
 encodeURIComponent(lang)+
 "&date="+
 encodeURIComponent(selected);
 
-
-const shareText=
+const shareText =
 "💡 "+
 devotional.title+
 "\n\n"+
@@ -1459,7 +1527,6 @@ devotional.prayer+
 "\n\n"+
 "📖 Daily Devotional\n"+
 devotionalURL;
-
 
 try{
 
@@ -1513,17 +1580,17 @@ function downloadImage(){
 if(!generatedFile)
 return;
 
-const url=
+const url =
 URL.createObjectURL(
 generatedFile
 );
 
-const a=
+const a =
 document.createElement("a");
 
 a.href=url;
 
-a.download=
+a.download =
 "goh-devotional.png";
 
 document.body.appendChild(a);
@@ -1548,7 +1615,7 @@ document
 
 btn.onclick=()=>{
 
-lang=
+lang =
 btn.dataset.lang;
 
 document
@@ -1575,7 +1642,7 @@ function calendar(){
 
 document.getElementById(
 "year"
-).textContent=
+).textContent =
 year;
 
 let html="";
@@ -1586,22 +1653,21 @@ m<12;
 m++
 ){
 
-const first=
+const first =
 new Date(
 year,
 m,
 1
 ).getDay();
 
-const total=
+const total =
 new Date(
 year,
 m+1,
 0
 ).getDate();
 
-
-html+=`
+html += `
 
 <div class="month">
 
@@ -1629,18 +1695,16 @@ ${year}
 
 `;
 
-
 for(
 let i=0;
 i<first;
 i++
 ){
 
-html+=
+html +=
 `<div class="day empty"></div>`;
 
 }
-
 
 for(
 let d=1;
@@ -1648,7 +1712,7 @@ d<=total;
 d++
 ){
 
-const md=
+const md =
 String(
 m+1
 ).padStart(2,"0")
@@ -1658,8 +1722,7 @@ String(
 d
 ).padStart(2,"0");
 
-
-const active=
+const active =
 year===
 new Date().getFullYear()
 &&
@@ -1669,8 +1732,7 @@ md===today()
 :
 "";
 
-
-html+=`
+html += `
 
 <button
 class="day${active}"
@@ -1685,8 +1747,7 @@ ${d}
 
 }
 
-
-html+=`
+html += `
 
 </div>
 </div>
@@ -1695,10 +1756,9 @@ html+=`
 
 }
 
-
 document.getElementById(
 "archive"
-).innerHTML=
+).innerHTML =
 html;
 
 }
@@ -1733,7 +1793,7 @@ document.getElementById(
 "menu"
 ).onclick=()=>{
 
-const nav=
+const nav =
 document.getElementById(
 "navLinks"
 );
@@ -1743,31 +1803,6 @@ nav.classList.toggle(
 );
 
 };
-
-
-/* CREATE LK POPUP */
-
-const promo=
-document.getElementById(
-"promo"
-);
-
-function closePromo(){
-
-promo.style.display=
-"none";
-
-}
-
-
-/* SHOW EVERY PAGE LOAD */
-
-setTimeout(()=>{
-
-promo.style.display=
-"grid";
-
-},5000);
 
 
 /* START */
