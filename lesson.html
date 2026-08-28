@@ -8,224 +8,37 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-
-body{
-font-family:Arial,sans-serif;
-background:#f3f6fb;
-color:#172033;
-line-height:1.6
-}
-
-.container{
-width:min(700px,94%);
-margin:auto
-}
-
-header{
-background:#fff;
-border-bottom:1px solid #e5e7eb
-}
-
-.nav{
-min-height:64px;
-display:flex;
-align-items:center;
-justify-content:space-between
-}
-
-.logo{
-font-size:13px;
-font-weight:900
-}
-
-.sub{
-font-size:8px;
-color:#6b7280
-}
-
-.back{
-border:0;
-background:#111827;
-color:#fff;
-padding:8px 11px;
-border-radius:8px;
-font-size:9px;
-font-weight:900
-}
-
-main{
-padding:22px 0 45px
-}
-
-.card{
-background:#fff;
-border:1px solid #e5e7eb;
-border-radius:16px;
-padding:20px;
-margin-bottom:12px
-}
-
-.label{
-font-size:8px;
-font-weight:900;
-color:#4f46e5;
-margin-bottom:5px
-}
-
-h1{
-font-size:23px;
-margin-bottom:7px
-}
-
-.description{
-font-size:10px;
-color:#6b7280;
-margin-bottom:18px
-}
-
-.content{
-font-size:11px;
-white-space:pre-line
-}
-
-.verse{
-background:#f9fafb;
-border-left:4px solid #4f46e5;
-padding:13px;
-margin-top:18px;
-border-radius:8px;
-font-size:11px
-}
-
-.verse strong{
-display:block;
-margin-bottom:5px
-}
-
-.assessment-title{
-font-size:17px;
-font-weight:900;
-margin-bottom:4px
-}
-
-.assessment-info{
-font-size:9px;
-color:#6b7280;
-margin-bottom:14px
-}
-
-.question{
-border:1px solid #e5e7eb;
-border-radius:12px;
-padding:14px;
-margin-bottom:10px
-}
-
-.question-number{
-font-size:8px;
-font-weight:900;
-color:#4f46e5;
-margin-bottom:5px
-}
-
-.question-text{
-font-size:11px;
-font-weight:900;
-margin-bottom:10px
-}
-
-.option{
-display:block;
-background:#f9fafb;
-border:1px solid #e5e7eb;
-padding:9px;
-border-radius:8px;
-margin:6px 0;
-font-size:10px;
-cursor:pointer
-}
-
-.option input{
-margin-right:7px
-}
-
-.submit{
-width:100%;
-border:0;
-background:#111827;
-color:#fff;
-padding:12px;
-border-radius:9px;
-font-size:10px;
-font-weight:900;
-margin-top:8px
-}
-
-.result{
-display:none;
-margin-top:13px;
-padding:13px;
-border-radius:10px;
-font-size:11px;
-font-weight:900;
-text-align:center
-}
-
-.pass{
-display:block;
-background:#dcfce7;
-color:#166534
-}
-
-.fail{
-display:block;
-background:#fef2f2;
-color:#b91c1c
-}
-
-.next{
-display:block;
-margin-top:10px;
-background:#111827;
-color:#fff;
-text-decoration:none;
-padding:11px;
-border-radius:8px;
-font-size:9px;
-text-align:center
-}
-
-.premium{
-background:#fef3c7;
-color:#92400e;
-padding:13px;
-border-radius:10px;
-font-size:10px;
-font-weight:700;
-text-align:center
-}
-
-.loading{
-text-align:center;
-font-size:11px;
-padding:30px
-}
-
-.error{
-text-align:center;
-color:#b91c1c;
-font-size:11px;
-font-weight:700;
-padding:30px
-}
-
-footer{
-background:#0b1120;
-color:#64748b;
-text-align:center;
-padding:18px;
-font-size:8px
-}
+body{font-family:Arial;background:#f3f6fb;color:#172033;line-height:1.6}
+.container{width:min(700px,94%);margin:auto}
+header{background:#fff;border-bottom:1px solid #e5e7eb}
+.nav{height:64px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:900;font-size:13px}
+.sub{font-size:8px;color:#6b7280}
+.back{border:0;background:#111827;color:#fff;padding:8px 11px;border-radius:8px;font-size:9px;font-weight:900}
+main{padding:22px 0 45px}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:20px;margin-bottom:12px}
+.label{font-size:8px;color:#4f46e5;font-weight:900}
+h1{font-size:23px;margin:5px 0}
+.desc{font-size:10px;color:#6b7280;margin-bottom:18px}
+.content{font-size:11px;white-space:pre-line}
+.verse{background:#f9fafb;border-left:4px solid #4f46e5;padding:13px;margin-top:18px;border-radius:8px;font-size:11px}
+.verse b{display:block;margin-bottom:5px}
+.assess-title{font-size:17px;font-weight:900}
+.assess-info{font-size:9px;color:#6b7280;margin:3px 0 15px}
+.question{border:1px solid #e5e7eb;border-radius:11px;padding:13px;margin-bottom:10px}
+.qno{font-size:8px;color:#4f46e5;font-weight:900}
+.qtext{font-size:11px;font-weight:900;margin:5px 0 9px}
+.option{display:block;background:#f9fafb;border:1px solid #e5e7eb;padding:9px;border-radius:8px;margin:5px 0;font-size:10px}
+.option input{margin-right:6px}
+.submit{width:100%;border:0;background:#111827;color:#fff;padding:12px;border-radius:9px;font-weight:900;font-size:10px;margin-top:8px}
+.result{display:none;margin-top:12px;padding:12px;border-radius:9px;text-align:center;font-size:10px;font-weight:900}
+.pass{display:block;background:#dcfce7;color:#166534}
+.fail{display:block;background:#fef2f2;color:#b91c1c}
+.premium{display:none;text-align:center;background:#fef3c7;color:#92400e}
+.premium a{display:inline-block;margin-top:10px;background:#111827;color:#fff;padding:10px 14px;border-radius:8px;text-decoration:none;font-size:9px}
+.error{display:none;text-align:center;color:#b91c1c;font-weight:700;font-size:10px}
+.loading{text-align:center;font-size:11px}
+footer{background:#0b1120;color:#64748b;text-align:center;padding:18px;font-size:8px}
 </style>
 </head>
 
@@ -233,16 +46,11 @@ font-size:8px
 
 <header>
 <div class="container nav">
-
 <div>
 <div class="logo">GOH Bible Academy</div>
 <div class="sub">Gate of Heaven Ministries</div>
 </div>
-
-<button class="back" onclick="location.href='dashboard.html'">
-← Dashboard
-</button>
-
+<button class="back" onclick="location.href='dashboard.html'">← Dashboard</button>
 </div>
 </header>
 
@@ -253,54 +61,46 @@ font-size:8px
 Loading lesson...
 </div>
 
-<div id="error" class="card error" style="display:none"></div>
+<div id="error" class="card error"></div>
 
-<div id="premiumError" style="display:none" class="card">
-<div class="premium">
+<div id="premium" class="card premium">
 🔒 Premium membership is required for this lesson.
-<br><br>
+<br>
 <a href="premium.html">View Premium Membership</a>
-</div>
 </div>
 
 <div id="lessonArea" style="display:none">
 
 <div class="card">
 
-<div class="label" id="lessonNumber">
-LESSON
-</div>
+<div class="label" id="lessonNo"></div>
 
 <h1 id="title"></h1>
 
-<div class="description" id="description"></div>
+<div class="desc" id="description"></div>
 
 <div class="content" id="content"></div>
 
 <div id="verseBox" class="verse" style="display:none">
-<strong>📖 Bible Verse</strong>
-<div id="verse"></div>
+<b>📖 Bible Verse</b>
+<span id="verse"></span>
 </div>
 
 </div>
-
 
 <div class="card">
 
-<div class="assessment-title">
+<div class="assess-title">
 📝 5-Question Assessment
 </div>
 
-<div class="assessment-info">
+<div class="assess-info">
 You must score at least 70% to complete this lesson.
 </div>
 
 <div id="questions"></div>
 
-<button
-id="submitButton"
-class="submit"
-type="button">
+<button id="submit" class="submit">
 Submit Assessment
 </button>
 
@@ -320,149 +120,130 @@ GOH Bible Academy • Gate of Heaven Ministries<br>
 
 <script>
 
-const API="https://dashboard.createlk.workers.dev";
+const LESSON_API="https://dashboard.createlk.workers.dev";
+const PREMIUM_API="https://premium.createlk.workers.dev";
 
 const params=new URLSearchParams(location.search);
+const lessonId=Number(params.get("lesson_id")||0);
 
-const lessonId=Number(
-params.get("lesson_id")||0
-);
-
-const student=
-getStudent();
-
-let lessonData=null;
-let questions=[];
+const $=id=>document.getElementById(id);
 
 
-/* =========================
-   STUDENT
-========================= */
+/* STUDENT */
 
-function getStudent(){
+let student=null;
 
 try{
-
-return JSON.parse(
-localStorage.getItem("goh_student") ||
-sessionStorage.getItem("goh_student") ||
+student=JSON.parse(
+localStorage.getItem("goh_student")||
+sessionStorage.getItem("goh_student")||
 "null"
 );
-
-}catch{
-
-return null;
-
-}
-
-}
-
-
-/* =========================
-   START
-========================= */
+}catch(e){}
 
 if(!student){
-
 location.href="login.html";
+}
 
-}else if(!lessonId){
+
+/* START */
+
+if(!lessonId){
 
 showError("Lesson not found.");
 
 }else{
 
-loadLesson();
+checkAccess();
 
 }
 
 
-/* =========================
-   ERROR
-========================= */
+/* PREMIUM CHECK */
 
-function showError(text){
-
-document.getElementById(
-"loading"
-).style.display="none";
-
-document.getElementById(
-"lessonArea"
-).style.display="none";
-
-document.getElementById(
-"error"
-).style.display="block";
-
-document.getElementById(
-"error"
-).textContent=text;
-
-}
-
-
-/* =========================
-   LOAD LESSON
-========================= */
-
-async function loadLesson(){
+async function checkAccess(){
 
 try{
 
 /*
 Lesson 1 is FREE.
-Lessons 2-180 require Premium.
 */
 
-if(lessonId>1){
+if(lessonId===1){
 
-const access=
-await fetch(
-API+
-"/lesson-access?student_id="+
-encodeURIComponent(student.id)+
-"&lesson_id="+
-encodeURIComponent(lessonId),
-{
-cache:"no-store"
-}
-);
-
-if(access.ok){
-
-const accessData=
-await access.json();
-
-if(
-accessData.success &&
-accessData.allowed!==true
-){
-
-document.getElementById(
-"loading"
-).style.display="none";
-
-document.getElementById(
-"premiumError"
-).style.display="block";
-
+loadLesson();
 return;
-
-}
-
-}
 
 }
 
 
 /*
-Load lesson.
+Check Premium Worker.
 */
 
-const response=
-await fetch(
-API+
+const r=await fetch(
+PREMIUM_API+
+"/status?student_id="+
+encodeURIComponent(student.id),
+{
+cache:"no-store"
+}
+);
+
+if(!r.ok){
+showPremium();
+return;
+}
+
+const data=await r.json();
+
+const m=data.membership||{};
+
+const expiry=m.expiry
+?new Date(m.expiry).getTime()
+:0;
+
+const active=
+data.success===true &&
+String(m.status||"").toUpperCase()==="PREMIUM" &&
+m.active===true &&
+expiry>Date.now();
+
+
+if(active){
+
+/*
+IMPORTANT:
+Premium user loads lesson directly.
+*/
+
+loadLesson();
+
+}else{
+
+showPremium();
+
+}
+
+}catch(e){
+
+console.error(e);
+
+showPremium();
+
+}
+
+}
+
+
+/* LOAD LESSON */
+
+async function loadLesson(){
+
+try{
+
+const r=await fetch(
+LESSON_API+
 "/lesson?lesson_id="+
 encodeURIComponent(lessonId),
 {
@@ -470,54 +251,62 @@ cache:"no-store"
 }
 );
 
-if(!response.ok){
+if(!r.ok)
+throw new Error("Lesson request failed");
 
-throw new Error(
-"Lesson could not be loaded."
-);
+const data=await r.json();
+
+if(!data.success)
+throw new Error(data.message||"Lesson not found");
+
+const lesson=data.lesson||data.data;
+
+if(!lesson)
+throw new Error("Lesson data missing");
+
+
+$("lessonNo").textContent=
+"LESSON "+lessonId;
+
+$("title").textContent=
+lesson.title||
+lesson.name||
+"Lesson "+lessonId;
+
+$("description").textContent=
+lesson.description||
+lesson.short_description||
+"";
+
+$("content").textContent=
+lesson.content||
+lesson.explanation||
+lesson.lesson_content||
+"";
+
+
+const verse=
+lesson.verse||
+lesson.bible_verse||
+"";
+
+if(verse){
+
+$("verse").textContent=verse;
+$("verseBox").style.display="block";
 
 }
 
-const data=
-await response.json();
-
-if(!data.success){
-
-throw new Error(
-data.message||
-"Lesson not found."
-);
-
-}
-
-lessonData=
-data.lesson||data.data;
-
-if(!lessonData){
-
-throw new Error(
-"Lesson data is empty."
-);
-
-}
-
-renderLesson();
 
 await loadQuestions();
 
 
-document.getElementById(
-"loading"
-).style.display="none";
+$("loading").style.display="none";
+$("lessonArea").style.display="block";
 
-document.getElementById(
-"lessonArea"
-).style.display="block";
+}catch(e){
 
-
-}catch(error){
-
-console.error(error);
+console.error(e);
 
 showError(
 "Unable to load this lesson."
@@ -528,75 +317,12 @@ showError(
 }
 
 
-/* =========================
-   RENDER LESSON
-========================= */
-
-function renderLesson(){
-
-const l=lessonData;
-
-document.getElementById(
-"lessonNumber"
-).textContent=
-"LESSON "+lessonId;
-
-document.getElementById(
-"title"
-).textContent=
-l.title||
-l.name||
-"Lesson "+lessonId;
-
-document.getElementById(
-"description"
-).textContent=
-l.description||
-l.short_description||
-"";
-
-document.getElementById(
-"content"
-).textContent=
-l.content||
-l.explanation||
-l.lesson_content||
-"";
-
-
-const verse=
-l.verse||
-l.bible_verse||
-"";
-
-if(verse){
-
-document.getElementById(
-"verseBox"
-).style.display="block";
-
-document.getElementById(
-"verse"
-).textContent=verse;
-
-}
-
-}
-
-
-/* =========================
-   LOAD QUESTIONS
-========================= */
+/* QUESTIONS */
 
 async function loadQuestions(){
 
-/*
-Try the lesson questions endpoint.
-*/
-
-let response=
-await fetch(
-API+
+let r=await fetch(
+LESSON_API+
 "/lesson-questions?lesson_id="+
 encodeURIComponent(lessonId),
 {
@@ -605,15 +331,12 @@ cache:"no-store"
 );
 
 
-/*
-Fallback endpoint.
-*/
+/* fallback endpoint */
 
-if(!response.ok){
+if(!r.ok){
 
-response=
-await fetch(
-API+
+r=await fetch(
+LESSON_API+
 "/questions?lesson_id="+
 encodeURIComponent(lessonId),
 {
@@ -623,183 +346,106 @@ cache:"no-store"
 
 }
 
-if(!response.ok){
 
-throw new Error(
-"Questions could not be loaded."
-);
-
-}
-
-const data=
-await response.json();
-
-if(!data.success){
-
-throw new Error(
-data.message||
-"Questions not found."
-);
-
-}
-
-questions=
-data.questions||
-data.data||
-[];
-
-if(questions.length<5){
-
-throw new Error(
-"This lesson does not have 5 questions yet."
-);
-
-}
-
-questions=
-questions.slice(0,5);
-
-renderQuestions();
-
-}
+if(!r.ok)
+throw new Error("Questions failed");
 
 
-/* =========================
-   RENDER QUESTIONS
-========================= */
+const data=await r.json();
 
-function renderQuestions(){
+if(!data.success)
+throw new Error("Questions not found");
 
-const box=
-document.getElementById(
-"questions"
-);
 
-box.innerHTML="";
+const questions=
+(data.questions||data.data||[]).slice(0,5);
 
-questions.forEach(
-(q,index)=>{
 
-const question=
-document.createElement("div");
+if(questions.length<5)
+throw new Error("Five questions required");
 
-question.className="question";
+
+$("questions").innerHTML="";
+
+
+questions.forEach((q,i)=>{
 
 const text=
 q.question||
 q.question_text||
 q.text||
-"Question "+(index+1);
+"Question "+(i+1);
 
-const options=
-getOptions(q);
+const options=getOptions(q);
 
-let html=`
+const box=document.createElement("div");
 
-<div class="question-number">
-QUESTION ${index+1}
+box.className="question";
+
+box.innerHTML=`
+
+<div class="qno">QUESTION ${i+1}</div>
+
+<div class="qtext">
+${esc(text)}
 </div>
 
-<div class="question-text">
-${escapeHtml(text)}
-</div>
-`;
-
-options.forEach(
-(option,optIndex)=>{
-
-const value=
-String(
-q.option_values?.[optIndex]||
-option
-);
-
-html+=`
-
+${options.map(o=>`
 <label class="option">
-
 <input
 type="radio"
-name="q${index}"
-value="${escapeHtml(value)}">
-
-${escapeHtml(option)}
-
+name="q${i}"
+value="${esc(o)}">
+${esc(o)}
 </label>
+`).join("")}
+
 `;
 
-});
-
-question.innerHTML=html;
-
-box.appendChild(question);
+$("questions").appendChild(box);
 
 });
+
+
+/* Save questions for submit */
+
+window.lessonQuestions=questions;
 
 }
 
 
-/* =========================
-   OPTIONS
-========================= */
+/* OPTIONS */
 
 function getOptions(q){
 
-if(
-Array.isArray(q.options)
-){
-
+if(Array.isArray(q.options))
 return q.options;
 
-}
-
-const options=[];
-
-[
-"option_a",
-"option_b",
-"option_c",
-"option_d"
-].forEach(
-key=>{
-
-if(q[key]!==undefined&&q[key]!==null){
-
-options.push(
-String(q[key])
-);
-
-}
-
-});
-
-return options;
+return [
+q.option_a,
+q.option_b,
+q.option_c,
+q.option_d
+].filter(x=>x!==undefined&&x!==null);
 
 }
 
 
-/* =========================
-   SUBMIT
-========================= */
+/* SUBMIT */
 
-document.getElementById(
-"submitButton"
-).onclick=
-submitAssessment;
+$("submit").onclick=async()=>{
 
-
-async function submitAssessment(){
+const questions=
+window.lessonQuestions||[];
 
 let score=0;
-
 let answered=0;
 
-questions.forEach(
-(q,index)=>{
+questions.forEach((q,i)=>{
 
 const selected=
 document.querySelector(
-`input[name="q${index}"]:checked`
+`input[name="q${i}"]:checked`
 );
 
 if(!selected)return;
@@ -813,14 +459,8 @@ q.correct||
 q.correct_option||
 "";
 
-if(
-normalise(selected.value)===
-normalise(String(correct))
-){
-
+if(norm(selected.value)===norm(correct))
 score++;
-
-}
 
 });
 
@@ -837,18 +477,15 @@ return;
 }
 
 
-const percentage=
-Math.round(
-(score/5)*100
-);
+const percent=
+Math.round(score/5*100);
 
 
-if(percentage<70){
+if(percent<70){
 
 showResult(
-"Score: "+
-percentage+
-"%. You need at least 70% to complete this lesson.",
+"Score: "+percent+
+"%. You need 70% to pass.",
 false
 );
 
@@ -857,21 +494,16 @@ return;
 }
 
 
-/*
-Passed.
-Save completion.
-*/
+/* SAVE PROGRESS */
 
 try{
 
-const response=
-await fetch(
-API+"/complete",
+const r=await fetch(
+LESSON_API+"/complete",
 {
 method:"POST",
 headers:{
-"Content-Type":
-"application/json"
+"Content-Type":"application/json"
 },
 body:JSON.stringify({
 student_id:Number(student.id),
@@ -880,14 +512,12 @@ lesson_id:lessonId
 }
 );
 
-const data=
-await response.json();
+const data=await r.json();
 
-if(!response.ok||!data.success){
+if(!r.ok||!data.success){
 
 showResult(
-"Passed "+percentage+
-"%, but the lesson could not be saved.",
+"Passed, but progress could not be saved.",
 false
 );
 
@@ -895,109 +525,75 @@ return;
 
 }
 
-
 showResult(
-"✓ Passed! Score: "+
-percentage+
-"%. Lesson completed.",
+"✓ Passed! Score: "+percent+"%. Lesson completed.",
 true
 );
 
+$("submit").disabled=true;
 
-/*
-Show next lesson.
-*/
-
-if(lessonId<180){
-
-const next=
-document.createElement("a");
-
-next.className="next";
-
-next.href=
-"lesson.html?lesson_id="+
-(lessonId+1);
-
-next.textContent=
-"Continue to Lesson "+
-(lessonId+1)+" →";
-
-document.getElementById(
-"result"
-).appendChild(next);
-
-}else{
-
-const done=
-document.createElement("div");
-
-done.style.marginTop="10px";
-
-done.textContent=
-"🎓 Congratulations! You completed all 180 lessons.";
-
-document.getElementById(
-"result"
-).appendChild(done);
-
-}
-
-}catch(error){
-
-console.error(error);
+}catch(e){
 
 showResult(
-"Unable to save your lesson completion.",
+"Unable to save progress.",
 false
 );
 
 }
 
+};
+
+
+/* PREMIUM */
+
+function showPremium(){
+
+$("loading").style.display="none";
+$("error").style.display="none";
+$("lessonArea").style.display="none";
+$("premium").style.display="block";
+
 }
 
 
-/* =========================
-   RESULT
-========================= */
+/* ERROR */
+
+function showError(text){
+
+$("loading").style.display="none";
+$("premium").style.display="none";
+$("lessonArea").style.display="none";
+$("error").style.display="block";
+$("error").textContent=text;
+
+}
+
+
+/* RESULT */
 
 function showResult(text,success){
 
-const box=
-document.getElementById(
-"result"
-);
+$("result").className=
+"result "+(success?"pass":"fail");
 
-box.className=
-"result "+
-(success?"pass":"fail");
-
-box.innerHTML=
-escapeHtml(text);
+$("result").textContent=text;
 
 }
 
 
-/* =========================
-   NORMALISE
-========================= */
+/* HELPERS */
 
-function normalise(value){
+function norm(x){
 
-return String(value)
+return String(x)
 .trim()
 .toLowerCase();
 
 }
 
+function esc(x){
 
-/* =========================
-   ESCAPE
-========================= */
-
-function escapeHtml(value){
-
-return String(value)
+return String(x)
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
