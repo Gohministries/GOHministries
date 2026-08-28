@@ -3,355 +3,88 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
-<title>Today's Devotional | GOH Ministries</title>
-
-<meta name="description"
-content="Daily Christian devotional with Bible verse, explanation and prayer from GOH Ministries.">
-
+<title>Daily Devotional | GOH Ministries</title>
 <meta name="theme-color" content="#111827">
+<link rel="icon" href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 
 <style>
-*{
-box-sizing:border-box;
-margin:0;
-padding:0
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial;background:#f4f7fb;color:#172033;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{width:min(900px,92%);margin:auto}
 
-body{
-font-family:Arial,Helvetica,sans-serif;
-background:#f3f6fb;
-color:#172033;
-line-height:1.6
-}
+header{background:#fff;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:10}
+.nav{height:64px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:9px}
+.logo img{width:42px;height:42px;border-radius:9px}
+.logo-title{font-size:14px;font-weight:900}
+.logo-sub{font-size:8px;color:#6b7280}
+.nav-links{display:flex;gap:6px}
+.nav-links a{font-size:10px;font-weight:800;padding:8px}
+.menu{display:none;background:#fff;border:1px solid #ddd;border-radius:8px;font-size:18px;padding:8px}
 
-.container{
-width:min(850px,92%);
-margin:auto
-}
+.hero{padding:18px 0 10px}
+.hero-card{background:linear-gradient(135deg,#111827,#334155);color:#fff;text-align:center;padding:28px 18px;border-radius:20px}
+.hero-logo{width:60px;background:#fff;border-radius:13px;padding:4px}
+.label{font-size:9px;font-weight:900;letter-spacing:1px;color:#fbbf24;margin-top:8px}
+h1{font-size:32px;margin:5px 0}
+.date{display:inline-block;background:#ffffff18;padding:7px 15px;border-radius:8px;font-size:11px;font-weight:800}
 
-/* HEADER */
+.box{background:#fff;border:1px solid #e5e7eb;border-radius:18px;padding:20px;margin:10px 0}
+.lang-title{text-align:center;font-size:9px;font-weight:900;color:#6b7280;margin-bottom:8px}
+.languages{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.lang{border:1px solid #ddd;background:#f8fafc;border-radius:8px;padding:10px;font-weight:800;font-size:10px;cursor:pointer}
+.lang.active{background:#111827;color:#fff}
 
-header{
-position:sticky;
-top:0;
-z-index:100;
-background:#fff;
-border-bottom:1px solid #e5e7eb
-}
+.content{margin-top:15px}
+.section{padding:18px 0;border-bottom:1px solid #eee}
+.section:last-child{border:0}
+.section h2{font-size:10px;color:#6b7280;margin-bottom:8px}
+.verse{background:#fffbea;border-left:4px solid #f59e0b;padding:15px;border-radius:8px;font-size:17px;font-weight:700}
+.ref{display:block;color:#92400e;font-size:11px;margin-top:7px}
+.title{font-size:19px;font-weight:900;margin-bottom:6px}
+.text{font-size:14px;white-space:pre-line}
+.prayer{background:#f5f3ff;border-left:4px solid #7c3aed;padding:15px;border-radius:8px}
 
-.nav{
-min-height:62px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:10px
-}
+.share{text-align:center;margin-top:15px}
+.share button{background:#111827;color:#fff;border:0;border-radius:9px;padding:13px 22px;font-weight:900;cursor:pointer}
+.status{text-align:center;padding:25px;color:#6b7280;font-size:12px}
+.error{color:#dc2626}
 
-.logo{
-text-decoration:none;
-color:#111827
-}
+.archive-title{text-align:center}
+.archive-title h2{font-size:23px}
+.archive-title p{font-size:10px;color:#6b7280}
 
-.logo-title{
-font-size:13px;
-font-weight:900
-}
+.years{display:flex;justify-content:center;align-items:center;gap:10px;margin:18px 0}
+.years button{width:35px;height:35px;border:1px solid #ddd;background:#f8fafc;border-radius:8px;cursor:pointer}
+.year{font-size:17px;font-weight:900;min-width:65px;text-align:center}
 
-.logo-sub{
-font-size:8px;
-color:#6b7280
-}
+.month{border:1px solid #e5e7eb;border-radius:12px;margin-bottom:10px;overflow:hidden}
+.month-head{background:#f8fafc;padding:10px 12px;font-weight:900;font-size:12px;display:flex;justify-content:space-between}
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;padding:8px}
+.day-name{text-align:center;font-size:8px;color:#9ca3af;font-weight:900}
+.day{border:1px solid #e5e7eb;background:#fff;border-radius:6px;min-height:36px;font-size:9px;font-weight:800;cursor:pointer}
+.day:hover{background:#eef2ff}
+.day.today{background:#111827;color:#fff}
+.empty{border:0;background:transparent;cursor:default}
 
-.home{
-text-decoration:none;
-background:#111827;
-color:#fff;
-padding:8px 12px;
-border-radius:9px;
-font-size:9px;
-font-weight:900
-}
+footer{background:#0b1120;color:#fff;margin-top:20px;padding:25px 0;text-align:center}
+.footer-logo{width:38px;background:#fff;border-radius:7px;padding:3px}
+footer strong{display:block;font-size:13px}
+footer span{font-size:8px;color:#94a3b8}
+.footer-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:12px}
+.footer-links a{font-size:9px;color:#cbd5e1}
+.copy{border-top:1px solid #ffffff18;margin-top:15px;padding-top:12px;font-size:8px;color:#64748b}
 
-/* MAIN */
+.whatsapp{position:fixed;right:15px;bottom:15px;width:50px;height:50px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;font-size:23px}
 
-main{
-padding:22px 0 40px
-}
-
-/* HERO */
-
-.hero{
-background:
-radial-gradient(
-circle at 90% 10%,
-rgba(99,102,241,.35),
-transparent 32%
-),
-linear-gradient(
-135deg,
-#111827,
-#293548
-);
-color:#fff;
-border-radius:22px;
-padding:30px 20px;
-text-align:center;
-margin-bottom:12px
-}
-
-.hero-icon{
-font-size:34px
-}
-
-.hero-label{
-color:#fbbf24;
-font-size:8px;
-font-weight:900;
-letter-spacing:1.2px;
-margin-top:3px
-}
-
-.hero h1{
-font-size:28px;
-line-height:1.2;
-margin:6px 0
-}
-
-.date{
-color:#cbd5e1;
-font-size:10px
-}
-
-/* LANGUAGE */
-
-.language-card{
-background:#fff;
-border:1px solid #e5e7eb;
-border-radius:14px;
-padding:13px;
-margin-bottom:12px
-}
-
-.language-card label{
-display:block;
-font-size:8px;
-font-weight:900;
-color:#6b7280;
-margin-bottom:6px
-}
-
-select{
-width:100%;
-padding:10px;
-border:1px solid #d1d5db;
-border-radius:9px;
-background:#fff;
-color:#172033;
-font-size:11px;
-font-weight:700;
-outline:none
-}
-
-/* CARDS */
-
-.card{
-background:#fff;
-border:1px solid #e5e7eb;
-border-radius:16px;
-padding:21px;
-margin-bottom:12px;
-box-shadow:0 5px 18px rgba(15,23,42,.04)
-}
-
-.card-label{
-font-size:8px;
-font-weight:900;
-letter-spacing:1px;
-margin-bottom:8px
-}
-
-/* VERSE */
-
-.verse-card{
-background:linear-gradient(
-135deg,
-#fffbeb,
-#fff7d6
-);
-border-color:#fde68a
-}
-
-.verse-card .card-label{
-color:#b45309
-}
-
-.verse{
-font-size:16px;
-font-weight:700;
-font-style:italic;
-color:#374151
-}
-
-.reference{
-display:inline-block;
-margin-top:10px;
-padding:5px 9px;
-border-radius:7px;
-background:#fef3c7;
-color:#92400e;
-font-size:9px;
-font-weight:900
-}
-
-/* MESSAGE */
-
-.message-card .card-label{
-color:#4f46e5
-}
-
-.message-card h2{
-font-size:21px;
-line-height:1.3;
-margin-bottom:10px
-}
-
-.message{
-font-size:13px;
-color:#374151;
-white-space:pre-line
-}
-
-/* PRAYER */
-
-.prayer-card{
-background:linear-gradient(
-135deg,
-#eef2ff,
-#f8faff
-);
-border-color:#c7d2fe
-}
-
-.prayer-card .card-label{
-color:#4338ca
-}
-
-.prayer-card h2{
-font-size:21px;
-margin-bottom:10px
-}
-
-.prayer{
-font-size:13px;
-color:#374151;
-white-space:pre-line
-}
-
-/* LOADING */
-
-.loading{
-background:#fff;
-border:1px solid #e5e7eb;
-border-radius:16px;
-padding:40px 15px;
-text-align:center;
-color:#6b7280;
-font-size:11px
-}
-
-/* ERROR */
-
-.error{
-background:#fef2f2;
-border:1px solid #fecaca;
-color:#b91c1c;
-border-radius:14px;
-padding:20px;
-text-align:center;
-font-size:10px;
-font-weight:700
-}
-
-/* SHARE */
-
-.share{
-text-align:center;
-margin-top:15px
-}
-
-.share button{
-border:0;
-background:#111827;
-color:#fff;
-padding:11px 18px;
-border-radius:10px;
-font-size:10px;
-font-weight:900;
-cursor:pointer
-}
-
-.share button:active{
-transform:scale(.98)
-}
-
-.share-status{
-font-size:9px;
-color:#16a34a;
-font-weight:700;
-margin-top:7px;
-min-height:14px
-}
-
-/* FOOTER */
-
-footer{
-background:#0b1120;
-color:#94a3b8;
-text-align:center;
-padding:20px;
-font-size:8px
-}
-
-footer strong{
-color:#fff
-}
-
-/* MOBILE */
-
-@media(max-width:600px){
-
-.container{
-width:92%
-}
-
-.hero{
-padding:26px 18px;
-border-radius:19px
-}
-
-.hero h1{
-font-size:24px
-}
-
-.card{
-padding:18px
-}
-
-.message-card h2,
-.prayer-card h2{
-font-size:19px
-}
-
-.message,
-.prayer{
-font-size:12px
-}
-
-.verse{
-font-size:14px
-}
-
+@media(max-width:650px){
+.nav-links{display:none}
+.menu{display:block}
+.languages{grid-template-columns:1fr}
+.box{padding:16px}
+.text{font-size:13px}
+.verse{font-size:15px}
 }
 </style>
 </head>
@@ -359,676 +92,358 @@ font-size:14px
 <body>
 
 <header>
-
 <div class="container nav">
 
 <a href="index.html" class="logo">
-
-<div class="logo-title">
-GOH Ministries
+<img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
+<div>
+<div class="logo-title">GOH Ministries</div>
+<div class="logo-sub">Gate of Heaven Ministries</div>
 </div>
-
-<div class="logo-sub">
-Gate of Heaven Ministries
-</div>
-
 </a>
 
-<a href="index.html" class="home">
-🏠 Home
-</a>
+<nav class="nav-links">
+<a href="index.html">🏠 Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="donate.html">Donate</a>
+</nav>
+
+<button class="menu" id="menu">☰</button>
 
 </div>
-
 </header>
-
-
-<main>
 
 <div class="container">
 
-<!-- HERO -->
-
 <section class="hero">
+<div class="hero-card">
 
-<div class="hero-icon">
-🙏
+<img class="hero-logo" src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
+
+<div class="label">GATE OF HEAVEN MINISTRIES</div>
+
+<h1>🙏 Daily Devotional</h1>
+
+<p>Bible Verse • Explanation • Prayer</p>
+
+<div class="date" id="date"></div>
+
 </div>
-
-<div class="hero-label">
-DAILY DEVOTIONAL
-</div>
-
-<h1>
-Today's Devotional
-</h1>
-
-<div id="date" class="date">
-Loading...
-</div>
-
 </section>
 
+<div class="box">
 
-<!-- LANGUAGE -->
+<div class="lang-title">LANGUAGE</div>
 
-<section class="language-card">
+<div class="languages">
 
-<label>
-SELECT LANGUAGE
-</label>
+<button class="lang" data-lang="en">🇬🇧 English</button>
+<button class="lang" data-lang="ta">🇱🇰 தமிழ்</button>
+<button class="lang" data-lang="si">🇱🇰 සිංහල</button>
 
-<select id="language">
+</div>
+</div>
 
-<option value="en">
-🇬🇧 English
-</option>
+<div class="box">
 
-<option value="ta">
-🇱🇰 தமிழ்
-</option>
+<div id="result" class="status">
+Loading devotional...
+</div>
 
-<option value="si">
-🇱🇰 සිංහල
-</option>
-
-</select>
-
-</section>
-
-
-<!-- CONTENT -->
-
-<div id="content">
-
-<div class="loading">
-📖 Loading today's devotional...
+<div class="share" id="share" style="display:none">
+<button onclick="shareDevotional()">📤 Share Full Devotional</button>
 </div>
 
 </div>
 
+<div class="box">
 
-<!-- SHARE -->
+<div class="archive-title">
+<div class="label">DEVOTIONAL ARCHIVE</div>
+<h2>📅 Previous Devotionals</h2>
+<p>Select any date from the calendar.</p>
+</div>
 
-<div class="share">
+<div class="years">
+<button onclick="changeYear(-1)">‹</button>
+<div class="year" id="year"></div>
+<button onclick="changeYear(1)">›</button>
+</div>
 
-<button id="shareBtn">
-📤 Share Full Devotional
-</button>
-
-<div id="shareStatus" class="share-status"></div>
+<div id="archive"></div>
 
 </div>
 
 </div>
-
-</main>
-
 
 <footer>
 
-<strong>
-GOH Ministries
-</strong>
+<img class="footer-logo" src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 
-<br>
+<strong>GOH Ministries</strong>
+<span>Gate of Heaven Ministries</span>
 
-Gate of Heaven Ministries
+<div class="footer-links">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="donate.html">Donate</a>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+<a href="disclaimer.html">Disclaimer</a>
+</div>
 
-<br>
-
-Daily Devotional • Bible • Prayer
+<div class="copy">
+© 2026 GOH Ministries. All rights reserved.
+</div>
 
 </footer>
 
+<a class="whatsapp" href="https://wa.me/94771190395" target="_blank">💬</a>
 
 <script>
 
-/* =====================================
-   CLOUDFLARE WORKER
-===================================== */
+const API="https://devotional.createlk.workers.dev";
 
-const API =
-"https://devotional.createlk.workers.dev";
+let params=new URLSearchParams(location.search);
+let lang=params.get("lang")||"en";
+let selected=params.get("date");
+let year=new Date().getFullYear();
 
+if(!["en","ta","si"].includes(lang))lang="en";
 
-/* =====================================
-   LANGUAGE
-===================================== */
+const months=[
+"January","February","March","April","May","June",
+"July","August","September","October","November","December"
+];
 
-const languageSelect =
-document.getElementById("language");
+function today(){
+let d=new Date();
+return String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+}
 
-let language =
-localStorage.getItem(
-"goh_devotional_language"
-) || "en";
+function dateText(md){
+let [m,d]=md.split("-");
+return new Date(year,m-1,d).toLocaleDateString(
+"en-US",{month:"long",day:"numeric",year:"numeric"}
+);
+}
 
-languageSelect.value =
-language;
+function setURL(){
+let p=new URLSearchParams();
+p.set("lang",lang);
+if(selected)p.set("date",selected);
+history.replaceState({}, "", "devotional.html?"+p);
+}
 
+async function load(md){
 
-/* =====================================
-   CURRENT DEVOTIONAL
-===================================== */
+selected=md;
 
-let currentDevotional = null;
+document.getElementById("date").textContent=dateText(md);
 
+let box=document.getElementById("result");
+let share=document.getElementById("share");
 
-/* =====================================
-   LOAD DEVOTIONAL
-===================================== */
+share.style.display="none";
+box.className="status";
+box.innerHTML="Loading devotional...";
 
-async function loadDevotional(){
+try{
 
-const content =
-document.getElementById("content");
+let r=await fetch(
+API+"?date="+encodeURIComponent(md)+"&lang="+lang,
+{cache:"no-store"}
+);
 
-content.innerHTML = `
-<div class="loading">
-📖 Loading today's devotional...
+let data=await r.json();
+
+if(!r.ok||!data.success){
+
+box.className="status error";
+box.textContent="⚠️ "+(data.error||"Devotional not available yet.");
+return;
+}
+
+let x=data.devotional;
+
+box.className="content";
+
+box.innerHTML=`
+
+<div class="section">
+
+<h2>📖 BIBLE VERSE</h2>
+
+<div class="verse">
+${safe(x.bible_verse)}
+<span class="ref">${safe(x.bible_reference)}</span>
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>💡 EXPLANATION</h2>
+
+<div class="title">${safe(x.title)}</div>
+<div class="text">${safe(x.message)}</div>
+
+</div>
+
+<div class="section">
+
+<h2>🙏 PRAYER</h2>
+
+<div class="prayer text">${safe(x.prayer)}</div>
+
 </div>
 `;
 
-currentDevotional = null;
+share.style.display="block";
 
-try{
-
-const apiURL =
-API +
-"/?lang=" +
-encodeURIComponent(language);
-
-
-const response =
-await fetch(
-apiURL,
-{
-method:"GET",
-headers:{
-"Accept":"application/json"
-},
-cache:"no-store"
-}
-);
-
-
-if(!response.ok){
-
-throw new Error(
-"Server error: " +
-response.status
-);
-
-}
-
-
-const text =
-await response.text();
-
-let data;
-
-try{
-
-data =
-JSON.parse(text);
+setURL();
 
 }catch(e){
 
-throw new Error(
-"Invalid response from devotional server."
-);
-
-}
-
-
-if(!data.success){
-
-throw new Error(
-data.error ||
-"Today's devotional is not available yet."
-);
-
-}
-
-
-const d =
-data.devotional;
-
-
-/* SAVE FULL DEVOTIONAL FOR SHARING */
-
-currentDevotional = {
-
-date:data.date,
-
-title:d.title || "",
-
-verse:d.bible_verse || "",
-
-reference:d.bible_reference || "",
-
-message:d.message || "",
-
-prayer:d.prayer || ""
-
-};
-
-
-/* DATE */
-
-document.getElementById("date")
-.textContent =
-formatDate(data.date);
-
-
-/* =====================================
-   DISPLAY
-
-   1. BIBLE VERSE
-   2. EXPLANATION
-   3. PRAYER
-===================================== */
-
-content.innerHTML = `
-
-<!-- BIBLE VERSE -->
-
-<article class="card verse-card">
-
-<div class="card-label">
-📖 BIBLE VERSE
-</div>
-
-<div class="verse">
-“${escapeHTML(
-d.bible_verse || ""
-)}”
-</div>
-
-${
-d.bible_reference
-?
-`
-<div class="reference">
-${escapeHTML(
-d.bible_reference
-)}
-</div>
-`
-:
-""
-}
-
-</article>
-
-
-<!-- EXPLANATION -->
-
-<article class="card message-card">
-
-<div class="card-label">
-💡 TODAY'S EXPLANATION
-</div>
-
-<h2>
-${escapeHTML(
-d.title || ""
-)}
-</h2>
-
-<div class="message">
-${escapeHTML(
-d.message || ""
-)}
-</div>
-
-</article>
-
-
-<!-- PRAYER -->
-
-<article class="card prayer-card">
-
-<div class="card-label">
-🙏 TODAY'S PRAYER
-</div>
-
-<h2>
-Prayer
-</h2>
-
-<div class="prayer">
-${escapeHTML(
-d.prayer || ""
-)}
-</div>
-
-</article>
-
-`;
-
-
-}catch(error){
-
-console.error(
-"Devotional API error:",
-error
-);
-
-content.innerHTML = `
-
-<div class="error">
-
-⚠️ Today's devotional is not available yet.
-
-<br><br>
-
-Please try again later.
-
-</div>
-
-`;
+box.className="status error";
+box.textContent="⚠️ Failed to fetch devotional.";
 
 }
 
 }
 
-
-/* =====================================
-   FORMAT DATE
-===================================== */
-
-function formatDate(monthDay){
-
-const parts =
-String(monthDay).split("-");
-
-if(parts.length !== 2){
-
-return monthDay;
-
+function safe(x){
+return String(x||"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;")
+.replace(/\n/g,"<br>");
 }
 
-const date =
-new Date(
-2024,
-Number(parts[0]) - 1,
-Number(parts[1])
-);
+async function shareDevotional(){
 
-return date.toLocaleDateString(
-"en-US",
-{
-month:"long",
-day:"numeric"
-}
-);
-
-}
-
-
-/* =====================================
-   ESCAPE HTML
-===================================== */
-
-function escapeHTML(value){
-
-return String(
-value ?? ""
-)
-
-.replace(
-/&/g,
-"&amp;"
-)
-
-.replace(
-/</g,
-"&lt;"
-)
-
-.replace(
-/>/g,
-"&gt;"
-)
-
-.replace(
-/"/g,
-"&quot;"
-)
-
-.replace(
-/'/g,
-"&#039;"
-);
-
-}
-
-
-/* =====================================
-   LANGUAGE CHANGE
-===================================== */
-
-languageSelect.addEventListener(
-"change",
-function(){
-
-language =
-this.value;
-
-localStorage.setItem(
-"goh_devotional_language",
-language
-);
-
-loadDevotional();
-
-}
-);
-
-
-/* =====================================
-   SHARE FULL DEVOTIONAL
-===================================== */
-
-document
-.getElementById("shareBtn")
-.addEventListener(
-"click",
-async function(){
-
-const status =
-document.getElementById(
-"shareStatus"
-);
-
-
-if(!currentDevotional){
-
-status.textContent =
-"Please wait for the devotional to load.";
-
-return;
-
-}
-
-
-const d =
-currentDevotional;
-
-
-/*
-   Full devotional text
-*/
-
-const shareText =
-
-"🙏 GOH MINISTRIES\n" +
-
-"DAILY DEVOTIONAL\n\n" +
-
-"📖 BIBLE VERSE\n" +
-
-(d.verse || "") +
-
-"\n\n" +
-
-(d.reference
-? d.reference + "\n\n"
-: "") +
-
-"💡 " +
-
-(d.title || "TODAY'S EXPLANATION") +
-
-"\n\n" +
-
-(d.message || "") +
-
-"\n\n" +
-
-"🙏 PRAYER\n\n" +
-
-(d.prayer || "") +
-
-"\n\n" +
-
-"— GOH Ministries\n" +
-
-window.location.href;
-
-
-/*
-   Native share
-*/
+let text=document.getElementById("result").innerText+
+"\n\n"+location.href;
 
 if(navigator.share){
 
-try{
-
 await navigator.share({
+title:"GOH Ministries Daily Devotional",
+text:text
+});
 
-title:
-"Today's Devotional | GOH Ministries",
+}else{
 
-text:
-shareText
+await navigator.clipboard.writeText(text);
+alert("Devotional copied. You can share it.");
+
+}
+
+}
+
+document.querySelectorAll(".lang").forEach(b=>{
+
+b.onclick=()=>{
+lang=b.dataset.lang;
+
+document.querySelectorAll(".lang")
+.forEach(x=>x.classList.toggle("active",x===b));
+
+load(selected||today());
+};
 
 });
 
-status.textContent =
-"✓ Shared successfully";
+function calendar(){
 
-setTimeout(
-()=>{
-status.textContent="";
-},
-2000
-);
+document.getElementById("year").textContent=year;
 
-return;
+let out="";
 
-}catch(error){
+for(let m=0;m<12;m++){
 
-/*
-  User cancelled share.
-  Do nothing.
-*/
+let first=new Date(year,m,1).getDay();
+let total=new Date(year,m+1,0).getDate();
 
-if(error.name === "AbortError"){
+out+=`
+<div class="month">
 
-return;
+<div class="month-head">
+<span>${months[m]}</span>
+<span>${year}</span>
+</div>
 
-}
+<div class="days">
 
-}
+<div class="day-name">Sun</div>
+<div class="day-name">Mon</div>
+<div class="day-name">Tue</div>
+<div class="day-name">Wed</div>
+<div class="day-name">Thu</div>
+<div class="day-name">Fri</div>
+<div class="day-name">Sat</div>
+`;
 
-}
+for(let i=0;i<first;i++)
+out+=`<div class="day empty"></div>`;
 
+for(let d=1;d<=total;d++){
 
-/*
-   Fallback: copy full devotional
-*/
+let md=String(m+1).padStart(2,"0")+"-"+String(d).padStart(2,"0");
 
-try{
+let cls="day";
 
-await navigator.clipboard.writeText(
-shareText
-);
+if(year===new Date().getFullYear()&&md===today())
+cls+=" today";
 
-status.textContent =
-"✓ Full devotional copied";
-
-setTimeout(
-()=>{
-status.textContent="";
-},
-2500
-);
-
-}catch(error){
-
-/*
-   Older browsers fallback
-*/
-
-const textarea =
-document.createElement("textarea");
-
-textarea.value =
-shareText;
-
-textarea.style.position =
-"fixed";
-
-textarea.style.left =
-"-9999px";
-
-document.body.appendChild(
-textarea
-);
-
-textarea.select();
-
-try{
-
-document.execCommand(
-"copy"
-);
-
-status.textContent =
-"✓ Full devotional copied";
-
-}catch(e){
-
-status.textContent =
-"Unable to copy devotional.";
+out+=`
+<button class="${cls}" onclick="openDate('${md}')">
+${d}
+</button>
+`;
 
 }
 
-document.body.removeChild(
-textarea
-);
-
-setTimeout(
-()=>{
-status.textContent="";
-},
-2500
-);
+out+=`</div></div>`;
 
 }
 
+document.getElementById("archive").innerHTML=out;
+
 }
-);
 
+function openDate(md){
 
-/* =====================================
-   START
-===================================== */
+year=parseInt(md.slice(0,2))||year;
 
-loadDevotional();
+load(md);
+
+window.scrollTo({top:0,behavior:"smooth"});
+
+}
+
+function changeYear(n){
+
+year+=n;
+calendar();
+
+}
+
+document.getElementById("menu").onclick=()=>{
+document.querySelector(".nav-links").style.display=
+document.querySelector(".nav-links").style.display==="flex"?"none":"flex";
+};
+
+document.querySelectorAll(".lang")
+.forEach(x=>x.classList.toggle("active",x.dataset.lang===lang));
+
+calendar();
+
+load(selected||today());
 
 </script>
 
