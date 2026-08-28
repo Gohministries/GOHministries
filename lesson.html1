@@ -6,8 +6,7 @@
 <title>Lesson | GOH Bible Academy</title>
 <meta name="theme-color" content="#111827">
 
-<link rel="icon"
-href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
+<link rel="icon" href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -54,8 +53,15 @@ object-fit:contain;
 border-radius:9px
 }
 
-.logo-title{font-size:13px;font-weight:900}
-.logo-sub{font-size:8px;color:#6b7280}
+.logo-title{
+font-size:13px;
+font-weight:900
+}
+
+.logo-sub{
+font-size:8px;
+color:#6b7280
+}
 
 .back{
 border:0;
@@ -67,7 +73,9 @@ font-size:9px;
 font-weight:900
 }
 
-main{padding:24px 0 45px}
+main{
+padding:24px 0 45px
+}
 
 .message{
 display:none;
@@ -81,9 +89,20 @@ margin-bottom:13px
 
 .message.show{display:block}
 
-.loading{background:#eff6ff;color:#1d4ed8}
-.error{background:#fef2f2;color:#b91c1c}
-.success{background:#dcfce7;color:#166534}
+.loading{
+background:#eff6ff;
+color:#1d4ed8
+}
+
+.error{
+background:#fef2f2;
+color:#b91c1c
+}
+
+.success{
+background:#dcfce7;
+color:#166534
+}
 
 .hero{
 background:#111827;
@@ -158,7 +177,9 @@ border-top:1px solid #e5e7eb;
 padding:15px 0
 }
 
-.question:first-child{border-top:0}
+.question:first-child{
+border-top:0
+}
 
 .question-text{
 font-size:11px;
@@ -182,7 +203,8 @@ border-color:#6366f1;
 background:#eef2ff
 }
 
-.submit,.next{
+.submit,
+.next{
 width:100%;
 border:0;
 color:#fff;
@@ -205,6 +227,28 @@ opacity:.5;
 cursor:not-allowed
 }
 
+.result{
+display:none;
+margin-top:13px;
+padding:14px;
+border-radius:11px;
+text-align:center;
+font-size:10px;
+font-weight:800
+}
+
+.result.show{display:block}
+
+.pass{
+background:#dcfce7;
+color:#166534
+}
+
+.fail{
+background:#fef2f2;
+color:#b91c1c
+}
+
 .done{
 display:none;
 background:#dcfce7;
@@ -212,26 +256,13 @@ color:#166534;
 border:1px solid #86efac;
 border-radius:10px;
 padding:12px;
+margin-bottom:12px;
 text-align:center;
 font-size:10px;
 font-weight:900
 }
 
 .done.show{display:block}
-
-.result{
-display:none;
-margin-top:13px;
-padding:12px;
-border-radius:10px;
-text-align:center;
-font-size:10px;
-font-weight:800
-}
-
-.result.show{display:block}
-.pass{background:#dcfce7;color:#166534}
-.fail{background:#fef2f2;color:#b91c1c}
 
 footer{
 background:#0b1120;
@@ -242,10 +273,15 @@ font-size:8px
 }
 
 @media(max-width:500px){
+
 .hero h1{font-size:20px}
+
 .card{padding:15px}
+
 .verse-text{font-size:14px}
+
 .content{font-size:11px}
+
 }
 </style>
 </head>
@@ -256,12 +292,14 @@ font-size:8px
 <div class="container nav">
 
 <div class="logo">
+
 <img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 
 <div>
 <div class="logo-title">GOH Bible Academy</div>
 <div class="logo-sub">Gate of Heaven Ministries</div>
 </div>
+
 </div>
 
 <button class="back" onclick="location.href='dashboard.html'">
@@ -279,34 +317,52 @@ font-size:8px
 <div id="lesson" style="display:none">
 
 <div class="hero">
+
 <div class="label" id="number"></div>
+
 <h1 id="title"></h1>
+
 <p id="description"></p>
+
 </div>
 
 <div class="card">
-<div class="title" id="explanationTitle"></div>
+
+<div class="title" id="explanationTitle">
+📖 Lesson Explanation
+</div>
+
 <div class="content" id="content"></div>
+
 </div>
 
 <div class="card">
-<div class="title" id="verseTitle"></div>
+
+<div class="title" id="verseTitle">
+📖 Bible Verse
+</div>
 
 <div class="verse">
+
 <div class="ref" id="reference"></div>
+
 <div class="verse-text" id="verseText"></div>
+
 </div>
+
 </div>
 
 <div class="card" id="assessment">
 
-<div class="title" id="assessmentTitle"></div>
+<div class="title" id="assessmentTitle">
+📝 5-Question Assessment
+</div>
 
 <p id="assessmentSub"
 style="font-size:10px;color:#666;margin-bottom:12px">
+You must score at least 70% to complete this lesson.
 </p>
 
-<!-- ONLY ONE COMPLETED MESSAGE -->
 <div id="done" class="done"></div>
 
 <form id="questions"></form>
@@ -315,6 +371,7 @@ style="font-size:10px;color:#666;margin-bottom:12px">
 class="submit"
 id="submit"
 type="button">
+Submit Assessment
 </button>
 
 <div id="result" class="result"></div>
@@ -323,11 +380,13 @@ type="button">
 class="next"
 id="next"
 type="button">
+Continue →
 </button>
 
 </div>
 
 </div>
+
 </div>
 </main>
 
@@ -360,20 +419,11 @@ location.href="login.html";
 
 const params=new URLSearchParams(location.search);
 
-const lessonId=parseInt(
-params.get("lesson_id"),
-10
-);
+const lessonId=Number(params.get("lesson_id"));
 
-const moduleId=parseInt(
-params.get("module_id"),
-10
-);
+const moduleId=Number(params.get("module_id") || 1);
 
-const studentId=parseInt(
-student?.id,
-10
-);
+const studentId=Number(student?.id || 0);
 
 
 /* LANGUAGE */
@@ -381,9 +431,8 @@ student?.id,
 function getLang(){
 
 const x=String(
-params.get("language") ||
-localStorage.getItem("goh_language") ||
 student?.language ||
+localStorage.getItem("goh_language") ||
 "en"
 ).toLowerCase();
 
@@ -399,7 +448,7 @@ return "en";
 const lang=getLang();
 
 
-/* TEXT */
+/* UI */
 
 const UI={
 
@@ -417,7 +466,8 @@ pass:"🎉 Congratulations! You passed.",
 fail:"You need at least 70% to pass.",
 saving:"Saving progress...",
 saved:"✓ Progress saved.",
-continue:"Continue →"
+continue:"Continue →",
+premium:"🔒 Premium membership is required for the next lesson."
 },
 
 ta:{
@@ -434,7 +484,8 @@ pass:"🎉 வாழ்த்துகள்! நீங்கள் தேர்
 fail:"தேர்ச்சி பெற குறைந்தது 70% தேவை.",
 saving:"முன்னேற்றம் சேமிக்கப்படுகிறது...",
 saved:"✓ முன்னேற்றம் சேமிக்கப்பட்டது.",
-continue:"தொடரவும் →"
+continue:"தொடரவும் →",
+premium:"🔒 அடுத்த பாடத்திற்கு Premium உறுப்பினர் தேவை."
 },
 
 si:{
@@ -451,13 +502,14 @@ pass:"🎉 සුභ පැතුම්! ඔබ සමත් වී ඇත.",
 fail:"සමත් වීමට අවම වශයෙන් 70% අවශ්‍යයි.",
 saving:"ප්‍රගතිය සුරැකෙමින් පවතී...",
 saved:"✓ ප්‍රගතිය සුරැකුණි.",
-continue:"ඉදිරියට →"
+continue:"ඉදිරියට →",
+premium:"🔒 ඊළඟ පාඩම සඳහා Premium සාමාජිකත්වය අවශ්‍යයි."
 }
 
 }[lang];
 
 
-/* APPLY TEXT */
+/* APPLY LANGUAGE */
 
 $("explanationTitle").textContent=UI.explanation;
 $("verseTitle").textContent=UI.verse;
@@ -479,10 +531,21 @@ function message(text,type){
 
 $("message").textContent=text;
 $("message").className="message show "+type;
+
 }
 
 function hideMessage(){
 $("message").className="message";
+}
+
+
+/* CLEAR */
+
+function clearAssessment(){
+
+$("questions").innerHTML="";
+$("submit").style.display="none";
+
 }
 
 
@@ -492,21 +555,16 @@ function showCompleted(){
 
 lessonCompleted=true;
 
-/* Remove questions */
-$("questions").innerHTML="";
+clearAssessment();
 
-/* Hide submit */
-$("submit").style.display="none";
-
-/* Hide result completely */
-$("result").className="result";
-
-/* Show ONLY this message */
 $("done").textContent=UI.completed;
-$("done").className="done show";
+$("done").classList.add("show");
 
-/* Continue button */
+$("result").className="result";
+$("result").textContent="";
+
 $("next").style.display="block";
+$("next").disabled=false;
 
 }
 
@@ -544,6 +602,10 @@ $("submit").style.display="block";
 
 questions.forEach((q,i)=>{
 
+const div=document.createElement("div");
+
+div.className="question";
+
 let options=[];
 
 if(Array.isArray(q.options)){
@@ -552,43 +614,42 @@ options=q.options;
 
 }else{
 
-let raw=
-lang==="ta"
-?q.options_ta
-:lang==="si"
-?q.options_si
-:q.options_en;
+let raw;
+
+if(lang==="ta")raw=q.options_ta;
+else if(lang==="si")raw=q.options_si;
+else raw=q.options_en;
 
 try{
+
 options=
 typeof raw==="string"
 ?JSON.parse(raw)
 :(raw||[]);
+
 }catch{
+
 options=[];
-}
 
 }
 
-let text=
-q.question ||
-q.question_en ||
-"";
+}
+
+let questionText=q.question || "";
 
 if(lang==="ta" && q.question_ta)
-text=q.question_ta;
+questionText=q.question_ta;
 
 if(lang==="si" && q.question_si)
-text=q.question_si;
+questionText=q.question_si;
 
-const div=document.createElement("div");
-
-div.className="question";
+if(lang==="en" && q.question_en)
+questionText=q.question_en;
 
 div.innerHTML=`
 
 <div class="question-text">
-${i+1}. ${text}
+${i+1}. ${questionText}
 </div>
 
 ${options.map((o,n)=>`
@@ -605,6 +666,7 @@ value="${n}">
 </label>
 
 `).join("")}
+
 `;
 
 box.appendChild(div);
@@ -617,14 +679,20 @@ box.querySelectorAll("input").forEach(input=>{
 input.addEventListener("change",()=>{
 
 document
-.querySelectorAll(
-`input[name="${input.name}"]`
-)
+.querySelectorAll(`input[name="${input.name}"]`)
 .forEach(x=>{
-x.closest(".option")?.classList.remove("selected");
+
+const option=x.closest(".option");
+
+if(option)
+option.classList.remove("selected");
+
 });
 
-input.closest(".option")?.classList.add("selected");
+const current=input.closest(".option");
+
+if(current)
+current.classList.add("selected");
 
 });
 
@@ -633,7 +701,7 @@ input.closest(".option")?.classList.add("selected");
 }
 
 
-/* LOAD */
+/* LOAD LESSON */
 
 async function loadLesson(){
 
@@ -641,48 +709,49 @@ message(UI.loading,"loading");
 
 try{
 
-if(!Number.isInteger(lessonId) || lessonId<1)
+if(!Number.isInteger(lessonId) || lessonId<1){
+
 throw new Error("Invalid lesson ID.");
 
-if(!Number.isInteger(moduleId) || moduleId<1)
-throw new Error("Invalid module ID.");
+}
 
-if(!studentId)
+if(!studentId){
+
 throw new Error("Invalid student ID.");
+
+}
 
 
 /*
 IMPORTANT:
-Use the exact IDs sent by dashboard.
+The lesson page receives the exact
+lesson ID from dashboard.
 */
 
 const url=
 API+
-"/lesson?"+
-"lesson_id="+encodeURIComponent(lessonId)+
+"/lesson"+
+"?lesson_id="+encodeURIComponent(lessonId)+
 "&module_id="+encodeURIComponent(moduleId)+
 "&student_id="+encodeURIComponent(studentId)+
 "&language="+encodeURIComponent(lang);
-
 
 const response=await fetch(url);
 
 const data=await response.json();
 
-
 if(!response.ok || !data.success){
 
 throw new Error(
-data.message ||
-"Unable to load lesson."
+data.message || "Unable to load lesson."
 );
 
 }
 
 
-/* LOCK ONLY IF CLOUDFLARE SAYS LOCKED */
+/* PREMIUM LOCK */
 
-if(data.lesson?.locked===true){
+if(data.lesson && data.lesson.locked){
 
 message(
 lang==="ta"
@@ -692,10 +761,6 @@ lang==="ta"
 :"Premium membership is required.",
 "error"
 );
-
-setTimeout(()=>{
-location.href="premium.html";
-},1200);
 
 return;
 }
@@ -707,12 +772,9 @@ const lesson=data.lesson || {};
 /* CONTENT */
 
 $("number").textContent=
-"LESSON "+(
-lesson.lesson_number || lessonId
-);
+"LESSON "+(lesson.lesson_number || lessonId);
 
-$("title").textContent=
-lesson.title || "";
+$("title").textContent=lesson.title || "";
 
 $("description").textContent=
 lesson.description || "";
@@ -731,10 +793,7 @@ $("lesson").style.display="block";
 hideMessage();
 
 
-/*
-CHECK COMPLETED FIRST.
-If completed, NEVER build questions.
-*/
+/* COMPLETED */
 
 if(
 lesson.completed===true ||
@@ -743,6 +802,7 @@ lesson.completed==="1"
 ){
 
 showCompleted();
+
 return;
 
 }
@@ -770,8 +830,7 @@ message(UI.missing,"error");
 console.error(error);
 
 message(
-error.message ||
-"Unable to load lesson.",
+error.message || "Unable to load lesson.",
 "error"
 );
 
@@ -782,52 +841,42 @@ error.message ||
 
 /* SUBMIT */
 
-$("submit").addEventListener("click",async()=>{
+$("submit").addEventListener("click",async function(){
 
 if(lessonCompleted)return;
 
-
 const selected=[
-...document.querySelectorAll(
-"#questions input:checked"
-)
+...document.querySelectorAll("#questions input:checked")
 ];
-
 
 if(selected.length!==5){
 
 message(UI.all,"error");
+
 return;
-
 }
-
 
 let score=0;
 
 selected.forEach(input=>{
 
-const index=
-parseInt(
-input.name.replace("q",""),
-10
+const index=Number(
+input.name.replace("q","")
 );
 
-const correct=
-parseInt(
-questions[index].correct_answer,
-10
+const correct=Number(
+questions[index].correct_answer
 );
 
-if(parseInt(input.value,10)===correct)
+if(Number(input.value)===correct)
 score++;
 
 });
 
-
 const percent=score*20;
 
 
-/* FAIL */
+/* FAILED */
 
 if(percent<70){
 
@@ -836,12 +885,16 @@ $("result").className="result show fail";
 $("result").textContent=
 `${UI.fail} Score: ${percent}%`;
 
-return;
+message(
+`${UI.fail} Score: ${percent}%`,
+"error"
+);
 
+return;
 }
 
 
-/* PASS */
+/* PASSED */
 
 $("submit").disabled=true;
 $("submit").textContent=UI.saving;
@@ -856,11 +909,9 @@ headers:{
 "Content-Type":"application/json"
 },
 body:JSON.stringify({
-
 student_id:studentId,
 lesson_id:lessonId,
 module_id:moduleId
-
 })
 }
 );
@@ -870,54 +921,42 @@ const data=await response.json();
 if(!response.ok || !data.success){
 
 throw new Error(
-data.message ||
-"Unable to save progress."
+data.message || "Unable to save progress."
 );
 
 }
 
-
-/* Mark complete */
-
 lessonCompleted=true;
-
-
-/* Remove questions */
 
 $("questions").innerHTML="";
 
 $("submit").style.display="none";
 
+$("done").textContent=UI.completed;
 
-/* Show result with score */
+$("done").classList.add("show");
 
 $("result").className="result show pass";
 
 $("result").textContent=
 `${UI.pass} Score: ${percent}%`;
 
-
-/* Completed message */
-
-$("done").textContent=UI.completed;
-$("done").className="done show";
-
-
-/* Next */
-
 $("next").style.display="block";
+
+$("next").disabled=false;
 
 message(UI.saved,"success");
 
-
 }catch(error){
 
+console.error(error);
+
 $("submit").disabled=false;
+
 $("submit").textContent=UI.submit;
 
 message(
-error.message ||
-"Unable to save progress.",
+error.message || "Unable to save progress.",
 "error"
 );
 
@@ -928,19 +967,39 @@ error.message ||
 
 /* NEXT LESSON */
 
-$("next").addEventListener("click",()=>{
+$("next").addEventListener("click",function(){
 
 const nextLesson=lessonId+1;
 
+
 /*
-Keep the same module only when
-the next lesson belongs to it.
-Dashboard should provide the
-correct module_id for navigation.
+Lesson 1 is FREE.
+Lessons 2–180 are Premium.
+
+Therefore a FREE student should NOT
+go to lesson.html for Lesson 2.
 */
 
-location.href=
-"dashboard.html";
+if(nextLesson>=2 && nextLesson<=180){
+
+location.href="premium.html";
+
+return;
+
+}
+
+
+/*
+Course finished.
+*/
+
+if(nextLesson>180){
+
+location.href="dashboard.html";
+
+return;
+
+}
 
 });
 
@@ -948,7 +1007,9 @@ location.href=
 /* START */
 
 if(student){
+
 loadLesson();
+
 }
 
 </script>
