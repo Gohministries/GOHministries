@@ -1,94 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#111827">
+
 <title>Lesson | GOH Bible Academy</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial;background:#f3f6fb;color:#172033;line-height:1.6}
-.container{width:min(700px,94%);margin:auto}
-header{background:#fff;border-bottom:1px solid #e5e7eb}
-.nav{height:64px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-weight:900;font-size:13px}
-.sub{font-size:8px;color:#6b7280}
-.back{border:0;background:#111827;color:#fff;padding:8px 11px;border-radius:8px;font-size:9px;font-weight:900}
-main{padding:22px 0 45px}
-.card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:20px;margin-bottom:12px}
-.label{font-size:8px;color:#4f46e5;font-weight:900}
-h1{font-size:23px;margin:5px 0}
-.desc{font-size:10px;color:#6b7280;margin-bottom:18px}
-.content{font-size:11px;white-space:pre-line}
-.verse{background:#f9fafb;border-left:4px solid #4f46e5;padding:13px;margin-top:18px;border-radius:8px;font-size:11px}
-.verse b{display:block;margin-bottom:5px}
-.assess-title{font-size:17px;font-weight:900}
-.assess-info{font-size:9px;color:#6b7280;margin:3px 0 15px}
-.question{border:1px solid #e5e7eb;border-radius:11px;padding:13px;margin-bottom:10px}
-.qno{font-size:8px;color:#4f46e5;font-weight:900}
-.qtext{font-size:11px;font-weight:900;margin:5px 0 9px}
-.option{display:block;background:#f9fafb;border:1px solid #e5e7eb;padding:9px;border-radius:8px;margin:5px 0;font-size:10px}
-.option input{margin-right:6px}
-.submit{width:100%;border:0;background:#111827;color:#fff;padding:12px;border-radius:9px;font-weight:900;font-size:10px;margin-top:8px}
-.result{display:none;margin-top:12px;padding:12px;border-radius:9px;text-align:center;font-size:10px;font-weight:900}
-.pass{display:block;background:#dcfce7;color:#166534}
-.fail{display:block;background:#fef2f2;color:#b91c1c}
-.premium{display:none;text-align:center;background:#fef3c7;color:#92400e}
-.premium a{display:inline-block;margin-top:10px;background:#111827;color:#fff;padding:10px 14px;border-radius:8px;text-decoration:none;font-size:9px}
-.error{display:none;text-align:center;color:#b91c1c;font-weight:700;font-size:10px}
-.loading{text-align:center;font-size:11px}
-footer{background:#0b1120;color:#64748b;text-align:center;padding:18px;font-size:8px}
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#f3f6fb;
+color:#172033;
+line-height:1.6
+}
+
+.container{
+width:min(700px,94%);
+margin:auto
+}
+
+header{
+background:#fff;
+border-bottom:1px solid #e5e7eb
+}
+
+.nav{
+height:64px;
+display:flex;
+align-items:center;
+justify-content:space-between
+}
+
+.logo{
+font-size:13px;
+font-weight:900
+}
+
+.sub{
+font-size:8px;
+color:#6b7280
+}
+
+.back{
+border:0;
+background:#111827;
+color:#fff;
+padding:8px 11px;
+border-radius:8px;
+font-size:9px;
+font-weight:900;
+cursor:pointer
+}
+
+main{
+padding:20px 0 45px
+}
+
+.card{
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:16px;
+padding:20px;
+margin-bottom:12px
+}
+
+.label{
+font-size:8px;
+color:#4f46e5;
+font-weight:900
+}
+
+h1{
+font-size:23px;
+margin:5px 0 8px
+}
+
+.desc{
+font-size:10px;
+color:#6b7280;
+margin-bottom:18px
+}
+
+.content{
+font-size:11px;
+white-space:pre-line
+}
+
+.verse{
+background:#f9fafb;
+border-left:4px solid #4f46e5;
+padding:13px;
+margin-top:18px;
+border-radius:8px;
+font-size:11px
+}
+
+.verse b{
+display:block;
+margin-bottom:5px
+}
+
+.reference{
+margin-top:8px;
+font-weight:900
+}
+
+.loading{
+text-align:center;
+font-size:11px;
+color:#6b7280
+}
+
+.error{
+text-align:center;
+color:#b91c1c
+}
+
+.assess-title{
+font-size:17px;
+font-weight:900
+}
+
+.assess-info{
+font-size:9px;
+color:#6b7280;
+margin:3px 0 15px
+}
+
+.question{
+border:1px solid #e5e7eb;
+border-radius:11px;
+padding:13px;
+margin-bottom:10px
+}
+
+.qno{
+font-size:8px;
+color:#4f46e5;
+font-weight:900
+}
+
+.qtext{
+font-size:11px;
+font-weight:900;
+margin:5px 0 9px
+}
+
+.option{
+display:block;
+background:#f9fafb;
+border:1px solid #e5e7eb;
+padding:9px;
+border-radius:8px;
+margin:5px 0;
+font-size:10px;
+cursor:pointer
+}
+
+.option:hover{
+background:#f3f4f6
+}
+
+.option input{
+margin-right:6px
+}
+
+.submit{
+width:100%;
+border:0;
+background:#111827;
+color:#fff;
+padding:12px;
+border-radius:9px;
+font-weight:900;
+font-size:10px;
+margin-top:8px;
+cursor:pointer
+}
+
+.submit:disabled{
+opacity:.5;
+cursor:not-allowed
+}
+
+.result{
+display:none;
+margin-top:12px;
+padding:12px;
+border-radius:9px;
+text-align:center;
+font-size:10px;
+font-weight:900
+}
+
+.pass{
+display:block;
+background:#dcfce7;
+color:#166534
+}
+
+.fail{
+display:block;
+background:#fef2f2;
+color:#b91c1c
+}
+
+.no-questions{
+font-size:10px;
+color:#b91c1c;
+text-align:center;
+padding:10px
+}
+
+footer{
+background:#0b1120;
+color:#64748b;
+text-align:center;
+padding:18px;
+font-size:8px
+}
+
 </style>
+
 </head>
 
 <body>
 
+
 <header>
+
 <div class="container nav">
+
 <div>
-<div class="logo">GOH Bible Academy</div>
-<div class="sub">Gate of Heaven Ministries</div>
+
+<div class="logo">
+GOH Bible Academy
 </div>
-<button class="back" onclick="location.href='dashboard.html'">← Dashboard</button>
+
+<div class="sub">
+Gate of Heaven Ministries
 </div>
+
+</div>
+
+<button
+class="back"
+onclick="location.href='dashboard.html'">
+
+← Dashboard
+
+</button>
+
+</div>
+
 </header>
 
+
 <main>
+
 <div class="container">
 
-<div id="loading" class="card loading">
+
+<!-- LESSON -->
+
+<div id="lesson">
+
+<div class="card loading">
 Loading lesson...
 </div>
 
-<div id="error" class="card error"></div>
-
-<div id="premium" class="card premium">
-🔒 Premium membership is required for this lesson.
-<br>
-<a href="premium.html">View Premium Membership</a>
 </div>
 
-<div id="lessonArea" style="display:none">
 
-<div class="card">
+<!-- ASSESSMENT -->
 
-<div class="label" id="lessonNo"></div>
-
-<h1 id="title"></h1>
-
-<div class="desc" id="description"></div>
-
-<div class="content" id="content"></div>
-
-<div id="verseBox" class="verse" style="display:none">
-<b>📖 Bible Verse</b>
-<span id="verse"></span>
-</div>
-
-</div>
-
-<div class="card">
+<div
+class="card"
+id="assessment"
+style="display:none"
+>
 
 <div class="assess-title">
 📝 5-Question Assessment
@@ -100,213 +299,259 @@ You must score at least 70% to complete this lesson.
 
 <div id="questions"></div>
 
-<button id="submit" class="submit">
+<button
+class="submit"
+id="submit"
+>
+
 Submit Assessment
+
 </button>
 
-<div id="result" class="result"></div>
+<div
+id="result"
+class="result"
+></div>
 
 </div>
 
-</div>
 
 </div>
+
 </main>
 
+
 <footer>
+
 GOH Bible Academy • Gate of Heaven Ministries<br>
+
 © 2026 GOH Bible Academy. All rights reserved.
+
 </footer>
+
 
 <script>
 
-const LESSON_API="https://dashboard.createlk.workers.dev";
-const PREMIUM_API="https://premium.createlk.workers.dev";
+/* =====================================================
+   CLOUDFLARE API
+===================================================== */
 
-const params=new URLSearchParams(location.search);
-const lessonId=Number(params.get("lesson_id")||0);
-
-const $=id=>document.getElementById(id);
-
-
-/* STUDENT */
-
-let student=null;
-
-try{
-student=JSON.parse(
-localStorage.getItem("goh_student")||
-sessionStorage.getItem("goh_student")||
-"null"
-);
-}catch(e){}
-
-if(!student){
-location.href="login.html";
-}
+const LESSON_API =
+"https://dashboard.createlk.workers.dev";
 
 
-/* START */
+/* =====================================================
+   GET LESSON ID
+===================================================== */
+
+const params =
+new URLSearchParams(location.search);
+
+const lessonId =
+Number(params.get("lesson_id") || 0);
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const lessonBox =
+document.getElementById("lesson");
+
+const assessment =
+document.getElementById("assessment");
+
+const questionsBox =
+document.getElementById("questions");
+
+const submitButton =
+document.getElementById("submit");
+
+const resultBox =
+document.getElementById("result");
+
+
+/* =====================================================
+   CURRENT QUESTIONS
+===================================================== */
+
+let currentQuestions = [];
+
+
+/* =====================================================
+   START
+===================================================== */
 
 if(!lessonId){
 
-showError("Lesson not found.");
-
-}else{
-
-checkAccess();
-
-}
-
-
-/* PREMIUM CHECK */
-
-async function checkAccess(){
-
-try{
-
-/*
-Lesson 1 is FREE.
-*/
-
-if(lessonId===1){
-
-loadLesson();
-return;
-
-}
-
-
-/*
-Check Premium Worker.
-*/
-
-const r=await fetch(
-PREMIUM_API+
-"/status?student_id="+
-encodeURIComponent(student.id),
-{
-cache:"no-store"
-}
+showError(
+"Lesson ID is missing."
 );
 
-if(!r.ok){
-showPremium();
-return;
-}
-
-const data=await r.json();
-
-const m=data.membership||{};
-
-const expiry=m.expiry
-?new Date(m.expiry).getTime()
-:0;
-
-const active=
-data.success===true &&
-String(m.status||"").toUpperCase()==="PREMIUM" &&
-m.active===true &&
-expiry>Date.now();
-
-
-if(active){
-
-/*
-IMPORTANT:
-Premium user loads lesson directly.
-*/
+}else{
 
 loadLesson();
 
-}else{
-
-showPremium();
-
-}
-
-}catch(e){
-
-console.error(e);
-
-showPremium();
-
-}
-
 }
 
 
-/* LOAD LESSON */
+/* =====================================================
+   LOAD LESSON FROM CLOUDFLARE
+===================================================== */
 
 async function loadLesson(){
 
 try{
 
-const r=await fetch(
-LESSON_API+
-"/lesson?lesson_id="+
+const response =
+await fetch(
+
+LESSON_API +
+"/lesson?lesson_id=" +
 encodeURIComponent(lessonId),
+
 {
+method:"GET",
 cache:"no-store"
 }
+
 );
 
-if(!r.ok)
-throw new Error("Lesson request failed");
 
-const data=await r.json();
+if(!response.ok){
 
-if(!data.success)
-throw new Error(data.message||"Lesson not found");
-
-const lesson=data.lesson||data.data;
-
-if(!lesson)
-throw new Error("Lesson data missing");
-
-
-$("lessonNo").textContent=
-"LESSON "+lessonId;
-
-$("title").textContent=
-lesson.title||
-lesson.name||
-"Lesson "+lessonId;
-
-$("description").textContent=
-lesson.description||
-lesson.short_description||
-"";
-
-$("content").textContent=
-lesson.content||
-lesson.explanation||
-lesson.lesson_content||
-"";
-
-
-const verse=
-lesson.verse||
-lesson.bible_verse||
-"";
-
-if(verse){
-
-$("verse").textContent=verse;
-$("verseBox").style.display="block";
+throw new Error(
+"Lesson API returned HTTP " +
+response.status
+);
 
 }
 
+
+const data =
+await response.json();
+
+
+if(!data.success){
+
+throw new Error(
+data.message ||
+"Lesson not found."
+);
+
+}
+
+
+const lesson =
+data.lesson;
+
+
+if(!lesson){
+
+throw new Error(
+"Lesson data is missing."
+);
+
+}
+
+
+/* =================================================
+   DISPLAY LESSON
+================================================= */
+
+lessonBox.innerHTML = `
+
+<div class="card">
+
+<div class="label">
+
+LESSON ${escapeHTML(
+lesson.lesson_number || lesson.id
+)}
+
+</div>
+
+<h1>
+
+${escapeHTML(
+lesson.title_en || "Untitled Lesson"
+)}
+
+</h1>
+
+<div class="desc">
+
+${escapeHTML(
+lesson.description_en || ""
+)}
+
+</div>
+
+<div class="content">
+
+${escapeHTML(
+lesson.content_en || ""
+)}
+
+</div>
+
+${
+lesson.bible_verse_en
+?
+`
+
+<div class="verse">
+
+<b>📖 Bible Verse</b>
+
+${escapeHTML(
+lesson.bible_verse_en
+)}
+
+${
+lesson.bible_reference_en
+?
+`
+
+<div class="reference">
+
+${escapeHTML(
+lesson.bible_reference_en
+)}
+
+</div>
+
+`
+:
+""
+}
+
+</div>
+
+`
+:
+""
+
+}
+
+</div>
+
+`;
+
+
+/* =================================================
+   LOAD QUESTIONS
+================================================= */
 
 await loadQuestions();
 
 
-$("loading").style.display="none";
-$("lessonArea").style.display="block";
+}catch(error){
 
-}catch(e){
-
-console.error(e);
+console.error(
+"Lesson loading error:",
+error
+);
 
 showError(
 "Unable to load this lesson."
@@ -317,155 +562,322 @@ showError(
 }
 
 
-/* QUESTIONS */
+/* =====================================================
+   LOAD QUESTIONS FROM CLOUDFLARE
+===================================================== */
 
 async function loadQuestions(){
 
-let r=await fetch(
-LESSON_API+
-"/lesson-questions?lesson_id="+
+try{
+
+let response =
+await fetch(
+
+LESSON_API +
+"/lesson-questions?lesson_id=" +
 encodeURIComponent(lessonId),
+
 {
+method:"GET",
 cache:"no-store"
 }
+
 );
 
 
-/* fallback endpoint */
+/* FALLBACK */
 
-if(!r.ok){
+if(!response.ok){
 
-r=await fetch(
-LESSON_API+
-"/questions?lesson_id="+
+response =
+await fetch(
+
+LESSON_API +
+"/questions?lesson_id=" +
 encodeURIComponent(lessonId),
+
 {
+method:"GET",
 cache:"no-store"
 }
+
 );
 
 }
 
 
-if(!r.ok)
-throw new Error("Questions failed");
+if(!response.ok){
+
+console.warn(
+"Questions API not available."
+);
+
+return;
+
+}
 
 
-const data=await r.json();
-
-if(!data.success)
-throw new Error("Questions not found");
+const data =
+await response.json();
 
 
-const questions=
-(data.questions||data.data||[]).slice(0,5);
+if(!data.success){
+
+console.warn(
+"Questions response failed."
+);
+
+return;
+
+}
 
 
-if(questions.length<5)
-throw new Error("Five questions required");
+currentQuestions =
+(
+data.questions ||
+data.data ||
+[]
+).slice(0,5);
 
 
-$("questions").innerHTML="";
+if(currentQuestions.length === 0){
+
+console.warn(
+"No questions found."
+);
+
+return;
+
+}
 
 
-questions.forEach((q,i)=>{
+/* =================================================
+   REQUIRE 5 QUESTIONS
+================================================= */
 
-const text=
-q.question||
-q.question_text||
-q.text||
-"Question "+(i+1);
+if(currentQuestions.length < 5){
 
-const options=getOptions(q);
+questionsBox.innerHTML = `
 
-const box=document.createElement("div");
+<div class="no-questions">
 
-box.className="question";
+This lesson requires 5 assessment questions.
 
-box.innerHTML=`
-
-<div class="qno">QUESTION ${i+1}</div>
-
-<div class="qtext">
-${esc(text)}
 </div>
-
-${options.map(o=>`
-<label class="option">
-<input
-type="radio"
-name="q${i}"
-value="${esc(o)}">
-${esc(o)}
-</label>
-`).join("")}
 
 `;
 
-$("questions").appendChild(box);
+assessment.style.display="block";
+
+submitButton.disabled=true;
+
+return;
+
+}
+
+
+/* =================================================
+   DISPLAY QUESTIONS
+================================================= */
+
+questionsBox.innerHTML="";
+
+
+currentQuestions.forEach(
+(question,index)=>{
+
+const text =
+question.question ||
+question.question_text ||
+question.q ||
+question.text ||
+"Question " + (index+1);
+
+
+const options =
+getOptions(question);
+
+
+const box =
+document.createElement("div");
+
+box.className="question";
+
+
+box.innerHTML = `
+
+<div class="qno">
+
+QUESTION ${index+1}
+
+</div>
+
+<div class="qtext">
+
+${escapeHTML(text)}
+
+</div>
+
+${
+options.map(
+(option)=>`
+
+<label class="option">
+
+<input
+type="radio"
+name="question${index}"
+value="${escapeHTML(option)}"
+>
+
+${escapeHTML(option)}
+
+</label>
+
+`
+).join("")
+}
+
+`;
+
+
+questionsBox.appendChild(box);
 
 });
 
 
-/* Save questions for submit */
-
-window.lessonQuestions=questions;
-
-}
+assessment.style.display="block";
 
 
-/* OPTIONS */
+}catch(error){
 
-function getOptions(q){
-
-if(Array.isArray(q.options))
-return q.options;
-
-return [
-q.option_a,
-q.option_b,
-q.option_c,
-q.option_d
-].filter(x=>x!==undefined&&x!==null);
-
-}
-
-
-/* SUBMIT */
-
-$("submit").onclick=async()=>{
-
-const questions=
-window.lessonQuestions||[];
-
-let score=0;
-let answered=0;
-
-questions.forEach((q,i)=>{
-
-const selected=
-document.querySelector(
-`input[name="q${i}"]:checked`
+console.error(
+"Questions loading error:",
+error
 );
 
-if(!selected)return;
+/*
+   Lesson can still display
+   even if questions fail.
+*/
+
+}
+
+}
+
+
+/* =====================================================
+   GET OPTIONS
+===================================================== */
+
+function getOptions(question){
+
+/*
+   If Worker returns:
+   options: [...]
+*/
+
+if(
+Array.isArray(question.options)
+){
+
+return question.options;
+
+}
+
+
+/*
+   If Worker returns option_a etc.
+*/
+
+return [
+
+question.option_a,
+question.option_b,
+question.option_c,
+question.option_d
+
+].filter(
+value =>
+value !== undefined &&
+value !== null &&
+String(value).trim() !== ""
+);
+
+}
+
+
+/* =====================================================
+   SUBMIT ASSESSMENT
+===================================================== */
+
+submitButton.onclick =
+async function(){
+
+if(currentQuestions.length < 5){
+
+showResult(
+"Five questions are required.",
+false
+);
+
+return;
+
+}
+
+
+let score=0;
+
+let answered=0;
+
+
+currentQuestions.forEach(
+(question,index)=>{
+
+const selected =
+document.querySelector(
+
+`input[name="question${index}"]:checked`
+
+);
+
+
+if(!selected){
+
+return;
+
+}
+
 
 answered++;
 
-const correct=
-q.correct_answer||
-q.answer||
-q.correct||
-q.correct_option||
+
+const correct =
+question.correct_answer ||
+question.answer ||
+question.correct ||
+question.correct_option ||
+question.answer_en ||
 "";
 
-if(norm(selected.value)===norm(correct))
+
+if(
+normalise(selected.value) ===
+normalise(correct)
+){
+
 score++;
+
+}
 
 });
 
 
-if(answered<5){
+/* =================================================
+   ALL QUESTIONS REQUIRED
+================================================= */
+
+if(answered < 5){
 
 showResult(
 "Please answer all 5 questions.",
@@ -477,16 +889,26 @@ return;
 }
 
 
-const percent=
-Math.round(score/5*100);
+const percent =
+Math.round(
+(score / 5) * 100
+);
 
 
-if(percent<70){
+/* =================================================
+   FAIL
+================================================= */
+
+if(percent < 70){
 
 showResult(
-"Score: "+percent+
-"%. You need 70% to pass.",
+
+"Score: " +
+percent +
+"%. You need at least 70% to pass.",
+
 false
+
 );
 
 return;
@@ -494,49 +916,95 @@ return;
 }
 
 
-/* SAVE PROGRESS */
+/* =================================================
+   SAVE COMPLETION TO CLOUDFLARE
+================================================= */
+
+submitButton.disabled=true;
+
 
 try{
 
-const r=await fetch(
-LESSON_API+"/complete",
+const response =
+await fetch(
+
+LESSON_API + "/complete",
+
 {
+
 method:"POST",
+
 headers:{
-"Content-Type":"application/json"
+"Content-Type":
+"application/json"
 },
+
 body:JSON.stringify({
-student_id:Number(student.id),
-lesson_id:lessonId
+
+student_id:
+getStudentId(),
+
+lesson_id:
+lessonId
+
 })
-}
-);
 
-const data=await r.json();
+});
 
-if(!r.ok||!data.success){
+
+const data =
+await response.json();
+
+
+if(
+!response.ok ||
+!data.success
+){
+
+submitButton.disabled=false;
 
 showResult(
-"Passed, but progress could not be saved.",
+
+"Passed with " +
+percent +
+"%, but progress could not be saved.",
+
 false
+
 );
 
 return;
 
 }
 
+
+/* SUCCESS */
+
 showResult(
-"✓ Passed! Score: "+percent+"%. Lesson completed.",
+
+"✓ Passed! Score: " +
+percent +
+"%. Lesson completed.",
+
 true
+
 );
 
-$("submit").disabled=true;
 
-}catch(e){
+}catch(error){
+
+console.error(error);
+
+submitButton.disabled=false;
 
 showResult(
-"Unable to save progress.",
+
+"Passed with " +
+percent +
+"%, but progress could not be saved.",
+
 false
+
 );
 
 }
@@ -544,61 +1012,159 @@ false
 };
 
 
-/* PREMIUM */
+/* =====================================================
+   GET STUDENT ID
+===================================================== */
 
-function showPremium(){
+function getStudentId(){
 
-$("loading").style.display="none";
-$("error").style.display="none";
-$("lessonArea").style.display="none";
-$("premium").style.display="block";
+let student=null;
+
+
+try{
+
+student =
+JSON.parse(
+localStorage.getItem(
+"goh_student"
+) || "null"
+);
+
+}catch(e){}
+
+
+if(
+!student
+){
+
+try{
+
+student =
+JSON.parse(
+sessionStorage.getItem(
+"goh_student"
+) || "null"
+);
+
+}catch(e){}
 
 }
 
 
-/* ERROR */
+if(
+!student ||
+!student.id
+){
 
-function showError(text){
-
-$("loading").style.display="none";
-$("premium").style.display="none";
-$("lessonArea").style.display="none";
-$("error").style.display="block";
-$("error").textContent=text;
+return null;
 
 }
 
 
-/* RESULT */
-
-function showResult(text,success){
-
-$("result").className=
-"result "+(success?"pass":"fail");
-
-$("result").textContent=text;
+return Number(
+student.id
+);
 
 }
 
 
-/* HELPERS */
+/* =====================================================
+   SHOW ERROR
+===================================================== */
 
-function norm(x){
+function showError(message){
 
-return String(x)
+lessonBox.innerHTML = `
+
+<div class="card error">
+
+<div class="label">
+ERROR
+</div>
+
+<h1>
+Unable to Load Lesson
+</h1>
+
+<div class="desc">
+
+${escapeHTML(message)}
+
+</div>
+
+</div>
+
+`;
+
+assessment.style.display="none";
+
+}
+
+
+/* =====================================================
+   SHOW RESULT
+===================================================== */
+
+function showResult(
+text,
+success
+){
+
+resultBox.className =
+"result " +
+(success ? "pass" : "fail");
+
+resultBox.textContent =
+text;
+
+}
+
+
+/* =====================================================
+   NORMALISE ANSWER
+===================================================== */
+
+function normalise(value){
+
+return String(value || "")
 .trim()
 .toLowerCase();
 
 }
 
-function esc(x){
 
-return String(x)
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value){
+
+return String(value || "")
+
+.replace(
+/&/g,
+"&amp;"
+)
+
+.replace(
+/</g,
+"&lt;"
+)
+
+.replace(
+/>/g,
+"&gt;"
+)
+
+.replace(
+/"/g,
+"&quot;"
+)
+
+.replace(
+/'/g,
+"&#039;"
+);
 
 }
 
