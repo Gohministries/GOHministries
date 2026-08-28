@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#111827">
-
-<title>Student Dashboard | GOH Bible Academy</title>
-
-<link rel="icon"
-href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
-
-<style>
+<title>Student Dashboard | GOH Bible Academy</title><link rel="icon"
+href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"><style>
 *{box-sizing:border-box;margin:0;padding:0}
 
 body{
@@ -44,7 +38,8 @@ gap:9px
 
 .logo img{
 width:40px;
-height:40px
+height:40px;
+border-radius:8px
 }
 
 .logo-title{
@@ -78,7 +73,7 @@ padding:20px 0 40px
 
 .hero{
 background:#111827;
-color:#fff;
+color:white;
 padding:20px;
 border-radius:16px;
 margin-bottom:12px
@@ -126,6 +121,30 @@ margin-top:3px;
 font-size:13px
 }
 
+.language{
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:12px;
+padding:13px;
+margin-bottom:12px
+}
+
+.language label{
+display:block;
+font-size:8px;
+font-weight:bold;
+color:#777;
+margin-bottom:6px
+}
+
+select{
+width:100%;
+padding:9px;
+border:1px solid #ddd;
+border-radius:8px;
+background:#fff
+}
+
 .progress{
 background:#fff;
 border:1px solid #e5e7eb;
@@ -161,7 +180,8 @@ overflow:hidden
 .fill{
 height:100%;
 width:0;
-background:#4f46e5
+background:#4f46e5;
+transition:width .3s
 }
 
 h2{
@@ -185,7 +205,12 @@ background:#fff;
 border:1px solid #e5e7eb;
 border-radius:12px;
 padding:14px;
-cursor:pointer
+cursor:pointer;
+transition:.15s
+}
+
+.module:hover{
+transform:translateY(-1px)
 }
 
 .module-top{
@@ -236,7 +261,7 @@ display:none
 
 .lesson-head{
 background:#111827;
-color:#fff;
+color:white;
 padding:15px;
 border-radius:13px;
 margin-bottom:10px
@@ -255,7 +280,7 @@ margin-top:3px
 .back{
 margin-top:10px;
 border:0;
-background:#fff;
+background:white;
 color:#111827;
 padding:8px 11px;
 border-radius:8px;
@@ -283,7 +308,8 @@ display:flex;
 align-items:center;
 justify-content:center;
 font-size:9px;
-font-weight:bold
+font-weight:bold;
+flex-shrink:0
 }
 
 .lesson-info{
@@ -297,37 +323,38 @@ font-weight:bold
 
 .lesson-desc{
 font-size:8px;
-color:#777;
-margin-top:2px
+color:#777
 }
 
 .lesson-btn{
 border:0;
-background:#111827;
-color:#fff;
 padding:7px 9px;
 border-radius:7px;
 font-size:8px;
-font-weight:bold
+font-weight:bold;
+background:#dcfce7;
+color:#166534
 }
 
 .loading{
+text-align:center;
 background:#fff;
 border:1px solid #e5e7eb;
 border-radius:12px;
-padding:20px;
-text-align:center;
-font-size:10px
+padding:18px;
+font-size:10px;
+color:#777
 }
 
 .error{
-background:#fef2f2;
-color:#b91c1c;
+display:none;
+background:#fff;
 border:1px solid #fecaca;
+color:#b91c1c;
 border-radius:12px;
 padding:15px;
 font-size:10px;
-display:none
+margin-bottom:12px
 }
 
 footer{
@@ -349,173 +376,82 @@ grid-template-columns:1fr
 }
 
 }
-</style>
-</head>
 
-<body>
-
-<header>
-
-<div class="container nav">
-
-<div class="logo">
-
-<img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
-
-<div>
-<div class="logo-title">
+</style></head><body><header><div class="container nav"><div class="logo"><img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"><div><div class="logo-title">
 GOH Bible Academy
-</div>
-
-<div class="logo-sub">
+</div><div class="logo-sub">
 Gate of Heaven Ministries
-</div>
-</div>
-
-</div>
-
-<button class="logout" onclick="logout()">
+</div></div></div><button class="logout" onclick="logout()">
 🚪 Logout
-</button>
-
-</div>
-
-</header>
-
-
-<main>
-
-<div class="container">
-
-<div class="hero">
-
-<small>
-STUDENT DASHBOARD
-</small>
+</button></div></header><main><div class="container"><div class="hero"><small>STUDENT DASHBOARD</small>
 
 <h1 id="welcome">
 Welcome 👋
-</h1>
-
-<p>
+</h1><p>
 Continue your Biblical Studies journey.
-</p>
-
-</div>
-
-
-<div class="info">
-
-<div>
+</p></div><div class="info"><div>
 <small>MEMBERSHIP</small>
 <strong>FREE</strong>
-</div>
-
-<div>
+</div><div>
 <small>STUDENT ID</small>
 <strong id="studentId">—</strong>
-</div>
-
-<div>
+</div><div>
 <small>LANGUAGE</small>
-<strong>English</strong>
-</div>
-
-</div>
-
-
-<div class="progress">
-
-<div class="progress-top">
-
-<span>
+<strong id="language">English</strong>
+</div></div><div class="language"><label>
+SELECT LESSON LANGUAGE
+</label><select id="lang"><option value="en">
+English
+</option><option value="ta">
+தமிழ்
+</option><option value="si">
+සිංහල
+</option></select></div><div class="progress"><div class="progress-top"><span>
 🏆 Learning Progress
-</span>
-
-<span class="percent" id="percent">
+</span><span class="percent" id="percent">
 0%
-</span>
-
-</div>
-
-<div class="progress-text" id="progressText">
-Loading progress...
-</div>
-
-<div class="bar">
-<div class="fill" id="fill"></div>
-</div>
-
-</div>
-
-
-<section id="moduleSection">
-
-<h2>
+</span></div><div class="progress-text" id="progressText">
+0 / 180 lessons completed
+</div><div class="bar"><div class="fill" id="fill"></div></div></div><section id="moduleSection"><h2>
 CHRISTIAN BIBLICAL STUDIES
-</h2>
-
-<div class="sub">
-Lessons loaded from Cloudflare D1
-</div>
-
-<div id="modules" class="modules">
-
-<div class="loading">
+</h2><div class="sub">
+180-Lesson Discipleship Training Program
+</div><div id="moduleLoading" class="loading">
 Loading modules...
-</div>
-
-</div>
-
-</section>
-
-
-<section id="lessonSection" class="lessons">
-
-<div class="lesson-head">
-
-<h2 id="moduleTitle">
-Lessons
-</h2>
-
-<p id="moduleDesc"></p>
-
-<button class="back" onclick="back()">
+</div><div id="moduleError" class="error"></div><div class="modules" id="modules"></div></section><section class="lessons" id="lessonSection"><div class="lesson-head"><h2 id="moduleTitle"></h2><p id="moduleDesc"></p><button class="back" onclick="back()">
 ← Back to Modules
-</button>
+</button></div><div id="lessonList"></div></section></div></main><footer>GOH Bible Academy • Gate of Heaven Ministries<br>
 
-</div>
-
-<div id="lessonList"></div>
-
-</section>
-
-
-<div id="error" class="error"></div>
-
-</div>
-
-</main>
-
-
-<footer>
-
-GOH Bible Academy • Gate of Heaven Ministries<br>
 © 2026 GOH Bible Academy. All rights reserved.
 
-</footer>
+</footer><script>
+
+/* =========================
+   CONFIG
+========================= */
+
+const API="https://dashboard.createlk.workers.dev";
 
 
-<script>
+/* =========================
+   STUDENT
+========================= */
 
-const API=
-"https://dashboard.createlk.workers.dev";
+let student=null;
 
-const student=JSON.parse(
+try{
+
+student=JSON.parse(
 localStorage.getItem("goh_student")||
 sessionStorage.getItem("goh_student")||
 "null"
 );
+
+}catch(e){
+
+student=null;
+
+}
 
 if(!student){
 
@@ -523,25 +459,40 @@ location.href="login.html";
 
 }
 
-const studentId=Number(student.id);
-
-document.getElementById("welcome").textContent=
-"Welcome, "+(student.first_name||"Student")+" 👋";
+const studentId=Number(student.id||0);
 
 document.getElementById("studentId").textContent=
 studentId;
 
-
-let modules=[];
+document.getElementById("welcome").textContent=
+"Welcome, "+(student.first_name||"Student")+" 👋";
 
 
 /* =========================
-   LOAD MODULES
+   DATA
+========================= */
+
+let modules=[];
+
+let currentModule=null;
+
+
+/* =========================
+   LOAD MODULES FROM CLOUDFLARE
 ========================= */
 
 async function loadModules(){
 
+const loading=
+document.getElementById("moduleLoading");
+
+const error=
+document.getElementById("moduleError");
+
 try{
+
+loading.style.display="block";
+error.style.display="none";
 
 const r=await fetch(
 API+"/modules",
@@ -552,31 +503,84 @@ cache:"no-store"
 
 const data=await r.json();
 
-if(!r.ok || !data.success){
+if(!r.ok){
 
 throw new Error(
-data.message||"Modules failed"
+data.message||
+data.error||
+"HTTP "+r.status
 );
 
 }
 
-modules=data.modules||[];
+if(!data.success){
+
+throw new Error(
+data.message||
+"Unable to load modules"
+);
+
+}
+
+modules=
+data.modules||
+data.data||
+[];
+
+if(!modules.length){
+
+throw new Error(
+"No modules found in Cloudflare D1."
+);
+
+}
+
+renderModules();
+
+loading.style.display="none";
+
+}catch(e){
+
+console.error(e);
+
+loading.style.display="none";
+
+error.style.display="block";
+
+error.textContent=
+"Unable to load modules from Cloudflare: "+
+e.message;
+
+}
+
+}
+
+
+/* =========================
+   RENDER MODULES
+========================= */
+
+function renderModules(){
 
 const box=
 document.getElementById("modules");
 
 box.innerHTML="";
 
-if(!modules.length){
-
-box.innerHTML=
-'<div class="loading">No modules found.</div>';
-
-return;
-
-}
-
 modules.forEach((m,index)=>{
+
+const moduleId=
+Number(m.id);
+
+const title=
+m.title_en||
+m.title||
+"Module "+(index+1);
+
+const desc=
+m.description_en||
+m.description||
+"";
 
 const div=
 document.createElement("div");
@@ -588,21 +592,21 @@ div.innerHTML=`
 <div class="module-top">
 
 <div class="icon">
-${moduleIcon(index)}
+${getIcon(index)}
 </div>
 
 <div>
 
 <div class="module-no">
-MODULE ${m.module_number||index+1}
+MODULE ${index+1}
 </div>
 
 <div class="module-title">
-${esc(m.title_en||"Module")}
+${escapeHTML(title)}
 </div>
 
 <div class="module-desc">
-${esc(m.description_en||"")}
+${escapeHTML(desc)}
 </div>
 
 </div>
@@ -616,24 +620,18 @@ View Lessons →
 </button>
 
 </div>
+
 `;
 
 div.onclick=()=>{
-showLessons(m);
+
+showLessons(moduleId,title,desc);
+
 };
 
 box.appendChild(div);
 
 });
-
-}catch(e){
-
-showError(
-"Unable to load modules from Cloudflare: "+
-e.message
-);
-
-}
 
 }
 
@@ -642,38 +640,36 @@ e.message
    LOAD LESSONS
 ========================= */
 
-async function showLessons(module){
+async function showLessons(moduleId,title,desc){
 
-document.getElementById(
-"moduleSection"
-).style.display="none";
+document.getElementById("moduleSection")
+.style.display="none";
 
-document.getElementById(
-"lessonSection"
-).style.display="block";
+document.getElementById("lessonSection")
+.style.display="block";
 
-document.getElementById(
-"moduleTitle"
-).textContent=
-module.title_en||"Lessons";
+document.getElementById("moduleTitle")
+.textContent=title;
 
-document.getElementById(
-"moduleDesc"
-).textContent=
-module.description_en||"";
+document.getElementById("moduleDesc")
+.textContent=desc;
 
 const box=
 document.getElementById("lessonList");
 
-box.innerHTML=
-'<div class="loading">Loading lessons...</div>';
+box.innerHTML=`
+
+<div class="loading">
+Loading lessons from Cloudflare...
+</div>
+
+`;
 
 try{
 
 const r=await fetch(
-API+
-"/lessons?module_id="+
-encodeURIComponent(module.id),
+API+"/lessons?module_id="+
+encodeURIComponent(moduleId),
 {
 cache:"no-store"
 }
@@ -681,28 +677,73 @@ cache:"no-store"
 
 const data=await r.json();
 
-if(!r.ok || !data.success){
+if(!r.ok){
 
 throw new Error(
-data.message||"Lessons failed"
+data.message||
+data.error||
+"HTTP "+r.status
 );
 
 }
 
-const lessons=data.lessons||[];
+if(!data.success){
+
+throw new Error(
+data.message||
+"Unable to load lessons"
+);
+
+}
+
+const lessons=
+data.lessons||
+data.data||
+[];
 
 box.innerHTML="";
 
 if(!lessons.length){
 
-box.innerHTML=
-'<div class="loading">No lessons found.</div>';
+box.innerHTML=`
+
+<div class="loading">
+No lessons found for this module.
+</div>
+
+`;
 
 return;
 
 }
 
-lessons.forEach(lesson=>{
+
+/* SORT BY LESSON NUMBER */
+
+lessons.sort((a,b)=>
+Number(a.lesson_number||0)-
+Number(b.lesson_number||0)
+);
+
+
+/* DISPLAY */
+
+lessons.forEach((lesson,index)=>{
+
+const id=
+Number(lesson.id);
+
+const number=
+lesson.lesson_number||
+(index+1);
+
+const title=
+lesson.title_en||
+"Lesson "+number;
+
+const desc=
+lesson.description_en||
+"";
 
 const div=
 document.createElement("div");
@@ -712,17 +753,17 @@ div.className="lesson";
 div.innerHTML=`
 
 <div class="num">
-${lesson.lesson_number}
+${number}
 </div>
 
 <div class="lesson-info">
 
 <div class="lesson-title">
-${esc(lesson.title_en||"Lesson")}
+${escapeHTML(title)}
 </div>
 
 <div class="lesson-desc">
-${esc(lesson.description_en||"")}
+Lesson ID ${id}
 </div>
 
 </div>
@@ -730,13 +771,16 @@ ${esc(lesson.description_en||"")}
 <button class="lesson-btn">
 Start →
 </button>
+
 `;
 
 div.querySelector("button").onclick=()=>{
 
 location.href=
 "lesson.html?lesson_id="+
-encodeURIComponent(lesson.id);
+encodeURIComponent(id)+
+"&module_id="+
+encodeURIComponent(moduleId);
 
 };
 
@@ -744,15 +788,37 @@ box.appendChild(div);
 
 });
 
+scrollTo(0,0);
+
 }catch(e){
 
-box.innerHTML=
-'<div class="loading" style="color:#b91c1c">'+
-"Unable to load lessons: "+
-esc(e.message)+
-"</div>";
+console.error(e);
+
+box.innerHTML=`
+
+<div class="error" style="display:block">
+Unable to load lessons from Cloudflare:<br><br>
+${escapeHTML(e.message)}
+</div>
+
+`;
 
 }
+
+}
+
+
+/* =========================
+   BACK
+========================= */
+
+function back(){
+
+document.getElementById("lessonSection")
+.style.display="none";
+
+document.getElementById("moduleSection")
+.style.display="block";
 
 }
 
@@ -766,42 +832,54 @@ async function loadProgress(){
 try{
 
 const r=await fetch(
-API+
-"/progress?student_id="+
+API+"/progress?student_id="+
 encodeURIComponent(studentId),
 {
 cache:"no-store"
 }
 );
 
-const data=await r.json();
+if(!r.ok)return;
 
-if(!r.ok||!data.success)
-return;
+const d=await r.json();
 
-const p=data.progress||{};
+if(!d.success)return;
 
-document.getElementById(
-"progressText"
-).textContent=
-(p.completed||0)+
-" / "+
-(p.total||0)+
+const p=d.progress||{};
+
+const completed=
+Number(p.completed||0);
+
+const total=
+Number(p.total||180);
+
+const percent=
+Number(
+p.percentage||
+Math.round(
+completed/total*100
+)
+);
+
+document.getElementById("progressText")
+.textContent=
+completed+" / "+total+
 " lessons completed";
 
-document.getElementById(
-"percent"
-).textContent=
-(p.percentage||0)+"%";
+document.getElementById("percent")
+.textContent=
+percent+"%";
 
-document.getElementById(
-"fill"
-).style.width=
-(p.percentage||0)+"%";
+document.getElementById("fill")
+.style.width=
+percent+"%";
 
 }catch(e){
 
-console.log(e);
+console.log(
+"Progress error:",
+e
+);
 
 }
 
@@ -809,18 +887,39 @@ console.log(e);
 
 
 /* =========================
-   BACK
+   LANGUAGE
 ========================= */
 
-function back(){
+const lang=
+document.getElementById("lang");
 
-document.getElementById(
-"lessonSection"
-).style.display="none";
+const savedLang=
+localStorage.getItem("goh_language")||
+"en";
 
-document.getElementById(
-"moduleSection"
-).style.display="block";
+lang.value=savedLang;
+
+updateLanguageLabel();
+
+lang.onchange=function(){
+
+localStorage.setItem(
+"goh_language",
+this.value
+);
+
+updateLanguageLabel();
+
+};
+
+function updateLanguageLabel(){
+
+const option=
+lang.options[lang.selectedIndex];
+
+document.getElementById("language")
+.textContent=
+option.text;
 
 }
 
@@ -831,9 +930,13 @@ document.getElementById(
 
 function logout(){
 
-localStorage.removeItem("goh_student");
+localStorage.removeItem(
+"goh_student"
+);
 
-sessionStorage.removeItem("goh_student");
+sessionStorage.removeItem(
+"goh_student"
+);
 
 location.href="login.html";
 
@@ -844,7 +947,7 @@ location.href="login.html";
    ICONS
 ========================= */
 
-function moduleIcon(i){
+function getIcon(i){
 
 const icons=[
 "📖",
@@ -852,38 +955,19 @@ const icons=[
 "🔥",
 "⛪",
 "🌍",
-"🏆",
-"📚",
-"🙏",
-"🕊️",
-"🎓"
+"🏆"
 ];
 
-return icons[i%icons.length];
+return icons[i]||"📚";
 
 }
 
 
 /* =========================
-   ERROR
+   ESCAPE HTML
 ========================= */
 
-function showError(text){
-
-const e=
-document.getElementById("error");
-
-e.textContent=text;
-e.style.display="block";
-
-}
-
-
-/* =========================
-   ESCAPE
-========================= */
-
-function esc(value){
+function escapeHTML(value){
 
 return String(value??"")
 .replace(/&/g,"&amp;")
@@ -900,9 +984,8 @@ return String(value??"")
 ========================= */
 
 loadModules();
+
 loadProgress();
 
-</script>
-
-</body>
+</script></body>
 </html>
