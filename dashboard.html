@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#111827">
+
 <title>Student Dashboard | GOH Bible Academy</title>
 
 <link rel="icon"
@@ -11,65 +12,342 @@ href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial;background:#f3f6fb;color:#172033}
-.container{width:min(900px,94%);margin:auto}
-header{background:#fff;border-bottom:1px solid #e5e7eb}
-.nav{height:64px;display:flex;align-items:center;justify-content:space-between}
-.logo{display:flex;align-items:center;gap:9px}
-.logo img{width:40px;height:40px}
-.logo-title{font-size:13px;font-weight:900}
-.logo-sub{font-size:8px;color:#777}
-button{font-family:inherit;cursor:pointer}
-.logout,.back{border:0;background:#111827;color:#fff;padding:9px 12px;border-radius:8px;font-size:9px;font-weight:900}
-main{padding:20px 0 40px}
-.hero{background:#111827;color:white;padding:20px;border-radius:16px;margin-bottom:12px}
-.hero small{font-size:8px;color:#fbbf24;font-weight:bold}
-.hero h1{font-size:21px;margin:5px 0}
-.hero p{font-size:10px;color:#ddd}
-.info{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:12px}
-.info div,.language,.progress,.module,.lesson{background:#fff;border:1px solid #e5e7eb;border-radius:12px}
-.info div{padding:13px}
-.info small{font-size:8px;color:#777;font-weight:bold}
-.info strong{display:block;margin-top:3px;font-size:13px}
-.language{padding:13px;margin-bottom:12px}
-.language label{display:block;font-size:8px;font-weight:bold;color:#777;margin-bottom:6px}
-select{width:100%;padding:9px;border:1px solid #ddd;border-radius:8px}
-.progress{padding:15px;margin-bottom:18px}
-.progress-top{display:flex;justify-content:space-between;font-size:12px;font-weight:bold}
-.percent{color:#4f46e5}
-.progress-text{font-size:9px;color:#777;margin:6px 0}
-.bar{height:8px;background:#e5e7eb;border-radius:10px;overflow:hidden}
-.fill{height:100%;width:0;background:#4f46e5}
-h2{font-size:16px}
-.sub{font-size:9px;color:#777;margin:3px 0 12px}
-.modules{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.module{padding:14px;cursor:pointer}
-.module-top{display:flex;gap:10px}
-.icon{font-size:24px}
-.module-no{font-size:8px;color:#4f46e5;font-weight:bold}
-.module-title{font-size:12px;font-weight:bold}
-.module-desc{font-size:8px;color:#777}
-.module-bottom{margin-top:10px;border-top:1px solid #eee;padding-top:9px;text-align:right}
-.view{border:0;background:#111827;color:#fff;padding:7px 9px;border-radius:7px;font-size:8px;font-weight:bold}
-.lessons{display:none}
-.lesson-head{background:#111827;color:white;padding:15px;border-radius:13px;margin-bottom:10px}
-.lesson-head h2{font-size:16px}
-.lesson-head p{font-size:8px;color:#ddd;margin-top:3px}
-.back{margin-top:10px;background:white;color:#111827}
-.lesson{padding:10px;display:flex;align-items:center;gap:9px;margin-bottom:7px}
-.num{width:30px;height:30px;background:#f3f4f6;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:bold}
-.lesson-info{flex:1}
-.lesson-title{font-size:10px;font-weight:bold}
-.lesson-desc{font-size:8px;color:#777}
-.lesson-btn{border:0;padding:7px 9px;border-radius:7px;font-size:8px;font-weight:bold}
-.free{background:#dcfce7;color:#166534}
-.lock{background:#fef3c7;color:#92400e}
-.premium{margin-top:15px;background:#fff7ed;border:1px solid #fed7aa;padding:15px;border-radius:12px;text-align:center}
-.premium a{display:inline-block;margin-top:8px;background:#f59e0b;color:#111;padding:8px 12px;border-radius:7px;text-decoration:none;font-size:9px;font-weight:bold}
-footer{background:#0b1120;color:#64748b;text-align:center;padding:18px;font-size:8px}
+
+body{
+font-family:Arial,sans-serif;
+background:#f3f6fb;
+color:#172033
+}
+
+.container{
+width:min(900px,94%);
+margin:auto
+}
+
+header{
+background:#fff;
+border-bottom:1px solid #e5e7eb
+}
+
+.nav{
+height:64px;
+display:flex;
+align-items:center;
+justify-content:space-between
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:9px
+}
+
+.logo img{
+width:40px;
+height:40px
+}
+
+.logo-title{
+font-size:13px;
+font-weight:900
+}
+
+.logo-sub{
+font-size:8px;
+color:#777
+}
+
+button{
+font-family:inherit;
+cursor:pointer
+}
+
+.logout{
+border:0;
+background:#111827;
+color:#fff;
+padding:9px 12px;
+border-radius:8px;
+font-size:9px;
+font-weight:900
+}
+
+main{
+padding:20px 0 40px
+}
+
+.hero{
+background:#111827;
+color:#fff;
+padding:20px;
+border-radius:16px;
+margin-bottom:12px
+}
+
+.hero small{
+font-size:8px;
+color:#fbbf24;
+font-weight:bold
+}
+
+.hero h1{
+font-size:21px;
+margin:5px 0
+}
+
+.hero p{
+font-size:10px;
+color:#ddd
+}
+
+.info{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:9px;
+margin-bottom:12px
+}
+
+.info div{
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:12px;
+padding:13px
+}
+
+.info small{
+font-size:8px;
+color:#777;
+font-weight:bold
+}
+
+.info strong{
+display:block;
+margin-top:3px;
+font-size:13px
+}
+
+.progress{
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:12px;
+padding:15px;
+margin-bottom:18px
+}
+
+.progress-top{
+display:flex;
+justify-content:space-between;
+font-size:12px;
+font-weight:bold
+}
+
+.percent{
+color:#4f46e5
+}
+
+.progress-text{
+font-size:9px;
+color:#777;
+margin:6px 0
+}
+
+.bar{
+height:8px;
+background:#e5e7eb;
+border-radius:10px;
+overflow:hidden
+}
+
+.fill{
+height:100%;
+width:0;
+background:#4f46e5
+}
+
+h2{
+font-size:16px
+}
+
+.sub{
+font-size:9px;
+color:#777;
+margin:3px 0 12px
+}
+
+.modules{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px
+}
+
+.module{
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:12px;
+padding:14px;
+cursor:pointer
+}
+
+.module-top{
+display:flex;
+gap:10px
+}
+
+.icon{
+font-size:24px
+}
+
+.module-no{
+font-size:8px;
+color:#4f46e5;
+font-weight:bold
+}
+
+.module-title{
+font-size:12px;
+font-weight:bold
+}
+
+.module-desc{
+font-size:8px;
+color:#777
+}
+
+.module-bottom{
+margin-top:10px;
+border-top:1px solid #eee;
+padding-top:9px;
+text-align:right
+}
+
+.view{
+border:0;
+background:#111827;
+color:#fff;
+padding:7px 9px;
+border-radius:7px;
+font-size:8px;
+font-weight:bold
+}
+
+.lessons{
+display:none
+}
+
+.lesson-head{
+background:#111827;
+color:#fff;
+padding:15px;
+border-radius:13px;
+margin-bottom:10px
+}
+
+.lesson-head h2{
+font-size:16px
+}
+
+.lesson-head p{
+font-size:8px;
+color:#ddd;
+margin-top:3px
+}
+
+.back{
+margin-top:10px;
+border:0;
+background:#fff;
+color:#111827;
+padding:8px 11px;
+border-radius:8px;
+font-size:9px;
+font-weight:900
+}
+
+.lesson{
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:12px;
+padding:10px;
+display:flex;
+align-items:center;
+gap:9px;
+margin-bottom:7px
+}
+
+.num{
+width:30px;
+height:30px;
+background:#f3f4f6;
+border-radius:7px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:9px;
+font-weight:bold
+}
+
+.lesson-info{
+flex:1
+}
+
+.lesson-title{
+font-size:10px;
+font-weight:bold
+}
+
+.lesson-desc{
+font-size:8px;
+color:#777;
+margin-top:2px
+}
+
+.lesson-btn{
+border:0;
+background:#111827;
+color:#fff;
+padding:7px 9px;
+border-radius:7px;
+font-size:8px;
+font-weight:bold
+}
+
+.loading{
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:12px;
+padding:20px;
+text-align:center;
+font-size:10px
+}
+
+.error{
+background:#fef2f2;
+color:#b91c1c;
+border:1px solid #fecaca;
+border-radius:12px;
+padding:15px;
+font-size:10px;
+display:none
+}
+
+footer{
+background:#0b1120;
+color:#64748b;
+text-align:center;
+padding:18px;
+font-size:8px
+}
+
 @media(max-width:650px){
-.info{grid-template-columns:1fr 1fr}
-.modules{grid-template-columns:1fr}
+
+.info{
+grid-template-columns:1fr 1fr
+}
+
+.modules{
+grid-template-columns:1fr
+}
+
 }
 </style>
 </head>
@@ -77,243 +355,388 @@ footer{background:#0b1120;color:#64748b;text-align:center;padding:18px;font-size
 <body>
 
 <header>
+
 <div class="container nav">
+
 <div class="logo">
+
 <img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
+
 <div>
-<div class="logo-title">GOH Bible Academy</div>
-<div class="logo-sub">Gate of Heaven Ministries</div>
+<div class="logo-title">
+GOH Bible Academy
+</div>
+
+<div class="logo-sub">
+Gate of Heaven Ministries
 </div>
 </div>
-<button class="logout" onclick="logout()">🚪 Logout</button>
+
 </div>
+
+<button class="logout" onclick="logout()">
+🚪 Logout
+</button>
+
+</div>
+
 </header>
 
+
 <main>
+
 <div class="container">
 
 <div class="hero">
-<small>STUDENT DASHBOARD</small>
-<h1 id="welcome">Welcome 👋</h1>
-<p>Continue your Biblical Studies journey through 180 structured lessons.</p>
+
+<small>
+STUDENT DASHBOARD
+</small>
+
+<h1 id="welcome">
+Welcome 👋
+</h1>
+
+<p>
+Continue your Biblical Studies journey.
+</p>
+
 </div>
+
 
 <div class="info">
-<div><small>MEMBERSHIP</small><strong id="membership">FREE</strong></div>
-<div><small>STUDENT ID</small><strong id="studentId">—</strong></div>
-<div><small>LANGUAGE</small><strong id="language">English</strong></div>
+
+<div>
+<small>MEMBERSHIP</small>
+<strong>FREE</strong>
 </div>
 
-<div class="language">
-<label>SELECT LESSON LANGUAGE</label>
-<select id="lang">
-<option value="en">English</option>
-<option value="ta">தமிழ்</option>
-<option value="si">සිංහල</option>
-</select>
+<div>
+<small>STUDENT ID</small>
+<strong id="studentId">—</strong>
 </div>
+
+<div>
+<small>LANGUAGE</small>
+<strong>English</strong>
+</div>
+
+</div>
+
 
 <div class="progress">
+
 <div class="progress-top">
-<span>🏆 Certificate Progress</span>
-<span class="percent" id="percent">0%</span>
+
+<span>
+🏆 Learning Progress
+</span>
+
+<span class="percent" id="percent">
+0%
+</span>
+
 </div>
+
 <div class="progress-text" id="progressText">
-0 / 180 lessons completed
+Loading progress...
 </div>
-<div class="bar"><div class="fill" id="fill"></div></div>
+
+<div class="bar">
+<div class="fill" id="fill"></div>
 </div>
+
+</div>
+
 
 <section id="moduleSection">
-<h2>CHRISTIAN BIBLICAL STUDIES</h2>
-<div class="sub">180-Lesson Discipleship Training Program</div>
-<div class="modules" id="modules"></div>
+
+<h2>
+CHRISTIAN BIBLICAL STUDIES
+</h2>
+
+<div class="sub">
+Lessons loaded from Cloudflare D1
+</div>
+
+<div id="modules" class="modules">
+
+<div class="loading">
+Loading modules...
+</div>
+
+</div>
+
 </section>
 
-<section class="lessons" id="lessonSection">
+
+<section id="lessonSection" class="lessons">
 
 <div class="lesson-head">
-<h2 id="moduleTitle"></h2>
+
+<h2 id="moduleTitle">
+Lessons
+</h2>
+
 <p id="moduleDesc"></p>
-<button class="back" onclick="back()">← Back to Modules</button>
+
+<button class="back" onclick="back()">
+← Back to Modules
+</button>
+
 </div>
 
 <div id="lessonList"></div>
 
-<div class="premium">
-<strong>⭐ Premium Membership</strong>
-<p style="font-size:9px;color:#777;margin-top:4px">
-Lessons 2–180 require active Premium membership.
-</p>
-<a href="premium.html">View Premium</a>
-</div>
-
 </section>
 
+
+<div id="error" class="error"></div>
+
 </div>
+
 </main>
 
+
 <footer>
+
 GOH Bible Academy • Gate of Heaven Ministries<br>
 © 2026 GOH Bible Academy. All rights reserved.
+
 </footer>
+
 
 <script>
 
-const PREMIUM_API="https://premium.createlk.workers.dev";
+const API=
+"https://dashboard.createlk.workers.dev";
+
 const student=JSON.parse(
 localStorage.getItem("goh_student")||
 sessionStorage.getItem("goh_student")||
 "null"
 );
 
-if(!student) location.href="login.html";
+if(!student){
 
-const id=Number(student.id);
-let premium=false;
+location.href="login.html";
+
+}
+
+const studentId=Number(student.id);
 
 document.getElementById("welcome").textContent=
 "Welcome, "+(student.first_name||"Student")+" 👋";
 
-document.getElementById("studentId").textContent=id;
+document.getElementById("studentId").textContent=
+studentId;
 
 
-/* LESSON TITLES */
-
-const modules=[
-["📖","Introduction to the Bible","Bible foundations, inspiration, canon and interpretation",
-["The Bible: God's Word","The Authority of Scripture","How the Bible Was Written","Old and New Testaments","The Books of the Bible","The Canon of Scripture","Understanding Bible Inspiration","God's Revelation","Truth and Scripture","Reading the Bible Correctly","Bible Interpretation","Context in Bible Study","Understanding Biblical Genres","Historical Context","Cultural Context","Studying Bible Passages","Observation in Bible Study","Interpretation in Bible Study","Application of God's Word","Prayer and Bible Study","Living by God's Word","Trusting Scripture","Obedience to Scripture","Scripture and Faith","Scripture and Spiritual Growth","Scripture and Wisdom","Scripture and Character","Scripture and Discipleship","Building a Biblical Foundation","Becoming a Faithful Bible Student"]],
-
-["✝️","God, Christ and Salvation","Knowing God, Jesus Christ and salvation",
-Array.from({length:30},(_,i)=>"God, Christ and Salvation — Lesson "+(i+31))],
-
-["🔥","Holy Spirit and Spiritual Life","The Holy Spirit, prayer and spiritual growth",
-Array.from({length:30},(_,i)=>"Holy Spirit and Spiritual Life — Lesson "+(i+61))],
-
-["⛪","Church and Christian Community","Church life, fellowship and service",
-Array.from({length:30},(_,i)=>"Church and Christian Community — Lesson "+(i+91))],
-
-["🌍","Christian Mission and Discipleship","Evangelism, discipleship and Christian mission",
-Array.from({length:30},(_,i)=>"Christian Mission and Discipleship — Lesson "+(i+121))],
-
-["🏆","Christian Character and Leadership","Faith, integrity and servant leadership",
-Array.from({length:30},(_,i)=>"Christian Character and Leadership — Lesson "+(i+151))]
-];
+let modules=[];
 
 
-/* CHECK PREMIUM */
+/* =========================
+   LOAD MODULES
+========================= */
 
-async function checkPremium(){
+async function loadModules(){
 
 try{
 
 const r=await fetch(
-PREMIUM_API+"/status?student_id="+id,
-{cache:"no-store"}
+API+"/modules",
+{
+cache:"no-store"
+}
 );
 
-if(!r.ok)return;
+const data=await r.json();
 
-const d=await r.json();
-const m=d.membership||{};
+if(!r.ok || !data.success){
 
-if(
-d.success &&
-m.active===true &&
-String(m.status).toUpperCase()==="PREMIUM" &&
-m.expiry &&
-new Date(m.expiry)>new Date()
-){
-
-premium=true;
-document.getElementById("membership").textContent="PREMIUM";
+throw new Error(
+data.message||"Modules failed"
+);
 
 }
 
-}catch(e){
-console.log("Premium check:",e);
-}
+modules=data.modules||[];
+
+const box=
+document.getElementById("modules");
+
+box.innerHTML="";
+
+if(!modules.length){
+
+box.innerHTML=
+'<div class="loading">No modules found.</div>';
+
+return;
 
 }
 
+modules.forEach((m,index)=>{
 
-/* MODULES */
+const div=
+document.createElement("div");
 
-function loadModules(){
-
-const box=document.getElementById("modules");
-
-modules.forEach((m,i)=>{
-
-const div=document.createElement("div");
 div.className="module";
 
 div.innerHTML=`
-<div class="module-top">
-<div class="icon">${m[0]}</div>
-<div>
-<div class="module-no">MODULE ${i+1}</div>
-<div class="module-title">${m[1]}</div>
-<div class="module-desc">${m[2]}</div>
-</div>
-</div>
-<div class="module-bottom">
-<button class="view">View Lessons →</button>
-</div>`;
 
-div.onclick=()=>showLessons(i);
+<div class="module-top">
+
+<div class="icon">
+${moduleIcon(index)}
+</div>
+
+<div>
+
+<div class="module-no">
+MODULE ${m.module_number||index+1}
+</div>
+
+<div class="module-title">
+${esc(m.title_en||"Module")}
+</div>
+
+<div class="module-desc">
+${esc(m.description_en||"")}
+</div>
+
+</div>
+
+</div>
+
+<div class="module-bottom">
+
+<button class="view">
+View Lessons →
+</button>
+
+</div>
+`;
+
+div.onclick=()=>{
+showLessons(m);
+};
 
 box.appendChild(div);
 
 });
 
+}catch(e){
+
+showError(
+"Unable to load modules from Cloudflare: "+
+e.message
+);
+
+}
+
 }
 
 
-/* LESSONS */
+/* =========================
+   LOAD LESSONS
+========================= */
 
-function showLessons(moduleIndex){
+async function showLessons(module){
 
-const m=modules[moduleIndex];
+document.getElementById(
+"moduleSection"
+).style.display="none";
 
-document.getElementById("moduleSection").style.display="none";
-document.getElementById("lessonSection").style.display="block";
+document.getElementById(
+"lessonSection"
+).style.display="block";
 
-document.getElementById("moduleTitle").textContent=m[1];
-document.getElementById("moduleDesc").textContent=m[2];
+document.getElementById(
+"moduleTitle"
+).textContent=
+module.title_en||"Lessons";
 
-const box=document.getElementById("lessonList");
+document.getElementById(
+"moduleDesc"
+).textContent=
+module.description_en||"";
+
+const box=
+document.getElementById("lessonList");
+
+box.innerHTML=
+'<div class="loading">Loading lessons...</div>';
+
+try{
+
+const r=await fetch(
+API+
+"/lessons?module_id="+
+encodeURIComponent(module.id),
+{
+cache:"no-store"
+}
+);
+
+const data=await r.json();
+
+if(!r.ok || !data.success){
+
+throw new Error(
+data.message||"Lessons failed"
+);
+
+}
+
+const lessons=data.lessons||[];
+
 box.innerHTML="";
 
-m[3].forEach((title,i)=>{
+if(!lessons.length){
 
-const lessonNumber=i+1;
-const lessonId=moduleIndex*30+lessonNumber;
-const unlocked=lessonId===1||premium;
+box.innerHTML=
+'<div class="loading">No lessons found.</div>';
 
-const div=document.createElement("div");
+return;
+
+}
+
+lessons.forEach(lesson=>{
+
+const div=
+document.createElement("div");
+
 div.className="lesson";
 
 div.innerHTML=`
-<div class="num">${lessonNumber}</div>
-<div class="lesson-info">
-<div class="lesson-title">${title}</div>
-<div class="lesson-desc">Lesson ${lessonId}</div>
+
+<div class="num">
+${lesson.lesson_number}
 </div>
-<button class="lesson-btn ${unlocked?"free":"lock"}">
-${lessonId===1?"Start →":unlocked?"Start →":"🔒 Premium"}
-</button>`;
+
+<div class="lesson-info">
+
+<div class="lesson-title">
+${esc(lesson.title_en||"Lesson")}
+</div>
+
+<div class="lesson-desc">
+${esc(lesson.description_en||"")}
+</div>
+
+</div>
+
+<button class="lesson-btn">
+Start →
+</button>
+`;
 
 div.querySelector("button").onclick=()=>{
 
-if(!unlocked){
-location.href="premium.html";
-return;
-}
-
 location.href=
-"lesson.html?lesson_id="+lessonId+
-"&module_id="+(moduleIndex+1);
+"lesson.html?lesson_id="+
+encodeURIComponent(lesson.id);
 
 };
 
@@ -321,88 +744,163 @@ box.appendChild(div);
 
 });
 
-scrollTo(0,0);
+}catch(e){
+
+box.innerHTML=
+'<div class="loading" style="color:#b91c1c">'+
+"Unable to load lessons: "+
+esc(e.message)+
+"</div>";
+
+}
 
 }
 
 
-/* BACK */
-
-function back(){
-
-document.getElementById("lessonSection").style.display="none";
-document.getElementById("moduleSection").style.display="block";
-
-}
-
-
-/* PROGRESS */
+/* =========================
+   PROGRESS
+========================= */
 
 async function loadProgress(){
 
 try{
 
 const r=await fetch(
-"https://dashboard.createlk.workers.dev/progress?student_id="+id,
-{cache:"no-store"}
+API+
+"/progress?student_id="+
+encodeURIComponent(studentId),
+{
+cache:"no-store"
+}
 );
 
-if(!r.ok)return;
+const data=await r.json();
 
-const d=await r.json();
-if(!d.success)return;
+if(!r.ok||!data.success)
+return;
 
-const p=d.progress||{};
-const percent=p.percentage||0;
+const p=data.progress||{};
 
-document.getElementById("progressText").textContent=
-(p.completed||0)+" / 180 lessons completed";
+document.getElementById(
+"progressText"
+).textContent=
+(p.completed||0)+
+" / "+
+(p.total||0)+
+" lessons completed";
 
-document.getElementById("percent").textContent=
-percent+"%";
+document.getElementById(
+"percent"
+).textContent=
+(p.percentage||0)+"%";
 
-document.getElementById("fill").style.width=
-percent+"%";
+document.getElementById(
+"fill"
+).style.width=
+(p.percentage||0)+"%";
 
 }catch(e){
+
 console.log(e);
-}
 
 }
 
-
-/* LANGUAGE */
-
-document.getElementById("lang").onchange=function(){
-
-localStorage.setItem("goh_language",this.value);
-
-document.getElementById("language").textContent=
-this.options[this.selectedIndex].text;
-
-};
+}
 
 
-/* LOGOUT */
+/* =========================
+   BACK
+========================= */
+
+function back(){
+
+document.getElementById(
+"lessonSection"
+).style.display="none";
+
+document.getElementById(
+"moduleSection"
+).style.display="block";
+
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
 
 function logout(){
 
 localStorage.removeItem("goh_student");
+
 sessionStorage.removeItem("goh_student");
+
 location.href="login.html";
 
 }
 
 
-/* START */
+/* =========================
+   ICONS
+========================= */
 
-(async()=>{
+function moduleIcon(i){
+
+const icons=[
+"📖",
+"✝️",
+"🔥",
+"⛪",
+"🌍",
+"🏆",
+"📚",
+"🙏",
+"🕊️",
+"🎓"
+];
+
+return icons[i%icons.length];
+
+}
+
+
+/* =========================
+   ERROR
+========================= */
+
+function showError(text){
+
+const e=
+document.getElementById("error");
+
+e.textContent=text;
+e.style.display="block";
+
+}
+
+
+/* =========================
+   ESCAPE
+========================= */
+
+function esc(value){
+
+return String(value??"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================
+   START
+========================= */
 
 loadModules();
 loadProgress();
-await checkPremium();
-
-})();
 
 </script>
 
