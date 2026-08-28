@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#111827">
-
 <title>Lesson | GOH Bible Academy</title>
 
 <style>
-
-*{
-box-sizing:border-box;
-margin:0;
-padding:0
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
 font-family:Arial,sans-serif;
@@ -57,8 +50,7 @@ color:#fff;
 padding:8px 11px;
 border-radius:8px;
 font-size:9px;
-font-weight:900;
-cursor:pointer
+font-weight:900
 }
 
 main{
@@ -81,7 +73,7 @@ font-weight:900
 
 h1{
 font-size:23px;
-margin:5px 0 8px
+margin:5px 0
 }
 
 .desc{
@@ -107,22 +99,6 @@ font-size:11px
 .verse b{
 display:block;
 margin-bottom:5px
-}
-
-.reference{
-margin-top:8px;
-font-weight:900
-}
-
-.loading{
-text-align:center;
-font-size:11px;
-color:#6b7280
-}
-
-.error{
-text-align:center;
-color:#b91c1c
 }
 
 .assess-title{
@@ -162,12 +138,7 @@ border:1px solid #e5e7eb;
 padding:9px;
 border-radius:8px;
 margin:5px 0;
-font-size:10px;
-cursor:pointer
-}
-
-.option:hover{
-background:#f3f4f6
+font-size:10px
 }
 
 .option input{
@@ -183,13 +154,11 @@ padding:12px;
 border-radius:9px;
 font-weight:900;
 font-size:10px;
-margin-top:8px;
-cursor:pointer
+margin-top:8px
 }
 
 .submit:disabled{
-opacity:.5;
-cursor:not-allowed
+opacity:.5
 }
 
 .result{
@@ -214,11 +183,16 @@ background:#fef2f2;
 color:#b91c1c
 }
 
-.no-questions{
-font-size:10px;
-color:#b91c1c;
+.loading{
 text-align:center;
-padding:10px
+font-size:11px
+}
+
+.error{
+color:#b91c1c;
+font-size:10px;
+font-weight:700;
+text-align:center
 }
 
 footer{
@@ -228,66 +202,64 @@ text-align:center;
 padding:18px;
 font-size:8px
 }
-
 </style>
-
 </head>
 
 <body>
 
-
 <header>
-
 <div class="container nav">
 
 <div>
-
-<div class="logo">
-GOH Bible Academy
+<div class="logo">GOH Bible Academy</div>
+<div class="sub">Gate of Heaven Ministries</div>
 </div>
 
-<div class="sub">
-Gate of Heaven Ministries
-</div>
-
-</div>
-
-<button
-class="back"
-onclick="location.href='dashboard.html'">
-
+<button class="back" onclick="location.href='dashboard.html'">
 ← Dashboard
-
 </button>
 
 </div>
-
 </header>
-
 
 <main>
 
 <div class="container">
 
-
-<!-- LESSON -->
-
-<div id="lesson">
-
-<div class="card loading">
+<div id="loading" class="card loading">
 Loading lesson...
 </div>
 
+<div id="error" class="card error" style="display:none"></div>
+
+<div id="lessonArea" style="display:none">
+
+<div class="card">
+
+<div class="label" id="lessonNumber"></div>
+
+<h1 id="title"></h1>
+
+<div class="desc" id="description"></div>
+
+<div class="content" id="content"></div>
+
+<div class="verse">
+
+<b>📖 Bible Verse</b>
+
+<div id="verse"></div>
+
+<br>
+
+<strong id="reference"></strong>
+
+</div>
+
 </div>
 
 
-<!-- ASSESSMENT -->
-
-<div
-class="card"
-id="assessment"
-style="display:none"
->
+<div class="card">
 
 <div class="assess-title">
 📝 5-Question Assessment
@@ -299,94 +271,47 @@ You must score at least 70% to complete this lesson.
 
 <div id="questions"></div>
 
-<button
-class="submit"
-id="submit"
->
-
+<button class="submit" id="submit">
 Submit Assessment
-
 </button>
 
-<div
-id="result"
-class="result"
-></div>
+<div id="result" class="result"></div>
 
 </div>
 
+</div>
 
 </div>
 
 </main>
 
-
 <footer>
-
 GOH Bible Academy • Gate of Heaven Ministries<br>
-
 © 2026 GOH Bible Academy. All rights reserved.
-
 </footer>
 
 
 <script>
 
 /* =====================================================
-   CLOUDFLARE API
+   CONFIGURATION
 ===================================================== */
 
-const LESSON_API =
-"https://dashboard.createlk.workers.dev";
+const API="https://dashboard.createlk.workers.dev";
 
 
 /* =====================================================
    GET LESSON ID
 ===================================================== */
 
-const params =
-new URLSearchParams(location.search);
+const params=new URLSearchParams(location.search);
 
-const lessonId =
-Number(params.get("lesson_id") || 0);
+const lessonId=Number(params.get("lesson_id"));
 
-
-/* =====================================================
-   ELEMENTS
-===================================================== */
-
-const lessonBox =
-document.getElementById("lesson");
-
-const assessment =
-document.getElementById("assessment");
-
-const questionsBox =
-document.getElementById("questions");
-
-const submitButton =
-document.getElementById("submit");
-
-const resultBox =
-document.getElementById("result");
-
-
-/* =====================================================
-   CURRENT QUESTIONS
-===================================================== */
-
-let currentQuestions = [];
-
-
-/* =====================================================
-   START
-===================================================== */
 
 if(!lessonId){
 
-showError(
-"Lesson ID is missing."
-);
+showError("Lesson ID is missing.");
 
 }else{
 
@@ -403,158 +328,108 @@ async function loadLesson(){
 
 try{
 
-const response =
-await fetch(
-
-LESSON_API +
-"/lesson?lesson_id=" +
-encodeURIComponent(lessonId),
-
+const response=await fetch(
+API+"/lesson?lesson_id="+encodeURIComponent(lessonId),
 {
 method:"GET",
-cache:"no-store"
+cache:"no-store",
+headers:{
+"Accept":"application/json"
 }
-
+}
 );
 
 
 if(!response.ok){
 
 throw new Error(
-"Lesson API returned HTTP " +
-response.status
+"Cloudflare API returned HTTP "+response.status
 );
 
 }
 
 
-const data =
-await response.json();
+const data=await response.json();
+
+
+console.log("Cloudflare lesson response:",data);
 
 
 if(!data.success){
 
 throw new Error(
-data.message ||
-"Lesson not found."
+data.message||"Lesson not found"
 );
 
 }
 
 
-const lesson =
-data.lesson;
+const lesson=data.lesson;
 
 
 if(!lesson){
 
-throw new Error(
-"Lesson data is missing."
+throw new Error("Lesson data missing");
+
+}
+
+
+/* =====================================================
+   DISPLAY CLOUDFARE DATA
+===================================================== */
+
+document.getElementById("lessonNumber").textContent=
+"LESSON "+
+(
+lesson.lesson_number||
+lesson.id||
+lessonId
 );
 
-}
+
+document.getElementById("title").textContent=
+lesson.title_en||"";
 
 
-/* =================================================
-   DISPLAY LESSON
-================================================= */
-
-lessonBox.innerHTML = `
-
-<div class="card">
-
-<div class="label">
-
-LESSON ${escapeHTML(
-lesson.lesson_number || lesson.id
-)}
-
-</div>
-
-<h1>
-
-${escapeHTML(
-lesson.title_en || "Untitled Lesson"
-)}
-
-</h1>
-
-<div class="desc">
-
-${escapeHTML(
-lesson.description_en || ""
-)}
-
-</div>
-
-<div class="content">
-
-${escapeHTML(
-lesson.content_en || ""
-)}
-
-</div>
-
-${
-lesson.bible_verse_en
-?
-`
-
-<div class="verse">
-
-<b>📖 Bible Verse</b>
-
-${escapeHTML(
-lesson.bible_verse_en
-)}
-
-${
-lesson.bible_reference_en
-?
-`
-
-<div class="reference">
-
-${escapeHTML(
-lesson.bible_reference_en
-)}
-
-</div>
-
-`
-:
-""
-}
-
-</div>
-
-`
-:
-""
-
-}
-
-</div>
-
-`;
+document.getElementById("description").textContent=
+lesson.description_en||"";
 
 
-/* =================================================
-   LOAD QUESTIONS
-================================================= */
+document.getElementById("content").textContent=
+lesson.content_en||"";
+
+
+document.getElementById("verse").textContent=
+lesson.bible_verse_en||"";
+
+
+document.getElementById("reference").textContent=
+lesson.bible_reference_en||"";
+
+
+/* =====================================================
+   LOAD QUESTIONS FROM CLOUDFLARE
+===================================================== */
 
 await loadQuestions();
 
 
+/* =====================================================
+   SHOW PAGE
+===================================================== */
+
+document.getElementById("loading").style.display="none";
+
+document.getElementById("lessonArea").style.display="block";
+
+
 }catch(error){
 
-console.error(
-"Lesson loading error:",
-error
-);
+console.error(error);
 
 showError(
-"Unable to load this lesson."
+"Unable to load lesson from Cloudflare. "+
+error.message
 );
 
 }
@@ -563,205 +438,145 @@ showError(
 
 
 /* =====================================================
-   LOAD QUESTIONS FROM CLOUDFLARE
+   LOAD QUESTIONS
 ===================================================== */
+
+let currentQuestions=[];
+
 
 async function loadQuestions(){
 
-try{
-
-let response =
-await fetch(
-
-LESSON_API +
-"/lesson-questions?lesson_id=" +
+const response=await fetch(
+API+"/lesson-questions?lesson_id="+
 encodeURIComponent(lessonId),
-
 {
 method:"GET",
-cache:"no-store"
+cache:"no-store",
+headers:{
+"Accept":"application/json"
 }
-
+}
 );
-
-
-/* FALLBACK */
-
-if(!response.ok){
-
-response =
-await fetch(
-
-LESSON_API +
-"/questions?lesson_id=" +
-encodeURIComponent(lessonId),
-
-{
-method:"GET",
-cache:"no-store"
-}
-
-);
-
-}
 
 
 if(!response.ok){
 
-console.warn(
-"Questions API not available."
+throw new Error(
+"Questions API returned HTTP "+
+response.status
 );
-
-return;
 
 }
 
 
-const data =
-await response.json();
+const data=await response.json();
+
+
+console.log("Questions response:",data);
 
 
 if(!data.success){
 
-console.warn(
-"Questions response failed."
+throw new Error(
+data.message||"Questions not found"
 );
-
-return;
 
 }
 
 
-currentQuestions =
+currentQuestions=
 (
-data.questions ||
-data.data ||
+data.questions||
+data.data||
 []
 ).slice(0,5);
 
 
-if(currentQuestions.length === 0){
+if(currentQuestions.length<5){
 
-console.warn(
-"No questions found."
+throw new Error(
+"Cloudflare returned fewer than 5 questions."
 );
 
-return;
+}
+
+
+renderQuestions();
 
 }
 
 
-/* =================================================
-   REQUIRE 5 QUESTIONS
-================================================= */
+/* =====================================================
+   RENDER QUESTIONS
+===================================================== */
 
-if(currentQuestions.length < 5){
+function renderQuestions(){
 
-questionsBox.innerHTML = `
+const box=
+document.getElementById("questions");
 
-<div class="no-questions">
-
-This lesson requires 5 assessment questions.
-
-</div>
-
-`;
-
-assessment.style.display="block";
-
-submitButton.disabled=true;
-
-return;
-
-}
-
-
-/* =================================================
-   DISPLAY QUESTIONS
-================================================= */
-
-questionsBox.innerHTML="";
+box.innerHTML="";
 
 
 currentQuestions.forEach(
-(question,index)=>{
+(item,index)=>{
 
-const text =
-question.question ||
-question.question_text ||
-question.q ||
-question.text ||
-"Question " + (index+1);
-
-
-const options =
-getOptions(question);
+const question=
+item.question||
+item.question_text||
+item.q||
+"";
 
 
-const box =
-document.createElement("div");
-
-box.className="question";
+const options=getOptions(item);
 
 
-box.innerHTML = `
+const div=document.createElement("div");
 
+div.className="question";
+
+
+let html="";
+
+html+=`
 <div class="qno">
-
 QUESTION ${index+1}
-
 </div>
+`;
 
+html+=`
 <div class="qtext">
-
-${escapeHTML(text)}
-
+${escapeHTML(question)}
 </div>
+`;
 
-${
-options.map(
-(option)=>`
+
+options.forEach(
+(option,optionIndex)=>{
+
+html+=`
 
 <label class="option">
 
 <input
 type="radio"
 name="question${index}"
-value="${escapeHTML(option)}"
->
+value="${escapeHTML(option)}">
 
 ${escapeHTML(option)}
 
 </label>
 
-`
-).join("")
-}
-
 `;
-
-
-questionsBox.appendChild(box);
 
 });
 
 
-assessment.style.display="block";
+div.innerHTML=html;
 
+box.appendChild(div);
 
-}catch(error){
-
-console.error(
-"Questions loading error:",
-error
-);
-
-/*
-   Lesson can still display
-   even if questions fail.
-*/
-
-}
+});
 
 }
 
@@ -770,38 +585,26 @@ error
    GET OPTIONS
 ===================================================== */
 
-function getOptions(question){
+function getOptions(q){
 
-/*
-   If Worker returns:
-   options: [...]
-*/
+if(Array.isArray(q.options)){
 
-if(
-Array.isArray(question.options)
-){
-
-return question.options;
+return q.options;
 
 }
 
 
-/*
-   If Worker returns option_a etc.
-*/
-
 return [
 
-question.option_a,
-question.option_b,
-question.option_c,
-question.option_d
+q.option_a,
+q.option_b,
+q.option_c,
+q.option_d
 
 ].filter(
-value =>
-value !== undefined &&
-value !== null &&
-String(value).trim() !== ""
+x=>x!==undefined &&
+x!==null &&
+String(x).trim()!==""
 );
 
 }
@@ -811,20 +614,8 @@ String(value).trim() !== ""
    SUBMIT ASSESSMENT
 ===================================================== */
 
-submitButton.onclick =
+document.getElementById("submit").onclick=
 async function(){
-
-if(currentQuestions.length < 5){
-
-showResult(
-"Five questions are required.",
-false
-);
-
-return;
-
-}
-
 
 let score=0;
 
@@ -832,13 +623,11 @@ let answered=0;
 
 
 currentQuestions.forEach(
-(question,index)=>{
+(item,index)=>{
 
-const selected =
+const selected=
 document.querySelector(
-
 `input[name="question${index}"]:checked`
-
 );
 
 
@@ -852,18 +641,18 @@ return;
 answered++;
 
 
-const correct =
-question.correct_answer ||
-question.answer ||
-question.correct ||
-question.correct_option ||
-question.answer_en ||
+const correct=
+item.correct_answer||
+item.answer||
+item.correct||
+item.correct_option||
+item.a||
 "";
 
 
 if(
-normalise(selected.value) ===
-normalise(correct)
+normalize(selected.value)===
+normalize(correct)
 ){
 
 score++;
@@ -873,14 +662,10 @@ score++;
 });
 
 
-/* =================================================
-   ALL QUESTIONS REQUIRED
-================================================= */
-
-if(answered < 5){
+if(answered<currentQuestions.length){
 
 showResult(
-"Please answer all 5 questions.",
+"Please answer all questions.",
 false
 );
 
@@ -889,26 +674,18 @@ return;
 }
 
 
-const percent =
+const percent=
 Math.round(
-(score / 5) * 100
+(score/currentQuestions.length)*100
 );
 
 
-/* =================================================
-   FAIL
-================================================= */
-
-if(percent < 70){
+if(percent<70){
 
 showResult(
-
-"Score: " +
-percent +
+"Score: "+percent+
 "%. You need at least 70% to pass.",
-
 false
-
 );
 
 return;
@@ -916,61 +693,60 @@ return;
 }
 
 
-/* =================================================
+/* =====================================================
    SAVE COMPLETION TO CLOUDFLARE
-================================================= */
-
-submitButton.disabled=true;
-
+===================================================== */
 
 try{
 
-const response =
-await fetch(
+const student=
+getStudent();
 
-LESSON_API + "/complete",
 
+if(!student){
+
+showResult(
+"Passed, but student login information was not found.",
+false
+);
+
+return;
+
+}
+
+
+const response=await fetch(
+API+"/complete",
 {
-
 method:"POST",
 
 headers:{
-"Content-Type":
-"application/json"
+"Content-Type":"application/json"
 },
 
 body:JSON.stringify({
 
-student_id:
-getStudentId(),
+student_id:Number(student.id),
 
-lesson_id:
-lessonId
+lesson_id:Number(lessonId)
 
 })
 
-});
+}
+);
 
 
-const data =
-await response.json();
+const data=await response.json();
 
 
-if(
-!response.ok ||
-!data.success
-){
+console.log("Completion response:",data);
 
-submitButton.disabled=false;
+
+if(!response.ok||!data.success){
 
 showResult(
-
-"Passed with " +
-percent +
-"%, but progress could not be saved.",
-
+"Passed, but progress could not be saved.",
 false
-
 );
 
 return;
@@ -978,33 +754,24 @@ return;
 }
 
 
-/* SUCCESS */
-
 showResult(
-
-"✓ Passed! Score: " +
-percent +
+"✓ Passed! Score: "+
+percent+
 "%. Lesson completed.",
-
 true
-
 );
+
+
+this.disabled=true;
 
 
 }catch(error){
 
 console.error(error);
 
-submitButton.disabled=false;
-
 showResult(
-
-"Passed with " +
-percent +
-"%, but progress could not be saved.",
-
+"Passed, but progress could not be saved.",
 false
-
 );
 
 }
@@ -1013,120 +780,80 @@ false
 
 
 /* =====================================================
-   GET STUDENT ID
+   GET STUDENT
 ===================================================== */
 
-function getStudentId(){
-
-let student=null;
-
+function getStudent(){
 
 try{
 
-student =
-JSON.parse(
-localStorage.getItem(
-"goh_student"
-) || "null"
+return JSON.parse(
+localStorage.getItem("goh_student")||
+sessionStorage.getItem("goh_student")||
+"null"
 );
 
-}catch(e){}
-
-
-if(
-!student
-){
-
-try{
-
-student =
-JSON.parse(
-sessionStorage.getItem(
-"goh_student"
-) || "null"
-);
-
-}catch(e){}
-
-}
-
-
-if(
-!student ||
-!student.id
-){
+}catch(e){
 
 return null;
 
 }
 
+}
 
-return Number(
-student.id
-);
+
+/* =====================================================
+   RESULT
+===================================================== */
+
+function showResult(text,success){
+
+const result=
+document.getElementById("result");
+
+
+result.className=
+"result "+
+(success?"pass":"fail");
+
+
+result.textContent=text;
 
 }
 
 
 /* =====================================================
-   SHOW ERROR
+   ERROR
 ===================================================== */
 
-function showError(message){
+function showError(text){
 
-lessonBox.innerHTML = `
+document.getElementById("loading")
+.style.display="none";
 
-<div class="card error">
 
-<div class="label">
-ERROR
-</div>
+document.getElementById("lessonArea")
+.style.display="none";
 
-<h1>
-Unable to Load Lesson
-</h1>
 
-<div class="desc">
+const error=
+document.getElementById("error");
 
-${escapeHTML(message)}
 
-</div>
+error.style.display="block";
 
-</div>
-
-`;
-
-assessment.style.display="none";
+error.textContent=text;
 
 }
 
 
 /* =====================================================
-   SHOW RESULT
+   NORMALIZE ANSWERS
 ===================================================== */
 
-function showResult(
-text,
-success
-){
+function normalize(value){
 
-resultBox.className =
-"result " +
-(success ? "pass" : "fail");
-
-resultBox.textContent =
-text;
-
-}
-
-
-/* =====================================================
-   NORMALISE ANSWER
-===================================================== */
-
-function normalise(value){
-
-return String(value || "")
+return String(value)
 .trim()
 .toLowerCase();
 
@@ -1139,32 +866,17 @@ return String(value || "")
 
 function escapeHTML(value){
 
-return String(value || "")
+return String(value)
 
-.replace(
-/&/g,
-"&amp;"
-)
+.replace(/&/g,"&amp;")
 
-.replace(
-/</g,
-"&lt;"
-)
+.replace(/</g,"&lt;")
 
-.replace(
-/>/g,
-"&gt;"
-)
+.replace(/>/g,"&gt;")
 
-.replace(
-/"/g,
-"&quot;"
-)
+.replace(/"/g,"&quot;")
 
-.replace(
-/'/g,
-"&#039;"
-);
+.replace(/'/g,"&#039;");
 
 }
 
