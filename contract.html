@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -108,6 +109,8 @@ background:#fbbf24;
 color:#111827!important
 }
 
+/* MENU */
+
 .menu{
 display:none;
 width:40px;
@@ -144,6 +147,10 @@ padding:12px 9px;
 border-radius:9px;
 font-size:12px;
 font-weight:800
+}
+
+.mobile-menu a:hover{
+background:#f3f4f6
 }
 
 /* HERO */
@@ -230,7 +237,7 @@ font-size:11px;
 color:#6b7280
 }
 
-/* CONTACT OPTIONS */
+/* CONTACT GRID */
 
 .contact-grid{
 display:grid;
@@ -269,6 +276,8 @@ color:#6b7280;
 margin-bottom:13px
 }
 
+/* BUTTONS */
+
 .btn{
 display:inline-flex;
 align-items:center;
@@ -287,6 +296,10 @@ color:#111827
 .whatsapp-btn{
 background:#25d366;
 color:#fff
+}
+
+.btn:hover{
+opacity:.9
 }
 
 /* HELP */
@@ -320,7 +333,11 @@ color:#6b7280
 
 .support{
 background:
-linear-gradient(135deg,#fffdf2,#fff);
+linear-gradient(
+135deg,
+#fffdf2,
+#fff
+);
 border:1px solid #f1df9a;
 border-radius:18px;
 padding:25px;
@@ -434,7 +451,12 @@ color:#fff;
 border-radius:50%;
 font-size:23px;
 z-index:2000;
-box-shadow:0 8px 20px rgba(0,0,0,.22)
+box-shadow:0 8px 20px rgba(0,0,0,.22);
+transition:.2s
+}
+
+.whatsapp:hover{
+transform:scale(1.08)
 }
 
 /* RESPONSIVE */
@@ -463,6 +485,10 @@ grid-template-columns:repeat(2,1fr)
 
 .container{
 width:92%
+}
+
+.hero{
+padding:20px 0 12px
 }
 
 .hero-card{
@@ -495,6 +521,7 @@ gap:14px
 }
 
 </style>
+
 </head>
 
 <body>
@@ -512,19 +539,40 @@ src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 alt="GOH Bible Academy">
 
 <div>
-<div class="logo-title">GOH Bible Academy</div>
-<div class="logo-sub">Gate of Heaven Ministries</div>
+
+<div class="logo-title">
+GOH Bible Academy
+</div>
+
+<div class="logo-sub">
+Gate of Heaven Ministries
+</div>
+
 </div>
 
 </a>
 
 <nav class="nav-links">
 
-<a href="lessons.html">📖 Lessons</a>
-<a href="about.html">ℹ️ About</a>
-<a href="contact.html">💬 Contact</a>
-<a href="login.html" class="login">🔐 Login</a>
-<a href="register.html" class="register">📝 Register</a>
+<a href="lessons.html">
+📖 Lessons
+</a>
+
+<a href="about.html">
+ℹ️ About
+</a>
+
+<a href="contact.html">
+💬 Contact
+</a>
+
+<a href="login.html" class="login">
+🔐 Login
+</a>
+
+<a href="register.html" class="register">
+📝 Register
+</a>
 
 </nav>
 
@@ -542,17 +590,35 @@ aria-expanded="false">
 
 </header>
 
+
 <!-- MOBILE MENU -->
 
-<nav class="mobile-menu" id="mobileMenu">
+<nav
+class="mobile-menu"
+id="mobileMenu">
 
-<a href="lessons.html">📖 Lessons</a>
-<a href="about.html">ℹ️ About</a>
-<a href="contact.html">💬 Contact</a>
-<a href="login.html">🔐 Student Login</a>
-<a href="register.html">📝 Register</a>
+<a href="lessons.html">
+📖 Lessons
+</a>
+
+<a href="about.html">
+ℹ️ About
+</a>
+
+<a href="contact.html">
+💬 Contact
+</a>
+
+<a href="login.html">
+🔐 Student Login
+</a>
+
+<a href="register.html">
+📝 Register
+</a>
 
 </nav>
+
 
 <!-- HERO -->
 
@@ -586,7 +652,8 @@ lessons or student access? We are happy to help.
 
 </section>
 
-<!-- CONTACT -->
+
+<!-- CONTACT OPTIONS -->
 
 <section>
 
@@ -610,7 +677,11 @@ For support, please contact us through WhatsApp.
 
 </div>
 
+
 <div class="contact-grid">
+
+
+<!-- WHATSAPP SUPPORT -->
 
 <div class="contact-card">
 
@@ -639,6 +710,9 @@ Chat on WhatsApp
 
 </div>
 
+
+<!-- COURSE QUESTIONS -->
+
 <div class="contact-card">
 
 <div class="icon">
@@ -666,6 +740,7 @@ Ask a Question
 
 </div>
 
+
 </div>
 
 </div>
@@ -673,6 +748,7 @@ Ask a Question
 </div>
 
 </section>
+
 
 <!-- SUPPORT TOPICS -->
 
@@ -694,7 +770,9 @@ We Can Help With
 
 </div>
 
+
 <div class="help-grid">
+
 
 <div class="help">
 
@@ -708,6 +786,7 @@ Registration and login assistance
 
 </div>
 
+
 <div class="help">
 
 <strong>
@@ -719,6 +798,7 @@ Course and lesson information
 </span>
 
 </div>
+
 
 <div class="help">
 
@@ -732,6 +812,7 @@ Premium access and payment questions
 
 </div>
 
+
 <div class="help">
 
 <strong>
@@ -743,6 +824,7 @@ English, Tamil and Sinhala
 </span>
 
 </div>
+
 
 <div class="help">
 
@@ -756,6 +838,7 @@ Learning and student progress
 
 </div>
 
+
 <div class="help">
 
 <strong>
@@ -768,6 +851,7 @@ Other academy-related questions
 
 </div>
 
+
 </div>
 
 </div>
@@ -775,6 +859,7 @@ Other academy-related questions
 </div>
 
 </section>
+
 
 <!-- SUPPORT CTA -->
 
@@ -813,6 +898,7 @@ class="btn whatsapp-btn">
 
 </section>
 
+
 <!-- FOOTER -->
 
 <footer>
@@ -820,6 +906,7 @@ class="btn whatsapp-btn">
 <div class="container">
 
 <div class="footer-card">
+
 
 <div class="footer-brand">
 
@@ -841,16 +928,30 @@ Gate of Heaven Ministries
 
 </div>
 
+
 <nav class="footer-links">
 
-<a href="lessons.html">Lessons</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="login.html">Login</a>
+<a href="lessons.html">
+Lessons
+</a>
+
+<a href="about.html">
+About
+</a>
+
+<a href="contact.html">
+Contact
+</a>
+
+<a href="login.html">
+Login
+</a>
 
 </nav>
 
+
 </div>
+
 
 <div class="footer-legal">
 
@@ -868,6 +969,7 @@ Refund Policy
 
 </div>
 
+
 <div class="copy">
 © 2026 GOH Bible Academy. All rights reserved.
 </div>
@@ -876,7 +978,8 @@ Refund Policy
 
 </footer>
 
-<!-- WHATSAPP -->
+
+<!-- FLOATING WHATSAPP -->
 
 <a
 class="whatsapp"
@@ -889,7 +992,10 @@ aria-label="Contact GOH Bible Academy on WhatsApp">
 
 </a>
 
+
 <script>
+
+/* MOBILE MENU */
 
 const menuBtn=
 document.getElementById("menuBtn");
@@ -897,7 +1003,10 @@ document.getElementById("menuBtn");
 const mobileMenu=
 document.getElementById("mobileMenu");
 
-menuBtn.addEventListener("click",function(){
+
+menuBtn.addEventListener(
+"click",
+function(){
 
 const open=
 mobileMenu.classList.toggle("show");
@@ -910,13 +1019,19 @@ menuBtn.setAttribute(
 open ? "true" : "false"
 );
 
-});
+}
+);
+
+
+/* CLOSE MENU AFTER LINK CLICK */
 
 mobileMenu
 .querySelectorAll("a")
 .forEach(function(link){
 
-link.addEventListener("click",function(){
+link.addEventListener(
+"click",
+function(){
 
 mobileMenu.classList.remove("show");
 
@@ -927,9 +1042,37 @@ menuBtn.setAttribute(
 "false"
 );
 
-});
+}
+);
 
 });
+
+
+/* CLOSE WHEN CLICKING OUTSIDE */
+
+document.addEventListener(
+"click",
+function(e){
+
+if(
+mobileMenu.classList.contains("show") &&
+!mobileMenu.contains(e.target) &&
+!menuBtn.contains(e.target)
+){
+
+mobileMenu.classList.remove("show");
+
+menuBtn.textContent="☰";
+
+menuBtn.setAttribute(
+"aria-expanded",
+"false"
+);
+
+}
+
+}
+);
 
 </script>
 
