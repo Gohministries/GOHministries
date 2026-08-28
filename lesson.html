@@ -8,22 +8,54 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#f3f6fb;color:#172033;line-height:1.6}
-.container{width:min(700px,94%);margin:auto}
 
-header{background:#fff;border-bottom:1px solid #e5e7eb}
-.nav{min-height:64px;display:flex;align-items:center;justify-content:space-between}
-
-.logo{font-size:13px;font-weight:900}
-.sub{font-size:8px;color:#777}
-
-.back{
-border:0;background:#111827;color:#fff;
-padding:8px 11px;border-radius:8px;
-font-size:9px;font-weight:900
+body{
+font-family:Arial,sans-serif;
+background:#f3f6fb;
+color:#172033;
+line-height:1.6
 }
 
-main{padding:22px 0 45px}
+.container{
+width:min(700px,94%);
+margin:auto
+}
+
+header{
+background:#fff;
+border-bottom:1px solid #e5e7eb
+}
+
+.nav{
+min-height:64px;
+display:flex;
+align-items:center;
+justify-content:space-between
+}
+
+.logo{
+font-size:13px;
+font-weight:900
+}
+
+.sub{
+font-size:8px;
+color:#6b7280
+}
+
+.back{
+border:0;
+background:#111827;
+color:#fff;
+padding:8px 11px;
+border-radius:8px;
+font-size:9px;
+font-weight:900
+}
+
+main{
+padding:22px 0 45px
+}
 
 .card{
 background:#fff;
@@ -42,7 +74,7 @@ margin-bottom:5px
 
 h1{
 font-size:23px;
-margin-bottom:8px
+margin-bottom:7px
 }
 
 .description{
@@ -70,27 +102,54 @@ display:block;
 margin-bottom:5px
 }
 
-.assessment{
-margin-top:18px
+.assessment-title{
+font-size:17px;
+font-weight:900;
+margin-bottom:4px
 }
 
-.assessment h2{
-font-size:16px;
-margin-bottom:6px
+.assessment-info{
+font-size:9px;
+color:#6b7280;
+margin-bottom:14px
 }
 
-.notice{
-background:#fef3c7;
-color:#92400e;
-padding:11px;
-border-radius:9px;
-font-size:10px;
-font-weight:bold;
-margin-top:12px
+.question{
+border:1px solid #e5e7eb;
+border-radius:12px;
+padding:14px;
+margin-bottom:10px
 }
 
-.continue{
+.question-number{
+font-size:8px;
+font-weight:900;
+color:#4f46e5;
+margin-bottom:5px
+}
+
+.question-text{
+font-size:11px;
+font-weight:900;
+margin-bottom:10px
+}
+
+.option{
 display:block;
+background:#f9fafb;
+border:1px solid #e5e7eb;
+padding:9px;
+border-radius:8px;
+margin:6px 0;
+font-size:10px;
+cursor:pointer
+}
+
+.option input{
+margin-right:7px
+}
+
+.submit{
 width:100%;
 border:0;
 background:#111827;
@@ -99,16 +158,64 @@ padding:12px;
 border-radius:9px;
 font-size:10px;
 font-weight:900;
-margin-top:16px;
+margin-top:8px
+}
+
+.result{
+display:none;
+margin-top:13px;
+padding:13px;
+border-radius:10px;
+font-size:11px;
+font-weight:900;
+text-align:center
+}
+
+.pass{
+display:block;
+background:#dcfce7;
+color:#166534
+}
+
+.fail{
+display:block;
+background:#fef2f2;
+color:#b91c1c
+}
+
+.next{
+display:block;
+margin-top:10px;
+background:#111827;
+color:#fff;
+text-decoration:none;
+padding:11px;
+border-radius:8px;
+font-size:9px;
+text-align:center
+}
+
+.premium{
+background:#fef3c7;
+color:#92400e;
+padding:13px;
+border-radius:10px;
+font-size:10px;
+font-weight:700;
+text-align:center
+}
+
+.loading{
 text-align:center;
-text-decoration:none
+font-size:11px;
+padding:30px
 }
 
 .error{
 text-align:center;
 color:#b91c1c;
-font-size:12px;
-font-weight:bold;
+font-size:11px;
+font-weight:700;
 padding:30px
 }
 
@@ -142,13 +249,21 @@ font-size:8px
 <main>
 <div class="container">
 
-<div id="loading" class="card">
+<div id="loading" class="card loading">
 Loading lesson...
 </div>
 
 <div id="error" class="card error" style="display:none"></div>
 
-<div id="lesson" style="display:none">
+<div id="premiumError" style="display:none" class="card">
+<div class="premium">
+🔒 Premium membership is required for this lesson.
+<br><br>
+<a href="premium.html">View Premium Membership</a>
+</div>
+</div>
+
+<div id="lessonArea" style="display:none">
 
 <div class="card">
 
@@ -162,26 +277,34 @@ LESSON
 
 <div class="content" id="content"></div>
 
-<div class="verse" id="verseBox" style="display:none">
+<div id="verseBox" class="verse" style="display:none">
 <strong>📖 Bible Verse</strong>
 <div id="verse"></div>
 </div>
 
-<div class="assessment">
+</div>
 
-<h2>📝 5-Question Assessment</h2>
 
-<div class="notice">
+<div class="card">
+
+<div class="assessment-title">
+📝 5-Question Assessment
+</div>
+
+<div class="assessment-info">
 You must score at least 70% to complete this lesson.
 </div>
 
-<a id="assessmentButton"
-class="continue"
-href="#">
-Start Assessment →
-</a>
+<div id="questions"></div>
 
-</div>
+<button
+id="submitButton"
+class="submit"
+type="button">
+Submit Assessment
+</button>
+
+<div id="result" class="result"></div>
 
 </div>
 
@@ -202,30 +325,48 @@ const API="https://dashboard.createlk.workers.dev";
 const params=new URLSearchParams(location.search);
 
 const lessonId=Number(
-params.get("lesson_id") ||
-params.get("id") ||
-0
+params.get("lesson_id")||0
 );
 
-const moduleId=Number(
-params.get("module_id") ||
-0
+const student=
+getStudent();
+
+let lessonData=null;
+let questions=[];
+
+
+/* =========================
+   STUDENT
+========================= */
+
+function getStudent(){
+
+try{
+
+return JSON.parse(
+localStorage.getItem("goh_student") ||
+sessionStorage.getItem("goh_student") ||
+"null"
 );
 
-const loading=document.getElementById("loading");
-const error=document.getElementById("error");
-const lesson=document.getElementById("lesson");
+}catch{
 
-function showError(text){
-
-loading.style.display="none";
-lesson.style.display="none";
-error.style.display="block";
-error.textContent=text;
+return null;
 
 }
 
-if(!lessonId){
+}
+
+
+/* =========================
+   START
+========================= */
+
+if(!student){
+
+location.href="login.html";
+
+}else if(!lessonId){
 
 showError("Lesson not found.");
 
@@ -236,37 +377,109 @@ loadLesson();
 }
 
 
+/* =========================
+   ERROR
+========================= */
+
+function showError(text){
+
+document.getElementById(
+"loading"
+).style.display="none";
+
+document.getElementById(
+"lessonArea"
+).style.display="none";
+
+document.getElementById(
+"error"
+).style.display="block";
+
+document.getElementById(
+"error"
+).textContent=text;
+
+}
+
+
+/* =========================
+   LOAD LESSON
+========================= */
+
 async function loadLesson(){
 
 try{
 
 /*
-Try the lesson endpoint.
+Lesson 1 is FREE.
+Lessons 2-180 require Premium.
 */
 
-const url=
+if(lessonId>1){
+
+const access=
+await fetch(
 API+
-"/lesson?lesson_id="+
-encodeURIComponent(lessonId);
+"/lesson-access?student_id="+
+encodeURIComponent(student.id)+
+"&lesson_id="+
+encodeURIComponent(lessonId),
+{
+cache:"no-store"
+}
+);
+
+if(access.ok){
+
+const accessData=
+await access.json();
+
+if(
+accessData.success &&
+accessData.allowed!==true
+){
+
+document.getElementById(
+"loading"
+).style.display="none";
+
+document.getElementById(
+"premiumError"
+).style.display="block";
+
+return;
+
+}
+
+}
+
+}
+
+
+/*
+Load lesson.
+*/
 
 const response=
-await fetch(url,{
-method:"GET",
+await fetch(
+API+
+"/lesson?lesson_id="+
+encodeURIComponent(lessonId),
+{
 cache:"no-store"
-});
+}
+);
 
 if(!response.ok){
 
 throw new Error(
-"Lesson API returned "+response.status
+"Lesson could not be loaded."
 );
 
 }
 
 const data=
 await response.json();
-
-console.log("LESSON DATA:",data);
 
 if(!data.success){
 
@@ -277,24 +490,51 @@ data.message||
 
 }
 
-const l=
-data.lesson||data.data||data;
+lessonData=
+data.lesson||data.data;
 
-const title=
-l.title||
-l.name||
-"Lesson "+lessonId;
+if(!lessonData){
 
-const description=
-l.description||
-l.short_description||
-"";
+throw new Error(
+"Lesson data is empty."
+);
 
-const content=
-l.content||
-l.explanation||
-l.lesson_content||
-"";
+}
+
+renderLesson();
+
+await loadQuestions();
+
+
+document.getElementById(
+"loading"
+).style.display="none";
+
+document.getElementById(
+"lessonArea"
+).style.display="block";
+
+
+}catch(error){
+
+console.error(error);
+
+showError(
+"Unable to load this lesson."
+);
+
+}
+
+}
+
+
+/* =========================
+   RENDER LESSON
+========================= */
+
+function renderLesson(){
+
+const l=lessonData;
 
 document.getElementById(
 "lessonNumber"
@@ -303,20 +543,26 @@ document.getElementById(
 
 document.getElementById(
 "title"
-).textContent=title;
+).textContent=
+l.title||
+l.name||
+"Lesson "+lessonId;
 
 document.getElementById(
 "description"
-).textContent=description;
+).textContent=
+l.description||
+l.short_description||
+"";
 
 document.getElementById(
 "content"
-).textContent=content;
+).textContent=
+l.content||
+l.explanation||
+l.lesson_content||
+"";
 
-
-/*
-Bible verse
-*/
 
 const verse=
 l.verse||
@@ -335,37 +581,428 @@ document.getElementById(
 
 }
 
+}
+
+
+/* =========================
+   LOAD QUESTIONS
+========================= */
+
+async function loadQuestions(){
 
 /*
-Assessment page.
+Try the lesson questions endpoint.
 */
 
-document.getElementById(
-"assessmentButton"
-).href=
-"assessment.html?lesson_id="+
-lessonId+
-(moduleId?
-"&module_id="+moduleId:
-"");
-
-
-loading.style.display="none";
-lesson.style.display="block";
-
-
-}catch(e){
-
-console.error(
-"LESSON ERROR:",
-e
+let response=
+await fetch(
+API+
+"/lesson-questions?lesson_id="+
+encodeURIComponent(lessonId),
+{
+cache:"no-store"
+}
 );
 
-showError(
-"Unable to load this lesson."
+
+/*
+Fallback endpoint.
+*/
+
+if(!response.ok){
+
+response=
+await fetch(
+API+
+"/questions?lesson_id="+
+encodeURIComponent(lessonId),
+{
+cache:"no-store"
+}
 );
 
 }
+
+if(!response.ok){
+
+throw new Error(
+"Questions could not be loaded."
+);
+
+}
+
+const data=
+await response.json();
+
+if(!data.success){
+
+throw new Error(
+data.message||
+"Questions not found."
+);
+
+}
+
+questions=
+data.questions||
+data.data||
+[];
+
+if(questions.length<5){
+
+throw new Error(
+"This lesson does not have 5 questions yet."
+);
+
+}
+
+questions=
+questions.slice(0,5);
+
+renderQuestions();
+
+}
+
+
+/* =========================
+   RENDER QUESTIONS
+========================= */
+
+function renderQuestions(){
+
+const box=
+document.getElementById(
+"questions"
+);
+
+box.innerHTML="";
+
+questions.forEach(
+(q,index)=>{
+
+const question=
+document.createElement("div");
+
+question.className="question";
+
+const text=
+q.question||
+q.question_text||
+q.text||
+"Question "+(index+1);
+
+const options=
+getOptions(q);
+
+let html=`
+
+<div class="question-number">
+QUESTION ${index+1}
+</div>
+
+<div class="question-text">
+${escapeHtml(text)}
+</div>
+`;
+
+options.forEach(
+(option,optIndex)=>{
+
+const value=
+String(
+q.option_values?.[optIndex]||
+option
+);
+
+html+=`
+
+<label class="option">
+
+<input
+type="radio"
+name="q${index}"
+value="${escapeHtml(value)}">
+
+${escapeHtml(option)}
+
+</label>
+`;
+
+});
+
+question.innerHTML=html;
+
+box.appendChild(question);
+
+});
+
+}
+
+
+/* =========================
+   OPTIONS
+========================= */
+
+function getOptions(q){
+
+if(
+Array.isArray(q.options)
+){
+
+return q.options;
+
+}
+
+const options=[];
+
+[
+"option_a",
+"option_b",
+"option_c",
+"option_d"
+].forEach(
+key=>{
+
+if(q[key]!==undefined&&q[key]!==null){
+
+options.push(
+String(q[key])
+);
+
+}
+
+});
+
+return options;
+
+}
+
+
+/* =========================
+   SUBMIT
+========================= */
+
+document.getElementById(
+"submitButton"
+).onclick=
+submitAssessment;
+
+
+async function submitAssessment(){
+
+let score=0;
+
+let answered=0;
+
+questions.forEach(
+(q,index)=>{
+
+const selected=
+document.querySelector(
+`input[name="q${index}"]:checked`
+);
+
+if(!selected)return;
+
+answered++;
+
+const correct=
+q.correct_answer||
+q.answer||
+q.correct||
+q.correct_option||
+"";
+
+if(
+normalise(selected.value)===
+normalise(String(correct))
+){
+
+score++;
+
+}
+
+});
+
+
+if(answered<5){
+
+showResult(
+"Please answer all 5 questions.",
+false
+);
+
+return;
+
+}
+
+
+const percentage=
+Math.round(
+(score/5)*100
+);
+
+
+if(percentage<70){
+
+showResult(
+"Score: "+
+percentage+
+"%. You need at least 70% to complete this lesson.",
+false
+);
+
+return;
+
+}
+
+
+/*
+Passed.
+Save completion.
+*/
+
+try{
+
+const response=
+await fetch(
+API+"/complete",
+{
+method:"POST",
+headers:{
+"Content-Type":
+"application/json"
+},
+body:JSON.stringify({
+student_id:Number(student.id),
+lesson_id:lessonId
+})
+}
+);
+
+const data=
+await response.json();
+
+if(!response.ok||!data.success){
+
+showResult(
+"Passed "+percentage+
+"%, but the lesson could not be saved.",
+false
+);
+
+return;
+
+}
+
+
+showResult(
+"✓ Passed! Score: "+
+percentage+
+"%. Lesson completed.",
+true
+);
+
+
+/*
+Show next lesson.
+*/
+
+if(lessonId<180){
+
+const next=
+document.createElement("a");
+
+next.className="next";
+
+next.href=
+"lesson.html?lesson_id="+
+(lessonId+1);
+
+next.textContent=
+"Continue to Lesson "+
+(lessonId+1)+" →";
+
+document.getElementById(
+"result"
+).appendChild(next);
+
+}else{
+
+const done=
+document.createElement("div");
+
+done.style.marginTop="10px";
+
+done.textContent=
+"🎓 Congratulations! You completed all 180 lessons.";
+
+document.getElementById(
+"result"
+).appendChild(done);
+
+}
+
+}catch(error){
+
+console.error(error);
+
+showResult(
+"Unable to save your lesson completion.",
+false
+);
+
+}
+
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+function showResult(text,success){
+
+const box=
+document.getElementById(
+"result"
+);
+
+box.className=
+"result "+
+(success?"pass":"fail");
+
+box.innerHTML=
+escapeHtml(text);
+
+}
+
+
+/* =========================
+   NORMALISE
+========================= */
+
+function normalise(value){
+
+return String(value)
+.trim()
+.toLowerCase();
+
+}
+
+
+/* =========================
+   ESCAPE
+========================= */
+
+function escapeHtml(value){
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 
 }
 
