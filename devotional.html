@@ -106,21 +106,9 @@ padding:20px 0 12px
 
 .hero-card{
 background:
-radial-gradient(
-circle at 90% 10%,
-#6366f155,
-transparent 30%
-),
-radial-gradient(
-circle at 10% 90%,
-#fbbf2430,
-transparent 30%
-),
-linear-gradient(
-135deg,
-#111827,
-#29364d
-);
+radial-gradient(circle at 90% 10%,#6366f155,transparent 30%),
+radial-gradient(circle at 10% 90%,#fbbf2430,transparent 30%),
+linear-gradient(135deg,#111827,#29364d);
 
 color:#fff;
 border-radius:22px;
@@ -221,13 +209,7 @@ margin-bottom:9px
 /* VERSE */
 
 .verse-card{
-background:
-linear-gradient(
-135deg,
-#fffbeb,
-#fff7d6
-);
-
+background:linear-gradient(135deg,#fffbeb,#fff7d6);
 border-color:#fde68a
 }
 
@@ -257,13 +239,7 @@ font-weight:900
 /* MESSAGE */
 
 .message-card{
-background:
-linear-gradient(
-135deg,
-#eef2ff,
-#fff
-);
-
+background:linear-gradient(135deg,#eef2ff,#fff);
 border-color:#c7d2fe
 }
 
@@ -287,24 +263,12 @@ white-space:pre-line
 /* PRAYER */
 
 .prayer-card{
-background:
-linear-gradient(
-135deg,
-#ecfdf5,
-#fff
-);
-
+background:linear-gradient(135deg,#ecfdf5,#fff);
 border-color:#a7f3d0
 }
 
 .prayer-card .card-label{
 color:#047857
-}
-
-.prayer-card h2{
-font-size:21px;
-margin-bottom:10px;
-color:#064e3b
 }
 
 .prayer{
@@ -438,13 +402,7 @@ color:#4f46e5;
 white-space:nowrap
 }
 
-.archive-loading{
-text-align:center;
-padding:20px;
-font-size:10px;
-color:#6b7280
-}
-
+.archive-loading,
 .archive-empty{
 text-align:center;
 padding:20px;
@@ -560,8 +518,7 @@ font-size:14px
 font-size:12px
 }
 
-.message-card h2,
-.prayer-card h2{
+.message-card h2{
 font-size:19px
 }
 
@@ -680,7 +637,7 @@ LANGUAGE
 </section>
 
 
-<!-- DEVOTIONAL -->
+<!-- DEVOTIONAL CONTENT -->
 
 <section id="content">
 
@@ -777,9 +734,7 @@ Gate of Heaven Ministries
 </span>
 
 <div class="copy">
-
 © 2026 GOH Ministries. All rights reserved.
-
 </div>
 
 </div>
@@ -841,56 +796,34 @@ document.getElementById("loadMoreBtn");
    LANGUAGE
 ========================================= */
 
-let language =
-localStorage.getItem(
-"goh_devotional_language"
-) || "en";
-
-if(
-!["en","ta","si"].includes(language)
-){
-
-language="en";
-
-}
-
-languageSelect.value =
-language;
-
-
-/* =========================================
-   URL DATE
-========================================= */
-
-const pageParams =
+const params =
 new URLSearchParams(
 window.location.search
 );
 
+let language =
+params.get("lang") ||
+localStorage.getItem(
+"goh_devotional_language"
+) ||
+"en";
+
+if(
+!["en","ta","si"].includes(language)
+){
+language="en";
+}
+
+languageSelect.value=language;
+
+
+/* =========================================
+   DATE
+========================================= */
+
 let selectedDate =
-pageParams.get("date");
+params.get("date");
 
-
-/* =========================================
-   CURRENT DEVOTIONAL
-========================================= */
-
-let currentDevotional =
-null;
-
-
-/* =========================================
-   ARCHIVE
-========================================= */
-
-let archiveDates = [];
-
-let archiveShown = 10;
-
-
-/* =========================================
-   GET TODAY MM-DD
-========================================= */
 
 function getTodayMonthDay(){
 
@@ -921,11 +854,7 @@ return `${month}-${day}`;
 }
 
 
-/* =========================================
-   VALIDATE DATE
-========================================= */
-
-function validMonthDay(date){
+function validDate(date){
 
 return /^(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/
 .test(date);
@@ -933,19 +862,13 @@ return /^(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/
 }
 
 
-/* =========================================
-   GET REQUEST DATE
-========================================= */
-
-function getRequestDate(){
+function getDate(){
 
 if(
 selectedDate &&
-validMonthDay(selectedDate)
+validDate(selectedDate)
 ){
-
 return selectedDate;
-
 }
 
 return getTodayMonthDay();
@@ -954,27 +877,20 @@ return getTodayMonthDay();
 
 
 /* =========================================
-   FORMAT DATE
+   DATE DISPLAY
 ========================================= */
 
 function formatDate(monthDay){
 
-if(
-!validMonthDay(monthDay)
-){
-
-return monthDay;
-
-}
-
-const parts =
-monthDay.split("-");
+const [month,day] =
+monthDay.split("-")
+.map(Number);
 
 const date =
 new Date(
 2024,
-Number(parts[0])-1,
-Number(parts[1])
+month-1,
+day
 );
 
 return date.toLocaleDateString(
@@ -994,36 +910,21 @@ day:"numeric"
 
 function escapeHTML(value){
 
-return String(
-value ?? ""
-)
-
-.replace(
-/&/g,
-"&amp;"
-)
-
-.replace(
-/</g,
-"&lt;"
-)
-
-.replace(
-/>/g,
-"&gt;"
-)
-
-.replace(
-/"/g,
-"&quot;"
-)
-
-.replace(
-/'/g,
-"&#039;"
-);
+return String(value || "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 
 }
+
+
+/* =========================================
+   CURRENT DEVOTIONAL
+========================================= */
+
+let currentDevotional=null;
 
 
 /* =========================================
@@ -1033,7 +934,10 @@ value ?? ""
 async function loadDevotional(){
 
 const requestDate =
-getRequestDate();
+getDate();
+
+dateElement.textContent =
+formatDate(requestDate);
 
 content.innerHTML = `
 
@@ -1045,23 +949,19 @@ content.innerHTML = `
 
 currentDevotional=null;
 
-dateElement.textContent =
-formatDate(requestDate);
-
-
 try{
 
-let apiURL =
+const url =
 API +
-"/?lang=" +
-encodeURIComponent(language) +
-"&date=" +
-encodeURIComponent(requestDate);
+"/?date=" +
+encodeURIComponent(requestDate) +
+"&lang=" +
+encodeURIComponent(language);
 
 
 const response =
 await fetch(
-apiURL,
+url,
 {
 method:"GET",
 headers:{
@@ -1072,38 +972,16 @@ cache:"no-store"
 );
 
 
-if(!response.ok){
-
-let errorText="";
-
-try{
-
-const errorData =
-await response.json();
-
-errorText =
-errorData.error || "";
-
-}catch(e){}
-
-throw new Error(
-errorText ||
-"Server error: " +
-response.status
-);
-
-}
-
-
 const data =
 await response.json();
 
 
-if(!data.success){
+if(!response.ok ||
+!data.success){
 
 throw new Error(
 data.error ||
-"Devotional is not available."
+"Devotional is not available yet."
 );
 
 }
@@ -1113,7 +991,7 @@ const d =
 data.devotional;
 
 
-/* SAVE */
+/* SAVE FOR SHARE */
 
 currentDevotional={
 
@@ -1132,19 +1010,7 @@ prayer:d.prayer || ""
 };
 
 
-/* DATE */
-
-dateElement.textContent =
-formatDate(data.date);
-
-
-/* =========================================
-   DISPLAY ORDER
-
-   1. VERSE
-   2. EXPLANATION
-   3. PRAYER
-========================================= */
+/* DISPLAY */
 
 content.innerHTML = `
 
@@ -1155,9 +1021,7 @@ content.innerHTML = `
 </div>
 
 <div class="verse">
-${escapeHTML(
-d.bible_verse || ""
-)}
+${escapeHTML(d.bible_verse)}
 </div>
 
 ${
@@ -1165,13 +1029,10 @@ d.bible_reference
 ?
 `
 <div class="reference">
-${escapeHTML(
-d.bible_reference
-)}
+${escapeHTML(d.bible_reference)}
 </div>
 `
-:
-""
+:""
 }
 
 </article>
@@ -1184,15 +1045,11 @@ d.bible_reference
 </div>
 
 <h2>
-${escapeHTML(
-d.title || ""
-)}
+${escapeHTML(d.title)}
 </h2>
 
 <div class="message">
-${escapeHTML(
-d.message || ""
-)}
+${escapeHTML(d.message)}
 </div>
 
 </article>
@@ -1204,14 +1061,8 @@ d.message || ""
 🙏 PRAYER
 </div>
 
-<h2>
-Prayer
-</h2>
-
 <div class="prayer">
-${escapeHTML(
-d.prayer || ""
-)}
+${escapeHTML(d.prayer)}
 </div>
 
 </article>
@@ -1221,10 +1072,7 @@ d.prayer || ""
 
 }catch(error){
 
-console.error(
-"Devotional error:",
-error
-);
+console.error(error);
 
 content.innerHTML = `
 
@@ -1232,12 +1080,8 @@ content.innerHTML = `
 
 ⚠️ ${escapeHTML(
 error.message ||
-"Today's devotional is not available yet."
+"Failed to load devotional."
 )}
-
-<br><br>
-
-Please try again later.
 
 </div>
 
@@ -1254,10 +1098,7 @@ Please try again later.
 
 shareBtn.addEventListener(
 "click",
-async function(){
-
-shareStatus.textContent="";
-
+async()=>{
 
 if(!currentDevotional){
 
@@ -1268,17 +1109,13 @@ return;
 
 }
 
-
 const d =
 currentDevotional;
 
 
-/* FULL SHARE TEXT */
-
-const shareText =
+const text =
 
 "🙏 GOH MINISTRIES\n" +
-
 "DAILY DEVOTIONAL\n\n" +
 
 "📖 BIBLE VERSE\n\n" +
@@ -1287,13 +1124,9 @@ const shareText =
 
 "\n\n" +
 
-(
-d.reference
-?
-d.reference + "\n\n"
-:
-""
-) +
+(d.reference || "") +
+
+"\n\n" +
 
 "💡 " +
 
@@ -1311,100 +1144,48 @@ d.reference + "\n\n"
 
 "\n\n" +
 
-"— GOH Ministries\n\n" +
+"— GOH Ministries\n" +
 
 window.location.href;
 
 
-/* NATIVE SHARE */
-
-if(
-navigator.share
-){
-
 try{
+
+if(navigator.share){
 
 await navigator.share({
 
 title:
 "Daily Devotional | GOH Ministries",
 
-text:
-shareText
+text:text
 
 });
 
 shareStatus.textContent =
-"✓ Shared successfully";
+"✓ Shared";
 
-setTimeout(
-()=>{
-shareStatus.textContent="";
-},
-2500
-);
-
-return;
-
-}catch(error){
-
-if(
-error.name==="AbortError"
-){
-
-return;
-
-}
-
-}
-
-}
-
-
-/* COPY FALLBACK */
-
-try{
+}else{
 
 await navigator.clipboard.writeText(
-shareText
+text
 );
 
 shareStatus.textContent =
 "✓ Full devotional copied";
 
-setTimeout(
-()=>{
-shareStatus.textContent="";
-},
-2500
-);
+}
 
 }catch(error){
 
-const textarea =
-document.createElement(
-"textarea"
-);
-
-textarea.value =
-shareText;
-
-textarea.style.position =
-"fixed";
-
-textarea.style.left =
-"-9999px";
-
-document.body.appendChild(
-textarea
-);
-
-textarea.select();
+if(
+error.name !== "AbortError"
+){
 
 try{
 
-document.execCommand(
-"copy"
+await navigator.clipboard.writeText(
+text
 );
 
 shareStatus.textContent =
@@ -1417,9 +1198,9 @@ shareStatus.textContent =
 
 }
 
-document.body.removeChild(
-textarea
-);
+}
+
+}
 
 setTimeout(
 ()=>{
@@ -1429,14 +1210,21 @@ shareStatus.textContent="";
 );
 
 }
-
-}
 );
 
 
 /* =========================================
-   LOAD ARCHIVE
+   ARCHIVE
 ========================================= */
+
+let archiveDates=[];
+let archiveShown=10;
+
+
+/*
+  First try /archive.
+  This requires the Worker to support it.
+*/
 
 async function loadArchive(){
 
@@ -1448,23 +1236,7 @@ archiveList.innerHTML = `
 
 `;
 
-archiveDates=[];
-
 try{
-
-/*
-  The Worker should provide:
-
-  GET /archive
-
-  returning:
-
-  {
-    success:true,
-    dates:["08-28","08-27","08-26"]
-  }
-
-*/
 
 const response =
 await fetch(
@@ -1478,7 +1250,6 @@ cache:"no-store"
 }
 );
 
-
 if(!response.ok){
 
 throw new Error(
@@ -1487,10 +1258,8 @@ throw new Error(
 
 }
 
-
 const data =
 await response.json();
-
 
 if(
 !data.success ||
@@ -1498,24 +1267,19 @@ if(
 ){
 
 throw new Error(
-"Archive data unavailable"
+"Invalid archive"
 );
 
 }
 
-
-/*
-   Remove invalid dates
-*/
-
 archiveDates =
 data.dates.filter(
-date=>validMonthDay(date)
+validDate
 );
 
 
 /*
-   Sort newest first
+  Newest first
 */
 
 archiveDates.sort(
@@ -1539,11 +1303,11 @@ am*100+ad
 
 
 /*
-   Don't show current devotional
+  Don't show current date
 */
 
 const currentDate =
-getRequestDate();
+getDate();
 
 archiveDates =
 archiveDates.filter(
@@ -1556,8 +1320,8 @@ renderArchive();
 
 }catch(error){
 
-console.error(
-"Archive error:",
+console.log(
+"Archive endpoint not available:",
 error
 );
 
@@ -1566,7 +1330,7 @@ archiveList.innerHTML = `
 <div class="archive-empty">
 
 📅 Previous devotionals will appear here
-as they are published.
+when published.
 
 </div>
 
@@ -1613,14 +1377,9 @@ return;
 }
 
 
-const items =
-archiveDates.slice(
-0,
-archiveShown
-);
-
-
-items.forEach(
+archiveDates
+.slice(0,archiveShown)
+.forEach(
 date=>{
 
 const link =
@@ -1683,7 +1442,7 @@ loadMoreBtn.classList.add(
 
 loadMoreBtn.addEventListener(
 "click",
-function(){
+()=>{
 
 archiveShown += 10;
 
@@ -1701,25 +1460,19 @@ languageSelect.addEventListener(
 "change",
 function(){
 
-language =
-this.value;
+language=this.value;
 
 localStorage.setItem(
 "goh_devotional_language",
 language
 );
 
-
-/*
-   Preserve selected date
-*/
-
-const requestDate =
-getRequestDate();
+const date =
+getDate();
 
 window.location.href =
 "devotional.html?date=" +
-encodeURIComponent(requestDate) +
+encodeURIComponent(date) +
 "&lang=" +
 encodeURIComponent(language);
 
@@ -1728,7 +1481,7 @@ encodeURIComponent(language);
 
 
 /* =========================================
-   INITIAL LOAD
+   START
 ========================================= */
 
 loadDevotional();
