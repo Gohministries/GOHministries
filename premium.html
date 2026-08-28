@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#111827">
-<title>Premium Membership | GOH Bible Academy</title>
+<title>Lesson | GOH Bible Academy</title>
 
 <link rel="icon"
 href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
@@ -13,203 +13,239 @@ href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 *{box-sizing:border-box;margin:0;padding:0}
 
 body{
- font-family:Arial,sans-serif;
- background:#f3f6fb;
- color:#172033;
- line-height:1.5
-}
-
-button{
- font-family:inherit;
- cursor:pointer
+font-family:Arial,sans-serif;
+background:#f3f6fb;
+color:#172033;
+line-height:1.6
 }
 
 .container{
- width:min(650px,94%);
- margin:auto
+width:min(700px,94%);
+margin:auto
 }
 
 header{
- background:#fff;
- border-bottom:1px solid #e5e7eb;
- position:sticky;
- top:0;
- z-index:10
+background:#fff;
+border-bottom:1px solid #e5e7eb
 }
 
 .nav{
- min-height:64px;
- display:flex;
- align-items:center;
- justify-content:space-between
+min-height:64px;
+display:flex;
+align-items:center;
+justify-content:space-between
 }
 
 .logo{
- display:flex;
- align-items:center;
- gap:9px
+font-size:13px;
+font-weight:900
 }
 
-.logo img{
- width:40px;
- height:40px;
- object-fit:contain;
- border-radius:9px
-}
-
-.logo-title{
- font-size:13px;
- font-weight:900
-}
-
-.logo-sub{
- font-size:8px;
- color:#6b7280
+.sub{
+font-size:8px;
+color:#6b7280
 }
 
 .back{
- border:0;
- background:#111827;
- color:#fff;
- padding:8px 11px;
- border-radius:8px;
- font-size:9px;
- font-weight:900
+border:0;
+background:#111827;
+color:#fff;
+padding:8px 11px;
+border-radius:8px;
+font-size:9px;
+font-weight:900;
+cursor:pointer
 }
 
 main{
- padding:24px 0 45px
-}
-
-.message{
- display:none;
- padding:11px;
- border-radius:9px;
- text-align:center;
- font-size:10px;
- font-weight:700;
- margin-bottom:13px
-}
-
-.message.show{
- display:block
-}
-
-.error{
- background:#fef2f2;
- color:#b91c1c
-}
-
-.success{
- background:#dcfce7;
- color:#166534
+padding:22px 0 45px
 }
 
 .card{
- background:#fff;
- border:1px solid #e5e7eb;
- border-radius:18px;
- padding:22px;
- margin-bottom:13px
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:16px;
+padding:20px;
+margin-bottom:12px
 }
 
-.premium{
- text-align:center
-}
-
-.icon{
- font-size:40px;
- margin-bottom:8px
+.label{
+font-size:8px;
+font-weight:900;
+color:#4f46e5;
+margin-bottom:5px
 }
 
 h1{
- font-size:23px;
- margin-bottom:6px
+font-size:23px;
+margin-bottom:7px
 }
 
-.subtitle{
- font-size:11px;
- color:#6b7280;
- margin-bottom:20px
+.description{
+font-size:10px;
+color:#6b7280;
+margin-bottom:18px
 }
 
-.price{
- font-size:30px;
- font-weight:900;
- color:#111827
+.content{
+font-size:11px;
+white-space:pre-line
 }
 
-.period{
- font-size:10px;
- color:#6b7280;
- margin-bottom:18px
+.verse{
+background:#f9fafb;
+border-left:4px solid #4f46e5;
+padding:13px;
+margin-top:18px;
+border-radius:8px;
+font-size:11px
 }
 
-.features{
- text-align:left;
- margin:15px 0
+.verse strong{
+display:block;
+margin-bottom:5px
 }
 
-.feature{
- background:#f9fafb;
- border:1px solid #e5e7eb;
- border-radius:9px;
- padding:10px;
- margin:6px 0;
- font-size:10px;
- font-weight:700
+.assessment-title{
+font-size:17px;
+font-weight:900;
+margin-bottom:4px
 }
 
-.pay{
- width:100%;
- border:0;
- background:#111827;
- color:#fff;
- padding:13px;
- border-radius:10px;
- font-size:11px;
- font-weight:900;
- margin-top:8px
+.assessment-info{
+font-size:9px;
+color:#6b7280;
+margin-bottom:14px
 }
 
-.pay:disabled{
- opacity:.5;
- cursor:not-allowed
+.question{
+border:1px solid #e5e7eb;
+border-radius:12px;
+padding:14px;
+margin-bottom:10px
 }
 
-.student{
- margin-top:12px;
- font-size:9px;
- color:#6b7280
+.question-number{
+font-size:8px;
+font-weight:900;
+color:#4f46e5;
+margin-bottom:5px
 }
 
-.active{
- background:#ecfdf5;
- border:1px solid #86efac;
- color:#166534;
- border-radius:12px;
- padding:15px;
- margin-bottom:15px;
- font-size:11px;
- font-weight:800
+.question-text{
+font-size:11px;
+font-weight:900;
+margin-bottom:10px
 }
 
-.countdown{
- font-size:20px;
- font-weight:900;
- margin-top:6px
+.option{
+display:block;
+background:#f9fafb;
+border:1px solid #e5e7eb;
+padding:9px;
+border-radius:8px;
+margin:6px 0;
+font-size:10px;
+cursor:pointer
 }
 
-.hidden{
- display:none
+.option input{
+margin-right:7px
+}
+
+.submit{
+width:100%;
+border:0;
+background:#111827;
+color:#fff;
+padding:12px;
+border-radius:9px;
+font-size:10px;
+font-weight:900;
+margin-top:8px;
+cursor:pointer
+}
+
+.submit:disabled{
+opacity:.5
+}
+
+.result{
+display:none;
+margin-top:13px;
+padding:13px;
+border-radius:10px;
+font-size:11px;
+font-weight:900;
+text-align:center
+}
+
+.pass{
+display:block;
+background:#dcfce7;
+color:#166534
+}
+
+.fail{
+display:block;
+background:#fef2f2;
+color:#b91c1c
+}
+
+.next{
+display:block;
+margin-top:10px;
+background:#111827;
+color:#fff;
+text-decoration:none;
+padding:11px;
+border-radius:8px;
+font-size:9px;
+text-align:center
+}
+
+.premium{
+background:#fef3c7;
+color:#92400e;
+padding:15px;
+border-radius:10px;
+font-size:10px;
+font-weight:700;
+text-align:center
+}
+
+.premium a{
+display:inline-block;
+margin-top:10px;
+background:#111827;
+color:#fff;
+text-decoration:none;
+padding:10px 13px;
+border-radius:8px;
+font-size:9px;
+font-weight:900
+}
+
+.loading{
+text-align:center;
+font-size:11px;
+padding:30px
+}
+
+.error{
+text-align:center;
+color:#b91c1c;
+font-size:11px;
+font-weight:700;
+padding:30px
 }
 
 footer{
- background:#0b1120;
- color:#64748b;
- text-align:center;
- padding:18px;
- font-size:8px
+background:#0b1120;
+color:#64748b;
+text-align:center;
+padding:18px;
+font-size:8px
 }
 </style>
 </head>
@@ -219,15 +255,9 @@ footer{
 <header>
 <div class="container nav">
 
-<div class="logo">
-
-<img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
-
 <div>
-<div class="logo-title">GOH Bible Academy</div>
-<div class="logo-sub">Gate of Heaven Ministries</div>
-</div>
-
+<div class="logo">GOH Bible Academy</div>
+<div class="sub">Gate of Heaven Ministries</div>
 </div>
 
 <button class="back"
@@ -242,92 +272,98 @@ onclick="location.href='dashboard.html'">
 <main>
 <div class="container">
 
-<div id="message" class="message"></div>
-
-
-<div class="card premium">
-
-<div class="icon">🏆</div>
-
-<h1>Premium Membership</h1>
-
-<div class="subtitle">
-Complete Lessons 2–180 and continue your Biblical Studies journey.
+<div id="loading" class="card loading">
+Loading lesson...
 </div>
 
 
-<!-- ACTIVE PREMIUM -->
-
-<div id="activeBox" class="active hidden">
-
-✓ Premium Membership Active
-
-<div id="countdown" class="countdown">
-Loading...
-</div>
-
-<div style="font-size:9px;margin-top:5px">
-remaining
-</div>
-
+<div id="error"
+class="card error"
+style="display:none">
 </div>
 
 
-<!-- PAYMENT -->
+<div id="premiumError"
+class="card"
+style="display:none">
 
-<div id="paymentBox">
+<div class="premium">
 
-<div class="price">
-LKR 1,500
-</div>
+🔒 Premium membership is required for this lesson.
 
-<div class="period">
-Premium Membership • 30 Days
-</div>
+<br>
 
+<a href="premium.html">
+View Premium Membership
+</a>
 
-<div class="features">
-
-<div class="feature">
-✓ Access Lessons 2–180
-</div>
-
-<div class="feature">
-✓ Complete all 180 structured lessons
-</div>
-
-<div class="feature">
-✓ 5-question assessment for every lesson
-</div>
-
-<div class="feature">
-✓ Minimum 70% required for each assessment
-</div>
-
-<div class="feature">
-✓ Progress tracking
-</div>
-
-<div class="feature">
-✓ Certificate pathway
 </div>
 
 </div>
 
+
+<div id="lessonArea"
+style="display:none">
+
+
+<!-- LESSON -->
+
+<div class="card">
+
+<div class="label"
+id="lessonNumber">
+LESSON
+</div>
+
+<h1 id="title"></h1>
+
+<div class="description"
+id="description"></div>
+
+<div class="content"
+id="content"></div>
+
+
+<div id="verseBox"
+class="verse"
+style="display:none">
+
+<strong>📖 Bible Verse</strong>
+
+<div id="verse"></div>
+
+</div>
+
+</div>
+
+
+<!-- ASSESSMENT -->
+
+<div class="card">
+
+<div class="assessment-title">
+📝 5-Question Assessment
+</div>
+
+<div class="assessment-info">
+You must score at least 70% to complete this lesson.
+</div>
+
+<div id="questions"></div>
 
 <button
-id="payButton"
-class="pay"
+id="submitButton"
+class="submit"
 type="button">
-Pay LKR 1,500
+
+Submit Assessment
+
 </button>
 
+<div id="result"
+class="result">
 </div>
 
-
-<div class="student">
-Student ID:
-<span id="studentId">-</span>
 </div>
 
 </div>
@@ -344,472 +380,845 @@ GOH Bible Academy • Gate of Heaven Ministries<br>
 
 <script>
 
-const API =
+/* =========================
+   CONFIG
+========================= */
+
+const API=
+"https://dashboard.createlk.workers.dev";
+
+const PREMIUM_API=
 "https://premium.createlk.workers.dev";
+
+
+/* =========================
+   URL
+========================= */
+
+const params=
+new URLSearchParams(location.search);
+
+const lessonId=
+Number(
+params.get("lesson_id")||0
+);
 
 
 /* =========================
    STUDENT
 ========================= */
 
-let student = null;
+function getStudent(){
 
 try{
 
- student =
-  JSON.parse(
-   localStorage.getItem("goh_student") ||
-   sessionStorage.getItem("goh_student") ||
-   "null"
-  );
+return JSON.parse(
+localStorage.getItem("goh_student") ||
+sessionStorage.getItem("goh_student") ||
+"null"
+);
 
 }catch(e){
 
- student=null;
+return null;
 
 }
 
-
-if(!student){
-
- location.href="login.html";
-
 }
 
-
-const studentId =
-Number(student?.id || 0);
-
-
-if(!studentId){
-
- location.href="login.html";
-
-}
-
-
-document.getElementById(
- "studentId"
-).textContent=studentId;
+const student=
+getStudent();
 
 
 /* =========================
    ELEMENTS
 ========================= */
 
-const messageBox =
-document.getElementById("message");
+const loading=
+document.getElementById("loading");
 
-const paymentBox =
-document.getElementById("paymentBox");
+const errorBox=
+document.getElementById("error");
 
-const activeBox =
-document.getElementById("activeBox");
+const premiumError=
+document.getElementById("premiumError");
 
-const countdown =
-document.getElementById("countdown");
+const lessonArea=
+document.getElementById("lessonArea");
 
-const payButton =
-document.getElementById("payButton");
+const questionsBox=
+document.getElementById("questions");
 
+const submitButton=
+document.getElementById("submitButton");
 
-/* =========================
-   MESSAGE
-========================= */
+const resultBox=
+document.getElementById("result");
 
-function showMessage(text,type){
 
- messageBox.textContent=text;
-
- messageBox.className=
-  "message show "+type;
-
-}
-
-function hideMessage(){
-
- messageBox.className="message";
-
-}
-
-
-/* =========================
-   SHOW FREE
-========================= */
-
-function showPayment(){
-
- activeBox.classList.add("hidden");
-
- paymentBox.classList.remove("hidden");
-
- payButton.disabled=false;
-
- payButton.textContent=
-  "Pay LKR 1,500";
-
-}
-
-
-/* =========================
-   COUNTDOWN
-========================= */
-
-let timer=null;
-
-function startCountdown(expiry){
-
- if(timer){
-  clearInterval(timer);
- }
-
- function update(){
-
-  const end =
-   new Date(expiry).getTime();
-
-  const now =
-   Date.now();
-
-  let diff=end-now;
-
-
-  if(diff<=0){
-
-   clearInterval(timer);
-
-   /*
-    * Treat expired membership
-    * as FREE.
-    */
-
-   activeBox.classList.add(
-    "hidden"
-   );
-
-   paymentBox.classList.remove(
-    "hidden"
-   );
-
-   return;
-
-  }
-
-
-  const days =
-   Math.floor(
-    diff/(1000*60*60*24)
-   );
-
-  diff%=
-   (1000*60*60*24);
-
-  const hours =
-   Math.floor(
-    diff/(1000*60*60)
-   );
-
-  diff%=
-   (1000*60*60);
-
-  const minutes =
-   Math.floor(
-    diff/(1000*60)
-   );
-
-  diff%=
-   (1000*60);
-
-  const seconds =
-   Math.floor(
-    diff/1000
-   );
-
-
-  countdown.textContent =
-   days+"d "+
-   hours+"h "+
-   minutes+"m "+
-   seconds+"s";
-
- }
-
- update();
-
- timer=
-  setInterval(update,1000);
-
-}
-
-
-/* =========================
-   SHOW PREMIUM
-========================= */
-
-function showPremium(expiry){
-
- paymentBox.classList.add(
-  "hidden"
- );
-
- activeBox.classList.remove(
-  "hidden"
- );
-
- startCountdown(expiry);
-
-}
-
-
-/* =========================
-   CHECK MEMBERSHIP
-========================= */
-
-async function checkMembership(){
-
- /*
-  IMPORTANT:
-  Default is FREE.
-
-  This prevents a new user from
-  being blocked if the status API
-  temporarily fails.
- */
-
- showPayment();
-
-
- try{
-
-  const response =
-   await fetch(
-    API+
-    "/status?student_id="+
-    encodeURIComponent(studentId),
-    {
-     method:"GET",
-     cache:"no-store"
-    }
-   );
-
-
-  if(!response.ok){
-
-   throw new Error(
-    "Membership request failed."
-   );
-
-  }
-
-
-  const data =
-   await response.json();
-
-
-  if(!data.success){
-
-   throw new Error(
-    data.message ||
-    "Unable to verify membership."
-   );
-
-  }
-
-
-  const membership =
-   data.membership || {};
-
-
-  /*
-   * Only show Premium when the
-   * Worker confirms active Premium.
-   */
-
-  if(
-   membership.active === true &&
-   membership.status === "PREMIUM" &&
-   membership.expiry
-  ){
-
-   hideMessage();
-
-   showPremium(
-    membership.expiry
-   );
-
-   return;
-
-  }
-
-
-  /*
-   * FREE / expired / no membership
-   */
-
-  showPayment();
-
-  hideMessage();
-
-
- }catch(error){
-
-  console.error(
-   "MEMBERSHIP CHECK:",
-   error
-  );
-
-
-  /*
-   * Do NOT block payment.
-   *
-   * New users and FREE users can
-   * still purchase Premium.
-   */
-
-  showPayment();
-
-  hideMessage();
-
- }
-
-}
-
-
-/* =========================
-   PAYHERE CHECKOUT
-========================= */
-
-payButton.addEventListener(
- "click",
- async function(){
-
-  payButton.disabled=true;
-
-  payButton.textContent=
-   "Opening PayHere...";
-
-  hideMessage();
-
-
-  try{
-
-   const response =
-    await fetch(
-     API+"/create-checkout",
-     {
-      method:"POST",
-
-      headers:{
-       "Content-Type":
-        "application/json"
-      },
-
-      body:JSON.stringify({
-       student_id:studentId
-      })
-     }
-    );
-
-
-   if(!response.ok){
-
-    throw new Error(
-     "Unable to create payment."
-    );
-
-   }
-
-
-   const data =
-    await response.json();
-
-
-   if(
-    !data.success ||
-    !data.action ||
-    !data.fields
-   ){
-
-    throw new Error(
-     data.message ||
-     "Unable to create payment."
-    );
-
-   }
-
-
-   /*
-    * Create PayHere form.
-    */
-
-   const form =
-    document.createElement("form");
-
-   form.method="POST";
-
-   form.action=data.action;
-
-   form.style.display="none";
-
-
-   Object.entries(
-    data.fields
-   ).forEach(
-    ([name,value])=>{
-
-     const input =
-      document.createElement(
-       "input"
-      );
-
-     input.type="hidden";
-
-     input.name=name;
-
-     input.value=
-      value ?? "";
-
-     form.appendChild(input);
-
-    }
-   );
-
-
-   document.body.appendChild(form);
-
-   form.submit();
-
-
-  }catch(error){
-
-   console.error(
-    "PAYMENT ERROR:",
-    error
-   );
-
-
-   payButton.disabled=false;
-
-   payButton.textContent=
-    "Pay LKR 1,500";
-
-
-   showMessage(
-    error.message ||
-    "Unable to create payment.",
-    "error"
-   );
-
-  }
-
-});
+let questions=[];
 
 
 /* =========================
    START
 ========================= */
 
-checkMembership();
+if(!student){
+
+location.href="login.html";
+
+}else if(!lessonId){
+
+showError("Lesson not found.");
+
+}else{
+
+checkAccessAndLoad();
+
+}
+
+
+/* =========================
+   PREMIUM ACCESS
+========================= */
+
+async function checkAccessAndLoad(){
+
+try{
+
+/*
+Lesson 1 is always FREE.
+*/
+
+if(lessonId===1){
+
+await loadLesson();
+
+return;
+
+}
+
+
+/*
+For Lessons 2–180 check the
+Premium Worker directly.
+*/
+
+const response=
+await fetch(
+PREMIUM_API+
+"/status?student_id="+
+encodeURIComponent(student.id),
+{
+method:"GET",
+cache:"no-store",
+headers:{
+"Accept":"application/json"
+}
+}
+);
+
+
+if(!response.ok){
+
+/*
+If membership cannot be verified,
+do not open the Premium lesson.
+*/
+
+showPremiumRequired();
+
+return;
+
+}
+
+
+const data=
+await response.json();
+
+const membership=
+data.membership||{};
+
+const status=
+String(
+membership.status||""
+).toUpperCase();
+
+const expiry=
+membership.expiry
+?new Date(
+membership.expiry
+).getTime()
+:0;
+
+
+/*
+ACTIVE PREMIUM CONDITIONS
+*/
+
+const active=
+data.success===true &&
+membership.active===true &&
+status==="PREMIUM" &&
+expiry>Date.now();
+
+
+if(!active){
+
+showPremiumRequired();
+
+return;
+
+}
+
+
+/*
+ACTIVE PREMIUM
+→ OPEN LESSON DIRECTLY
+*/
+
+await loadLesson();
+
+}catch(e){
+
+console.error(
+"PREMIUM ACCESS ERROR:",
+e
+);
+
+showPremiumRequired();
+
+}
+
+}
+
+
+/* =========================
+   PREMIUM REQUIRED
+========================= */
+
+function showPremiumRequired(){
+
+loading.style.display="none";
+
+lessonArea.style.display="none";
+
+errorBox.style.display="none";
+
+premiumError.style.display="block";
+
+}
+
+
+/* =========================
+   LOAD LESSON
+========================= */
+
+async function loadLesson(){
+
+try{
+
+const response=
+await fetch(
+API+
+"/lesson?lesson_id="+
+encodeURIComponent(lessonId),
+{
+method:"GET",
+cache:"no-store"
+}
+);
+
+
+if(!response.ok){
+
+throw new Error(
+"Lesson could not be loaded."
+);
+
+}
+
+
+const data=
+await response.json();
+
+
+if(!data.success){
+
+throw new Error(
+data.message||
+"Lesson not found."
+);
+
+}
+
+
+const lesson=
+data.lesson||
+data.data;
+
+
+if(!lesson){
+
+throw new Error(
+"Lesson data is empty."
+);
+
+}
+
+
+renderLesson(lesson);
+
+await loadQuestions();
+
+
+loading.style.display="none";
+
+lessonArea.style.display="block";
+
+
+}catch(e){
+
+console.error(
+"LESSON ERROR:",
+e
+);
+
+showError(
+"Unable to load this lesson."
+);
+
+}
+
+}
+
+
+/* =========================
+   RENDER LESSON
+========================= */
+
+function renderLesson(lesson){
+
+document.getElementById(
+"lessonNumber"
+).textContent=
+"LESSON "+lessonId;
+
+
+document.getElementById(
+"title"
+).textContent=
+lesson.title||
+lesson.name||
+"Lesson "+lessonId;
+
+
+document.getElementById(
+"description"
+).textContent=
+lesson.description||
+lesson.short_description||
+"";
+
+
+document.getElementById(
+"content"
+).textContent=
+lesson.content||
+lesson.explanation||
+lesson.lesson_content||
+"";
+
+
+const verse=
+lesson.verse||
+lesson.bible_verse||
+"";
+
+
+if(verse){
+
+document.getElementById(
+"verseBox"
+).style.display="block";
+
+document.getElementById(
+"verse"
+).textContent=verse;
+
+}
+
+}
+
+
+/* =========================
+   QUESTIONS
+========================= */
+
+async function loadQuestions(){
+
+let response=
+await fetch(
+API+
+"/lesson-questions?lesson_id="+
+encodeURIComponent(lessonId),
+{
+method:"GET",
+cache:"no-store"
+}
+);
+
+
+/*
+Fallback.
+*/
+
+if(!response.ok){
+
+response=
+await fetch(
+API+
+"/questions?lesson_id="+
+encodeURIComponent(lessonId),
+{
+method:"GET",
+cache:"no-store"
+}
+);
+
+}
+
+
+if(!response.ok){
+
+throw new Error(
+"Questions could not be loaded."
+);
+
+}
+
+
+const data=
+await response.json();
+
+
+if(!data.success){
+
+throw new Error(
+data.message||
+"Questions not found."
+);
+
+}
+
+
+questions=
+data.questions||
+data.data||
+[];
+
+
+if(questions.length<5){
+
+throw new Error(
+"This lesson does not have 5 questions yet."
+);
+
+}
+
+
+questions=
+questions.slice(0,5);
+
+renderQuestions();
+
+}
+
+
+/* =========================
+   RENDER QUESTIONS
+========================= */
+
+function renderQuestions(){
+
+questionsBox.innerHTML="";
+
+questions.forEach(
+(q,index)=>{
+
+const div=
+document.createElement("div");
+
+div.className="question";
+
+
+const questionText=
+q.question||
+q.question_text||
+q.text||
+"Question "+(index+1);
+
+
+const options=
+getOptions(q);
+
+
+let html=`
+
+<div class="question-number">
+QUESTION ${index+1}
+</div>
+
+<div class="question-text">
+${escapeHtml(questionText)}
+</div>
+
+`;
+
+
+options.forEach(
+(option,optIndex)=>{
+
+html+=`
+
+<label class="option">
+
+<input
+type="radio"
+name="q${index}"
+value="${escapeHtml(
+String(option)
+)}">
+
+${escapeHtml(
+String(option)
+)}
+
+</label>
+
+`;
+
+});
+
+
+div.innerHTML=html;
+
+questionsBox.appendChild(div);
+
+});
+
+}
+
+
+/* =========================
+   OPTIONS
+========================= */
+
+function getOptions(q){
+
+if(Array.isArray(q.options)){
+
+return q.options;
+
+}
+
+
+const result=[];
+
+
+[
+"option_a",
+"option_b",
+"option_c",
+"option_d"
+].forEach(
+key=>{
+
+if(
+q[key]!==undefined &&
+q[key]!==null
+){
+
+result.push(
+String(q[key])
+);
+
+}
+
+});
+
+
+return result;
+
+}
+
+
+/* =========================
+   SUBMIT
+========================= */
+
+submitButton.onclick=
+submitAssessment;
+
+
+async function submitAssessment(){
+
+submitButton.disabled=true;
+
+let score=0;
+
+let answered=0;
+
+
+questions.forEach(
+(q,index)=>{
+
+const selected=
+document.querySelector(
+`input[name="q${index}"]:checked`
+);
+
+
+if(!selected)return;
+
+
+answered++;
+
+
+const correct=
+q.correct_answer||
+q.answer||
+q.correct||
+q.correct_option||
+"";
+
+
+if(
+normalise(selected.value)===
+normalise(correct)
+){
+
+score++;
+
+}
+
+});
+
+
+if(answered<5){
+
+submitButton.disabled=false;
+
+showResult(
+"Please answer all 5 questions.",
+false
+);
+
+return;
+
+}
+
+
+const percentage=
+Math.round(
+(score/5)*100
+);
+
+
+if(percentage<70){
+
+submitButton.disabled=false;
+
+showResult(
+"Score: "+
+percentage+
+"%. You need at least 70% to complete this lesson.",
+false
+);
+
+return;
+
+}
+
+
+/*
+PASSED
+*/
+
+try{
+
+const response=
+await fetch(
+API+"/complete",
+{
+method:"POST",
+headers:{
+"Content-Type":
+"application/json"
+},
+body:JSON.stringify({
+
+student_id:
+Number(student.id),
+
+lesson_id:
+lessonId
+
+})
+}
+);
+
+
+const data=
+await response.json();
+
+
+if(!response.ok||
+!data.success){
+
+submitButton.disabled=false;
+
+showResult(
+"Passed "+percentage+
+"%, but the lesson could not be saved.",
+false
+);
+
+return;
+
+}
+
+
+showResult(
+"✓ Passed! Score: "+
+percentage+
+"%. Lesson completed.",
+true
+);
+
+
+submitButton.disabled=true;
+
+
+/*
+NEXT LESSON
+*/
+
+if(lessonId<180){
+
+const next=
+document.createElement("a");
+
+next.className="next";
+
+next.href=
+"lesson.html?lesson_id="+
+(lessonId+1);
+
+next.textContent=
+"Continue to Lesson "+
+(lessonId+1)+" →";
+
+resultBox.appendChild(next);
+
+}else{
+
+const complete=
+document.createElement("div");
+
+complete.style.marginTop="10px";
+
+complete.textContent=
+"🎓 Congratulations! You completed all 180 lessons.";
+
+resultBox.appendChild(
+complete
+);
+
+}
+
+
+}catch(e){
+
+console.error(e);
+
+submitButton.disabled=false;
+
+showResult(
+"Unable to save your lesson completion.",
+false
+);
+
+}
+
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+function showResult(
+text,
+success
+){
+
+resultBox.className=
+"result "+
+(success?"pass":"fail");
+
+resultBox.innerHTML=
+escapeHtml(text);
+
+}
+
+
+/* =========================
+   ERROR
+========================= */
+
+function showError(text){
+
+loading.style.display="none";
+
+lessonArea.style.display="none";
+
+premiumError.style.display="none";
+
+errorBox.style.display="block";
+
+errorBox.textContent=text;
+
+}
+
+
+/* =========================
+   NORMALISE
+========================= */
+
+function normalise(value){
+
+return String(value)
+.trim()
+.toLowerCase();
+
+}
+
+
+/* =========================
+   ESCAPE
+========================= */
+
+function escapeHtml(value){
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
 
 </script>
 
