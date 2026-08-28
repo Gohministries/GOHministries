@@ -7,30 +7,27 @@
 <title>Today's Devotional | GOH Ministries</title>
 
 <meta name="description"
-content="Daily Christian devotional, Bible verse and prayer from GOH Ministries in English, Tamil and Sinhala.">
+content="Daily Christian devotional with Bible verse, explanation and prayer from GOH Ministries.">
 
 <meta name="theme-color" content="#111827">
-
-<link rel="icon"
-href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 
 <style>
 *{
   box-sizing:border-box;
   margin:0;
-  padding:0
+  padding:0;
 }
 
 body{
   font-family:Arial,Helvetica,sans-serif;
   background:#f3f6fb;
   color:#172033;
-  line-height:1.6
+  line-height:1.6;
 }
 
 .container{
   width:min(850px,92%);
-  margin:auto
+  margin:auto;
 }
 
 /* HEADER */
@@ -40,7 +37,7 @@ header{
   top:0;
   z-index:100;
   background:#fff;
-  border-bottom:1px solid #e5e7eb
+  border-bottom:1px solid #e5e7eb;
 }
 
 .nav{
@@ -48,7 +45,7 @@ header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:10px
+  gap:10px;
 }
 
 .logo{
@@ -56,24 +53,24 @@ header{
   align-items:center;
   gap:9px;
   text-decoration:none;
-  color:#111827
+  color:#111827;
 }
 
 .logo img{
   width:40px;
   height:40px;
   object-fit:contain;
-  border-radius:9px
+  border-radius:9px;
 }
 
 .logo-title{
   font-size:13px;
-  font-weight:900
+  font-weight:900;
 }
 
 .logo-sub{
   font-size:8px;
-  color:#6b7280
+  color:#6b7280;
 }
 
 .home{
@@ -83,53 +80,57 @@ header{
   padding:8px 12px;
   border-radius:9px;
   font-size:9px;
-  font-weight:900
+  font-weight:900;
 }
 
 /* MAIN */
 
 main{
-  padding:22px 0 40px
+  padding:22px 0 40px;
 }
 
 /* HERO */
 
 .hero{
   background:
-  radial-gradient(
-    circle at 90% 10%,
-    rgba(99,102,241,.3),
-    transparent 32%
-  ),
-  linear-gradient(135deg,#111827,#293548);
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(99,102,241,.35),
+      transparent 32%
+    ),
+    linear-gradient(
+      135deg,
+      #111827,
+      #293548
+    );
   color:#fff;
   border-radius:22px;
   padding:30px 20px;
   text-align:center;
-  margin-bottom:12px
+  margin-bottom:12px;
 }
 
 .hero-icon{
   font-size:34px;
-  margin-bottom:4px
 }
 
-.label{
+.hero-label{
   color:#fbbf24;
   font-size:8px;
   font-weight:900;
-  letter-spacing:1.2px
+  letter-spacing:1.2px;
+  margin-top:3px;
 }
 
 .hero h1{
   font-size:28px;
   line-height:1.2;
-  margin:6px 0
+  margin:6px 0;
 }
 
 .date{
   color:#cbd5e1;
-  font-size:10px
+  font-size:10px;
 }
 
 /* LANGUAGE */
@@ -139,7 +140,7 @@ main{
   border:1px solid #e5e7eb;
   border-radius:14px;
   padding:13px;
-  margin-bottom:12px
+  margin-bottom:12px;
 }
 
 .language-card label{
@@ -147,7 +148,7 @@ main{
   font-size:8px;
   font-weight:900;
   color:#6b7280;
-  margin-bottom:6px
+  margin-bottom:6px;
 }
 
 select{
@@ -159,10 +160,10 @@ select{
   color:#172033;
   font-size:11px;
   font-weight:700;
-  outline:none
+  outline:none;
 }
 
-/* CONTENT */
+/* CARDS */
 
 .card{
   background:#fff;
@@ -170,60 +171,94 @@ select{
   border-radius:16px;
   padding:21px;
   margin-bottom:12px;
-  box-shadow:0 5px 18px rgba(15,23,42,.04)
+  box-shadow:0 5px 18px rgba(15,23,42,.04);
 }
 
 .card-label{
-  color:#6366f1;
   font-size:8px;
   font-weight:900;
   letter-spacing:1px;
-  margin-bottom:6px
-}
-
-.card h2{
-  font-size:21px;
-  line-height:1.3;
-  margin-bottom:10px
-}
-
-.message,
-.prayer{
-  font-size:13px;
-  color:#374151;
-  white-space:pre-line
+  margin-bottom:8px;
 }
 
 /* VERSE */
 
 .verse-card{
-  background:#fffbeb;
-  border-color:#fde68a
+  background:linear-gradient(
+    135deg,
+    #fffbeb,
+    #fff7d6
+  );
+  border-color:#fde68a;
+}
+
+.verse-card .card-label{
+  color:#b45309;
 }
 
 .verse{
-  font-size:15px;
+  font-size:16px;
   font-weight:700;
   font-style:italic;
-  color:#374151
+  color:#374151;
 }
 
 .reference{
   display:inline-block;
-  margin-top:9px;
+  margin-top:10px;
   padding:5px 9px;
   border-radius:7px;
   background:#fef3c7;
   color:#92400e;
   font-size:9px;
-  font-weight:900
+  font-weight:900;
+}
+
+/* EXPLANATION */
+
+.message-card .card-label{
+  color:#4f46e5;
+}
+
+.message-card h2{
+  font-size:21px;
+  line-height:1.3;
+  margin-bottom:10px;
+}
+
+.message{
+  font-size:13px;
+  color:#374151;
+  white-space:pre-line;
 }
 
 /* PRAYER */
 
 .prayer-card{
-  background:linear-gradient(135deg,#eef2ff,#fff)
+  background:linear-gradient(
+    135deg,
+    #eef2ff,
+    #f8faff
+  );
+  border-color:#c7d2fe;
 }
+
+.prayer-card .card-label{
+  color:#4338ca;
+}
+
+.prayer-card h2{
+  font-size:21px;
+  margin-bottom:10px;
+}
+
+.prayer{
+  font-size:13px;
+  color:#374151;
+  white-space:pre-line;
+}
+
+/* LOADING */
 
 .loading{
   background:#fff;
@@ -232,25 +267,27 @@ select{
   padding:40px 15px;
   text-align:center;
   color:#6b7280;
-  font-size:11px
+  font-size:11px;
 }
+
+/* ERROR */
 
 .error{
   background:#fef2f2;
   border:1px solid #fecaca;
   color:#b91c1c;
   border-radius:14px;
-  padding:18px;
+  padding:20px;
   text-align:center;
   font-size:10px;
-  font-weight:700
+  font-weight:700;
 }
 
 /* SHARE */
 
 .share{
   text-align:center;
-  margin-top:15px
+  margin-top:15px;
 }
 
 .share button{
@@ -261,11 +298,11 @@ select{
   border-radius:9px;
   font-size:10px;
   font-weight:900;
-  cursor:pointer
+  cursor:pointer;
 }
 
 .share button:active{
-  transform:scale(.98)
+  transform:scale(.98);
 }
 
 /* FOOTER */
@@ -275,11 +312,11 @@ footer{
   color:#94a3b8;
   text-align:center;
   padding:20px;
-  font-size:8px
+  font-size:8px;
 }
 
 footer strong{
-  color:#fff
+  color:#fff;
 }
 
 /* MOBILE */
@@ -287,33 +324,34 @@ footer strong{
 @media(max-width:600px){
 
   .container{
-    width:92%
+    width:92%;
   }
 
   .hero{
     padding:26px 18px;
-    border-radius:19px
+    border-radius:19px;
   }
 
   .hero h1{
-    font-size:24px
+    font-size:24px;
   }
 
   .card{
-    padding:18px
+    padding:18px;
   }
 
-  .card h2{
-    font-size:19px
+  .message-card h2,
+  .prayer-card h2{
+    font-size:19px;
   }
 
   .message,
   .prayer{
-    font-size:12px
+    font-size:12px;
   }
 
   .verse{
-    font-size:14px
+    font-size:14px;
   }
 }
 </style>
@@ -327,11 +365,8 @@ footer strong{
 
     <a href="index.html" class="logo">
 
-      <img
-      src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
-      alt="GOH Ministries">
-
       <div>
+
         <div class="logo-title">
           GOH Ministries
         </div>
@@ -339,6 +374,7 @@ footer strong{
         <div class="logo-sub">
           Gate of Heaven Ministries
         </div>
+
       </div>
 
     </a>
@@ -356,15 +392,15 @@ footer strong{
 
 <div class="container">
 
-  <!-- DAILY DEVOTIONAL HEADER -->
+  <!-- HERO -->
 
-  <div class="hero">
+  <section class="hero">
 
     <div class="hero-icon">
       🙏
     </div>
 
-    <div class="label">
+    <div class="hero-label">
       DAILY DEVOTIONAL
     </div>
 
@@ -372,21 +408,19 @@ footer strong{
       Today's Devotional
     </h1>
 
-    <div
-    class="date"
-    id="date">
+    <div id="date" class="date">
       Loading...
     </div>
 
-  </div>
+  </section>
 
 
   <!-- LANGUAGE -->
 
-  <div class="language-card">
+  <section class="language-card">
 
     <label>
-      LANGUAGE
+      SELECT LANGUAGE
     </label>
 
     <select id="language">
@@ -405,10 +439,10 @@ footer strong{
 
     </select>
 
-  </div>
+  </section>
 
 
-  <!-- DEVOTIONAL -->
+  <!-- CONTENT -->
 
   <div id="content">
 
@@ -436,9 +470,15 @@ footer strong{
 
 <footer>
 
-  <strong>GOH Ministries</strong><br>
+  <strong>
+    GOH Ministries
+  </strong>
 
-  Gate of Heaven Ministries<br>
+  <br>
+
+  Gate of Heaven Ministries
+
+  <br>
 
   Daily Devotional • Bible • Prayer
 
@@ -447,32 +487,33 @@ footer strong{
 
 <script>
 
-/* =========================================
-   YOUR CLOUDFLARE WORKER URL
-   ========================================= */
+/* =====================================
+   CLOUDFLARE WORKER
+===================================== */
 
 const API =
-"https://YOUR-WORKER.workers.dev";
+"https://devotional.createlk.workers.dev";
 
 
-/* =========================================
+/* =====================================
    LANGUAGE
-   ========================================= */
+===================================== */
 
 const languageSelect =
 document.getElementById("language");
 
 let language =
 localStorage.getItem(
-  "goh_devotional_language"
+"goh_devotional_language"
 ) || "en";
 
-languageSelect.value = language;
+languageSelect.value =
+language;
 
 
-/* =========================================
+/* =====================================
    LOAD DEVOTIONAL
-   ========================================= */
+===================================== */
 
 async function loadDevotional(){
 
@@ -485,32 +526,75 @@ async function loadDevotional(){
     </div>
   `;
 
+
   try{
 
-    const response =
-    await fetch(
+    /*
+      Worker automatically detects
+      today's date in Asia/Colombo.
+    */
+
+    const apiURL =
       API +
-      "/today?lang=" +
-      encodeURIComponent(language),
-      {
-        cache:"no-store"
-      }
-    );
+      "/?lang=" +
+      encodeURIComponent(language);
 
-    const data =
-    await response.json();
 
-    if(!response.ok || !data.success){
+    const response =
+      await fetch(
+        apiURL,
+        {
+          method:"GET",
+          headers:{
+            "Accept":"application/json"
+          },
+          cache:"no-store"
+        }
+      );
+
+
+    if(!response.ok){
 
       throw new Error(
-        data.error ||
-        "Today's devotional is not available."
+        "Server error: " +
+        response.status
       );
 
     }
 
+
+    const text =
+      await response.text();
+
+
+    let data;
+
+    try{
+
+      data =
+        JSON.parse(text);
+
+    }catch(e){
+
+      throw new Error(
+        "Invalid response from devotional server."
+      );
+
+    }
+
+
+    if(!data.success){
+
+      throw new Error(
+        data.error ||
+        "Today's devotional is not available yet."
+      );
+
+    }
+
+
     const d =
-    data.devotional;
+      data.devotional;
 
 
     /* DATE */
@@ -520,31 +604,22 @@ async function loadDevotional(){
       formatDate(data.date);
 
 
-    /* CONTENT */
+    /*
+      ORDER:
+
+      1. Bible Verse
+      2. Explanation
+      3. Prayer
+    */
 
     content.innerHTML = `
 
-      <article class="card">
-
-        <div class="card-label">
-          TODAY'S MESSAGE
-        </div>
-
-        <h2>
-          ${escapeHTML(d.title)}
-        </h2>
-
-        <div class="message">
-          ${escapeHTML(d.message)}
-        </div>
-
-      </article>
-
+      <!-- BIBLE VERSE -->
 
       <article class="card verse-card">
 
         <div class="card-label">
-          BIBLE VERSE
+          📖 BIBLE VERSE
         </div>
 
         <div class="verse">
@@ -570,35 +645,72 @@ async function loadDevotional(){
       </article>
 
 
-      <article class="card prayer-card">
+      <!-- EXPLANATION -->
+
+      <article class="card message-card">
 
         <div class="card-label">
-          TODAY'S PRAYER
+          💡 TODAY'S EXPLANATION
         </div>
 
         <h2>
-          🙏 Prayer
+          ${escapeHTML(
+            d.title || ""
+          )}
+        </h2>
+
+        <div class="message">
+          ${escapeHTML(
+            d.message || ""
+          )}
+        </div>
+
+      </article>
+
+
+      <!-- PRAYER -->
+
+      <article class="card prayer-card">
+
+        <div class="card-label">
+          🙏 TODAY'S PRAYER
+        </div>
+
+        <h2>
+          Prayer
         </h2>
 
         <div class="prayer">
-          ${escapeHTML(d.prayer)}
+          ${escapeHTML(
+            d.prayer || ""
+          )}
         </div>
 
       </article>
 
     `;
 
+
   }catch(error){
 
-    console.error(error);
+    console.error(
+      "Devotional API error:",
+      error
+    );
+
 
     content.innerHTML = `
+
       <div class="error">
-        ⚠️ ${escapeHTML(
-          error.message ||
-          "Unable to load today's devotional."
-        )}
+
+        ⚠️ Today's devotional is not available yet.
+
+        <br><br>
+
+        Please try again later.
+
       </div>
+
     `;
 
   }
@@ -606,31 +718,30 @@ async function loadDevotional(){
 }
 
 
-/* =========================================
-   FORMAT DATE
-   ========================================= */
+/* =====================================
+   DATE
+===================================== */
 
 function formatDate(monthDay){
 
   const parts =
-  monthDay.split("-");
+    String(monthDay).split("-");
+
 
   if(parts.length !== 2){
+
     return monthDay;
+
   }
 
-  const month =
-  Number(parts[0]);
-
-  const day =
-  Number(parts[1]);
 
   const date =
-  new Date(
-    2024,
-    month - 1,
-    day
-  );
+    new Date(
+      2024,
+      Number(parts[0]) - 1,
+      Number(parts[1])
+    );
+
 
   return date.toLocaleDateString(
     "en-US",
@@ -643,37 +754,61 @@ function formatDate(monthDay){
 }
 
 
-/* =========================================
+/* =====================================
    HTML ESCAPE
-   ========================================= */
+===================================== */
 
 function escapeHTML(value){
 
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+  return String(
+    value ?? ""
+  )
+
+  .replace(
+    /&/g,
+    "&amp;"
+  )
+
+  .replace(
+    /</g,
+    "&lt;"
+  )
+
+  .replace(
+    />/g,
+    "&gt;"
+  )
+
+  .replace(
+    /"/g,
+    "&quot;"
+  )
+
+  .replace(
+    /'/g,
+    "&#039;"
+  );
 
 }
 
 
-/* =========================================
+/* =====================================
    LANGUAGE CHANGE
-   ========================================= */
+===================================== */
 
 languageSelect.addEventListener(
   "change",
   function(){
 
     language =
-    this.value;
+      this.value;
+
 
     localStorage.setItem(
       "goh_devotional_language",
       language
     );
+
 
     loadDevotional();
 
@@ -681,9 +816,9 @@ languageSelect.addEventListener(
 );
 
 
-/* =========================================
+/* =====================================
    SHARE
-   ========================================= */
+===================================== */
 
 document
 .getElementById("shareBtn")
@@ -691,24 +826,27 @@ document
   "click",
   async function(){
 
-    const title =
-    document.title;
+    const shareData = {
 
-    const text =
-    "Today's Daily Devotional - GOH Ministries";
+      title:
+        "Today's Devotional | GOH Ministries",
 
-    const url =
-    window.location.href;
+      text:
+        "Read today's devotional from GOH Ministries.",
+
+      url:
+        window.location.href
+
+    };
+
 
     if(navigator.share){
 
       try{
 
-        await navigator.share({
-          title:title,
-          text:text,
-          url:url
-        });
+        await navigator.share(
+          shareData
+        );
 
       }catch(e){}
 
@@ -717,23 +855,30 @@ document
       try{
 
         await navigator.clipboard.writeText(
-          url
+          window.location.href
         );
 
+
         this.textContent =
-        "✓ Link Copied";
+          "✓ Link Copied";
+
 
         setTimeout(
           () => {
+
             this.textContent =
-            "📤 Share Today's Devotional";
+              "📤 Share Today's Devotional";
+
           },
           1800
         );
 
+
       }catch(e){
 
-        alert(url);
+        alert(
+          window.location.href
+        );
 
       }
 
@@ -743,9 +888,9 @@ document
 );
 
 
-/* =========================================
+/* =====================================
    START
-   ========================================= */
+===================================== */
 
 loadDevotional();
 
