@@ -19,7 +19,10 @@ color:#172033;
 line-height:1.6
 }
 
-a{text-decoration:none;color:inherit}
+a{
+text-decoration:none;
+color:inherit
+}
 
 .container{
 width:min(900px,92%);
@@ -222,12 +225,17 @@ border:0;
 border-radius:9px;
 padding:13px 22px;
 font-weight:900;
-cursor:pointer
+cursor:pointer;
+margin:4px
 }
 
 .share button:disabled{
 opacity:.6;
 cursor:not-allowed
+}
+
+.shareBtn2{
+background:#16a34a!important
 }
 
 .status{
@@ -521,10 +529,21 @@ LANGUAGE
 Loading devotional...
 </div>
 
+
 <div class="share" id="share" style="display:none">
 
-<button id="shareBtn" onclick="shareDevotional()">
-📤 Share Full Devotional
+<button id="createBtn" onclick="prepareShare()">
+🖼️ Create Share Image
+</button>
+
+<button
+id="shareBtn"
+class="shareBtn2"
+onclick="shareImage()"
+style="display:none">
+
+📤 Share Image
+
 </button>
 
 </div>
@@ -621,32 +640,36 @@ rel="noopener"
 
 <script>
 
-const API =
+const API=
 "https://devotional.createlk.workers.dev";
 
 
-const R2_BACKGROUND =
+const R2_BACKGROUND=
 "https://media.gohministries.org/file_00000000a9808211856c9a605ffe6f5c.png";
 
 
-const params =
+const params=
 new URLSearchParams(location.search);
 
 
-let lang =
-params.get("lang") || "en";
+let lang=
+params.get("lang")||"en";
 
 
-let selected =
+let selected=
 params.get("date");
 
 
-let year =
+let year=
 new Date().getFullYear();
 
 
-let devotional =
-null;
+let devotional=null;
+
+
+/* Store generated file */
+
+let generatedFile=null;
 
 
 if(!["en","ta","si"].includes(lang)){
@@ -724,14 +747,29 @@ async function load(md){
 
 selected=md;
 
-document.getElementById("date").textContent=
+document.getElementById(
+"date"
+).textContent=
 dateText(md);
+
 
 const result=
 document.getElementById("result");
 
-document.getElementById("share")
-.style.display="none";
+
+document.getElementById(
+"share"
+).style.display="none";
+
+
+/* Reset generated image */
+
+generatedFile=null;
+
+document.getElementById(
+"shareBtn"
+).style.display="none";
+
 
 result.className="status";
 
@@ -742,31 +780,38 @@ result.textContent=
 try{
 
 const r=await fetch(
+
 API+
 "?date="+
 encodeURIComponent(md)+
 "&lang="+
 encodeURIComponent(lang),
+
 {
 cache:"no-store"
 }
+
 );
 
 
 const data=await r.json();
 
 
-if(!r.ok || !data.success){
+if(
+!r.ok||
+!data.success
+){
 
 throw new Error(
-data.error ||
+data.error||
 "Devotional not available."
 );
 
 }
 
 
-const x=data.devotional;
+const x=
+data.devotional;
 
 
 devotional={
@@ -835,11 +880,13 @@ ${safe(x.prayer)}
 `;
 
 
-document.getElementById("share")
-.style.display="block";
+document.getElementById(
+"share"
+).style.display="block";
 
 
-const p=new URLSearchParams();
+const p=
+new URLSearchParams();
 
 p.set("lang",lang);
 p.set("date",md);
@@ -868,7 +915,11 @@ result.textContent=
 
 /* TEXT WRAP */
 
-function wrap(ctx,text,width){
+function wrap(
+ctx,
+text,
+width
+){
 
 const words=
 String(text).split(/\s+/);
@@ -878,7 +929,9 @@ const lines=[];
 let line="";
 
 
-for(const word of words){
+for(
+const word of words
+){
 
 const test=
 line
@@ -889,7 +942,8 @@ word;
 
 
 if(
-ctx.measureText(test).width>width &&
+ctx.measureText(test).width>
+width &&
 line
 ){
 
@@ -917,7 +971,7 @@ return lines;
 }
 
 
-/* CREATE SHARE IMAGE */
+/* CREATE IMAGE */
 
 async function createImage(){
 
@@ -930,17 +984,14 @@ throw new Error(
 }
 
 
-/*
-Fetch the R2 image first.
+/* Fetch R2 image */
 
-This is better than directly drawing
-the remote image onto the canvas.
-*/
-
-const response=await fetch(
+const response=
+await fetch(
 
 R2_BACKGROUND+
-"?v="+Date.now(),
+"?v="+
+Date.now(),
 
 {
 method:"GET",
@@ -976,10 +1027,12 @@ throw new Error(
 }
 
 
-/* Convert Blob to local URL */
+/* Create local image URL */
 
 const imageURL=
-URL.createObjectURL(imageBlob);
+URL.createObjectURL(
+imageBlob
+);
 
 
 const img=
@@ -1035,9 +1088,10 @@ throw new Error(
 }
 
 
-/* BACKGROUND */
+/* Background */
 
-const scale=Math.max(
+const scale=
+Math.max(
 
 canvas.width/img.width,
 
@@ -1048,6 +1102,7 @@ canvas.height/img.height
 
 const w=
 img.width*scale;
+
 
 const h=
 img.height*scale;
@@ -1068,7 +1123,7 @@ h
 );
 
 
-/* DARK OVERLAY */
+/* Overlay */
 
 ctx.fillStyle=
 "rgba(0,0,0,.42)";
@@ -1081,7 +1136,7 @@ ctx.fillRect(
 );
 
 
-/* TEXT */
+/* Text */
 
 ctx.textAlign="center";
 
@@ -1093,20 +1148,22 @@ ctx.fillStyle="#fff";
 let y=100;
 
 
-/* VERSE */
+/* Verse */
 
 let size=45;
-
 
 ctx.font=
 `700 ${size}px Arial`;
 
 
-let lines=wrap(
+let lines=
+wrap(
 
 ctx,
 
-"“"+devotional.verse+"”",
+"“"+
+devotional.verse+
+"”",
 
 850
 
@@ -1123,11 +1180,14 @@ size-=2;
 ctx.font=
 `700 ${size}px Arial`;
 
-lines=wrap(
+lines=
+wrap(
 
 ctx,
 
-"“"+devotional.verse+"”",
+"“"+
+devotional.verse+
+"”",
 
 850
 
@@ -1152,7 +1212,7 @@ size*1.35;
 }
 
 
-/* REFERENCE */
+/* Reference */
 
 y+=15;
 
@@ -1176,7 +1236,7 @@ y
 y+=75;
 
 
-/* EXPLANATION */
+/* Explanation */
 
 ctx.fillStyle="#fff";
 
@@ -1185,13 +1245,9 @@ ctx.font=
 
 
 ctx.fillText(
-
 "EXPLANATION",
-
 540,
-
 y
-
 );
 
 
@@ -1201,7 +1257,8 @@ ctx.font=
 "600 22px Arial";
 
 
-lines=wrap(
+lines=
+wrap(
 
 ctx,
 
@@ -1230,7 +1287,7 @@ y+=31;
 }
 
 
-/* PRAYER */
+/* Prayer */
 
 y+=25;
 
@@ -1239,13 +1296,9 @@ ctx.font=
 
 
 ctx.fillText(
-
 "PRAYER",
-
 540,
-
 y
-
 );
 
 
@@ -1255,7 +1308,8 @@ ctx.font=
 "600 21px Arial";
 
 
-lines=wrap(
+lines=
+wrap(
 
 ctx,
 
@@ -1284,14 +1338,14 @@ y+=30;
 }
 
 
-/* RELEASE IMAGE URL */
+/* Release URL */
 
 URL.revokeObjectURL(
 imageURL
 );
 
 
-/* CREATE PNG */
+/* Convert canvas to PNG */
 
 return new Promise(
 (resolve,reject)=>{
@@ -1327,11 +1381,16 @@ new Error(
 }
 
 
-/* SHARE */
+/* STEP 1: CREATE IMAGE */
 
-async function shareDevotional(){
+async function prepareShare(){
 
 const btn=
+document.getElementById(
+"createBtn"
+);
+
+const shareBtn=
 document.getElementById(
 "shareBtn"
 );
@@ -1340,7 +1399,7 @@ document.getElementById(
 btn.disabled=true;
 
 btn.textContent=
-"⏳ Creating Image...";
+"⏳ Creating...";
 
 
 try{
@@ -1349,7 +1408,7 @@ const blob=
 await createImage();
 
 
-const file=
+generatedFile=
 new File(
 
 [blob],
@@ -1363,19 +1422,74 @@ type:"image/png"
 );
 
 
-/* Android / browser sharing */
+/* Show share button */
+
+shareBtn.style.display=
+"inline-block";
+
+
+btn.textContent=
+"✅ Image Created";
+
+
+}
+catch(e){
+
+console.error(e);
+
+
+alert(
+
+"Image could not be created.\n\n"+
+(e.message||
+"Unknown error")
+
+);
+
+
+btn.textContent=
+"🖼️ Create Share Image";
+
+}
+finally{
+
+btn.disabled=false;
+
+}
+
+}
+
+
+/* STEP 2: SHARE IMAGE */
+
+async function shareImage(){
+
+if(!generatedFile){
+
+alert(
+"Please create the image first."
+);
+
+return;
+
+}
+
+
+try{
 
 if(
-
 navigator.share &&
-
 navigator.canShare &&
-
 navigator.canShare({
-files:[file]
+files:[generatedFile]
 })
-
 ){
+
+/*
+Important:
+This function is called directly
+from the Share Image button.
+*/
 
 await navigator.share({
 
@@ -1385,17 +1499,21 @@ title:
 text:
 "Daily Devotional | GOH Ministries",
 
-files:[file]
+files:[
+generatedFile
+]
 
 });
 
 }
 else{
 
-/* Fallback download */
+/* Browser fallback */
 
 const url=
-URL.createObjectURL(blob);
+URL.createObjectURL(
+generatedFile
+);
 
 
 const a=
@@ -1434,24 +1552,21 @@ e
 
 
 /*
-Show the REAL error.
+Do not show an error if
+the user simply cancelled.
 */
 
+if(
+e.name!=="AbortError"
+){
+
 alert(
-
-"Image could not be created.\n\n"+
+"Sharing is not available in this browser.\n\n"+
 (e.message||
-"Unknown error")
-
+"Please try again.")
 );
 
 }
-
-
-btn.disabled=false;
-
-btn.textContent=
-"📤 Share Full Devotional";
 
 }
 
@@ -1585,7 +1700,8 @@ String(d)
 
 const todayClass=
 
-year===new Date().getFullYear() &&
+year===
+new Date().getFullYear() &&
 md===today()
 ?
 " today"
@@ -1621,7 +1737,8 @@ html+=`
 
 document.getElementById(
 "archive"
-).innerHTML=html;
+).innerHTML=
+html;
 
 }
 
@@ -1631,7 +1748,6 @@ function openDate(md,y){
 year=y;
 
 load(md);
-
 
 window.scrollTo({
 
