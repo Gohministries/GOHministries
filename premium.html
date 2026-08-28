@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Premium | GOH Bible Academy</title>
 <meta name="theme-color" content="#111827">
+<title>Premium Membership | GOH Bible Academy</title>
 
-<link rel="icon" href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
+<link rel="icon"
+href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -24,7 +25,7 @@ button{
 }
 
 .container{
- width:min(700px,94%);
+ width:min(650px,94%);
  margin:auto
 }
 
@@ -77,7 +78,7 @@ header{
 }
 
 main{
- padding:25px 0 45px
+ padding:24px 0 45px
 }
 
 .message{
@@ -94,11 +95,6 @@ main{
  display:block
 }
 
-.loading{
- background:#eff6ff;
- color:#1d4ed8
-}
-
 .error{
  background:#fef2f2;
  color:#b91c1c
@@ -109,64 +105,57 @@ main{
  color:#166534
 }
 
-.hero{
- background:#111827;
- color:#fff;
- border-radius:18px;
- padding:25px;
- text-align:center;
- margin-bottom:14px
-}
-
-.crown{
- font-size:34px;
- margin-bottom:6px
-}
-
-.hero h1{
- font-size:25px;
- margin-bottom:5px
-}
-
-.hero p{
- color:#d1d5db;
- font-size:11px
-}
-
 .card{
  background:#fff;
  border:1px solid #e5e7eb;
- border-radius:15px;
- padding:19px;
- margin-bottom:14px
+ border-radius:18px;
+ padding:22px;
+ margin-bottom:13px
+}
+
+.premium{
+ text-align:center
+}
+
+.icon{
+ font-size:40px;
+ margin-bottom:8px
+}
+
+h1{
+ font-size:23px;
+ margin-bottom:6px
+}
+
+.subtitle{
+ font-size:11px;
+ color:#6b7280;
+ margin-bottom:20px
 }
 
 .price{
- text-align:center;
- padding:10px 0 18px
-}
-
-.price strong{
- display:block;
- font-size:32px;
+ font-size:30px;
+ font-weight:900;
  color:#111827
 }
 
-.price span{
+.period{
+ font-size:10px;
  color:#6b7280;
- font-size:11px
+ margin-bottom:18px
 }
 
 .features{
- display:grid;
- gap:9px;
- margin-bottom:17px
+ text-align:left;
+ margin:15px 0
 }
 
 .feature{
  background:#f9fafb;
+ border:1px solid #e5e7eb;
  border-radius:9px;
  padding:10px;
+ margin:6px 0;
  font-size:10px;
  font-weight:700
 }
@@ -177,9 +166,10 @@ main{
  background:#111827;
  color:#fff;
  padding:13px;
- border-radius:9px;
+ border-radius:10px;
  font-size:11px;
- font-weight:900
+ font-weight:900;
+ margin-top:8px
 }
 
 .pay:disabled{
@@ -187,71 +177,31 @@ main{
  cursor:not-allowed
 }
 
-.status{
- text-align:center
+.student{
+ margin-top:12px;
+ font-size:9px;
+ color:#6b7280
 }
 
-.status-title{
- font-size:16px;
- font-weight:900;
- margin-bottom:5px
-}
-
-.status-text{
- color:#6b7280;
- font-size:10px
+.active{
+ background:#ecfdf5;
+ border:1px solid #86efac;
+ color:#166534;
+ border-radius:12px;
+ padding:15px;
+ margin-bottom:15px;
+ font-size:11px;
+ font-weight:800
 }
 
 .countdown{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:7px;
- margin-top:15px
-}
-
-.time{
- background:#111827;
- color:#fff;
- border-radius:9px;
- padding:10px 4px
-}
-
-.time strong{
- display:block;
- font-size:18px
-}
-
-.time span{
- font-size:7px;
- color:#cbd5e1
-}
-
-.expired{
- display:none;
- background:#fef2f2;
- border:1px solid #fecaca;
- color:#b91c1c;
- border-radius:10px;
- padding:12px;
- text-align:center;
- font-size:10px;
- font-weight:800;
- margin-bottom:13px
-}
-
-.expired.show{
- display:block
+ font-size:20px;
+ font-weight:900;
+ margin-top:6px
 }
 
 .hidden{
- display:none!important
-}
-
-.student{
- text-align:center;
- color:#6b7280;
- font-size:9px;
- margin-top:10px
+ display:none
 }
 
 footer{
@@ -260,26 +210,6 @@ footer{
  text-align:center;
  padding:18px;
  font-size:8px
-}
-
-@media(max-width:500px){
-
- .hero h1{
-  font-size:21px
- }
-
- .price strong{
-  font-size:28px
- }
-
- .countdown{
-  gap:5px
- }
-
- .time strong{
-  font-size:16px
- }
-
 }
 </style>
 </head>
@@ -315,38 +245,44 @@ onclick="location.href='dashboard.html'">
 <div id="message" class="message"></div>
 
 
-<div class="hero">
+<div class="card premium">
 
-<div class="crown">🏆</div>
+<div class="icon">🏆</div>
 
 <h1>Premium Membership</h1>
 
-<p>
+<div class="subtitle">
 Complete Lessons 2–180 and continue your Biblical Studies journey.
-</p>
+</div>
+
+
+<!-- ACTIVE PREMIUM -->
+
+<div id="activeBox" class="active hidden">
+
+✓ Premium Membership Active
+
+<div id="countdown" class="countdown">
+Loading...
+</div>
+
+<div style="font-size:9px;margin-top:5px">
+remaining
+</div>
 
 </div>
 
 
-<!-- EXPIRED MESSAGE -->
+<!-- PAYMENT -->
 
-<div id="expiredBox" class="expired">
-Premium membership has expired. Renew now to continue Lessons 2–180.
-</div>
-
-
-<!-- PURCHASE -->
-
-<div id="purchaseBox" class="card">
+<div id="paymentBox">
 
 <div class="price">
+LKR 1,500
+</div>
 
-<strong>LKR 1,500</strong>
-
-<span>
+<div class="period">
 Premium Membership • 30 Days
-</span>
-
 </div>
 
 
@@ -382,66 +318,16 @@ Premium Membership • 30 Days
 <button
 id="payButton"
 class="pay"
-onclick="startPayment()">
+type="button">
 Pay LKR 1,500
 </button>
 
-
-<div class="student" id="studentInfo"></div>
-
 </div>
 
 
-<!-- ACTIVE PREMIUM -->
-
-<div id="activeBox" class="card hidden">
-
-<div class="status">
-
-<div class="status-title">
-⭐ Premium Active
-</div>
-
-<div class="status-text">
-Your Premium membership is active until:
-</div>
-
-<div
-id="expiryText"
-style="
-font-size:11px;
-font-weight:900;
-margin-top:5px;
-">
-</div>
-
-</div>
-
-
-<div
-id="countdown"
-class="countdown">
-
-<div class="time">
-<strong id="days">0</strong>
-<span>DAYS</span>
-</div>
-
-<div class="time">
-<strong id="hours">0</strong>
-<span>HOURS</span>
-</div>
-
-<div class="time">
-<strong id="minutes">0</strong>
-<span>MINUTES</span>
-</div>
-
-<div class="time">
-<strong id="seconds">0</strong>
-<span>SECONDS</span>
-</div>
-
+<div class="student">
+Student ID:
+<span id="studentId">-</span>
 </div>
 
 </div>
@@ -458,52 +344,30 @@ GOH Bible Academy • Gate of Heaven Ministries<br>
 
 <script>
 
-/* =========================
-   CONFIG
-========================= */
-
-const PREMIUM_API =
- "https://premium.createlk.workers.dev";
-
-
-/* =========================
-   HELPERS
-========================= */
-
-const $ =
- id => document.getElementById(id);
-
-
-function showMessage(text,type){
-
- const box=$("message");
-
- box.textContent=text;
-
- box.className=
-  "message show "+type;
-
-}
-
-
-function hideMessage(){
-
- $("message").className=
-  "message";
-
-}
+const API =
+"https://premium.createlk.workers.dev";
 
 
 /* =========================
    STUDENT
 ========================= */
 
-const student =
- JSON.parse(
-  localStorage.getItem("goh_student") ||
-  sessionStorage.getItem("goh_student") ||
-  "null"
- );
+let student = null;
+
+try{
+
+ student =
+  JSON.parse(
+   localStorage.getItem("goh_student") ||
+   sessionStorage.getItem("goh_student") ||
+   "null"
+  );
+
+}catch(e){
+
+ student=null;
+
+}
 
 
 if(!student){
@@ -513,12 +377,8 @@ if(!student){
 }
 
 
-/* =========================
-   STUDENT ID
-========================= */
-
 const studentId =
- Number(student?.id || 0);
+Number(student?.id || 0);
 
 
 if(!studentId){
@@ -528,78 +388,65 @@ if(!studentId){
 }
 
 
-/* =========================
-   STUDENT INFO
-========================= */
-
-$("studentInfo").textContent =
- "Student ID: " + studentId;
+document.getElementById(
+ "studentId"
+).textContent=studentId;
 
 
 /* =========================
-   SHOW NEW FREE USER
+   ELEMENTS
 ========================= */
 
-function showNewUser(){
+const messageBox =
+document.getElementById("message");
 
- $("purchaseBox")
-  .classList.remove("hidden");
+const paymentBox =
+document.getElementById("paymentBox");
 
- $("activeBox")
-  .classList.add("hidden");
+const activeBox =
+document.getElementById("activeBox");
 
- $("expiredBox")
-  .classList.remove("show");
+const countdown =
+document.getElementById("countdown");
+
+const payButton =
+document.getElementById("payButton");
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+function showMessage(text,type){
+
+ messageBox.textContent=text;
+
+ messageBox.className=
+  "message show "+type;
+
+}
+
+function hideMessage(){
+
+ messageBox.className="message";
 
 }
 
 
 /* =========================
-   SHOW ACTIVE
+   SHOW FREE
 ========================= */
 
-let countdownTimer=null;
+function showPayment(){
 
+ activeBox.classList.add("hidden");
 
-function showActive(expiry){
+ paymentBox.classList.remove("hidden");
 
- $("purchaseBox")
-  .classList.add("hidden");
+ payButton.disabled=false;
 
- $("expiredBox")
-  .classList.remove("show");
-
- $("activeBox")
-  .classList.remove("hidden");
-
-
- const date =
-  new Date(expiry);
-
-
- $("expiryText").textContent =
-  date.toLocaleString();
-
-
- startCountdown(date);
-
-}
-
-
-/* =========================
-   SHOW EXPIRED
-========================= */
-
-function showExpired(){
-
- $("purchaseBox")
-  .classList.remove("hidden");
-
- $("activeBox")
-  .classList.add("hidden");
-
- $("expiredBox")
-  .classList.add("show");
+ payButton.textContent=
+  "Pay LKR 1,500";
 
 }
 
@@ -608,39 +455,41 @@ function showExpired(){
    COUNTDOWN
 ========================= */
 
+let timer=null;
+
 function startCountdown(expiry){
 
- if(countdownTimer){
-
-  clearInterval(countdownTimer);
-
+ if(timer){
+  clearInterval(timer);
  }
 
-
  function update(){
+
+  const end =
+   new Date(expiry).getTime();
 
   const now =
    Date.now();
 
-  const end =
-   expiry.getTime();
-
-  let diff =
-   end-now;
+  let diff=end-now;
 
 
   if(diff<=0){
 
-   clearInterval(
-    countdownTimer
+   clearInterval(timer);
+
+   /*
+    * Treat expired membership
+    * as FREE.
+    */
+
+   activeBox.classList.add(
+    "hidden"
    );
 
-   $("days").textContent="0";
-   $("hours").textContent="0";
-   $("minutes").textContent="0";
-   $("seconds").textContent="0";
-
-   showExpired();
+   paymentBox.classList.remove(
+    "hidden"
+   );
 
    return;
 
@@ -649,109 +498,119 @@ function startCountdown(expiry){
 
   const days =
    Math.floor(
-    diff /
-    (1000*60*60*24)
+    diff/(1000*60*60*24)
    );
 
-
-  diff -=
-   days *
-   1000*60*60*24;
-
+  diff%=
+   (1000*60*60*24);
 
   const hours =
    Math.floor(
-    diff /
-    (1000*60*60)
+    diff/(1000*60*60)
    );
 
-
-  diff -=
-   hours *
-   1000*60*60;
-
+  diff%=
+   (1000*60*60);
 
   const minutes =
    Math.floor(
-    diff /
-    (1000*60)
+    diff/(1000*60)
    );
 
-
-  diff -=
-   minutes *
-   1000*60;
-
+  diff%=
+   (1000*60);
 
   const seconds =
    Math.floor(
-    diff /
-    1000
+    diff/1000
    );
 
 
-  $("days").textContent =
-   days;
-
-  $("hours").textContent =
-   hours;
-
-  $("minutes").textContent =
-   minutes;
-
-  $("seconds").textContent =
-   seconds;
+  countdown.textContent =
+   days+"d "+
+   hours+"h "+
+   minutes+"m "+
+   seconds+"s";
 
  }
 
-
  update();
 
- countdownTimer =
-  setInterval(
-   update,
-   1000
-  );
+ timer=
+  setInterval(update,1000);
 
 }
 
 
 /* =========================
-   CHECK PREMIUM
+   SHOW PREMIUM
 ========================= */
 
-async function checkPremium(){
+function showPremium(expiry){
 
- showMessage(
-  "Checking membership...",
-  "loading"
+ paymentBox.classList.add(
+  "hidden"
  );
+
+ activeBox.classList.remove(
+  "hidden"
+ );
+
+ startCountdown(expiry);
+
+}
+
+
+/* =========================
+   CHECK MEMBERSHIP
+========================= */
+
+async function checkMembership(){
+
+ /*
+  IMPORTANT:
+  Default is FREE.
+
+  This prevents a new user from
+  being blocked if the status API
+  temporarily fails.
+ */
+
+ showPayment();
 
 
  try{
 
   const response =
    await fetch(
-    PREMIUM_API +
-    "/status?student_id=" +
-    encodeURIComponent(
-     studentId
-    )
+    API+
+    "/status?student_id="+
+    encodeURIComponent(studentId),
+    {
+     method:"GET",
+     cache:"no-store"
+    }
    );
+
+
+  if(!response.ok){
+
+   throw new Error(
+    "Membership request failed."
+   );
+
+  }
 
 
   const data =
    await response.json();
 
 
-  if(
-   !response.ok ||
-   !data.success
-  ){
+  if(!data.success){
 
    throw new Error(
     data.message ||
-    "Unable to check membership."
+    "Unable to verify membership."
    );
 
   }
@@ -761,107 +620,55 @@ async function checkPremium(){
    data.membership || {};
 
 
-  const status =
-   String(
-    membership.status ||
-    "FREE"
-   ).toUpperCase();
-
-
-  const expiry =
-   membership.expiry ||
-   null;
-
-
   /*
-   NEW USER
-   FREE + NO EXPIRY
-  */
-
-  if(
-   status === "FREE" &&
-   !expiry
-  ){
-
-   hideMessage();
-
-   showNewUser();
-
-   return;
-
-  }
-
-
-  /*
-   ACTIVE PREMIUM
-  */
-
-  if(
-   status === "PREMIUM" &&
-   expiry
-  ){
-
-   const expiryDate =
-    new Date(expiry);
-
-
-   if(
-    expiryDate.getTime() >
-    Date.now()
-   ){
-
-    hideMessage();
-
-    showActive(
-     expiryDate
-    );
-
-    return;
-
-   }
-
-  }
-
-
-  /*
-   PREVIOUS PREMIUM
-   BUT EXPIRED
-  */
-
-  if(expiry){
-
-   hideMessage();
-
-   showExpired();
-
-   return;
-
-  }
-
-
-  /*
-   SAFE FALLBACK
+   * Only show Premium when the
+   * Worker confirms active Premium.
    */
 
-  hideMessage();
+  if(
+   membership.active === true &&
+   membership.status === "PREMIUM" &&
+   membership.expiry
+  ){
 
-  showNewUser();
+   hideMessage();
+
+   showPremium(
+    membership.expiry
+   );
+
+   return;
+
+  }
+
+
+  /*
+   * FREE / expired / no membership
+   */
+
+  showPayment();
+
+  hideMessage();
 
 
  }catch(error){
 
-  console.error(error);
+  console.error(
+   "MEMBERSHIP CHECK:",
+   error
+  );
+
 
   /*
-   IMPORTANT:
-   Never show "Expired"
-   when status cannot be checked.
-  */
+   * Do NOT block payment.
+   *
+   * New users and FREE users can
+   * still purchase Premium.
+   */
 
-  showMessage(
-   "Unable to verify membership. Please try again.",
-   "error"
-  );
+  showPayment();
+
+  hideMessage();
 
  }
 
@@ -869,142 +676,140 @@ async function checkPremium(){
 
 
 /* =========================
-   START PAYMENT
+   PAYHERE CHECKOUT
 ========================= */
 
-async function startPayment(){
+payButton.addEventListener(
+ "click",
+ async function(){
 
- const button =
-  $("payButton");
+  payButton.disabled=true;
+
+  payButton.textContent=
+   "Opening PayHere...";
+
+  hideMessage();
 
 
- button.disabled=true;
+  try{
 
- button.textContent =
-  "Preparing payment...";
+   const response =
+    await fetch(
+     API+"/create-checkout",
+     {
+      method:"POST",
+
+      headers:{
+       "Content-Type":
+        "application/json"
+      },
+
+      body:JSON.stringify({
+       student_id:studentId
+      })
+     }
+    );
 
 
- try{
+   if(!response.ok){
 
-  const response =
-   await fetch(
-    PREMIUM_API +
-    "/create-checkout",
-    {
-     method:"POST",
+    throw new Error(
+     "Unable to create payment."
+    );
 
-     headers:{
-      "Content-Type":
-       "application/json"
-     },
+   }
 
-     body:JSON.stringify({
 
-      student_id:
-       studentId
+   const data =
+    await response.json();
 
-     })
+
+   if(
+    !data.success ||
+    !data.action ||
+    !data.fields
+   ){
+
+    throw new Error(
+     data.message ||
+     "Unable to create payment."
+    );
+
+   }
+
+
+   /*
+    * Create PayHere form.
+    */
+
+   const form =
+    document.createElement("form");
+
+   form.method="POST";
+
+   form.action=data.action;
+
+   form.style.display="none";
+
+
+   Object.entries(
+    data.fields
+   ).forEach(
+    ([name,value])=>{
+
+     const input =
+      document.createElement(
+       "input"
+      );
+
+     input.type="hidden";
+
+     input.name=name;
+
+     input.value=
+      value ?? "";
+
+     form.appendChild(input);
 
     }
    );
 
 
-  const data =
-   await response.json();
+   document.body.appendChild(form);
+
+   form.submit();
 
 
-  if(
-   !response.ok ||
-   !data.success
-  ){
+  }catch(error){
 
-   throw new Error(
-    data.message ||
-    "Unable to create payment."
+   console.error(
+    "PAYMENT ERROR:",
+    error
+   );
+
+
+   payButton.disabled=false;
+
+   payButton.textContent=
+    "Pay LKR 1,500";
+
+
+   showMessage(
+    error.message ||
+    "Unable to create payment.",
+    "error"
    );
 
   }
 
-
-  /*
-   Create PayHere form.
-  */
-
-  const form =
-   document.createElement("form");
-
-
-  form.method =
-   "POST";
-
-  form.action =
-   data.action;
-
-
-  form.style.display =
-   "none";
-
-
-  const fields =
-   data.fields || {};
-
-
-  Object.keys(fields)
-   .forEach(key=>{
-
-    const input =
-     document.createElement(
-      "input"
-     );
-
-    input.type="hidden";
-
-    input.name=key;
-
-    input.value =
-     fields[key] ?? "";
-
-    form.appendChild(
-     input
-    );
-
-   });
-
-
-  document.body.appendChild(
-   form
-  );
-
-
-  form.submit();
-
-
- }catch(error){
-
-  console.error(error);
-
-  showMessage(
-   error.message ||
-   "Unable to start payment.",
-   "error"
-  );
-
-
-  button.disabled=false;
-
-  button.textContent =
-   "Pay LKR 1,500";
-
- }
-
-}
+});
 
 
 /* =========================
    START
 ========================= */
 
-checkPremium();
+checkMembership();
 
 </script>
 
