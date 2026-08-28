@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111827">
+<title>Premium Membership | GOH Bible Academy</title>
+
+<link rel="icon"
+href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+ font-family:Arial,sans-serif;
+ background:#f3f6fb;
+ color:#172033;
+ line-height:1.5
+}
+
+button{
+ font-family:inherit;
+ cursor:pointer
+}
+
+.container{
+ width:min(650px,94%);
+ margin:auto
+}
+
+header{
+ background:#fff;
+ border-bottom:1px solid #e5e7eb;
+ position:sticky;
+ top:0;
+ z-index:10
+}
+
+.nav{
+ min-height:64px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between
+}
+
+.logo{
+ display:flex;
+ align-items:center;
+ gap:9px
+}
+
+.logo img{
+ width:40px;
+ height:40px;
+ object-fit:contain;
+ border-radius:9px
+}
+
+.logo-title{
+ font-size:13px;
+ font-weight:900
+}
+
+.logo-sub{
+ font-size:8px;
+ color:#6b7280
+}
+
+.back{
+ border:0;
+ background:#111827;
+ color:#fff;
+ padding:8px 11px;
+ border-radius:8px;
+ font-size:9px;
+ font-weight:900
+}
+
+main{
+ padding:24px 0 45px
+}
+
+.message{
+ display:none;
+ padding:11px;
+ border-radius:9px;
+ text-align:center;
+ font-size:10px;
+ font-weight:700;
+ margin-bottom:13px
+}
+
+.message.show{
+ display:block
+}
+
+.error{
+ background:#fef2f2;
+ color:#b91c1c
+}
+
+.success{
+ background:#dcfce7;
+ color:#166534
+}
+
+.card{
+ background:#fff;
+ border:1px solid #e5e7eb;
+ border-radius:18px;
+ padding:22px;
+ margin-bottom:13px
+}
+
+.premium{
+ text-align:center
+}
+
+.icon{
+ font-size:40px;
+ margin-bottom:8px
+}
+
+h1{
+ font-size:23px;
+ margin-bottom:6px
+}
+
+.subtitle{
+ font-size:11px;
+ color:#6b7280;
+ margin-bottom:20px
+}
+
+.price{
+ font-size:30px;
+ font-weight:900;
+ color:#111827
+}
+
+.period{
+ font-size:10px;
+ color:#6b7280;
+ margin-bottom:18px
+}
+
+.features{
+ text-align:left;
+ margin:15px 0
+}
+
+.feature{
+ background:#f9fafb;
+ border:1px solid #e5e7eb;
+ border-radius:9px;
+ padding:10px;
+ margin:6px 0;
+ font-size:10px;
+ font-weight:700
+}
+
+.pay{
+ width:100%;
+ border:0;
+ background:#111827;
+ color:#fff;
+ padding:13px;
+ border-radius:10px;
+ font-size:11px;
+ font-weight:900;
+ margin-top:8px
+}
+
+.pay:disabled{
+ opacity:.5;
+ cursor:not-allowed
+}
+
+.student{
+ margin-top:12px;
+ font-size:9px;
+ color:#6b7280
+}
+
+.active{
+ background:#ecfdf5;
+ border:1px solid #86efac;
+ color:#166534;
+ border-radius:12px;
+ padding:15px;
+ margin-bottom:15px;
+ font-size:11px;
+ font-weight:800
+}
+
+.countdown{
+ font-size:20px;
+ font-weight:900;
+ margin-top:6px
+}
+
+.hidden{
+ display:none
+}
+
+footer{
+ background:#0b1120;
+ color:#64748b;
+ text-align:center;
+ padding:18px;
+ font-size:8px
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container nav">
+
+<div class="logo">
+
+<img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
+
+<div>
+<div class="logo-title">GOH Bible Academy</div>
+<div class="logo-sub">Gate of Heaven Ministries</div>
+</div>
+
+</div>
+
+<button class="back"
+onclick="location.href='dashboard.html'">
+← Dashboard
+</button>
+
+</div>
+</header>
+
+
+<main>
+<div class="container">
+
+<div id="message" class="message"></div>
+
+
+<div class="card premium">
+
+<div class="icon">🏆</div>
+
+<h1>Premium Membership</h1>
+
+<div class="subtitle">
+Complete Lessons 2–180 and continue your Biblical Studies journey.
+</div>
+
+
+<!-- ACTIVE PREMIUM -->
+
+<div id="activeBox" class="active hidden">
+
+✓ Premium Membership Active
+
+<div id="countdown" class="countdown">
+Loading...
+</div>
+
+<div style="font-size:9px;margin-top:5px">
+remaining
+</div>
+
+</div>
+
+
+<!-- PAYMENT -->
+
+<div id="paymentBox">
+
+<div class="price">
+LKR 1,500
+</div>
+
+<div class="period">
+Premium Membership • 30 Days
+</div>
+
+
+<div class="features">
+
+<div class="feature">
+✓ Access Lessons 2–180
+</div>
+
+<div class="feature">
+✓ Complete all 180 structured lessons
+</div>
+
+<div class="feature">
+✓ 5-question assessment for every lesson
+</div>
+
+<div class="feature">
+✓ Minimum 70% required for each assessment
+</div>
+
+<div class="feature">
+✓ Progress tracking
+</div>
+
+<div class="feature">
+✓ Certificate pathway
+</div>
+
+</div>
+
+
+<button
+id="payButton"
+class="pay"
+type="button">
+Pay LKR 1,500
+</button>
+
+</div>
+
+
+<div class="student">
+Student ID:
+<span id="studentId">-</span>
+</div>
+
+</div>
+
+</div>
+</main>
+
+
+<footer>
+GOH Bible Academy • Gate of Heaven Ministries<br>
+© 2026 GOH Bible Academy. All rights reserved.
+</footer>
+
+
+<script>
+
+const API =
+"https://premium.createlk.workers.dev";
+
+
+/* =========================
+   STUDENT
+========================= */
+
+let student = null;
+
+try{
+
+ student =
+  JSON.parse(
+   localStorage.getItem("goh_student") ||
+   sessionStorage.getItem("goh_student") ||
+   "null"
+  );
+
+}catch(e){
+
+ student=null;
+
+}
+
+
+if(!student){
+
+ location.href="login.html";
+
+}
+
+
+const studentId =
+Number(student?.id || 0);
+
+
+if(!studentId){
+
+ location.href="login.html";
+
+}
+
+
+document.getElementById(
+ "studentId"
+).textContent=studentId;
+
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const messageBox =
+document.getElementById("message");
+
+const paymentBox =
+document.getElementById("paymentBox");
+
+const activeBox =
+document.getElementById("activeBox");
+
+const countdown =
+document.getElementById("countdown");
+
+const payButton =
+document.getElementById("payButton");
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+function showMessage(text,type){
+
+ messageBox.textContent=text;
+
+ messageBox.className=
+  "message show "+type;
+
+}
+
+function hideMessage(){
+
+ messageBox.className="message";
+
+}
+
+
+/* =========================
+   SHOW FREE
+========================= */
+
+function showPayment(){
+
+ activeBox.classList.add("hidden");
+
+ paymentBox.classList.remove("hidden");
+
+ payButton.disabled=false;
+
+ payButton.textContent=
+  "Pay LKR 1,500";
+
+}
+
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+let timer=null;
+
+function startCountdown(expiry){
+
+ if(timer){
+  clearInterval(timer);
+ }
+
+ function update(){
+
+  const end =
+   new Date(expiry).getTime();
+
+  const now =
+   Date.now();
+
+  let diff=end-now;
+
+
+  if(diff<=0){
+
+   clearInterval(timer);
+
+   /*
+    * Treat expired membership
+    * as FREE.
+    */
+
+   activeBox.classList.add(
+    "hidden"
+   );
+
+   paymentBox.classList.remove(
+    "hidden"
+   );
+
+   return;
+
+  }
+
+
+  const days =
+   Math.floor(
+    diff/(1000*60*60*24)
+   );
+
+  diff%=
+   (1000*60*60*24);
+
+  const hours =
+   Math.floor(
+    diff/(1000*60*60)
+   );
+
+  diff%=
+   (1000*60*60);
+
+  const minutes =
+   Math.floor(
+    diff/(1000*60)
+   );
+
+  diff%=
+   (1000*60);
+
+  const seconds =
+   Math.floor(
+    diff/1000
+   );
+
+
+  countdown.textContent =
+   days+"d "+
+   hours+"h "+
+   minutes+"m "+
+   seconds+"s";
+
+ }
+
+ update();
+
+ timer=
+  setInterval(update,1000);
+
+}
+
+
+/* =========================
+   SHOW PREMIUM
+========================= */
+
+function showPremium(expiry){
+
+ paymentBox.classList.add(
+  "hidden"
+ );
+
+ activeBox.classList.remove(
+  "hidden"
+ );
+
+ startCountdown(expiry);
+
+}
+
+
+/* =========================
+   CHECK MEMBERSHIP
+========================= */
+
+async function checkMembership(){
+
+ /*
+  IMPORTANT:
+  Default is FREE.
+
+  This prevents a new user from
+  being blocked if the status API
+  temporarily fails.
+ */
+
+ showPayment();
+
+
+ try{
+
+  const response =
+   await fetch(
+    API+
+    "/status?student_id="+
+    encodeURIComponent(studentId),
+    {
+     method:"GET",
+     cache:"no-store"
+    }
+   );
+
+
+  if(!response.ok){
+
+   throw new Error(
+    "Membership request failed."
+   );
+
+  }
+
+
+  const data =
+   await response.json();
+
+
+  if(!data.success){
+
+   throw new Error(
+    data.message ||
+    "Unable to verify membership."
+   );
+
+  }
+
+
+  const membership =
+   data.membership || {};
+
+
+  /*
+   * Only show Premium when the
+   * Worker confirms active Premium.
+   */
+
+  if(
+   membership.active === true &&
+   membership.status === "PREMIUM" &&
+   membership.expiry
+  ){
+
+   hideMessage();
+
+   showPremium(
+    membership.expiry
+   );
+
+   return;
+
+  }
+
+
+  /*
+   * FREE / expired / no membership
+   */
+
+  showPayment();
+
+  hideMessage();
+
+
+ }catch(error){
+
+  console.error(
+   "MEMBERSHIP CHECK:",
+   error
+  );
+
+
+  /*
+   * Do NOT block payment.
+   *
+   * New users and FREE users can
+   * still purchase Premium.
+   */
+
+  showPayment();
+
+  hideMessage();
+
+ }
+
+}
+
+
+/* =========================
+   PAYHERE CHECKOUT
+========================= */
+
+payButton.addEventListener(
+ "click",
+ async function(){
+
+  payButton.disabled=true;
+
+  payButton.textContent=
+   "Opening PayHere...";
+
+  hideMessage();
+
+
+  try{
+
+   const response =
+    await fetch(
+     API+"/create-checkout",
+     {
+      method:"POST",
+
+      headers:{
+       "Content-Type":
+        "application/json"
+      },
+
+      body:JSON.stringify({
+       student_id:studentId
+      })
+     }
+    );
+
+
+   if(!response.ok){
+
+    throw new Error(
+     "Unable to create payment."
+    );
+
+   }
+
+
+   const data =
+    await response.json();
+
+
+   if(
+    !data.success ||
+    !data.action ||
+    !data.fields
+   ){
+
+    throw new Error(
+     data.message ||
+     "Unable to create payment."
+    );
+
+   }
+
+
+   /*
+    * Create PayHere form.
+    */
+
+   const form =
+    document.createElement("form");
+
+   form.method="POST";
+
+   form.action=data.action;
+
+   form.style.display="none";
+
+
+   Object.entries(
+    data.fields
+   ).forEach(
+    ([name,value])=>{
+
+     const input =
+      document.createElement(
+       "input"
+      );
+
+     input.type="hidden";
+
+     input.name=name;
+
+     input.value=
+      value ?? "";
+
+     form.appendChild(input);
+
+    }
+   );
+
+
+   document.body.appendChild(form);
+
+   form.submit();
+
+
+  }catch(error){
+
+   console.error(
+    "PAYMENT ERROR:",
+    error
+   );
+
+
+   payButton.disabled=false;
+
+   payButton.textContent=
+    "Pay LKR 1,500";
+
+
+   showMessage(
+    error.message ||
+    "Unable to create payment.",
+    "error"
+   );
+
+  }
+
+});
+
+
+/* =========================
+   START
+========================= */
+
+checkMembership();
+
+</script>
+
+</body>
+</html>
