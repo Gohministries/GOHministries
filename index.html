@@ -1,476 +1,1056 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GOH Bible Academy | Christian Biblical Studies</title>
-<meta name="description" content="GOH Bible Academy offers structured Christian Biblical Studies with 180 lessons in English, Tamil and Sinhala.">
+
+<title>GOH Ministries | Daily Devotional</title>
+
+<meta name="description"
+content="GOH Ministries — Daily Bible devotional, Scripture, prayer and Christian encouragement in English, Tamil and Sinhala.">
+
 <meta name="theme-color" content="#111827">
+
 <link rel="manifest" href="/manifest.json">
-<link rel="icon" href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"><style>
+
+<link rel="icon"
+href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
+
+<style>
 *{box-sizing:border-box;margin:0;padding:0}
+
 html{scroll-behavior:smooth}
-body{font-family:Arial,Helvetica,sans-serif;background:#f3f6fb;color:#172033;line-height:1.5}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#f3f6fb;
+color:#172033;
+line-height:1.5
+}
+
 a{text-decoration:none;color:inherit}
-.container{width:min(1000px,92%);margin:auto}
 
-header{position:sticky;top:0;z-index:1000;background:#fff;border-bottom:1px solid #e5e7eb}
-.nav{min-height:64px;display:flex;align-items:center;justify-content:space-between}
-.logo{display:flex;align-items:center;gap:9px}
-.logo img{width:42px;height:42px;object-fit:contain;border-radius:10px}
-.logo-title{font-size:14px;font-weight:900}
-.logo-sub{font-size:8px;color:#6b7280}
-.nav-links{display:flex;gap:5px;align-items:center}
-.nav-links a{padding:8px 10px;border-radius:9px;font-size:10px;font-weight:800}
-.nav-links a:hover{background:#f1f5f9}
-.login{background:#111827;color:#fff!important}
-.register{background:#fbbf24}
-.menu{display:none;width:40px;height:40px;border:1px solid #e5e7eb;background:#fff;border-radius:9px;font-size:18px}
-
-.mobile-menu{display:none}
-.mobile-menu.show{display:block;position:fixed;top:64px;left:0;right:0;z-index:999;background:#fff;border-bottom:1px solid #ddd;padding:8px 4%;box-shadow:0 12px 25px #0002}
-.mobile-menu a{display:block;padding:12px 9px;border-radius:9px;font-size:12px;font-weight:800}
-
-.btn{display:inline-flex;align-items:center;justify-content:center;border:0;padding:10px 15px;border-radius:9px;font-size:10px;font-weight:900;cursor:pointer}
-.primary{background:#fbbf24;color:#111827}
-.dark{background:#111827;color:#fff}
-
-section{padding:18px 0}
-.hero{padding:20px 0 12px}
-.hero-card,.cta-card{background:linear-gradient(135deg,#111827,#273449);color:#fff;border-radius:22px;padding:35px 25px;text-align:center}
-.hero-logo{width:68px;height:68px;background:#fff;border-radius:15px;padding:5px;margin-bottom:12px}
-.label{font-size:8px;font-weight:900;letter-spacing:1px;color:#fbbf24}
-.hero h1{font-size:clamp(32px,6vw,55px);line-height:1.05;margin:8px 0 12px}
-.hero h1 span{color:#fbbf24}
-.hero-text{max-width:650px;margin:auto auto 16px;font-size:11px;color:#cbd5e1}
-.pills{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:17px}
-.pills span{padding:5px 10px;border-radius:20px;background:#ffffff12;border:1px solid #ffffff18;font-size:8px}
-.hero-buttons{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
-
-.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
-.summary div{background:#fff;border:1px solid #e5e7eb;border-radius:13px;padding:13px;text-align:center}
-.summary strong{display:block;font-size:20px}
-.summary span{font-size:8px;color:#6b7280;font-weight:700}
-
-.highlight-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.highlight{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:18px}
-.highlight.create{background:#fffdf3;border-color:#f1df9a}
-.highlight.certificate{background:#f5f3ff;border-color:#ddd6fe}
-.highlight h2{font-size:17px;margin:4px 0}
-.highlight p{font-size:9px;color:#6b7280;margin-bottom:10px}
-
-.daily{background:#fff;border:1px solid #e5e7eb;border-radius:17px;padding:20px}
-.daily-head{display:flex;justify-content:space-between;gap:10px;align-items:center}
-.daily h2{font-size:18px}
-.daily-date{font-size:8px;color:#6b7280}
-.daily-content{display:none;margin-top:14px;padding-top:14px;border-top:1px solid #eee}
-.daily-content.show{display:block}
-.daily-title{font-size:15px;font-weight:900;margin-bottom:6px}
-.daily-message,.prayer{font-size:10px;color:#4b5563;white-space:pre-line}
-.verse{margin:12px 0;padding:12px;background:#f8fafc;border-left:3px solid #fbbf24;border-radius:7px;font-size:10px}
-.prayer-title{font-weight:900;font-size:11px;margin:12px 0 4px}
-.loading{color:#6b7280}
-
-.section-card{background:#fff;border:1px solid #e5e7eb;border-radius:18px;padding:24px}
-.section-head{text-align:center;margin-bottom:18px}
-.section-head h2{font-size:24px;margin:4px 0}
-.section-head p{font-size:10px;color:#6b7280}
-
-.feature-grid,.module-grid,.language-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
-.feature,.module,.language-card{border:1px solid #e5e7eb;border-radius:13px;padding:16px;background:#f8fafc}
-.feature{text-align:center}
-.feature-icon{font-size:20px;margin-bottom:6px}
-.feature h3,.module h3{font-size:13px}
-.feature p,.module p{font-size:9px;color:#6b7280}
-.module-number{font-size:8px;font-weight:900;color:#6366f1}
-.module-count{display:inline-block;margin-top:8px;padding:4px 7px;background:#fff;border:1px solid #e5e7eb;border-radius:6px;font-size:8px;font-weight:800}
-.language-card{text-align:center}
-.flag{font-size:24px}
-.language-card strong{display:block;font-size:15px}
-.language-card span{font-size:8px;color:#6b7280}
-
-.cta{padding:25px 0}
-.cta-card h2{font-size:25px;margin:5px 0}
-.cta-card p{font-size:10px;color:#cbd5e1;margin-bottom:14px}
-
-footer{background:#0b1120;color:#fff;padding:28px 0 16px}
-.footer{display:flex;justify-content:space-between;align-items:center;gap:15px}
-.footer-brand{display:flex;align-items:center;gap:9px}
-.footer-brand img{width:40px;height:40px;background:#fff;border-radius:8px;padding:3px}
-.footer-brand strong{display:block;font-size:13px}
-.footer-brand span{font-size:8px;color:#94a3b8}
-.footer-links{display:flex;gap:14px;flex-wrap:wrap}
-.footer-links a{font-size:9px;color:#cbd5e1}
-.legal{border-top:1px solid #ffffff18;margin-top:18px;padding-top:13px;text-align:center}
-.legal a{font-size:8px;color:#94a3b8;margin:0 7px}
-.copy{text-align:center;color:#64748b;font-size:8px;margin-top:10px}
-
-@media(max-width:800px){
-.nav-links{display:none}
-.menu{display:block}
-.summary{grid-template-columns:repeat(2,1fr)}
-.feature-grid,.module-grid,.language-grid{grid-template-columns:repeat(2,1fr)}
+button{
+font-family:inherit;
+cursor:pointer
 }
-@media(max-width:600px){
-.highlight-grid,.feature-grid,.module-grid,.language-grid{grid-template-columns:1fr}
-.hero-buttons .btn{width:100%}
-.hero-card{padding:30px 18px}
-.footer{display:grid;justify-content:center;text-align:center}
-.footer-brand{justify-content:center}
-.footer-links{justify-content:center}
-.daily-head{display:block}
-.daily-head .btn{margin-top:8px;width:100%}
+
+.container{
+width:min(1000px,92%);
+margin:auto
 }
-</style></head><body><header>
+
+/* HEADER */
+
+header{
+position:sticky;
+top:0;
+z-index:1000;
+background:rgba(255,255,255,.97);
+backdrop-filter:blur(10px);
+border-bottom:1px solid #e5e7eb
+}
+
+.nav{
+min-height:64px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:9px
+}
+
+.logo img{
+width:42px;
+height:42px;
+object-fit:contain;
+border-radius:10px
+}
+
+.logo-title{
+font-size:14px;
+font-weight:900
+}
+
+.logo-sub{
+font-size:8px;
+color:#6b7280
+}
+
+.nav-btn{
+border:0;
+background:#111827;
+color:#fff;
+padding:9px 12px;
+border-radius:8px;
+font-size:9px;
+font-weight:900
+}
+
+/* HERO */
+
+.hero{
+padding:25px 0 15px
+}
+
+.hero-card{
+background:
+radial-gradient(
+circle at 90% 10%,
+rgba(99,102,241,.25),
+transparent 30%
+),
+linear-gradient(135deg,#111827,#273449);
+color:#fff;
+border-radius:22px;
+padding:38px 25px;
+text-align:center;
+box-shadow:0 15px 40px rgba(15,23,42,.14)
+}
+
+.hero-logo{
+width:68px;
+height:68px;
+object-fit:contain;
+background:#fff;
+border-radius:15px;
+padding:5px;
+margin-bottom:12px
+}
+
+.label{
+font-size:9px;
+font-weight:900;
+letter-spacing:1px;
+color:#fbbf24
+}
+
+.hero h1{
+font-size:clamp(30px,6vw,48px);
+line-height:1.1;
+margin:8px 0 10px
+}
+
+.hero h1 span{
+color:#fbbf24
+}
+
+.hero p{
+max-width:650px;
+margin:auto;
+font-size:12px;
+color:#cbd5e1
+}
+
+/* CARDS */
+
+.cards-section{
+padding:15px 0 30px
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px
+}
+
+.card{
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:16px;
+padding:20px;
+min-height:230px;
+display:flex;
+flex-direction:column;
+text-align:center;
+box-shadow:0 6px 20px rgba(15,23,42,.04);
+transition:.2s
+}
+
+.card:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 25px rgba(15,23,42,.08)
+}
+
+.card-icon{
+width:48px;
+height:48px;
+margin:0 auto 10px;
+display:grid;
+place-items:center;
+background:#f3f4f6;
+border-radius:13px;
+font-size:24px
+}
+
+.card h2{
+font-size:15px;
+margin-bottom:5px
+}
+
+.card p{
+font-size:10px;
+color:#6b7280
+}
+
+.card-btn{
+margin-top:auto;
+align-self:center;
+border:0;
+background:#111827;
+color:#fff;
+padding:9px 13px;
+border-radius:8px;
+font-size:9px;
+font-weight:900
+}
+
+.card-btn:hover{
+background:#374151
+}
+
+/* DEVOTIONAL LANGUAGES */
+
+.languages{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:7px;
+margin:13px 0
+}
+
+.lang-btn{
+border:1px solid #e5e7eb;
+background:#f8fafc;
+border-radius:8px;
+padding:8px 5px;
+font-size:9px;
+font-weight:900
+}
+
+.lang-btn.active{
+background:#111827;
+color:#fff
+}
+
+/* DEVOTIONAL RESULT */
+
+.devotional{
+display:none;
+margin:0 0 30px
+}
+
+.devotional.show{
+display:block
+}
+
+.devotional-box{
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:17px;
+padding:22px;
+box-shadow:0 7px 25px rgba(15,23,42,.05)
+}
+
+.devotional-top{
+text-align:center;
+margin-bottom:17px
+}
+
+.devotional-date{
+font-size:8px;
+font-weight:900;
+color:#6366f1;
+letter-spacing:1px
+}
+
+.devotional-title{
+font-size:22px;
+margin:5px 0
+}
+
+.devotional-content{
+font-size:11px;
+color:#374151;
+white-space:pre-line
+}
+
+.devotional-label{
+font-size:9px;
+font-weight:900;
+color:#111827;
+margin:17px 0 5px
+}
+
+.verse{
+background:#f8fafc;
+border-left:4px solid #fbbf24;
+padding:13px;
+border-radius:8px;
+font-size:11px;
+font-style:italic
+}
+
+.prayer{
+background:#fffaf0;
+border:1px solid #fde68a;
+padding:13px;
+border-radius:8px;
+font-size:11px
+}
+
+.close-btn{
+display:block;
+margin:17px auto 0;
+border:0;
+background:#e5e7eb;
+color:#111827;
+padding:8px 12px;
+border-radius:8px;
+font-size:9px;
+font-weight:900
+}
+
+.loading{
+text-align:center;
+padding:25px;
+font-size:10px;
+color:#6b7280
+}
+
+.error{
+background:#fef2f2;
+color:#b91c1c;
+padding:12px;
+border-radius:9px;
+text-align:center;
+font-size:9px;
+font-weight:700
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1120;
+color:#fff;
+padding:28px 0 17px;
+margin-top:5px
+}
+
+.footer{
+text-align:center
+}
+
+.footer-brand{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:9px
+}
+
+.footer-brand img{
+width:38px;
+height:38px;
+background:#fff;
+border-radius:8px;
+padding:3px
+}
+
+.footer-brand strong{
+display:block;
+font-size:13px
+}
+
+.footer-brand span{
+display:block;
+font-size:8px;
+color:#94a3b8
+}
+
+.footer-links{
+display:flex;
+justify-content:center;
+gap:16px;
+margin:18px 0 12px;
+flex-wrap:wrap
+}
+
+.footer-links a{
+font-size:9px;
+color:#cbd5e1
+}
+
+.footer-links a:hover{
+color:#fbbf24
+}
+
+.copy{
+font-size:8px;
+color:#64748b;
+border-top:1px solid rgba(255,255,255,.1);
+padding-top:13px
+}
+
+/* RESPONSIVE */
+
+@media(max-width:750px){
+
+.cards{
+grid-template-columns:repeat(2,1fr)
+}
+
+}
+
+@media(max-width:520px){
+
+.container{
+width:92%
+}
+
+.hero{
+padding-top:18px
+}
+
+.hero-card{
+padding:32px 18px
+}
+
+.cards{
+grid-template-columns:1fr
+}
+
+.card{
+min-height:210px
+}
+
+.languages{
+grid-template-columns:1fr
+}
+
+.devotional-box{
+padding:17px
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
 <div class="container nav">
+
 <a href="index.html" class="logo">
-<img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png" alt="GOH Bible Academy">
+
+<img
+src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
+alt="GOH Ministries">
+
 <div>
-<div class="logo-title">GOH Bible Academy</div>
+<div class="logo-title">GOH Ministries</div>
 <div class="logo-sub">Gate of Heaven Ministries</div>
 </div>
-</a><nav class="nav-links">
-<a href="lessons.html">📖 Lessons</a>
-<a href="about.html">ℹ️ About</a>
-<a href="contact.html">💬 Contact</a>
-<a href="login.html" class="login">🔐 Login</a>
-<a href="register.html" class="register">📝 Register</a>
-</nav><button class="menu" id="menuBtn">☰</button>
+
+</a>
+
+<a href="about.html" class="nav-btn">
+About Ministry
+</a>
 
 </div>
-</header><nav class="mobile-menu" id="mobileMenu">
-<a href="lessons.html">📖 Lessons</a>
-<a href="about.html">ℹ️ About</a>
-<a href="contact.html">💬 Contact</a>
-<a href="login.html">🔐 Student Login</a>
-<a href="register.html">📝 Register</a>
-</nav><!-- TODAY'S MESSAGE: VERY TOP --><section>
+
+</header>
+
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+
 <div class="container">
-<div class="daily"><div class="daily-head">
-<div>
-<div class="label">DAILY ENCOURAGEMENT</div>
-<h2>🙏 Today's Message & Prayer</h2>
-<div class="daily-date" id="todayDate"></div>
-</div><button class="btn dark" id="loadDaily">
-Read Today's Message
-</button>
-</div><div class="daily-content" id="dailyContent">
-<div id="dailyLoading" class="loading">Loading from Cloudflare...</div><div id="dailyData" style="display:none"><div class="daily-title" id="dailyTitle"></div>
-<div class="daily-message" id="dailyMessage"></div><div class="verse" id="dailyVerse"></div><div class="prayer-title">🙏 Prayer</div>
-<div class="prayer" id="dailyPrayer"></div></div><div id="dailyError" style="display:none;color:#b91c1c;font-size:9px"></div>
-</div></div>
-</div>
-</section><!-- TOP PROMOTIONS --><section>
-<div class="container">
-<div class="highlight-grid"><div class="highlight certificate">
-<div class="label">BIBLICAL STUDIES</div>
-<h2>🏆 Earn Your Certificate</h2>
-<p>Complete the structured Biblical Studies program and work toward your course certificate.</p>
-<a href="register.html" class="btn dark">Start Your Journey →</a>
-</div><div class="highlight create">
-<div class="label">LEARN MORE</div>
-<h2>📚 Improve Your English</h2>
-<p>Explore CreateLK Academy for structured English learning and practice.</p>
-<a href="https://createlk.com" target="_blank" rel="noopener" class="btn primary">Visit CreateLK Academy →</a>
-</div></div>
-</div>
-</section><!-- HERO --><section class="hero">
-<div class="container"><div class="hero-card"><img class="hero-logo"
+
+<div class="hero-card">
+
+<img
+class="hero-logo"
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
-alt="GOH Bible Academy">
+alt="GOH Ministries">
 
-<div class="label">GOH BIBLE ACADEMY</div><h1>Study God's Word.<br><span>Grow in Christ.</span></h1><p class="hero-text">
-A structured Christian Biblical Studies program with 180 lessons
-to help you understand Scripture, strengthen your faith and prepare
-for Christian service.
-</p><div class="pills">
-<span>English</span>
-<span>தமிழ்</span>
-<span>සිංහල</span>
-</div><div class="hero-buttons">
-<a href="lesson-1.html" class="btn primary">🎁 Start Lesson 1 Free</a>
-<a href="lessons.html" class="btn dark">📖 View 180 Lessons</a>
-</div></div><div class="summary">
-<div><strong>180</strong><span>Bible Lessons</span></div>
-<div><strong>6</strong><span>Study Modules</span></div>
-<div><strong>3</strong><span>Languages</span></div>
-<div><strong>1</strong><span>Free Lesson</span></div>
-</div></div>
-</section><!-- FEATURES --><section>
+<div class="label">
+GATE OF HEAVEN MINISTRIES
+</div>
+
+<h1>
+Daily Word.<br>
+<span>Daily Prayer.</span>
+</h1>
+
+<p>
+Receive biblical encouragement, Scripture and prayer
+for each day in English, Tamil and Sinhala.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MAIN CARDS -->
+
+<section class="cards-section">
+
 <div class="container">
-<div class="section-card"><div class="section-head">
-<div class="label">WHY GOH BIBLE ACADEMY</div>
-<h2>A Strong Biblical Foundation</h2>
-<p>Learn Scripture systematically and grow in your Christian life.</p>
-</div><div class="feature-grid"><div class="feature">
-<div class="feature-icon">📖</div>
-<h3>Bible Studies</h3>
-<p>Understand Scripture and its central message.</p>
-</div><div class="feature">
-<div class="feature-icon">✝️</div>
-<h3>Christian Doctrine</h3>
-<p>Learn essential biblical Christian beliefs.</p>
-</div><div class="feature">
-<div class="feature-icon">🙏</div>
-<h3>Spiritual Growth</h3>
-<p>Develop faith, prayer and your walk with Christ.</p>
-</div><div class="feature">
-<div class="feature-icon">🌍</div>
-<h3>Evangelism</h3>
-<p>Learn biblical principles for sharing the Gospel.</p>
-</div><div class="feature">
-<div class="feature-icon">🤝</div>
-<h3>Discipleship</h3>
-<p>Grow as a faithful follower of Jesus.</p>
-</div><div class="feature">
-<div class="feature-icon">⛪</div>
-<h3>Christian Ministry</h3>
-<p>Prepare to serve God and people.</p>
-</div></div>
+
+<div class="cards">
+
+<!-- TODAY -->
+
+<div class="card">
+
+<div class="card-icon">🌅</div>
+
+<h2>Today's Devotional</h2>
+
+<p>
+Daily Bible verse, message and prayer
+in three languages.
+</p>
+
+<div class="languages">
+
+<button class="lang-btn active" data-lang="en">
+🇬🇧 English
+</button>
+
+<button class="lang-btn" data-lang="ta">
+🇱🇰 தமிழ்
+</button>
+
+<button class="lang-btn" data-lang="si">
+🇱🇰 සිංහල
+</button>
+
 </div>
+
+<button class="card-btn" id="readToday">
+Read Today's Devotional →
+</button>
+
 </div>
-</section><!-- CURRICULUM --><section>
+
+
+<!-- ARCHIVE -->
+
+<div class="card">
+
+<div class="card-icon">📅</div>
+
+<h2>Devotional Archive</h2>
+
+<p>
+Read previous daily devotionals
+and revisit God's Word by date.
+</p>
+
+<button
+class="card-btn"
+onclick="location.href='archive.html'">
+
+View Archive →
+
+</button>
+
+</div>
+
+
+<!-- PRAYER -->
+
+<div class="card">
+
+<div class="card-icon">🙏</div>
+
+<h2>Prayer Requests</h2>
+
+<p>
+Share your prayer request with
+Gate of Heaven Ministries.
+</p>
+
+<button
+class="card-btn"
+onclick="location.href='prayer.html'">
+
+Submit Prayer Request →
+
+</button>
+
+</div>
+
+
+<!-- DONATE -->
+
+<div class="card">
+
+<div class="card-icon">❤️</div>
+
+<h2>Support Our Ministry</h2>
+
+<p>
+Your support helps us continue serving
+people and sharing God's Word.
+</p>
+
+<button
+class="card-btn"
+onclick="location.href='donate.html'">
+
+Support Ministry →
+
+</button>
+
+</div>
+
+
+<!-- ABOUT -->
+
+<div class="card">
+
+<div class="card-icon">⛪</div>
+
+<h2>About Our Ministry</h2>
+
+<p>
+Learn about Gate of Heaven Ministries,
+our vision and Christian ministry work.
+</p>
+
+<button
+class="card-btn"
+onclick="location.href='about.html'">
+
+Learn More →
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- DEVOTIONAL -->
+
+<section
+class="devotional"
+id="devotional">
+
 <div class="container">
-<div class="section-card"><div class="section-head">
-<div class="label">COURSE CURRICULUM</div>
-<h2>Six Study Modules</h2>
-<p>180 lessons covering major areas of Christian Biblical Studies.</p>
-</div><div class="module-grid"><div class="module">
-<div class="module-number">MODULE 01</div>
-<h3>Introduction to the Bible</h3>
-<p>Foundations, inspiration, canon and interpretation.</p>
-<span class="module-count">30 Lessons</span>
-</div><div class="module">
-<div class="module-number">MODULE 02</div>
-<h3>God, Christ & Salvation</h3>
-<p>God, Jesus Christ, the Gospel and salvation.</p>
-<span class="module-count">30 Lessons</span>
-</div><div class="module">
-<div class="module-number">MODULE 03</div>
-<h3>Holy Spirit & Spiritual Life</h3>
-<p>Prayer, worship and spiritual growth.</p>
-<span class="module-count">30 Lessons</span>
-</div><div class="module">
-<div class="module-number">MODULE 04</div>
-<h3>Church & Christian Community</h3>
-<p>Church life, fellowship and Christian service.</p>
-<span class="module-count">30 Lessons</span>
-</div><div class="module">
-<div class="module-number">MODULE 05</div>
-<h3>Christian Mission & Discipleship</h3>
-<p>Evangelism, discipleship and Christian mission.</p>
-<span class="module-count">30 Lessons</span>
-</div><div class="module">
-<div class="module-number">MODULE 06</div>
-<h3>Christian Character & Leadership</h3>
-<p>Faith, integrity and servant leadership.</p>
-<span class="module-count">30 Lessons</span>
-</div></div>
+
+<div class="devotional-box">
+
+<div class="devotional-top">
+
+<div class="devotional-date"
+id="devotionalDate">
+TODAY
 </div>
+
+<h2
+class="devotional-title"
+id="devotionalTitle">
+Today's Devotional
+</h2>
+
 </div>
-</section><!-- LANGUAGES --><section>
-<div class="container">
-<div class="section-card"><div class="section-head">
-<div class="label">LANGUAGE SUPPORT</div>
-<h2>Study in Three Languages</h2>
-<p>Choose the language that is most comfortable for you.</p>
-</div><div class="language-grid"><div class="language-card">
-<div class="flag">🇬🇧</div>
-<strong>English</strong>
-<span>Christian Biblical Studies</span>
-</div><div class="language-card">
-<div class="flag">🇱🇰</div>
-<strong>தமிழ்</strong>
-<span>கிறிஸ்தவ வேதாகமப் படிப்பு</span>
-</div><div class="language-card">
-<div class="flag">🇱🇰</div>
-<strong>සිංහල</strong>
-<span>ක්‍රිස්තියානි බයිබල් අධ්‍යයනය</span>
-</div></div>
+
+<div id="devotionalContent">
+
+<div class="loading">
+Loading devotional...
 </div>
+
 </div>
-</section><!-- CTA --><section class="cta">
-<div class="container">
-<div class="cta-card">
-<div class="label">GOH BIBLE ACADEMY</div>
-<h2>Grow Deeper in God's Word</h2>
-<p>Create your student account and begin your Biblical Studies journey.</p>
-<a href="register.html" class="btn primary">📝 Create Student Account</a>
+
+<button
+class="close-btn"
+id="closeDevotional">
+
+Close
+
+</button>
+
 </div>
+
 </div>
-</section><footer>
-<div class="container"><div class="footer">
+
+</section>
+
+</main>
+
+
+<footer>
+
+<div class="container footer">
+
 <div class="footer-brand">
-<img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png" alt="">
+
+<img
+src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
+alt="GOH Ministries">
+
 <div>
-<strong>GOH Bible Academy</strong>
-<span>Gate of Heaven Ministries</span>
+<strong>Gate of Heaven Ministries</strong>
+<span>Serving God • Sharing His Word • Reaching People</span>
 </div>
-</div><nav class="footer-links">
-<a href="lessons.html">Lessons</a>
+
+</div>
+
+
+<div class="footer-links">
+
 <a href="about.html">About</a>
+
 <a href="contact.html">Contact</a>
-<a href="login.html">Login</a>
-</nav>
-</div><div class="legal">
+
 <a href="privacy.html">Privacy Policy</a>
+
 <a href="terms.html">Terms of Use</a>
-</div><div class="copy">
-© 2026 GOH Bible Academy. All rights reserved.
-</div></div>
-</footer><script>
 
-/* MOBILE MENU */
-
-const menuBtn=document.getElementById("menuBtn");
-const mobileMenu=document.getElementById("mobileMenu");
-
-menuBtn.onclick=()=>{
-const open=mobileMenu.classList.toggle("show");
-menuBtn.textContent=open?"✕":"☰";
-};
-
-mobileMenu.querySelectorAll("a").forEach(a=>{
-a.onclick=()=>{
-mobileMenu.classList.remove("show");
-menuBtn.textContent="☰";
-};
-});
+</div>
 
 
-/* DATE */
+<div class="copy">
 
-document.getElementById("todayDate").textContent=
-new Date().toLocaleDateString("en-LK",{
-weekday:"long",
-year:"numeric",
-month:"long",
-day:"numeric"
-});
+© 2026 Gate of Heaven Ministries. All rights reserved.
 
+</div>
+
+</div>
+
+</footer>
+
+
+<script>
 
 /*
-================================================
-CLOUDFLARE DAILY MESSAGE API
-================================================
+==================================================
+CLOUDFLARE DEVOTIONAL API
+==================================================
 
-Change ONLY this URL if your Worker uses
-a different endpoint.
+CHANGE THIS ONLY IF YOUR WORKER URL IS DIFFERENT.
 
 Expected response:
 
 {
- "success":true,
- "message":{
-   "title":"...",
-   "message":"...",
-   "verse":"...",
-   "reference":"...",
-   "prayer":"..."
- }
+  "success": true,
+  "devotional": {
+    "title_en": "...",
+    "message_en": "...",
+    "verse_en": "...",
+    "reference_en": "...",
+    "prayer_en": "...",
+
+    "title_ta": "...",
+    "message_ta": "...",
+    "verse_ta": "...",
+    "reference_ta": "...",
+    "prayer_ta": "...",
+
+    "title_si": "...",
+    "message_si": "...",
+    "verse_si": "...",
+    "reference_si": "...",
+    "prayer_si": "..."
+  }
 }
+
+The endpoint should return today's devotional.
 */
 
-const DAILY_API="https://goh-admin-auth.createlk.workers.dev/today";
+const DEVOTIONAL_API =
+"https://goh-devotional.createlk.workers.dev";
 
 
-document.getElementById("loadDaily").onclick=async function(){
+/* ELEMENTS */
 
-const content=document.getElementById("dailyContent");
-const loading=document.getElementById("dailyLoading");
-const data=document.getElementById("dailyData");
-const error=document.getElementById("dailyError");
-const button=this;
+const devotional =
+document.getElementById("devotional");
 
-content.classList.add("show");
-loading.style.display="block";
-data.style.display="none";
-error.style.display="none";
-button.disabled=true;
-button.textContent="Loading...";
+const devotionalContent =
+document.getElementById("devotionalContent");
+
+const devotionalTitle =
+document.getElementById("devotionalTitle");
+
+const devotionalDate =
+document.getElementById("devotionalDate");
+
+const readToday =
+document.getElementById("readToday");
+
+const closeDevotional =
+document.getElementById("closeDevotional");
+
+
+/* LANGUAGE */
+
+let selectedLanguage =
+localStorage.getItem("goh_devotional_language") || "en";
+
+const languageButtons =
+document.querySelectorAll(".lang-btn");
+
+
+function updateLanguageButtons(){
+
+languageButtons.forEach(btn=>{
+
+btn.classList.toggle(
+"active",
+btn.dataset.lang===selectedLanguage
+);
+
+});
+
+}
+
+
+languageButtons.forEach(btn=>{
+
+btn.addEventListener("click",function(){
+
+selectedLanguage=this.dataset.lang;
+
+localStorage.setItem(
+"goh_devotional_language",
+selectedLanguage
+);
+
+updateLanguageButtons();
+
+});
+
+});
+
+
+updateLanguageButtons();
+
+
+/* DATE */
+
+function todayText(){
+
+const d=new Date();
+
+return d.toLocaleDateString(
+"en-LK",
+{
+weekday:"long",
+year:"numeric",
+month:"long",
+day:"numeric"
+}
+);
+
+}
+
+
+/* ESCAPE HTML */
+
+function escapeHTML(value){
+
+return String(value||"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* LOAD DEVOTIONAL */
+
+async function loadDevotional(){
+
+devotional.classList.add("show");
+
+devotionalContent.innerHTML=`
+<div class="loading">
+Loading today's devotional...
+</div>
+`;
+
+devotionalDate.textContent=
+todayText().toUpperCase();
+
+window.scrollTo({
+top:devotional.offsetTop-75,
+behavior:"smooth"
+});
+
 
 try{
 
 const response=await fetch(
-DAILY_API,
+DEVOTIONAL_API+
+"/today?lang="+
+encodeURIComponent(selectedLanguage)+
+"&_="+Date.now(),
 {
 method:"GET",
-cache:"no-store",
-headers:{
-"Accept":"application/json"
-}
+cache:"no-store"
 }
 );
-
-let result=null;
-
-try{
-result=await response.json();
-}catch(e){
-throw new Error("Cloudflare returned an invalid response.");
-}
 
 if(!response.ok){
+
 throw new Error(
-"Cloudflare API returned HTTP "+
+"Cloudflare returned HTTP "+
 response.status
 );
+
 }
 
-if(!result || !result.success || !result.message){
+const data=await response.json();
+
+if(!data.success){
+
 throw new Error(
-result?.error ||
-"Today's message is not available."
+data.error||
+"Devotional was not found."
 );
-}
-
-const m=result.message;
-
-document.getElementById("dailyTitle").textContent=
-m.title||"Today's Message";
-
-document.getElementById("dailyMessage").textContent=
-m.message||"";
-
-let verse="";
-
-if(m.verse){
-verse=m.verse;
-}
-
-if(m.reference){
-verse+=(verse?"\n":"")+m.reference;
-}
-
-document.getElementById("dailyVerse").textContent=
-verse;
-
-document.getElementById("dailyPrayer").textContent=
-m.prayer||"Let us pray and trust God for today.";
-
-loading.style.display="none";
-data.style.display="block";
-
-button.textContent="Refresh Message";
-
-}catch(e){
-
-loading.style.display="none";
-error.style.display="block";
-error.textContent=
-"Unable to load today's message from Cloudflare. "+
-(e.message||"Please try again.");
-
-button.textContent="Try Again";
-
-console.error(e);
-
-}finally{
-
-button.disabled=false;
 
 }
 
-};
+const d=data.devotional||data;
 
-</script></body>
+const suffix=
+selectedLanguage==="ta"
+?"_ta":
+selectedLanguage==="si"
+?"_si":
+"_en";
+
+const title=
+d["title"+suffix]||
+d.title||
+"Today's Devotional";
+
+const message=
+d["message"+suffix]||
+d["content"+suffix]||
+d.message||
+"";
+
+const verse=
+d["verse"+suffix]||
+d.bible_verse||
+"";
+
+const reference=
+d["reference"+suffix]||
+d.bible_reference||
+"";
+
+const prayer=
+d["prayer"+suffix]||
+d.prayer||
+"";
+
+
+devotionalTitle.textContent=
+escapeHTML(title);
+
+
+devotionalContent.innerHTML=`
+
+<div class="devotional-label">
+📖 BIBLE VERSE
+</div>
+
+<div class="verse">
+${escapeHTML(verse)}
+${reference
+?`<br><strong>— ${escapeHTML(reference)}</strong>`
+:""}
+</div>
+
+
+<div class="devotional-label">
+💬 TODAY'S MESSAGE
+</div>
+
+<div class="devotional-content">
+${escapeHTML(message)}
+</div>
+
+
+<div class="devotional-label">
+🙏 TODAY'S PRAYER
+</div>
+
+<div class="prayer">
+${escapeHTML(prayer)}
+</div>
+
+`;
+
+}catch(error){
+
+console.error(error);
+
+devotionalContent.innerHTML=`
+
+<div class="error">
+Unable to load today's devotional from Cloudflare.
+<br><br>
+${escapeHTML(error.message)}
+</div>
+
+`;
+
+}
+
+}
+
+
+/* READ */
+
+readToday.addEventListener(
+"click",
+loadDevotional
+);
+
+
+/* CLOSE */
+
+closeDevotional.addEventListener(
+"click",
+function(){
+
+devotional.classList.remove("show");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+);
+
+</script>
+
+</body>
 </html>
