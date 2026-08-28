@@ -3,44 +3,340 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#155eef">
-<title>GOH Ministries Finance - Donations</title>
+
+<title>Today's Devotional | GOH Ministries</title>
+
+<meta name="description"
+content="Daily Christian devotional, Bible verse, explanation and prayer from GOH Ministries in English, Tamil and Sinhala.">
+
+<meta name="theme-color" content="#111827">
+
+<link rel="icon"
+href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
-header{background:#155eef;color:#fff;padding:15px 18px}
-.head{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center}
-.logout{background:#fff;color:#155eef;border:0;border-radius:8px;padding:9px 13px;font-weight:bold;cursor:pointer}
-nav{max-width:1050px;margin:10px auto 0;display:flex;gap:8px;overflow:auto}
-nav a{background:#fff;color:#155eef;padding:8px 11px;border-radius:8px;text-decoration:none;font-size:12px;white-space:nowrap}
-main{max-width:1050px;margin:auto;padding:18px}
-.card{background:#fff;padding:18px;border-radius:14px;margin-bottom:16px;box-shadow:0 2px 12px #0001}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-label{display:block;font-size:13px;font-weight:bold;margin:9px 0 6px}
-input,select,textarea{width:100%;padding:12px;border:1px solid #d5dbe5;border-radius:8px;font-size:14px;background:#fff}
-textarea{min-height:90px;resize:vertical}
-button{border:0;border-radius:8px;padding:11px 15px;background:#155eef;color:#fff;font-weight:bold;cursor:pointer}
-form button{width:100%;margin-top:15px}
-button:disabled{opacity:.6}
-.danger{background:#dc2626}
-.success{background:#16a34a}
-.msg{display:none;padding:11px;border-radius:8px;margin-bottom:12px;font-size:13px}
-.ok{display:block;background:#dcfce7;color:#166534}
-.bad{display:block;background:#fee2e2;color:#991b1b}
-.small{font-size:13px;color:#667085}
-.hint{font-size:11px;color:#667085;margin-top:5px}
-.table{overflow:auto}
-table{width:100%;min-width:850px;border-collapse:collapse}
-th,td{padding:10px;border-bottom:1px solid #edf0f4;text-align:left;font-size:13px}
-th{background:#f8fafc;color:#667085}
-.status{font-weight:bold}
-.pending{color:#b45309}
-.approved{color:#15803d}
-.rejected{color:#dc2626}
-@media(max-width:700px){
-.grid{grid-template-columns:1fr}
-main{padding:12px}
+*{
+box-sizing:border-box;
+margin:0;
+padding:0
+}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#f3f6fb;
+color:#172033;
+line-height:1.6
+}
+
+.container{
+width:min(850px,92%);
+margin:auto
+}
+
+/* HEADER */
+
+header{
+position:sticky;
+top:0;
+z-index:100;
+background:#fff;
+border-bottom:1px solid #e5e7eb
+}
+
+.nav{
+min-height:62px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:9px;
+text-decoration:none;
+color:#111827
+}
+
+.logo img{
+width:40px;
+height:40px;
+object-fit:contain;
+border-radius:9px
+}
+
+.logo-title{
+font-size:13px;
+font-weight:900
+}
+
+.logo-sub{
+font-size:8px;
+color:#6b7280
+}
+
+.home{
+text-decoration:none;
+background:#111827;
+color:#fff;
+padding:8px 12px;
+border-radius:9px;
+font-size:9px;
+font-weight:900
+}
+
+/* MAIN */
+
+main{
+padding:22px 0 40px
+}
+
+/* HERO */
+
+.hero{
+background:
+radial-gradient(
+circle at 90% 10%,
+rgba(99,102,241,.3),
+transparent 32%
+),
+linear-gradient(
+135deg,
+#111827,
+#293548
+);
+color:#fff;
+border-radius:22px;
+padding:30px 20px;
+text-align:center;
+margin-bottom:12px
+}
+
+.hero-icon{
+font-size:34px;
+margin-bottom:4px
+}
+
+.label{
+color:#fbbf24;
+font-size:8px;
+font-weight:900;
+letter-spacing:1.2px
+}
+
+.hero h1{
+font-size:28px;
+line-height:1.2;
+margin:6px 0
+}
+
+.date{
+color:#cbd5e1;
+font-size:10px
+}
+
+/* LANGUAGE */
+
+.language-card{
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:14px;
+padding:13px;
+margin-bottom:12px
+}
+
+.language-card label{
+display:block;
+font-size:8px;
+font-weight:900;
+color:#6b7280;
+margin-bottom:6px
+}
+
+select{
+width:100%;
+padding:10px;
+border:1px solid #d1d5db;
+border-radius:9px;
+background:#fff;
+color:#172033;
+font-size:11px;
+font-weight:700;
+outline:none
+}
+
+/* CARDS */
+
+.card{
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:16px;
+padding:21px;
+margin-bottom:12px;
+box-shadow:0 5px 18px rgba(15,23,42,.04)
+}
+
+.card-label{
+color:#6366f1;
+font-size:8px;
+font-weight:900;
+letter-spacing:1px;
+margin-bottom:7px
+}
+
+.card h2{
+font-size:21px;
+line-height:1.3;
+margin-bottom:10px
+}
+
+/* VERSE */
+
+.verse-card{
+background:#fffbeb;
+border-color:#fde68a
+}
+
+.verse{
+font-size:16px;
+font-weight:700;
+font-style:italic;
+color:#374151
+}
+
+.reference{
+display:inline-block;
+margin-top:10px;
+padding:5px 9px;
+border-radius:7px;
+background:#fef3c7;
+color:#92400e;
+font-size:9px;
+font-weight:900
+}
+
+/* MESSAGE */
+
+.message{
+font-size:13px;
+color:#374151;
+white-space:pre-line
+}
+
+/* PRAYER */
+
+.prayer-card{
+background:
+linear-gradient(
+135deg,
+#eef2ff,
+#fff
+);
+border-color:#c7d2fe
+}
+
+.prayer{
+font-size:13px;
+color:#374151;
+white-space:pre-line
+}
+
+/* LOADING */
+
+.loading{
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:16px;
+padding:40px 15px;
+text-align:center;
+color:#6b7280;
+font-size:11px
+}
+
+/* ERROR */
+
+.error{
+background:#fef2f2;
+border:1px solid #fecaca;
+color:#b91c1c;
+border-radius:14px;
+padding:18px;
+text-align:center;
+font-size:10px;
+font-weight:700
+}
+
+/* SHARE */
+
+.share{
+text-align:center;
+margin-top:15px
+}
+
+.share button{
+border:0;
+background:#111827;
+color:#fff;
+padding:10px 15px;
+border-radius:9px;
+font-size:10px;
+font-weight:900;
+cursor:pointer
+}
+
+.share button:active{
+transform:scale(.98)
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1120;
+color:#94a3b8;
+text-align:center;
+padding:20px;
+font-size:8px
+}
+
+footer strong{
+color:#fff
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+.container{
+width:92%
+}
+
+.hero{
+padding:26px 18px;
+border-radius:19px
+}
+
+.hero h1{
+font-size:24px
+}
+
+.card{
+padding:18px
+}
+
+.card h2{
+font-size:19px
+}
+
+.message,
+.prayer{
+font-size:12px
+}
+
+.verse{
+font-size:14px
+}
+
 }
 </style>
 </head>
@@ -48,416 +344,478 @@ main{padding:12px}
 <body>
 
 <header>
-<div class="head">
-<b>GOH Ministries Finance</b>
-<button class="logout" onclick="logout()">Logout</button>
+
+<div class="container nav">
+
+<a href="index.html" class="logo">
+
+<img
+src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
+alt="GOH Ministries">
+
+<div>
+
+<div class="logo-title">
+GOH Ministries
 </div>
 
-<nav>
-<a href="finance-dashboard.html">Dashboard</a>
-<a href="income.html">Income</a>
-<a href="expenses.html">Expenses</a>
-<a href="donations.html">Donations</a>
-<a href="receipts.html">Receipts</a>
-<a href="reports.html">Reports</a>
-<a href="admin.html">Administration</a>
-</nav>
+<div class="logo-sub">
+Gate of Heaven Ministries
+</div>
+
+</div>
+
+</a>
+
+<a href="index.html" class="home">
+🏠 Home
+</a>
+
+</div>
+
 </header>
+
 
 <main>
 
-<div class="card">
-<h2>Donations</h2>
-<div class="small">
-Record donations with the supporting receipt or payment slip.
-</div>
-</div>
+<div class="container">
 
-<div class="card">
+<!-- HERO -->
 
-<h3>Add Donation</h3>
+<div class="hero">
 
-<div id="msg" class="msg"></div>
-
-<form id="form">
-
-<div class="grid">
-
-<div>
-<label>Donor Name</label>
-<input id="donor_name" type="text" placeholder="Donor name">
+<div class="hero-icon">
+🙏
 </div>
 
-<div>
-<label>Amount</label>
-<input id="amount" type="number" min="0.01" step="0.01" placeholder="0.00" required>
+<div class="label">
+DAILY DEVOTIONAL
 </div>
 
-<div>
-<label>Date</label>
-<input id="date" type="date" required>
+<h1>
+Today's Devotional
+</h1>
+
+<div
+class="date"
+id="date">
+Loading...
 </div>
 
-<div>
-<label>Payment Method</label>
-<select id="payment_method" required>
-<option value="">Select payment method</option>
-<option>Cash</option>
-<option>Bank Transfer</option>
-<option>Deposit</option>
-<option>Cheque</option>
-<option>Online</option>
-<option>Other</option>
+</div>
+
+
+<!-- LANGUAGE -->
+
+<div class="language-card">
+
+<label>
+SELECT LANGUAGE
+</label>
+
+<select id="language">
+
+<option value="en">
+🇬🇧 English
+</option>
+
+<option value="ta">
+🇱🇰 தமிழ்
+</option>
+
+<option value="si">
+🇱🇰 සිංහල
+</option>
+
 </select>
+
 </div>
 
-<div>
-<label>Reference Number</label>
-<input id="reference_number" type="text" placeholder="Optional">
-</div>
 
-<div>
-<label>Receipt / Payment Slip</label>
-<input
-id="receipt"
-type="file"
-accept="image/jpeg,image/png,application/pdf"
-required>
-<div class="hint">JPG, PNG or PDF. Maximum 5MB.</div>
+<!-- CONTENT -->
+
+<div id="content">
+
+<div class="loading">
+📖 Loading today's devotional...
 </div>
 
 </div>
 
-<label>Description</label>
-<textarea id="description" placeholder="Optional details"></textarea>
 
-<button id="saveBtn" type="submit">
-Save Donation
+<!-- SHARE -->
+
+<div class="share">
+
+<button id="shareBtn">
+📤 Share Today's Devotional
 </button>
 
-</form>
 </div>
 
-<div class="card">
-
-<h3>Donation Records</h3>
-
-<div class="table">
-
-<table>
-<thead>
-<tr>
-<th>Date</th>
-<th>Donor</th>
-<th>Amount</th>
-<th>Payment</th>
-<th>Reference</th>
-<th>Status</th>
-<th>Receipt</th>
-</tr>
-</thead>
-
-<tbody id="records">
-<tr>
-<td colspan="7">Loading...</td>
-</tr>
-</tbody>
-
-</table>
-
-</div>
 </div>
 
 </main>
 
+
+<footer>
+
+<strong>
+GOH Ministries
+</strong>
+
+<br>
+
+Gate of Heaven Ministries
+
+<br>
+
+Daily Devotional • Bible • Prayer
+
+</footer>
+
+
 <script>
 
-const API="https://goh-finance.createlk.workers.dev";
-const KEY="goh_finance_token";
+/* =====================================
+   CLOUDFLARE WORKER
+===================================== */
 
-function headers(){
-return{
-"Authorization":"Bearer "+localStorage.getItem(KEY)
-};
-}
+const API =
+"https://devotional.createlk.workers.dev";
 
-function esc(v){
-return String(v??"")
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
-}
 
-function show(text,ok=false){
-const x=document.getElementById("msg");
-x.textContent=text;
-x.className="msg "+(ok?"ok":"bad");
-}
+/* =====================================
+   LANGUAGE
+===================================== */
 
-async function check(){
+const languageSelect =
+document.getElementById("language");
 
-const token=localStorage.getItem(KEY);
+let language =
+localStorage.getItem(
+"goh_devotional_language"
+) || "en";
 
-if(!token){
-location.href="admin-login.html";
-return false;
-}
+languageSelect.value =
+language;
 
-try{
 
-const r=await fetch(
-API+"/api/me",
-{headers:headers()}
-);
+/* =====================================
+   LOAD DEVOTIONAL
+===================================== */
 
-const d=await r.json();
+async function loadDevotional(){
 
-if(!r.ok||!d.success)throw Error();
+const content =
+document.getElementById("content");
 
-return true;
-
-}catch(e){
-
-localStorage.removeItem(KEY);
-location.href="admin-login.html";
-return false;
-
-}
-
-}
-
-function money(v){
-return Number(v||0).toLocaleString(
-"en-LK",
-{
-minimumFractionDigits:2,
-maximumFractionDigits:2
-}
-);
-}
-
-function receiptUrl(id){
-return API+"/api/donations/"+id+"/receipt";
-}
-
-async function load(){
-
-try{
-
-const r=await fetch(
-API+"/api/donations",
-{headers:headers()}
-);
-
-const d=await r.json();
-
-if(!r.ok||!d.success)
-throw Error(d.error||"Unable to load donations");
-
-const rows=d.donations||[];
-
-document.getElementById("records").innerHTML=
-
-rows.map(x=>{
-
-const s=String(x.status||"PENDING").toLowerCase();
-
-return `
-<tr>
-
-<td>${esc(x.date)}</td>
-
-<td>${esc(x.donor_name||"-")}</td>
-
-<td>LKR ${money(x.amount)}</td>
-
-<td>${esc(x.payment_method)}</td>
-
-<td>${esc(x.reference_number||"-")}</td>
-
-<td>
-<span class="status ${s}">
-${esc(x.status)}
-</span>
-</td>
-
-<td>
-<button onclick="viewReceipt(${Number(x.id)})">
-View
-</button>
-</td>
-
-</tr>
+content.innerHTML = `
+<div class="loading">
+📖 Loading today's devotional...
+</div>
 `;
 
-}).join("")||
-
-`<tr>
-<td colspan="7">No donation records found.</td>
-</tr>`;
-
-}catch(e){
-
-document.getElementById("records").innerHTML=
-`<tr>
-<td colspan="7">${esc(e.message)}</td>
-</tr>`;
-
-}
-
-}
-
-function viewReceipt(id){
-
-const token=localStorage.getItem(KEY);
-
-const url=
-receiptUrl(id)+
-"?token="+encodeURIComponent(token);
-
-window.open(url,"_blank");
-
-}
-
-document.getElementById("form")
-.addEventListener("submit",async e=>{
-
-e.preventDefault();
-
-const btn=document.getElementById("saveBtn");
-
-const file=
-document.getElementById("receipt").files[0];
-
-if(!file){
-show("Receipt / payment slip is required.");
-return;
-}
-
-if(file.size>5242880){
-show("Receipt must be 5MB or smaller.");
-return;
-}
-
-const allowed=[
-"image/jpeg",
-"image/png",
-"application/pdf"
-];
-
-if(!allowed.includes(file.type)){
-show("Only JPG, PNG or PDF files are allowed.");
-return;
-}
-
-const fd=new FormData();
-
-fd.append(
-"donor_name",
-document.getElementById("donor_name").value.trim()
-);
-
-fd.append(
-"amount",
-document.getElementById("amount").value
-);
-
-fd.append(
-"date",
-document.getElementById("date").value
-);
-
-fd.append(
-"payment_method",
-document.getElementById("payment_method").value
-);
-
-fd.append(
-"reference_number",
-document.getElementById("reference_number").value.trim()
-);
-
-fd.append(
-"description",
-document.getElementById("description").value.trim()
-);
-
-fd.append("receipt",file);
-
-btn.disabled=true;
-btn.textContent="Saving...";
-
 try{
 
-const r=await fetch(
-API+"/api/donations",
-{
-method:"POST",
-headers:{
-"Authorization":
-"Bearer "+localStorage.getItem(KEY)
-},
-body:fd
-}
-);
-
-const d=await r.json();
-
-if(!r.ok||!d.success)
-throw Error(d.error||"Unable to save donation");
-
-show(
-"Donation submitted successfully. Waiting for approval.",
-true
-);
-
-e.target.reset();
-
-document.getElementById("date").value=
-new Date().toISOString().slice(0,10);
-
-await load();
-
-}catch(err){
-
-show(err.message);
-
-}finally{
-
-btn.disabled=false;
-btn.textContent="Save Donation";
-
-}
-
-});
-
-async function logout(){
-
-try{
-
+const response =
 await fetch(
-API+"/api/logout",
+API +
+"/today?lang=" +
+encodeURIComponent(language),
 {
-method:"POST",
-headers:headers()
+method:"GET",
+cache:"no-store"
 }
+);
+
+if(!response.ok){
+
+throw new Error(
+"Unable to connect to devotional service."
+);
+
+}
+
+const data =
+await response.json();
+
+if(!data.success){
+
+throw new Error(
+data.error ||
+"Today's devotional is not available yet."
+);
+
+}
+
+const d =
+data.devotional;
+
+
+/* DATE */
+
+document.getElementById("date")
+.textContent =
+formatDate(data.date);
+
+
+/* =====================================
+   DISPLAY
+   1. BIBLE VERSE
+   2. EXPLANATION
+   3. PRAYER
+===================================== */
+
+content.innerHTML = `
+
+<!-- BIBLE VERSE -->
+
+<article class="card verse-card">
+
+<div class="card-label">
+📖 BIBLE VERSE
+</div>
+
+<div class="verse">
+“${escapeHTML(
+d.bible_verse || ""
+)}”
+</div>
+
+${
+d.bible_reference
+?
+`
+<div class="reference">
+${escapeHTML(
+d.bible_reference
+)}
+</div>
+`
+:
+""
+}
+
+</article>
+
+
+<!-- EXPLANATION -->
+
+<article class="card">
+
+<div class="card-label">
+💡 TODAY'S EXPLANATION
+</div>
+
+<h2>
+${escapeHTML(
+d.title || ""
+)}
+</h2>
+
+<div class="message">
+${escapeHTML(
+d.message || ""
+)}
+</div>
+
+</article>
+
+
+<!-- PRAYER -->
+
+<article class="card prayer-card">
+
+<div class="card-label">
+🙏 TODAY'S PRAYER
+</div>
+
+<h2>
+Prayer
+</h2>
+
+<div class="prayer">
+${escapeHTML(
+d.prayer || ""
+)}
+</div>
+
+</article>
+
+`;
+
+}catch(error){
+
+console.error(
+"Devotional error:",
+error
+);
+
+content.innerHTML = `
+
+<div class="error">
+
+⚠️ ${escapeHTML(
+error.message ||
+"Unable to load today's devotional."
+)}
+
+</div>
+
+`;
+
+}
+
+}
+
+
+/* =====================================
+   DATE
+===================================== */
+
+function formatDate(monthDay){
+
+const parts =
+String(monthDay).split("-");
+
+if(parts.length !== 2){
+return monthDay;
+}
+
+const month =
+Number(parts[0]);
+
+const day =
+Number(parts[1]);
+
+const date =
+new Date(
+2024,
+month - 1,
+day
+);
+
+return date.toLocaleDateString(
+"en-US",
+{
+month:"long",
+day:"numeric"
+}
+);
+
+}
+
+
+/* =====================================
+   SECURITY
+===================================== */
+
+function escapeHTML(value){
+
+return String(value ?? "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================
+   LANGUAGE CHANGE
+===================================== */
+
+languageSelect.addEventListener(
+"change",
+function(){
+
+language =
+this.value;
+
+localStorage.setItem(
+"goh_devotional_language",
+language
+);
+
+loadDevotional();
+
+}
+);
+
+
+/* =====================================
+   SHARE
+===================================== */
+
+document
+.getElementById("shareBtn")
+.addEventListener(
+"click",
+async function(){
+
+const shareData = {
+
+title:
+"Today's Devotional | GOH Ministries",
+
+text:
+"Read today's devotional from GOH Ministries.",
+
+url:
+window.location.href
+
+};
+
+if(navigator.share){
+
+try{
+
+await navigator.share(
+shareData
 );
 
 }catch(e){}
 
-localStorage.removeItem(KEY);
-location.href="admin-login.html";
+}else{
+
+try{
+
+await navigator.clipboard.writeText(
+window.location.href
+);
+
+this.textContent =
+"✓ Link Copied";
+
+setTimeout(
+()=>{
+this.textContent =
+"📤 Share Today's Devotional";
+},
+1800
+);
+
+}catch(e){
+
+alert(
+window.location.href
+);
 
 }
 
-document.getElementById("date").value=
-new Date().toISOString().slice(0,10);
+}
 
-check().then(ok=>{
-if(ok)load();
-});
+}
+);
+
+
+/* =====================================
+   START
+===================================== */
+
+loadDevotional();
 
 </script>
 
