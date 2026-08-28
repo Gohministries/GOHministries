@@ -2,29 +2,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#111827">
-<title>Student Dashboard | GOH Bible Academy</title><link rel="icon"
+<title>Student Dashboard | GOH Bible Academy</title>
+<meta name="theme-color" content="#111827"><link rel="icon"
 href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"><style>
 *{box-sizing:border-box;margin:0;padding:0}
 
 body{
 font-family:Arial,sans-serif;
 background:#f3f6fb;
-color:#172033
+color:#172033;
+line-height:1.5
 }
 
+button{font-family:inherit;cursor:pointer}
+
 .container{
-width:min(900px,94%);
+width:min(1000px,94%);
 margin:auto
 }
 
 header{
 background:#fff;
-border-bottom:1px solid #e5e7eb
+border-bottom:1px solid #e5e7eb;
+position:sticky;
+top:0;
+z-index:10
 }
 
 .nav{
-height:64px;
+min-height:64px;
 display:flex;
 align-items:center;
 justify-content:space-between
@@ -37,127 +43,127 @@ gap:9px
 }
 
 .logo img{
-width:40px;
-height:40px;
-border-radius:8px
+width:42px;
+height:42px;
+object-fit:contain;
+border-radius:10px
 }
 
 .logo-title{
-font-size:13px;
+font-size:14px;
 font-weight:900
 }
 
 .logo-sub{
 font-size:8px;
-color:#777
+color:#6b7280
 }
 
-button{
-font-family:inherit;
-cursor:pointer
-}
-
-.logout{
+.logout,.view,.back{
 border:0;
 background:#111827;
 color:#fff;
-padding:9px 12px;
 border-radius:8px;
 font-size:9px;
-font-weight:900
+font-weight:900;
+padding:9px 12px
 }
 
 main{
-padding:20px 0 40px
+padding:24px 0 45px
 }
 
 .hero{
 background:#111827;
-color:white;
-padding:20px;
-border-radius:16px;
-margin-bottom:12px
+color:#fff;
+border-radius:18px;
+padding:23px;
+margin-bottom:15px
 }
 
 .hero small{
-font-size:8px;
 color:#fbbf24;
-font-weight:bold
+font-size:9px;
+font-weight:900;
+letter-spacing:1px
 }
 
 .hero h1{
-font-size:21px;
+font-size:23px;
 margin:5px 0
 }
 
 .hero p{
 font-size:10px;
-color:#ddd
+color:#d1d5db
 }
 
 .info{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:9px;
-margin-bottom:12px
+gap:10px;
+margin-bottom:15px
 }
 
-.info div{
+.info-card,
+.language-box,
+.progress,
+.module,
+.lesson{
 background:#fff;
 border:1px solid #e5e7eb;
-border-radius:12px;
-padding:13px
+border-radius:14px
 }
 
-.info small{
+.info-card{
+padding:14px
+}
+
+.info-card small{
 font-size:8px;
-color:#777;
-font-weight:bold
+color:#6b7280;
+font-weight:900
 }
 
-.info strong{
+.info-card strong{
 display:block;
-margin-top:3px;
-font-size:13px
+font-size:14px;
+margin-top:3px
 }
 
-.language{
-background:#fff;
-border:1px solid #e5e7eb;
-border-radius:12px;
-padding:13px;
-margin-bottom:12px
+.language-box{
+padding:14px;
+margin-bottom:15px
 }
 
-.language label{
+.language-box label{
 display:block;
 font-size:8px;
-font-weight:bold;
-color:#777;
-margin-bottom:6px
+font-weight:900;
+color:#6b7280;
+margin-bottom:7px
 }
 
-select{
+.language-select{
 width:100%;
-padding:9px;
-border:1px solid #ddd;
-border-radius:8px;
-background:#fff
+padding:10px;
+border:1px solid #d1d5db;
+border-radius:9px;
+background:#fff;
+font-size:11px;
+font-weight:700
 }
 
 .progress{
-background:#fff;
-border:1px solid #e5e7eb;
-border-radius:12px;
-padding:15px;
-margin-bottom:18px
+padding:17px;
+margin-bottom:20px
 }
 
 .progress-top{
 display:flex;
 justify-content:space-between;
-font-size:12px;
-font-weight:bold
+font-size:13px;
+font-weight:900
 }
 
 .percent{
@@ -166,14 +172,14 @@ color:#4f46e5
 
 .progress-text{
 font-size:9px;
-color:#777;
-margin:6px 0
+color:#6b7280;
+margin:6px 0 10px
 }
 
 .bar{
-height:8px;
+height:10px;
 background:#e5e7eb;
-border-radius:10px;
+border-radius:20px;
 overflow:hidden
 }
 
@@ -181,134 +187,139 @@ overflow:hidden
 height:100%;
 width:0;
 background:#4f46e5;
-transition:width .3s
+transition:.4s
+}
+
+.certificate{
+font-size:9px;
+color:#6b7280;
+font-weight:700;
+margin-top:9px
 }
 
 h2{
-font-size:16px
+font-size:17px
 }
 
 .sub{
 font-size:9px;
-color:#777;
-margin:3px 0 12px
+color:#6b7280;
+margin:3px 0 14px
 }
 
 .modules{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:10px
+gap:12px
 }
 
 .module{
-background:#fff;
-border:1px solid #e5e7eb;
-border-radius:12px;
-padding:14px;
+padding:16px;
 cursor:pointer;
-transition:.15s
+transition:.2s
 }
 
 .module:hover{
-transform:translateY(-1px)
+box-shadow:0 8px 20px #0001
 }
 
 .module-top{
 display:flex;
-gap:10px
+gap:11px
 }
 
 .icon{
-font-size:24px
+width:43px;
+height:43px;
+background:#f3f4f6;
+border-radius:11px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+flex-shrink:0
 }
 
 .module-no{
 font-size:8px;
-color:#4f46e5;
-font-weight:bold
+color:#6366f1;
+font-weight:900
 }
 
 .module-title{
-font-size:12px;
-font-weight:bold
+font-size:13px;
+font-weight:900;
+margin-top:2px
 }
 
 .module-desc{
-font-size:8px;
-color:#777
+font-size:9px;
+color:#6b7280;
+margin-top:4px
 }
 
 .module-bottom{
-margin-top:10px;
 border-top:1px solid #eee;
-padding-top:9px;
-text-align:right
+margin-top:13px;
+padding-top:10px;
+display:flex;
+justify-content:space-between;
+align-items:center
 }
 
-.view{
-border:0;
+.count{
+font-size:8px;
+color:#6b7280;
+font-weight:900
+}
+
+.lessons-section{
+display:none;
+margin-top:20px
+}
+
+.lesson-header{
 background:#111827;
 color:#fff;
-padding:7px 9px;
-border-radius:7px;
-font-size:8px;
-font-weight:bold
-}
-
-.lessons{
-display:none
-}
-
-.lesson-head{
-background:#111827;
-color:white;
-padding:15px;
-border-radius:13px;
+border-radius:15px;
+padding:17px;
 margin-bottom:10px
 }
 
-.lesson-head h2{
-font-size:16px
+.lesson-header h2{
+font-size:17px
 }
 
-.lesson-head p{
-font-size:8px;
-color:#ddd;
+.lesson-header p{
+font-size:9px;
+color:#d1d5db;
 margin-top:3px
 }
 
 .back{
-margin-top:10px;
-border:0;
-background:white;
+background:#fff;
 color:#111827;
-padding:8px 11px;
-border-radius:8px;
-font-size:9px;
-font-weight:900
+margin-top:11px
 }
 
 .lesson{
-background:#fff;
-border:1px solid #e5e7eb;
-border-radius:12px;
-padding:10px;
+padding:12px;
 display:flex;
 align-items:center;
-gap:9px;
-margin-bottom:7px
+gap:10px;
+margin-bottom:8px
 }
 
-.num{
-width:30px;
-height:30px;
+.lesson-num{
+width:32px;
+height:32px;
 background:#f3f4f6;
-border-radius:7px;
+border-radius:8px;
 display:flex;
 align-items:center;
 justify-content:center;
 font-size:9px;
-font-weight:bold;
+font-weight:900;
 flex-shrink:0
 }
 
@@ -318,43 +329,58 @@ flex:1
 
 .lesson-title{
 font-size:10px;
-font-weight:bold
+font-weight:900
 }
 
 .lesson-desc{
 font-size:8px;
-color:#777
+color:#6b7280
 }
 
 .lesson-btn{
 border:0;
+background:#dcfce7;
+color:#166534;
 padding:7px 9px;
 border-radius:7px;
 font-size:8px;
-font-weight:bold;
-background:#dcfce7;
-color:#166534
+font-weight:900;
+white-space:nowrap
 }
 
 .loading{
-text-align:center;
 background:#fff;
 border:1px solid #e5e7eb;
-border-radius:12px;
+border-radius:14px;
 padding:18px;
+text-align:center;
 font-size:10px;
-color:#777
+color:#6b7280;
+margin-bottom:8px
 }
 
 .error{
-display:none;
-background:#fff;
+background:#fef2f2;
 border:1px solid #fecaca;
 color:#b91c1c;
 border-radius:12px;
-padding:15px;
-font-size:10px;
+padding:13px;
+font-size:9px;
+margin-bottom:10px
+}
+
+.message{
+display:none;
+padding:10px;
+border-radius:9px;
+text-align:center;
+font-size:9px;
+font-weight:700;
 margin-bottom:12px
+}
+
+.message.show{
+display:block
 }
 
 footer{
@@ -375,83 +401,114 @@ grid-template-columns:1fr 1fr
 grid-template-columns:1fr
 }
 
+.info-card:last-child{
+grid-column:1/-1
 }
 
-</style></head><body><header><div class="container nav"><div class="logo"><img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"><div><div class="logo-title">
-GOH Bible Academy
-</div><div class="logo-sub">
-Gate of Heaven Ministries
-</div></div></div><button class="logout" onclick="logout()">
+.lesson{
+align-items:flex-start
+}
+
+.lesson-btn{
+margin-left:auto
+}
+
+}
+</style></head><body><header><div class="container nav"><div class="logo"><img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"><div>
+<div class="logo-title">GOH Bible Academy</div>
+<div class="logo-sub">Gate of Heaven Ministries</div>
+</div></div><button class="logout" id="logout">
 🚪 Logout
 </button></div></header><main><div class="container"><div class="hero"><small>STUDENT DASHBOARD</small>
 
 <h1 id="welcome">
 Welcome 👋
 </h1><p>
-Continue your Biblical Studies journey.
-</p></div><div class="info"><div>
+Continue your Biblical Studies journey through 180 structured lessons.
+</p></div><div id="message" class="message"></div><div class="info"><div class="info-card">
 <small>MEMBERSHIP</small>
-<strong>FREE</strong>
-</div><div>
+<strong id="membership">FREE</strong>
+</div><div class="info-card">
 <small>STUDENT ID</small>
 <strong id="studentId">—</strong>
-</div><div>
+</div><div class="info-card">
 <small>LANGUAGE</small>
 <strong id="language">English</strong>
-</div></div><div class="language"><label>
+</div></div><div class="language-box"><label>
 SELECT LESSON LANGUAGE
-</label><select id="lang"><option value="en">
+</label><select id="languageSelect" class="language-select"><option value="en">
 English
 </option><option value="ta">
 தமிழ்
 </option><option value="si">
 සිංහල
 </option></select></div><div class="progress"><div class="progress-top"><span>
-🏆 Learning Progress
+🏆 Certificate Progress
 </span><span class="percent" id="percent">
 0%
 </span></div><div class="progress-text" id="progressText">
 0 / 180 lessons completed
-</div><div class="bar"><div class="fill" id="fill"></div></div></div><section id="moduleSection"><h2>
+</div><div class="bar"><div class="fill" id="fill"></div></div><div class="certificate">
+Complete all 180 lessons and pass each 5-question assessment.
+</div></div><section id="modulesSection"><h2>
 CHRISTIAN BIBLICAL STUDIES
 </h2><div class="sub">
-180-Lesson Discipleship Training Program
-</div><div id="moduleLoading" class="loading">
-Loading modules...
-</div><div id="moduleError" class="error"></div><div class="modules" id="modules"></div></section><section class="lessons" id="lessonSection"><div class="lesson-head"><h2 id="moduleTitle"></h2><p id="moduleDesc"></p><button class="back" onclick="back()">
+180-Lesson Discipleship Training Program • Choose a module.
+</div><div class="modules" id="modules"></div></section><section class="lessons-section" id="lessonsSection"><div class="lesson-header"><h2 id="moduleTitle"></h2><p id="moduleDescription"></p><button class="back" id="back">
 ← Back to Modules
-</button></div><div id="lessonList"></div></section></div></main><footer>GOH Bible Academy • Gate of Heaven Ministries<br>
+</button></div><div id="lessons"></div></section></div></main><footer>GOH Bible Academy • Gate of Heaven Ministries<br>
 
 © 2026 GOH Bible Academy. All rights reserved.
 
 </footer><script>
 
-/* =========================
-   CONFIG
-========================= */
+/*
+================================================
+CONFIGURATION
+================================================
+*/
 
 const API="https://dashboard.createlk.workers.dev";
 
+const LESSON_PAGE="lesson.html";
 
-/* =========================
-   STUDENT
-========================= */
 
-let student=null;
+/*
+================================================
+HELPER
+================================================
+*/
+
+const $=id=>document.getElementById(id);
+
+
+/*
+================================================
+GET STUDENT
+================================================
+*/
+
+function getStudent(){
 
 try{
 
-student=JSON.parse(
-localStorage.getItem("goh_student")||
-sessionStorage.getItem("goh_student")||
+return JSON.parse(
+localStorage.getItem("goh_student") ||
+sessionStorage.getItem("goh_student") ||
 "null"
 );
 
 }catch(e){
 
-student=null;
+return null;
 
 }
+
+}
+
+
+const student=getStudent();
+
 
 if(!student){
 
@@ -459,513 +516,145 @@ location.href="login.html";
 
 }
 
-const studentId=Number(student.id||0);
 
-document.getElementById("studentId").textContent=
-studentId;
+/*
+================================================
+LANGUAGE
+================================================
+*/
 
-document.getElementById("welcome").textContent=
-"Welcome, "+(student.first_name||"Student")+" 👋";
+function getLanguage(){
 
+const value=String(
+localStorage.getItem("goh_language") ||
+student?.language ||
+"en"
+).toLowerCase();
 
-/* =========================
-   DATA
-========================= */
+if(
+value==="ta" ||
+value==="tamil" ||
+value==="தமிழ்"
+){
 
-let modules=[];
-
-let currentModule=null;
-
-
-/* =========================
-   LOAD MODULES FROM CLOUDFLARE
-========================= */
-
-async function loadModules(){
-
-const loading=
-document.getElementById("moduleLoading");
-
-const error=
-document.getElementById("moduleError");
-
-try{
-
-loading.style.display="block";
-error.style.display="none";
-
-const r=await fetch(
-API+"/modules",
-{
-cache:"no-store"
-}
-);
-
-const data=await r.json();
-
-if(!r.ok){
-
-throw new Error(
-data.message||
-data.error||
-"HTTP "+r.status
-);
+return "ta";
 
 }
 
-if(!data.success){
+if(
+value==="si" ||
+value==="sinhala" ||
+value==="සිංහල"
+){
 
-throw new Error(
-data.message||
-"Unable to load modules"
-);
-
-}
-
-modules=
-data.modules||
-data.data||
-[];
-
-if(!modules.length){
-
-throw new Error(
-"No modules found in Cloudflare D1."
-);
+return "si";
 
 }
 
-renderModules();
-
-loading.style.display="none";
-
-}catch(e){
-
-console.error(e);
-
-loading.style.display="none";
-
-error.style.display="block";
-
-error.textContent=
-"Unable to load modules from Cloudflare: "+
-e.message;
-
-}
+return "en";
 
 }
 
 
-/* =========================
-   RENDER MODULES
-========================= */
+let language=getLanguage();
 
-function renderModules(){
 
-const box=
-document.getElementById("modules");
-
-box.innerHTML="";
-
-modules.forEach((m,index)=>{
-
-const moduleId=
-Number(m.id);
-
-const title=
-m.title_en||
-m.title||
-"Module "+(index+1);
-
-const desc=
-m.description_en||
-m.description||
-"";
-
-const div=
-document.createElement("div");
-
-div.className="module";
-
-div.innerHTML=`
-
-<div class="module-top">
-
-<div class="icon">
-${getIcon(index)}
-</div>
-
-<div>
-
-<div class="module-no">
-MODULE ${index+1}
-</div>
-
-<div class="module-title">
-${escapeHTML(title)}
-</div>
-
-<div class="module-desc">
-${escapeHTML(desc)}
-</div>
-
-</div>
-
-</div>
-
-<div class="module-bottom">
-
-<button class="view">
-View Lessons →
-</button>
-
-</div>
-
-`;
-
-div.onclick=()=>{
-
-showLessons(moduleId,title,desc);
-
+const languageNames={
+en:"English",
+ta:"Tamil",
+si:"Sinhala"
 };
 
-box.appendChild(div);
 
-});
+$("languageSelect").value=language;
 
-}
+$("language").textContent=
+languageNames[language];
 
 
-/* =========================
-   LOAD LESSONS
-========================= */
+/*
+================================================
+STUDENT INFORMATION
+================================================
+*/
 
-async function showLessons(moduleId,title,desc){
+$("welcome").textContent=
+"Welcome, "+
+(student?.first_name||"Student")+
+" 👋";
 
-document.getElementById("moduleSection")
-.style.display="none";
 
-document.getElementById("lessonSection")
-.style.display="block";
+$("studentId").textContent=
+student?.id||"—";
 
-document.getElementById("moduleTitle")
-.textContent=title;
 
-document.getElementById("moduleDesc")
-.textContent=desc;
+$("membership").textContent=
+String(
+student?.membership_status||
+"FREE"
+).toUpperCase();
 
-const box=
-document.getElementById("lessonList");
 
-box.innerHTML=`
+/*
+================================================
+6 HARD-CODED MODULES
+ONLY MODULE INFORMATION IS HARD-CODED.
+LESSONS COME FROM CLOUDFLARE D1.
+================================================
+*/
 
-<div class="loading">
-Loading lessons from Cloudflare...
-</div>
+const modules=[
 
-`;
-
-try{
-
-const r=await fetch(
-API+"/lessons?module_id="+
-encodeURIComponent(moduleId),
 {
-cache:"no-store"
-}
-);
+id:1,
+icon:"📖",
+title:"Introduction to the Bible",
+description:"Bible foundations, inspiration, canon and interpretation."
+},
 
-const data=await r.json();
-
-if(!r.ok){
-
-throw new Error(
-data.message||
-data.error||
-"HTTP "+r.status
-);
-
-}
-
-if(!data.success){
-
-throw new Error(
-data.message||
-"Unable to load lessons"
-);
-
-}
-
-const lessons=
-data.lessons||
-data.data||
-[];
-
-box.innerHTML="";
-
-if(!lessons.length){
-
-box.innerHTML=`
-
-<div class="loading">
-No lessons found for this module.
-</div>
-
-`;
-
-return;
-
-}
-
-
-/* SORT BY LESSON NUMBER */
-
-lessons.sort((a,b)=>
-Number(a.lesson_number||0)-
-Number(b.lesson_number||0)
-);
-
-
-/* DISPLAY */
-
-lessons.forEach((lesson,index)=>{
-
-const id=
-Number(lesson.id);
-
-const number=
-lesson.lesson_number||
-(index+1);
-
-const title=
-lesson.title_en||
-"Lesson "+number;
-
-const desc=
-lesson.description_en||
-"";
-
-const div=
-document.createElement("div");
-
-div.className="lesson";
-
-div.innerHTML=`
-
-<div class="num">
-${number}
-</div>
-
-<div class="lesson-info">
-
-<div class="lesson-title">
-${escapeHTML(title)}
-</div>
-
-<div class="lesson-desc">
-Lesson ID ${id}
-</div>
-
-</div>
-
-<button class="lesson-btn">
-Start →
-</button>
-
-`;
-
-div.querySelector("button").onclick=()=>{
-
-location.href=
-"lesson.html?lesson_id="+
-encodeURIComponent(id)+
-"&module_id="+
-encodeURIComponent(moduleId);
-
-};
-
-box.appendChild(div);
-
-});
-
-scrollTo(0,0);
-
-}catch(e){
-
-console.error(e);
-
-box.innerHTML=`
-
-<div class="error" style="display:block">
-Unable to load lessons from Cloudflare:<br><br>
-${escapeHTML(e.message)}
-</div>
-
-`;
-
-}
-
-}
-
-
-/* =========================
-   BACK
-========================= */
-
-function back(){
-
-document.getElementById("lessonSection")
-.style.display="none";
-
-document.getElementById("moduleSection")
-.style.display="block";
-
-}
-
-
-/* =========================
-   PROGRESS
-========================= */
-
-async function loadProgress(){
-
-try{
-
-const r=await fetch(
-API+"/progress?student_id="+
-encodeURIComponent(studentId),
 {
-cache:"no-store"
-}
-);
+id:2,
+icon:"✝️",
+title:"God, Christ and Salvation",
+description:"Knowing God, the gospel, Jesus Christ and salvation."
+},
 
-if(!r.ok)return;
+{
+id:3,
+icon:"🔥",
+title:"Holy Spirit and Spiritual Life",
+description:"The Holy Spirit, prayer, worship and spiritual formation."
+},
 
-const d=await r.json();
+{
+id:4,
+icon:"⛪",
+title:"Church and Christian Community",
+description:"Church life, fellowship, leadership, service and mission."
+},
 
-if(!d.success)return;
+{
+id:5,
+icon:"🌍",
+title:"Christian Mission and Discipleship",
+description:"Evangelism, discipleship, witness and Christian ministry."
+},
 
-const p=d.progress||{};
-
-const completed=
-Number(p.completed||0);
-
-const total=
-Number(p.total||180);
-
-const percent=
-Number(
-p.percentage||
-Math.round(
-completed/total*100
-)
-);
-
-document.getElementById("progressText")
-.textContent=
-completed+" / "+total+
-" lessons completed";
-
-document.getElementById("percent")
-.textContent=
-percent+"%";
-
-document.getElementById("fill")
-.style.width=
-percent+"%";
-
-}catch(e){
-
-console.log(
-"Progress error:",
-e
-);
-
+{
+id:6,
+icon:"🏆",
+title:"Christian Character and Leadership",
+description:"Faith, integrity, leadership, wisdom and lifelong discipleship."
 }
 
-}
-
-
-/* =========================
-   LANGUAGE
-========================= */
-
-const lang=
-document.getElementById("lang");
-
-const savedLang=
-localStorage.getItem("goh_language")||
-"en";
-
-lang.value=savedLang;
-
-updateLanguageLabel();
-
-lang.onchange=function(){
-
-localStorage.setItem(
-"goh_language",
-this.value
-);
-
-updateLanguageLabel();
-
-};
-
-function updateLanguageLabel(){
-
-const option=
-lang.options[lang.selectedIndex];
-
-document.getElementById("language")
-.textContent=
-option.text;
-
-}
-
-
-/* =========================
-   LOGOUT
-========================= */
-
-function logout(){
-
-localStorage.removeItem(
-"goh_student"
-);
-
-sessionStorage.removeItem(
-"goh_student"
-);
-
-location.href="login.html";
-
-}
-
-
-/* =========================
-   ICONS
-========================= */
-
-function getIcon(i){
-
-const icons=[
-"📖",
-"✝️",
-"🔥",
-"⛪",
-"🌍",
-"🏆"
 ];
 
-return icons[i]||"📚";
 
-}
-
-
-/* =========================
-   ESCAPE HTML
-========================= */
+/*
+================================================
+ESCAPE HTML
+================================================
+*/
 
 function escapeHTML(value){
 
@@ -979,13 +668,637 @@ return String(value??"")
 }
 
 
-/* =========================
-   START
-========================= */
+/*
+================================================
+LOAD MODULE CARDS
+================================================
+*/
+
+function loadModules(){
+
+const box=$("modules");
+
+box.innerHTML="";
+
+
+modules.forEach(module=>{
+
+const el=document.createElement("div");
+
+el.className="module";
+
+el.innerHTML=`
+
+<div class="module-top">
+
+<div class="icon">
+${module.icon}
+</div>
+
+<div>
+
+<div class="module-no">
+MODULE ${String(module.id).padStart(2,"0")}
+</div>
+
+<div class="module-title">
+${escapeHTML(module.title)}
+</div>
+
+<div class="module-desc">
+${escapeHTML(module.description)}
+</div>
+
+</div>
+
+</div>
+
+<div class="module-bottom">
+
+<span class="count"
+id="count-${module.id}">
+Loading...
+</span>
+
+<button class="view">
+View Lessons →
+</button>
+
+</div>
+
+`;
+
+el.onclick=()=>showLessons(module);
+
+box.appendChild(el);
+
+});
+
+}
+
+
+/*
+================================================
+LOAD LESSONS FROM CLOUDFLARE D1
+================================================
+*/
+
+async function fetchLessons(moduleId){
+
+const url=
+API+
+"/lessons?module_id="+
+encodeURIComponent(moduleId);
+
+const response=await fetch(
+url,
+{
+method:"GET",
+cache:"no-store"
+}
+);
+
+let data=null;
+
+try{
+
+data=await response.json();
+
+}catch(e){
+
+throw new Error(
+"Cloudflare returned invalid JSON."
+);
+
+}
+
+
+if(!response.ok){
+
+throw new Error(
+data?.error||
+"Cloudflare returned HTTP "+
+response.status
+);
+
+}
+
+
+if(!data.success){
+
+throw new Error(
+data?.error||
+"Unable to load lessons."
+);
+
+}
+
+
+/*
+Accept either:
+
+{
+ success:true,
+ lessons:[]
+}
+
+or
+
+{
+ success:true,
+ data:[]
+}
+*/
+
+const list=
+Array.isArray(data.lessons)
+?data.lessons
+:Array.isArray(data.data)
+?data.data
+:[];
+
+
+return list;
+
+}
+
+
+/*
+================================================
+UPDATE MODULE COUNTS
+================================================
+*/
+
+async function loadModuleCounts(){
+
+for(const module of modules){
+
+try{
+
+const lessons=
+await fetchLessons(module.id);
+
+const count=
+document.getElementById(
+"count-"+module.id
+);
+
+if(count){
+
+count.textContent=
+lessons.length+
+(lessons.length===1
+?" Lesson"
+:" Lessons");
+
+}
+
+}catch(e){
+
+const count=
+document.getElementById(
+"count-"+module.id
+);
+
+if(count){
+
+count.textContent=
+"Cloudflare";
+
+}
+
+console.error(
+"Module "+module.id,
+e
+);
+
+}
+
+}
+
+}
+
+
+/*
+================================================
+SHOW LESSONS
+================================================
+*/
+
+async function showLessons(module){
+
+$("modulesSection").style.display="none";
+
+$("lessonsSection").style.display="block";
+
+$("moduleTitle").textContent=
+module.title;
+
+$("moduleDescription").textContent=
+module.description;
+
+$("lessons").innerHTML=`
+
+<div class="loading">
+Loading lessons from Cloudflare D1...
+</div>
+
+`;
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+
+try{
+
+const lessonList=
+await fetchLessons(module.id);
+
+
+if(!lessonList.length){
+
+$("lessons").innerHTML=`
+
+<div class="error">
+No lessons found for this module in Cloudflare D1.
+</div>
+
+`;
+
+return;
+
+}
+
+
+$("lessons").innerHTML="";
+
+
+/*
+Sort by lesson_number.
+This uses the actual D1 lesson_number.
+*/
+
+lessonList.sort(
+(a,b)=>
+Number(a.lesson_number||0)-
+Number(b.lesson_number||0)
+);
+
+
+lessonList.forEach((lesson,index)=>{
+
+const lessonId=
+Number(lesson.id);
+
+const lessonNumber=
+Number(
+lesson.lesson_number||
+index+1
+);
+
+
+/*
+Use selected language title if available.
+Fallback to English.
+*/
+
+let title="";
+
+if(language==="ta"){
+
+title=
+lesson.title_ta||
+lesson.title_en||
+"Lesson "+lessonNumber;
+
+}else if(language==="si"){
+
+title=
+lesson.title_si||
+lesson.title_en||
+"Lesson "+lessonNumber;
+
+}else{
+
+title=
+lesson.title_en||
+"Lesson "+lessonNumber;
+
+}
+
+
+let description="";
+
+if(language==="ta"){
+
+description=
+lesson.description_ta||
+lesson.description_en||
+"";
+
+}else if(language==="si"){
+
+description=
+lesson.description_si||
+lesson.description_en||
+"";
+
+}else{
+
+description=
+lesson.description_en||
+"";
+
+}
+
+
+const div=
+document.createElement("div");
+
+div.className="lesson";
+
+
+div.innerHTML=`
+
+<div class="lesson-num">
+${lessonNumber}
+</div>
+
+<div class="lesson-info">
+
+<div class="lesson-title">
+${escapeHTML(title)}
+</div>
+
+<div class="lesson-desc">
+Lesson ID ${lessonId} • ${escapeHTML(module.title)}
+</div>
+
+</div>
+
+<button class="lesson-btn">
+Start →
+</button>
+
+`;
+
+
+div.querySelector(".lesson-btn")
+.onclick=function(e){
+
+e.stopPropagation();
+
+
+/*
+Only lesson ID is sent.
+
+The lesson.html page gets the actual
+content from Cloudflare.
+*/
+
+location.href=
+LESSON_PAGE+
+"?lesson_id="+
+encodeURIComponent(lessonId)+
+"&module_id="+
+encodeURIComponent(module.id);
+
+};
+
+
+$("lessons").appendChild(div);
+
+});
+
+
+}catch(e){
+
+console.error(e);
+
+
+$("lessons").innerHTML=`
+
+<div class="error">
+
+Unable to load lessons from Cloudflare.
+
+<br><br>
+
+${escapeHTML(e.message)}
+
+</div>
+
+`;
+
+}
+
+}
+
+
+/*
+================================================
+BACK TO MODULES
+================================================
+*/
+
+$("back").onclick=function(){
+
+$("lessonsSection").style.display="none";
+
+$("modulesSection").style.display="block";
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+};
+
+
+/*
+================================================
+LANGUAGE CHANGE
+================================================
+*/
+
+$("languageSelect")
+.addEventListener(
+"change",
+function(){
+
+language=this.value;
+
+localStorage.setItem(
+"goh_language",
+language
+);
+
+$("language").textContent=
+languageNames[language];
+
+
+/*
+If currently viewing a module,
+reload its lessons so titles change.
+*/
+
+if(
+$("lessonsSection").style.display!=="none"
+){
+
+const title=
+$("moduleTitle").textContent;
+
+const module=
+modules.find(
+m=>m.title===title
+);
+
+if(module){
+
+showLessons(module);
+
+}
+
+}
+
+});
+
+
+/*
+================================================
+PROGRESS
+================================================
+*/
+
+async function loadProgress(){
+
+try{
+
+const response=
+await fetch(
+API+
+"/progress?student_id="+
+encodeURIComponent(student.id),
+{
+cache:"no-store"
+}
+);
+
+
+const data=
+await response.json();
+
+
+if(
+!response.ok||
+!data.success
+){
+
+return;
+
+}
+
+
+const p=
+data.progress||{};
+
+
+const completed=
+Number(p.completed||0);
+
+const total=
+Number(p.total||180);
+
+const percentage=
+Number(
+p.percentage||
+(
+total
+?
+Math.round(
+completed/total*100
+)
+:0
+)
+);
+
+
+$("progressText").textContent=
+completed+
+" / "+
+total+
+" lessons completed";
+
+
+$("percent").textContent=
+percentage+
+"%";
+
+
+$("fill").style.width=
+Math.min(100,percentage)+
+"%";
+
+
+}catch(e){
+
+console.error(
+"Progress error:",
+e
+);
+
+}
+
+}
+
+
+/*
+================================================
+LOGOUT
+================================================
+*/
+
+$("logout").onclick=function(){
+
+localStorage.removeItem(
+"goh_student"
+);
+
+localStorage.removeItem(
+"goh_logged_in"
+);
+
+sessionStorage.removeItem(
+"goh_student"
+);
+
+sessionStorage.removeItem(
+"goh_logged_in"
+);
+
+location.href="login.html";
+
+};
+
+
+/*
+================================================
+START
+================================================
+*/
+
+if(student){
 
 loadModules();
 
+loadModuleCounts();
+
 loadProgress();
+
+}
 
 </script></body>
 </html>
