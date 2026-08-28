@@ -11,9 +11,23 @@ href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial;background:#f4f7fb;color:#172033;line-height:1.6}
-a{text-decoration:none;color:inherit}
-.container{width:min(900px,92%);margin:auto}
+
+body{
+font-family:Arial,sans-serif;
+background:#f4f7fb;
+color:#172033;
+line-height:1.6
+}
+
+a{
+text-decoration:none;
+color:inherit
+}
+
+.container{
+width:min(900px,92%);
+margin:auto
+}
 
 header{
 background:#fff;
@@ -224,6 +238,10 @@ cursor:not-allowed
 background:#15803d!important
 }
 
+.downloadBtn{
+background:#475569!important
+}
+
 .status{
 text-align:center;
 padding:25px;
@@ -233,6 +251,21 @@ font-size:12px
 
 .error{
 color:#dc2626
+}
+
+.preview{
+display:none;
+margin:15px auto;
+text-align:center
+}
+
+.preview img{
+width:100%;
+max-width:360px;
+border-radius:12px;
+display:block;
+margin:auto;
+box-shadow:0 4px 15px rgba(0,0,0,.15)
 }
 
 .archive-title{
@@ -456,6 +489,7 @@ Gate of Heaven Ministries
 
 <div class="container">
 
+
 <section class="hero">
 
 <div class="hero-card">
@@ -484,6 +518,8 @@ Bible Verse • Explanation • Prayer
 </section>
 
 
+<!-- LANGUAGE -->
+
 <div class="box">
 
 <div class="lang-title">
@@ -509,6 +545,8 @@ LANGUAGE
 </div>
 
 
+<!-- DEVOTIONAL -->
+
 <div class="box">
 
 <div id="result" class="status">
@@ -518,9 +556,26 @@ Loading devotional...
 
 <div class="share" id="share" style="display:none">
 
+
+<!-- IMAGE PREVIEW -->
+
+<div
+id="imagePreview"
+class="preview"
+>
+
+<img
+id="previewImg"
+alt="GOH Ministries Daily Devotional"
+>
+
+</div>
+
+
 <button
 id="createBtn"
-onclick="prepareShare()">
+onclick="prepareShare()"
+>
 
 🖼️ Create Share Image
 
@@ -531,9 +586,22 @@ onclick="prepareShare()">
 id="shareBtn"
 class="shareBtn"
 onclick="shareImage()"
-style="display:none">
+style="display:none"
+>
 
 📤 Share Image
+
+</button>
+
+
+<button
+id="downloadBtn"
+class="downloadBtn"
+onclick="downloadImage()"
+style="display:none"
+>
+
+⬇️ Save Image
 
 </button>
 
@@ -541,6 +609,8 @@ style="display:none">
 
 </div>
 
+
+<!-- ARCHIVE -->
 
 <div class="box">
 
@@ -623,22 +693,28 @@ Gate of Heaven Ministries
 class="whatsapp"
 href="https://wa.me/94771190395"
 target="_blank"
-rel="noopener">
-
+rel="noopener"
+>
 💬
-
 </a>
 
 
 <script>
 
+
+/* API */
+
 const API=
 "https://devotional.createlk.workers.dev";
 
 
+/* R2 BACKGROUND */
+
 const R2_BACKGROUND=
 "https://media.gohministries.org/file_00000000a9808211856c9a605ffe6f5c.png";
 
+
+/* URL */
 
 const params=
 new URLSearchParams(
@@ -661,9 +737,14 @@ new Date().getFullYear();
 let devotional=null;
 
 
-/* Generated image */
+/* GENERATED FILE */
 
 let generatedFile=null;
+
+
+/* PREVIEW URL */
+
+let previewURL=null;
 
 
 if(
@@ -738,7 +819,7 @@ year:"numeric"
 }
 
 
-/* SAFE HTML */
+/* SAFE */
 
 function safe(x){
 
@@ -802,8 +883,41 @@ document.getElementById(
 "none";
 
 
+devotional=null;
+
+generatedFile=null;
+
+
+if(previewURL){
+
+URL.revokeObjectURL(
+previewURL
+);
+
+previewURL=null;
+
+}
+
+
+document.getElementById(
+"imagePreview"
+).style.display=
+"none";
+
+
+document.getElementById(
+"previewImg"
+).src="";
+
+
 document.getElementById(
 "shareBtn"
+).style.display=
+"none";
+
+
+document.getElementById(
+"downloadBtn"
 ).style.display=
 "none";
 
@@ -812,12 +926,6 @@ document.getElementById(
 "createBtn"
 ).textContent=
 "🖼️ Create Share Image";
-
-
-generatedFile=null;
-
-
-devotional=null;
 
 
 result.className=
@@ -1060,7 +1168,7 @@ e.message||
 }
 
 
-/* TEXT WRAP */
+/* WRAP TEXT */
 
 function wrap(
 ctx,
@@ -1137,7 +1245,7 @@ throw new Error(
 }
 
 
-/* Get R2 image */
+/* R2 FETCH */
 
 const response=
 await fetch(
@@ -1176,13 +1284,13 @@ if(
 ){
 
 throw new Error(
-"R2 did not return a valid image."
+"R2 did not return an image."
 );
 
 }
 
 
-/* Local image URL */
+/* IMAGE URL */
 
 const imageURL=
 URL.createObjectURL(
@@ -1222,6 +1330,8 @@ imageURL;
 
 );
 
+
+/* CANVAS */
 
 const canvas=
 document.createElement(
@@ -1292,6 +1402,7 @@ h
 ctx.fillStyle=
 "rgba(0,0,0,.42)";
 
+
 ctx.fillRect(
 0,
 0,
@@ -1305,8 +1416,10 @@ ctx.fillRect(
 ctx.textAlign=
 "center";
 
+
 ctx.textBaseline=
 "top";
+
 
 ctx.fillStyle=
 "#fff";
@@ -1524,7 +1637,7 @@ y+=30;
 }
 
 
-/* Release temporary URL */
+/* RELEASE */
 
 URL.revokeObjectURL(
 imageURL
@@ -1568,7 +1681,7 @@ new Error(
 }
 
 
-/* CREATE SHARE IMAGE */
+/* PREPARE SHARE */
 
 async function prepareShare(){
 
@@ -1584,7 +1697,14 @@ document.getElementById(
 );
 
 
+const downloadBtn=
+document.getElementById(
+"downloadBtn"
+);
+
+
 btn.disabled=true;
+
 
 btn.textContent=
 "⏳ Creating Image...";
@@ -1610,12 +1730,47 @@ type:"image/png"
 );
 
 
-btn.textContent=
-"✅ Image Created";
+/* PREVIEW */
 
+if(previewURL){
+
+URL.revokeObjectURL(
+previewURL
+);
+
+}
+
+
+previewURL=
+URL.createObjectURL(
+blob
+);
+
+
+document.getElementById(
+"previewImg"
+).src=
+previewURL;
+
+
+document.getElementById(
+"imagePreview"
+).style.display=
+"block";
+
+
+/* BUTTONS */
 
 shareBtn.style.display=
 "inline-block";
+
+
+downloadBtn.style.display=
+"inline-block";
+
+
+btn.textContent=
+"✅ Image Created";
 
 
 }
@@ -1680,13 +1835,16 @@ files:[generatedFile]
 
 ){
 
+/*
+Important:
+This function runs directly
+from the Share Image button.
+*/
+
 await navigator.share({
 
 title:
 "GOH Ministries Daily Devotional",
-
-text:
-"Daily Devotional | GOH Ministries",
 
 files:[
 generatedFile
@@ -1710,32 +1868,35 @@ e
 );
 
 
+/* User cancelled */
+
 if(
-e.name!=="AbortError"
+e.name==="AbortError"
 ){
 
-alert(
+return;
 
-"Sharing is not available.\n\n"+
-(
-e.message||
-"Please try again."
-)
+}
 
-);
+
+/* Try download */
+
+downloadImage();
 
 }
 
 }
 
-}
 
-
-/* DOWNLOAD FALLBACK */
+/* DOWNLOAD */
 
 function downloadImage(){
 
 if(!generatedFile){
+
+alert(
+"Please create the image first."
+);
 
 return;
 
@@ -1764,7 +1925,9 @@ document.body.appendChild(
 a
 );
 
+
 a.click();
+
 
 a.remove();
 
@@ -1808,7 +1971,8 @@ x===btn
 
 
 load(
-selected||today()
+selected||
+today()
 );
 
 };
@@ -2034,6 +2198,7 @@ lang
 
 
 calendar();
+
 
 load(
 selected||
