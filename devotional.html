@@ -758,7 +758,8 @@ rel="noopener">
 
 <script>
 
-const API="https://devotional.createlk.workers.dev";
+const API=
+"https://devotional.createlk.workers.dev";
 
 const R2_BACKGROUND=
 "https://media.gohministries.org/file_000000006fd88211892f13d25892d800.png";
@@ -796,9 +797,13 @@ function today(){
 
 const d=new Date();
 
-return String(d.getMonth()+1).padStart(2,"0")+
-"-"+
-String(d.getDate()).padStart(2,"0");
+return String(
+d.getMonth()+1
+).padStart(2,"0")
++"-"+
+String(
+d.getDate()
+).padStart(2,"0");
 
 }
 
@@ -842,13 +847,17 @@ async function load(md){
 
 selected=md;
 
-document.getElementById("date").textContent=
+document.getElementById(
+"date"
+).textContent=
 dateText(md);
 
 const result=
 document.getElementById("result");
 
-document.getElementById("share").style.display=
+document.getElementById(
+"share"
+).style.display=
 "none";
 
 result.className="status";
@@ -875,7 +884,8 @@ throw new Error(
 "Server error: HTTP "+r.status
 );
 
-const data=await r.json();
+const data=
+await r.json();
 
 if(!data.success)
 throw new Error(
@@ -883,7 +893,8 @@ data.error||
 "Devotional not available."
 );
 
-const x=data.devotional;
+const x=
+data.devotional;
 
 if(!x)
 throw new Error(
@@ -891,11 +902,17 @@ throw new Error(
 );
 
 devotional={
+
 verse:x.bible_verse||"",
+
 reference:x.bible_reference||"",
+
 title:x.title||"",
+
 message:x.message||"",
+
 prayer:x.prayer||""
+
 };
 
 result.className="content";
@@ -946,10 +963,13 @@ ${safe(x.prayer)}
 
 `;
 
-document.getElementById("share").style.display=
+document.getElementById(
+"share"
+).style.display=
 "block";
 
-const p=new URLSearchParams();
+const p=
+new URLSearchParams();
 
 p.set("lang",lang);
 p.set("date",md);
@@ -965,7 +985,8 @@ catch(e){
 
 console.error(e);
 
-result.className="status error";
+result.className=
+"status error";
 
 result.textContent=
 "⚠️ "+e.message;
@@ -977,7 +998,11 @@ result.textContent=
 
 /* TEXT WRAP */
 
-function wrap(ctx,text,width){
+function wrap(
+ctx,
+text,
+width
+){
 
 const words=
 String(text).split(/\s+/);
@@ -985,7 +1010,9 @@ String(text).split(/\s+/);
 const lines=[];
 let line="";
 
-for(const word of words){
+for(
+const word of words
+){
 
 const test=
 line?
@@ -1046,7 +1073,8 @@ await response.blob();
 const url=
 URL.createObjectURL(blob);
 
-const img=new Image();
+const img=
+new Image();
 
 await new Promise(
 (resolve,reject)=>{
@@ -1064,9 +1092,10 @@ img.src=url;
 }
 );
 
-
 const canvas=
-document.createElement("canvas");
+document.createElement(
+"canvas"
+);
 
 canvas.width=1080;
 canvas.height=1350;
@@ -1075,13 +1104,17 @@ const ctx=
 canvas.getContext("2d");
 
 
-const scale=Math.max(
+const scale=
+Math.max(
 canvas.width/img.width,
 canvas.height/img.height
 );
 
-const w=img.width*scale;
-const h=img.height*scale;
+const w=
+img.width*scale;
+
+const h=
+img.height*scale;
 
 ctx.drawImage(
 img,
@@ -1155,15 +1188,19 @@ const lineHeight=
 size*1.35;
 
 const verseHeight=
-lines.length*lineHeight;
+lines.length*
+lineHeight;
 
 let y=
 650-
 verseHeight/2;
 
+
 ctx.fillStyle="#fff";
 
-for(const line of lines){
+for(
+const line of lines
+){
 
 ctx.fillText(
 line,
@@ -1230,7 +1267,9 @@ new Error(
 async function prepareShare(){
 
 const btn=
-document.getElementById("createBtn");
+document.getElementById(
+"createBtn"
+);
 
 btn.disabled=true;
 
@@ -1258,11 +1297,14 @@ previewURL
 );
 
 previewURL=
-URL.createObjectURL(blob);
+URL.createObjectURL(
+blob
+);
 
 document.getElementById(
 "previewImg"
-).src=previewURL;
+).src=
+previewURL;
 
 document.getElementById(
 "imagePreview"
@@ -1374,7 +1416,9 @@ catch(e){
 
 console.error(e);
 
-if(e.name!=="AbortError")
+if(
+e.name!=="AbortError"
+)
 downloadImage();
 
 }
@@ -1424,7 +1468,8 @@ document
 
 btn.onclick=()=>{
 
-lang=btn.dataset.lang;
+lang=
+btn.dataset.lang;
 
 document
 .querySelectorAll(".lang")
@@ -1448,18 +1493,33 @@ selected||today()
 
 function calendar(){
 
-document.getElementById("year").textContent=
+document.getElementById(
+"year"
+).textContent=
 year;
 
 let html="";
 
-for(let m=0;m<12;m++){
+for(
+let m=0;
+m<12;
+m++
+){
 
 const first=
-new Date(year,m,1).getDay();
+new Date(
+year,
+m,
+1
+).getDay();
 
 const total=
-new Date(year,m+1,0).getDate();
+new Date(
+year,
+m+1,
+0
+).getDate();
+
 
 html+=`
 
@@ -1467,8 +1527,13 @@ html+=`
 
 <div class="month-head">
 
-<span>${months[m]}</span>
-<span>${year}</span>
+<span>
+${months[m]}
+</span>
+
+<span>
+${year}
+</span>
 
 </div>
 
@@ -1484,27 +1549,53 @@ html+=`
 
 `;
 
-for(let i=0;i<first;i++)
+
+for(
+let i=0;
+i<first;
+i++
+){
+
 html+=
 `<div class="day empty"></div>`;
 
-for(let d=1;d<=total;d++){
+}
+
+
+for(
+let d=1;
+d<=total;
+d++
+){
 
 const md=
-String(m+1).padStart(2,"0")+
+String(
+m+1
+).padStart(2,"0")
++
 "-"+
-String(d).padStart(2,"0");
+String(
+d
+).padStart(2,"0");
+
 
 const active=
-year===new Date().getFullYear() &&
+year===
+new Date().getFullYear()
+&&
 md===today()
-?" today":"";
+?
+" today"
+:
+"";
+
 
 html+=`
 
 <button
 class="day${active}"
-onclick="openDate('${md}',${year})">
+onclick=
+"openDate('${md}',${year})">
 
 ${d}
 
@@ -1514,6 +1605,7 @@ ${d}
 
 }
 
+
 html+=`
 
 </div>
@@ -1523,7 +1615,10 @@ html+=`
 
 }
 
-document.getElementById("archive").innerHTML=
+
+document.getElementById(
+"archive"
+).innerHTML=
 html;
 
 }
@@ -1554,10 +1649,14 @@ calendar();
 
 /* MENU */
 
-document.getElementById("menu").onclick=()=>{
+document.getElementById(
+"menu"
+).onclick=()=>{
 
 const nav=
-document.getElementById("navLinks");
+document.getElementById(
+"navLinks"
+);
 
 nav.classList.toggle(
 "mobile-open"
@@ -1569,7 +1668,9 @@ nav.classList.toggle(
 /* CREATE LK POPUP */
 
 const promo=
-document.getElementById("promo");
+document.getElementById(
+"promo"
+);
 
 function closePromo(){
 
@@ -1578,25 +1679,15 @@ promo.style.display=
 
 }
 
-if(
-!localStorage.getItem(
-"createlk_promo"
-)
-){
+
+/* SHOW EVERY PAGE LOAD */
 
 setTimeout(()=>{
 
 promo.style.display=
 "grid";
 
-localStorage.setItem(
-"createlk_promo",
-Date.now()
-);
-
 },5000);
-
-}
 
 
 /* START */
