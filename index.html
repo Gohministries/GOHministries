@@ -1,22 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>GOH Bible Academy | Christian Biblical Studies</title><meta name="description"
+content="GOH Bible Academy provides structured Christian Biblical Studies with lessons covering Scripture, Christian doctrine, discipleship, spiritual growth, evangelism and ministry.">
 
-<title>GOH Bible Academy | Christian Biblical Studies</title>
-
-<meta name="description"
-content="GOH Bible Academy — 180 Christian Biblical Studies lessons in English, Tamil and Sinhala. Start with Lesson 1 free.">
-
-<meta name="theme-color" content="#111827">
-
-<link rel="manifest" href="/manifest.json">
-
-<link rel="icon"
-href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
-
-<style>
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#111827"><link rel="canonical" href="https://gohministries.org/"><link rel="manifest" href="/manifest.json"><link rel="icon"
+href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"><style>
 
 *{
 box-sizing:border-box;
@@ -32,7 +22,7 @@ body{
 font-family:Arial,Helvetica,sans-serif;
 background:#f3f6fb;
 color:#172033;
-line-height:1.5
+line-height:1.6
 }
 
 a{
@@ -157,7 +147,7 @@ font-weight:800
 background:#f3f4f6
 }
 
-/* BUTTON */
+/* BUTTONS */
 
 .btn{
 display:inline-flex;
@@ -236,7 +226,7 @@ color:#fbbf24
 }
 
 .hero-text{
-max-width:650px;
+max-width:680px;
 margin:0 auto 18px;
 font-size:13px;
 color:#cbd5e1
@@ -266,7 +256,7 @@ gap:8px;
 flex-wrap:wrap
 }
 
-/* COURSE SUMMARY */
+/* SUMMARY */
 
 .course-summary{
 margin-top:12px;
@@ -323,6 +313,20 @@ margin:5px 0
 .section-head p{
 font-size:11px;
 color:#6b7280
+}
+
+/* INTRO */
+
+.intro{
+max-width:760px;
+margin:auto;
+text-align:center
+}
+
+.intro p{
+font-size:11px;
+color:#5b6575;
+margin-bottom:10px
 }
 
 /* FEATURES */
@@ -459,6 +463,31 @@ font-size:17px
 
 .language-card span{
 font-size:9px;
+color:#6b7280
+}
+
+/* STUDY GUIDE */
+
+.study-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px
+}
+
+.study-item{
+border:1px solid #e5e7eb;
+border-radius:13px;
+padding:17px;
+background:#f8fafc
+}
+
+.study-item h3{
+font-size:13px;
+margin-bottom:5px
+}
+
+.study-item p{
+font-size:10px;
 color:#6b7280
 }
 
@@ -661,7 +690,8 @@ padding:22px 16px
 
 .feature-grid,
 .module-grid,
-.language-grid{
+.language-grid,
+.study-grid{
 grid-template-columns:1fr
 }
 
@@ -690,633 +720,262 @@ gap:14px
 
 }
 
-</style>
-</head>
-
-<body>
-
-<!-- HEADER -->
-
-<header>
-
-<div class="container nav">
-
-<a href="index.html" class="logo">
-
-<img
+</style></head><body><!-- HEADER --><header><div class="container nav"><a href="index.html" class="logo"><img
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
-alt="GOH Bible Academy">
+alt="GOH Bible Academy logo">
 
 <div>
 <div class="logo-title">GOH Bible Academy</div>
 <div class="logo-sub">Gate of Heaven Ministries</div>
-</div>
-
-</a>
-
-<nav class="nav-links">
-
-<a href="lessons.html">📖 Lessons</a>
+</div></a><nav class="nav-links"><a href="lessons.html">📖 Lessons</a>
 <a href="about.html">ℹ️ About</a>
 <a href="contact.html">💬 Contact</a>
 <a href="login.html" class="login">🔐 Login</a>
 <a href="register.html" class="register">📝 Register</a>
 
-</nav>
-
-<button
+</nav><button
 class="menu"
 id="menuBtn"
-aria-label="Open menu"
+aria-label="Open navigation menu"
 aria-expanded="false">
 
 ☰
 
-</button>
-
-</div>
-
-</header>
-
-<!-- MOBILE MENU -->
-
-<nav class="mobile-menu" id="mobileMenu">
-
-<a href="lessons.html">📖 Lessons</a>
+</button></div></header><!-- MOBILE MENU --><nav class="mobile-menu" id="mobileMenu"><a href="lessons.html">📖 Lessons</a>
 <a href="about.html">ℹ️ About</a>
 <a href="contact.html">💬 Contact</a>
 <a href="login.html">🔐 Student Login</a>
 <a href="register.html">📝 Register</a>
 
-</nav>
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="container">
-
-<div class="hero-card">
-
-<img
+</nav><!-- HERO --><section class="hero"><div class="container"><div class="hero-card"><img
 class="hero-logo"
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 alt="GOH Bible Academy">
 
 <div class="label">
 GOH BIBLE ACADEMY
-</div>
-
-<h1>
+</div><h1>
 Study God's Word.<br>
 <span>Grow in Christ.</span>
-</h1>
-
-<p class="hero-text">
-A structured Christian Biblical Studies program with
-180 lessons to help you understand Scripture, strengthen
-your faith and prepare for Christian service.
-</p>
-
-<div class="language-pills">
-<span>English</span>
+</h1><p class="hero-text">
+GOH Bible Academy provides a structured Christian Biblical
+Studies program designed to help learners understand
+Scripture, strengthen their faith and grow in Christian
+service and discipleship.
+</p><div class="language-pills"><span>English</span>
 <span>தமிழ்</span>
 <span>සිංහල</span>
-</div>
 
-<div class="hero-buttons">
-
-<a href="lesson-1.html" class="btn primary">
-🎁 Start Lesson 1 Free
-</a>
-
-<a href="lessons.html" class="btn dark">
-📖 View 180 Lessons
-</a>
-
-</div>
-
-</div>
-
-<div class="course-summary">
-
-<div class="summary-card">
+</div><div class="hero-buttons"><a href="lesson-1.html" class="btn primary">
+🎁 Start Lesson 1
+</a><a href="lessons.html" class="btn dark">
+📖 Explore Lessons
+</a></div></div><div class="course-summary"><div class="summary-card">
 <strong>180</strong>
 <span>Bible Lessons</span>
-</div>
-
-<div class="summary-card">
+</div><div class="summary-card">
 <strong>6</strong>
 <span>Study Modules</span>
-</div>
-
-<div class="summary-card">
+</div><div class="summary-card">
 <strong>3</strong>
 <span>Languages</span>
-</div>
-
-<div class="summary-card">
+</div><div class="summary-card">
 <strong>1</strong>
-<span>Free Lesson</span>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- FEATURES -->
-
-<section>
-
-<div class="container">
-
-<div class="section-card">
-
-<div class="section-head">
-
-<div class="label">
-WHY GOH BIBLE ACADEMY
-</div>
-
-<h2>
-A Strong Biblical Foundation
-</h2>
-
-<p>
-Learn Scripture systematically and grow in your Christian life.
-</p>
-
-</div>
-
-<div class="feature-grid">
-
-<div class="feature">
-
-<div class="feature-icon">📖</div>
-
-<h3>Bible Studies</h3>
-
-<p>
-Understand Scripture and its central message.
-</p>
-
-</div>
-
-<div class="feature">
-
-<div class="feature-icon">✝️</div>
-
-<h3>Christian Doctrine</h3>
-
-<p>
-Learn essential biblical Christian beliefs.
-</p>
-
-</div>
-
-<div class="feature">
-
-<div class="feature-icon">🙏</div>
-
-<h3>Spiritual Growth</h3>
-
-<p>
-Develop faith, prayer and your walk with Christ.
-</p>
-
-</div>
-
-<div class="feature">
-
-<div class="feature-icon">🌍</div>
-
-<h3>Evangelism</h3>
-
-<p>
-Learn biblical principles for sharing the Gospel.
-</p>
-
-</div>
-
-<div class="feature">
-
-<div class="feature-icon">🤝</div>
-
-<h3>Discipleship</h3>
-
-<p>
-Grow as a faithful follower of Jesus.
-</p>
-
-</div>
-
-<div class="feature">
-
-<div class="feature-icon">⛪</div>
-
-<h3>Christian Ministry</h3>
-
-<p>
-Prepare to serve God and people.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- FREE LESSON -->
-
-<section>
-
-<div class="container">
-
-<div class="free-card">
-
-<div
+<span>Free Introduction</span>
+</div></div></div></section><!-- ABOUT THE ACADEMY --><section><div class="container"><div class="section-card"><div class="section-head"><div class="label">
+ABOUT THE ACADEMY
+</div><h2>
+Learn the Bible Systematically
+</h2></div><div class="intro"><p>
+GOH Bible Academy is an educational initiative of
+Gate of Heaven Ministries providing accessible
+Christian Biblical Studies resources for people who
+desire to learn God's Word.
+</p><p>
+The curriculum follows a structured learning pathway
+covering biblical foundations, Christian doctrine,
+spiritual life, church life, discipleship, evangelism,
+ministry and Christian leadership.
+</p><p>
+Lessons are designed for personal study, discipleship
+and continued spiritual development.
+</p></div></div></div></section><!-- FEATURES --><section><div class="container"><div class="section-card"><div class="section-head"><div class="label">
+WHAT YOU CAN LEARN
+</div><h2>
+Build a Strong Biblical Foundation
+</h2><p>
+Explore important areas of Christian faith and discipleship.
+</p></div><div class="feature-grid"><div class="feature"><div class="feature-icon">📖</div><h3>Bible Studies</h3><p>
+Explore Scripture, biblical interpretation,
+context and the message of God's Word.
+</p></div><div class="feature"><div class="feature-icon">✝️</div><h3>Christian Doctrine</h3><p>
+Study foundational Christian beliefs and
+important teachings of Scripture.
+</p></div><div class="feature"><div class="feature-icon">🙏</div><h3>Spiritual Growth</h3><p>
+Develop prayer, worship, faith and
+a deeper relationship with Christ.
+</p></div><div class="feature"><div class="feature-icon">🌍</div><h3>Evangelism</h3><p>
+Learn biblical principles for sharing
+the Gospel and serving others.
+</p></div><div class="feature"><div class="feature-icon">🤝</div><h3>Discipleship</h3><p>
+Understand Christian discipleship and
+grow as a faithful follower of Jesus.
+</p></div><div class="feature"><div class="feature-icon">⛪</div><h3>Christian Ministry</h3><p>
+Explore Christian service, leadership,
+character and ministry responsibilities.
+</p></div></div></div></div></section><!-- FREE INTRODUCTION --><section><div class="container"><div class="free-card"><div
 class="label"
-style="color:#16a34a">
-FREE INTRODUCTION
-</div>
+style="color:#16a34a">FREE INTRODUCTION
 
-<h2>
-Start With Lesson 1
-</h2>
-
-<p>
-Try the first lesson free and experience the GOH Bible Academy.
-</p>
-
-<a
+</div><h2>
+Begin Your Biblical Studies Journey
+</h2><p>
+Start with the introductory lesson and discover
+the learning approach used throughout the academy.
+</p><a
 href="lesson-1.html"
 class="btn primary">
 
-🎁 Start Free Lesson
+🎁 Start Lesson 1
 
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- MODULES -->
-
-<section>
-
-<div class="container">
-
-<div class="section-card">
-
-<div class="section-head">
-
-<div class="label">
+</a></div></div></section><!-- CURRICULUM --><section><div class="container"><div class="section-card"><div class="section-head"><div class="label">
 COURSE CURRICULUM
-</div>
-
-<h2>
+</div><h2>
 Six Study Modules
-</h2>
-
-<p>
-180 lessons covering major areas of Christian Biblical Studies.
-</p>
-
-</div>
-
-<div class="module-grid">
-
-<div class="module">
-
-<div class="module-number">
+</h2><p>
+A structured 180-lesson Christian Biblical Studies program.
+</p></div><div class="module-grid"><div class="module"><div class="module-number">
 MODULE 01
-</div>
-
-<h3>
+</div><h3>
 Introduction to the Bible
-</h3>
-
-<p>
-Foundations, inspiration, canon and interpretation.
-</p>
-
-<span class="module-count">
+</h3><p>
+Bible foundations, inspiration, revelation,
+canon, interpretation and responsible Bible study.
+</p><span class="module-count">
 30 Lessons
-</span>
-
-</div>
-
-<div class="module">
-
-<div class="module-number">
+</span></div><div class="module"><div class="module-number">
 MODULE 02
-</div>
-
-<h3>
-Old Testament Studies
-</h3>
-
-<p>
-History, books, themes and message of the Old Testament.
-</p>
-
-<span class="module-count">
+</div><h3>
+God, Christ and Salvation
+</h3><p>
+The character of God, Jesus Christ, the Gospel,
+sin, grace, faith, repentance and salvation.
+</p><span class="module-count">
 30 Lessons
-</span>
-
-</div>
-
-<div class="module">
-
-<div class="module-number">
+</span></div><div class="module"><div class="module-number">
 MODULE 03
-</div>
-
-<h3>
-New Testament Studies
-</h3>
-
-<p>
-Jesus, the Gospels, Acts and the New Testament.
-</p>
-
-<span class="module-count">
+</div><h3>
+Holy Spirit and Spiritual Life
+</h3><p>
+The Holy Spirit, prayer, worship, holiness,
+spiritual disciplines and Christian growth.
+</p><span class="module-count">
 30 Lessons
-</span>
-
-</div>
-
-<div class="module">
-
-<div class="module-number">
+</span></div><div class="module"><div class="module-number">
 MODULE 04
-</div>
-
-<h3>
-Christian Doctrine
-</h3>
-
-<p>
-Important biblical teachings and Christian beliefs.
-</p>
-
-<span class="module-count">
+</div><h3>
+Church and Christian Community
+</h3><p>
+Church life, fellowship, baptism, communion,
+leadership, service and Christian community.
+</p><span class="module-count">
 30 Lessons
-</span>
-
-</div>
-
-<div class="module">
-
-<div class="module-number">
+</span></div><div class="module"><div class="module-number">
 MODULE 05
-</div>
-
-<h3>
-Christian Life &amp; Discipleship
-</h3>
-
-<p>
-Prayer, faith, holiness and spiritual growth.
-</p>
-
-<span class="module-count">
+</div><h3>
+Christian Mission and Discipleship
+</h3><p>
+The Great Commission, evangelism, discipleship,
+Christian witness, mission and compassionate service.
+</p><span class="module-count">
 30 Lessons
-</span>
-
-</div>
-
-<div class="module">
-
-<div class="module-number">
+</span></div><div class="module"><div class="module-number">
 MODULE 06
-</div>
-
-<h3>
-Evangelism &amp; Ministry
-</h3>
-
-<p>
-Gospel outreach, leadership and Christian service.
-</p>
-
-<span class="module-count">
+</div><h3>
+Christian Character and Leadership
+</h3><p>
+Integrity, humility, wisdom, servant leadership,
+Christian character and lifelong discipleship.
+</p><span class="module-count">
 30 Lessons
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- LANGUAGES -->
-
-<section>
-
-<div class="container">
-
-<div class="section-card">
-
-<div class="section-head">
-
-<div class="label">
+</span></div></div></div></div></section><!-- STUDY APPROACH --><section><div class="container"><div class="section-card"><div class="section-head"><div class="label">
+OUR STUDY APPROACH
+</div><h2>
+Learn, Reflect and Apply
+</h2><p>
+Biblical learning should influence both understanding and daily life.
+</p></div><div class="study-grid"><div class="study-item"><h3>📚 Structured Learning</h3><p>
+Lessons are organized into six major areas
+to provide a clear and progressive study experience.
+</p></div><div class="study-item"><h3>🔎 Scripture Focused</h3><p>
+Lessons encourage learners to examine biblical
+teaching and understand Scripture in context.
+</p></div><div class="study-item"><h3>🙏 Spiritual Application</h3><p>
+Biblical knowledge is connected with prayer,
+faith, Christian character and everyday life.
+</p></div><div class="study-item"><h3>🌱 Lifelong Growth</h3><p>
+The goal is continued growth in understanding,
+discipleship, service and Christian maturity.
+</p></div></div></div></div></section><!-- LANGUAGES --><section><div class="container"><div class="section-card"><div class="section-head"><div class="label">
 LANGUAGE SUPPORT
-</div>
-
-<h2>
+</div><h2>
 Study in Three Languages
-</h2>
-
-<p>
-Choose the language that is most comfortable for you.
-</p>
-
-</div>
-
-<div class="language-grid">
-
-<div class="language-card">
-
-<div class="flag">
+</h2><p>
+Learn using the language that is most comfortable for you.
+</p></div><div class="language-grid"><div class="language-card"><div class="flag">
 🇬🇧
-</div>
-
-<strong>
+</div><strong>
 English
-</strong>
-
-<span>
+</strong><span>
 Christian Biblical Studies
-</span>
-
-</div>
-
-<div class="language-card">
-
-<div class="flag">
+</span></div><div class="language-card"><div class="flag">
 🇱🇰
-</div>
-
-<strong>
+</div><strong>
 தமிழ்
-</strong>
-
-<span>
+</strong><span>
 கிறிஸ்தவ வேதாகமப் படிப்பு
-</span>
-
-</div>
-
-<div class="language-card">
-
-<div class="flag">
+</span></div><div class="language-card"><div class="flag">
 🇱🇰
-</div>
-
-<strong>
+</div><strong>
 සිංහල
-</strong>
-
-<span>
+</strong><span>
 ක්‍රිස්තියානි බයිබල් අධ්‍යයනය
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- CTA -->
-
-<section class="cta">
-
-<div class="container">
-
-<div class="cta-card">
-
-<div class="label">
+</span></div></div></div></div></section><!-- CTA --><section class="cta"><div class="container"><div class="cta-card"><div class="label">
 GOH BIBLE ACADEMY
-</div>
-
-<h2>
+</div><h2>
 Grow Deeper in God's Word
-</h2>
-
-<p>
-Create your student account and begin your Biblical Studies journey.
-</p>
-
-<a
+</h2><p>
+Create a student account and continue your
+Christian Biblical Studies journey with GOH Bible Academy.
+</p><a
 href="register.html"
 class="btn primary">
 
 📝 Create Student Account
 
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer>
-
-<div class="container">
-
-<div class="footer-card">
-
-<div class="footer-brand">
-
-<img
+</a></div></div></section><!-- FOOTER --><footer><div class="container"><div class="footer-card"><div class="footer-brand"><img
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
-alt="GOH Bible Academy">
+alt="GOH Bible Academy logo">
 
-<div>
-
-<strong>
+<div><strong>
 GOH Bible Academy
-</strong>
-
-<span>
+</strong><span>
 Gate of Heaven Ministries
-</span>
-
-</div>
-
-</div>
-
-<nav class="footer-links">
-
-<a href="lessons.html">
+</span></div></div><nav class="footer-links"><a href="lessons.html">
 Lessons
-</a>
-
-<a href="about.html">
+</a><a href="about.html">
 About
-</a>
-
-<a href="contact.html">
+</a><a href="contact.html">
 Contact
-</a>
-
-<a href="login.html">
+</a><a href="login.html">
 Login
-</a>
-
-</nav>
-
-</div>
-
-<div class="footer-legal">
-
-<a href="privacy.html">
+</a></nav></div><div class="footer-legal"><a href="privacy.html">
 Privacy Policy
-</a>
-
-<a href="terms.html">
+</a><a href="terms.html">
 Terms of Use
-</a>
+</a></div><div class="copy">© 2026 GOH Bible Academy. All rights reserved.
 
-<a href="refund.html">
-Refund Policy
-</a>
-
-</div>
-
-<div class="copy">
-
-© 2026 GOH Bible Academy. All rights reserved.
-
-</div>
-
-</div>
-
-</footer>
-
-<!-- WHATSAPP -->
-
-<a
+</div></div></footer><!-- WHATSAPP --><a
 class="whatsapp"
 href="https://wa.me/94771190395?text=Hello%20GOH%20Bible%20Academy"
 target="_blank"
@@ -1325,30 +984,30 @@ aria-label="Contact GOH Bible Academy on WhatsApp">
 
 💬
 
-</a>
+</a><script>
 
-<script>
-
-const menuBtn =
+const menuBtn=
 document.getElementById("menuBtn");
 
-const mobileMenu =
+const mobileMenu=
 document.getElementById("mobileMenu");
+
 
 menuBtn.addEventListener("click",function(){
 
-const open =
+const open=
 mobileMenu.classList.toggle("show");
 
-menuBtn.textContent =
-open ? "✕" : "☰";
+menuBtn.textContent=
+open?"✕":"☰";
 
 menuBtn.setAttribute(
 "aria-expanded",
-open ? "true" : "false"
+open?"true":"false"
 );
 
 });
+
 
 mobileMenu
 .querySelectorAll("a")
@@ -1368,6 +1027,7 @@ menuBtn.setAttribute(
 });
 
 });
+
 
 document.addEventListener("click",function(e){
 
@@ -1390,7 +1050,5 @@ menuBtn.setAttribute(
 
 });
 
-</script>
-
-</body>
+</script></body>
 </html>
