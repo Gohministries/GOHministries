@@ -11,23 +11,9 @@ href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-
-body{
-font-family:Arial;
-background:#f4f7fb;
-color:#172033;
-line-height:1.6
-}
-
-a{
-text-decoration:none;
-color:inherit
-}
-
-.container{
-width:min(900px,92%);
-margin:auto
-}
+body{font-family:Arial;background:#f4f7fb;color:#172033;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{width:min(900px,92%);margin:auto}
 
 header{
 background:#fff;
@@ -234,8 +220,8 @@ opacity:.6;
 cursor:not-allowed
 }
 
-.shareBtn2{
-background:#16a34a!important
+.shareBtn{
+background:#15803d!important
 }
 
 .status{
@@ -532,13 +518,18 @@ Loading devotional...
 
 <div class="share" id="share" style="display:none">
 
-<button id="createBtn" onclick="prepareShare()">
+<button
+id="createBtn"
+onclick="prepareShare()">
+
 🖼️ Create Share Image
+
 </button>
+
 
 <button
 id="shareBtn"
-class="shareBtn2"
+class="shareBtn"
 onclick="shareImage()"
 style="display:none">
 
@@ -632,9 +623,10 @@ Gate of Heaven Ministries
 class="whatsapp"
 href="https://wa.me/94771190395"
 target="_blank"
-rel="noopener"
->
+rel="noopener">
+
 💬
+
 </a>
 
 
@@ -649,7 +641,9 @@ const R2_BACKGROUND=
 
 
 const params=
-new URLSearchParams(location.search);
+new URLSearchParams(
+location.search
+);
 
 
 let lang=
@@ -667,17 +661,22 @@ new Date().getFullYear();
 let devotional=null;
 
 
-/* Store generated file */
+/* Generated image */
 
 let generatedFile=null;
 
 
-if(!["en","ta","si"].includes(lang)){
+if(
+!["en","ta","si"].includes(lang)
+){
+
 lang="en";
+
 }
 
 
 const months=[
+
 "January",
 "February",
 "March",
@@ -690,12 +689,16 @@ const months=[
 "October",
 "November",
 "December"
+
 ];
 
 
+/* TODAY */
+
 function today(){
 
-const d=new Date();
+const d=
+new Date();
 
 return String(
 d.getMonth()+1
@@ -708,35 +711,68 @@ d.getDate()
 }
 
 
+/* DATE TEXT */
+
 function dateText(md){
 
-const [m,d]=md.split("-");
+const [m,d]=
+md.split("-");
+
 
 return new Date(
 year,
 m-1,
 d
 ).toLocaleDateString(
+
 "en-US",
+
 {
 month:"long",
 day:"numeric",
 year:"numeric"
 }
+
 );
 
 }
 
 
+/* SAFE HTML */
+
 function safe(x){
 
 return String(x||"")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;")
-.replace(/\n/g,"<br>");
+
+.replace(
+/&/g,
+"&amp;"
+)
+
+.replace(
+/</g,
+"&lt;"
+)
+
+.replace(
+/>/g,
+"&gt;"
+)
+
+.replace(
+/"/g,
+"&quot;"
+)
+
+.replace(
+/'/g,
+"&#039;"
+)
+
+.replace(
+/\n/g,
+"<br>"
+);
 
 }
 
@@ -747,6 +783,7 @@ async function load(md){
 
 selected=md;
 
+
 document.getElementById(
 "date"
 ).textContent=
@@ -754,24 +791,38 @@ dateText(md);
 
 
 const result=
-document.getElementById("result");
+document.getElementById(
+"result"
+);
 
 
 document.getElementById(
 "share"
-).style.display="none";
+).style.display=
+"none";
 
-
-/* Reset generated image */
-
-generatedFile=null;
 
 document.getElementById(
 "shareBtn"
-).style.display="none";
+).style.display=
+"none";
 
 
-result.className="status";
+document.getElementById(
+"createBtn"
+).textContent=
+"🖼️ Create Share Image";
+
+
+generatedFile=null;
+
+
+devotional=null;
+
+
+result.className=
+"status";
+
 
 result.textContent=
 "Loading devotional...";
@@ -779,7 +830,21 @@ result.textContent=
 
 try{
 
-const r=await fetch(
+const controller=
+new AbortController();
+
+
+const timeout=
+setTimeout(
+()=>{
+controller.abort();
+},
+10000
+);
+
+
+const r=
+await fetch(
 
 API+
 "?date="+
@@ -788,17 +853,32 @@ encodeURIComponent(md)+
 encodeURIComponent(lang),
 
 {
-cache:"no-store"
+method:"GET",
+cache:"no-store",
+signal:controller.signal
 }
 
 );
 
 
-const data=await r.json();
+clearTimeout(timeout);
+
+
+if(!r.ok){
+
+throw new Error(
+"Server error: HTTP "+
+r.status
+);
+
+}
+
+
+const data=
+await r.json();
 
 
 if(
-!r.ok||
 !data.success
 ){
 
@@ -814,17 +894,34 @@ const x=
 data.devotional;
 
 
+if(!x){
+
+throw new Error(
+"No devotional data was returned."
+);
+
+}
+
+
 devotional={
 
-verse:x.bible_verse||"",
-reference:x.bible_reference||"",
-message:x.message||"",
-prayer:x.prayer||""
+verse:
+x.bible_verse||"",
+
+reference:
+x.bible_reference||"",
+
+message:
+x.message||"",
+
+prayer:
+x.prayer||""
 
 };
 
 
-result.className="content";
+result.className=
+"content";
 
 
 result.innerHTML=`
@@ -837,10 +934,16 @@ result.innerHTML=`
 
 <div class="verse">
 
-${safe(x.bible_verse)}
+${safe(
+x.bible_verse
+)}
 
 <span class="ref">
-${safe(x.bible_reference)}
+
+${safe(
+x.bible_reference
+)}
+
 </span>
 
 </div>
@@ -855,11 +958,19 @@ ${safe(x.bible_reference)}
 </h2>
 
 <div class="title">
-${safe(x.title)}
+
+${safe(
+x.title
+)}
+
 </div>
 
 <div class="text">
-${safe(x.message)}
+
+${safe(
+x.message
+)}
+
 </div>
 
 </div>
@@ -872,7 +983,11 @@ ${safe(x.message)}
 </h2>
 
 <div class="prayer text">
-${safe(x.prayer)}
+
+${safe(
+x.prayer
+)}
+
 </div>
 
 </div>
@@ -882,14 +997,23 @@ ${safe(x.prayer)}
 
 document.getElementById(
 "share"
-).style.display="block";
+).style.display=
+"block";
 
 
 const p=
 new URLSearchParams();
 
-p.set("lang",lang);
-p.set("date",md);
+
+p.set(
+"lang",
+lang
+);
+
+p.set(
+"date",
+md
+);
 
 
 history.replaceState(
@@ -902,11 +1026,34 @@ history.replaceState(
 }
 catch(e){
 
+console.error(
+"Devotional error:",
+e
+);
+
+
 result.className=
 "status error";
 
+
+if(
+e.name==="AbortError"
+){
+
 result.textContent=
-"⚠️ "+e.message;
+"⚠️ Devotional server took too long to respond.";
+
+}
+else{
+
+result.textContent=
+"⚠️ "+
+(
+e.message||
+"Failed to load devotional."
+);
+
+}
 
 }
 
@@ -922,7 +1069,9 @@ width
 ){
 
 const words=
-String(text).split(/\s+/);
+String(text)
+.split(/\s+/);
+
 
 const lines=[];
 
@@ -942,9 +1091,11 @@ word;
 
 
 if(
-ctx.measureText(test).width>
-width &&
+
+ctx.measureText(test)
+.width>width &&
 line
+
 ){
 
 lines.push(line);
@@ -962,7 +1113,9 @@ line=test;
 
 
 if(line){
+
 lines.push(line);
+
 }
 
 
@@ -984,7 +1137,7 @@ throw new Error(
 }
 
 
-/* Fetch R2 image */
+/* Get R2 image */
 
 const response=
 await fetch(
@@ -1017,7 +1170,9 @@ await response.blob();
 
 
 if(
-!imageBlob.type.startsWith("image/")
+!imageBlob.type.startsWith(
+"image/"
+)
 ){
 
 throw new Error(
@@ -1027,7 +1182,7 @@ throw new Error(
 }
 
 
-/* Create local image URL */
+/* Local image URL */
 
 const imageURL=
 URL.createObjectURL(
@@ -1044,6 +1199,7 @@ await new Promise(
 
 img.onload=resolve;
 
+
 img.onerror=()=>{
 
 URL.revokeObjectURL(
@@ -1058,13 +1214,19 @@ new Error(
 
 };
 
-img.src=imageURL;
 
-});
+img.src=
+imageURL;
+
+}
+
+);
 
 
 const canvas=
-document.createElement("canvas");
+document.createElement(
+"canvas"
+);
 
 
 canvas.width=1080;
@@ -1072,7 +1234,9 @@ canvas.height=1350;
 
 
 const ctx=
-canvas.getContext("2d");
+canvas.getContext(
+"2d"
+);
 
 
 if(!ctx){
@@ -1088,7 +1252,7 @@ throw new Error(
 }
 
 
-/* Background */
+/* BACKGROUND */
 
 const scale=
 Math.max(
@@ -1123,7 +1287,7 @@ h
 );
 
 
-/* Overlay */
+/* OVERLAY */
 
 ctx.fillStyle=
 "rgba(0,0,0,.42)";
@@ -1136,21 +1300,25 @@ ctx.fillRect(
 );
 
 
-/* Text */
+/* TEXT */
 
-ctx.textAlign="center";
+ctx.textAlign=
+"center";
 
-ctx.textBaseline="top";
+ctx.textBaseline=
+"top";
 
-ctx.fillStyle="#fff";
+ctx.fillStyle=
+"#fff";
 
 
 let y=100;
 
 
-/* Verse */
+/* VERSE */
 
 let size=45;
+
 
 ctx.font=
 `700 ${size}px Arial`;
@@ -1177,8 +1345,10 @@ size>28
 
 size-=2;
 
+
 ctx.font=
 `700 ${size}px Arial`;
+
 
 lines=
 wrap(
@@ -1212,11 +1382,14 @@ size*1.35;
 }
 
 
-/* Reference */
+/* REFERENCE */
 
 y+=15;
 
-ctx.fillStyle="#fbbf24";
+
+ctx.fillStyle=
+"#fbbf24";
+
 
 ctx.font=
 "900 28px Arial";
@@ -1236,22 +1409,29 @@ y
 y+=75;
 
 
-/* Explanation */
+/* EXPLANATION */
 
-ctx.fillStyle="#fff";
+ctx.fillStyle=
+"#fff";
+
 
 ctx.font=
 "900 23px Arial";
 
 
 ctx.fillText(
+
 "EXPLANATION",
+
 540,
+
 y
+
 );
 
 
 y+=40;
+
 
 ctx.font=
 "600 22px Arial";
@@ -1287,22 +1467,28 @@ y+=31;
 }
 
 
-/* Prayer */
+/* PRAYER */
 
 y+=25;
+
 
 ctx.font=
 "900 23px Arial";
 
 
 ctx.fillText(
+
 "PRAYER",
+
 540,
+
 y
+
 );
 
 
 y+=40;
+
 
 ctx.font=
 "600 21px Arial";
@@ -1338,14 +1524,14 @@ y+=30;
 }
 
 
-/* Release URL */
+/* Release temporary URL */
 
 URL.revokeObjectURL(
 imageURL
 );
 
 
-/* Convert canvas to PNG */
+/* PNG */
 
 return new Promise(
 (resolve,reject)=>{
@@ -1376,12 +1562,13 @@ new Error(
 );
 
 }
+
 );
 
 }
 
 
-/* STEP 1: CREATE IMAGE */
+/* CREATE SHARE IMAGE */
 
 async function prepareShare(){
 
@@ -1389,6 +1576,7 @@ const btn=
 document.getElementById(
 "createBtn"
 );
+
 
 const shareBtn=
 document.getElementById(
@@ -1399,7 +1587,7 @@ document.getElementById(
 btn.disabled=true;
 
 btn.textContent=
-"⏳ Creating...";
+"⏳ Creating Image...";
 
 
 try{
@@ -1422,27 +1610,30 @@ type:"image/png"
 );
 
 
-/* Show share button */
+btn.textContent=
+"✅ Image Created";
+
 
 shareBtn.style.display=
 "inline-block";
 
 
-btn.textContent=
-"✅ Image Created";
-
-
 }
 catch(e){
 
-console.error(e);
+console.error(
+"Image creation error:",
+e
+);
 
 
 alert(
 
 "Image could not be created.\n\n"+
-(e.message||
-"Unknown error")
+(
+e.message||
+"Unknown error"
+)
 
 );
 
@@ -1460,7 +1651,7 @@ btn.disabled=false;
 }
 
 
-/* STEP 2: SHARE IMAGE */
+/* SHARE */
 
 async function shareImage(){
 
@@ -1478,18 +1669,16 @@ return;
 try{
 
 if(
+
 navigator.share &&
+
 navigator.canShare &&
+
 navigator.canShare({
 files:[generatedFile]
 })
-){
 
-/*
-Important:
-This function is called directly
-from the Share Image button.
-*/
+){
 
 await navigator.share({
 
@@ -1508,37 +1697,7 @@ generatedFile
 }
 else{
 
-/* Browser fallback */
-
-const url=
-URL.createObjectURL(
-generatedFile
-);
-
-
-const a=
-document.createElement("a");
-
-
-a.href=url;
-
-a.download=
-"goh-devotional.png";
-
-
-document.body.appendChild(a);
-
-a.click();
-
-a.remove();
-
-
-setTimeout(
-()=>{
-URL.revokeObjectURL(url);
-},
-1000
-);
+downloadImage();
 
 }
 
@@ -1551,22 +1710,75 @@ e
 );
 
 
-/*
-Do not show an error if
-the user simply cancelled.
-*/
-
 if(
 e.name!=="AbortError"
 ){
 
 alert(
-"Sharing is not available in this browser.\n\n"+
-(e.message||
-"Please try again.")
+
+"Sharing is not available.\n\n"+
+(
+e.message||
+"Please try again."
+)
+
 );
 
 }
+
+}
+
+}
+
+
+/* DOWNLOAD FALLBACK */
+
+function downloadImage(){
+
+if(!generatedFile){
+
+return;
+
+}
+
+
+const url=
+URL.createObjectURL(
+generatedFile
+);
+
+
+const a=
+document.createElement(
+"a"
+);
+
+
+a.href=url;
+
+a.download=
+"goh-devotional.png";
+
+
+document.body.appendChild(
+a
+);
+
+a.click();
+
+a.remove();
+
+
+setTimeout(
+()=>{
+
+URL.revokeObjectURL(
+url
+);
+
+},
+1000
+);
 
 }
 
@@ -1610,7 +1822,8 @@ function calendar(){
 
 document.getElementById(
 "year"
-).textContent=year;
+).textContent=
+year;
 
 
 let html="";
@@ -1694,15 +1907,17 @@ m+1
 
 "-"+
 
-String(d)
-.padStart(2,"0");
+String(
+d
+).padStart(2,"0");
 
 
 const todayClass=
 
 year===
 new Date().getFullYear() &&
-md===today()
+md===
+today()
 ?
 " today"
 :
@@ -1743,11 +1958,17 @@ html;
 }
 
 
-function openDate(md,y){
+/* OPEN DATE */
+
+function openDate(
+md,
+y
+){
 
 year=y;
 
 load(md);
+
 
 window.scrollTo({
 
@@ -1759,6 +1980,8 @@ behavior:"smooth"
 
 }
 
+
+/* CHANGE YEAR */
 
 function changeYear(n){
 
@@ -1802,7 +2025,8 @@ x.classList.toggle(
 
 "active",
 
-x.dataset.lang===lang
+x.dataset.lang===
+lang
 
 );
 
@@ -1812,7 +2036,8 @@ x.dataset.lang===lang
 calendar();
 
 load(
-selected||today()
+selected||
+today()
 );
 
 </script>
