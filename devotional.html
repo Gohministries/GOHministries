@@ -4,895 +4,255 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<!-- Google AdSense -->
 <script async
 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7369880405117405"
 crossorigin="anonymous"></script>
 
 <title>Daily Devotional | GOH Ministries</title>
-<meta name="description"
-content="Daily Bible devotional, Bible verse, Christian encouragement and prayer from GOH Ministries.">
-
+<meta name="description" content="Daily Bible devotional, Bible verse, Christian encouragement and prayer from GOH Ministries.">
 <meta name="theme-color" content="#111827">
 
-<link rel="icon"
-href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
+<link rel="icon" href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
 
 <style>
-
-*{
-box-sizing:border-box;
-margin:0;
-padding:0
-}
-
-body{
-font-family:Arial,sans-serif;
-background:#f4f7fb;
-color:#172033;
-line-height:1.6
-}
-
-a{
-text-decoration:none;
-color:inherit
-}
-
-.container{
-width:min(900px,92%);
-margin:auto
-}
-
-/* HEADER */
-
-header{
-background:#fff;
-border-bottom:1px solid #e5e7eb;
-position:sticky;
-top:0;
-z-index:10
-}
-
-.nav{
-height:64px;
-display:flex;
-align-items:center;
-justify-content:space-between
-}
-
-.logo{
-display:flex;
-align-items:center;
-gap:9px
-}
-
-.logo img{
-width:42px;
-height:42px;
-border-radius:9px
-}
-
-.logo-title{
-font-size:14px;
-font-weight:900
-}
-
-.logo-sub{
-font-size:8px;
-color:#6b7280
-}
-
-.nav-links{
-display:flex;
-gap:6px
-}
-
-.nav-links a{
-font-size:10px;
-font-weight:800;
-padding:8px
-}
-
-.menu{
-display:none;
-background:#fff;
-border:1px solid #ddd;
-border-radius:8px;
-font-size:18px;
-padding:8px
-}
-
-/* HERO */
-
-.hero{
-padding:18px 0 10px
-}
-
-.hero-card{
-background:linear-gradient(135deg,#111827,#334155);
-color:#fff;
-text-align:center;
-padding:28px 18px;
-border-radius:20px
-}
-
-.hero-logo{
-width:60px;
-background:#fff;
-border-radius:13px;
-padding:4px
-}
-
-.label{
-font-size:9px;
-font-weight:900;
-letter-spacing:1px;
-color:#fbbf24;
-margin-top:8px
-}
-
-h1{
-font-size:32px;
-margin:5px 0
-}
-
-.date{
-display:inline-block;
-background:#ffffff18;
-padding:7px 15px;
-border-radius:8px;
-font-size:11px;
-font-weight:800
-}
-
-/* BOX */
-
-.box{
-background:#fff;
-border:1px solid #e5e7eb;
-border-radius:18px;
-padding:20px;
-margin:10px 0
-}
-
-/* LANGUAGE */
-
-.lang-title{
-text-align:center;
-font-size:9px;
-font-weight:900;
-color:#6b7280;
-margin-bottom:8px
-}
-
-.languages{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:8px
-}
-
-.lang{
-border:1px solid #ddd;
-background:#f8fafc;
-border-radius:8px;
-padding:10px;
-font-weight:800;
-font-size:10px;
-cursor:pointer
-}
-
-.lang.active{
-background:#111827;
-color:#fff
-}
-
-/* DEVOTIONAL */
-
-.section{
-padding:18px 0;
-border-bottom:1px solid #eee
-}
-
-.section:last-child{
-border:0
-}
-
-.section h2{
-font-size:10px;
-color:#6b7280;
-margin-bottom:8px
-}
-
-.verse{
-background:#fffbea;
-border-left:4px solid #f59e0b;
-padding:15px;
-border-radius:8px;
-font-size:17px;
-font-weight:700
-}
-
-.ref{
-display:block;
-color:#92400e;
-font-size:11px;
-margin-top:7px
-}
-
-.title{
-font-size:19px;
-font-weight:900;
-margin-bottom:6px
-}
-
-.text{
-font-size:14px;
-white-space:pre-line
-}
-
-.prayer{
-background:#f5f3ff;
-border-left:4px solid #7c3aed;
-padding:15px;
-border-radius:8px
-}
-
-/* SHARE */
-
-.share{
-text-align:center;
-margin-top:15px
-}
-
-.share button{
-background:#111827;
-color:#fff;
-border:0;
-border-radius:9px;
-padding:13px 18px;
-font-weight:900;
-cursor:pointer;
-margin:4px
-}
-
-.share button:disabled{
-opacity:.6
-}
-
-.shareBtn{
-background:#15803d!important
-}
-
-.downloadBtn{
-background:#475569!important
-}
-
-.preview{
-display:none;
-margin:15px auto
-}
-
-.preview img{
-width:100%;
-max-width:360px;
-border-radius:12px;
-display:block;
-margin:auto
-}
-
-/* STATUS */
-
-.status{
-text-align:center;
-padding:25px;
-color:#6b7280;
-font-size:12px
-}
-
-.error{
-color:#dc2626
-}
-
-/* ARCHIVE */
-
-.archive-title{
-text-align:center
-}
-
-.archive-title h2{
-font-size:23px
-}
-
-.archive-title p{
-font-size:10px;
-color:#6b7280
-}
-
-.years{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:10px;
-margin:18px 0
-}
-
-.years button{
-width:35px;
-height:35px;
-border:1px solid #ddd;
-background:#f8fafc;
-border-radius:8px;
-cursor:pointer
-}
-
-.year{
-font-size:17px;
-font-weight:900;
-min-width:65px;
-text-align:center
-}
-
-.month{
-border:1px solid #e5e7eb;
-border-radius:12px;
-margin-bottom:10px;
-overflow:hidden
-}
-
-.month-head{
-background:#f8fafc;
-padding:10px 12px;
-font-weight:900;
-font-size:12px;
-display:flex;
-justify-content:space-between
-}
-
-.days{
-display:grid;
-grid-template-columns:repeat(7,1fr);
-gap:4px;
-padding:8px
-}
-
-.day-name{
-text-align:center;
-font-size:8px;
-color:#9ca3af;
-font-weight:900
-}
-
-.day{
-border:1px solid #e5e7eb;
-background:#fff;
-border-radius:6px;
-min-height:36px;
-font-size:9px;
-font-weight:800;
-cursor:pointer
-}
-
-.day.today{
-background:#111827;
-color:#fff
-}
-
-.empty{
-border:0;
-background:transparent
-}
-
-/* WHATSAPP GROUP */
-
-.whatsapp-group{
-margin:14px 0
-}
-
-.whatsapp-group a{
-display:flex;
-align-items:center;
-gap:12px;
-background:#15803d;
-color:#fff;
-padding:14px 16px;
-border-radius:14px;
-box-shadow:0 5px 15px #0002
-}
-
-.group-icon{
-width:42px;
-height:42px;
-border-radius:50%;
-background:#fff;
-color:#15803d;
-display:grid;
-place-items:center;
-font-size:22px;
-flex-shrink:0
-}
-
-.group-text{
-flex:1
-}
-
-.group-text strong{
-display:block;
-font-size:13px;
-font-weight:900
-}
-
-.group-text span{
-display:block;
-font-size:9px;
-opacity:.9;
-margin-top:2px
-}
-
-.group-arrow{
-font-size:25px;
-font-weight:300
-}
-
-/* CREATE LK PROMOTION */
-
-.createlk-promo{
-margin:14px 0;
-background:linear-gradient(135deg,#eff6ff,#eef2ff);
-border:1px solid #c7d2fe;
-border-radius:15px;
-padding:16px;
-display:flex;
-align-items:center;
-gap:13px
-}
-
-.createlk-icon{
-width:46px;
-height:46px;
-border-radius:12px;
-background:#2563eb;
-color:#fff;
-display:grid;
-place-items:center;
-font-size:23px;
-flex-shrink:0
-}
-
-.createlk-text{
-flex:1
-}
-
-.createlk-text strong{
-display:block;
-font-size:14px;
-font-weight:900;
-color:#111827
-}
-
-.createlk-text span{
-display:block;
-font-size:9px;
-color:#64748b;
-margin-top:3px
-}
-
-.createlk-btn{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-background:#2563eb;
-color:#fff;
-padding:9px 12px;
-border-radius:8px;
-font-size:9px;
-font-weight:900;
-white-space:nowrap
-}
-
-/* FOOTER */
-
-footer{
-background:#0b1120;
-color:#fff;
-margin-top:20px;
-padding:25px 0;
-text-align:center
-}
-
-.footer-logo{
-width:38px;
-background:#fff;
-border-radius:7px;
-padding:3px
-}
-
-footer strong{
-display:block;
-font-size:13px
-}
-
-footer span{
-font-size:8px;
-color:#94a3b8
-}
-
-.footer-links{
-display:flex;
-justify-content:center;
-gap:14px;
-flex-wrap:wrap;
-margin-top:12px
-}
-
-.footer-links a{
-font-size:9px;
-color:#cbd5e1
-}
-
-.copy{
-border-top:1px solid #ffffff18;
-margin-top:15px;
-padding-top:12px;
-font-size:8px;
-color:#64748b
-}
-
-/* WHATSAPP */
-
-.whatsapp{
-position:fixed;
-right:15px;
-bottom:15px;
-width:50px;
-height:50px;
-border-radius:50%;
-background:#25d366;
-color:#fff;
-display:grid;
-place-items:center;
-font-size:23px;
-z-index:999
-}
-
-/* MOBILE */
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f4f7fb;color:#172033;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{width:min(900px,92%);margin:auto}
+
+header{background:#fff;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:10}
+.nav{height:64px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:9px}
+.logo img{width:42px;height:42px;border-radius:9px}
+.logo-title{font-size:14px;font-weight:900}
+.logo-sub{font-size:8px;color:#6b7280}
+.nav-links{display:flex;gap:6px}
+.nav-links a{font-size:10px;font-weight:800;padding:8px}
+.menu{display:none;background:#fff;border:1px solid #ddd;border-radius:8px;font-size:18px;padding:8px}
+
+.hero{padding:18px 0 10px}
+.hero-card{background:linear-gradient(135deg,#111827,#334155);color:#fff;text-align:center;padding:28px 18px;border-radius:20px}
+.hero-logo{width:60px;background:#fff;border-radius:13px;padding:4px}
+.label{font-size:9px;font-weight:900;letter-spacing:1px;color:#fbbf24;margin-top:8px}
+h1{font-size:32px;margin:5px 0}
+.date{display:inline-block;background:#ffffff18;padding:7px 15px;border-radius:8px;font-size:11px;font-weight:800}
+
+.box{background:#fff;border:1px solid #e5e7eb;border-radius:18px;padding:20px;margin:10px 0}
+
+.lang-title{text-align:center;font-size:9px;font-weight:900;color:#6b7280;margin-bottom:8px}
+.languages{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.lang{border:1px solid #ddd;background:#f8fafc;border-radius:8px;padding:10px;font-weight:800;font-size:10px;cursor:pointer}
+.lang.active{background:#111827;color:#fff}
+
+.section{padding:18px 0;border-bottom:1px solid #eee}
+.section:last-child{border:0}
+.section h2{font-size:10px;color:#6b7280;margin-bottom:8px}
+.verse{background:#fffbea;border-left:4px solid #f59e0b;padding:15px;border-radius:8px;font-size:17px;font-weight:700}
+.ref{display:block;color:#92400e;font-size:11px;margin-top:7px}
+.title{font-size:19px;font-weight:900;margin-bottom:6px}
+.text{font-size:14px;white-space:pre-line}
+.prayer{background:#f5f3ff;border-left:4px solid #7c3aed;padding:15px;border-radius:8px}
+
+.share{text-align:center;margin-top:15px}
+.share button{background:#111827;color:#fff;border:0;border-radius:9px;padding:13px 18px;font-weight:900;cursor:pointer;margin:4px}
+.share button:disabled{opacity:.6}
+.shareBtn{background:#15803d!important}
+.downloadBtn{background:#475569!important}
+.preview{display:none;margin:15px auto}
+.preview img{width:100%;max-width:360px;border-radius:12px;display:block;margin:auto}
+
+.status{text-align:center;padding:25px;color:#6b7280;font-size:12px}
+.error{color:#dc2626}
+
+.archive-title{text-align:center}
+.archive-title h2{font-size:23px}
+.archive-title p{font-size:10px;color:#6b7280}
+
+.years{display:flex;justify-content:center;align-items:center;gap:10px;margin:18px 0}
+.years button{width:35px;height:35px;border:1px solid #ddd;background:#f8fafc;border-radius:8px;cursor:pointer}
+.years button:disabled{opacity:.35;cursor:not-allowed}
+.year{font-size:17px;font-weight:900;min-width:65px;text-align:center}
+
+.month{border:1px solid #e5e7eb;border-radius:12px;margin-bottom:10px;overflow:hidden}
+.month-head{background:#f8fafc;padding:10px 12px;font-weight:900;font-size:12px;display:flex;justify-content:space-between}
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;padding:8px}
+.day-name{text-align:center;font-size:8px;color:#9ca3af;font-weight:900}
+.day{border:1px solid #e5e7eb;background:#fff;border-radius:6px;min-height:36px;font-size:9px;font-weight:800;cursor:pointer}
+.day.today{background:#111827;color:#fff}
+.day:disabled{background:#f1f5f9;color:#cbd5e1;cursor:not-allowed;opacity:.6}
+.empty{border:0;background:transparent}
+
+.whatsapp-group{margin:14px 0}
+.whatsapp-group a{display:flex;align-items:center;gap:12px;background:#15803d;color:#fff;padding:14px 16px;border-radius:14px;box-shadow:0 5px 15px #0002}
+.group-icon{width:42px;height:42px;border-radius:50%;background:#fff;color:#15803d;display:grid;place-items:center;font-size:22px;flex-shrink:0}
+.group-text{flex:1}
+.group-text strong{display:block;font-size:13px;font-weight:900}
+.group-text span{display:block;font-size:9px;opacity:.9;margin-top:2px}
+.group-arrow{font-size:25px}
+
+.createlk-promo{margin:14px 0;background:linear-gradient(135deg,#eff6ff,#eef2ff);border:1px solid #c7d2fe;border-radius:15px;padding:16px;display:flex;align-items:center;gap:13px}
+.createlk-icon{width:46px;height:46px;border-radius:12px;background:#2563eb;color:#fff;display:grid;place-items:center;font-size:23px;flex-shrink:0}
+.createlk-text{flex:1}
+.createlk-text strong{display:block;font-size:14px;font-weight:900;color:#111827}
+.createlk-text span{display:block;font-size:9px;color:#64748b;margin-top:3px}
+.createlk-btn{display:inline-flex;align-items:center;justify-content:center;background:#2563eb;color:#fff;padding:9px 12px;border-radius:8px;font-size:9px;font-weight:900;white-space:nowrap}
+
+footer{background:#0b1120;color:#fff;margin-top:20px;padding:25px 0;text-align:center}
+.footer-logo{width:38px;background:#fff;border-radius:7px;padding:3px}
+footer strong{display:block;font-size:13px}
+footer span{font-size:8px;color:#94a3b8}
+.footer-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:12px}
+.footer-links a{font-size:9px;color:#cbd5e1}
+.copy{border-top:1px solid #ffffff18;margin-top:15px;padding-top:12px;font-size:8px;color:#64748b}
+
+.whatsapp{position:fixed;right:15px;bottom:15px;width:50px;height:50px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;font-size:23px;z-index:999}
 
 @media(max-width:650px){
-
-.nav-links{
-display:none
+.nav-links{display:none}
+.menu{display:block}
+.languages{grid-template-columns:1fr}
+.box{padding:16px}
+.text{font-size:13px}
+.verse{font-size:15px}
+.nav-links.mobile-open{position:absolute;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid #ddd;display:flex;flex-direction:column;padding:10px}
+.nav-links.mobile-open a{padding:12px}
+.createlk-promo{align-items:flex-start}
+.createlk-btn{padding:10px}
 }
-
-.menu{
-display:block
-}
-
-.languages{
-grid-template-columns:1fr
-}
-
-.box{
-padding:16px
-}
-
-.text{
-font-size:13px
-}
-
-.verse{
-font-size:15px
-}
-
-.nav-links.mobile-open{
-position:absolute;
-top:64px;
-left:0;
-right:0;
-background:#fff;
-border-bottom:1px solid #ddd;
-display:flex;
-flex-direction:column;
-padding:10px
-}
-
-.nav-links.mobile-open a{
-padding:12px
-}
-
-.createlk-promo{
-align-items:flex-start
-}
-
-.createlk-btn{
-padding:10px
-}
-
-}
-
-/* VERY SMALL SCREENS */
 
 @media(max-width:400px){
-
-.createlk-promo{
-flex-wrap:wrap
+.createlk-promo{flex-wrap:wrap}
+.createlk-btn{width:100%}
 }
-
-.createlk-btn{
-width:100%
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
 <header>
-
 <div class="container nav">
 
 <a href="index.html" class="logo">
-
-<img
-src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
-alt="GOH Ministries">
-
+<img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png" alt="GOH Ministries">
 <div>
-
-<div class="logo-title">
-GOH Ministries
+<div class="logo-title">GOH Ministries</div>
+<div class="logo-sub">Gate of Heaven Ministries</div>
 </div>
-
-<div class="logo-sub">
-Gate of Heaven Ministries
-</div>
-
-</div>
-
 </a>
 
 <nav class="nav-links" id="navLinks">
-
 <a href="index.html">🏠 Home</a>
 <a href="about.html">About</a>
 <a href="contact.html">Contact</a>
 <a href="donate.html">Donate</a>
-
 </nav>
 
-<button
-class="menu"
-id="menu"
-aria-label="Open menu">
-☰
-</button>
+<button class="menu" id="menu">☰</button>
 
 </div>
-
 </header>
-
 
 <div class="container">
 
 <section class="hero">
-
 <div class="hero-card">
 
-<img
-class="hero-logo"
-src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
-alt="Gate of Heaven Ministries">
+<img class="hero-logo" src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png" alt="Gate of Heaven Ministries">
 
-<div class="label">
-GATE OF HEAVEN MINISTRIES
-</div>
-
-<h1>
-🙏 Daily Devotional
-</h1>
-
-<p>
-Bible Verse • Explanation • Prayer
-</p>
-
+<div class="label">GATE OF HEAVEN MINISTRIES</div>
+<h1>🙏 Daily Devotional</h1>
+<p>Bible Verse • Explanation • Prayer</p>
 <div class="date" id="date"></div>
 
 </div>
-
 </section>
 
-
 <div class="box">
 
-<div class="lang-title">
-LANGUAGE
-</div>
+<div class="lang-title">LANGUAGE</div>
 
 <div class="languages">
-
-<button class="lang" data-lang="en">
-🇬🇧 English
-</button>
-
-<button class="lang" data-lang="ta">
-🇱🇰 தமிழ்
-</button>
-
-<button class="lang" data-lang="si">
-🇱🇰 සිංහල
-</button>
-
+<button class="lang" data-lang="en">🇬🇧 English</button>
+<button class="lang" data-lang="ta">🇱🇰 தமிழ்</button>
+<button class="lang" data-lang="si">🇱🇰 සිංහල</button>
 </div>
 
 </div>
-
 
 <div class="box">
 
-<div id="result" class="status">
-Loading devotional...
-</div>
+<div id="result" class="status">Loading devotional...</div>
 
 <div class="share" id="share" style="display:none">
 
 <div class="preview" id="imagePreview">
-
-<img
-id="previewImg"
-alt="GOH Ministries Daily Devotional">
-
+<img id="previewImg" alt="GOH Ministries Daily Devotional">
 </div>
 
-<button
-id="createBtn"
-onclick="prepareShare()">
-🖼️ Create Share Image
-</button>
-
-<button
-id="shareBtn"
-class="shareBtn"
-onclick="shareImage()"
-style="display:none">
-📤 Share Image
-</button>
-
-<button
-id="downloadBtn"
-class="downloadBtn"
-onclick="downloadImage()"
-style="display:none">
-⬇️ Save Image
-</button>
+<button id="createBtn" onclick="prepareShare()">🖼️ Create Share Image</button>
+<button id="shareBtn" class="shareBtn" onclick="shareImage()" style="display:none">📤 Share Image</button>
+<button id="downloadBtn" class="downloadBtn" onclick="downloadImage()" style="display:none">⬇️ Save Image</button>
 
 </div>
-
 </div>
-
-
-<!-- WHATSAPP GROUP -->
 
 <div class="whatsapp-group">
+<a href="https://chat.whatsapp.com/F72xNfuToIy8un4oGC6uhX?s=cl&p=a&mlu=4" target="_blank" rel="noopener">
 
-<a
-href="https://chat.whatsapp.com/F72xNfuToIy8un4oGC6uhX?s=cl&p=a&mlu=4"
-target="_blank"
-rel="noopener">
-
-<div class="group-icon">
-💬
-</div>
+<div class="group-icon">💬</div>
 
 <div class="group-text">
-
-<strong>
-Join Our WhatsApp Group
-</strong>
-
-<span>
-Daily Devotional • Bible Verse • Prayer
-</span>
-
+<strong>Join Our WhatsApp Group</strong>
+<span>Daily Devotional • Bible Verse • Prayer</span>
 </div>
 
-<div class="group-arrow">
-›
-</div>
+<div class="group-arrow">›</div>
 
 </a>
-
 </div>
-
-
-<!-- CREATE LK ACADEMY PROMOTION -->
 
 <div class="createlk-promo">
 
-<div class="createlk-icon">
-🎓
-</div>
+<div class="createlk-icon">🎓</div>
 
 <div class="createlk-text">
-
-<strong>
-CreateLK Academy
-</strong>
-
-<span>
-Improve your English with AI-powered practice.
-</span>
-
+<strong>CreateLK Academy</strong>
+<span>Improve your English with AI-powered practice.</span>
 </div>
 
-<a
-class="createlk-btn"
-href="https://createlk.com/"
-target="_blank"
-rel="noopener">
+<a class="createlk-btn" href="https://createlk.com/" target="_blank" rel="noopener">
 🚀 Visit Academy
 </a>
 
 </div>
 
-
-<!-- ARCHIVE -->
-
 <div class="box">
 
 <div class="archive-title">
-
-<div class="label">
-DEVOTIONAL ARCHIVE
-</div>
-
-<h2>
-📅 Previous Devotionals
-</h2>
-
-<p>
-Select any date from the calendar.
-</p>
-
+<div class="label">DEVOTIONAL ARCHIVE</div>
+<h2>📅 Previous Devotionals</h2>
+<p>Select any date from the calendar.</p>
 </div>
 
 <div class="years">
-
-<button onclick="changeYear(-1)">
-‹
-</button>
-
+<button id="prevYear" onclick="changeYear(-1)">‹</button>
 <div class="year" id="year"></div>
-
-<button onclick="changeYear(1)">
-›
-</button>
-
+<button id="nextYear" onclick="changeYear(1)">›</button>
 </div>
 
 <div id="archive"></div>
 
 </div>
-
 </div>
-
 
 <footer>
 
-<img
-class="footer-logo"
-src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
-alt="GOH Ministries">
+<img class="footer-logo" src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png" alt="GOH Ministries">
 
-<strong>
-GOH Ministries
-</strong>
-
-<span>
-Gate of Heaven Ministries
-</span>
+<strong>GOH Ministries</strong>
+<span>Gate of Heaven Ministries</span>
 
 <div class="footer-links">
-
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
 <a href="contact.html">Contact</a>
@@ -900,58 +260,34 @@ Gate of Heaven Ministries
 <a href="privacy.html">Privacy</a>
 <a href="terms.html">Terms</a>
 <a href="disclaimer.html">Disclaimer</a>
-
 </div>
 
-<div class="copy">
-© 2026 GOH Ministries. All rights reserved.
-</div>
+<div class="copy">© 2026 GOH Ministries. All rights reserved.</div>
 
 </footer>
 
-
-<a
-class="whatsapp"
+<a class="whatsapp"
 href="https://wa.me/94771190395"
 target="_blank"
 rel="noopener"
-aria-label="Contact GOH Ministries on WhatsApp">
-
-💬
-
-</a>
-
+aria-label="Contact GOH Ministries on WhatsApp">💬</a>
 
 <script>
 
-const API =
-"https://devotional.createlk.workers.dev";
+const API="https://devotional.createlk.workers.dev";
+const R2_BACKGROUND="https://media.gohministries.org/file_000000006fd88211892f13d25892d800.png";
+const WEBSITE="https://gohministries.org";
 
-const R2_BACKGROUND =
-"https://media.gohministries.org/file_000000006fd88211892f13d25892d800.png";
+const params=new URLSearchParams(location.search);
+const currentYear=new Date().getFullYear();
 
-const WEBSITE =
-"https://gohministries.org";
+let lang=params.get("lang")||"en";
+let selected=params.get("date");
+let year=Number(params.get("year"))||currentYear;
+let devotional=null,generatedFile=null,previewURL=null;
 
-const params =
-new URLSearchParams(location.search);
-
-let lang =
-params.get("lang") || "en";
-
-let selected =
-params.get("date");
-
-let year =
-new Date().getFullYear();
-
-let devotional = null;
-let generatedFile = null;
-let previewURL = null;
-
-if(!["en","ta","si"].includes(lang)){
-lang="en";
-}
+if(!["en","ta","si"].includes(lang))lang="en";
+if(year>currentYear)year=currentYear;
 
 const months=[
 "January","February","March","April","May","June",
@@ -962,13 +298,22 @@ function today(){
 
 const d=new Date();
 
-return String(
-d.getMonth()+1
-).padStart(2,"0")
-+"-"+
-String(
-d.getDate()
-).padStart(2,"0");
+return String(d.getMonth()+1).padStart(2,"0")+"-"+
+String(d.getDate()).padStart(2,"0");
+
+}
+
+function future(md,y){
+
+const [m,d]=md.split("-");
+
+const x=new Date(y,m-1,d);
+const t=new Date();
+
+x.setHours(0,0,0,0);
+t.setHours(0,0,0,0);
+
+return x>t;
 
 }
 
@@ -976,17 +321,9 @@ function dateText(md){
 
 const [m,d]=md.split("-");
 
-return new Date(
-year,
-m-1,
-d
-).toLocaleDateString(
+return new Date(year,m-1,d).toLocaleDateString(
 "en-US",
-{
-month:"long",
-day:"numeric",
-year:"numeric"
-}
+{month:"long",day:"numeric",year:"numeric"}
 );
 
 }
@@ -1004,74 +341,50 @@ return String(x||"")
 }
 
 
-/* LOAD DEVOTIONAL */
+/* LOAD */
 
 async function load(md){
 
 selected=md;
 
-document.getElementById(
-"date"
-).textContent=
-dateText(md);
+document.getElementById("date").textContent=dateText(md);
 
-const result =
-document.getElementById("result");
+const result=document.getElementById("result");
 
-document.getElementById(
-"share"
-).style.display=
-"none";
+document.getElementById("share").style.display="none";
+
+if(future(md,year)){
+
+result.className="status error";
+result.textContent="⚠️ This devotional is not available yet.";
+return;
+
+}
 
 result.className="status";
-
-result.textContent=
-"Loading devotional...";
+result.textContent="Loading devotional...";
 
 try{
 
-const r =
-await fetch(
-API+
-"?date="+
-encodeURIComponent(md)+
-"&lang="+
-encodeURIComponent(lang),
-{
-cache:"no-store"
-}
+const r=await fetch(
+API+"?date="+encodeURIComponent(md)+"&lang="+encodeURIComponent(lang),
+{cache:"no-store"}
 );
 
-if(!r.ok)
-throw new Error(
-"Server error: HTTP "+r.status
-);
+if(!r.ok)throw Error("Server error: HTTP "+r.status);
 
-const data =
-await r.json();
+const data=await r.json();
 
-if(!data.success)
-throw new Error(
-data.error||
-"Devotional not available."
-);
+if(!data.success)throw Error(data.error||"Devotional not available.");
 
-const x =
-data.devotional;
-
-if(!x)
-throw new Error(
-"No devotional data returned."
-);
+const x=data.devotional;
 
 devotional={
-
 verse:x.bible_verse||"",
 reference:x.bible_reference||"",
 title:x.title||"",
 message:x.message||"",
 prayer:x.prayer||""
-
 };
 
 result.className="content";
@@ -1079,405 +392,189 @@ result.className="content";
 result.innerHTML=`
 
 <div class="section">
-
-<h2>
-📖 BIBLE VERSE
-</h2>
-
+<h2>📖 BIBLE VERSE</h2>
 <div class="verse">
-
 ${safe(x.bible_verse)}
-
-<span class="ref">
-${safe(x.bible_reference)}
-</span>
-
+<span class="ref">${safe(x.bible_reference)}</span>
 </div>
-
 </div>
 
 <div class="section">
-
-<h2>
-💡 EXPLANATION
-</h2>
-
-<div class="title">
-${safe(x.title)}
-</div>
-
-<div class="text">
-${safe(x.message)}
-</div>
-
+<h2>💡 EXPLANATION</h2>
+<div class="title">${safe(x.title)}</div>
+<div class="text">${safe(x.message)}</div>
 </div>
 
 <div class="section">
-
-<h2>
-🙏 PRAYER
-</h2>
-
-<div class="prayer text">
-${safe(x.prayer)}
+<h2>🙏 PRAYER</h2>
+<div class="prayer text">${safe(x.prayer)}</div>
 </div>
-
-</div>
-
 `;
 
-document.getElementById(
-"share"
-).style.display=
-"block";
-
-const p =
-new URLSearchParams();
-
-p.set("lang",lang);
-p.set("date",md);
+document.getElementById("share").style.display="block";
 
 history.replaceState(
 {},
 "",
-"devotional.html?"+p
+"devotional.html?lang="+encodeURIComponent(lang)+
+"&date="+encodeURIComponent(md)+
+"&year="+year
 );
 
-}
-catch(e){
+}catch(e){
 
-console.error(e);
-
-result.className=
-"status error";
-
-result.textContent=
-"⚠️ "+e.message;
+result.className="status error";
+result.textContent="⚠️ "+e.message;
 
 }
 
 }
 
 
-/* TEXT WRAP */
+/* IMAGE */
 
-function wrap(
-ctx,
-text,
-width
-){
-
-const words =
-String(text).split(/\s+/);
+function wrap(ctx,text,width){
 
 const lines=[];
 let line="";
 
-for(
-const word of words
-){
+for(const word of String(text).split(/\s+/)){
 
-const test =
-line ?
-line+" "+word :
-word;
+const test=line?line+" "+word:word;
 
-if(
-ctx.measureText(test).width>width &&
-line
-){
-
+if(ctx.measureText(test).width>width&&line){
 lines.push(line);
 line=word;
-
-}else{
-
-line=test;
+}else line=test;
 
 }
 
-}
-
-if(line)
-lines.push(line);
+if(line)lines.push(line);
 
 return lines;
 
 }
 
-
-/* CREATE IMAGE */
-
 async function createImage(){
 
-if(!devotional)
-throw new Error(
-"Devotional not loaded."
-);
+if(!devotional)throw Error("Devotional not loaded.");
 
-const response =
-await fetch(
-R2_BACKGROUND+
-"?v="+Date.now(),
-{
-mode:"cors",
-cache:"no-store"
-}
-);
+const r=await fetch(R2_BACKGROUND+"?v="+Date.now(),{
+mode:"cors",cache:"no-store"
+});
 
-if(!response.ok)
-throw new Error(
-"Background image failed to load."
-);
+if(!r.ok)throw Error("Background image failed to load.");
 
-const blob =
-await response.blob();
+const img=new Image();
+const url=URL.createObjectURL(await r.blob());
 
-const url =
-URL.createObjectURL(blob);
-
-const img =
-new Image();
-
-await new Promise(
-(resolve,reject)=>{
-
+await new Promise((resolve,reject)=>{
 img.onload=resolve;
-
-img.onerror=()=>reject(
-new Error(
-"Background image could not be read."
-)
-);
-
+img.onerror=reject;
 img.src=url;
+});
 
-}
-);
-
-const canvas =
-document.createElement(
-"canvas"
-);
-
+const canvas=document.createElement("canvas");
 canvas.width=1080;
 canvas.height=1350;
 
-const ctx =
-canvas.getContext("2d");
+const ctx=canvas.getContext("2d");
 
-const scale =
-Math.max(
+const scale=Math.max(
 canvas.width/img.width,
 canvas.height/img.height
 );
 
-const w =
-img.width*scale;
+const w=img.width*scale;
+const h=img.height*scale;
 
-const h =
-img.height*scale;
+ctx.drawImage(img,(1080-w)/2,(1350-h)/2,w,h);
 
-ctx.drawImage(
-img,
-(canvas.width-w)/2,
-(canvas.height-h)/2,
-w,
-h
-);
-
-ctx.fillStyle =
-"rgba(0,0,0,.40)";
-
-ctx.fillRect(
-0,
-0,
-1080,
-1350
-);
+ctx.fillStyle="rgba(0,0,0,.40)";
+ctx.fillRect(0,0,1080,1350);
 
 ctx.textAlign="center";
 ctx.textBaseline="middle";
-
 ctx.fillStyle="#fff";
+ctx.font="900 30px Arial";
 
-ctx.font =
-"900 30px Arial";
-
-ctx.fillText(
-"GATE OF HEAVEN MINISTRIES",
-540,
-105
-);
+ctx.fillText("GATE OF HEAVEN MINISTRIES",540,105);
 
 let size=56;
+ctx.font=`700 ${size}px Arial`;
 
-ctx.font =
-`700 ${size}px Arial`;
-
-let lines =
-wrap(
+let lines=wrap(
 ctx,
 "“"+devotional.verse+"”",
 850
 );
 
-while(
-lines.length>7 &&
-size>30
-){
+while(lines.length>7&&size>30){
 
 size-=2;
-
-ctx.font =
-`700 ${size}px Arial`;
-
-lines =
-wrap(
-ctx,
-"“"+devotional.verse+"”",
-850
-);
+ctx.font=`700 ${size}px Arial`;
+lines=wrap(ctx,"“"+devotional.verse+"”",850);
 
 }
 
-const lineHeight =
-size*1.35;
+const lh=size*1.35;
+let y=650-(lines.length*lh)/2;
 
-const verseHeight =
-lines.length*lineHeight;
-
-let y =
-650-
-verseHeight/2;
-
-ctx.fillStyle="#fff";
-
-for(
-const line of lines
-){
-
-ctx.fillText(
-line,
-540,
-y
-);
-
-y+=lineHeight;
-
+for(const line of lines){
+ctx.fillText(line,540,y);
+y+=lh;
 }
 
 y+=30;
 
 ctx.fillStyle="#fbbf24";
-
-ctx.font =
-"900 32px Arial";
-
-ctx.fillText(
-devotional.reference,
-540,
-y
-);
+ctx.font="900 32px Arial";
+ctx.fillText(devotional.reference,540,y);
 
 ctx.fillStyle="#fff";
-
-ctx.font =
-"800 25px Arial";
-
-ctx.fillText(
-"gohministries.org",
-540,
-1260
-);
+ctx.font="800 25px Arial";
+ctx.fillText("gohministries.org",540,1260);
 
 URL.revokeObjectURL(url);
 
-return new Promise(
-(resolve,reject)=>{
-
+return new Promise((resolve,reject)=>
 canvas.toBlob(
-b=>b
-?resolve(b)
-:reject(
-new Error(
-"Image creation failed."
-)
-),
+b=>b?resolve(b):reject(Error("Image creation failed.")),
 "image/png"
+)
 );
 
 }
-);
-
-}
-
-
-/* PREPARE SHARE */
 
 async function prepareShare(){
 
-const btn =
-document.getElementById(
-"createBtn"
-);
+const btn=document.getElementById("createBtn");
 
 btn.disabled=true;
-
-btn.textContent =
-"⏳ Creating...";
+btn.textContent="⏳ Creating...";
 
 try{
 
-const blob =
-await createImage();
+const blob=await createImage();
 
-generatedFile =
-new File(
+generatedFile=new File(
 [blob],
 "goh-devotional.png",
-{
-type:"image/png"
-}
+{type:"image/png"}
 );
 
-if(previewURL)
-URL.revokeObjectURL(
-previewURL
-);
+if(previewURL)URL.revokeObjectURL(previewURL);
 
-previewURL =
-URL.createObjectURL(
-blob
-);
+previewURL=URL.createObjectURL(blob);
 
-document.getElementById(
-"previewImg"
-).src =
-previewURL;
+document.getElementById("previewImg").src=previewURL;
+document.getElementById("imagePreview").style.display="block";
+document.getElementById("shareBtn").style.display="inline-block";
+document.getElementById("downloadBtn").style.display="inline-block";
 
-document.getElementById(
-"imagePreview"
-).style.display =
-"block";
+btn.textContent="✅ Image Created";
 
-document.getElementById(
-"shareBtn"
-).style.display =
-"inline-block";
-
-document.getElementById(
-"downloadBtn"
-).style.display =
-"inline-block";
-
-btn.textContent =
-"✅ Image Created";
-
-}
-catch(e){
-
-console.error(e);
+}catch(e){
 
 alert(
 "Image could not be created.\n\n"+
@@ -1485,8 +582,7 @@ e.message+
 "\n\nCheck your R2 CORS settings."
 );
 
-btn.textContent =
-"🖼️ Create Share Image";
+btn.textContent="🖼️ Create Share Image";
 
 }
 
@@ -1494,142 +590,75 @@ btn.disabled=false;
 
 }
 
-
-/* SHARE */
-
 async function shareImage(){
 
-if(!generatedFile){
+if(!generatedFile)return alert("Create the image first.");
 
-alert(
-"Create the image first."
-);
-
-return;
-
-}
-
-const devotionalURL =
-WEBSITE+
-"/devotional.html?lang="+
+const url=
+WEBSITE+"/devotional.html?lang="+
 encodeURIComponent(lang)+
-"&date="+
-encodeURIComponent(selected);
+"&date="+encodeURIComponent(selected)+
+"&year="+year;
 
-const shareText =
-"💡 "+
-devotional.title+
-"\n\n"+
-devotional.message+
-"\n\n"+
-"🙏 Prayer\n\n"+
+const text=
+"💡 "+devotional.title+
+"\n\n"+devotional.message+
+"\n\n🙏 Prayer\n\n"+
 devotional.prayer+
-"\n\n"+
-"📖 Daily Devotional\n"+
-devotionalURL;
+"\n\n📖 Daily Devotional\n"+url;
 
 try{
 
-if(
-navigator.share &&
-navigator.canShare &&
-navigator.canShare({
-files:[generatedFile]
-})
-){
+if(navigator.share&&navigator.canShare({files:[generatedFile]})){
 
 await navigator.share({
-
-title:
-"GOH Ministries Daily Devotional",
-
-text:
-shareText,
-
-files:[
-generatedFile
-]
-
+title:"GOH Ministries Daily Devotional",
+text:text,
+files:[generatedFile]
 });
 
-}else{
+}else downloadImage();
 
-downloadImage();
+}catch(e){
 
-}
-
-}
-catch(e){
-
-console.error(e);
-
-if(
-e.name!=="AbortError"
-)
-downloadImage();
+if(e.name!=="AbortError")downloadImage();
 
 }
 
 }
-
-
-/* DOWNLOAD */
 
 function downloadImage(){
 
-if(!generatedFile)
-return;
+if(!generatedFile)return;
 
-const url =
-URL.createObjectURL(
-generatedFile
-);
-
-const a =
-document.createElement("a");
+const url=URL.createObjectURL(generatedFile);
+const a=document.createElement("a");
 
 a.href=url;
-
-a.download =
-"goh-devotional.png";
+a.download="goh-devotional.png";
 
 document.body.appendChild(a);
-
 a.click();
-
 a.remove();
 
-setTimeout(
-()=>URL.revokeObjectURL(url),
-1000
-);
+setTimeout(()=>URL.revokeObjectURL(url),1000);
 
 }
 
 
 /* LANGUAGE */
 
-document
-.querySelectorAll(".lang")
-.forEach(btn=>{
+document.querySelectorAll(".lang").forEach(btn=>{
 
 btn.onclick=()=>{
 
-lang =
-btn.dataset.lang;
+lang=btn.dataset.lang;
 
-document
-.querySelectorAll(".lang")
-.forEach(x=>
-x.classList.toggle(
-"active",
-x===btn
-)
+document.querySelectorAll(".lang").forEach(x=>
+x.classList.toggle("active",x===btn)
 );
 
-load(
-selected||today()
-);
+load(selected||today());
 
 };
 
@@ -1640,49 +669,24 @@ selected||today()
 
 function calendar(){
 
-document.getElementById(
-"year"
-).textContent =
-year;
+document.getElementById("year").textContent=year;
+
+document.getElementById("nextYear").disabled=
+year>=currentYear;
 
 let html="";
 
-for(
-let m=0;
-m<12;
-m++
-){
+for(let m=0;m<12;m++){
 
-const first =
-new Date(
-year,
-m,
-1
-).getDay();
+const first=new Date(year,m,1).getDay();
+const total=new Date(year,m+1,0).getDate();
 
-const total =
-new Date(
-year,
-m+1,
-0
-).getDate();
-
-html += `
-
+html+=`
 <div class="month">
-
 <div class="month-head">
-
-<span>
-${months[m]}
-</span>
-
-<span>
-${year}
-</span>
-
+<span>${months[m]}</span>
+<span>${year}</span>
 </div>
-
 <div class="days">
 
 <div class="day-name">Sun</div>
@@ -1692,135 +696,91 @@ ${year}
 <div class="day-name">Thu</div>
 <div class="day-name">Fri</div>
 <div class="day-name">Sat</div>
-
 `;
 
-for(
-let i=0;
-i<first;
-i++
-){
+for(let i=0;i<first;i++)
+html+=`<div class="day empty"></div>`;
 
-html +=
-`<div class="day empty"></div>`;
+for(let d=1;d<=total;d++){
 
-}
+const md=
+String(m+1).padStart(2,"0")+"-"+
+String(d).padStart(2,"0");
 
-for(
-let d=1;
-d<=total;
-d++
-){
+const disabled=future(md,year);
 
-const md =
-String(
-m+1
-).padStart(2,"0")
-+
-"-"+
-String(
-d
-).padStart(2,"0");
+const active=
+year===currentYear&&md===today()
+?" today":"";
 
-const active =
-year===
-new Date().getFullYear()
-&&
-md===today()
-?
-" today"
-:
-"";
-
-html += `
-
+html+=`
 <button
 class="day${active}"
-onclick=
-"openDate('${md}',${year})">
-
+${disabled?"disabled":`onclick="openDate('${md}')"`}>
 ${d}
-
 </button>
-
 `;
 
 }
 
-html += `
-
-</div>
-</div>
-
-`;
+html+=`</div></div>`;
 
 }
 
-document.getElementById(
-"archive"
-).innerHTML =
-html;
+document.getElementById("archive").innerHTML=html;
 
 }
 
+function openDate(md){
 
-function openDate(md,y){
-
-year=y;
+if(future(md,year))return;
 
 load(md);
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+window.scrollTo({top:0,behavior:"smooth"});
 
 }
 
-
 function changeYear(n){
 
-year+=n;
+const y=year+n;
+
+if(y>currentYear||y<1)return;
+
+year=y;
+
+if(year===currentYear&&selected&&future(selected,year))
+selected=today();
 
 calendar();
+load(selected||today());
 
 }
 
 
 /* MENU */
 
-document.getElementById(
-"menu"
-).onclick=()=>{
+document.getElementById("menu").onclick=()=>{
 
-const nav =
-document.getElementById(
-"navLinks"
-);
-
-nav.classList.toggle(
-"mobile-open"
-);
+document.getElementById("navLinks")
+.classList.toggle("mobile-open");
 
 };
 
 
 /* START */
 
-document
-.querySelectorAll(".lang")
-.forEach(x=>
-x.classList.toggle(
-"active",
-x.dataset.lang===lang
-)
+document.querySelectorAll(".lang").forEach(x=>
+x.classList.toggle("active",x.dataset.lang===lang)
 );
+
+if(!selected||future(selected,year)){
+selected=today();
+year=currentYear;
+}
 
 calendar();
-
-load(
-selected||today()
-);
+load(selected);
 
 </script>
 
