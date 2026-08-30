@@ -1,28 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>About Us | GOH Ministries</title>
+<title>About | GOH Ministries</title>
 
 <meta name="description"
-content="Learn about Gate of Heaven Ministries — our mission, vision, ministry and commitment to sharing the Gospel of Jesus Christ.">
-
-<meta name="theme-color" content="#111827">
-
-<!-- Google AdSense -->
-<script async
-src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7369880405117405"
-crossorigin="anonymous"></script>
-
-<link rel="manifest" href="/manifest.json">
+content="Learn about GOH Ministries, Gate of Heaven Ministries, and our mission to provide Bible lessons, daily devotionals and Christian educational resources.">
 
 <link rel="icon"
 href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
-
 
 <style>
 
@@ -32,13 +21,9 @@ margin:0;
 padding:0
 }
 
-html{
-scroll-behavior:smooth
-}
-
 body{
 font-family:Arial,Helvetica,sans-serif;
-background:#f3f6fb;
+background:#f4f7fb;
 color:#172033;
 line-height:1.6
 }
@@ -49,27 +34,23 @@ color:inherit
 }
 
 .container{
-width:min(1000px,92%);
+width:min(850px,92%);
 margin:auto
 }
 
-/* HEADER */
-
 header{
+background:#fff;
+border-bottom:1px solid #e5e7eb;
 position:sticky;
 top:0;
-z-index:1000;
-background:rgba(255,255,255,.97);
-backdrop-filter:blur(10px);
-border-bottom:1px solid #e5e7eb
+z-index:100
 }
 
 .nav{
 min-height:64px;
 display:flex;
 align-items:center;
-justify-content:space-between;
-gap:10px
+justify-content:space-between
 }
 
 .logo{
@@ -81,14 +62,12 @@ gap:9px
 .logo img{
 width:42px;
 height:42px;
-object-fit:contain;
-border-radius:10px
+border-radius:9px
 }
 
 .logo-title{
 font-size:14px;
-font-weight:900;
-color:#111827
+font-weight:900
 }
 
 .logo-sub{
@@ -98,15 +77,14 @@ color:#6b7280
 
 .nav-links{
 display:flex;
-align-items:center;
-gap:5px
+gap:6px
 }
 
 .nav-links a{
-padding:8px 10px;
-border-radius:8px;
 font-size:10px;
-font-weight:800
+font-weight:800;
+padding:8px 10px;
+border-radius:8px
 }
 
 .nav-links a:hover{
@@ -115,340 +93,140 @@ background:#f1f5f9
 
 .menu{
 display:none;
-width:40px;
-height:40px;
-border:1px solid #e5e7eb;
 background:#fff;
-border-radius:9px;
+border:1px solid #ddd;
+border-radius:8px;
 font-size:18px;
+padding:8px;
 cursor:pointer
 }
 
-/* MOBILE */
-
-.mobile-menu{
-display:none
-}
-
-.mobile-menu.show{
-display:block;
-position:fixed;
-top:64px;
-left:0;
-right:0;
-z-index:999;
-background:#fff;
-padding:8px 4%;
-border-bottom:1px solid #e5e7eb;
-box-shadow:0 10px 25px #0002
-}
-
-.mobile-menu a{
-display:block;
-padding:12px;
-border-radius:9px;
-font-size:12px;
-font-weight:800
-}
-
-.mobile-menu a:hover{
-background:#f3f4f6
-}
-
-/* HERO */
-
 .hero{
-padding:20px 0 12px
+padding:20px 0 10px
 }
 
 .hero-card{
-background:
-radial-gradient(circle at 90% 10%,#6366f155,transparent 30%),
-radial-gradient(circle at 10% 90%,#fbbf2430,transparent 30%),
-linear-gradient(135deg,#111827,#29364d);
+background:linear-gradient(135deg,#111827,#334155);
 color:#fff;
-border-radius:22px;
-padding:38px 22px;
 text-align:center;
-box-shadow:0 15px 35px #11182722
+padding:38px 20px;
+border-radius:20px
 }
 
 .hero-logo{
-width:72px;
-height:72px;
+width:65px;
 background:#fff;
-border-radius:16px;
-padding:5px;
-object-fit:contain;
-margin-bottom:12px
+border-radius:14px;
+padding:4px;
+margin-bottom:8px
 }
 
 .label{
 font-size:9px;
 font-weight:900;
 letter-spacing:1px;
-color:#fbbf24
+color:#fbbf24;
+margin-top:8px
 }
 
-.hero h1{
-font-size:clamp(30px,7vw,46px);
-line-height:1.08;
-margin:8px 0 10px
+h1{
+font-size:32px;
+margin:5px 0 8px
 }
 
-.hero h1 span{
-color:#fbbf24
+.hero p{
+font-size:12px;
+color:#cbd5e1;
+max-width:600px;
+margin:auto
 }
 
-.hero-text{
-max-width:680px;
-margin:auto;
-font-size:11px;
-color:#d1d5db
-}
-
-/* SECTIONS */
-
-section{
-padding:12px 0
-}
-
-.section-card{
+.card{
 background:#fff;
 border:1px solid #e5e7eb;
 border-radius:18px;
 padding:24px;
-box-shadow:0 7px 25px #0f172a0a
+margin:12px 0
 }
 
-.section-head{
-text-align:center;
-margin-bottom:18px
-}
-
-.section-head h2{
-font-size:23px;
-margin:5px 0
-}
-
-.section-head p{
-font-size:10px;
-color:#6b7280
-}
-
-/* INTRO */
-
-.intro{
-text-align:center;
-font-size:12px;
-color:#4b5563;
-max-width:760px;
-margin:auto
-}
-
-/* CARDS */
-
-.card-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px
-}
-
-.info-card{
-padding:20px 16px;
-border-radius:15px;
-text-align:center;
-border:1px solid #e5e7eb
-}
-
-.info-card:nth-child(1){
-background:#eff6ff
-}
-
-.info-card:nth-child(2){
-background:#fefce8
-}
-
-.info-card:nth-child(3){
-background:#fdf2f8
-}
-
-.info-icon{
-font-size:28px;
+.card h2{
+font-size:21px;
 margin-bottom:8px
 }
 
-.info-card h3{
-font-size:16px;
-margin-bottom:5px
-}
-
-.info-card p{
-font-size:10px;
-color:#6b7280
-}
-
-/* MISSION */
-
-.mission{
-background:
-radial-gradient(circle at 90% 10%,#6366f133,transparent 30%),
-linear-gradient(135deg,#111827,#334155);
-color:#fff
-}
-
-.mission .label{
-color:#fbbf24
-}
-
-.mission h2{
-font-size:24px;
-margin:5px 0 10px
-}
-
-.mission p{
-font-size:11px;
-color:#cbd5e1
-}
-
-.mission-list{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:9px;
-margin-top:16px
-}
-
-.mission-item{
-background:#ffffff0d;
-border:1px solid #ffffff14;
-border-radius:11px;
-padding:13px
-}
-
-.mission-item strong{
-display:block;
+.card p{
 font-size:12px;
-margin-bottom:3px
+color:#4b5563;
+margin-bottom:12px
 }
 
-.mission-item span{
-font-size:9px;
-color:#cbd5e1
+.card p:last-child{
+margin-bottom:0
 }
 
-/* BELIEFS */
-
-.beliefs{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px
+.highlight{
+background:#fffbea;
+border-left:4px solid #f59e0b;
+padding:17px;
+border-radius:9px
 }
 
-.belief{
-border:1px solid #e5e7eb;
-background:#f8fafc;
-border-radius:13px;
-padding:16px
+.list{
+padding-left:18px
 }
 
-.belief strong{
-display:block;
+.list li{
 font-size:12px;
-margin-bottom:4px
+color:#4b5563;
+margin-bottom:7px
 }
 
-.belief p{
-font-size:9px;
-color:#6b7280
-}
-
-/* CTA */
-
-.cta{
-background:linear-gradient(135deg,#fff7ed,#fff);
-border:1px solid #fed7aa;
+.contact{
 text-align:center
 }
 
-.cta h2{
-font-size:23px;
-margin:5px 0 7px
-}
-
-.cta p{
-font-size:10px;
-color:#6b7280;
-margin-bottom:15px
-}
-
-.btn{
-min-width:145px;
-height:40px;
-display:inline-flex;
-align-items:center;
-justify-content:center;
-padding:0 14px;
+.contact a{
+display:inline-block;
+margin-top:8px;
+background:#111827;
+color:#fff;
+padding:10px 15px;
 border-radius:9px;
-font-size:11px;
+font-size:10px;
 font-weight:900
 }
 
-.primary{
-background:#111827;
-color:#fff
-}
-
-.secondary{
-background:#fbbf24;
-color:#111827;
-margin-left:5px
-}
-
-/* FOOTER */
-
 footer{
-margin-top:15px;
 background:#0b1120;
 color:#fff;
-padding:28px 0 18px
+margin-top:20px;
+padding:25px 0;
+text-align:center
 }
 
-.footer{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:20px
-}
-
-.footer-brand{
-display:flex;
-align-items:center;
-gap:9px
-}
-
-.footer-brand img{
-width:40px;
-height:40px;
+.footer-logo{
+width:38px;
 background:#fff;
-border-radius:8px;
+border-radius:7px;
 padding:3px
 }
 
-.footer-brand strong{
+footer strong{
 display:block;
 font-size:13px
 }
 
-.footer-brand span{
-display:block;
+footer span{
 font-size:8px;
 color:#94a3b8
 }
 
 .footer-links{
 display:flex;
-gap:15px;
-flex-wrap:wrap
+justify-content:center;
+gap:14px;
+flex-wrap:wrap;
+margin-top:12px
 }
 
 .footer-links a{
@@ -456,45 +234,15 @@ font-size:9px;
 color:#cbd5e1
 }
 
-.footer-links a:hover{
-color:#fbbf24
-}
-
 .copy{
-text-align:center;
 border-top:1px solid #ffffff18;
-margin-top:18px;
-padding-top:13px;
+margin-top:15px;
+padding-top:12px;
 font-size:8px;
 color:#64748b
 }
 
-/* WHATSAPP */
-
-.whatsapp-btn{
-position:fixed;
-right:16px;
-bottom:16px;
-width:52px;
-height:52px;
-display:grid;
-place-items:center;
-background:#25d366;
-color:#fff;
-border-radius:50%;
-font-size:24px;
-z-index:9999;
-box-shadow:0 6px 18px #0003;
-transition:.2s
-}
-
-.whatsapp-btn:hover{
-transform:scale(1.08)
-}
-
-/* RESPONSIVE */
-
-@media(max-width:750px){
+@media(max-width:650px){
 
 .nav-links{
 display:none
@@ -504,41 +252,24 @@ display:none
 display:block
 }
 
-.card-grid{
-grid-template-columns:repeat(2,1fr)
-}
-
-}
-
-@media(max-width:600px){
-
-.card-grid,
-.beliefs,
-.mission-list{
-grid-template-columns:1fr
-}
-
-.hero-buttons{
-display:flex;
+.mobile-open{
+position:absolute;
+top:64px;
+left:0;
+right:0;
+background:#fff;
+border-bottom:1px solid #ddd;
+display:flex!important;
 flex-direction:column;
-gap:8px
+padding:10px
 }
 
-.secondary{
-margin-left:0
+.mobile-open a{
+padding:12px
 }
 
-.footer{
-flex-direction:column;
-text-align:center
-}
-
-.footer-brand{
-justify-content:center
-}
-
-.footer-links{
-justify-content:center
+.card{
+padding:18px
 }
 
 }
@@ -548,8 +279,6 @@ justify-content:center
 </head>
 
 <body>
-
-<!-- HEADER -->
 
 <header>
 
@@ -575,31 +304,18 @@ Gate of Heaven Ministries
 
 </a>
 
+<nav class="nav-links" id="navLinks">
 
-<nav class="nav-links">
-
-<a href="index.html">
-🏠 Home
-</a>
-
-<a href="devotional.html">
-🙏 Devotional
-</a>
-
-<a href="donate.html">
-❤️ Donate
-</a>
-
-<a href="contact.html">
-💬 Contact
-</a>
+<a href="index.html">🏠 Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="donate.html">Donate</a>
 
 </nav>
 
-
 <button
 class="menu"
-id="menuBtn"
+id="menu"
 aria-label="Open menu"
 aria-expanded="false">
 
@@ -612,708 +328,217 @@ aria-expanded="false">
 </header>
 
 
-<!-- MOBILE MENU -->
-
-<nav
-class="mobile-menu"
-id="mobileMenu">
-
-<a href="index.html">
-🏠 Home
-</a>
-
-<a href="devotional.html">
-🙏 Daily Devotional
-</a>
-
-<a href="about.html">
-ℹ️ About Us
-</a>
-
-<a href="donate.html">
-❤️ Support Our Ministry
-</a>
-
-<a href="contact.html">
-💬 Contact Us
-</a>
-
-</nav>
-
-
-<!-- HERO -->
+<main class="container">
 
 <section class="hero">
-
-<div class="container">
 
 <div class="hero-card">
 
 <img
 class="hero-logo"
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
-alt="Gate of Heaven Ministries">
-
+alt="GOH Ministries">
 
 <div class="label">
 GATE OF HEAVEN MINISTRIES
 </div>
 
+<h1>About GOH Ministries</h1>
 
-<h1>
-About <span>Our Ministry</span>
-</h1>
-
-
-<p class="hero-text">
-
-Serving God, proclaiming the Gospel of Jesus Christ,
-teaching His Word and encouraging people to walk in faith.
-
+<p>
+Christian Bible resources, daily devotionals and educational
+content designed to help people grow in their understanding
+of God's Word.
 </p>
-
-</div>
 
 </div>
 
 </section>
 
 
-<!-- INTRO -->
+<section class="card">
 
-<section>
+<div class="highlight">
 
-<div class="container">
+<h2>Our Mission</h2>
 
-<div class="section-card">
-
-<div class="section-head">
-
-<div class="label">
-WHO WE ARE
-</div>
-
-<h2>
-Gate of Heaven Ministries
-</h2>
-
-</div>
-
-
-<p class="intro">
-
-Gate of Heaven Ministries is a Christian ministry committed
-to proclaiming the Gospel of Jesus Christ, teaching the
-Word of God, encouraging believers, prayer and serving
-people with Christian love.
-
+<p>
+GOH Ministries exists to make Bible-based Christian resources
+accessible to people who want to learn, reflect on Scripture
+and strengthen their faith.
 </p>
-
-</div>
 
 </div>
 
 </section>
 
 
-<!-- VISION MISSION VALUES -->
+<section class="card">
 
-<section>
-
-<div class="container">
-
-<div class="section-card">
-
-<div class="section-head">
-
-<div class="label">
-OUR FOUNDATION
-</div>
-
-<h2>
-Vision, Mission & Values
-</h2>
+<h2>What We Provide</h2>
 
 <p>
-Our ministry seeks to honor God through faith, truth, love and service.
+Our website provides practical Christian resources for personal
+Bible study and daily spiritual encouragement.
 </p>
 
-</div>
+<ul class="list">
 
+<li>
+Daily Bible devotionals with Scripture, explanations and prayer.
+</li>
 
-<div class="card-grid">
+<li>
+Bible lessons and educational materials for students and learners.
+</li>
 
+<li>
+Christian resources available in English, Tamil and Sinhala.
+</li>
 
-<div class="info-card">
+<li>
+A growing archive of previous devotional content for personal study.
+</li>
 
-<div class="info-icon">
-👁️
-</div>
-
-<h3>
-Our Vision
-</h3>
-
-<p>
-To see people know Jesus Christ, grow in God's Word and live a life of faith.
-</p>
-
-</div>
-
-
-<div class="info-card">
-
-<div class="info-icon">
-🎯
-</div>
-
-<h3>
-Our Mission
-</h3>
-
-<p>
-To proclaim the Gospel, teach Scripture, pray for people and serve communities.
-</p>
-
-</div>
-
-
-<div class="info-card">
-
-<div class="info-icon">
-❤️
-</div>
-
-<h3>
-Our Values
-</h3>
-
-<p>
-Faith, biblical truth, prayer, love, integrity, compassion and faithful service.
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
-</div>
+</ul>
 
 </section>
 
 
-<!-- MINISTRY -->
+<section class="card">
 
-<section>
-
-<div class="container">
-
-<div class="section-card mission">
-
-<div class="label">
-WHAT WE DO
-</div>
-
-<h2>
-Our Ministry
-</h2>
+<h2>Our Content</h2>
 
 <p>
-
-Through our ministry activities and online resources,
-we seek to share the hope of Jesus Christ and encourage
-people in their relationship with God.
-
+GOH Ministries aims to provide clear, useful and Scripture-focused
+content. Devotionals are organized around a Bible verse and include
+a short explanation and prayer to encourage personal reflection.
 </p>
 
-
-<div class="mission-list">
-
-
-<div class="mission-item">
-
-<strong>
-📖 Bible Teaching
-</strong>
-
-<span>
-Teaching and studying God's Word to help believers grow in biblical understanding.
-</span>
-
-</div>
-
-
-<div class="mission-item">
-
-<strong>
-🙏 Prayer
-</strong>
-
-<span>
-Encouraging people to seek God through prayer and dependence on Him.
-</span>
-
-</div>
-
-
-<div class="mission-item">
-
-<strong>
-📢 Gospel
-</strong>
-
-<span>
-Sharing the good news of Jesus Christ and the message of salvation.
-</span>
-
-</div>
-
-
-<div class="mission-item">
-
-<strong>
-🤝 Service
-</strong>
-
-<span>
-Serving people with compassion, practical help and Christian love.
-</span>
-
-</div>
-
-
-</div>
-
-</div>
-
-</div>
+<p>
+Our educational resources are intended for people who want to
+study the Bible at their own pace and learn more about Christian
+faith and Scripture.
+</p>
 
 </section>
 
 
-<!-- BELIEFS -->
+<section class="card">
 
-<section>
-
-<div class="container">
-
-<div class="section-card">
-
-<div class="section-head">
-
-<div class="label">
-OUR FAITH
-</div>
-
-<h2>
-What We Believe
-</h2>
+<h2>Our Languages</h2>
 
 <p>
-Our ministry is centered on the Christian faith and the authority of God's Word.
+To make our resources accessible to more people, selected content
+is provided in three languages:
 </p>
 
-</div>
+<ul class="list">
 
+<li>🇬🇧 English</li>
+<li>🇱🇰 தமிழ் (Tamil)</li>
+<li>🇱🇰 සිංහල (Sinhala)</li>
 
-<div class="beliefs">
-
-
-<div class="belief">
-
-<strong>
-✝️ Jesus Christ
-</strong>
-
-<p>
-We believe Jesus Christ is the Son of God, Savior and Lord.
-</p>
-
-</div>
-
-
-<div class="belief">
-
-<strong>
-📖 The Bible
-</strong>
-
-<p>
-We believe the Bible is God's Word and the foundation for Christian faith and life.
-</p>
-
-</div>
-
-
-<div class="belief">
-
-<strong>
-🙏 Prayer
-</strong>
-
-<p>
-We believe prayer is an essential part of a believer's relationship with God.
-</p>
-
-</div>
-
-
-<div class="belief">
-
-<strong>
-❤️ Christian Love
-</strong>
-
-<p>
-We believe followers of Christ are called to love God and love others.
-</p>
-
-</div>
-
-
-<div class="belief">
-
-<strong>
-🌍 The Gospel
-</strong>
-
-<p>
-We believe the Gospel of Jesus Christ is the good news of salvation and hope.
-</p>
-
-</div>
-
-
-<div class="belief">
-
-<strong>
-⛪ Christian Community
-</strong>
-
-<p>
-We believe believers are called to worship, fellowship, grow and serve together.
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
-</div>
+</ul>
 
 </section>
 
 
-<!-- LANGUAGES -->
+<section class="card">
 
-<section>
-
-<div class="container">
-
-<div class="section-card">
-
-<div class="section-head">
-
-<div class="label">
-MINISTRY RESOURCES
-</div>
-
-<h2>
-Serving in Three Languages
-</h2>
+<h2>Our Commitment</h2>
 
 <p>
-We provide Christian resources to help people access God's Word in their preferred language.
+We are committed to keeping this website useful, accessible and
+respectful of our visitors. We continue to improve our Bible
+resources and website experience as the ministry grows.
 </p>
-
-</div>
-
-
-<div class="card-grid">
-
-
-<div class="info-card">
-
-<div class="info-icon">
-🇬🇧
-</div>
-
-<h3>
-English
-</h3>
-
-<p>
-Bible teaching, devotionals and Christian resources.
-</p>
-
-</div>
-
-
-<div class="info-card">
-
-<div class="info-icon">
-🇱🇰
-</div>
-
-<h3>
-தமிழ்
-</h3>
-
-<p>
-வேதாகம தியானங்கள், ஜெபங்கள் மற்றும் கிறிஸ்தவ வளங்கள்.
-</p>
-
-</div>
-
-
-<div class="info-card">
-
-<div class="info-icon">
-🇱🇰
-</div>
-
-<h3>
-සිංහල
-</h3>
-
-<p>
-බයිබල් ඉගැන්වීම්, භක්තිමත් පණිවිඩ සහ ක්‍රිස්තියානි සම්පත්.
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
-</div>
 
 </section>
 
 
-<!-- CTA -->
+<section class="card contact">
 
-<section>
-
-<div class="container">
-
-<div class="section-card cta">
-
-<div class="label">
-CONNECT WITH US
-</div>
-
-<h2>
-Be Part of the Journey
-</h2>
+<h2>Have a Question?</h2>
 
 <p>
-
-Read our daily devotional, pray with us, learn from God's Word
-and learn more about the ministry.
-
+If you have questions about our resources, devotionals,
+Bible lessons or the website, please contact us.
 </p>
 
-
-<div class="hero-buttons">
-
-<a
-href="devotional.html"
-class="btn primary">
-
-🙏 Daily Devotional
-
+<a href="contact.html">
+Contact GOH Ministries
 </a>
 
-
-<a
-href="contact.html"
-class="btn secondary">
-
-💬 Contact Us
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
 </section>
 
+</main>
 
-<!-- FOOTER -->
 
 <footer>
 
-<div class="container">
-
-<div class="footer">
-
-<div class="footer-brand">
-
 <img
+class="footer-logo"
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 alt="GOH Ministries">
 
-<div>
+<strong>GOH Ministries</strong>
 
-<strong>
-GOH Ministries
-</strong>
+<span>Gate of Heaven Ministries</span>
 
-<span>
-Gate of Heaven Ministries
-</span>
+<div class="footer-links">
 
-</div>
-
-</div>
-
-
-<nav class="footer-links">
-
-<a href="index.html">
-Home
-</a>
-
-<a href="about.html">
-About
-</a>
-
-<a href="contact.html">
-Contact
-</a>
-
-<a href="donate.html">
-Donate
-</a>
-
-<a href="privacy.html">
-Privacy
-</a>
-
-<a href="terms.html">
-Terms
-</a>
-
-<a href="disclaimer.html">
-Disclaimer
-</a>
-
-</nav>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="donate.html">Donate</a>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+<a href="disclaimer.html">Disclaimer</a>
 
 </div>
-
 
 <div class="copy">
-
 © 2026 GOH Ministries. All rights reserved.
-
-</div>
-
 </div>
 
 </footer>
 
 
-<!-- WHATSAPP -->
-
-<a
-class="whatsapp-btn"
-href="https://wa.me/94771190395"
-target="_blank"
-rel="noopener"
-aria-label="Contact GOH Ministries on WhatsApp">
-
-💬
-
-</a>
-
-
 <script>
 
-/* MOBILE MENU */
+const menu=document.getElementById("menu");
+const nav=document.getElementById("navLinks");
 
-const menuBtn =
-document.getElementById("menuBtn");
+menu.onclick=()=>{
 
-const mobileMenu =
-document.getElementById("mobileMenu");
+const open=
+nav.classList.toggle("mobile-open");
 
-
-menuBtn.addEventListener(
-"click",
-function(){
-
-const open =
-mobileMenu.classList.toggle("show");
-
-menuBtn.textContent =
-open ? "✕" : "☰";
-
-menuBtn.setAttribute(
+menu.setAttribute(
 "aria-expanded",
-open ? "true" : "false"
+open?"true":"false"
 );
 
-});
+menu.textContent=
+open?"✕":"☰";
 
+};
 
-/* CLOSE AFTER LINK CLICK */
+nav.querySelectorAll("a").forEach(link=>{
 
-mobileMenu
-.querySelectorAll("a")
-.forEach(function(link){
+link.onclick=()=>{
 
-link.addEventListener(
-"click",
-function(){
+nav.classList.remove("mobile-open");
 
-mobileMenu.classList.remove("show");
+menu.textContent="☰";
 
-menuBtn.textContent =
-"☰";
-
-menuBtn.setAttribute(
+menu.setAttribute(
 "aria-expanded",
 "false"
 );
 
-});
-
-});
-
-
-/* CLOSE WHEN CLICKING OUTSIDE */
-
-document.addEventListener(
-"click",
-function(e){
-
-if(
-mobileMenu.classList.contains("show") &&
-!mobileMenu.contains(e.target) &&
-!menuBtn.contains(e.target)
-){
-
-mobileMenu.classList.remove("show");
-
-menuBtn.textContent =
-"☰";
-
-menuBtn.setAttribute(
-"aria-expanded",
-"false"
-);
-
-}
+};
 
 });
 
