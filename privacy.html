@@ -1,8 +1,20 @@
-<!DOCTYPE html><html lang="en">
-<head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>Privacy Policy | GOH Ministries</title><meta name="description" content="Privacy Policy for GOH Ministries — Gate of Heaven Ministries.">
-<meta name="theme-color" content="#111827"><link rel="manifest" href="/manifest.json"><link rel="icon"
-href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"><style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Privacy Policy | GOH Ministries</title>
+
+<meta name="description"
+content="Privacy Policy for GOH Ministries, Gate of Heaven Ministries. Learn how we handle information, cookies, advertising and third-party services.">
+
+<link rel="icon"
+href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
+
+<style>
+
 *{
 box-sizing:border-box;
 margin:0;
@@ -11,9 +23,9 @@ padding:0
 
 body{
 font-family:Arial,Helvetica,sans-serif;
-background:#f3f6fb;
+background:#f4f7fb;
 color:#172033;
-line-height:1.6
+line-height:1.7
 }
 
 a{
@@ -26,21 +38,21 @@ width:min(850px,92%);
 margin:auto
 }
 
+/* HEADER */
+
 header{
+background:#fff;
+border-bottom:1px solid #e5e7eb;
 position:sticky;
 top:0;
-z-index:1000;
-background:rgba(255,255,255,.97);
-backdrop-filter:blur(10px);
-border-bottom:1px solid #e5e7eb
+z-index:100
 }
 
 .nav{
 min-height:64px;
 display:flex;
 align-items:center;
-justify-content:space-between;
-gap:10px
+justify-content:space-between
 }
 
 .logo{
@@ -52,8 +64,7 @@ gap:9px
 .logo img{
 width:42px;
 height:42px;
-object-fit:contain;
-border-radius:10px
+border-radius:9px
 }
 
 .logo-title{
@@ -66,116 +77,135 @@ font-size:8px;
 color:#6b7280
 }
 
-.home-btn{
-background:#111827;
-color:#fff;
-padding:9px 12px;
-border-radius:9px;
-font-size:9px;
-font-weight:900
+.nav-links{
+display:flex;
+gap:5px
 }
 
+.nav-links a{
+font-size:10px;
+font-weight:800;
+padding:8px 10px;
+border-radius:8px
+}
+
+.nav-links a:hover{
+background:#f1f5f9
+}
+
+.menu{
+display:none;
+background:#fff;
+border:1px solid #ddd;
+border-radius:8px;
+font-size:18px;
+padding:8px;
+cursor:pointer
+}
+
+/* HERO */
+
 .hero{
-padding:20px 0 12px
+padding:20px 0 10px
 }
 
 .hero-card{
-background:
-radial-gradient(circle at 90% 10%,#6366f155,transparent 30%),
-linear-gradient(135deg,#111827,#29364d);
+background:linear-gradient(135deg,#111827,#334155);
 color:#fff;
-border-radius:22px;
-padding:30px 20px;
-text-align:center
+text-align:center;
+padding:35px 20px;
+border-radius:20px
 }
 
 .hero-logo{
-width:62px;
-height:62px;
+width:60px;
 background:#fff;
-border-radius:14px;
-padding:5px;
-object-fit:contain;
-margin-bottom:9px
+border-radius:13px;
+padding:4px
 }
 
 .label{
 font-size:9px;
 font-weight:900;
 letter-spacing:1px;
-color:#fbbf24
+color:#fbbf24;
+margin-top:8px
 }
 
-.hero h1{
+h1{
 font-size:30px;
-margin:7px 0
+margin:5px 0
 }
 
 .hero p{
-font-size:10px;
+font-size:11px;
 color:#cbd5e1
 }
 
-.content{
+/* CONTENT */
+
+.card{
 background:#fff;
 border:1px solid #e5e7eb;
 border-radius:18px;
-padding:23px;
-margin-bottom:20px;
-box-shadow:0 7px 25px #0f172a0a
-}
-
-.content h2{
-font-size:19px;
-margin:20px 0 7px;
-color:#111827
-}
-
-.content h2:first-child{
-margin-top:0
-}
-
-.content p,
-.content li{
-font-size:11px;
-color:#4b5563
-}
-
-.content ul{
-padding-left:20px;
-margin-top:7px
-}
-
-.content li{
-margin-bottom:5px
-}
-
-.content a{
-color:#2563eb;
-font-weight:700
+padding:25px;
+margin:12px 0
 }
 
 .updated{
-font-size:9px!important;
-color:#6b7280!important;
-margin-bottom:16px
+font-size:10px;
+color:#6b7280;
+margin-bottom:20px;
+text-align:center
 }
+
+.card h2{
+font-size:19px;
+margin:22px 0 7px;
+color:#111827
+}
+
+.card h2:first-of-type{
+margin-top:0
+}
+
+.card p{
+font-size:12px;
+color:#4b5563;
+margin-bottom:10px
+}
+
+.card ul{
+padding-left:20px;
+margin-bottom:10px
+}
+
+.card li{
+font-size:12px;
+color:#4b5563;
+margin-bottom:5px
+}
+
+.email{
+color:#2563eb;
+font-weight:800
+}
+
+/* FOOTER */
 
 footer{
 background:#0b1120;
 color:#fff;
-padding:25px 0 17px;
+margin-top:20px;
+padding:25px 0;
 text-align:center
 }
 
 .footer-logo{
-width:42px;
-height:42px;
+width:38px;
 background:#fff;
-border-radius:9px;
-padding:3px;
-object-fit:contain;
-margin-bottom:7px
+border-radius:7px;
+padding:3px
 }
 
 footer strong{
@@ -191,9 +221,9 @@ color:#94a3b8
 .footer-links{
 display:flex;
 justify-content:center;
-gap:15px;
+gap:14px;
 flex-wrap:wrap;
-margin-top:14px
+margin-top:12px
 }
 
 .footer-links a{
@@ -203,138 +233,405 @@ color:#cbd5e1
 
 .copy{
 border-top:1px solid #ffffff18;
-margin-top:14px;
+margin-top:15px;
 padding-top:12px;
 font-size:8px;
 color:#64748b
 }
 
-.whatsapp-btn{
-position:fixed;
-right:16px;
-bottom:16px;
-width:52px;
-height:52px;
-display:grid;
-place-items:center;
-background:#25d366;
-color:#fff;
-border-radius:50%;
-font-size:24px;
-z-index:9999;
-box-shadow:0 6px 18px #0003
+/* MOBILE */
+
+@media(max-width:650px){
+
+.nav-links{
+display:none
 }
-</style></head><body><header><div class="container nav"><a href="index.html" class="logo"><img
+
+.menu{
+display:block
+}
+
+.mobile-open{
+position:absolute;
+top:64px;
+left:0;
+right:0;
+background:#fff;
+border-bottom:1px solid #ddd;
+display:flex!important;
+flex-direction:column;
+padding:10px
+}
+
+.mobile-open a{
+padding:12px
+}
+
+.card{
+padding:18px
+}
+
+.card h2{
+font-size:18px
+}
+
+.card p,
+.card li{
+font-size:12px
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="container nav">
+
+<a href="index.html" class="logo">
+
+<img
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 alt="GOH Ministries">
 
-<div><div class="logo-title">GOH Ministries</div><div class="logo-sub">
+<div>
+
+<div class="logo-title">
+GOH Ministries
+</div>
+
+<div class="logo-sub">
 Gate of Heaven Ministries
-</div></div></a><a href="index.html" class="home-btn">
-🏠 Home
-</a></div></header><section class="hero"><div class="container"><div class="hero-card"><img
+</div>
+
+</div>
+
+</a>
+
+<nav class="nav-links" id="navLinks">
+
+<a href="index.html">🏠 Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="donate.html">Donate</a>
+
+</nav>
+
+<button
+class="menu"
+id="menu"
+aria-label="Open menu"
+aria-expanded="false">
+
+☰
+
+</button>
+
+</div>
+
+</header>
+
+
+<main class="container">
+
+<section class="hero">
+
+<div class="hero-card">
+
+<img
 class="hero-logo"
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
-alt="Gate of Heaven Ministries">
+alt="GOH Ministries">
 
 <div class="label">
 GATE OF HEAVEN MINISTRIES
-</div><h1>Privacy Policy</h1><p>Your privacy matters to us.</p></div></div></section><main><div class="container"><div class="content"><p class="updated">
-Last updated: August 28, 2026
-</p><h2>1. Introduction</h2><p>
-GOH Ministries ("we", "our", or "us") operates the Gate of Heaven Ministries website. This Privacy Policy explains how information may be collected, used, stored and protected when you visit or use our website and its related services.
-</p><h2>2. Information We Collect</h2><p>
-We may receive information that you voluntarily provide when you contact us, request prayer, submit an enquiry, communicate with the ministry, participate in ministry activities, or make a donation.
-</p><p>
-Depending on the service you use, this may include your name, email address, telephone number, message, donation-related information and other information that you choose to provide.
-</p><h2>3. Automatically Collected Information</h2><p>
-When you visit our website, certain technical information may be collected automatically by our website, hosting provider, analytics services or other third-party services.
-</p><p>
-This information may include browser type, device type, operating system, approximate geographic location, referring website, pages visited, date and time of visits, and general website usage information.
-</p><p>
-This information is generally used to understand website usage, improve performance, maintain security and provide a better experience for visitors.
-</p><h2>4. Cookies and Similar Technologies</h2><p>
-Our website may use cookies, local storage and similar technologies. Cookies are small files or pieces of information stored on your device that can help websites remember preferences, understand usage and provide certain functionality.
-</p><p>
-Cookies may be used for essential website functionality, security, analytics, preferences and advertising purposes.
-</p><p>
-You can control or disable cookies through your browser settings. Disabling certain cookies may affect some website functionality.
-</p><h2>5. Advertising and Google AdSense</h2><p>
-GOH Ministries may display advertisements provided by third-party advertising networks, including Google AdSense.
-</p><p>
-When advertising services such as Google AdSense are used, Google and its partners may use cookies, web beacons or similar technologies to collect information about visits to this website and other websites. This information may be used to provide, personalize, measure and improve advertising.
-</p><p>
-Third-party vendors, including Google, may use cookies to serve advertisements based on a user's prior visits to this website or other websites.
-</p><p>
-Where applicable, users may be shown personalized advertising based on information associated with their browsing activity. Users may manage or limit personalized advertising through Google's advertising settings and through the controls provided by their browser or device.
-</p><p>
-For more information about how Google uses information when you use websites or applications that use its services, please review Google's privacy information and advertising controls.
-</p><h2>6. How We Use Information</h2><ul><li>To respond to enquiries and messages.</li><li>To respond to prayer requests when applicable.</li><li>To provide ministry resources and services.</li><li>To communicate with individuals who contact the ministry.</li><li>To process and record donations when applicable.</li><li>To improve website content, performance and functionality.</li><li>To understand general website usage.</li><li>To maintain website security and prevent misuse.</li><li>To comply with applicable legal and regulatory requirements.</li></ul><h2>7. Third-Party Services</h2><p>
-Our website may use or link to services operated by third parties, including hosting providers, analytics providers, advertising networks, social media platforms, communication services, payment providers and other ministry resources.
-</p><p>
-Third-party services may collect and process information according to their own privacy policies and terms. GOH Ministries does not control the privacy practices of external websites or services.
-</p><h2>8. External Links</h2><p>
-Our website may contain links to external websites, social media platforms, Bible resources, payment services, WhatsApp, YouTube and other ministry or informational resources.
-</p><p>
-When you leave our website and visit an external service, that service's own privacy policy and terms apply. We encourage visitors to review the privacy policies of external websites before providing personal information.
-</p><h2>9. Donations and Payments</h2><p>
-If you make a donation through our website or through a third-party payment service, certain information may be processed by the relevant payment provider to complete and record the transaction.
-</p><p>
-GOH Ministries may receive limited information necessary to identify or record a donation, depending on the payment method used.
-</p><p>
-Payment providers may have their own privacy policies and terms, which apply to information processed directly by those providers.
-</p><h2>10. Data Security</h2><p>
-We take reasonable measures to protect personal information under our control from unauthorized access, misuse, alteration or disclosure.
-</p><p>
-However, no method of electronic transmission or storage can be guaranteed to be completely secure. Therefore, we cannot guarantee absolute security of information transmitted to or through our website.
-</p><h2>11. Children's Privacy</h2><p>
-Our website is intended for a general audience. We do not knowingly collect personal information from children for purposes prohibited by applicable law.
-</p><p>
-If you believe that a child has provided personal information to us without appropriate permission, please contact us so that we can review and take appropriate action.
-</p><h2>12. Your Privacy Choices</h2><p>
-You may choose not to provide personal information when providing it is optional.
-</p><p>
-You may also manage cookies through your browser or device settings and use available advertising controls provided by advertising providers such as Google.
-</p><p>
-Where applicable and subject to legal requirements, you may contact us to ask about personal information that you have provided to us.
-</p><h2>13. Data Retention</h2><p>
-We retain personal information only for as long as reasonably necessary for the purpose for which it was collected, to provide requested services, maintain appropriate records, resolve disputes, protect our interests, or comply with applicable legal requirements.
-</p><h2>14. Changes to This Privacy Policy</h2><p>
-We may update this Privacy Policy from time to time to reflect changes to our website, services, legal requirements or privacy practices.
-</p><p>
-When changes are made, the updated version will be published on this page together with a revised "Last updated" date.
-</p><h2>15. Contact Us</h2><p>
-If you have questions about this Privacy Policy, how information is handled, or your interaction with GOH Ministries, please contact us through our <a href="contact.html">Contact page</a>.
-</p><h2>16. Acceptance of This Policy</h2><p>
-By using the GOH Ministries website, you acknowledge that you have read and understood this Privacy Policy. Where consent is legally required for specific data processing or advertising technologies, appropriate consent mechanisms may be provided.
-</p></div></div></main><footer><div class="container"><img
+</div>
+
+<h1>Privacy Policy</h1>
+
+<p>
+How GOH Ministries handles information, cookies and services.
+</p>
+
+</div>
+
+</section>
+
+
+<section class="card">
+
+<div class="updated">
+Last updated: August 30, 2026
+</div>
+
+
+<h2>1. Introduction</h2>
+
+<p>
+GOH Ministries ("we", "us", or "our"), also known as Gate of
+Heaven Ministries, operates gohministries.org.
+</p>
+
+<p>
+We respect your privacy and are committed to explaining clearly
+how information may be collected and used when you visit our
+website.
+</p>
+
+
+<h2>2. Information We May Collect</h2>
+
+<p>
+Depending on how you use our website, we may receive information
+that you voluntarily provide, including:
+</p>
+
+<ul>
+
+<li>Your name or email address when you contact us.</li>
+
+<li>Information provided when using registration or educational
+services.</li>
+
+<li>Messages or other information sent through our support
+channels.</li>
+
+</ul>
+
+<p>
+We may also receive limited technical information such as browser
+type, device type, pages visited and general website usage data.
+</p>
+
+
+<h2>3. How We Use Information</h2>
+
+<p>
+Information may be used to:
+</p>
+
+<ul>
+
+<li>Provide and improve our website and services.</li>
+
+<li>Respond to questions and support requests.</li>
+
+<li>Provide lessons and educational resources.</li>
+
+<li>Maintain website security.</li>
+
+<li>Understand how visitors use our website.</li>
+
+<li>Display and measure advertising.</li>
+
+</ul>
+
+<p>
+We do not sell your personal information.
+</p>
+
+
+<h2>4. Cookies and Advertising</h2>
+
+<p>
+GOH Ministries may use cookies and similar technologies to improve
+the website, understand visitor activity and support advertising.
+</p>
+
+<p>
+Our website may use Google AdSense to display advertisements.
+Google and its advertising partners may use cookies or similar
+technologies to serve and measure advertisements.
+</p>
+
+<p>
+You can manage or disable cookies through your browser settings.
+Some website features may not work properly if cookies are
+disabled.
+</p>
+
+
+<h2>5. Third-Party Services</h2>
+
+<p>
+Our website may use third-party services for advertising,
+communication, hosting, content delivery, payments, education or
+other technical functions.
+</p>
+
+<p>
+Third-party services may process information according to their
+own privacy policies and terms.
+</p>
+
+
+<h2>6. WhatsApp</h2>
+
+<p>
+If you contact GOH Ministries through WhatsApp, your communication
+is also subject to WhatsApp's privacy policy and terms.
+</p>
+
+<p>
+We use WhatsApp as one of our communication and support channels.
+</p>
+
+
+<h2>7. Children's Privacy</h2>
+
+<p>
+Our website is not intended to knowingly collect personal
+information from children without appropriate parental or guardian
+involvement.
+</p>
+
+<p>
+If you believe that a child has provided personal information to
+us, please contact us so we can review the situation and take
+appropriate action.
+</p>
+
+
+<h2>8. Data Security</h2>
+
+<p>
+We take reasonable measures to protect information associated with
+our website and services. However, no method of transmission or
+storage over the internet can be guaranteed to be completely
+secure.
+</p>
+
+
+<h2>9. External Links</h2>
+
+<p>
+Our website may contain links to third-party websites. We are not
+responsible for the privacy practices, content or security of
+external websites.
+</p>
+
+<p>
+We recommend reviewing the privacy policy of any third-party
+website you visit.
+</p>
+
+
+<h2>10. Your Choices</h2>
+
+<p>
+Depending on applicable law and the information involved, you may
+contact us to ask questions about information associated with you,
+request correction of inaccurate information, or request deletion
+where applicable.
+</p>
+
+
+<h2>11. Changes to This Policy</h2>
+
+<p>
+We may update this Privacy Policy when our website, services or
+legal requirements change.
+</p>
+
+<p>
+Any updated version will be published on this page with a revised
+"Last updated" date.
+</p>
+
+
+<h2>12. Contact Us</h2>
+
+<p>
+If you have questions about this Privacy Policy or our privacy
+practices, please contact:
+</p>
+
+<p>
+<strong>GOH Ministries</strong><br>
+Gate of Heaven Ministries<br>
+Email:
+<a class="email" href="mailto:gohsupport@gmail.com">
+gohsupport@gmail.com
+</a>
+</p>
+
+</section>
+
+</main>
+
+
+<footer>
+
+<img
 class="footer-logo"
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 alt="GOH Ministries">
 
 <strong>GOH Ministries</strong>
 
-<span>
-Gate of Heaven Ministries
-</span><nav class="footer-links"><a href="index.html">Home</a>
+<span>Gate of Heaven Ministries</span>
 
+<div class="footer-links">
+
+<a href="index.html">Home</a>
 <a href="about.html">About</a>
-
 <a href="contact.html">Contact</a>
-
 <a href="donate.html">Donate</a>
-
+<a href="privacy.html">Privacy</a>
 <a href="terms.html">Terms</a>
+<a href="disclaimer.html">Disclaimer</a>
 
-</nav><div class="copy">
+</div>
+
+<div class="copy">
 © 2026 GOH Ministries. All rights reserved.
-</div></div></footer><a
-class="whatsapp-btn"
-href="https://wa.me/94771190395"
-target="_blank"
-rel="noopener"
-aria-label="Contact GOH Ministries on WhatsApp">
+</div>
 
-💬
+</footer>
 
-</a></body></html>
+
+<script>
+
+const menu=document.getElementById("menu");
+const nav=document.getElementById("navLinks");
+
+menu.onclick=()=>{
+
+const open=
+nav.classList.toggle("mobile-open");
+
+menu.setAttribute(
+"aria-expanded",
+open?"true":"false"
+);
+
+menu.textContent=
+open?"✕":"☰";
+
+};
+
+nav.querySelectorAll("a").forEach(link=>{
+
+link.onclick=()=>{
+
+nav.classList.remove("mobile-open");
+
+menu.textContent="☰";
+
+menu.setAttribute(
+"aria-expanded",
+"false"
+);
+
+};
+
+});
+
+</script>
+
+</body>
+</html>
