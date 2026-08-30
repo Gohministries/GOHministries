@@ -1,10 +1,19 @@
-<!DOCTYPE html><html lang="en">
-<head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>Disclaimer | GOH Ministries</title><meta name="description"
-content="Disclaimer for GOH Ministries — Gate of Heaven Ministries.">
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-<meta name="theme-color" content="#111827"><link rel="manifest" href="/manifest.json"><link rel="icon"
-href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"><style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Disclaimer | GOH Ministries</title>
+
+<meta name="description"
+content="Disclaimer for GOH Ministries, Gate of Heaven Ministries.">
+
+<link rel="icon"
+href="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png">
+
+<style>
 
 *{
 box-sizing:border-box;
@@ -14,9 +23,9 @@ padding:0
 
 body{
 font-family:Arial,Helvetica,sans-serif;
-background:#f3f6fb;
+background:#f4f7fb;
 color:#172033;
-line-height:1.6
+line-height:1.7
 }
 
 a{
@@ -29,23 +38,19 @@ width:min(850px,92%);
 margin:auto
 }
 
-/* HEADER */
-
 header{
+background:#fff;
+border-bottom:1px solid #e5e7eb;
 position:sticky;
 top:0;
-z-index:1000;
-background:rgba(255,255,255,.97);
-backdrop-filter:blur(10px);
-border-bottom:1px solid #e5e7eb
+z-index:100
 }
 
 .nav{
 min-height:64px;
 display:flex;
 align-items:center;
-justify-content:space-between;
-gap:10px
+justify-content:space-between
 }
 
 .logo{
@@ -57,14 +62,12 @@ gap:9px
 .logo img{
 width:42px;
 height:42px;
-object-fit:contain;
-border-radius:10px
+border-radius:9px
 }
 
 .logo-title{
 font-size:14px;
-font-weight:900;
-color:#111827
+font-weight:900
 }
 
 .logo-sub{
@@ -72,131 +75,129 @@ font-size:8px;
 color:#6b7280
 }
 
-.home-btn{
-background:#111827;
-color:#fff;
-padding:9px 12px;
-border-radius:9px;
-font-size:9px;
-font-weight:900
+.nav-links{
+display:flex;
+gap:5px
 }
 
-/* HERO */
+.nav-links a{
+font-size:10px;
+font-weight:800;
+padding:8px 10px;
+border-radius:8px
+}
+
+.nav-links a:hover{
+background:#f1f5f9
+}
+
+.menu{
+display:none;
+background:#fff;
+border:1px solid #ddd;
+border-radius:8px;
+font-size:18px;
+padding:8px;
+cursor:pointer
+}
 
 .hero{
-padding:20px 0 12px
+padding:20px 0 10px
 }
 
 .hero-card{
-background:
-radial-gradient(circle at 90% 10%,#6366f155,transparent 30%),
-radial-gradient(circle at 10% 90%,#fbbf2430,transparent 30%),
-linear-gradient(135deg,#111827,#29364d);
+background:linear-gradient(135deg,#111827,#334155);
 color:#fff;
-border-radius:22px;
-padding:30px 20px;
 text-align:center;
-box-shadow:0 15px 35px #11182722
+padding:35px 20px;
+border-radius:20px
 }
 
 .hero-logo{
-width:62px;
-height:62px;
+width:60px;
 background:#fff;
-border-radius:14px;
-padding:5px;
-object-fit:contain;
-margin-bottom:9px
+border-radius:13px;
+padding:4px
 }
 
 .label{
 font-size:9px;
 font-weight:900;
 letter-spacing:1px;
-color:#fbbf24
+color:#fbbf24;
+margin-top:8px
 }
 
-.hero h1{
+h1{
 font-size:30px;
-margin:7px 0
+margin:5px 0
 }
 
 .hero p{
-font-size:10px;
+font-size:11px;
 color:#cbd5e1
 }
 
-/* CONTENT */
-
-.content{
+.card{
 background:#fff;
 border:1px solid #e5e7eb;
 border-radius:18px;
-padding:23px;
-margin:10px 0 20px;
-box-shadow:0 7px 25px #0f172a0a
-}
-
-.content h2{
-font-size:19px;
-margin:20px 0 7px;
-color:#111827
-}
-
-.content h2:first-child{
-margin-top:0
-}
-
-.content p,
-.content li{
-font-size:11px;
-color:#4b5563
-}
-
-.content ul{
-padding-left:20px;
-margin-top:7px
-}
-
-.content li{
-margin-bottom:6px
+padding:25px;
+margin:12px 0
 }
 
 .updated{
-font-size:9px!important;
-color:#6b7280!important;
-margin-bottom:16px
+font-size:10px;
+color:#6b7280;
+margin-bottom:20px;
+text-align:center
 }
 
-/* IMPORTANT BOX */
-
-.notice{
-margin-top:15px;
-padding:14px;
-border-radius:11px;
-background:#fff7ed;
-border:1px solid #fed7aa;
-color:#9a3412;
-font-size:10px
+.card h2{
+font-size:19px;
+margin:22px 0 7px;
+color:#111827
 }
 
-/* FOOTER */
+.card h2:first-of-type{
+margin-top:0
+}
+
+.card p{
+font-size:12px;
+color:#4b5563;
+margin-bottom:10px
+}
+
+.card ul{
+padding-left:20px;
+margin-bottom:10px
+}
+
+.card li{
+font-size:12px;
+color:#4b5563;
+margin-bottom:5px
+}
+
+.email{
+color:#2563eb;
+font-weight:800
+}
 
 footer{
 background:#0b1120;
 color:#fff;
-padding:25px 0 17px;
+margin-top:20px;
+padding:25px 0;
 text-align:center
 }
 
 .footer-logo{
-width:42px;
-height:42px;
+width:38px;
 background:#fff;
-border-radius:9px;
-padding:3px;
-object-fit:contain;
-margin-bottom:7px
+border-radius:7px;
+padding:3px
 }
 
 footer strong{
@@ -212,9 +213,9 @@ color:#94a3b8
 .footer-links{
 display:flex;
 justify-content:center;
-gap:15px;
+gap:14px;
 flex-wrap:wrap;
-margin-top:14px
+margin-top:12px
 }
 
 .footer-links a{
@@ -222,154 +223,324 @@ font-size:9px;
 color:#cbd5e1
 }
 
-.footer-links a:hover{
-color:#fbbf24
-}
-
 .copy{
 border-top:1px solid #ffffff18;
-margin-top:14px;
+margin-top:15px;
 padding-top:12px;
 font-size:8px;
 color:#64748b
 }
 
-/* WHATSAPP */
+@media(max-width:650px){
 
-.whatsapp-btn{
-position:fixed;
-right:16px;
-bottom:16px;
-width:52px;
-height:52px;
-display:grid;
-place-items:center;
-background:#25d366;
-color:#fff;
-border-radius:50%;
-font-size:24px;
-z-index:9999;
-box-shadow:0 6px 18px #0003
+.nav-links{
+display:none
 }
 
-</style></head><body><!-- HEADER --><header><div class="container nav"><a href="index.html" class="logo"><img
+.menu{
+display:block
+}
+
+.mobile-open{
+position:absolute;
+top:64px;
+left:0;
+right:0;
+background:#fff;
+border-bottom:1px solid #ddd;
+display:flex!important;
+flex-direction:column;
+padding:10px
+}
+
+.mobile-open a{
+padding:12px
+}
+
+.card{
+padding:18px
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="container nav">
+
+<a href="index.html" class="logo">
+
+<img
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 alt="GOH Ministries">
 
-<div><div class="logo-title">
+<div>
+
+<div class="logo-title">
 GOH Ministries
-</div><div class="logo-sub">
+</div>
+
+<div class="logo-sub">
 Gate of Heaven Ministries
-</div></div></a><a
-href="index.html"
-class="home-btn">
+</div>
 
-🏠 Home
+</div>
 
-</a></div></header><!-- HERO --><section class="hero"><div class="container"><div class="hero-card"><img
+</a>
+
+<nav class="nav-links" id="navLinks">
+
+<a href="index.html">🏠 Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="donate.html">Donate</a>
+
+</nav>
+
+<button
+class="menu"
+id="menu"
+aria-label="Open menu"
+aria-expanded="false">
+
+☰
+
+</button>
+
+</div>
+
+</header>
+
+
+<main class="container">
+
+<section class="hero">
+
+<div class="hero-card">
+
+<img
 class="hero-logo"
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
-alt="Gate of Heaven Ministries">
+alt="GOH Ministries">
 
 <div class="label">
 GATE OF HEAVEN MINISTRIES
-</div><h1>
-Disclaimer
-</h1><p>
-Important information about the use of this website.
-</p></div></div></section><!-- CONTENT --><main><div class="container"><div class="content"><p class="updated">
-Last updated: August 28, 2026
-</p><h2>
-1. General Information
-</h2><p>
-The information provided on the GOH Ministries website is for general informational, educational and Christian ministry purposes. We make reasonable efforts to provide useful and accurate information, but we do not guarantee that all information will always be complete, current or error-free.
-</p><h2>
-2. Christian and Devotional Content
-</h2><p>
-Daily devotionals, Bible explanations, prayers, teachings and other Christian materials are provided for spiritual encouragement and education. They are not intended to replace personal Bible study, pastoral guidance or the advice of a qualified professional.
-</p><h2>
-3. Bible Translations
-</h2><p>
-Bible passages displayed on this website may come from different Bible translations. Copyright and licensing rights for copyrighted Bible translations remain with their respective publishers or copyright holders.
-</p><p>
-Where Scripture is quoted, the translation or reference may be identified on the relevant page.
-</p><h2>
-4. Prayer Requests
-</h2><p>
-Prayer resources and prayer requests are provided as part of our Christian ministry. Submission of a prayer request does not guarantee a particular outcome. We encourage individuals facing serious personal, medical, legal or emergency situations to seek appropriate professional assistance.
-</p><h2>
-5. Ministry Information
-</h2><p>
-Information about GOH Ministries, ministry activities, events, projects and services may change over time. We reserve the right to update or correct information when necessary.
-</p><h2>
-6. Donations
-</h2><p>
-Information provided about donations is intended to explain ways to support the ministry. Payment processing may be handled by third-party payment providers. GOH Ministries does not control the systems operated by external payment providers.
-</p><div class="notice">
-Donations should only be made through payment methods officially provided or identified by GOH Ministries. Please verify payment details before making a donation.
-</div><h2>
-7. Advertising
-</h2><p>
-This website may display advertisements provided by third-party advertising networks. The appearance of an advertisement does not necessarily mean that GOH Ministries endorses the advertised product, service or organization.
-</p><h2>
-8. External Websites
-</h2><p>
-Our website may contain links to third-party websites, applications, social media platforms, Bible resources, payment services and other external resources. We do not control these external websites and are not responsible for their content, availability, security or privacy practices.
-</p><h2>
-9. Testimonials and User Content
-</h2><p>
-Where testimonials, comments, photographs or other user-submitted materials are published with permission, they represent the experiences or opinions of the respective individuals and do not necessarily represent the views of every member of GOH Ministries.
-</p><h2>
-10. No Professional Advice
-</h2><p>
-Nothing on this website should be interpreted as medical, legal, financial, psychological or other professional advice. When professional advice is required, please consult an appropriately qualified professional.
-</p><h2>
-11. Availability
-</h2><p>
-We try to keep our website and ministry resources available, but we do not guarantee uninterrupted access. Technical problems, maintenance, third-party services or circumstances beyond our control may temporarily affect availability.
-</p><h2>
-12. Accuracy and Changes
-</h2><p>
-GOH Ministries may modify, remove or update website content at any time without prior notice. We are not obligated to update every piece of information immediately after circumstances change.
-</p><h2>
-13. Limitation
-</h2><p>
-To the extent permitted by applicable law, GOH Ministries shall not be responsible for losses or damages arising from reliance on information provided through this website or from the use of external websites linked from this website.
-</p><h2>
-14. Contact
-</h2><p>
-If you have questions about this Disclaimer, please contact GOH Ministries through our Contact page.
-</p></div></div></main><!-- FOOTER --><footer><div class="container"><img
+</div>
+
+<h1>Disclaimer</h1>
+
+<p>
+Important information about the content and services on this website.
+</p>
+
+</div>
+
+</section>
+
+
+<section class="card">
+
+<div class="updated">
+Last updated: August 30, 2026
+</div>
+
+
+<h2>1. General Information</h2>
+
+<p>
+The information provided on gohministries.org is for general
+informational, educational and spiritual purposes.
+</p>
+
+<p>
+GOH Ministries, also known as Gate of Heaven Ministries, makes
+reasonable efforts to provide useful and accurate content, but we
+do not guarantee that all information on the website is complete,
+current or error-free.
+</p>
+
+
+<h2>2. Bible and Devotional Content</h2>
+
+<p>
+Our Bible lessons, daily devotionals, Bible verses, explanations
+and prayers are provided for Christian educational and devotional
+purposes.
+</p>
+
+<p>
+Readers should use personal judgment and, where appropriate, seek
+guidance from a qualified pastor, church leader or other
+appropriate professional.
+</p>
+
+
+<h2>3. No Professional Advice</h2>
+
+<p>
+The content on this website should not be considered medical,
+legal, financial, psychological or other professional advice.
+</p>
+
+<p>
+If you need professional advice, please consult a suitably
+qualified professional.
+</p>
+
+
+<h2>4. External Links</h2>
+
+<p>
+Our website may contain links to websites and services operated by
+third parties.
+</p>
+
+<p>
+GOH Ministries does not control and is not responsible for the
+content, availability, privacy practices or policies of external
+websites.
+</p>
+
+
+<h2>5. Advertising</h2>
+
+<p>
+This website may display advertisements provided by third-party
+advertising services, including Google AdSense.
+</p>
+
+<p>
+Advertisements may be selected or delivered automatically based
+on various factors. The presence of an advertisement does not
+necessarily mean that GOH Ministries endorses the advertised
+product or service.
+</p>
+
+
+<h2>6. Affiliate or Promotional Content</h2>
+
+<p>
+If we use affiliate links or promotional links in the future, they
+may result in a commission or other benefit to GOH Ministries at
+no additional cost to the user.
+</p>
+
+<p>
+Any applicable affiliate relationship will be identified where
+required.
+</p>
+
+
+<h2>7. Website Availability</h2>
+
+<p>
+We aim to keep the website available and functional, but we do not
+guarantee uninterrupted access or that the website will always be
+free from errors, interruptions or technical problems.
+</p>
+
+
+<h2>8. Changes</h2>
+
+<p>
+We may update, change or remove website content, services or
+features at any time without prior notice.
+</p>
+
+
+<h2>9. Contact</h2>
+
+<p>
+If you have questions about this Disclaimer, please contact us:
+</p>
+
+<p>
+<strong>GOH Ministries</strong><br>
+Gate of Heaven Ministries<br>
+Email:
+<a class="email" href="mailto:gohsupport@gmail.com">
+gohsupport@gmail.com
+</a>
+</p>
+
+</section>
+
+</main>
+
+
+<footer>
+
+<img
 class="footer-logo"
 src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
 alt="GOH Ministries">
 
-<strong>
-GOH Ministries
-</strong><span>
-Gate of Heaven Ministries
-</span><nav class="footer-links"><a href="index.html">
-Home
-</a><a href="about.html">
-About
-</a><a href="contact.html">
-Contact
-</a><a href="donate.html">
-Donate
-</a><a href="privacy.html">
-Privacy
-</a><a href="terms.html">
-Terms
-</a></nav><div class="copy">
+<strong>GOH Ministries</strong>
+
+<span>Gate of Heaven Ministries</span>
+
+<div class="footer-links">
+
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="donate.html">Donate</a>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+<a href="disclaimer.html">Disclaimer</a>
+
+</div>
+
+<div class="copy">
 © 2026 GOH Ministries. All rights reserved.
-</div></div></footer><!-- WHATSAPP --><a
-class="whatsapp-btn"
-href="https://wa.me/94771190395"
-target="_blank"
-rel="noopener"
-aria-label="Contact GOH Ministries on WhatsApp">
+</div>
 
-💬
+</footer>
 
-</a></body>
+
+<script>
+
+const menu=document.getElementById("menu");
+const nav=document.getElementById("navLinks");
+
+menu.onclick=()=>{
+
+const open=
+nav.classList.toggle("mobile-open");
+
+menu.setAttribute(
+"aria-expanded",
+open?"true":"false"
+);
+
+menu.textContent=
+open?"✕":"☰";
+
+};
+
+nav.querySelectorAll("a").forEach(link=>{
+
+link.onclick=()=>{
+
+nav.classList.remove("mobile-open");
+
+menu.textContent="☰";
+
+menu.setAttribute(
+"aria-expanded",
+"false"
+);
+
+};
+
+});
+
+</script>
+
+</body>
 </html>
