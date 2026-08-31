@@ -13,232 +13,712 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#f4f7fb;color:#172033;line-height:1.6}
+
+body{
+font-family:Arial,sans-serif;
+background:#f4f7fb;
+color:#172033;
+line-height:1.6
+}
+
 a{text-decoration:none;color:inherit}
 button{font-family:inherit}
 .container{width:min(900px,92%);margin:auto}
 
-header{background:#fff;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:10}
-.nav{height:64px;display:flex;align-items:center;justify-content:space-between}
-.logo{display:flex;align-items:center;gap:9px}
-.logo img{width:42px;height:42px;border-radius:9px}
-.logo-title{font-size:14px;font-weight:900}
-.logo-sub{font-size:8px;color:#6b7280}
-.nav-links{display:flex;gap:6px}
-.nav-links a{font-size:10px;font-weight:800;padding:8px}
-.menu{display:none;background:#fff;border:1px solid #ddd;border-radius:8px;font-size:18px;padding:8px;cursor:pointer}
+header{
+background:#fff;
+border-bottom:1px solid #e5e7eb;
+position:sticky;
+top:0;
+z-index:10
+}
 
-.hero{padding:18px 0 10px}
-.hero-card{background:linear-gradient(135deg,#111827,#334155);color:#fff;text-align:center;padding:28px 18px;border-radius:20px}
-.hero-logo{width:60px;background:#fff;border-radius:13px;padding:4px}
-.label{font-size:9px;font-weight:900;letter-spacing:1px;color:#fbbf24;margin-top:8px}
-h1{font-size:32px;margin:5px 0}
-.date{display:inline-block;background:#ffffff18;padding:7px 15px;border-radius:8px;font-size:11px;font-weight:800}
+.nav{
+height:64px;
+display:flex;
+align-items:center;
+justify-content:space-between
+}
 
-.box{background:#fff;border:1px solid #e5e7eb;border-radius:18px;padding:20px;margin:10px 0}
-.lang-title{text-align:center;font-size:9px;font-weight:900;color:#6b7280;margin-bottom:8px}
-.languages{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.lang{border:1px solid #ddd;background:#f8fafc;border-radius:8px;padding:10px;font-weight:800;font-size:10px;cursor:pointer}
-.lang.active{background:#111827;color:#fff}
+.logo{
+display:flex;
+align-items:center;
+gap:9px
+}
 
-.section{padding:18px 0;border-bottom:1px solid #eee}
-.section:last-child{border:0}
-.section h2{font-size:10px;color:#6b7280;margin-bottom:8px}
-.verse{background:#fffbea;border-left:4px solid #f59e0b;padding:15px;border-radius:8px;font-size:17px;font-weight:700}
-.ref{display:block;color:#92400e;font-size:11px;margin-top:7px}
-.title{font-size:19px;font-weight:900;margin-bottom:6px}
-.text{font-size:14px;white-space:pre-line}
-.prayer{background:#f5f3ff;border-left:4px solid #7c3aed;padding:15px;border-radius:8px}
+.logo img{
+width:42px;
+height:42px;
+border-radius:9px
+}
 
-.status{text-align:center;padding:25px;color:#6b7280;font-size:12px}
-.error{color:#dc2626}
+.logo-title{
+font-size:14px;
+font-weight:900
+}
 
-.share{text-align:center;margin-top:15px}
-.share button{background:#111827;color:#fff;border:0;border-radius:9px;padding:13px 18px;font-weight:900;cursor:pointer;margin:4px}
-.share button:disabled{opacity:.6}
-.shareBtn{background:#15803d!important}
-.downloadBtn{background:#475569!important}
+.logo-sub{
+font-size:8px;
+color:#6b7280
+}
 
-.preview{display:none;margin:15px auto}
-.preview img{width:100%;max-width:360px;border-radius:12px;display:block;margin:auto}
+.nav-links{
+display:flex;
+gap:6px
+}
 
-.archive-title{text-align:center}
-.archive-title h2{font-size:23px}
-.archive-title p{font-size:10px;color:#6b7280}
-.current-year{text-align:center;margin:18px 0;font-size:20px;font-weight:900}
+.nav-links a{
+font-size:10px;
+font-weight:800;
+padding:8px
+}
 
-.month{border:1px solid #e5e7eb;border-radius:12px;margin-bottom:10px;overflow:hidden}
-.month-head{background:#f8fafc;padding:10px 12px;font-weight:900;font-size:12px;display:flex;justify-content:space-between}
-.days{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;padding:8px}
-.day-name{text-align:center;font-size:8px;color:#9ca3af;font-weight:900}
-.day{border:1px solid #e5e7eb;background:#fff;border-radius:6px;min-height:36px;font-size:9px;font-weight:800;cursor:pointer}
-.day.today{background:#111827;color:#fff}
-.day:disabled{background:#f1f5f9;color:#cbd5e1;cursor:not-allowed;opacity:.65}
-.empty{border:0;background:transparent}
+.menu{
+display:none;
+background:#fff;
+border:1px solid #ddd;
+border-radius:8px;
+font-size:18px;
+padding:8px;
+cursor:pointer
+}
 
-.whatsapp-group{margin:14px 0}
-.whatsapp-group a{display:flex;align-items:center;gap:12px;background:#15803d;color:#fff;padding:14px 16px;border-radius:14px;box-shadow:0 5px 15px #0002}
-.group-icon{width:42px;height:42px;border-radius:50%;background:#fff;color:#15803d;display:grid;place-items:center;font-size:22px;flex-shrink:0}
-.group-text{flex:1}
-.group-text strong{display:block;font-size:13px;font-weight:900}
-.group-text span{display:block;font-size:9px;opacity:.9;margin-top:2px}
-.group-arrow{font-size:25px}
+.hero{
+padding:18px 0 10px
+}
 
-.createlk-promo{margin:14px 0;background:linear-gradient(135deg,#eff6ff,#eef2ff);border:1px solid #c7d2fe;border-radius:15px;padding:16px;display:flex;align-items:center;gap:13px}
-.createlk-icon{width:46px;height:46px;border-radius:12px;background:#2563eb;color:#fff;display:grid;place-items:center;font-size:23px;flex-shrink:0}
-.createlk-text{flex:1}
-.createlk-text strong{display:block;font-size:14px;font-weight:900;color:#111827}
-.createlk-text span{display:block;font-size:9px;color:#64748b;margin-top:3px}
-.createlk-btn{display:inline-flex;align-items:center;justify-content:center;background:#2563eb;color:#fff;padding:9px 12px;border-radius:8px;font-size:9px;font-weight:900;white-space:nowrap}
+.hero-card{
+background:linear-gradient(135deg,#111827,#334155);
+color:#fff;
+text-align:center;
+padding:28px 18px;
+border-radius:20px
+}
 
-footer{background:#0b1120;color:#fff;margin-top:20px;padding:25px 0;text-align:center}
-.footer-logo{width:38px;background:#fff;border-radius:7px;padding:3px}
-footer strong{display:block;font-size:13px}
-footer span{font-size:8px;color:#94a3b8}
-.footer-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:12px}
-.footer-links a{font-size:9px;color:#cbd5e1}
-.copy{border-top:1px solid #ffffff18;margin-top:15px;padding-top:12px;font-size:8px;color:#64748b}
+.hero-logo{
+width:60px;
+background:#fff;
+border-radius:13px;
+padding:4px
+}
 
-.whatsapp{position:fixed;right:15px;bottom:15px;width:50px;height:50px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;font-size:23px;z-index:999}
+.label{
+font-size:9px;
+font-weight:900;
+letter-spacing:1px;
+color:#fbbf24;
+margin-top:8px
+}
+
+h1{
+font-size:32px;
+margin:5px 0
+}
+
+.date{
+display:inline-block;
+background:#ffffff18;
+padding:7px 15px;
+border-radius:8px;
+font-size:11px;
+font-weight:800
+}
+
+.box{
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:18px;
+padding:20px;
+margin:10px 0
+}
+
+.lang-title{
+text-align:center;
+font-size:9px;
+font-weight:900;
+color:#6b7280;
+margin-bottom:8px
+}
+
+.languages{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:8px
+}
+
+.lang{
+border:1px solid #ddd;
+background:#f8fafc;
+border-radius:8px;
+padding:10px;
+font-weight:800;
+font-size:10px;
+cursor:pointer
+}
+
+.lang.active{
+background:#111827;
+color:#fff
+}
+
+.section{
+padding:18px 0;
+border-bottom:1px solid #eee
+}
+
+.section:last-child{
+border:0
+}
+
+.section h2{
+font-size:10px;
+color:#6b7280;
+margin-bottom:8px
+}
+
+.verse{
+background:#fffbea;
+border-left:4px solid #f59e0b;
+padding:15px;
+border-radius:8px;
+font-size:17px;
+font-weight:700
+}
+
+.ref{
+display:block;
+color:#92400e;
+font-size:11px;
+margin-top:7px
+}
+
+.title{
+font-size:19px;
+font-weight:900;
+margin-bottom:6px
+}
+
+.text{
+font-size:14px;
+white-space:pre-line
+}
+
+.prayer{
+background:#f5f3ff;
+border-left:4px solid #7c3aed;
+padding:15px;
+border-radius:8px
+}
+
+.status{
+text-align:center;
+padding:25px;
+color:#6b7280;
+font-size:12px
+}
+
+.error{
+color:#dc2626
+}
+
+.share{
+text-align:center;
+margin-top:15px
+}
+
+.share button{
+background:#111827;
+color:#fff;
+border:0;
+border-radius:9px;
+padding:13px 18px;
+font-weight:900;
+cursor:pointer;
+margin:4px
+}
+
+.share button:disabled{
+opacity:.6
+}
+
+.shareBtn{
+background:#15803d!important
+}
+
+.downloadBtn{
+background:#475569!important
+}
+
+.preview{
+display:none;
+margin:15px auto
+}
+
+.preview img{
+width:100%;
+max-width:360px;
+border-radius:12px;
+display:block;
+margin:auto
+}
+
+.archive-title{
+text-align:center
+}
+
+.archive-title h2{
+font-size:23px
+}
+
+.archive-title p{
+font-size:10px;
+color:#6b7280
+}
+
+.current-year{
+text-align:center;
+margin:18px 0;
+font-size:20px;
+font-weight:900
+}
+
+.month{
+border:1px solid #e5e7eb;
+border-radius:12px;
+margin-bottom:10px;
+overflow:hidden
+}
+
+.month-head{
+background:#f8fafc;
+padding:10px 12px;
+font-weight:900;
+font-size:12px;
+display:flex;
+justify-content:space-between
+}
+
+.days{
+display:grid;
+grid-template-columns:repeat(7,1fr);
+gap:4px;
+padding:8px
+}
+
+.day-name{
+text-align:center;
+font-size:8px;
+color:#9ca3af;
+font-weight:900
+}
+
+.day{
+border:1px solid #e5e7eb;
+background:#fff;
+border-radius:6px;
+min-height:36px;
+font-size:9px;
+font-weight:800;
+cursor:pointer
+}
+
+.day.today{
+background:#111827;
+color:#fff
+}
+
+.day:disabled{
+background:#f1f5f9;
+color:#cbd5e1;
+cursor:not-allowed;
+opacity:.65
+}
+
+.empty{
+border:0;
+background:transparent
+}
+
+.whatsapp-group{
+margin:14px 0
+}
+
+.whatsapp-group a{
+display:flex;
+align-items:center;
+gap:12px;
+background:#15803d;
+color:#fff;
+padding:14px 16px;
+border-radius:14px;
+box-shadow:0 5px 15px #0002
+}
+
+.group-icon{
+width:42px;
+height:42px;
+border-radius:50%;
+background:#fff;
+color:#15803d;
+display:grid;
+place-items:center;
+font-size:22px;
+flex-shrink:0
+}
+
+.group-text{
+flex:1
+}
+
+.group-text strong{
+display:block;
+font-size:13px;
+font-weight:900
+}
+
+.group-text span{
+display:block;
+font-size:9px;
+opacity:.9;
+margin-top:2px
+}
+
+.group-arrow{
+font-size:25px
+}
+
+footer{
+background:#0b1120;
+color:#fff;
+margin-top:20px;
+padding:25px 0;
+text-align:center
+}
+
+.footer-logo{
+width:38px;
+background:#fff;
+border-radius:7px;
+padding:3px
+}
+
+footer strong{
+display:block;
+font-size:13px
+}
+
+footer span{
+font-size:8px;
+color:#94a3b8
+}
+
+.footer-links{
+display:flex;
+justify-content:center;
+gap:14px;
+flex-wrap:wrap;
+margin-top:12px
+}
+
+.footer-links a{
+font-size:9px;
+color:#cbd5e1
+}
+
+.copy{
+border-top:1px solid #ffffff18;
+margin-top:15px;
+padding-top:12px;
+font-size:8px;
+color:#64748b
+}
+
+.whatsapp{
+position:fixed;
+right:15px;
+bottom:15px;
+width:50px;
+height:50px;
+border-radius:50%;
+background:#25d366;
+color:#fff;
+display:grid;
+place-items:center;
+font-size:23px;
+z-index:999
+}
 
 @media(max-width:650px){
-.nav-links{display:none}
-.menu{display:block}
-.languages{grid-template-columns:1fr}
-.box{padding:16px}
-.text{font-size:13px}
-.verse{font-size:15px}
-.nav-links.mobile-open{position:absolute;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid #ddd;display:flex;flex-direction:column;padding:10px}
-.nav-links.mobile-open a{padding:12px}
-.createlk-promo{align-items:flex-start}
-.createlk-btn{padding:10px}
+
+.nav-links{
+display:none
 }
-@media(max-width:400px){
-.createlk-promo{flex-wrap:wrap}
-.createlk-btn{width:100%}
+
+.menu{
+display:block
 }
+
+.languages{
+grid-template-columns:1fr
+}
+
+.box{
+padding:16px
+}
+
+.text{
+font-size:13px
+}
+
+.verse{
+font-size:15px
+}
+
+.nav-links.mobile-open{
+position:absolute;
+top:64px;
+left:0;
+right:0;
+background:#fff;
+border-bottom:1px solid #ddd;
+display:flex;
+flex-direction:column;
+padding:10px
+}
+
+.nav-links.mobile-open a{
+padding:12px
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
+
 <div class="container nav">
 
 <a href="index.html" class="logo">
-<img src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png" alt="GOH Ministries">
+
+<img
+src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
+alt="GOH Ministries">
+
 <div>
-<div class="logo-title">GOH Ministries</div>
-<div class="logo-sub">Gate of Heaven Ministries</div>
+
+<div class="logo-title">
+GOH Ministries
 </div>
+
+<div class="logo-sub">
+Gate of Heaven Ministries
+</div>
+
+</div>
+
 </a>
 
 <nav class="nav-links" id="navLinks">
+
 <a href="index.html">🏠 Home</a>
 <a href="about.html">About</a>
 <a href="contact.html">Contact</a>
 <a href="donate.html">Donate</a>
+
 </nav>
 
-<button class="menu" id="menu" aria-label="Menu">☰</button>
+<button
+class="menu"
+id="menu"
+aria-label="Menu">
+☰
+</button>
 
 </div>
+
 </header>
+
 
 <main class="container">
 
+
 <section class="hero">
+
 <div class="hero-card">
 
-<img class="hero-logo" src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png" alt="Gate of Heaven Ministries">
+<img
+class="hero-logo"
+src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
+alt="Gate of Heaven Ministries">
 
-<div class="label">GATE OF HEAVEN MINISTRIES</div>
+<div class="label">
+GATE OF HEAVEN MINISTRIES
+</div>
 
-<h1>🙏 Daily Devotional</h1>
+<h1>
+🙏 Daily Devotional
+</h1>
 
-<p>Bible Verse • Explanation • Prayer</p>
+<p>
+Bible Verse • Explanation • Prayer
+</p>
 
 <div class="date" id="date"></div>
 
 </div>
+
 </section>
 
+
 <div class="box">
-<div class="lang-title">LANGUAGE</div>
+
+<div class="lang-title">
+LANGUAGE
+</div>
 
 <div class="languages">
-<button class="lang" data-lang="en">🇬🇧 English</button>
-<button class="lang" data-lang="ta">🇱🇰 தமிழ்</button>
-<button class="lang" data-lang="si">🇱🇰 සිංහල</button>
+
+<button class="lang" data-lang="en">
+🇬🇧 English
+</button>
+
+<button class="lang" data-lang="ta">
+🇱🇰 தமிழ்
+</button>
+
+<button class="lang" data-lang="si">
+🇱🇰 සිංහල
+</button>
+
 </div>
+
 </div>
+
 
 <div class="box">
 
-<div id="result" class="status">Loading devotional...</div>
+<div id="result" class="status">
+Loading devotional...
+</div>
 
 <div class="share" id="share" hidden>
 
 <div class="preview" id="imagePreview">
-<img id="previewImg" alt="GOH Ministries Daily Devotional">
-</div>
 
-<button id="createBtn" onclick="prepareShare()">🖼️ Create Share Image</button>
-
-<button id="shareBtn" class="shareBtn" onclick="shareImage()" hidden>📤 Share Image</button>
-
-<button id="downloadBtn" class="downloadBtn" onclick="downloadImage()" hidden>⬇️ Save Image</button>
+<img
+id="previewImg"
+alt="GOH Ministries Daily Devotional">
 
 </div>
+
+<button
+id="createBtn"
+onclick="prepareShare()">
+🖼️ Create Share Image
+</button>
+
+<button
+id="shareBtn"
+class="shareBtn"
+onclick="shareImage()"
+hidden>
+📤 Share Image
+</button>
+
+<button
+id="downloadBtn"
+class="downloadBtn"
+onclick="downloadImage()"
+hidden>
+⬇️ Save Image
+</button>
+
 </div>
+
+</div>
+
 
 <div class="whatsapp-group">
-<a href="https://chat.whatsapp.com/F72xNfuToIy8un4oGC6uhX?s=cl&p=a&mlu=4" target="_blank" rel="noopener">
-<div class="group-icon">💬</div>
+
+<a
+href="https://chat.whatsapp.com/F72xNfuToIy8un4oGC6uhX?s=cl&p=a&mlu=4"
+target="_blank"
+rel="noopener">
+
+<div class="group-icon">
+💬
+</div>
+
 <div class="group-text">
-<strong>Join Our WhatsApp Group</strong>
-<span>Daily Devotional • Bible Verse • Prayer</span>
+
+<strong>
+Join Our WhatsApp Group
+</strong>
+
+<span>
+Daily Devotional • Bible Verse • Prayer
+</span>
+
 </div>
-<div class="group-arrow">›</div>
+
+<div class="group-arrow">
+›
+</div>
+
 </a>
-</div>
-
-<div class="createlk-promo">
-
-<div class="createlk-icon">🎓</div>
-
-<div class="createlk-text">
-<strong>CreateLK Academy</strong>
-<span>Improve your English with AI-powered practice.</span>
-</div>
-
-<a class="createlk-btn" href="https://createlk.com/" target="_blank" rel="noopener">🚀 Visit Academy</a>
 
 </div>
+
 
 <div class="box">
 
 <div class="archive-title">
-<div class="label">DEVOTIONAL ARCHIVE</div>
-<h2>📅 Previous Devotionals</h2>
-<p>Select any available date from this year.</p>
+
+<div class="label">
+DEVOTIONAL ARCHIVE
+</div>
+
+<h2>
+📅 Previous Devotionals
+</h2>
+
+<p>
+Select any available date from this year.
+</p>
+
 </div>
 
 <div class="current-year" id="year"></div>
+
 <div id="archive"></div>
 
 </div>
 
+
 </main>
+
 
 <footer>
 
-<img class="footer-logo" src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png" alt="GOH Ministries">
+<img
+class="footer-logo"
+src="https://files.gohministries.org/file_00000000f02c82088b7cf2676012b775.png"
+alt="GOH Ministries">
 
-<strong>GOH Ministries</strong>
-<span>Gate of Heaven Ministries</span>
+<strong>
+GOH Ministries
+</strong>
+
+<span>
+Gate of Heaven Ministries
+</span>
+
 
 <div class="footer-links">
+
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
 <a href="contact.html">Contact</a>
@@ -246,340 +726,796 @@ footer span{font-size:8px;color:#94a3b8}
 <a href="privacy.html">Privacy</a>
 <a href="terms.html">Terms</a>
 <a href="disclaimer.html">Disclaimer</a>
+
 </div>
 
-<div class="copy">© 2026 GOH Ministries. All rights reserved.</div>
+
+<div class="copy">
+© 2026 GOH Ministries. All rights reserved.
+</div>
 
 </footer>
 
-<a class="whatsapp" href="https://wa.me/94771190395" target="_blank" rel="noopener" aria-label="Contact GOH Ministries on WhatsApp">💬</a>
+
+<a
+class="whatsapp"
+href="https://wa.me/94771190395"
+target="_blank"
+rel="noopener"
+aria-label="Contact GOH Ministries on WhatsApp">
+💬
+</a>
+
 
 <script>
+
 const API="https://devotional.createlk.workers.dev";
+
 const BG="https://media.gohministries.org/file_000000006fd88211892f13d25892d800.png";
+
 const SITE="https://gohministries.org";
 
+
 const now=new Date();
+
 const YEAR=now.getFullYear();
-const TODAY=`${String(now.getMonth()+1).padStart(2,"0")}-${String(now.getDate()).padStart(2,"0")}`;
+
+const TODAY=
+`${String(now.getMonth()+1).padStart(2,"0")}-${String(now.getDate()).padStart(2,"0")}`;
+
 
 const params=new URLSearchParams(location.search);
+
 let lang=params.get("lang")||"en";
+
 let selected=params.get("date")||TODAY;
+
 let devotional=null;
+
 let generatedFile=null;
+
 let previewURL=null;
 
-if(!["en","ta","si"].includes(lang))lang="en";
+
+if(!["en","ta","si"].includes(lang))
+lang="en";
+
 
 const $=id=>document.getElementById(id);
 
+
 function future(md){
- const [m,d]=md.split("-").map(Number);
- const [tm,td]=TODAY.split("-").map(Number);
- return m>tm||(m===tm&&d>td);
+
+const [m,d]=md.split("-").map(Number);
+
+const [tm,td]=TODAY.split("-").map(Number);
+
+return m>tm||(m===tm&&d>td);
+
 }
+
 
 function formatDate(md){
- const [m,d]=md.split("-").map(Number);
- return new Date(YEAR,m-1,d).toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"});
+
+const [m,d]=md.split("-").map(Number);
+
+return new Date(YEAR,m-1,d)
+.toLocaleDateString(
+"en-US",
+{
+month:"long",
+day:"numeric",
+year:"numeric"
+}
+);
+
 }
 
+
 function safe(v){
- return String(v||"")
- .replace(/&/g,"&amp;")
- .replace(/</g,"&lt;")
- .replace(/>/g,"&gt;")
- .replace(/"/g,"&quot;")
- .replace(/'/g,"&#039;")
- .replace(/\n/g,"<br>");
+
+return String(v||"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;")
+.replace(/\n/g,"<br>");
+
 }
+
 
 async function load(md=TODAY){
 
- if(!md||future(md))md=TODAY;
- selected=md;
- $("date").textContent=formatDate(md);
- $("result").className="status";
- $("result").textContent="Loading devotional...";
- $("share").hidden=true;
+if(!md||future(md))
+md=TODAY;
 
- try{
+selected=md;
 
-  const r=await fetch(`${API}?date=${encodeURIComponent(md)}&lang=${encodeURIComponent(lang)}`,{cache:"no-store"});
+$("date").textContent=formatDate(md);
 
-  if(!r.ok)throw Error(`Server error: HTTP ${r.status}`);
+$("result").className="status";
 
-  const data=await r.json();
-  if(!data.success)throw Error(data.error||"Devotional not available.");
+$("result").textContent="Loading devotional...";
 
-  const x=data.devotional;
-  if(!x)throw Error("No devotional data returned.");
+$("share").hidden=true;
 
-  devotional={
-   verse:x.bible_verse||"",
-   reference:x.bible_reference||"",
-   title:x.title||"",
-   message:x.message||"",
-   prayer:x.prayer||""
-  };
 
-  $("result").className="content";
-  $("result").innerHTML=`
-  <div class="section">
-   <h2>📖 BIBLE VERSE</h2>
-   <div class="verse">${safe(x.bible_verse)}<span class="ref">${safe(x.bible_reference)}</span></div>
-  </div>
-  <div class="section">
-   <h2>💡 EXPLANATION</h2>
-   <div class="title">${safe(x.title)}</div>
-   <div class="text">${safe(x.message)}</div>
-  </div>
-  <div class="section">
-   <h2>🙏 PRAYER</h2>
-   <div class="prayer text">${safe(x.prayer)}</div>
-  </div>`;
+try{
 
-  $("share").hidden=false;
-
-  history.replaceState({}, "",`devotional.html?lang=${encodeURIComponent(lang)}&date=${encodeURIComponent(md)}`);
-
- }catch(e){
-
-  console.error(e);
-  $("result").className="status error";
-  $("result").textContent="⚠️ "+e.message;
-
- }
+const r=await fetch(
+`${API}?date=${encodeURIComponent(md)}&lang=${encodeURIComponent(lang)}`,
+{
+cache:"no-store"
 }
+);
+
+if(!r.ok)
+throw Error(`Server error: HTTP ${r.status}`);
+
+
+const data=await r.json();
+
+if(!data.success)
+throw Error(data.error||"Devotional not available.");
+
+
+const x=data.devotional;
+
+if(!x)
+throw Error("No devotional data returned.");
+
+
+devotional={
+
+verse:x.bible_verse||"",
+
+reference:x.bible_reference||"",
+
+title:x.title||"",
+
+message:x.message||"",
+
+prayer:x.prayer||""
+
+};
+
+
+$("result").className="content";
+
+
+$("result").innerHTML=`
+
+<div class="section">
+
+<h2>
+📖 BIBLE VERSE
+</h2>
+
+<div class="verse">
+
+${safe(x.bible_verse)}
+
+<span class="ref">
+${safe(x.bible_reference)}
+</span>
+
+</div>
+
+</div>
+
+
+<div class="section">
+
+<h2>
+💡 EXPLANATION
+</h2>
+
+<div class="title">
+${safe(x.title)}
+</div>
+
+<div class="text">
+${safe(x.message)}
+</div>
+
+</div>
+
+
+<div class="section">
+
+<h2>
+🙏 PRAYER
+</h2>
+
+<div class="prayer text">
+${safe(x.prayer)}
+</div>
+
+</div>
+
+`;
+
+
+$("share").hidden=false;
+
+
+history.replaceState(
+{},
+"",
+`devotional.html?lang=${encodeURIComponent(lang)}&date=${encodeURIComponent(md)}`
+);
+
+
+}catch(e){
+
+console.error(e);
+
+$("result").className="status error";
+
+$("result").textContent="⚠️ "+e.message;
+
+}
+
+}
+
 
 function wrap(ctx,text,width){
- const lines=[];
- let line="";
 
- for(const word of String(text).split(/\s+/)){
-  const test=line?`${line} ${word}`:word;
+const lines=[];
 
-  if(ctx.measureText(test).width>width&&line){
-   lines.push(line);
-   line=word;
-  }else line=test;
- }
+let line="";
 
- if(line)lines.push(line);
- return lines;
+
+for(const word of String(text).split(/\s+/)){
+
+const test=line?
+`${line} ${word}`:
+word;
+
+
+if(
+ctx.measureText(test).width>width&&line
+){
+
+lines.push(line);
+
+line=word;
+
+}else{
+
+line=test;
+
 }
+
+}
+
+
+if(line)
+lines.push(line);
+
+
+return lines;
+
+}
+
 
 async function createImage(){
 
- if(!devotional)throw Error("Devotional not loaded.");
+if(!devotional)
+throw Error("Devotional not loaded.");
 
- const r=await fetch(`${BG}?v=${Date.now()}`,{mode:"cors",cache:"no-store"});
- if(!r.ok)throw Error("Background image failed to load.");
 
- const img=new Image();
- img.src=URL.createObjectURL(await r.blob());
-
- await new Promise((resolve,reject)=>{
-  img.onload=resolve;
-  img.onerror=()=>reject(Error("Background image could not be read."));
- });
-
- const canvas=document.createElement("canvas");
- canvas.width=1080;
- canvas.height=1350;
-
- const ctx=canvas.getContext("2d");
- const scale=Math.max(1080/img.width,1350/img.height);
- const w=img.width*scale,h=img.height*scale;
-
- ctx.drawImage(img,(1080-w)/2,(1350-h)/2,w,h);
- ctx.fillStyle="rgba(0,0,0,.40)";
- ctx.fillRect(0,0,1080,1350);
-
- ctx.textAlign="center";
- ctx.textBaseline="middle";
- ctx.fillStyle="#fff";
- ctx.font="900 30px Arial";
- ctx.fillText("GATE OF HEAVEN MINISTRIES",540,105);
-
- let size=56;
- let lines;
-
- do{
-  ctx.font=`700 ${size}px Arial`;
-  lines=wrap(ctx,`“${devotional.verse}”`,850);
-  size-=2;
- }while(lines.length>7&&size>30);
-
- const lineHeight=(size+2)*1.35;
- let y=650-(lines.length*lineHeight)/2;
-
- for(const line of lines){
-  ctx.fillText(line,540,y);
-  y+=lineHeight;
- }
-
- ctx.fillStyle="#fbbf24";
- ctx.font="900 32px Arial";
- ctx.fillText(devotional.reference,540,y+30);
-
- ctx.fillStyle="#fff";
- ctx.font="800 25px Arial";
- ctx.fillText("gohministries.org",540,1260);
-
- return new Promise((resolve,reject)=>{
-  canvas.toBlob(
-   blob=>blob?resolve(blob):reject(Error("Image creation failed.")),
-   "image/png"
-  );
- });
+const r=await fetch(
+`${BG}?v=${Date.now()}`,
+{
+mode:"cors",
+cache:"no-store"
 }
+);
+
+
+if(!r.ok)
+throw Error("Background image failed to load.");
+
+
+const img=new Image();
+
+img.src=URL.createObjectURL(await r.blob());
+
+
+await new Promise(
+(resolve,reject)=>{
+
+img.onload=resolve;
+
+img.onerror=()=>
+reject(
+Error("Background image could not be read.")
+);
+
+}
+);
+
+
+const canvas=document.createElement("canvas");
+
+canvas.width=1080;
+
+canvas.height=1350;
+
+
+const ctx=canvas.getContext("2d");
+
+
+const scale=Math.max(
+1080/img.width,
+1350/img.height
+);
+
+
+const w=img.width*scale;
+
+const h=img.height*scale;
+
+
+ctx.drawImage(
+img,
+(1080-w)/2,
+(1350-h)/2,
+w,
+h
+);
+
+
+ctx.fillStyle="rgba(0,0,0,.40)";
+
+ctx.fillRect(
+0,
+0,
+1080,
+1350
+);
+
+
+ctx.textAlign="center";
+
+ctx.textBaseline="middle";
+
+ctx.fillStyle="#fff";
+
+
+ctx.font="900 30px Arial";
+
+ctx.fillText(
+"GATE OF HEAVEN MINISTRIES",
+540,
+105
+);
+
+
+let size=56;
+
+let lines;
+
+
+do{
+
+ctx.font=`700 ${size}px Arial`;
+
+lines=wrap(
+ctx,
+`“${devotional.verse}”`,
+850
+);
+
+size-=2;
+
+}while(
+lines.length>7&&size>30
+);
+
+
+const lineHeight=
+(size+2)*1.35;
+
+
+let y=
+650-(lines.length*lineHeight)/2;
+
+
+for(const line of lines){
+
+ctx.fillText(
+line,
+540,
+y
+);
+
+y+=lineHeight;
+
+}
+
+
+ctx.fillStyle="#fbbf24";
+
+ctx.font="900 32px Arial";
+
+ctx.fillText(
+devotional.reference,
+540,
+y+30
+);
+
+
+ctx.fillStyle="#fff";
+
+ctx.font="800 25px Arial";
+
+ctx.fillText(
+"gohministries.org",
+540,
+1260
+);
+
+
+return new Promise(
+(resolve,reject)=>{
+
+canvas.toBlob(
+
+blob=>
+blob?
+resolve(blob):
+reject(
+Error("Image creation failed.")
+),
+
+"image/png"
+
+);
+
+}
+);
+
+}
+
 
 async function prepareShare(){
 
- const btn=$("createBtn");
- btn.disabled=true;
- btn.textContent="⏳ Creating...";
+const btn=$("createBtn");
 
- try{
+btn.disabled=true;
 
-  const blob=await createImage();
+btn.textContent="⏳ Creating...";
 
-  generatedFile=new File([blob],"goh-devotional.png",{type:"image/png"});
 
-  if(previewURL)URL.revokeObjectURL(previewURL);
-  previewURL=URL.createObjectURL(blob);
+try{
 
-  $("previewImg").src=previewURL;
-  $("imagePreview").style.display="block";
-  $("shareBtn").hidden=false;
-  $("downloadBtn").hidden=false;
-  btn.textContent="✅ Image Created";
+const blob=await createImage();
 
- }catch(e){
 
-  console.error(e);
-  alert(`Image could not be created.\n\n${e.message}\n\nCheck your R2 CORS settings.`);
-  btn.textContent="🖼️ Create Share Image";
-
- }finally{
-  btn.disabled=false;
- }
+generatedFile=
+new File(
+[blob],
+"goh-devotional.png",
+{
+type:"image/png"
 }
+);
+
+
+if(previewURL)
+URL.revokeObjectURL(previewURL);
+
+
+previewURL=
+URL.createObjectURL(blob);
+
+
+$("previewImg").src=previewURL;
+
+$("imagePreview").style.display="block";
+
+$("shareBtn").hidden=false;
+
+$("downloadBtn").hidden=false;
+
+btn.textContent="✅ Image Created";
+
+
+}catch(e){
+
+console.error(e);
+
+alert(
+`Image could not be created.\n\n${e.message}\n\nCheck your R2 CORS settings.`
+);
+
+btn.textContent="🖼️ Create Share Image";
+
+
+}finally{
+
+btn.disabled=false;
+
+}
+
+}
+
 
 async function shareImage(){
 
- if(!generatedFile)return alert("Create the image first.");
+if(!generatedFile)
+return alert("Create the image first.");
 
- const url=`${SITE}/devotional.html?lang=${encodeURIComponent(lang)}&date=${encodeURIComponent(selected)}`;
 
- const text=`💡 ${devotional.title}\n\n${devotional.message}\n\n🙏 Prayer\n\n${devotional.prayer}\n\n📖 Daily Devotional\n${url}`;
+const url=
+`${SITE}/devotional.html?lang=${encodeURIComponent(lang)}&date=${encodeURIComponent(selected)}`;
 
- try{
 
-  if(navigator.share&&navigator.canShare?.({files:[generatedFile]})){
-   await navigator.share({
-    title:"GOH Ministries Daily Devotional",
-    text,
-    files:[generatedFile]
-   });
-  }else downloadImage();
+const text=
+`💡 ${devotional.title}\n\n${devotional.message}\n\n🙏 Prayer\n\n${devotional.prayer}\n\n📖 Daily Devotional\n${url}`;
 
- }catch(e){
 
-  if(e.name!=="AbortError")downloadImage();
+try{
 
- }
+if(
+navigator.share&&
+navigator.canShare?.({
+files:[generatedFile]
+})
+){
+
+await navigator.share({
+
+title:
+"GOH Ministries Daily Devotional",
+
+text,
+
+files:[generatedFile]
+
+});
+
+}else{
+
+downloadImage();
+
 }
+
+
+}catch(e){
+
+if(e.name!=="AbortError")
+downloadImage();
+
+}
+
+}
+
 
 function downloadImage(){
 
- if(!generatedFile)return;
+if(!generatedFile)
+return;
 
- const url=URL.createObjectURL(generatedFile);
- const a=document.createElement("a");
 
- a.href=url;
- a.download="goh-devotional.png";
- document.body.appendChild(a);
- a.click();
- a.remove();
+const url=
+URL.createObjectURL(generatedFile);
 
- setTimeout(()=>URL.revokeObjectURL(url),1000);
+
+const a=
+document.createElement("a");
+
+
+a.href=url;
+
+a.download="goh-devotional.png";
+
+
+document.body.appendChild(a);
+
+a.click();
+
+a.remove();
+
+
+setTimeout(
+()=>
+URL.revokeObjectURL(url),
+1000
+);
+
 }
 
-document.querySelectorAll(".lang").forEach(btn=>{
- btn.onclick=()=>{
-  lang=btn.dataset.lang;
 
-  document.querySelectorAll(".lang").forEach(x=>
-   x.classList.toggle("active",x===btn)
-  );
+document
+.querySelectorAll(".lang")
+.forEach(btn=>{
 
-  load(selected);
- };
+btn.onclick=()=>{
+
+lang=btn.dataset.lang;
+
+
+document
+.querySelectorAll(".lang")
+.forEach(x=>
+x.classList.toggle(
+"active",
+x===btn
+)
+);
+
+
+load(selected);
+
+};
+
 });
+
 
 function calendar(){
 
- const months=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const months=[
+"January",
+"February",
+"March",
+"April",
+"May",
+"June",
+"July",
+"August",
+"September",
+"October",
+"November",
+"December"
+];
 
- $("year").textContent=YEAR;
 
- $("archive").innerHTML=months.map((month,m)=>{
+$("year").textContent=YEAR;
 
-  const first=new Date(YEAR,m,1).getDay();
-  const total=new Date(YEAR,m+1,0).getDate();
 
-  let days="";
+$("archive").innerHTML=
+months.map((month,m)=>{
 
-  for(let i=0;i<first;i++)
-   days+=`<div class="day empty"></div>`;
 
-  for(let d=1;d<=total;d++){
+const first=
+new Date(YEAR,m,1).getDay();
 
-   const md=`${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
-   const disabled=future(md);
 
-   days+=`
-   <button class="day${md===TODAY?" today":""}"
-   ${disabled?"disabled":`onclick="openDate('${md}')"`}>${d}</button>`;
-  }
+const total=
+new Date(YEAR,m+1,0).getDate();
 
-  return`
-  <div class="month">
-   <div class="month-head"><span>${month}</span><span>${YEAR}</span></div>
-   <div class="days">
-    ${["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].map(x=>`<div class="day-name">${x}</div>`).join("")}
-    ${days}
-   </div>
-  </div>`;
 
- }).join("");
+let days="";
+
+
+for(let i=0;i<first;i++)
+days+=
+`<div class="day empty"></div>`;
+
+
+for(let d=1;d<=total;d++){
+
+const md=
+`${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
+
+
+const disabled=future(md);
+
+
+days+=`
+
+<button
+class="day${md===TODAY?" today":""}"
+${disabled?
+"disabled":
+`onclick="openDate('${md}')"`
+}>
+${d}
+</button>
+
+`;
+
 }
+
+
+return`
+
+<div class="month">
+
+<div class="month-head">
+
+<span>
+${month}
+</span>
+
+<span>
+${YEAR}
+</span>
+
+</div>
+
+
+<div class="days">
+
+${[
+"Sun",
+"Mon",
+"Tue",
+"Wed",
+"Thu",
+"Fri",
+"Sat"
+]
+.map(
+x=>
+`<div class="day-name">${x}</div>`
+)
+.join("")}
+
+
+${days}
+
+</div>
+
+</div>
+
+`;
+
+}).join("");
+
+}
+
 
 function openDate(md){
 
- if(future(md))return;
+if(future(md))
+return;
 
- load(md);
- window.scrollTo({top:0,behavior:"smooth"});
+
+load(md);
+
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
 }
 
+
 $("menu").onclick=()=>{
- $("navLinks").classList.toggle("mobile-open");
+
+$("navLinks")
+.classList
+.toggle("mobile-open");
+
 };
 
-document.querySelectorAll(".lang").forEach(x=>
- x.classList.toggle("active",x.dataset.lang===lang)
+
+document
+.querySelectorAll(".lang")
+.forEach(x=>
+x.classList.toggle(
+"active",
+x.dataset.lang===lang
+)
 );
 
-if(!selected||future(selected))selected=TODAY;
+
+if(!selected||future(selected))
+selected=TODAY;
+
 
 calendar();
+
 load(selected);
+
 </script>
 
 </body>
 </html>
+ 
