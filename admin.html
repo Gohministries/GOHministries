@@ -2,496 +2,325 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>365 Days With God's Word</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Playfair+Display:wght@500;600;700&family=Noto+Sans+Sinhala:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <style>
-
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 :root{
-    --navy:#24344D;
-    --purple:#76558F;
-    --gold:#B89445;
-    --gold-light:#D8C28A;
-    --cream:#F8F5ED;
-    --photo-bg:#E5E0D5;
-    --brown:#5E5142;
-    --gray:#8A867E;
-    --white:#FFFFFF;
-}
-
-html,
-body{
-    margin:0;
-    padding:0;
+ --navy:#24344D;
+ --purple:#76558F;
+ --gold:#B89445;
+ --gold2:#D8C28A;
+ --cream:#F8F5ED;
+ --brown:#5E5142;
+ --gray:#8A867E
 }
 
 body{
-    background:#ECEBE7;
-    color:#222;
-    font-family:"Montserrat",Arial,sans-serif;
+ margin:0;
+ background:#ECEBE7;
+ font-family:Montserrat,Arial,sans-serif
 }
-
-/* =========================
-   EDITOR
-========================= */
 
 .app{
-    max-width:1250px;
-    margin:auto;
-    padding:22px;
+ max-width:1250px;
+ margin:auto;
+ padding:20px
 }
 
 .editor{
-    background:#fff;
-    padding:22px;
-    border-radius:16px;
-    margin-bottom:24px;
-    box-shadow:0 8px 30px rgba(0,0,0,.08);
+ background:white;
+ padding:22px;
+ border-radius:15px;
+ margin-bottom:20px;
+ box-shadow:0 8px 25px #0001
 }
 
-.editor-title{
-    text-align:center;
-    margin:0;
-    color:var(--navy);
-    font-size:25px;
-    font-weight:800;
+h1{
+ margin:0;
+ text-align:center;
+ color:var(--navy);
+ font-size:25px
 }
 
-.editor-subtitle{
-    text-align:center;
-    color:var(--gray);
-    font-size:13px;
-    margin:7px 0 20px;
+.sub{
+ text-align:center;
+ color:var(--gray);
+ font-size:12px;
+ margin:7px 0 20px
 }
 
-.form-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:14px;
+.form{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px
 }
 
-.full{
-    grid-column:1/-1;
+.full{grid-column:1/-1}
+
+label{
+ display:block;
+ margin-bottom:5px;
+ color:var(--navy);
+ font-size:12px;
+ font-weight:700
 }
 
-.field label{
-    display:block;
-    color:var(--navy);
-    font-size:13px;
-    font-weight:700;
-    margin-bottom:6px;
-}
-
-input,
-textarea,
-select{
-    width:100%;
-    border:1px solid #D4D2CC;
-    border-radius:8px;
-    padding:11px 12px;
-    background:#fff;
-    font-family:inherit;
-    font-size:14px;
-    outline:none;
-}
-
-input:focus,
-textarea:focus,
-select:focus{
-    border-color:var(--gold);
-    box-shadow:0 0 0 3px rgba(184,148,69,.12);
+input,textarea,select{
+ width:100%;
+ padding:10px;
+ border:1px solid #d5d2ca;
+ border-radius:7px;
+ font:inherit;
+ outline:none
 }
 
 textarea{
-    height:78px;
-    resize:vertical;
+ height:70px;
+ resize:vertical
 }
 
-/* =========================
-   BUTTONS
-========================= */
+input:focus,textarea:focus,select:focus{
+ border-color:var(--gold)
+}
 
 .buttons{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:9px;
-    margin-top:14px;
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:8px;
+ margin-top:12px
 }
 
 button{
-    border:0;
-    border-radius:8px;
-    padding:13px 12px;
-    font-family:inherit;
-    font-size:13px;
-    font-weight:700;
-    cursor:pointer;
-}
-
-button:hover{
-    opacity:.9;
+ border:0;
+ border-radius:7px;
+ padding:12px;
+ font:700 13px Montserrat;
+ cursor:pointer
 }
 
 button:disabled{
-    opacity:.55;
-    cursor:wait;
+ opacity:.5;
+ cursor:wait
 }
 
-.btn-navy{
-    background:var(--navy);
-    color:#fff;
-}
-
-.btn-gold{
-    background:var(--gold);
-    color:#fff;
-}
-
-.btn-purple{
-    background:var(--purple);
-    color:#fff;
-}
-
-.btn-light{
-    background:#ECEAE4;
-    color:var(--navy);
-}
+.light{background:#eceae4;color:var(--navy)}
+.gold{background:var(--gold);color:white}
+.navy{background:var(--navy);color:white}
+.purple{background:var(--purple);color:white}
 
 .status{
-    text-align:center;
-    color:var(--gray);
-    font-size:12px;
-    margin-top:12px;
+ text-align:center;
+ color:var(--gray);
+ font-size:11px;
+ margin-top:10px
 }
-
-/* =========================
-   PREVIEW
-========================= */
 
 .preview{
-    width:100%;
-    overflow:auto;
-    padding:10px;
+ overflow:auto;
+ padding:10px
 }
 
+/* 12 × 9 inch landscape design */
 .calendar{
-    width:1200px;
-    height:900px;
-    position:relative;
-    margin:auto;
-    overflow:hidden;
-    background:var(--cream);
-    border:18px solid var(--gold-light);
-    box-shadow:0 14px 40px rgba(0,0,0,.18);
+ width:1200px;
+ height:900px;
+ margin:auto;
+ position:relative;
+ overflow:hidden;
+ background:var(--cream);
+ border:18px solid var(--gold2);
+ box-shadow:0 12px 35px #0003
 }
 
-.calendar::after{
-    content:"";
-    position:absolute;
-    left:18px;
-    top:18px;
-    right:18px;
-    bottom:18px;
-    border:2px solid rgba(184,148,69,.55);
-    pointer-events:none;
-    z-index:50;
+.calendar:after{
+ content:"";
+ position:absolute;
+ inset:18px;
+ border:2px solid #b8944588;
+ pointer-events:none;
+ z-index:20
 }
 
-/* =========================
-   HEADER
-========================= */
-
+/* Header */
 .header{
-    position:absolute;
-    left:55px;
-    right:55px;
-    top:35px;
-    height:125px;
-    text-align:center;
-    z-index:10;
+ position:absolute;
+ top:28px;
+ left:50px;
+ right:50px;
+ text-align:center
 }
 
-.header-small{
-    color:var(--gray);
-    font-size:13px;
-    font-weight:600;
-    letter-spacing:2.5px;
+.small{
+ color:var(--gray);
+ font-size:12px;
+ font-weight:700;
+ letter-spacing:3px
 }
 
-.header-title{
-    margin-top:5px;
-    color:var(--purple);
-    font-size:41px;
-    font-weight:800;
-    letter-spacing:-1px;
+.title{
+ color:var(--purple);
+ font-size:39px;
+ font-weight:800;
+ margin-top:3px
 }
 
-.header-title span{
-    color:#4E9DBD;
-    font-family:"Playfair Display",serif;
-    font-size:55px;
-    font-style:italic;
-    font-weight:600;
+.title span{
+ color:#4E9DBD;
+ font:italic 600 53px "Playfair Display"
 }
 
-.header-line{
-    width:68%;
-    height:3px;
-    margin:9px auto 0;
-    background:var(--gold);
+.line{
+ width:60%;
+ height:3px;
+ background:var(--gold);
+ margin:8px auto
 }
 
-/* =========================
-   MAIN
-========================= */
-
+/* Main */
 .main{
-    position:absolute;
-    left:55px;
-    right:55px;
-    top:175px;
-    bottom:50px;
-
-    display:grid;
-    grid-template-columns:42% 58%;
-    gap:30px;
-
-    z-index:5;
+ position:absolute;
+ top:160px;
+ left:55px;
+ right:55px;
+ bottom:45px;
+ display:grid;
+ grid-template-columns:40% 60%;
+ gap:30px
 }
 
-/* =========================
-   PHOTO LEFT
-========================= */
-
-.photo-area{
-    position:relative;
-    overflow:hidden;
-    background:var(--photo-bg);
-    border-radius:4px;
-    min-height:580px;
-    border:1px solid rgba(184,148,69,.4);
-    box-shadow:0 5px 18px rgba(0,0,0,.12);
+/* Photo */
+.photo{
+ position:relative;
+ overflow:hidden;
+ border:1px solid #b8944588;
+ border-radius:6px;
+ background:#e5e0d5
 }
 
-.photo-area img{
-    width:100%;
-    height:100%;
-    display:none;
-    object-fit:cover;
-    object-position:center;
+.photo img{
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ object-position:center;
+ display:none
 }
 
-.photo-placeholder{
-    position:absolute;
-    inset:0;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-    padding:30px;
-
-    color:#777;
-
-    background:
-        linear-gradient(
-            135deg,
-            #EEEAE0,
-            #DCD6C9
-        );
-
-    font-size:15px;
+.placeholder{
+ position:absolute;
+ inset:0;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+ color:#777;
+ padding:30px;
+ background:linear-gradient(135deg,#eeeae0,#dcd6c9)
 }
 
-.photo-caption{
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:0;
-
-    padding:75px 25px 28px;
-
-    color:#fff;
-
-    font-family:"Playfair Display",serif;
-    font-size:27px;
-    font-style:italic;
-    text-align:center;
-
-    background:
-        linear-gradient(
-            transparent,
-            rgba(36,52,77,.90)
-        );
-
-    display:none;
+/* Right text */
+.text{
+ min-width:0;
+ padding:10px 18px 5px 12px;
+ overflow:hidden
 }
 
-/* =========================
-   TEXT RIGHT
-========================= */
-
-.text-area{
-    padding:12px 20px 10px 15px;
-    overflow:hidden;
-
-    display:flex;
-    flex-direction:column;
+.dayrow{
+ display:flex;
+ align-items:center;
+ gap:15px;
+ padding-bottom:13px;
+ margin-bottom:18px;
+ border-bottom:1px solid var(--gold2)
 }
 
-.day-row{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    margin-bottom:18px;
-}
-
-.day-number{
-    background:var(--purple);
-    color:#fff;
-
-    min-width:120px;
-    height:55px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:4px;
-
-    font-size:21px;
-    font-weight:800;
+.day{
+ min-width:125px;
+ height:54px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ background:var(--purple);
+ color:white;
+ border-radius:5px;
+ font-size:19px;
+ font-weight:800
 }
 
 .date{
-    color:#555;
-
-    font-family:"Playfair Display",serif;
-    font-size:21px;
+ font:22px "Playfair Display";
+ color:#555
 }
 
-/* =========================
-   ENGLISH
-========================= */
-
-.language{
-    color:var(--gold);
-    font-size:13px;
-    font-weight:800;
-    letter-spacing:2px;
-    margin-bottom:8px;
+.lang{
+ color:var(--gold);
+ font-size:12px;
+ font-weight:800;
+ letter-spacing:2.5px;
+ margin-bottom:9px
 }
 
 .english{
-    color:var(--navy);
-
-    font-family:"Playfair Display",Georgia,serif;
-
-    font-size:29px;
-    line-height:1.35;
-    font-weight:600;
-
-    max-width:650px;
+ color:var(--navy);
+ font:600 29px/1.42 "Playfair Display";
+ max-width:620px
 }
 
 .reference{
-    color:var(--gold);
-
-    font-size:15px;
-    font-weight:700;
-
-    margin-top:8px;
-    margin-bottom:17px;
+ color:var(--gold);
+ font-size:14px;
+ font-weight:700;
+ margin:10px 0
 }
-
-/* =========================
-   TAMIL + SINHALA
-========================= */
 
 .translation{
-    border-top:1px solid var(--gold-light);
-    padding-top:10px;
-    margin-top:10px;
+ border-top:1px solid var(--gold2);
+ padding-top:10px;
+ margin-top:10px
 }
 
-.translation-title{
-    color:#806323;
-    font-size:12px;
-    font-weight:800;
-    margin-bottom:6px;
+.translation b{
+ color:#806323;
+ font-size:11px;
+ letter-spacing:1px
+}
+
+.tamil,.sinhala{
+ color:var(--brown);
+ font-size:17px;
+ line-height:1.55;
+ margin-top:6px
 }
 
 .tamil{
-    color:var(--brown);
-    font-family:"Noto Sans Tamil",sans-serif;
-    font-size:17px;
-    line-height:1.5;
+ font-family:"Noto Sans Tamil",sans-serif
 }
 
 .sinhala{
-    color:var(--brown);
-    font-family:"Noto Sans Sinhala",sans-serif;
-    font-size:17px;
-    line-height:1.55;
+ font-family:"Noto Sans Sinhala",sans-serif
 }
-
-/* =========================
-   FOOTER
-========================= */
 
 .footer{
-    position:absolute;
-    left:55px;
-    right:55px;
-    bottom:17px;
-
-    text-align:center;
-
-    color:#967225;
-
-    font-family:"Playfair Display",serif;
-    font-size:14px;
-    font-style:italic;
-
-    z-index:15;
+ position:absolute;
+ bottom:14px;
+ left:55px;
+ right:55px;
+ text-align:center;
+ color:#967225;
+ font:italic 13px "Playfair Display"
 }
-
-/* =========================
-   MOBILE
-========================= */
 
 @media(max-width:750px){
-
-    .app{
-        padding:10px;
-    }
-
-    .form-grid{
-        grid-template-columns:1fr;
-    }
-
-    .full{
-        grid-column:auto;
-    }
-
-    .buttons{
-        grid-template-columns:1fr;
-    }
+ .form{grid-template-columns:1fr}
+ .full{grid-column:auto}
+ .buttons{grid-template-columns:1fr}
 }
-
 </style>
 </head>
 
@@ -499,660 +328,318 @@ button:disabled{
 
 <div class="app">
 
-<!-- =========================
-     EDITOR
-========================= -->
-
 <div class="editor">
 
-<h1 class="editor-title">
-365 Days With God's Word
-</h1>
+<h1>365 Days With God's Word</h1>
 
-<div class="editor-subtitle">
-12 × 9 inch • Landscape • PNG Bible Desk Calendar
+<div class="sub">
+12 × 9 inch • Landscape • 3600 × 2700 PNG
 </div>
 
-<div class="form-grid">
+<div class="form">
 
-<div class="field">
+<div>
 <label>Day</label>
-
-<input
-    id="day"
-    type="number"
-    min="1"
-    max="365"
-    value="1"
->
+<input id="day" type="number" min="1" max="365" value="1">
 </div>
 
-<div class="field">
+<div>
 <label>Date</label>
-
-<input
-    id="date"
-    type="text"
-    value="January 1, 2027"
->
+<input id="date" type="text">
 </div>
 
-<div class="field full">
-<label>Upload Your Photo</label>
-
-<input
-    id="photo"
-    type="file"
-    accept="image/*"
->
+<div class="full">
+<label>Upload Photo — Photo appears on LEFT</label>
+<input id="photo" type="file" accept="image/*">
 </div>
 
-<div class="field full">
+<div class="full">
 <label>English Bible Verse — Main</label>
-
-<textarea
-    id="english"
-    placeholder="Enter English Bible verse..."
-></textarea>
+<textarea id="english"></textarea>
 </div>
 
-<div class="field full">
+<div class="full">
 <label>Tamil Bible Verse — Second</label>
-
-<textarea
-    id="tamil"
-    placeholder="தமிழ் வேதாகம வசனத்தை உள்ளிடவும்..."
-></textarea>
+<textarea id="tamil"></textarea>
 </div>
 
-<div class="field full">
+<div class="full">
 <label>Sinhala Bible Verse — Third</label>
-
-<textarea
-    id="sinhala"
-    placeholder="සිංහල බයිබල් පදය ඇතුළත් කරන්න..."
-></textarea>
+<textarea id="sinhala"></textarea>
 </div>
 
-<div class="field">
+<div>
 <label>Bible Reference</label>
-
-<input
-    id="reference"
-    placeholder="Psalm 23:1"
->
+<input id="reference" placeholder="Psalm 23:1">
 </div>
 
-<div class="field">
+<div>
 <label>Photo Position</label>
-
 <select id="position">
-    <option value="center center">Center</option>
-    <option value="center top">Top</option>
-    <option value="center bottom">Bottom</option>
-    <option value="left center">Left</option>
-    <option value="right center">Right</option>
+<option value="center center">Center</option>
+<option value="center top">Top</option>
+<option value="center bottom">Bottom</option>
+<option value="left center">Left</option>
+<option value="right center">Right</option>
 </select>
 </div>
 
 </div>
 
 <div class="buttons">
-
-<button
-    class="btn-light"
-    onclick="previousDay()"
->
-← Previous
-</button>
-
-<button
-    class="btn-gold"
-    onclick="nextDay()"
->
-Next →
-</button>
-
-<button
-    class="btn-navy"
-    onclick="savePNG()"
->
-💾 Save PNG
-</button>
-
+<button class="light" onclick="previousDay()">← Previous</button>
+<button class="gold" onclick="nextDay()">Next →</button>
+<button class="navy" onclick="savePNG()">💾 Save PNG</button>
 </div>
 
 <div class="buttons">
-
-<button
-    class="btn-light"
-    onclick="clearVerse()"
->
-Clear
-</button>
-
-<button
-    class="btn-purple"
-    onclick="generate()"
->
-Update Preview
-</button>
-
+<button class="light" onclick="clearVerse()">Clear</button>
+<button class="purple" onclick="generate()">Update Preview</button>
 </div>
 
-<div id="status" class="status">
-Day 1 of 365
-</div>
+<div id="status" class="status">Day 1 of 365</div>
 
 </div>
-
-
-<!-- =========================
-     CALENDAR
-========================= -->
 
 <div class="preview">
 
 <div id="calendar" class="calendar">
 
 <div class="header">
-
-<div class="header-small">
-DAILY DEVOTION • BIBLE • FAITH
+<div class="small">DAILY DEVOTION • BIBLE • FAITH</div>
+<div class="title">365 <span>Days</span> With God's Word</div>
+<div class="line"></div>
 </div>
-
-<div class="header-title">
-365 <span>Days</span> With God's Word
-</div>
-
-<div class="header-line"></div>
-
-</div>
-
 
 <div class="main">
 
-
-<!-- PHOTO LEFT -->
-
-<div class="photo-area">
-
-<div
-    class="photo-placeholder"
-    id="photoPlaceholder"
->
-Upload your Bible or worship photo
+<div class="photo">
+<div id="placeholder" class="placeholder">Upload your photo</div>
+<img id="outPhoto" alt="Uploaded photo">
 </div>
 
-<img
-    id="outPhoto"
-    alt="Bible calendar photo"
->
+<div class="text">
 
-<div
-    class="photo-caption"
-    id="photoCaption"
->
-Walk with God • Grow in His Word
+<div class="dayrow">
+<div id="outDay" class="day">DAY 001</div>
+<div id="outDate" class="date"></div>
 </div>
 
-</div>
+<div class="lang">ENGLISH</div>
 
+<div id="outEnglish" class="english"></div>
 
-<!-- TEXT RIGHT -->
-
-<div class="text-area">
-
-<div class="day-row">
-
-<div
-    class="day-number"
-    id="outDay"
->
-DAY 001
-</div>
-
-<div
-    class="date"
-    id="outDate"
->
-January 1, 2027
-</div>
-
-</div>
-
-
-<div class="language">
-ENGLISH
-</div>
-
-<div
-    class="english"
-    id="outEnglish"
->
-Your Bible verse will appear here.
-</div>
-
-<div
-    class="reference"
-    id="outReference"
-></div>
-
+<div id="outReference" class="reference"></div>
 
 <div class="translation">
-
-<div class="translation-title">
-தமிழ் • TAMIL
+<b>தமிழ் • TAMIL</b>
+<div id="outTamil" class="tamil"></div>
 </div>
-
-<div
-    class="tamil"
-    id="outTamil"
->
-தமிழ் வேதாகம வசனம் இங்கே தோன்றும்.
-</div>
-
-</div>
-
 
 <div class="translation">
-
-<div class="translation-title">
-සිංහල • SINHALA
-</div>
-
-<div
-    class="sinhala"
-    id="outSinhala"
->
-සිංහල බයිබල් පදය මෙහි දිස් වේ.
+<b>සිංහල • SINHALA</b>
+<div id="outSinhala" class="sinhala"></div>
 </div>
 
 </div>
-
 </div>
-
-</div>
-
 
 <div class="footer">
 “Walk with God • Grow in His Word”
 </div>
 
 </div>
-
 </div>
-
 </div>
-
 
 <script>
-
 const $=id=>document.getElementById(id);
-
 let currentDay=1;
 const pages={};
 
-
-/* DATE */
-
-function calendarDate(day){
-
-    const d=new Date(2027,0,day);
-
-    return d.toLocaleDateString(
-        "en-US",
-        {
-            month:"long",
-            day:"numeric",
-            year:"numeric"
-        }
-    );
+function dateFor(day){
+ return new Date(2027,0,day).toLocaleDateString("en-US",{
+  month:"long",day:"numeric",year:"numeric"
+ });
 }
-
-
-/* PREVIEW */
 
 function generate(){
-
-    currentDay=Math.max(
-        1,
-        Math.min(
-            365,
-            Number($("day").value)||1
-        )
-    );
-
-    $("day").value=currentDay;
-
-    $("outDay").textContent=
-        "DAY "+
-        String(currentDay).padStart(3,"0");
-
-    $("outDate").textContent=
-        $("date").value ||
-        calendarDate(currentDay);
-
-    $("outEnglish").textContent=
-        $("english").value ||
-        "Your Bible verse will appear here.";
-
-    $("outTamil").textContent=
-        $("tamil").value ||
-        "தமிழ் வேதாகம வசனம் இங்கே தோன்றும்.";
-
-    $("outSinhala").textContent=
-        $("sinhala").value ||
-        "සිංහල බයිබල් පදය මෙහි දිස් වේ.";
-
-    $("outReference").textContent=
-        $("reference").value
-        ? "— "+$("reference").value
-        : "";
-
-    $("status").textContent=
-        `Day ${currentDay} of 365`;
+ currentDay=Math.max(1,Math.min(365,+$("day").value||1));
+ $("day").value=currentDay;
+ $("outDay").textContent="DAY "+String(currentDay).padStart(3,"0");
+ $("outDate").textContent=$("date").value||dateFor(currentDay);
+ $("outEnglish").textContent=$("english").value||"Your Bible verse will appear here.";
+ $("outTamil").textContent=$("tamil").value||"தமிழ் வேதாகம வசனம் இங்கே தோன்றும்.";
+ $("outSinhala").textContent=$("sinhala").value||"සිංහල බයිබල් පදය මෙහි දිස් වේ.";
+ $("outReference").textContent=$("reference").value?"— "+$("reference").value:"";
+ $("status").textContent=`Day ${currentDay} of 365`;
 }
-
-
-/* SAVE DAY */
 
 function saveCurrent(){
-
-    pages[currentDay]={
-
-        date:$("date").value,
-
-        english:$("english").value,
-
-        tamil:$("tamil").value,
-
-        sinhala:$("sinhala").value,
-
-        reference:$("reference").value
-
-    };
+ pages[currentDay]={
+  date:$("date").value,
+  english:$("english").value,
+  tamil:$("tamil").value,
+  sinhala:$("sinhala").value,
+  reference:$("reference").value,
+  photo:$("outPhoto").src||""
+ };
 }
-
-
-/* LOAD DAY */
 
 function loadDay(day){
+ saveCurrent();
+ currentDay=Math.max(1,Math.min(365,+day||1));
 
-    saveCurrent();
+ const p=pages[currentDay]||{};
 
-    currentDay=Math.max(
-        1,
-        Math.min(
-            365,
-            Number(day)||1
-        )
-    );
+ $("day").value=currentDay;
+ $("date").value=p.date||dateFor(currentDay);
+ $("english").value=p.english||"";
+ $("tamil").value=p.tamil||"";
+ $("sinhala").value=p.sinhala||"";
+ $("reference").value=p.reference||"";
 
-    const p=pages[currentDay]||{};
+ if(p.photo){
+  $("outPhoto").src=p.photo;
+  $("outPhoto").style.display="block";
+  $("placeholder").style.display="none";
+ }else{
+  $("outPhoto").removeAttribute("src");
+  $("outPhoto").style.display="none";
+  $("placeholder").style.display="flex";
+ }
 
-    $("day").value=currentDay;
-
-    $("date").value=
-        p.date||
-        calendarDate(currentDay);
-
-    $("english").value=
-        p.english||"";
-
-    $("tamil").value=
-        p.tamil||"";
-
-    $("sinhala").value=
-        p.sinhala||"";
-
-    $("reference").value=
-        p.reference||"";
-
-    generate();
+ generate();
 }
-
-
-/* NEXT */
 
 function nextDay(){
-
-    if(currentDay<365){
-        loadDay(currentDay+1);
-    }
+ if(currentDay<365)loadDay(currentDay+1);
 }
-
-
-/* PREVIOUS */
 
 function previousDay(){
-
-    if(currentDay>1){
-        loadDay(currentDay-1);
-    }
+ if(currentDay>1)loadDay(currentDay-1);
 }
-
-
-/* CLEAR */
 
 function clearVerse(){
-
-    $("english").value="";
-    $("tamil").value="";
-    $("sinhala").value="";
-    $("reference").value="";
-
-    generate();
+ $("english").value="";
+ $("tamil").value="";
+ $("sinhala").value="";
+ $("reference").value="";
+ generate();
 }
 
-
-/* PHOTO */
-
 $("photo").onchange=function(){
+ const file=this.files[0];
+ if(!file)return;
 
-    const file=this.files[0];
+ if(!file.type.startsWith("image/")){
+  alert("Please select an image.");
+  return;
+ }
 
-    if(!file)return;
+ const reader=new FileReader();
 
-    if(!file.type.startsWith("image/")){
+ reader.onload=e=>{
+  $("outPhoto").src=e.target.result;
+  $("outPhoto").style.display="block";
+  $("placeholder").style.display="none";
 
-        alert("Please select an image.");
+  pages[currentDay]=pages[currentDay]||{};
+  pages[currentDay].photo=e.target.result;
+ };
 
-        return;
-    }
-
-    const reader=new FileReader();
-
-    reader.onload=e=>{
-
-        $("outPhoto").src=e.target.result;
-
-        $("outPhoto").style.display="block";
-
-        $("photoPlaceholder").style.display="none";
-
-        $("photoCaption").style.display="block";
-
-    };
-
-    reader.readAsDataURL(file);
+ reader.readAsDataURL(file);
 };
-
-
-/* PHOTO POSITION */
 
 $("position").onchange=function(){
-
-    $("outPhoto").style.objectPosition=
-        this.value;
+ $("outPhoto").style.objectPosition=this.value;
 };
 
-
-/* LIVE UPDATE */
-
-[
-    "day",
-    "date",
-    "english",
-    "tamil",
-    "sinhala",
-    "reference"
-].forEach(id=>{
-
-    $(id).addEventListener(
-        "input",
-        generate
-    );
-
+["day","date","english","tamil","sinhala","reference"].forEach(id=>{
+ $(id).addEventListener("input",generate);
 });
-
-
-/* PNG */
 
 async function savePNG(){
 
-    generate();
+ generate();
 
-    const buttons=
-        document.querySelectorAll(
-            'button[onclick="savePNG()"]'
-        );
+ const btn=document.querySelector('button[onclick="savePNG()"]');
+ btn.disabled=true;
+ btn.textContent="Creating PNG...";
+ $("status").textContent="Creating 3600 × 2700 PNG...";
 
-    buttons.forEach(b=>{
-        b.disabled=true;
-        b.textContent="Creating PNG...";
-    });
+ try{
 
-    $("status").textContent=
-        "Creating 3600 × 2700 PNG...";
+  await document.fonts.ready;
 
-    try{
+  const img=$("outPhoto");
 
-        await document.fonts.ready;
+  if(img.src&&!img.complete){
+   await new Promise(resolve=>{
+    img.onload=resolve;
+    img.onerror=resolve;
+   });
+  }
 
-        const img=$("outPhoto");
+  await new Promise(r=>setTimeout(r,300));
 
-        if(
-            img.style.display==="block" &&
-            img.src &&
-            !img.complete
-        ){
+  const canvas=await html2canvas($("calendar"),{
+   width:1200,
+   height:900,
+   scale:3,
+   useCORS:true,
+   allowTaint:false,
+   backgroundColor:"#F8F5ED",
+   imageTimeout:20000,
+   logging:false
+  });
 
-            await new Promise(resolve=>{
+  canvas.toBlob(blob=>{
+   if(!blob){
+    alert("PNG creation failed.");
+    return;
+   }
 
-                img.onload=resolve;
-                img.onerror=resolve;
+   const url=URL.createObjectURL(blob);
+   const a=document.createElement("a");
 
-            });
+   a.href=url;
+   a.download="Bible-Calendar-Day-"+
+     String(currentDay).padStart(3,"0")+".png";
 
-        }
+   a.click();
 
-        await new Promise(
-            resolve=>setTimeout(resolve,300)
-        );
+   setTimeout(()=>URL.revokeObjectURL(url),1000);
 
+   $("status").textContent="✓ PNG saved • 3600 × 2700 px";
+  },"image/png");
 
-        const canvas=
-            await html2canvas(
-                $("calendar"),
-                {
-                    width:1200,
-                    height:900,
-                    scale:3,
-                    useCORS:true,
-                    allowTaint:false,
-                    backgroundColor:"#F8F5ED",
-                    imageTimeout:20000,
-                    logging:false
-                }
-            );
+ }catch(err){
 
+  console.error(err);
+  $("status").textContent="PNG export failed";
+  alert("PNG export failed. Please use Chrome or Edge.");
 
-        canvas.toBlob(
-            blob=>{
+ }finally{
 
-                if(!blob){
-
-                    alert("PNG creation failed.");
-
-                    return;
-                }
-
-                const url=
-                    URL.createObjectURL(blob);
-
-                const a=
-                    document.createElement("a");
-
-                a.href=url;
-
-                a.download=
-                    "Bible-Calendar-Day-"+
-                    String(currentDay)
-                        .padStart(3,"0")+
-                    ".png";
-
-                document.body.appendChild(a);
-
-                a.click();
-
-                a.remove();
-
-                setTimeout(
-                    ()=>URL.revokeObjectURL(url),
-                    1000
-                );
-
-                $("status").textContent=
-                    "✓ PNG saved • 3600 × 2700 px";
-
-            },
-            "image/png"
-        );
-
-    }catch(error){
-
-        console.error(error);
-
-        $("status").textContent=
-            "PNG export failed";
-
-        alert(
-            "PNG export failed.\n\n"+
-            "Please use Chrome or Edge."
-        );
-
-    }finally{
-
-        buttons.forEach(b=>{
-
-            b.disabled=false;
-
-            b.textContent="💾 Save PNG";
-
-        });
-
-    }
+  btn.disabled=false;
+  btn.textContent="💾 Save PNG";
+ }
 }
 
-
-/* SAMPLE DAY 1 */
-
+/* Sample Day 1 */
 $("english").value=
-    "The Lord is my shepherd; I shall not want.";
+"The Lord is my shepherd; I shall not want.";
 
 $("tamil").value=
-    "கர்த்தர் என் மேய்ப்பராயிருக்கிறார்; எனக்குக் குறைவில்லை.";
+"கர்த்தர் என் மேய்ப்பராயிருக்கிறார்; எனக்குக் குறைவில்லை.";
 
 $("sinhala").value=
-    "ස්වාමීන්වහන්සේ මාගේ එඬේරාණෝය; මට හිඟයක් නොවන්නේය.";
+"ස්වාමීන්වහන්සේ මාගේ එඬේරාණෝය; මට හිඟයක් නොවන්නේය.";
 
-$("reference").value=
-    "Psalm 23:1";
-
+$("reference").value="Psalm 23:1";
 
 loadDay(1);
-
 </script>
 
 </body>
